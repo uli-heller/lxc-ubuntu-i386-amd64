@@ -44,3 +44,17 @@ $ lxc ls my-running-.image
 ```
 
 Note: There is an IP address available for the container!
+
+Cleaning Up - Delete LXC Container And LXC Image
+------------------------------------------------
+
+```
+$ lxc stop my-running-image
+$ lxc delete my-running-image
+$ lxc image delete focal-32
+```
+
+Not Yet Documented
+------------------
+
+- How to build the missing debs?
