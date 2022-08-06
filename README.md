@@ -82,4 +82,10 @@ Open Topics
 -----------
 
 - How to build the missing debs?
-- Why is the 32 bit image larger than my 64 bit images?
+
+Solved Topics
+-------------
+
+### Why is the 32 bit image larger than my 64 bit images?
+
+`apt-get clean` reduces the size!
