@@ -71,3 +71,5 @@ mkdir -p "tmp-${OS}"
 )|gzip -c9 >"${OS}-metadata.tar.gz"
 rm -rf "tmp-${OS}"
 (cd "./${OSDIR}" && sudo tar -cpf - .)|gzip -c9 >"${OS}-lxc.tar.gz"
+
+sudo rm -rf "./${OSDIR}"
