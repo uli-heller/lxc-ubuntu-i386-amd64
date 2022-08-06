@@ -78,7 +78,8 @@ rm -rf "tmp-${OS}"
 
 sudo rm -rf "./${OSDIR}"
 
-lxc image import "${OS}-metadata.tar.gz" "${OS}-lxc.tar.gz" --alias "${OS}-${VERSION}"
+lxc image import "${OS}-metadata.tar.gz" "${OS}-lxc.tar.gz" --alias "${OS}-${VERSION}-import"
+lxc init "${OS}-${VERSION}-import" "${OS}-${VERSION}"
 lxc publish "${OS}-${VERSION}" --alias "${OS}-${VERSION}-export"
 mkdir -p "tmp-${OS}-export"
 lxc image export "${OS}-${VERSION}-export" "tmp-${OS}-export"
@@ -86,5 +87,6 @@ mv -v "tmp-${OS}-export"/* "${OS}-${VERSION}-lxcimage.tar.gz"
 rm -rf "tmp-${OS}-export"
 
 rm -f "${OS}-metadata.tar.gz" "${OS}-lxc.tar.gz"
-lxc image delete "${OS}-${VERSION}"
+lxc delete "${OS}-${VERSION}"
+lxc image delete "${OS}-${VERSION}-import"
 lxc image delete "${OS}-${VERSION}-export"
