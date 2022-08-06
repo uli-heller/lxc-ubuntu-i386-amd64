@@ -29,15 +29,15 @@ Download And Extract A Release
 ------------------------------
 
 Select the release you want to play with [here at Github](https://github.com/uli-heller/lxc-ubuntu-32bit/releases).
-As of this writing, v0.2 is the latest release, so I'm using this:
+As of this writing, v0.3 is the latest release, so I'm using this:
 
 ```
 $ cd /data
-$ wget https://github.com/uli-heller/lxc-ubuntu-32bit/releases/download/v0.2/lxc-ubuntu-32bit-v0.2.tar.xz
-  # Creates "lxc-ubuntu-32bit-v0.2.tar.xz"
-$ xz -cd lxc-ubuntu-32bit-v0.2.tar.xz | tar xf -
-  # Extracts to the folder "lxc-ubuntu-32bit-v0.2"
-$ cd lxc-ubuntu-32bit-v0.2
+$ wget https://github.com/uli-heller/lxc-ubuntu-32bit/releases/download/v0.3/lxc-ubuntu-32bit-v0.3.tar.xz
+  # Creates "lxc-ubuntu-32bit-v0.3.tar.xz"
+$ xz -cd lxc-ubuntu-32bit-v0.3.tar.xz | tar xf -
+  # Extracts to the folder "lxc-ubuntu-32bit-v0.3"
+$ cd lxc-ubuntu-32bit-v0.3
 ```
 
 Create The Image Files
