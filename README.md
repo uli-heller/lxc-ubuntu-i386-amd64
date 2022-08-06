@@ -7,11 +7,9 @@ TLDR
 ```
 ./create-32bit-image.sh focal
 # Asks for sudo password
-# Creates
-# - focal-metadata.tar.gz
-# - focal-lxc.tar.gz
-lxc image import focal-metadata.tar.gz focal-lxc.tar.gz --alias focal-32
-lxc launch focal-32 my-running-image
+# Creates "focal-(version)-lxcimage.tar.gz"
+lxc image import focal-v0.4-lxcimage.tar.gz --alias focal-v0.4
+lxc launch focal-v0.4 my-running-image
 ```
 
 Select Your Playground
