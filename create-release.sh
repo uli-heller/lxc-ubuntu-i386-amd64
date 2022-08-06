@@ -34,6 +34,7 @@ cp -a "${D}/." "${TMPDIR}/${DBN}-${TAG}/."
     cd "${TMPDIR}/${DBN}-${TAG}"
     git clean -fdx
     rm -rf ".git*"
+    echo "${TAG}" >"VERSION"
 ) >/dev/null 2>&1
 (
     cd "${TMPDIR}"
