@@ -35,17 +35,19 @@ sudo chroot "./${OSDIR}" apt-get install -y apt-utils net-tools
 sudo chroot "./${OSDIR}" apt-get install -y ca-certificates libpsl5 openssl publicsuffix
 sudo chroot "./${OSDIR}" apt-get install -y less vim
 
->"./install-packages-${OS}"
 # netplan.io
 # libnetplan0
 # python3-netifaces
-for d in debs/*; do
+test -d "debs/${OS}" && {
+  >"./install-packages-${OS}"
+  for d in "debs/${OS}/"*; do
     b="$(basename "${d}")"
     sudo cp "${d}" "./${OSDIR}/var/cache/apt/archives/${b}"
     echo "/var/cache/apt/archives/${b}" >>"./install-packages-${OS}"
-done
-xargs -t sudo chroot "./${OSDIR}" apt-get install -y <"./install-packages-${OS}"
-rm -f "./install-packages-${OS}"
+  done
+  xargs -t sudo chroot "./${OSDIR}" apt-get install -y <"./install-packages-${OS}"
+  rm -f "./install-packages-${OS}"
+}
 
 sudo chroot "./${OSDIR}" apt-get update
 sudo chroot "./${OSDIR}" apt-get upgrade -y
