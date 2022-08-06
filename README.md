@@ -1,6 +1,13 @@
 Howto create a 32bit ubuntu-20.04 container
 ===========================================
 
+Originally, I created this repo to describe how to setup the
+container. I planned to add the missing debs to this repo, too.
+Over time, I extended the goals. So now:
+
+- There is a ready-to-use 32 bit image within the release
+- There is a script creating the ready-to-use image
+
 TLDR
 ----
 
@@ -71,7 +78,8 @@ $ lxc delete focal-v0.4
 $ lxc image delete focal-v0.4-import
 ```
 
-Not Yet Documented
-------------------
+Open Topics
+-----------
 
 - How to build the missing debs?
+- Why is the 32 bit image larger than my 64 bit images?
