@@ -15,8 +15,8 @@ TLDR
 ./create-32bit-image.sh focal
 # Asks for sudo password
 # Creates "focal-(version)-lxcimage.tar.gz"
-lxc image import focal-v0.4-lxcimage.tar.gz --alias focal-v0.4
-lxc launch focal-v0.4 my-running-image
+lxc image import focal-v0.5-lxcimage.tar.gz --alias focal-v0.5
+lxc launch focal-v0.5 my-running-image
 ```
 
 Select Your Playground
@@ -34,15 +34,15 @@ Download And Extract A Release
 ------------------------------
 
 Select the release you want to play with [here at Github](https://github.com/uli-heller/lxc-ubuntu-32bit/releases).
-As of this writing, v0.4 is the latest release, so I'm using this:
+As of this writing, v0.5 is the latest release, so I'm using this:
 
 ```
 $ cd /data
-$ wget https://github.com/uli-heller/lxc-ubuntu-32bit/releases/download/v0.4/lxc-ubuntu-32bit-v0.4.tar.xz
-  # Creates "lxc-ubuntu-32bit-v0.4.tar.xz"
-$ xz -cd lxc-ubuntu-32bit-v0.4.tar.xz | tar xf -
-  # Extracts to the folder "lxc-ubuntu-32bit-v0.4"
-$ cd lxc-ubuntu-32bit-v0.4
+$ wget https://github.com/uli-heller/lxc-ubuntu-32bit/releases/download/v0.5/lxc-ubuntu-32bit-v0.5.tar.xz
+  # Creates "lxc-ubuntu-32bit-v0.5.tar.xz"
+$ xz -cd lxc-ubuntu-32bit-v0.5.tar.xz | tar xf -
+  # Extracts to the folder "lxc-ubuntu-32bit-v0.5"
+$ cd lxc-ubuntu-32bit-v0.5
 ```
 
 Create The Image Files
@@ -52,20 +52,20 @@ Create The Image Files
 $ ./create-32bit-image.sh focal
   # Typically asks for sudo password
   # Takes a couple of minutes
-  # Creates "focal-v0.4-lxcimage.tar.gz"
+  # Creates "focal-v0.5-lxcimage.tar.gz"
 ```
 
 Import And Start The LXC Image
 -------------------------------
 
 ```
-$ lxc image import focal-v0.4-lxcimage.tar.gz --alias focal-v0.4-import
-$ lxc launch focal-v0.4-import focal-v0.4
+$ lxc image import focal-v0.5-lxcimage.tar.gz --alias focal-v0.5-import
+$ lxc launch focal-v0.5-import focal-v0.5
 $ lxc ls
 +------------------+---------+----------------------+------+-----------+-----------+
 |       NAME       |  STATE  |         IPV4         | IPV6 |   TYPE    | SNAPSHOTS |
 +------------------+---------+----------------------+------+-----------+-----------+
-| focal-v0.4       | RUNNING | 10.253.205.63 (eth0) |      | CONTAINER | 0         |
+| focal-v0.5       | RUNNING | 10.253.205.63 (eth0) |      | CONTAINER | 0         |
 +------------------+---------+----------------------+------+-----------+-----------+
 ```
 
@@ -73,9 +73,9 @@ Cleaning Up - Delete LXC Container And LXC Image
 ------------------------------------------------
 
 ```
-$ lxc stop focal-v0.4
-$ lxc delete focal-v0.4
-$ lxc image delete focal-v0.4-import
+$ lxc stop focal-v0.5
+$ lxc delete focal-v0.5
+$ lxc image delete focal-v0.5-import
 ```
 
 Open Topics
