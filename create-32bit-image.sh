@@ -5,6 +5,10 @@ OSDIR="$2"
 test -z "${OSDIR}" && OSDIR="${OS}"
 # OS=focal
 
+D="$(dirname "$0")"
+VERSION="$(cat "${D}"/VERSION 2>/dev/null)"
+test -z "${VERSION}" && VERSION=HEAD
+
 # Execute a first sudo command, so hopefully
 # we don't have to ask for the sudo password
 # later on
@@ -73,3 +77,14 @@ rm -rf "tmp-${OS}"
 (cd "./${OSDIR}" && sudo tar -cpf - .)|gzip -c9 >"${OS}-lxc.tar.gz"
 
 sudo rm -rf "./${OSDIR}"
+
+lxc image import "${OS}-metadata.tar.gz" "${OS}-lxc.tar.gz" --alias "${OS}-${VERSION}"
+lxc publish "${OS}-${VERSION}" --alias "${OS}-${VERSION}-export"
+mkdir -p "tmp-${OS}-export"
+lxc image export "${OS}-${VERSION}-export" "tmp-${OS}-export"
+mv -v "tmp-${OS}-export"/* "${OS}-${VERSION}-lxcimage.tar.gz"
+rm -rf "tmp-${OS}-export"
+
+rm -f "${OS}-metadata.tar.gz" "${OS}-lxc.tar.gz"
+lxc image delete "${OS}-${VERSION}"
+lxc image delete "${OS}-${VERSION}-export"
