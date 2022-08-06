@@ -47,47 +47,30 @@ Create The Image Files
 $ ./create-32bit-image.sh focal
   # Typically asks for sudo password
   # Takes a couple of minutes
-  # Creates "focal-metadata.tar.gz" and "focal-lxc.tar.gz"
+  # Creates "focal-v0.3-lxcimage.tar.gz"
 ```
 
-Import the LXC Image
---------------------
+Import And Start The LXC Image
+-------------------------------
 
 ```
-$ lxc image import focal-metadata.tar.gz focal-lxc.tar.gz --alias focal-32
-Image imported with fingerprint: 59535d55802cb34506da20cbe0079beb020987fa5a131a802a8653da296ab683
-```
-
-Launch the LXC Container
-------------------------
-
-```
-$ lxc launch focal-32 my-running-image
-Creating my-running-image
-Starting my-running-image
-```
-
-Query the LXC Container
------------------------
-
-```
-$ lxc ls my-running-.image
+$ lxc image import focal-v0.3-lxcimage.tar.gz --alias focal-v0.3-import
+$ lxc launch focal-v0.3-import focal-v0.3
+$ lxc ls
 +------------------+---------+----------------------+------+-----------+-----------+
 |       NAME       |  STATE  |         IPV4         | IPV6 |   TYPE    | SNAPSHOTS |
 +------------------+---------+----------------------+------+-----------+-----------+
-| my-running-image | RUNNING | 10.253.205.63 (eth0) |      | CONTAINER | 0         |
+| focal-v0.3       | RUNNING | 10.253.205.63 (eth0) |      | CONTAINER | 0         |
 +------------------+---------+----------------------+------+-----------+-----------+
 ```
-
-Note: There is an IP address available for the container!
 
 Cleaning Up - Delete LXC Container And LXC Image
 ------------------------------------------------
 
 ```
-$ lxc stop my-running-image
-$ lxc delete my-running-image
-$ lxc image delete focal-32
+$ lxc stop focal-v0.3
+$ lxc delete focal-v0.3
+$ lxc image delete focal-v0.3-import
 ```
 
 Not Yet Documented
