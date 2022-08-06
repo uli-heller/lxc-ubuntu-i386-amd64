@@ -29,15 +29,15 @@ Download And Extract A Release
 ------------------------------
 
 Select the release you want to play with [here at Github](https://github.com/uli-heller/lxc-ubuntu-32bit/releases).
-As of this writing, v0.3 is the latest release, so I'm using this:
+As of this writing, v0.4 is the latest release, so I'm using this:
 
 ```
 $ cd /data
-$ wget https://github.com/uli-heller/lxc-ubuntu-32bit/releases/download/v0.3/lxc-ubuntu-32bit-v0.3.tar.xz
-  # Creates "lxc-ubuntu-32bit-v0.3.tar.xz"
-$ xz -cd lxc-ubuntu-32bit-v0.3.tar.xz | tar xf -
-  # Extracts to the folder "lxc-ubuntu-32bit-v0.3"
-$ cd lxc-ubuntu-32bit-v0.3
+$ wget https://github.com/uli-heller/lxc-ubuntu-32bit/releases/download/v0.4/lxc-ubuntu-32bit-v0.4.tar.xz
+  # Creates "lxc-ubuntu-32bit-v0.4.tar.xz"
+$ xz -cd lxc-ubuntu-32bit-v0.4.tar.xz | tar xf -
+  # Extracts to the folder "lxc-ubuntu-32bit-v0.4"
+$ cd lxc-ubuntu-32bit-v0.4
 ```
 
 Create The Image Files
@@ -47,20 +47,20 @@ Create The Image Files
 $ ./create-32bit-image.sh focal
   # Typically asks for sudo password
   # Takes a couple of minutes
-  # Creates "focal-v0.3-lxcimage.tar.gz"
+  # Creates "focal-v0.4-lxcimage.tar.gz"
 ```
 
 Import And Start The LXC Image
 -------------------------------
 
 ```
-$ lxc image import focal-v0.3-lxcimage.tar.gz --alias focal-v0.3-import
-$ lxc launch focal-v0.3-import focal-v0.3
+$ lxc image import focal-v0.4-lxcimage.tar.gz --alias focal-v0.4-import
+$ lxc launch focal-v0.4-import focal-v0.4
 $ lxc ls
 +------------------+---------+----------------------+------+-----------+-----------+
 |       NAME       |  STATE  |         IPV4         | IPV6 |   TYPE    | SNAPSHOTS |
 +------------------+---------+----------------------+------+-----------+-----------+
-| focal-v0.3       | RUNNING | 10.253.205.63 (eth0) |      | CONTAINER | 0         |
+| focal-v0.4       | RUNNING | 10.253.205.63 (eth0) |      | CONTAINER | 0         |
 +------------------+---------+----------------------+------+-----------+-----------+
 ```
 
@@ -68,9 +68,9 @@ Cleaning Up - Delete LXC Container And LXC Image
 ------------------------------------------------
 
 ```
-$ lxc stop focal-v0.3
-$ lxc delete focal-v0.3
-$ lxc image delete focal-v0.3-import
+$ lxc stop focal-v0.4
+$ lxc delete focal-v0.4
+$ lxc image delete focal-v0.4-import
 ```
 
 Not Yet Documented
