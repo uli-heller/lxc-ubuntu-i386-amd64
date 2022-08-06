@@ -17,7 +17,7 @@ lxc launch focal-32 my-running-image
 Select Your Playground
 ----------------------
 
-Select a folder with roughly 10 GB free space. For me, this is "/data":
+Select a folder with roughly 2 GB free space. For me, this is "/data":
 
 ```
 $ df -h /data
