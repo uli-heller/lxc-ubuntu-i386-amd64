@@ -59,6 +59,7 @@ test -d "debs/${OS}" && {
 
 sudo chroot "./${OSDIR}" apt-get update
 sudo chroot "./${OSDIR}" apt-get upgrade -y
+sudo chroot "./${OSDIR}" apt-get clean
 sudo ./umount.sh "./${OSDIR}"
 
 mkdir -p "tmp-${OS}"
