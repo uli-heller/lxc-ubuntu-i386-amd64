@@ -14,6 +14,42 @@ lxc image import focal-metadata.tar.gz focal-lxc.tar.gz --alias focal-32
 lxc launch focal-32 my-running-image
 ```
 
+Select Your Playground
+----------------------
+
+Select a folder with roughly 10 GB free space. For me, this is "/data":
+
+```
+$ df -h /data
+Filesystem                     Size  Used Avail Use% Mounted on
+/dev/mapper/ubuntu--vg-datalv  300G  199G  100G  67% /data
+```
+
+Download And Extract A Release
+------------------------------
+
+Select the release you want to play with [here at Github](https://github.com/uli-heller/lxc-ubuntu-32bit/releases).
+As of this writing, v0.2 is the latest release, so I'm using this:
+
+```
+$ cd /data
+$ wget https://github.com/uli-heller/lxc-ubuntu-32bit/releases/download/v0.2/lxc-ubuntu-32bit-v0.2.tar.xz
+  # Creates "lxc-ubuntu-32bit-v0.2.tar.xz"
+$ xz -cd lxc-ubuntu-32bit-v0.2.tar.xz | tar xf -
+  # Extracts to the folder "lxc-ubuntu-32bit-v0.2"
+$ cd lxc-ubuntu-32bit-v0.2
+```
+
+Create The Image Files
+----------------------
+
+```
+$ ./create-32bit-image.sh focal
+  # Typically asks for sudo password
+  # Takes a couple of minutes
+  # Creates "focal-metadata.tar.gz" and "focal-lxc.tar.gz"
+```
+
 Import the LXC Image
 --------------------
 
