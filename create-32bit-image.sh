@@ -5,12 +5,16 @@ OSDIR="$2"
 test -z "${OSDIR}" && OSDIR="${OS}"
 # OS=focal
 
+# Execute a first sudo command, so hopefully
+# we don't have to ask for the sudo password
+# later on
+sudo true
 
 debootstrap --download-only --arch=i386 --variant=minbase "${OS}" "./${OSDIR}"
-tar cf - "./${OSDIR}" |xz -c9 >"${OS}-debootstrap-debs.tar.xz"
+#tar cf - "./${OSDIR}" |xz -c9 >"${OS}-debootstrap-debs.tar.xz"
 
 sudo debootstrap --arch=i386 --variant=minbase "${OS}" "./${OSDIR}"
-sudo tar cf - "./${OSDIR}" |xz -c9 >"${OS}-debootstrap.tar.xz"
+#sudo tar cf - "./${OSDIR}" |xz -c9 >"${OS}-debootstrap.tar.xz"
 
 sudo mkdir -p "./${OSDIR}/etc/netplan"
 sudo tee  "./${OSDIR}/etc/netplan/netplan.yaml" >/dev/null <<EOF
@@ -53,12 +57,17 @@ sudo chroot "./${OSDIR}" apt-get update
 sudo chroot "./${OSDIR}" apt-get upgrade -y
 sudo ./umount.sh "./${OSDIR}"
 
-echo >metadata.yaml  "architecture: \"i386\""
-echo >>metadata.yaml "creation_date: $(date +%s)"
-echo >>metadata.yaml "properties:"
-echo >>metadata.yaml "  description: \"Ubuntu ${OS} - Created by $(id -un)\""
-echo >>metadata.yaml "  os: \"ubuntu\""
-echo >>metadata.yaml "  release: \"${OS}\""
+mkdir -p "tmp-${OS}"
+(
+    cd  "tmp-${OS}"
+    echo >metadata.yaml  "architecture: \"i386\""
+    echo >>metadata.yaml "creation_date: $(date +%s)"
+    echo >>metadata.yaml "properties:"
+    echo >>metadata.yaml "  description: \"Ubuntu ${OS} - Created by $(id -un)\""
+    echo >>metadata.yaml "  os: \"ubuntu\""
+    echo >>metadata.yaml "  release: \"${OS}\""
 
-tar -cf - metadata.yaml |gzip -c9 >"${OS}-metadata.tar.gz"
+    tar -cf - metadata.yaml
+)|gzip -c9 >"${OS}-metadata.tar.gz"
+rm -rf "tmp-${OS}"
 (cd "./${OSDIR}" && sudo tar -cpf - .)|gzip -c9 >"${OS}-lxc.tar.gz"
