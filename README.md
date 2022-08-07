@@ -1,5 +1,5 @@
-Howto create a 32bit ubuntu-20.04 container
-===========================================
+Howto create a 32bit ubuntu container
+=====================================
 
 Originally, I created this repo to describe how to setup the
 container. I planned to add the missing debs to this repo, too.
@@ -81,7 +81,7 @@ $ lxc image delete focal-v0.5-import
 Open Topics
 -----------
 
-- How to build the missing debs?
+No open topics
 
 Solved Topics
 -------------
@@ -89,3 +89,7 @@ Solved Topics
 ### Why is the 32 bit image larger than my 64 bit images?
 
 `apt-get clean` reduces the size!
+
+### How to build the missing debs?
+
+See [jammy-debs.md](jammy-debs.md) on how I build the DEBs for jammy!
