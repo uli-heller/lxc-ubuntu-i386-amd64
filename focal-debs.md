@@ -125,6 +125,15 @@ $ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'; apt-get install  ./lib
 $ PACKAGE=openvswitch-switch
 $ sudo chroot focal-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
 $ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+  # Aborts with an error
+  #     File "setup.py", line 28
+  #       file=sys.stderr)
+  #           ^
+  #   SyntaxError: invalid syntax
+$ sudo chroot focal-build rm -rf "/srv/${PACKAGE}"
+$ sudo chroot focal-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
+$ sudo patch -d "focal-build/src/${PACKAGE}" <patches/focal/openswitch/openvswitch-2.13.5_python2.diff
+
 ```
 
 ## Installing openvswitch-switch
