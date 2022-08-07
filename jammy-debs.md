@@ -312,26 +312,42 @@ $ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage
 
 ```
 $ PACKAGE=openvswitch-switch
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install  ./openvswitch-switch_2.17.0-0ubuntu1_i386.deb ./openvswitch-common_2.17.0-0ubuntu1_i386.deb"
+$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./openvswitch-switch_2.17.0-0ubuntu1_i386.deb ./openvswitch-common_2.17.0-0ubuntu1_i386.deb"
 ```
 
 ### Building python3-coverage
-
-### Installing python3-coverage
-
-### Building python3-netifaces
-
-### Installing python3-netifaces
-
-### Building netplan.io
-
-### Installing netplan.io
 
 ```
 $ PACKAGE=python3-coverage
 $ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
 $ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
 ```
+
+### Installing python3-coverage
+
+```
+$ PACKAGE=python3-coverage
+$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./python3-coverage_6.2+dfsg1-2build1_i386.deb"
+```
+
+### Building python3-netifaces
+
+```
+$ PACKAGE=python3-netifaces
+$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
+$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+```
+
+### Installing python3-netifaces
+
+```
+$ PACKAGE=python3-netifaces
+$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./python3-netifaces_0.11.0-1build2_i386.deb"
+```
+
+### Building netplan.io
+
+### Installing netplan.io
 
 #### Configure "tzdata"
 
