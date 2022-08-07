@@ -68,7 +68,7 @@ mkdir -p "tmp-${OS}"
     echo >metadata.yaml  "architecture: \"i386\""
     echo >>metadata.yaml "creation_date: $(date +%s)"
     echo >>metadata.yaml "properties:"
-    echo >>metadata.yaml "  description: \"Ubuntu ${OS} - Created by $(id -un)\""
+    echo >>metadata.yaml "  description: \"Ubuntu ${OS} i386 - Created by $(id -un)\""
     echo >>metadata.yaml "  os: \"ubuntu\""
     echo >>metadata.yaml "  release: \"${OS}\""
 
