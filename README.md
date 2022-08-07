@@ -92,5 +92,5 @@ Solved Topics
 
 ### How to build the missing debs?
 
-See [jammy-debs.md](jammy-debs.md) on how I build the DEBs for jammy
-and [focal-debs.md](focal-debs.md) for focal!
+See [jammy-debs.md](jammy-debs.md) on how I build the DEBs for jammy (22.04)
+and [focal-debs.md](focal-debs.md) for focal (20.04)!

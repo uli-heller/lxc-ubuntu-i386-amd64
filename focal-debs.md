@@ -36,6 +36,7 @@ Fetched 12.0 MB in 3s (3587 kB/s)
 Reading package lists... Done
 $ sudo chroot focal-build apt-get install -y dpkg-dev
   # installs "dpkg-source" required by "apt-get source ..."
+$ sudo chroot focal-build apt-get install -y quilt
 ```
 
 ## Running A Test Build
@@ -119,6 +120,21 @@ $ PACKAGE=libdpdk-dev
 $ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'; apt-get install  ./libdpdk-dev_19.11.12-0ubuntu0.20.04.1_i386.deb ./librte*.deb"
 ```
 
+## Building python3-netifaces
+
+```
+$ PACKAGE=python3-netifaces
+$ sudo chroot focal-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
+$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+```
+
+## Installing python3-netifaces
+
+```
+$ PACKAGE=python3-netifaces
+$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./python3-netifaces_0.10.4-1ubuntu4_i386.deb"
+```
+
 ## Building openvswitch-switch
 
 ```
@@ -132,68 +148,52 @@ $ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage
   #   SyntaxError: invalid syntax
 $ sudo chroot focal-build rm -rf "/srv/${PACKAGE}"
 $ sudo chroot focal-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-$ sudo patch -d "focal-build/src/${PACKAGE}" <patches/focal/openswitch/openvswitch-2.13.5_python2.diff
-
+$ sudo patch -d "focal-build/src/${PACKAGE}" -p0 <patches/focal/openvswitch/openvswitch-2.13.5_python2.diff
+$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
 ```
 
 ## Installing openvswitch-switch
 
 ```
 $ PACKAGE=openvswitch-switch
-$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./openvswitch-switch_2.17.0-0ubuntu1_i386.deb ./openvswitch-common_2.17.0-0ubuntu1_i386.deb"
+$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./openvswitch-switch_2.13.5-0dp01~focal1_i386.deb ./openvswitch-common_2.13.5-0dp01~focal1_i386.deb"
 ```
 
-### Building python3-coverage
-
-```
-$ PACKAGE=python3-coverage
-$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
-```
-
-### Installing python3-coverage
+## Building python3-coverage
 
 ```
 $ PACKAGE=python3-coverage
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./python3-coverage_6.2+dfsg1-2build1_i386.deb"
+$ sudo chroot focal-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
+$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
 ```
 
-### Building python3-netifaces
+## Installing python3-coverage
 
 ```
-$ PACKAGE=python3-netifaces
-$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+$ PACKAGE=python3-coverage
+$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./python3-coverage_4.5.2+dfsg.1-4ubuntu1_i386.deb"
 ```
 
-### Installing python3-netifaces
-
-```
-$ PACKAGE=python3-netifaces
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./python3-netifaces_0.11.0-1build2_i386.deb"
-```
-
-### Building netplan.io
+## Building netplan.io
 
 We know that netplan.io depends on pandoc for building.
 So we have to patch it...
 
 ```
 $ PACKAGE=netplan.io
-$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}'"
-$ sudo patch -d "jammy-build/src/${PACKAGE}" <patches/jammy/netplan.io/netplan.io_no-pandoc.diff
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+$ sudo chroot focal-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}'"
+$ sudo patch -d "focal-build/src/${PACKAGE}" <patches/focal/netplan.io/netplan.io_no-pandoc.diff
+$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
   # Shows lots of missing packages -> install them via apt-get
-$ sudo chroot jammy-build apt-get install -y cmake cython3 libnl-3-dev libnl-route-3-dev libsystemd-dev libudev-dev ninja-build
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+$ sudo chroot focal-build apt-get install -y cmake cython3 libnl-3-dev libnl-route-3-dev libsystemd-dev libudev-dev ninja-build
+$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
 ```
-
 
 ### Installing netplan.io
 
 ```
 $ PACKAGE=netplan.io
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./netplan.io_0.104-0dp01~jammy2.1_i386.deb ./libnetplan0_0.104-0dp01~jammy2.1_i386.deb"
+$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./netplan.io_0.104-0dp01~focal2.1_i386.deb ./libnetplan0_0.104-0dp01~focal2.1_i386.deb"
 ```
 
 ### Unmounting The Build Chroot
