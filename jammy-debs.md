@@ -156,21 +156,8 @@ According to my experiences from the past, we need this deb:
 
 - netplan.io
 
-When trying to build it, additional missing debs might show up.
-So here is the consolidated list of missing debs:
+Within this pagagraph, I describe how to build it.
 
-- netplan.io
-  - python3-coverage
-  - python3-netifaces
-  - pandoc *REMOVED*
-    - ghc
-      - ghc
-  - openvswitch-switch
-    - libdpdk-dev
-      - libfdt-dev
-      - libibverbs-dev
-        - pandoc *REMOVED*
-	
 ### Create The Non-working Image Keeping Intermediate Folders
 
 Note: I'm using v0.6 for this! I've done some experiments based on
@@ -206,15 +193,25 @@ $ sudo chroot jammy-build apt-get install -y dpkg-dev
   # installs "dpkg-source" required by "apt-get source ..."
 ```
 
-### Test Build Of netplan.io
+### Running A Test Build
+
+```
+$ PACKAGE=(package-name)
+$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
+$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+```
+
+Typically, these are the outcomes:
+
+- The build succeeds without any issue
+- The build preparation fails because of missing dependencies -> build the dependencies
+- The build fails (not observed so far)
+
+#### Running Test Build Of netplan.io
 
 ```
 $ PACKAGE=netplan.io
 $ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-jammy-build# cd /src
-jammy-build# mkdir netplan.io && cd netplan.io
-jammy-build# apt-get source netplan.io
-jammy-build# apt-get build-dep netplan.io
 ...
 The following packages have unmet dependencies:
  builddeps:netplan.io : Depends: python3-coverage but it is not installable
@@ -222,10 +219,61 @@ The following packages have unmet dependencies:
                         Depends: pandoc but it is not installable
                         Depends: openvswitch-switch but it is not installable
 E: Unable to correct problems, you have held broken packages.
-jammy-build# exit
 ```
 
+So there are missing dependencies. We have to build these
+and come back to "netplan.io" once all of them are ready!
+
+#### Tree Of Missing Debs
+
+Here is the consolidated list of missing debs:
+
+- netplan.io
+  - python3-coverage
+  - python3-netifaces
+  - pandoc
+    - ghc
+      - ghc
+  - openvswitch-switch
+    - libdpdk-dev
+      - libfdt-dev
+      - libibverbs-dev
+        - pandoc
+
+#### Special Case pandoc
+
+Tryining to build pandoc leads to the dependency "ghc" (somehow related to Haskall)
+which has a dependency to itself. Currently, I have no idea on how to continue here,
+so I'm going to modify all packages depending on pandoc. I'll remove pandoc from these.
+
+
+### Building libibverbs-dev
+
+### Installing libibverbs-dev
+
+### Building libfdt-dev
+
+### Installing libfdt-dev
+
+### Building libdpdk-dev
+
+### Installing libdpdk-dev
+
+### Building openvswitch-switch
+
+### Installing openvswitch-switch
+
 ### Building python3-coverage
+
+### Installing python3-coverage
+
+### Building python3-netifaces
+
+### Installing python3-netifaces
+
+### Building netplan.io
+
+### Installing netplan.io
 
 ```
 $ PACKAGE=python3-coverage
@@ -380,3 +428,19 @@ apt-get install cython3
 apt-get install libnl-3-dev libnl-route-3-dev libsystemd-dev libudev-dev ninja-build
 dpkg-buildpackage
 ```
+
+### Fixing And Installing netplan.io
+
+```
+$ PACKAGE=netplan.io
+$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}'"
+$ sudo patch -d "jammy-build/src/${PACKAGE}" <patches/jammy/rdma-core/rdma-core-39.0_no-pandoc.diff
+$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+  # Shows lots of missing packages
+$ sudo chroot jammy-build apt-get install cmake cython3 libnl-3-dev libnl-route-3-dev libsystemd-dev libudev-dev ninja-build
+$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./libibverbs-dev_39.0-1dp01~jammy1_i386.deb ./ibverbs-providers_39.0-1dp01~jammy1_i386.deb ./libibverbs1_39.0-1dp01~jammy1_i386.deb ./rdma-core_39.0-1dp01~jammy1_i386.deb"
+```
+
+
+apt-get install bash-completion libglib2.0-dev uuid-dev python3-yaml dbus-x11 pyflakes3 pycodestyle python3-nose
