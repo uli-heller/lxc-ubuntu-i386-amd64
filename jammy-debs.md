@@ -363,78 +363,7 @@ $ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage
 
 ### Installing netplan.io
 
-#### Configure "tzdata"
-
-- Geographic area: 8 (Europe)
-- Time zone: 7 (Berlin)
-
-```
-Configuring tzdata
-------------------
-
-Please select the geographic area in which you live. Subsequent configuration questions will narrow this down by presenting a list of cities, representing the
-time zones in which they are located.
-
-  1. Africa  2. America  3. Antarctica  4. Australia  5. Arctic  6. Asia  7. Atlantic  8. Europe  9. Indian  10. Pacific  11. US  12. Etc
-Geographic area: 8
-
-Please select the city or region corresponding to your time zone.
-
-  1. Amsterdam  6. Belgrade    11. Budapest    16. Gibraltar    21. Jersey       26. Ljubljana   31. Mariehamn  36. Oslo       41. Rome        46. Simferopol  51. Tirane     56. Vatican    61. Zagreb
-  2. Andorra    7. Berlin      12. Busingen    17. Guernsey     22. Kaliningrad  27. London      32. Minsk      37. Paris      42. Samara      47. Skopje      52. Tiraspol   57. Vienna     62. Zaporozhye
-  3. Astrakhan  8. Bratislava  13. Chisinau    18. Helsinki     23. Kiev         28. Luxembourg  33. Monaco     38. Podgorica  43. San_Marino  48. Sofia       53. Ulyanovsk  58. Vilnius    63. Zurich
-  4. Athens     9. Brussels    14. Copenhagen  19. Isle_of_Man  24. Kirov        29. Madrid      34. Moscow     39. Prague     44. Sarajevo    49. Stockholm   54. Uzhgorod   59. Volgograd
-  5. Belfast    10. Bucharest  15. Dublin      20. Istanbul     25. Lisbon       30. Malta       35. Nicosia    40. Riga       45. Saratov     50. Tallinn     55. Vaduz      60. Warsaw
-Time zone: 7
-```
-
-### Building python3-netifaces
-
-```
-$ PACKAGE=python3-netifaces
-$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
-```
-
-### Building pandoc
-
-```
-$ PACKAGE=pandoc
-$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-  # Lots of dependencies missing, for example "ghc"
-```
-
-We're skipping "pandoc" for now!
-
-### Building ghc
-
-```
-$ PACKAGE=ghc
-$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-...
-The following packages have unmet dependencies:
- builddeps:ghc : Depends: haskell-devscripts-minimal but it is not going to be installed
-                 Depends: ghc:i386 (>= 8.6) but it is not installable
-                 Depends: hscolour but it is not installable
-E: Unable to correct problems, you have held broken packages.
-```
-
-We're skipping "ghc" for now!
-
-
-### Fixing And Installing netplan.io
-
 ```
 $ PACKAGE=netplan.io
-$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}'"
-$ sudo patch -d "jammy-build/src/${PACKAGE}" <patches/jammy/rdma-core/rdma-core-39.0_no-pandoc.diff
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
-  # Shows lots of missing packages
-$ sudo chroot jammy-build apt-get install cmake cython3 libnl-3-dev libnl-route-3-dev libsystemd-dev libudev-dev ninja-build
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./libibverbs-dev_39.0-1dp01~jammy1_i386.deb ./ibverbs-providers_39.0-1dp01~jammy1_i386.deb ./libibverbs1_39.0-1dp01~jammy1_i386.deb ./rdma-core_39.0-1dp01~jammy1_i386.deb"
+$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./netplan.io_0.104-0dp01~jammy2.1_i386.deb ./libnetplan0_0.104-0dp01~jammy2.1_i386.deb"
 ```
-
-
-apt-get install bash-completion libglib2.0-dev uuid-dev python3-yaml dbus-x11 pyflakes3 pycodestyle python3-nose
-Y
