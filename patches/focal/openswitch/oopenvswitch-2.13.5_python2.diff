@@ -1,0 +1,1602 @@
+diff -Nur openvswitch-2.13.5.orig/.pc/applied-patches openvswitch-2.13.5/.pc/applied-patches
+--- openvswitch-2.13.5.orig/.pc/applied-patches	2022-08-07 14:21:44.525291332 +0200
++++ openvswitch-2.13.5/.pc/applied-patches	2022-08-07 14:27:41.220873794 +0200
+@@ -1 +1,2 @@
+ py3-compat.patch
++uli-python2
+diff -Nur openvswitch-2.13.5.orig/.pc/uli-python2/python/setup.py openvswitch-2.13.5/.pc/uli-python2/python/setup.py
+--- openvswitch-2.13.5.orig/.pc/uli-python2/python/setup.py	1970-01-01 01:00:00.000000000 +0100
++++ openvswitch-2.13.5/.pc/uli-python2/python/setup.py	2022-08-07 14:27:41.000000000 +0200
+@@ -0,0 +1,107 @@
++# Licensed under the Apache License, Version 2.0 (the "License");
++# you may not use this file except in compliance with the License.
++# You may obtain a copy of the License at:
++#
++#     http://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing, software
++# distributed under the License is distributed on an "AS IS" BASIS,
++# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++# See the License for the specific language governing permissions and
++# limitations under the License.
++
++import sys
++
++from distutils.command.build_ext import build_ext
++from distutils.errors import CCompilerError, DistutilsExecError, \
++    DistutilsPlatformError
++
++import setuptools
++
++VERSION = "unknown"
++
++try:
++    # Try to set the version from the generated ovs/version.py
++    exec(open("ovs/version.py").read())
++except IOError:
++    print("Ensure version.py is created by running make python/ovs/version.py",
++          file=sys.stderr)
++    sys.exit(-1)
++
++try:
++    # Try to open generated ovs/dirs.py. However, in this case we
++    # don't need to exec()
++    open("ovs/dirs.py")
++except IOError:
++    print("Ensure dirs.py is created by running make python/ovs/dirs.py",
++          file=sys.stderr)
++    sys.exit(-1)
++
++ext_errors = (CCompilerError, DistutilsExecError, DistutilsPlatformError)
++if sys.platform == 'win32':
++    ext_errors += (IOError, ValueError)
++
++
++class BuildFailed(Exception):
++    pass
++
++
++class try_build_ext(build_ext):
++    # This class allows C extension building to fail
++    # NOTE: build_ext is not a new-style class
++
++    def run(self):
++        try:
++            build_ext.run(self)
++        except DistutilsPlatformError:
++            raise BuildFailed()
++
++    def build_extension(self, ext):
++        try:
++            build_ext.build_extension(self, ext)
++        except ext_errors:
++            raise BuildFailed()
++
++
++setup_args = dict(
++    name='ovs',
++    description='Open vSwitch library',
++    version=VERSION,
++    url='http://www.openvswitch.org/',
++    author='Open vSwitch',
++    author_email='dev@openvswitch.org',
++    packages=['ovs', 'ovs.compat', 'ovs.compat.sortedcontainers',
++              'ovs.db', 'ovs.unixctl'],
++    keywords=['openvswitch', 'ovs', 'OVSDB'],
++    license='Apache 2.0',
++    classifiers=[
++        'Development Status :: 5 - Production/Stable',
++        'Topic :: Database :: Front-Ends',
++        'Topic :: Software Development :: Libraries :: Python Modules',
++        'Topic :: System :: Networking',
++        'License :: OSI Approved :: Apache Software License',
++        'Programming Language :: Python :: 3',
++        'Programming Language :: Python :: 3.4',
++        'Programming Language :: Python :: 3.5',
++    ],
++    ext_modules=[setuptools.Extension("ovs._json", sources=["ovs/_json.c"],
++                                      libraries=['openvswitch'])],
++    cmdclass={'build_ext': try_build_ext},
++    install_requires=['sortedcontainers'],
++    extras_require={':sys_platform == "win32"': ['pywin32 >= 1.0']},
++)
++
++try:
++    setuptools.setup(**setup_args)
++except BuildFailed:
++    BUILD_EXT_WARNING = ("WARNING: The C extension could not be compiled, "
++                         "speedups are not enabled.")
++    print("*" * 75)
++    print(BUILD_EXT_WARNING)
++    print("Failure information, if any, is above.")
++    print("Retrying the build without the C extension.")
++    print("*" * 75)
++
++    del(setup_args['cmdclass'])
++    del(setup_args['ext_modules'])
++    setuptools.setup(**setup_args)
+diff -Nur openvswitch-2.13.5.orig/Makefile.in openvswitch-2.13.5/Makefile.in
+--- openvswitch-2.13.5.orig/Makefile.in	2021-10-22 00:14:59.556073485 +0200
++++ openvswitch-2.13.5/Makefile.in	2022-08-07 14:27:58.308853806 +0200
+@@ -1468,6 +1468,7 @@
+ prefix = @prefix@
+ program_transform_name = @program_transform_name@
+ psdir = @psdir@
++runstatedir = @runstatedir@
+ sbindir = @sbindir@
+ sharedstatedir = @sharedstatedir@
+ srcdir = @srcdir@
+@@ -1566,9 +1567,8 @@
+ 	utilities/bugtool/ovs-bugtool utilities/bugtool/ovs-bugtool.8 \
+ 	$(valgrind_wrappers) $(am__append_37) include/odp-netlink.h \
+ 	include/odp-netlink-macros.h $(HSTAMP_FILES) $(am__append_40) \
+-	cxx-check debian/copyright ipsec/ovs-monitor-ipsec \
+-	vswitchd/ovs-vswitchd.8 $(am__append_41) \
+-	vswitchd/ovs-vswitchd.conf.db.5 \
++	cxx-check ipsec/ovs-monitor-ipsec vswitchd/ovs-vswitchd.8 \
++	$(am__append_41) vswitchd/ovs-vswitchd.conf.db.5 \
+ 	vswitchd/vswitch.ovsschema.stamp vswitchd/vswitch-idl.c \
+ 	vswitchd/vswitch-idl.h ovsdb/ovsdb-tool.1 ovsdb/ovsdb-client.1 \
+ 	ovsdb/ovsdb-server.1 ovsdb/ovsdb-idlc $(OVSIDL_BUILT) \
+@@ -1584,7 +1584,7 @@
+ # Requires build with --enable-coverage and lcov/genhtml in $PATH
+ CLEAN_LOCAL = clean-pycov $(am__append_10) $(am__append_13) clean-lcov \
+ 	$(am__append_38)
+-DISTCLEANFILES = tests/atconfig tests/atlocal \
++DISTCLEANFILES = tests/atconfig tests/atlocal debian/copyright \
+ 	rhel/usr_lib_systemd_system_ovs-vswitchd.service
+ PYCOV_CLEAN_FILES = build-aux/check-structs,cover \
+ 	$(CHECK_PYFILES:.py=.py,cover) .coverage \
+@@ -1674,48 +1674,29 @@
+ 	build-aux/extract-odp-netlink-h \
+ 	build-aux/extract-odp-netlink-macros-h build-aux/check-structs \
+ 	third-party/ofp-tcpdump.patch third-party/README.rst \
+-	debian/changelog debian/compat debian/control \
+-	debian/control.modules.in debian/copyright debian/copyright.in \
+-	debian/dkms.conf.in debian/dirs debian/libopenvswitch.install \
+-	debian/libopenvswitch-dev.install \
+-	debian/openvswitch-common.dirs debian/openvswitch-common.docs \
+-	debian/openvswitch-common.install \
+-	debian/openvswitch-common.manpages \
+-	debian/openvswitch-datapath-module-_KVERS_.postinst.modules.in \
+-	debian/openvswitch-datapath-dkms.postinst \
+-	debian/openvswitch-datapath-dkms.prerm \
+-	debian/openvswitch-datapath-source.README.Debian \
+-	debian/openvswitch-datapath-source.copyright \
+-	debian/openvswitch-datapath-source.dirs \
+-	debian/openvswitch-datapath-source.install \
+-	debian/openvswitch-ipsec.dirs debian/openvswitch-ipsec.init \
+-	debian/openvswitch-ipsec.install debian/openvswitch-pki.dirs \
++	debian/changelog debian/compat debian/control debian/copyright \
++	debian/copyright.in debian/dirs debian/openvswitch-common.dirs \
++	debian/openvswitch-common.install debian/openvswitch-pki.dirs \
+ 	debian/openvswitch-pki.postinst debian/openvswitch-pki.postrm \
+ 	debian/openvswitch-switch.README.Debian \
+ 	debian/openvswitch-switch.dirs debian/openvswitch-switch.init \
+ 	debian/openvswitch-switch.install \
+ 	debian/openvswitch-switch.logrotate \
+-	debian/openvswitch-switch.manpages \
+ 	debian/openvswitch-switch.postinst \
+ 	debian/openvswitch-switch.postrm \
+-	debian/openvswitch-switch.template \
+-	debian/openvswitch-switch.links debian/openvswitch-test.dirs \
++	debian/openvswitch-switch.default \
++	debian/openvswitch-switch.links \
+ 	debian/openvswitch-test.install \
+-	debian/openvswitch-test.manpages \
+ 	debian/openvswitch-testcontroller.README.Debian \
+ 	debian/openvswitch-testcontroller.default \
+ 	debian/openvswitch-testcontroller.dirs \
+ 	debian/openvswitch-testcontroller.init \
+ 	debian/openvswitch-testcontroller.install \
+-	debian/openvswitch-testcontroller.manpages \
+ 	debian/openvswitch-testcontroller.postinst \
+ 	debian/openvswitch-testcontroller.postrm \
+ 	debian/openvswitch-vtep.default debian/openvswitch-vtep.dirs \
+ 	debian/openvswitch-vtep.init debian/openvswitch-vtep.install \
+-	debian/openvswitch-vtep.manpages \
+-	debian/python3-openvswitch.dirs \
+-	debian/python3-openvswitch.install debian/rules \
+-	debian/rules.modules debian/ifupdown.sh debian/source/format \
++	debian/rules debian/ifupdown.sh debian/source/format \
+ 	ipsec/ovs-monitor-ipsec.in vswitchd/vswitch.ovsschema \
+ 	vswitchd/vswitch.xml ovsdb/ovsdb-idlc.in ovsdb/ovsdb-doc \
+ 	ovsdb/ovsdb-dot.in ovsdb/dot2pic ovsdb/_server.ovsschema \
+@@ -7193,7 +7174,7 @@
+ $(srcdir)/debian/copyright: AUTHORS.rst debian/copyright.in
+ 	$(AM_V_GEN) \
+ 	{ sed -n -e '/%AUTHORS%/q' -e p < $(srcdir)/debian/copyright.in;   \
+-	  sed '34,/^$$/d' $(srcdir)/AUTHORS.rst |			   \
++	  sed '34,/^$$/d' $(srcdir)/AUTHORS.rst  |				   \
+ 		sed -n -e '/^$$/q' -e 's/^/  /p';			   \
+ 	  sed -e '34,/%AUTHORS%/d' $(srcdir)/debian/copyright.in;	   \
+ 	} > $@
+diff -Nur openvswitch-2.13.5.orig/build-aux/config.guess openvswitch-2.13.5/build-aux/config.guess
+--- openvswitch-2.13.5.orig/build-aux/config.guess	2021-10-22 00:14:47.709073485 +0200
++++ openvswitch-2.13.5/build-aux/config.guess	2022-08-07 14:27:58.116854030 +0200
+@@ -2,7 +2,7 @@
+ # Attempt to guess a canonical system name.
+ #   Copyright 1992-2018 Free Software Foundation, Inc.
+ 
+-timestamp='2018-03-08'
++timestamp='2018-02-24'
+ 
+ # This file is free software; you can redistribute it and/or modify it
+ # under the terms of the GNU General Public License as published by
+@@ -1046,7 +1046,11 @@
+ 	echo "$UNAME_MACHINE"-dec-linux-"$LIBC"
+ 	exit ;;
+     x86_64:Linux:*:*)
+-	echo "$UNAME_MACHINE"-pc-linux-"$LIBC"
++	if objdump -f /bin/sh | grep -q elf32-x86-64; then
++	    echo "$UNAME_MACHINE"-pc-linux-"$LIBC"x32
++	else
++	    echo "$UNAME_MACHINE"-pc-linux-"$LIBC"
++	fi
+ 	exit ;;
+     xtensa*:Linux:*:*)
+ 	echo "$UNAME_MACHINE"-unknown-linux-"$LIBC"
+@@ -1469,7 +1473,7 @@
+ exit 1
+ 
+ # Local variables:
+-# eval: (add-hook 'before-save-hook 'time-stamp)
++# eval: (add-hook 'write-file-functions 'time-stamp)
+ # time-stamp-start: "timestamp='"
+ # time-stamp-format: "%:y-%02m-%02d"
+ # time-stamp-end: "'"
+diff -Nur openvswitch-2.13.5.orig/build-aux/config.sub openvswitch-2.13.5/build-aux/config.sub
+--- openvswitch-2.13.5.orig/build-aux/config.sub	2021-10-22 00:14:47.712073485 +0200
++++ openvswitch-2.13.5/build-aux/config.sub	2022-08-07 14:27:58.116854030 +0200
+@@ -2,7 +2,7 @@
+ # Configuration validation subroutine script.
+ #   Copyright 1992-2018 Free Software Foundation, Inc.
+ 
+-timestamp='2018-05-05'
++timestamp='2018-02-22'
+ 
+ # This file is free software; you can redistribute it and/or modify it
+ # under the terms of the GNU General Public License as published by
+@@ -110,48 +110,28 @@
+     exit 1;;
+ esac
+ 
+-# Spilt fields of configuration type
+-IFS="-" read -r field1 field2 field3 field4 <<EOF
+-$1
+-EOF
+-
+-# Separate into logical components for further validation
+-case $1 in
+-	*-*-*-*)
+-		basic_machine=$field1-$field2
+-		os=-$field3-$field4
+-		;;
+-	*-*-*)
+-		# Ambiguous whether COMPANY is present, or skipped and KERNEL-OS is two
+-		# parts
+-		maybe_os=$field2-$field3
+-		case $maybe_os in
+-			nto-qnx* | linux-gnu* | linux-android* | linux-dietlibc \
+-			| linux-newlib* | linux-musl* | linux-uclibc* | uclinux-uclibc* \
+-			| uclinux-gnu* | kfreebsd*-gnu* | knetbsd*-gnu* | netbsd*-gnu* \
+-			| netbsd*-eabi* | kopensolaris*-gnu* | cloudabi*-eabi* \
+-			| storm-chaos* | os2-emx* | rtmk-nova*)
+-				basic_machine=$field1
+-				os=-$maybe_os
+-				;;
+-			android-linux)
+-				basic_machine=$field1-unknown
+-				os=-linux-android
+-				;;
+-			*)
+-				basic_machine=$field1-$field2
+-				os=-$field3
+-				;;
+-		esac
+-		;;
+-	*-*)
+-		basic_machine=$field1
+-		os=-$field2
+-		;;
+-	*)
+-		basic_machine=$1
+-		os=
+-		;;
++# Separate what the user gave into CPU-COMPANY and OS or KERNEL-OS (if any).
++# Here we must recognize all the valid KERNEL-OS combinations.
++maybe_os=`echo "$1" | sed 's/^\(.*\)-\([^-]*-[^-]*\)$/\2/'`
++case $maybe_os in
++  nto-qnx* | linux-gnu* | linux-android* | linux-dietlibc | linux-newlib* | \
++  linux-musl* | linux-uclibc* | uclinux-uclibc* | uclinux-gnu* | kfreebsd*-gnu* | \
++  knetbsd*-gnu* | netbsd*-gnu* | netbsd*-eabi* | \
++  kopensolaris*-gnu* | cloudabi*-eabi* | \
++  storm-chaos* | os2-emx* | rtmk-nova*)
++    os=-$maybe_os
++    basic_machine=`echo "$1" | sed 's/^\(.*\)-\([^-]*-[^-]*\)$/\1/'`
++    ;;
++  android-linux)
++    os=-linux-android
++    basic_machine=`echo "$1" | sed 's/^\(.*\)-\([^-]*-[^-]*\)$/\1/'`-unknown
++    ;;
++  *)
++    basic_machine=`echo "$1" | sed 's/-[^-]*$//'`
++    if [ "$basic_machine" != "$1" ]
++    then os=`echo "$1" | sed 's/.*-/-/'`
++    else os=; fi
++    ;;
+ esac
+ 
+ ### Let's recognize common machines as not being operating systems so
+@@ -269,12 +249,12 @@
+ 	| alpha64 | alpha64ev[4-8] | alpha64ev56 | alpha64ev6[78] | alpha64pca5[67] \
+ 	| am33_2.0 \
+ 	| arc | arceb \
+-	| arm | arm[bl]e | arme[lb] | armv[2-8] | armv[3-8][lb] | armv6m | armv[78][arm] \
++	| arm | arm[bl]e | arme[lb] | armv[2-8] | armv[3-8][lb] | armv7[arm] \
+ 	| avr | avr32 \
+ 	| ba \
+ 	| be32 | be64 \
+ 	| bfin \
+-	| c4x | c8051 | clipper | csky \
++	| c4x | c8051 | clipper \
+ 	| d10v | d30v | dlx | dsp16xx \
+ 	| e2k | epiphany \
+ 	| fido | fr30 | frv | ft32 \
+@@ -313,7 +293,6 @@
+ 	| mt \
+ 	| msp430 \
+ 	| nds32 | nds32le | nds32be \
+-	| nfp \
+ 	| nios | nios2 | nios2eb | nios2el \
+ 	| ns16k | ns32k \
+ 	| open8 | or1k | or1knd | or32 \
+@@ -356,10 +335,6 @@
+ 		;;
+ 	m88110 | m680[12346]0 | m683?2 | m68360 | m5200 | v70 | w65)
+ 		;;
+-	m9s12z | m68hcs12z | hcs12z | s12z)
+-		basic_machine=s12z-unknown
+-		os=-none
+-		;;
+ 	ms1)
+ 		basic_machine=mt-unknown
+ 		;;
+@@ -403,7 +378,7 @@
+ 	| be32-* | be64-* \
+ 	| bfin-* | bs2000-* \
+ 	| c[123]* | c30-* | [cjt]90-* | c4x-* \
+-	| c8051-* | clipper-* | craynv-* | csky-* | cydra-* \
++	| c8051-* | clipper-* | craynv-* | cydra-* \
+ 	| d10v-* | d30v-* | dlx-* \
+ 	| e2k-* | elxsi-* \
+ 	| f30[01]-* | f700-* | fido-* | fr30-* | frv-* | fx80-* \
+@@ -444,7 +419,6 @@
+ 	| mt-* \
+ 	| msp430-* \
+ 	| nds32-* | nds32le-* | nds32be-* \
+-	| nfp-* \
+ 	| nios-* | nios2-* | nios2eb-* | nios2el-* \
+ 	| none-* | np1-* | ns16k-* | ns32k-* \
+ 	| open8-* \
+@@ -1360,7 +1334,7 @@
+ 
+ # Decode manufacturer-specific aliases for certain operating systems.
+ 
+-if [ x$os != x ]
++if [ x"$os" != x"" ]
+ then
+ case $os in
+ 	# First match some system type aliases that might get confused
+@@ -1402,7 +1376,7 @@
+ 	      | -ekkobsd* | -kfreebsd* | -freebsd* | -riscix* | -lynxos* \
+ 	      | -bosx* | -nextstep* | -cxux* | -aout* | -elf* | -oabi* \
+ 	      | -ptx* | -coff* | -ecoff* | -winnt* | -domain* | -vsta* \
+-	      | -udi* | -eabi* | -lites* | -ieee* | -go32* | -aux* | -hcos* \
++	      | -udi* | -eabi* | -lites* | -ieee* | -go32* | -aux* \
+ 	      | -chorusos* | -chorusrdb* | -cegcc* | -glidix* \
+ 	      | -cygwin* | -msys* | -pe* | -psos* | -moss* | -proelf* | -rtems* \
+ 	      | -midipix* | -mingw32* | -mingw64* | -linux-gnu* | -linux-android* \
+@@ -1550,12 +1524,6 @@
+ 		;;
+ 	-none)
+ 		;;
+-	-*-eabi)
+-		case $basic_machine in
+-		    arm*)
+-			;;
+-		esac
+-		;;
+ 	*)
+ 		# Get rid of the `-' at the beginning of $os.
+ 		os=`echo $os | sed 's/[^-]*-//'`
+@@ -1826,7 +1794,7 @@
+ exit
+ 
+ # Local variables:
+-# eval: (add-hook 'before-save-hook 'time-stamp)
++# eval: (add-hook 'write-file-functions 'time-stamp)
+ # time-stamp-start: "timestamp='"
+ # time-stamp-format: "%:y-%02m-%02d"
+ # time-stamp-end: "'"
+diff -Nur openvswitch-2.13.5.orig/build-aux/ltmain.sh openvswitch-2.13.5/build-aux/ltmain.sh
+--- openvswitch-2.13.5.orig/build-aux/ltmain.sh	2021-10-22 00:14:43.286073485 +0200
++++ openvswitch-2.13.5/build-aux/ltmain.sh	2022-08-07 14:27:58.432853661 +0200
+@@ -31,7 +31,7 @@
+ 
+ PROGRAM=libtool
+ PACKAGE=libtool
+-VERSION=2.4.6
++VERSION="2.4.6 Debian-2.4.6-14"
+ package_revision=2.4.6
+ 
+ 
+@@ -387,7 +387,7 @@
+ # putting '$debug_cmd' at the start of all your functions, you can get
+ # bash to show function call trace with:
+ #
+-#    debug_cmd='eval echo "${FUNCNAME[0]} $*" >&2' bash your-script-name
++#    debug_cmd='echo "${FUNCNAME[0]} $*" >&2' bash your-script-name
+ debug_cmd=${debug_cmd-":"}
+ exit_cmd=:
+ 
+@@ -1370,7 +1370,7 @@
+ #! /bin/sh
+ 
+ # Set a version string for this script.
+-scriptversion=2014-01-07.03; # UTC
++scriptversion=2015-10-07.11; # UTC
+ 
+ # A portable, pluggable option parser for Bourne shell.
+ # Written by Gary V. Vaughan, 2010
+@@ -1530,6 +1530,8 @@
+ {
+     $debug_cmd
+ 
++    _G_rc_run_hooks=false
++
+     case " $hookable_fns " in
+       *" $1 "*) ;;
+       *) func_fatal_error "'$1' does not support hook funcions.n" ;;
+@@ -1538,16 +1540,16 @@
+     eval _G_hook_fns=\$$1_hooks; shift
+ 
+     for _G_hook in $_G_hook_fns; do
+-      eval $_G_hook '"$@"'
+-
+-      # store returned options list back into positional
+-      # parameters for next 'cmd' execution.
+-      eval _G_hook_result=\$${_G_hook}_result
+-      eval set dummy "$_G_hook_result"; shift
++      if eval $_G_hook '"$@"'; then
++        # store returned options list back into positional
++        # parameters for next 'cmd' execution.
++        eval _G_hook_result=\$${_G_hook}_result
++        eval set dummy "$_G_hook_result"; shift
++        _G_rc_run_hooks=:
++      fi
+     done
+ 
+-    func_quote_for_eval ${1+"$@"}
+-    func_run_hooks_result=$func_quote_for_eval_result
++    $_G_rc_run_hooks && func_run_hooks_result=$_G_hook_result
+ }
+ 
+ 
+@@ -1557,10 +1559,16 @@
+ ## --------------- ##
+ 
+ # In order to add your own option parsing hooks, you must accept the
+-# full positional parameter list in your hook function, remove any
+-# options that you action, and then pass back the remaining unprocessed
++# full positional parameter list in your hook function, you may remove/edit
++# any options that you action, and then pass back the remaining unprocessed
+ # options in '<hooked_function_name>_result', escaped suitably for
+-# 'eval'.  Like this:
++# 'eval'.  In this case you also must return $EXIT_SUCCESS to let the
++# hook's caller know that it should pay attention to
++# '<hooked_function_name>_result'.  Returning $EXIT_FAILURE signalizes that
++# arguments are left untouched by the hook and therefore caller will ignore the
++# result variable.
++#
++# Like this:
+ #
+ #    my_options_prep ()
+ #    {
+@@ -1570,9 +1578,11 @@
+ #        usage_message=$usage_message'
+ #      -s, --silent       don'\''t print informational messages
+ #    '
+-#
+-#        func_quote_for_eval ${1+"$@"}
+-#        my_options_prep_result=$func_quote_for_eval_result
++#        # No change in '$@' (ignored completely by this hook).  There is
++#        # no need to do the equivalent (but slower) action:
++#        # func_quote_for_eval ${1+"$@"}
++#        # my_options_prep_result=$func_quote_for_eval_result
++#        false
+ #    }
+ #    func_add_hook func_options_prep my_options_prep
+ #
+@@ -1581,25 +1591,37 @@
+ #    {
+ #        $debug_cmd
+ #
++#        args_changed=false
++#
+ #        # Note that for efficiency, we parse as many options as we can
+ #        # recognise in a loop before passing the remainder back to the
+ #        # caller on the first unrecognised argument we encounter.
+ #        while test $# -gt 0; do
+ #          opt=$1; shift
+ #          case $opt in
+-#            --silent|-s) opt_silent=: ;;
++#            --silent|-s) opt_silent=:
++#                         args_changed=:
++#                         ;;
+ #            # Separate non-argument short options:
+ #            -s*)         func_split_short_opt "$_G_opt"
+ #                         set dummy "$func_split_short_opt_name" \
+ #                             "-$func_split_short_opt_arg" ${1+"$@"}
+ #                         shift
++#                         args_changed=:
+ #                         ;;
+-#            *)            set dummy "$_G_opt" "$*"; shift; break ;;
++#            *)           # Make sure the first unrecognised option "$_G_opt"
++#                         # is added back to "$@", we could need that later
++#                         # if $args_changed is true.
++#                         set dummy "$_G_opt" ${1+"$@"}; shift; break ;;
+ #          esac
+ #        done
+ #
+-#        func_quote_for_eval ${1+"$@"}
+-#        my_silent_option_result=$func_quote_for_eval_result
++#        if $args_changed; then
++#          func_quote_for_eval ${1+"$@"}
++#          my_silent_option_result=$func_quote_for_eval_result
++#        fi
++#
++#        $args_changed
+ #    }
+ #    func_add_hook func_parse_options my_silent_option
+ #
+@@ -1611,16 +1633,32 @@
+ #        $opt_silent && $opt_verbose && func_fatal_help "\
+ #    '--silent' and '--verbose' options are mutually exclusive."
+ #
+-#        func_quote_for_eval ${1+"$@"}
+-#        my_option_validation_result=$func_quote_for_eval_result
++#        false
+ #    }
+ #    func_add_hook func_validate_options my_option_validation
+ #
+-# You'll alse need to manually amend $usage_message to reflect the extra
++# You'll also need to manually amend $usage_message to reflect the extra
+ # options you parse.  It's preferable to append if you can, so that
+ # multiple option parsing hooks can be added safely.
+ 
+ 
++# func_options_finish [ARG]...
++# ----------------------------
++# Finishing the option parse loop (call 'func_options' hooks ATM).
++func_options_finish ()
++{
++    $debug_cmd
++
++    _G_func_options_finish_exit=false
++    if func_run_hooks func_options ${1+"$@"}; then
++      func_options_finish_result=$func_run_hooks_result
++      _G_func_options_finish_exit=:
++    fi
++
++    $_G_func_options_finish_exit
++}
++
++
+ # func_options [ARG]...
+ # ---------------------
+ # All the functions called inside func_options are hookable. See the
+@@ -1630,17 +1668,28 @@
+ {
+     $debug_cmd
+ 
+-    func_options_prep ${1+"$@"}
+-    eval func_parse_options \
+-        ${func_options_prep_result+"$func_options_prep_result"}
+-    eval func_validate_options \
+-        ${func_parse_options_result+"$func_parse_options_result"}
++    _G_rc_options=false
+ 
+-    eval func_run_hooks func_options \
+-        ${func_validate_options_result+"$func_validate_options_result"}
++    for my_func in options_prep parse_options validate_options options_finish
++    do
++      if eval func_$my_func '${1+"$@"}'; then
++        eval _G_res_var='$'"func_${my_func}_result"
++        eval set dummy "$_G_res_var" ; shift
++        _G_rc_options=:
++      fi
++    done
++
++    # Save modified positional parameters for caller.  As a top-level
++    # options-parser function we always need to set the 'func_options_result'
++    # variable (regardless the $_G_rc_options value).
++    if $_G_rc_options; then
++      func_options_result=$_G_res_var
++    else
++      func_quote_for_eval ${1+"$@"}
++      func_options_result=$func_quote_for_eval_result
++    fi
+ 
+-    # save modified positional parameters for caller
+-    func_options_result=$func_run_hooks_result
++    $_G_rc_options
+ }
+ 
+ 
+@@ -1649,9 +1698,9 @@
+ # All initialisations required before starting the option parse loop.
+ # Note that when calling hook functions, we pass through the list of
+ # positional parameters.  If a hook function modifies that list, and
+-# needs to propogate that back to rest of this script, then the complete
++# needs to propagate that back to rest of this script, then the complete
+ # modified list must be put in 'func_run_hooks_result' before
+-# returning.
++# returning $EXIT_SUCCESS (otherwise $EXIT_FAILURE is returned).
+ func_hookable func_options_prep
+ func_options_prep ()
+ {
+@@ -1661,10 +1710,14 @@
+     opt_verbose=false
+     opt_warning_types=
+ 
+-    func_run_hooks func_options_prep ${1+"$@"}
++    _G_rc_options_prep=false
++    if func_run_hooks func_options_prep ${1+"$@"}; then
++      _G_rc_options_prep=:
++      # save modified positional parameters for caller
++      func_options_prep_result=$func_run_hooks_result
++    fi
+ 
+-    # save modified positional parameters for caller
+-    func_options_prep_result=$func_run_hooks_result
++    $_G_rc_options_prep
+ }
+ 
+ 
+@@ -1678,18 +1731,20 @@
+ 
+     func_parse_options_result=
+ 
++    _G_rc_parse_options=false
+     # this just eases exit handling
+     while test $# -gt 0; do
+       # Defer to hook functions for initial option parsing, so they
+       # get priority in the event of reusing an option name.
+-      func_run_hooks func_parse_options ${1+"$@"}
+-
+-      # Adjust func_parse_options positional parameters to match
+-      eval set dummy "$func_run_hooks_result"; shift
++      if func_run_hooks func_parse_options ${1+"$@"}; then
++        eval set dummy "$func_run_hooks_result"; shift
++        _G_rc_parse_options=:
++      fi
+ 
+       # Break out of the loop if we already parsed every option.
+       test $# -gt 0 || break
+ 
++      _G_match_parse_options=:
+       _G_opt=$1
+       shift
+       case $_G_opt in
+@@ -1704,7 +1759,10 @@
+ 		      ;;
+ 
+         --warnings|--warning|-W)
+-                      test $# = 0 && func_missing_arg $_G_opt && break
++                      if test $# = 0 && func_missing_arg $_G_opt; then
++                        _G_rc_parse_options=:
++                        break
++                      fi
+                       case " $warning_categories $1" in
+                         *" $1 "*)
+                           # trailing space prevents matching last $1 above
+@@ -1757,15 +1815,25 @@
+                       shift
+                       ;;
+ 
+-        --)           break ;;
++        --)           _G_rc_parse_options=: ; break ;;
+         -*)           func_fatal_help "unrecognised option: '$_G_opt'" ;;
+-        *)            set dummy "$_G_opt" ${1+"$@"}; shift; break ;;
++        *)            set dummy "$_G_opt" ${1+"$@"}; shift
++                      _G_match_parse_options=false
++                      break
++                      ;;
+       esac
++
++      $_G_match_parse_options && _G_rc_parse_options=:
+     done
+ 
+-    # save modified positional parameters for caller
+-    func_quote_for_eval ${1+"$@"}
+-    func_parse_options_result=$func_quote_for_eval_result
++
++    if $_G_rc_parse_options; then
++      # save modified positional parameters for caller
++      func_quote_for_eval ${1+"$@"}
++      func_parse_options_result=$func_quote_for_eval_result
++    fi
++
++    $_G_rc_parse_options
+ }
+ 
+ 
+@@ -1778,16 +1846,21 @@
+ {
+     $debug_cmd
+ 
++    _G_rc_validate_options=false
++
+     # Display all warnings if -W was not given.
+     test -n "$opt_warning_types" || opt_warning_types=" $warning_categories"
+ 
+-    func_run_hooks func_validate_options ${1+"$@"}
++    if func_run_hooks func_validate_options ${1+"$@"}; then
++      # save modified positional parameters for caller
++      func_validate_options_result=$func_run_hooks_result
++      _G_rc_validate_options=:
++    fi
+ 
+     # Bail if the options were screwed!
+     $exit_cmd $EXIT_FAILURE
+ 
+-    # save modified positional parameters for caller
+-    func_validate_options_result=$func_run_hooks_result
++    $_G_rc_validate_options
+ }
+ 
+ 
+@@ -2068,12 +2141,12 @@
+        compiler:       $LTCC
+        compiler flags: $LTCFLAGS
+        linker:         $LD (gnu? $with_gnu_ld)
+-       version:        $progname (GNU libtool) 2.4.6
++       version:        $progname $scriptversion Debian-2.4.6-14
+        automake:       `($AUTOMAKE --version) 2>/dev/null |$SED 1q`
+        autoconf:       `($AUTOCONF --version) 2>/dev/null |$SED 1q`
+ 
+ Report bugs to <bug-libtool@gnu.org>.
+-GNU libtool home page: <http://www.gnu.org/software/libtool/>.
++GNU libtool home page: <http://www.gnu.org/s/libtool/>.
+ General help using GNU software: <http://www.gnu.org/gethelp/>."
+     exit 0
+ }
+@@ -2270,6 +2343,8 @@
+     nonopt=
+     preserve_args=
+ 
++    _G_rc_lt_options_prep=:
++
+     # Shorthand for --mode=foo, only valid as the first argument
+     case $1 in
+     clean|clea|cle|cl)
+@@ -2293,11 +2368,18 @@
+     uninstall|uninstal|uninsta|uninst|unins|unin|uni|un|u)
+       shift; set dummy --mode uninstall ${1+"$@"}; shift
+       ;;
++    *)
++      _G_rc_lt_options_prep=false
++      ;;
+     esac
+ 
+-    # Pass back the list of options.
+-    func_quote_for_eval ${1+"$@"}
+-    libtool_options_prep_result=$func_quote_for_eval_result
++    if $_G_rc_lt_options_prep; then
++      # Pass back the list of options.
++      func_quote_for_eval ${1+"$@"}
++      libtool_options_prep_result=$func_quote_for_eval_result
++    fi
++
++    $_G_rc_lt_options_prep
+ }
+ func_add_hook func_options_prep libtool_options_prep
+ 
+@@ -2309,9 +2391,12 @@
+ {
+     $debug_cmd
+ 
++    _G_rc_lt_parse_options=false
++
+     # Perform our own loop to consume as many options as possible in
+     # each iteration.
+     while test $# -gt 0; do
++      _G_match_lt_parse_options=:
+       _G_opt=$1
+       shift
+       case $_G_opt in
+@@ -2386,15 +2471,22 @@
+                         func_append preserve_args " $_G_opt"
+                         ;;
+ 
+-	# An option not handled by this hook function:
+-        *)		set dummy "$_G_opt" ${1+"$@"};	shift; break  ;;
++        # An option not handled by this hook function:
++        *)              set dummy "$_G_opt" ${1+"$@"} ; shift
++                        _G_match_lt_parse_options=false
++                        break
++                        ;;
+       esac
++      $_G_match_lt_parse_options && _G_rc_lt_parse_options=:
+     done
+ 
++    if $_G_rc_lt_parse_options; then
++      # save modified positional parameters for caller
++      func_quote_for_eval ${1+"$@"}
++      libtool_parse_options_result=$func_quote_for_eval_result
++    fi
+ 
+-    # save modified positional parameters for caller
+-    func_quote_for_eval ${1+"$@"}
+-    libtool_parse_options_result=$func_quote_for_eval_result
++    $_G_rc_lt_parse_options
+ }
+ func_add_hook func_parse_options libtool_parse_options
+ 
+@@ -7220,6 +7312,11 @@
+ 	arg=$func_stripname_result
+ 	;;
+ 
++      -Wl,--as-needed|-Wl,--no-as-needed)
++	deplibs="$deplibs $arg"
++	continue
++	;;
++
+       -Wl,*)
+ 	func_stripname '-Wl,' '' "$arg"
+ 	args=$func_stripname_result
+@@ -7274,10 +7371,14 @@
+       # -O*, -g*, -flto*, -fwhopr*, -fuse-linker-plugin GCC link-time optimization
+       # -specs=*             GCC specs files
+       # -stdlib=*            select c++ std lib with clang
++      # -fsanitize=*         Clang/GCC memory and address sanitizer
++      # -fuse-ld=*           Linker select flags for GCC
++      # -static-*            direct GCC to link specific libraries statically
++      # -fcilkplus           Cilk Plus language extension features for C/C++
+       -64|-mips[0-9]|-r[0-9][0-9]*|-xarch=*|-xtarget=*|+DA*|+DD*|-q*|-m*| \
+       -t[45]*|-txscale*|-p|-pg|--coverage|-fprofile-*|-F*|@*|-tp=*|--sysroot=*| \
+       -O*|-g*|-flto*|-fwhopr*|-fuse-linker-plugin|-fstack-protector*|-stdlib=*| \
+-      -specs=*)
++      -specs=*|-fsanitize=*|-fuse-ld=*|-static-*|-fcilkplus)
+         func_quote_for_eval "$arg"
+ 	arg=$func_quote_for_eval_result
+         func_append compile_command " $arg"
+@@ -7570,7 +7671,10 @@
+ 	case $pass in
+ 	dlopen) libs=$dlfiles ;;
+ 	dlpreopen) libs=$dlprefiles ;;
+-	link) libs="$deplibs %DEPLIBS% $dependency_libs" ;;
++	link)
++	  libs="$deplibs %DEPLIBS%"
++	  test "X$link_all_deplibs" != Xno && libs="$libs $dependency_libs"
++	  ;;
+ 	esac
+       fi
+       if test lib,dlpreopen = "$linkmode,$pass"; then
+@@ -7606,6 +7710,15 @@
+ 	lib=
+ 	found=false
+ 	case $deplib in
++	-Wl,--as-needed|-Wl,--no-as-needed)
++	  if test "$linkmode,$pass" = "prog,link"; then
++	    compile_deplibs="$deplib $compile_deplibs"
++	    finalize_deplibs="$deplib $finalize_deplibs"
++	  else
++	    deplibs="$deplib $deplibs"
++	  fi
++	  continue
++	  ;;
+ 	-mt|-mthreads|-kthread|-Kthread|-pthread|-pthreads|--thread-safe \
+         |-threads|-fopenmp|-openmp|-mp|-xopenmp|-omp|-qsmp=*)
+ 	  if test prog,link = "$linkmode,$pass"; then
+@@ -7889,19 +8002,19 @@
+ 	    # It is a libtool convenience library, so add in its objects.
+ 	    func_append convenience " $ladir/$objdir/$old_library"
+ 	    func_append old_convenience " $ladir/$objdir/$old_library"
++	    tmp_libs=
++	    for deplib in $dependency_libs; do
++	      deplibs="$deplib $deplibs"
++	      if $opt_preserve_dup_deps; then
++		case "$tmp_libs " in
++		*" $deplib "*) func_append specialdeplibs " $deplib" ;;
++		esac
++	      fi
++	      func_append tmp_libs " $deplib"
++	    done
+ 	  elif test prog != "$linkmode" && test lib != "$linkmode"; then
+ 	    func_fatal_error "'$lib' is not a convenience library"
+ 	  fi
+-	  tmp_libs=
+-	  for deplib in $dependency_libs; do
+-	    deplibs="$deplib $deplibs"
+-	    if $opt_preserve_dup_deps; then
+-	      case "$tmp_libs " in
+-	      *" $deplib "*) func_append specialdeplibs " $deplib" ;;
+-	      esac
+-	    fi
+-	    func_append tmp_libs " $deplib"
+-	  done
+ 	  continue
+ 	fi # $pass = conv
+ 
+@@ -8825,6 +8938,9 @@
+ 	    revision=$number_minor
+ 	    lt_irix_increment=no
+ 	    ;;
++	  *)
++	    func_fatal_configuration "$modename: unknown library version type '$version_type'"
++	    ;;
+ 	  esac
+ 	  ;;
+ 	no)
+diff -Nur openvswitch-2.13.5.orig/configure openvswitch-2.13.5/configure
+--- openvswitch-2.13.5.orig/configure	2021-10-22 00:14:46.590073485 +0200
++++ openvswitch-2.13.5/configure	2022-08-07 14:27:56.936855410 +0200
+@@ -843,6 +843,7 @@
+ docdir
+ oldincludedir
+ includedir
++runstatedir
+ localstatedir
+ sharedstatedir
+ sysconfdir
+@@ -962,6 +963,7 @@
+ sysconfdir='${prefix}/etc'
+ sharedstatedir='${prefix}/com'
+ localstatedir='${prefix}/var'
++runstatedir='${localstatedir}/run'
+ includedir='${prefix}/include'
+ oldincludedir='/usr/include'
+ docdir='${datarootdir}/doc/${PACKAGE_TARNAME}'
+@@ -1214,6 +1216,15 @@
+   | -silent | --silent | --silen | --sile | --sil)
+     silent=yes ;;
+ 
++  -runstatedir | --runstatedir | --runstatedi | --runstated \
++  | --runstate | --runstat | --runsta | --runst | --runs \
++  | --run | --ru | --r)
++    ac_prev=runstatedir ;;
++  -runstatedir=* | --runstatedir=* | --runstatedi=* | --runstated=* \
++  | --runstate=* | --runstat=* | --runsta=* | --runst=* | --runs=* \
++  | --run=* | --ru=* | --r=*)
++    runstatedir=$ac_optarg ;;
++
+   -sbindir | --sbindir | --sbindi | --sbind | --sbin | --sbi | --sb)
+     ac_prev=sbindir ;;
+   -sbindir=* | --sbindir=* | --sbindi=* | --sbind=* | --sbin=* \
+@@ -1351,7 +1362,7 @@
+ for ac_var in	exec_prefix prefix bindir sbindir libexecdir datarootdir \
+ 		datadir sysconfdir sharedstatedir localstatedir includedir \
+ 		oldincludedir docdir infodir htmldir dvidir pdfdir psdir \
+-		libdir localedir mandir
++		libdir localedir mandir runstatedir
+ do
+   eval ac_val=\$$ac_var
+   # Remove trailing slashes.
+@@ -1504,6 +1515,7 @@
+   --sysconfdir=DIR        read-only single-machine data [PREFIX/etc]
+   --sharedstatedir=DIR    modifiable architecture-independent data [PREFIX/com]
+   --localstatedir=DIR     modifiable single-machine data [PREFIX/var]
++  --runstatedir=DIR       modifiable per-process data [LOCALSTATEDIR/run]
+   --libdir=DIR            object code libraries [EPREFIX/lib]
+   --includedir=DIR        C header files [PREFIX/include]
+   --oldincludedir=DIR     C header files for non-gcc [/usr/include]
+@@ -6162,7 +6174,7 @@
+     We can't simply define LARGE_OFF_T to be 9223372036854775807,
+     since some C++ compilers masquerading as C compilers
+     incorrectly reject 9223372036854775807.  */
+-#define LARGE_OFF_T (((off_t) 1 << 62) - 1 + ((off_t) 1 << 62))
++#define LARGE_OFF_T ((((off_t) 1 << 31) << 31) - 1 + (((off_t) 1 << 31) << 31))
+   int off_t_is_large[(LARGE_OFF_T % 2147483629 == 721
+ 		       && LARGE_OFF_T % 2147483647 == 1)
+ 		      ? 1 : -1];
+@@ -6208,7 +6220,7 @@
+     We can't simply define LARGE_OFF_T to be 9223372036854775807,
+     since some C++ compilers masquerading as C compilers
+     incorrectly reject 9223372036854775807.  */
+-#define LARGE_OFF_T (((off_t) 1 << 62) - 1 + ((off_t) 1 << 62))
++#define LARGE_OFF_T ((((off_t) 1 << 31) << 31) - 1 + (((off_t) 1 << 31) << 31))
+   int off_t_is_large[(LARGE_OFF_T % 2147483629 == 721
+ 		       && LARGE_OFF_T % 2147483647 == 1)
+ 		      ? 1 : -1];
+@@ -6232,7 +6244,7 @@
+     We can't simply define LARGE_OFF_T to be 9223372036854775807,
+     since some C++ compilers masquerading as C compilers
+     incorrectly reject 9223372036854775807.  */
+-#define LARGE_OFF_T (((off_t) 1 << 62) - 1 + ((off_t) 1 << 62))
++#define LARGE_OFF_T ((((off_t) 1 << 31) << 31) - 1 + (((off_t) 1 << 31) << 31))
+   int off_t_is_large[(LARGE_OFF_T % 2147483629 == 721
+ 		       && LARGE_OFF_T % 2147483647 == 1)
+ 		      ? 1 : -1];
+@@ -6277,7 +6289,7 @@
+     We can't simply define LARGE_OFF_T to be 9223372036854775807,
+     since some C++ compilers masquerading as C compilers
+     incorrectly reject 9223372036854775807.  */
+-#define LARGE_OFF_T (((off_t) 1 << 62) - 1 + ((off_t) 1 << 62))
++#define LARGE_OFF_T ((((off_t) 1 << 31) << 31) - 1 + (((off_t) 1 << 31) << 31))
+   int off_t_is_large[(LARGE_OFF_T % 2147483629 == 721
+ 		       && LARGE_OFF_T % 2147483647 == 1)
+ 		      ? 1 : -1];
+@@ -6301,7 +6313,7 @@
+     We can't simply define LARGE_OFF_T to be 9223372036854775807,
+     since some C++ compilers masquerading as C compilers
+     incorrectly reject 9223372036854775807.  */
+-#define LARGE_OFF_T (((off_t) 1 << 62) - 1 + ((off_t) 1 << 62))
++#define LARGE_OFF_T ((((off_t) 1 << 31) << 31) - 1 + (((off_t) 1 << 31) << 31))
+   int off_t_is_large[(LARGE_OFF_T % 2147483629 == 721
+ 		       && LARGE_OFF_T % 2147483647 == 1)
+ 		      ? 1 : -1];
+@@ -7450,7 +7462,7 @@
+   lt_cv_deplibs_check_method=pass_all
+   ;;
+ 
+-netbsd*)
++netbsd* | netbsdelf*-gnu)
+   if echo __ELF__ | $CC -E - | $GREP __ELF__ > /dev/null; then
+     lt_cv_deplibs_check_method='match_pattern /lib[^/]+(\.so\.[0-9]+\.[0-9]+|_pic\.a)$'
+   else
+@@ -7812,7 +7824,7 @@
+ fi
+ 
+ : ${AR=ar}
+-: ${AR_FLAGS=cru}
++: ${AR_FLAGS=cr}
+ 
+ 
+ 
+@@ -8313,11 +8325,8 @@
+   test $ac_status = 0; }; then
+     # Now try to grab the symbols.
+     nlist=conftest.nm
+-    if { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$NM conftest.$ac_objext \| "$lt_cv_sys_global_symbol_pipe" \> $nlist\""; } >&5
+-  (eval $NM conftest.$ac_objext \| "$lt_cv_sys_global_symbol_pipe" \> $nlist) 2>&5
+-  ac_status=$?
+-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+-  test $ac_status = 0; } && test -s "$nlist"; then
++    $ECHO "$as_me:$LINENO: $NM conftest.$ac_objext | $lt_cv_sys_global_symbol_pipe > $nlist" >&5
++    if eval "$NM" conftest.$ac_objext \| "$lt_cv_sys_global_symbol_pipe" \> $nlist 2>&5 && test -s "$nlist"; then
+       # Try sorting and uniquifying the output.
+       if sort "$nlist" | uniq > "$nlist"T; then
+ 	mv -f "$nlist"T "$nlist"
+@@ -9536,8 +9545,8 @@
+ _LT_EOF
+       echo "$LTCC $LTCFLAGS -c -o conftest.o conftest.c" >&5
+       $LTCC $LTCFLAGS -c -o conftest.o conftest.c 2>&5
+-      echo "$AR cru libconftest.a conftest.o" >&5
+-      $AR cru libconftest.a conftest.o 2>&5
++      echo "$AR cr libconftest.a conftest.o" >&5
++      $AR cr libconftest.a conftest.o 2>&5
+       echo "$RANLIB libconftest.a" >&5
+       $RANLIB libconftest.a 2>&5
+       cat > conftest.c << _LT_EOF
+@@ -10409,6 +10418,12 @@
+ 	lt_prog_compiler_pic='-KPIC'
+ 	lt_prog_compiler_static='-static'
+         ;;
++      # flang / f18. f95 an alias for gfortran or flang on Debian
++      flang* | f18* | f95*)
++	lt_prog_compiler_wl='-Wl,'
++	lt_prog_compiler_pic='-fPIC'
++	lt_prog_compiler_static='-static'
++        ;;
+       # icc used to be incompatible with GCC.
+       # ICC 10 doesn't accept -KPIC any more.
+       icc* | ifort*)
+@@ -10885,6 +10900,9 @@
+   openbsd* | bitrig*)
+     with_gnu_ld=no
+     ;;
++  linux* | k*bsd*-gnu | gnu*)
++    link_all_deplibs=no
++    ;;
+   esac
+ 
+   ld_shlibs=yes
+@@ -11139,7 +11157,7 @@
+       fi
+       ;;
+ 
+-    netbsd*)
++    netbsd* | netbsdelf*-gnu)
+       if echo __ELF__ | $CC -E - | $GREP __ELF__ >/dev/null; then
+ 	archive_cmds='$LD -Bshareable $libobjs $deplibs $linker_flags -o $lib'
+ 	wlarc=
+@@ -11809,6 +11827,7 @@
+ 	if test yes = "$lt_cv_irix_exported_symbol"; then
+           archive_expsym_cmds='$CC -shared $pic_flag $libobjs $deplibs $compiler_flags $wl-soname $wl$soname `test -n "$verstring" && func_echo_all "$wl-set_version $wl$verstring"` $wl-update_registry $wl$output_objdir/so_locations $wl-exports_file $wl$export_symbols -o $lib'
+ 	fi
++	link_all_deplibs=no
+       else
+ 	archive_cmds='$CC -shared $libobjs $deplibs $compiler_flags -soname $soname `test -n "$verstring" && func_echo_all "-set_version $verstring"` -update_registry $output_objdir/so_locations -o $lib'
+ 	archive_expsym_cmds='$CC -shared $libobjs $deplibs $compiler_flags -soname $soname `test -n "$verstring" && func_echo_all "-set_version $verstring"` -update_registry $output_objdir/so_locations -exports_file $export_symbols -o $lib'
+@@ -11830,7 +11849,7 @@
+       esac
+       ;;
+ 
+-    netbsd*)
++    netbsd* | netbsdelf*-gnu)
+       if echo __ELF__ | $CC -E - | $GREP __ELF__ >/dev/null; then
+ 	archive_cmds='$LD -Bshareable -o $lib $libobjs $deplibs $linker_flags'  # a.out
+       else
+@@ -12925,9 +12944,6 @@
+   # before this can be enabled.
+   hardcode_into_libs=yes
+ 
+-  # Add ABI-specific directories to the system library path.
+-  sys_lib_dlsearch_path_spec="/lib64 /usr/lib64 /lib /usr/lib"
+-
+   # Ideally, we could use ldconfig to report *all* directores which are
+   # searched for libraries, however this is still not possible.  Aside from not
+   # being certain /sbin/ldconfig is available, command
+@@ -12936,7 +12952,7 @@
+   # appending ld.so.conf contents (and includes) to the search path.
+   if test -f /etc/ld.so.conf; then
+     lt_ld_extra=`awk '/^include / { system(sprintf("cd /etc; cat %s 2>/dev/null", \$2)); skip = 1; } { if (!skip) print \$0; skip = 0; }' < /etc/ld.so.conf | $SED -e 's/#.*//;/^[	 ]*hwcap[	 ]/d;s/[:,	]/ /g;s/=[^=]*$//;s/=[^= ]* / /g;s/"//g;/^$/d' | tr '\n' ' '`
+-    sys_lib_dlsearch_path_spec="$sys_lib_dlsearch_path_spec $lt_ld_extra"
++    sys_lib_dlsearch_path_spec="/lib /usr/lib $lt_ld_extra"
+   fi
+ 
+   # We used to test for /lib/ld.so.1 and disable shared libraries on
+@@ -12948,6 +12964,18 @@
+   dynamic_linker='GNU/Linux ld.so'
+   ;;
+ 
++netbsdelf*-gnu)
++  version_type=linux
++  need_lib_prefix=no
++  need_version=no
++  library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major ${libname}${shared_ext}'
++  soname_spec='${libname}${release}${shared_ext}$major'
++  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_overrides_runpath=no
++  hardcode_into_libs=yes
++  dynamic_linker='NetBSD ld.elf_so'
++  ;;
++
+ netbsd*)
+   version_type=sunos
+   need_lib_prefix=no
+@@ -14338,7 +14366,7 @@
+       # Commands to make compiler produce verbose output that lists
+       # what "hidden" libraries, object files and flags are used when
+       # linking a shared library.
+-      output_verbose_link_cmd='$CC -shared $CFLAGS -v conftest.$objext 2>&1 | $GREP -v "^Configured with:" | $GREP "\-L"'
++      output_verbose_link_cmd='$CC -shared $CFLAGS -v conftest.$objext 2>&1 | $GREP -v "^Configured with:" | $GREP " \-L"'
+ 
+     else
+       GXX=no
+@@ -14830,7 +14858,7 @@
+             # explicitly linking system object files so we need to strip them
+             # from the output so that they don't get included in the library
+             # dependencies.
+-            output_verbose_link_cmd='templist=`($CC -b $CFLAGS -v conftest.$objext 2>&1) | $EGREP "\-L"`; list= ; for z in $templist; do case $z in conftest.$objext) list="$list $z";; *.$objext);; *) list="$list $z";;esac; done; func_echo_all "$list"'
++            output_verbose_link_cmd='templist=`($CC -b $CFLAGS -v conftest.$objext 2>&1) | $EGREP " \-L"`; list= ; for z in $templist; do case $z in conftest.$objext) list="$list $z";; *.$objext);; *) list="$list $z";;esac; done; func_echo_all "$list"'
+             ;;
+           *)
+             if test yes = "$GXX"; then
+@@ -14895,7 +14923,7 @@
+ 	    # explicitly linking system object files so we need to strip them
+ 	    # from the output so that they don't get included in the library
+ 	    # dependencies.
+-	    output_verbose_link_cmd='templist=`($CC -b $CFLAGS -v conftest.$objext 2>&1) | $GREP "\-L"`; list= ; for z in $templist; do case $z in conftest.$objext) list="$list $z";; *.$objext);; *) list="$list $z";;esac; done; func_echo_all "$list"'
++	    output_verbose_link_cmd='templist=`($CC -b $CFLAGS -v conftest.$objext 2>&1) | $GREP " \-L"`; list= ; for z in $templist; do case $z in conftest.$objext) list="$list $z";; *.$objext);; *) list="$list $z";;esac; done; func_echo_all "$list"'
+ 	    ;;
+           *)
+ 	    if test yes = "$GXX"; then
+@@ -15234,7 +15262,7 @@
+ 	      # Commands to make compiler produce verbose output that lists
+ 	      # what "hidden" libraries, object files and flags are used when
+ 	      # linking a shared library.
+-	      output_verbose_link_cmd='$CC -shared $CFLAGS -v conftest.$objext 2>&1 | $GREP -v "^Configured with:" | $GREP "\-L"'
++	      output_verbose_link_cmd='$CC -shared $CFLAGS -v conftest.$objext 2>&1 | $GREP -v "^Configured with:" | $GREP " \-L"'
+ 
+ 	    else
+ 	      # FIXME: insert proper C++ library support
+@@ -15318,7 +15346,7 @@
+ 	        # Commands to make compiler produce verbose output that lists
+ 	        # what "hidden" libraries, object files and flags are used when
+ 	        # linking a shared library.
+-	        output_verbose_link_cmd='$CC -shared $CFLAGS -v conftest.$objext 2>&1 | $GREP -v "^Configured with:" | $GREP "\-L"'
++	        output_verbose_link_cmd='$CC -shared $CFLAGS -v conftest.$objext 2>&1 | $GREP -v "^Configured with:" | $GREP " \-L"'
+ 	      else
+ 	        # g++ 2.7 appears to require '-G' NOT '-shared' on this
+ 	        # platform.
+@@ -15329,7 +15357,7 @@
+ 	        # Commands to make compiler produce verbose output that lists
+ 	        # what "hidden" libraries, object files and flags are used when
+ 	        # linking a shared library.
+-	        output_verbose_link_cmd='$CC -G $CFLAGS -v conftest.$objext 2>&1 | $GREP -v "^Configured with:" | $GREP "\-L"'
++	        output_verbose_link_cmd='$CC -G $CFLAGS -v conftest.$objext 2>&1 | $GREP -v "^Configured with:" | $GREP " \-L"'
+ 	      fi
+ 
+ 	      hardcode_libdir_flag_spec_CXX='$wl-R $wl$libdir'
+@@ -15842,7 +15870,7 @@
+ 	    ;;
+ 	esac
+ 	;;
+-      netbsd*)
++      netbsd* | netbsdelf*-gnu)
+ 	;;
+       *qnx* | *nto*)
+         # QNX uses GNU C++, but need to define -shared option too, otherwise
+@@ -16217,6 +16245,9 @@
+       ;;
+     esac
+     ;;
++  linux* | k*bsd*-gnu | gnu*)
++    link_all_deplibs_CXX=no
++    ;;
+   *)
+     export_symbols_cmds_CXX='$NM $libobjs $convenience | $global_symbol_pipe | $SED '\''s/.* //'\'' | sort | uniq > $export_symbols'
+     ;;
+@@ -16890,9 +16921,6 @@
+   # before this can be enabled.
+   hardcode_into_libs=yes
+ 
+-  # Add ABI-specific directories to the system library path.
+-  sys_lib_dlsearch_path_spec="/lib64 /usr/lib64 /lib /usr/lib"
+-
+   # Ideally, we could use ldconfig to report *all* directores which are
+   # searched for libraries, however this is still not possible.  Aside from not
+   # being certain /sbin/ldconfig is available, command
+@@ -16901,7 +16929,7 @@
+   # appending ld.so.conf contents (and includes) to the search path.
+   if test -f /etc/ld.so.conf; then
+     lt_ld_extra=`awk '/^include / { system(sprintf("cd /etc; cat %s 2>/dev/null", \$2)); skip = 1; } { if (!skip) print \$0; skip = 0; }' < /etc/ld.so.conf | $SED -e 's/#.*//;/^[	 ]*hwcap[	 ]/d;s/[:,	]/ /g;s/=[^=]*$//;s/=[^= ]* / /g;s/"//g;/^$/d' | tr '\n' ' '`
+-    sys_lib_dlsearch_path_spec="$sys_lib_dlsearch_path_spec $lt_ld_extra"
++    sys_lib_dlsearch_path_spec="/lib /usr/lib $lt_ld_extra"
+   fi
+ 
+   # We used to test for /lib/ld.so.1 and disable shared libraries on
+@@ -16913,6 +16941,18 @@
+   dynamic_linker='GNU/Linux ld.so'
+   ;;
+ 
++netbsdelf*-gnu)
++  version_type=linux
++  need_lib_prefix=no
++  need_version=no
++  library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major ${libname}${shared_ext}'
++  soname_spec='${libname}${release}${shared_ext}$major'
++  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_overrides_runpath=no
++  hardcode_into_libs=yes
++  dynamic_linker='NetBSD ld.elf_so'
++  ;;
++
+ netbsd*)
+   version_type=sunos
+   need_lib_prefix=no
+@@ -33307,7 +33347,6 @@
+     cat <<_LT_EOF >> "$cfgfile"
+ #! $SHELL
+ # Generated automatically by $as_me ($PACKAGE) $VERSION
+-# Libtool was configured on host `(hostname || uname -n) 2>/dev/null | sed 1q`:
+ # NOTE: Changes made to this file will be lost: look at ltmain.sh.
+ 
+ # Provide generalized library-building support services.
+diff -Nur openvswitch-2.13.5.orig/datapath/Makefile.in openvswitch-2.13.5/datapath/Makefile.in
+--- openvswitch-2.13.5.orig/datapath/Makefile.in	2021-10-22 00:14:48.001073485 +0200
++++ openvswitch-2.13.5/datapath/Makefile.in	2022-08-07 14:27:58.328853782 +0200
+@@ -360,6 +360,7 @@
+ prefix = @prefix@
+ program_transform_name = @program_transform_name@
+ psdir = @psdir@
++runstatedir = @runstatedir@
+ sbindir = @sbindir@
+ sharedstatedir = @sharedstatedir@
+ srcdir = @srcdir@
+diff -Nur openvswitch-2.13.5.orig/debian/changelog openvswitch-2.13.5/debian/changelog
+--- openvswitch-2.13.5.orig/debian/changelog	2022-01-13 11:57:22.000000000 +0100
++++ openvswitch-2.13.5/debian/changelog	2022-08-07 14:23:25.589172898 +0200
+@@ -1,3 +1,9 @@
++openvswitch (2.13.5-0dp01~jammy1) jammy; urgency=medium
++
++  * Fixed compatibility with python2
++
++ -- Uli Heller <uli.heller@daemons-point.com>  Sun, 07 Aug 2022 14:22:34 +0200
++
+ openvswitch (2.13.5-0ubuntu1) focal; urgency=medium
+ 
+   * New upstream point release (LP: #1956754).
+diff -Nur openvswitch-2.13.5.orig/debian/patches/series openvswitch-2.13.5/debian/patches/series
+--- openvswitch-2.13.5.orig/debian/patches/series	2022-01-13 11:55:50.000000000 +0100
++++ openvswitch-2.13.5/debian/patches/series	2022-08-07 14:27:41.212873805 +0200
+@@ -1 +1,2 @@
+ py3-compat.patch
++uli-python2
+diff -Nur openvswitch-2.13.5.orig/debian/patches/uli-python2 openvswitch-2.13.5/debian/patches/uli-python2
+--- openvswitch-2.13.5.orig/debian/patches/uli-python2	1970-01-01 01:00:00.000000000 +0100
++++ openvswitch-2.13.5/debian/patches/uli-python2	2022-08-07 14:27:45.104869251 +0200
+@@ -0,0 +1,47 @@
++Description: <short summary of the patch>
++ TODO: Put a short summary on the line above and replace this paragraph
++ with a longer explanation of this change. Complete the meta-information
++ with other relevant fields (see below for details). To make it easier, the
++ information below has been extracted from the changelog. Adjust it or drop
++ it.
++ .
++ openvswitch (2.13.5-0dp01~jammy1) jammy; urgency=medium
++ .
++   * Fixed compatibility with python2
++Author: Uli Heller <uli.heller@daemons-point.com>
++
++---
++The information above should follow the Patch Tagging Guidelines, please
++checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
++are templates for supplementary fields that you might want to add:
++
++Origin: <vendor|upstream|other>, <url of original patch>
++Bug: <url in upstream bugtracker>
++Bug-Debian: https://bugs.debian.org/<bugnumber>
++Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
++Forwarded: <no|not-needed|url proving that it has been forwarded>
++Reviewed-By: <name and email of someone who approved the patch>
++Last-Update: 2022-08-07
++
++--- openvswitch-2.13.5.orig/python/setup.py
+++++ openvswitch-2.13.5/python/setup.py
++@@ -24,8 +24,7 @@ try:
++     # Try to set the version from the generated ovs/version.py
++     exec(open("ovs/version.py").read())
++ except IOError:
++-    print("Ensure version.py is created by running make python/ovs/version.py",
++-          file=sys.stderr)
+++    print >>sys.stderr, "Ensure version.py is created by running make python/ovs/version.py"
++     sys.exit(-1)
++ 
++ try:
++@@ -33,8 +32,7 @@ try:
++     # don't need to exec()
++     open("ovs/dirs.py")
++ except IOError:
++-    print("Ensure dirs.py is created by running make python/ovs/dirs.py",
++-          file=sys.stderr)
+++    print >>sys.stderr, "Ensure dirs.py is created by running make python/ovs/dirs.py"
++     sys.exit(-1)
++ 
++ ext_errors = (CCompilerError, DistutilsExecError, DistutilsPlatformError)
+diff -Nur openvswitch-2.13.5.orig/m4/libtool.m4 openvswitch-2.13.5/m4/libtool.m4
+--- openvswitch-2.13.5.orig/m4/libtool.m4	2021-10-22 00:14:43.343073485 +0200
++++ openvswitch-2.13.5/m4/libtool.m4	2022-08-07 14:27:54.544858206 +0200
+@@ -728,7 +728,6 @@
+     cat <<_LT_EOF >> "$cfgfile"
+ #! $SHELL
+ # Generated automatically by $as_me ($PACKAGE) $VERSION
+-# Libtool was configured on host `(hostname || uname -n) 2>/dev/null | sed 1q`:
+ # NOTE: Changes made to this file will be lost: look at ltmain.sh.
+ 
+ # Provide generalized library-building support services.
+@@ -1042,8 +1041,8 @@
+ _LT_EOF
+       echo "$LTCC $LTCFLAGS -c -o conftest.o conftest.c" >&AS_MESSAGE_LOG_FD
+       $LTCC $LTCFLAGS -c -o conftest.o conftest.c 2>&AS_MESSAGE_LOG_FD
+-      echo "$AR cru libconftest.a conftest.o" >&AS_MESSAGE_LOG_FD
+-      $AR cru libconftest.a conftest.o 2>&AS_MESSAGE_LOG_FD
++      echo "$AR cr libconftest.a conftest.o" >&AS_MESSAGE_LOG_FD
++      $AR cr libconftest.a conftest.o 2>&AS_MESSAGE_LOG_FD
+       echo "$RANLIB libconftest.a" >&AS_MESSAGE_LOG_FD
+       $RANLIB libconftest.a 2>&AS_MESSAGE_LOG_FD
+       cat > conftest.c << _LT_EOF
+@@ -1493,7 +1492,7 @@
+ m4_defun([_LT_PROG_AR],
+ [AC_CHECK_TOOLS(AR, [ar], false)
+ : ${AR=ar}
+-: ${AR_FLAGS=cru}
++: ${AR_FLAGS=cr}
+ _LT_DECL([], [AR], [1], [The archiver])
+ _LT_DECL([], [AR_FLAGS], [1], [Flags to create an archive])
+ 
+@@ -2867,9 +2866,6 @@
+   # before this can be enabled.
+   hardcode_into_libs=yes
+ 
+-  # Add ABI-specific directories to the system library path.
+-  sys_lib_dlsearch_path_spec="/lib64 /usr/lib64 /lib /usr/lib"
+-
+   # Ideally, we could use ldconfig to report *all* directores which are
+   # searched for libraries, however this is still not possible.  Aside from not
+   # being certain /sbin/ldconfig is available, command
+@@ -2878,7 +2874,7 @@
+   # appending ld.so.conf contents (and includes) to the search path.
+   if test -f /etc/ld.so.conf; then
+     lt_ld_extra=`awk '/^include / { system(sprintf("cd /etc; cat %s 2>/dev/null", \[$]2)); skip = 1; } { if (!skip) print \[$]0; skip = 0; }' < /etc/ld.so.conf | $SED -e 's/#.*//;/^[	 ]*hwcap[	 ]/d;s/[:,	]/ /g;s/=[^=]*$//;s/=[^= ]* / /g;s/"//g;/^$/d' | tr '\n' ' '`
+-    sys_lib_dlsearch_path_spec="$sys_lib_dlsearch_path_spec $lt_ld_extra"
++    sys_lib_dlsearch_path_spec="/lib /usr/lib $lt_ld_extra"
+   fi
+ 
+   # We used to test for /lib/ld.so.1 and disable shared libraries on
+@@ -2890,6 +2886,18 @@
+   dynamic_linker='GNU/Linux ld.so'
+   ;;
+ 
++netbsdelf*-gnu)
++  version_type=linux
++  need_lib_prefix=no
++  need_version=no
++  library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major ${libname}${shared_ext}'
++  soname_spec='${libname}${release}${shared_ext}$major'
++  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_overrides_runpath=no
++  hardcode_into_libs=yes
++  dynamic_linker='NetBSD ld.elf_so'
++  ;;
++
+ netbsd*)
+   version_type=sunos
+   need_lib_prefix=no
+@@ -3549,7 +3557,7 @@
+   lt_cv_deplibs_check_method=pass_all
+   ;;
+ 
+-netbsd*)
++netbsd* | netbsdelf*-gnu)
+   if echo __ELF__ | $CC -E - | $GREP __ELF__ > /dev/null; then
+     lt_cv_deplibs_check_method='match_pattern /lib[[^/]]+(\.so\.[[0-9]]+\.[[0-9]]+|_pic\.a)$'
+   else
+@@ -4055,7 +4063,8 @@
+   if AC_TRY_EVAL(ac_compile); then
+     # Now try to grab the symbols.
+     nlist=conftest.nm
+-    if AC_TRY_EVAL(NM conftest.$ac_objext \| "$lt_cv_sys_global_symbol_pipe" \> $nlist) && test -s "$nlist"; then
++    $ECHO "$as_me:$LINENO: $NM conftest.$ac_objext | $lt_cv_sys_global_symbol_pipe > $nlist" >&AS_MESSAGE_LOG_FD
++    if eval "$NM" conftest.$ac_objext \| "$lt_cv_sys_global_symbol_pipe" \> $nlist 2>&AS_MESSAGE_LOG_FD && test -s "$nlist"; then
+       # Try sorting and uniquifying the output.
+       if sort "$nlist" | uniq > "$nlist"T; then
+ 	mv -f "$nlist"T "$nlist"
+@@ -4427,7 +4436,7 @@
+ 	    ;;
+ 	esac
+ 	;;
+-      netbsd*)
++      netbsd* | netbsdelf*-gnu)
+ 	;;
+       *qnx* | *nto*)
+         # QNX uses GNU C++, but need to define -shared option too, otherwise
+@@ -4695,6 +4704,12 @@
+ 	_LT_TAGVAR(lt_prog_compiler_pic, $1)='-KPIC'
+ 	_LT_TAGVAR(lt_prog_compiler_static, $1)='-static'
+         ;;
++      # flang / f18. f95 an alias for gfortran or flang on Debian
++      flang* | f18* | f95*)
++	_LT_TAGVAR(lt_prog_compiler_wl, $1)='-Wl,'
++	_LT_TAGVAR(lt_prog_compiler_pic, $1)='-fPIC'
++	_LT_TAGVAR(lt_prog_compiler_static, $1)='-static'
++        ;;
+       # icc used to be incompatible with GCC.
+       # ICC 10 doesn't accept -KPIC any more.
+       icc* | ifort*)
+@@ -4939,6 +4954,9 @@
+       ;;
+     esac
+     ;;
++  linux* | k*bsd*-gnu | gnu*)
++    _LT_TAGVAR(link_all_deplibs, $1)=no
++    ;;
+   *)
+     _LT_TAGVAR(export_symbols_cmds, $1)='$NM $libobjs $convenience | $global_symbol_pipe | $SED '\''s/.* //'\'' | sort | uniq > $export_symbols'
+     ;;
+@@ -5001,6 +5019,9 @@
+   openbsd* | bitrig*)
+     with_gnu_ld=no
+     ;;
++  linux* | k*bsd*-gnu | gnu*)
++    _LT_TAGVAR(link_all_deplibs, $1)=no
++    ;;
+   esac
+ 
+   _LT_TAGVAR(ld_shlibs, $1)=yes
+@@ -5255,7 +5276,7 @@
+       fi
+       ;;
+ 
+-    netbsd*)
++    netbsd* | netbsdelf*-gnu)
+       if echo __ELF__ | $CC -E - | $GREP __ELF__ >/dev/null; then
+ 	_LT_TAGVAR(archive_cmds, $1)='$LD -Bshareable $libobjs $deplibs $linker_flags -o $lib'
+ 	wlarc=
+@@ -5776,6 +5797,7 @@
+ 	if test yes = "$lt_cv_irix_exported_symbol"; then
+           _LT_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $pic_flag $libobjs $deplibs $compiler_flags $wl-soname $wl$soname `test -n "$verstring" && func_echo_all "$wl-set_version $wl$verstring"` $wl-update_registry $wl$output_objdir/so_locations $wl-exports_file $wl$export_symbols -o $lib'
+ 	fi
++	_LT_TAGVAR(link_all_deplibs, $1)=no
+       else
+ 	_LT_TAGVAR(archive_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags -soname $soname `test -n "$verstring" && func_echo_all "-set_version $verstring"` -update_registry $output_objdir/so_locations -o $lib'
+ 	_LT_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags -soname $soname `test -n "$verstring" && func_echo_all "-set_version $verstring"` -update_registry $output_objdir/so_locations -exports_file $export_symbols -o $lib'
+@@ -5797,7 +5819,7 @@
+       esac
+       ;;
+ 
+-    netbsd*)
++    netbsd* | netbsdelf*-gnu)
+       if echo __ELF__ | $CC -E - | $GREP __ELF__ >/dev/null; then
+ 	_LT_TAGVAR(archive_cmds, $1)='$LD -Bshareable -o $lib $libobjs $deplibs $linker_flags'  # a.out
+       else
+@@ -6423,7 +6445,7 @@
+       # Commands to make compiler produce verbose output that lists
+       # what "hidden" libraries, object files and flags are used when
+       # linking a shared library.
+-      output_verbose_link_cmd='$CC -shared $CFLAGS -v conftest.$objext 2>&1 | $GREP -v "^Configured with:" | $GREP "\-L"'
++      output_verbose_link_cmd='$CC -shared $CFLAGS -v conftest.$objext 2>&1 | $GREP -v "^Configured with:" | $GREP " \-L"'
+ 
+     else
+       GXX=no
+@@ -6798,7 +6820,7 @@
+             # explicitly linking system object files so we need to strip them
+             # from the output so that they don't get included in the library
+             # dependencies.
+-            output_verbose_link_cmd='templist=`($CC -b $CFLAGS -v conftest.$objext 2>&1) | $EGREP "\-L"`; list= ; for z in $templist; do case $z in conftest.$objext) list="$list $z";; *.$objext);; *) list="$list $z";;esac; done; func_echo_all "$list"'
++            output_verbose_link_cmd='templist=`($CC -b $CFLAGS -v conftest.$objext 2>&1) | $EGREP " \-L"`; list= ; for z in $templist; do case $z in conftest.$objext) list="$list $z";; *.$objext);; *) list="$list $z";;esac; done; func_echo_all "$list"'
+             ;;
+           *)
+             if test yes = "$GXX"; then
+@@ -6863,7 +6885,7 @@
+ 	    # explicitly linking system object files so we need to strip them
+ 	    # from the output so that they don't get included in the library
+ 	    # dependencies.
+-	    output_verbose_link_cmd='templist=`($CC -b $CFLAGS -v conftest.$objext 2>&1) | $GREP "\-L"`; list= ; for z in $templist; do case $z in conftest.$objext) list="$list $z";; *.$objext);; *) list="$list $z";;esac; done; func_echo_all "$list"'
++	    output_verbose_link_cmd='templist=`($CC -b $CFLAGS -v conftest.$objext 2>&1) | $GREP " \-L"`; list= ; for z in $templist; do case $z in conftest.$objext) list="$list $z";; *.$objext);; *) list="$list $z";;esac; done; func_echo_all "$list"'
+ 	    ;;
+           *)
+ 	    if test yes = "$GXX"; then
+@@ -7202,7 +7224,7 @@
+ 	      # Commands to make compiler produce verbose output that lists
+ 	      # what "hidden" libraries, object files and flags are used when
+ 	      # linking a shared library.
+-	      output_verbose_link_cmd='$CC -shared $CFLAGS -v conftest.$objext 2>&1 | $GREP -v "^Configured with:" | $GREP "\-L"'
++	      output_verbose_link_cmd='$CC -shared $CFLAGS -v conftest.$objext 2>&1 | $GREP -v "^Configured with:" | $GREP " \-L"'
+ 
+ 	    else
+ 	      # FIXME: insert proper C++ library support
+@@ -7286,7 +7308,7 @@
+ 	        # Commands to make compiler produce verbose output that lists
+ 	        # what "hidden" libraries, object files and flags are used when
+ 	        # linking a shared library.
+-	        output_verbose_link_cmd='$CC -shared $CFLAGS -v conftest.$objext 2>&1 | $GREP -v "^Configured with:" | $GREP "\-L"'
++	        output_verbose_link_cmd='$CC -shared $CFLAGS -v conftest.$objext 2>&1 | $GREP -v "^Configured with:" | $GREP " \-L"'
+ 	      else
+ 	        # g++ 2.7 appears to require '-G' NOT '-shared' on this
+ 	        # platform.
+@@ -7297,7 +7319,7 @@
+ 	        # Commands to make compiler produce verbose output that lists
+ 	        # what "hidden" libraries, object files and flags are used when
+ 	        # linking a shared library.
+-	        output_verbose_link_cmd='$CC -G $CFLAGS -v conftest.$objext 2>&1 | $GREP -v "^Configured with:" | $GREP "\-L"'
++	        output_verbose_link_cmd='$CC -G $CFLAGS -v conftest.$objext 2>&1 | $GREP -v "^Configured with:" | $GREP " \-L"'
+ 	      fi
+ 
+ 	      _LT_TAGVAR(hardcode_libdir_flag_spec, $1)='$wl-R $wl$libdir'
+diff -Nur openvswitch-2.13.5.orig/python/setup.py openvswitch-2.13.5/python/setup.py
+--- openvswitch-2.13.5.orig/python/setup.py	2021-10-22 00:14:38.995073485 +0200
++++ openvswitch-2.13.5/python/setup.py	2022-08-07 14:27:41.000000000 +0200
+@@ -24,8 +24,7 @@
+     # Try to set the version from the generated ovs/version.py
+     exec(open("ovs/version.py").read())
+ except IOError:
+-    print("Ensure version.py is created by running make python/ovs/version.py",
+-          file=sys.stderr)
++    print >>sys.stderr, "Ensure version.py is created by running make python/ovs/version.py"
+     sys.exit(-1)
+ 
+ try:
+@@ -33,8 +32,7 @@
+     # don't need to exec()
+     open("ovs/dirs.py")
+ except IOError:
+-    print("Ensure dirs.py is created by running make python/ovs/dirs.py",
+-          file=sys.stderr)
++    print >>sys.stderr, "Ensure dirs.py is created by running make python/ovs/dirs.py"
+     sys.exit(-1)
+ 
+ ext_errors = (CCompilerError, DistutilsExecError, DistutilsPlatformError)

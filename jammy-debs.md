@@ -367,3 +367,9 @@ $ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage
 $ PACKAGE=netplan.io
 $ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./netplan.io_0.104-0dp01~jammy2.1_i386.deb ./libnetplan0_0.104-0dp01~jammy2.1_i386.deb"
 ```
+
+### Unmounting The Build Chroot
+
+```
+$ sudo ./umount.sh jammy-build
+```
