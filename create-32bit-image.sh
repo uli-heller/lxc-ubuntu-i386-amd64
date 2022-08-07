@@ -67,6 +67,8 @@ sudo chroot "./${OSDIR}" apt-get install -y uidmap systemd-sysv iproute2
 sudo chroot "./${OSDIR}" apt-get install -y apt-utils net-tools
 sudo chroot "./${OSDIR}" apt-get install -y ca-certificates libpsl5 openssl publicsuffix
 sudo chroot "./${OSDIR}" apt-get install -y less vim
+sudo chroot "./${OSDIR}" bash -c "DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata"
+sudo chroot "./${OSDIR}" timedatectl set-timezone Europe/Berlin
 
 # netplan.io
 # libnetplan0
