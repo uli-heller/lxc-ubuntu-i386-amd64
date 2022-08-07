@@ -246,22 +246,74 @@ Tryining to build pandoc leads to the dependency "ghc" (somehow related to Haska
 which has a dependency to itself. Currently, I have no idea on how to continue here,
 so I'm going to modify all packages depending on pandoc. I'll remove pandoc from these.
 
-
 ### Building libibverbs-dev
+
+We know that libibverbs-dev depends on pandoc for building.
+So we have to patch it...
+
+```
+$ PACKAGE=libibverbs-dev
+$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}'"
+$ sudo patch -d "jammy-build/src/${PACKAGE}" <patches/jammy/rdma-core/rdma-core-39.0_no-pandoc.diff
+$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+  # Shows lots of missing packages -> install them via apt-get
+$ sudo chroot jammy-build apt-get install -y cmake cython3 libnl-3-dev libnl-route-3-dev libsystemd-dev libudev-dev ninja-build
+$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+```
 
 ### Installing libibverbs-dev
 
+```
+$ PACKAGE=libibverbs-dev
+$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./libibverbs-dev_39.0-1dp01~jammy1_i386.deb ./ibverbs-providers_39.0-1dp01~jammy1_i386.deb ./libibverbs1_39.0-1dp01~jammy1_i386.deb"
+  # Later on, we will detect that we need "rdma-core", too. So we install it, too!
+$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./rdma-core_39.0-1dp01~jammy1_i386.deb"
+```
+
 ### Building libfdt-dev
+
+```
+$ PACKAGE=libfdt-dev
+$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
+$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+```
 
 ### Installing libfdt-dev
 
+```
+$ PACKAGE=libfdt-dev
+$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./libfdt-dev_1.6.1-1_i386.deb ./libfdt1_1.6.1-1_i386.deb"
+```
+
 ### Building libdpdk-dev
+
+```
+$ PACKAGE=libdpdk-dev
+$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
+$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+```
 
 ### Installing libdpdk-dev
 
+```
+$ PACKAGE=libdpdk-dev
+$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install  ./libdpdk-dev_21.11.1-0ubuntu0.3_i386.deb ./librte*.deb"
+```
+
 ### Building openvswitch-switch
 
+```
+$ PACKAGE=openvswitch-switch
+$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
+$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+```
+
 ### Installing openvswitch-switch
+
+```
+$ PACKAGE=openvswitch-switch
+$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install  ./openvswitch-switch_2.17.0-0ubuntu1_i386.deb ./openvswitch-common_2.17.0-0ubuntu1_i386.deb"
+```
 
 ### Building python3-coverage
 
@@ -339,95 +391,6 @@ E: Unable to correct problems, you have held broken packages.
 
 We're skipping "ghc" for now!
 
-### Building openvswitch-switch
-
-```
-$ PACKAGE=openvswitch-switch
-$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-...
-The following packages have unmet dependencies:
- builddeps:openvswitch-switch : Depends: libdpdk-dev (>= 21.11) but it is not installable
-E: Unable to correct problems, you have held broken packages.
-
-  # After building and installing these dependencies..
-$ sudo chroot jammy-build apt-get build-dep "${PACKAGE}"
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
-```
-
-### Building libdpdk-dev
-
-```
-$ PACKAGE=libdpdk-dev
-$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-...
-The following packages have unmet dependencies:
- builddeps:libdpdk-dev : Depends: libfdt-dev but it is not installable
-                         Depends: libibverbs-dev (>= 23~) but it is not installable
-E: Unable to correct problems, you have held broken packages.
-
-  # After building and installing these dependencies..
-$ sudo chroot jammy-build apt-get build-dep "${PACKAGE}"
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install  ./libdpdk-dev_21.11.1-0ubuntu0.3_i386.deb ./librte*.deb"
-```
-
-### Building And Installing libfdt-dev
-
-```
-$ PACKAGE=libfdt-dev
-$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./libfdt-dev_1.6.1-1_i386.deb ./libfdt1_1.6.1-1_i386.deb"
-```
-
-### Building libibverbs-dev
-
-```
-$ PACKAGE=libibverbs-dev
-$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-...
-The following packages have unmet dependencies:
- builddeps:libibverbs-dev : Depends: pandoc but it is not installable
-E: Unable to correct problems, you have held broken packages.
-```
-
-### Fixing And Installing libibverbs-dev/rdma-core
-
-```
-$ PACKAGE=libibverbs-dev
-$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}'"
-$ sudo patch -d "jammy-build/src/${PACKAGE}" <patches/jammy/rdma-core/rdma-core-39.0_no-pandoc.diff
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
-  # Shows lots of missing packages
-$ sudo chroot jammy-build apt-get install cmake cython3 libnl-3-dev libnl-route-3-dev libsystemd-dev libudev-dev ninja-build
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./libibverbs-dev_39.0-1dp01~jammy1_i386.deb ./ibverbs-providers_39.0-1dp01~jammy1_i386.deb ./libibverbs1_39.0-1dp01~jammy1_i386.deb ./rdma-core_39.0-1dp01~jammy1_i386.deb"
-```
-
-Some notes:
-
-```
-$ PACKAGE=libibverbs-dev
-$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-...
-The following packages have unmet dependencies:
- builddeps:libibverbs-dev : Depends: pandoc but it is not installable
-E: Unable to correct problems, you have held broken packages.
-
--DNO_MAN_PAGES=1
-- debian/control
-- debian/rules
-- debian/*install
-
-grep -l \\.[0-9] debian/*install|xargs -t -n1 sed -i -e '/[.][0-9]$/ d'
-ls debian/*install|xargs -t -n1 sed -i -e '/man\/man/ d'
-
-
-apt-get install cmake
-apt-get install cython3
-apt-get install libnl-3-dev libnl-route-3-dev libsystemd-dev libudev-dev ninja-build
-dpkg-buildpackage
-```
 
 ### Fixing And Installing netplan.io
 
@@ -444,3 +407,4 @@ $ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./libi
 
 
 apt-get install bash-completion libglib2.0-dev uuid-dev python3-yaml dbus-x11 pyflakes3 pycodestyle python3-nose
+Y

@@ -68,7 +68,6 @@ sudo chroot "./${OSDIR}" apt-get install -y apt-utils net-tools
 sudo chroot "./${OSDIR}" apt-get install -y ca-certificates libpsl5 openssl publicsuffix
 sudo chroot "./${OSDIR}" apt-get install -y less vim
 sudo chroot "./${OSDIR}" bash -c "DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata"
-echo "Europe/Berlin"|sudo tee "./${OSDIR}/etc/timezone"
 
 # netplan.io
 # libnetplan0
@@ -108,7 +107,9 @@ test -z "${KEEP}" && sudo rm -rf "./${OSDIR}"
 
 LXCCONTAINER="$(echo "${OS}-${VERSION}"|tr -c -d -- "-a-zA-Z0-9")-$(openssl rand -hex 5)"
 lxc image import "${OS}-metadata.tar.gz" "${OS}-lxc.tar.gz" --alias "${OS}-${VERSION}-import"
-lxc init "${OS}-${VERSION}-import" "${LXCCONTAINER}"
+lxc launch "${OS}-${VERSION}-import" "${LXCCONTAINER}"
+lxc exec "${LXCCONTAINER}" timedatectl set-timezone Europe/Berlin
+lxc exec "${LXCCONTAINER}" poweroff
 lxc publish "${LXCCONTAINER}" --alias "${OS}-${VERSION}-export"
 mkdir -p "tmp-${OS}-export"
 lxc image export "${OS}-${VERSION}-export" "tmp-${OS}-export"
