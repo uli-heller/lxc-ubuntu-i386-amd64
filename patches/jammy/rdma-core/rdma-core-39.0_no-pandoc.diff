@@ -1,0 +1,194 @@
+Only in rdma-core-39.0: build-deb
+Only in rdma-core-39.0/debian: .debhelper
+diff -ur rdma-core-39.0.orig/debian/changelog rdma-core-39.0/debian/changelog
+--- rdma-core-39.0.orig/debian/changelog	2022-01-27 19:57:04.000000000 +0100
++++ rdma-core-39.0/debian/changelog	2022-08-07 09:59:39.405223257 +0200
+@@ -1,3 +1,9 @@
++rdma-core (39.0-1dp01~jammy1) jammy; urgency=medium
++
++  * Removed dependency to pandoc
++
++ -- Uli Heller <uli.heller@daemons-point.com>  Sun, 07 Aug 2022 09:58:42 +0200
++
+ rdma-core (39.0-1) unstable; urgency=medium
+ 
+   * New upstream release.
+diff -ur rdma-core-39.0.orig/debian/control rdma-core-39.0/debian/control
+--- rdma-core-39.0.orig/debian/control	2022-01-27 19:06:00.000000000 +0100
++++ rdma-core-39.0/debian/control	2022-08-07 09:34:59.287740585 +0200
+@@ -12,7 +12,6 @@
+                libsystemd-dev,
+                libudev-dev,
+                ninja-build,
+-               pandoc,
+                pkg-config,
+                python3-dev,
+                python3-docutils,
+diff -ur rdma-core-39.0.orig/debian/ibacm.install rdma-core-39.0/debian/ibacm.install
+--- rdma-core-39.0.orig/debian/ibacm.install	2021-11-09 11:04:28.000000000 +0100
++++ rdma-core-39.0/debian/ibacm.install	2022-08-07 09:50:18.523813999 +0200
+@@ -6,7 +6,3 @@
+ usr/lib/*/ibacm/libibacmp.so
+ usr/sbin/ibacm
+ usr/share/doc/rdma-core/ibacm.md usr/share/doc/ibacm/
+-usr/share/man/man1/ib_acme.1
+-usr/share/man/man7/ibacm.7
+-usr/share/man/man7/ibacm_prov.7
+-usr/share/man/man8/ibacm.8
+diff -ur rdma-core-39.0.orig/debian/ibverbs-utils.install rdma-core-39.0/debian/ibverbs-utils.install
+--- rdma-core-39.0.orig/debian/ibverbs-utils.install	2018-11-25 13:56:21.000000000 +0100
++++ rdma-core-39.0/debian/ibverbs-utils.install	2022-08-07 09:50:18.527813978 +0200
+@@ -6,11 +6,3 @@
+ usr/bin/ibv_uc_pingpong
+ usr/bin/ibv_ud_pingpong
+ usr/bin/ibv_xsrq_pingpong
+-usr/share/man/man1/ibv_asyncwatch.1
+-usr/share/man/man1/ibv_devices.1
+-usr/share/man/man1/ibv_devinfo.1
+-usr/share/man/man1/ibv_rc_pingpong.1
+-usr/share/man/man1/ibv_srq_pingpong.1
+-usr/share/man/man1/ibv_uc_pingpong.1
+-usr/share/man/man1/ibv_ud_pingpong.1
+-usr/share/man/man1/ibv_xsrq_pingpong.1
+diff -ur rdma-core-39.0.orig/debian/infiniband-diags.install rdma-core-39.0/debian/infiniband-diags.install
+--- rdma-core-39.0.orig/debian/infiniband-diags.install	2021-04-12 12:26:04.000000000 +0200
++++ rdma-core-39.0/debian/infiniband-diags.install	2022-08-07 09:50:18.527813978 +0200
+@@ -30,35 +30,4 @@
+ usr/sbin/smpdump
+ usr/sbin/smpquery
+ usr/sbin/vendstat
+-usr/share/man/man8/check_lft_balance.8
+-usr/share/man/man8/dump_fts.8
+-usr/share/man/man8/dump_lfts.8
+-usr/share/man/man8/dump_mfts.8
+-usr/share/man/man8/ibaddr.8
+-usr/share/man/man8/ibcacheedit.8
+-usr/share/man/man8/ibccconfig.8
+-usr/share/man/man8/ibccquery.8
+-usr/share/man/man8/ibfindnodesusing.8
+-usr/share/man/man8/ibhosts.8
+-usr/share/man/man8/ibidsverify.8
+-usr/share/man/man8/iblinkinfo.8
+-usr/share/man/man8/ibnetdiscover.8
+-usr/share/man/man8/ibnodes.8
+-usr/share/man/man8/ibping.8
+-usr/share/man/man8/ibportstate.8
+-usr/share/man/man8/ibqueryerrors.8
+-usr/share/man/man8/ibroute.8
+-usr/share/man/man8/ibrouters.8
+-usr/share/man/man8/ibstat.8
+-usr/share/man/man8/ibstatus.8
+-usr/share/man/man8/ibswitches.8
+-usr/share/man/man8/ibsysstat.8
+-usr/share/man/man8/ibtracert.8
+-usr/share/man/man8/infiniband-diags.8
+-usr/share/man/man8/perfquery.8
+-usr/share/man/man8/saquery.8
+-usr/share/man/man8/sminfo.8
+-usr/share/man/man8/smpdump.8
+-usr/share/man/man8/smpquery.8
+-usr/share/man/man8/vendstat.8
+ usr/share/perl5/IBswcountlimits.pm
+diff -ur rdma-core-39.0.orig/debian/libibnetdisc-dev.install rdma-core-39.0/debian/libibnetdisc-dev.install
+--- rdma-core-39.0.orig/debian/libibnetdisc-dev.install	2021-04-12 12:26:04.000000000 +0200
++++ rdma-core-39.0/debian/libibnetdisc-dev.install	2022-08-07 09:50:18.531813957 +0200
+@@ -2,12 +2,3 @@
+ usr/lib/*/libibnetdisc*.a
+ usr/lib/*/libibnetdisc*.so
+ usr/lib/*/pkgconfig/libibnetdisc.pc
+-usr/share/man/man3/ibnd_debug.3
+-usr/share/man/man3/ibnd_destroy_fabric.3
+-usr/share/man/man3/ibnd_discover_fabric.3
+-usr/share/man/man3/ibnd_find_node_dr.3
+-usr/share/man/man3/ibnd_find_node_guid.3
+-usr/share/man/man3/ibnd_iter_nodes.3
+-usr/share/man/man3/ibnd_iter_nodes_type.3
+-usr/share/man/man3/ibnd_set_max_smps_on_wire.3
+-usr/share/man/man3/ibnd_show_progress.3
+diff -ur rdma-core-39.0.orig/debian/libibumad-dev.install rdma-core-39.0/debian/libibumad-dev.install
+--- rdma-core-39.0.orig/debian/libibumad-dev.install	2019-07-11 12:49:13.000000000 +0200
++++ rdma-core-39.0/debian/libibumad-dev.install	2022-08-07 09:50:18.531813957 +0200
+@@ -2,4 +2,3 @@
+ usr/lib/*/libibumad*.so
+ usr/lib/*/libibumad.a
+ usr/lib/*/pkgconfig/libibumad.pc
+-usr/share/man/man3/umad_*
+diff -ur rdma-core-39.0.orig/debian/libibverbs-dev.install rdma-core-39.0/debian/libibverbs-dev.install
+--- rdma-core-39.0.orig/debian/libibverbs-dev.install	2021-04-12 12:26:04.000000000 +0200
++++ rdma-core-39.0/debian/libibverbs-dev.install	2022-08-07 09:50:18.531813957 +0200
+@@ -24,12 +24,3 @@
+ usr/lib/*/pkgconfig/libibverbs.pc
+ usr/lib/*/pkgconfig/libmlx4.pc
+ usr/lib/*/pkgconfig/libmlx5.pc
+-usr/share/man/man3/efadv_*.3
+-usr/share/man/man3/ibv_*
+-usr/share/man/man3/mbps_to_ibv_rate.3
+-usr/share/man/man3/mlx4dv_*.3
+-usr/share/man/man3/mlx5dv_*.3
+-usr/share/man/man3/mult_to_ibv_rate.3
+-usr/share/man/man7/efadv.7
+-usr/share/man/man7/mlx4dv.7
+-usr/share/man/man7/mlx5dv.7
+diff -ur rdma-core-39.0.orig/debian/librdmacm-dev.install rdma-core-39.0/debian/librdmacm-dev.install
+--- rdma-core-39.0.orig/debian/librdmacm-dev.install	2021-04-12 12:26:04.000000000 +0200
++++ rdma-core-39.0/debian/librdmacm-dev.install	2022-08-07 09:50:18.535813935 +0200
+@@ -6,6 +6,3 @@
+ usr/lib/*/librdmacm*.so
+ usr/lib/*/librdmacm.a
+ usr/lib/*/pkgconfig/librdmacm.pc
+-usr/share/man/man3/rdma_*.3
+-usr/share/man/man7/rdma_cm.7
+-usr/share/man/man7/rsocket.7
+diff -ur rdma-core-39.0.orig/debian/rdma-core.install rdma-core-39.0/debian/rdma-core.install
+--- rdma-core-39.0.orig/debian/rdma-core.install	2021-11-09 11:04:28.000000000 +0100
++++ rdma-core-39.0/debian/rdma-core.install	2022-08-07 09:50:18.535813935 +0200
+@@ -29,7 +29,3 @@
+ usr/share/doc/rdma-core/rxe.md
+ usr/share/doc/rdma-core/tag_matching.md
+ usr/share/doc/rdma-core/udev.md
+-usr/share/man/man5/iwpmd.conf.5
+-usr/share/man/man7/rxe.7
+-usr/share/man/man8/iwpmd.8
+-usr/share/man/man8/rdma-ndd.8
+diff -ur rdma-core-39.0.orig/debian/rdmacm-utils.install rdma-core-39.0/debian/rdmacm-utils.install
+--- rdma-core-39.0.orig/debian/rdmacm-utils.install	2018-11-25 13:56:21.000000000 +0100
++++ rdma-core-39.0/debian/rdmacm-utils.install	2022-08-07 09:50:18.535813935 +0200
+@@ -11,16 +11,3 @@
+ usr/bin/ucmatose
+ usr/bin/udaddy
+ usr/bin/udpong
+-usr/share/man/man1/cmtime.1
+-usr/share/man/man1/mckey.1
+-usr/share/man/man1/rcopy.1
+-usr/share/man/man1/rdma_client.1
+-usr/share/man/man1/rdma_server.1
+-usr/share/man/man1/rdma_xclient.1
+-usr/share/man/man1/rdma_xserver.1
+-usr/share/man/man1/riostream.1
+-usr/share/man/man1/rping.1
+-usr/share/man/man1/rstream.1
+-usr/share/man/man1/ucmatose.1
+-usr/share/man/man1/udaddy.1
+-usr/share/man/man1/udpong.1
+diff -ur rdma-core-39.0.orig/debian/rules rdma-core-39.0/debian/rules
+--- rdma-core-39.0.orig/debian/rules	2022-01-27 19:06:00.000000000 +0100
++++ rdma-core-39.0/debian/rules	2022-08-07 09:36:34.782445923 +0200
+@@ -37,6 +37,7 @@
+ 		     "-DCMAKE_INSTALL_UDEV_RULESDIR:PATH=/lib/udev/rules.d" \
+ 		     "-DCMAKE_INSTALL_PERLDIR:PATH=/usr/share/perl5" \
+ 		     "-DENABLE_STATIC=1" \
++		     "-DNO_MAN_PAGES=1" \
+ 		     $(EXTRA_CMAKE_FLAGS)
+ 
+ override_dh_auto_configure:
+diff -ur rdma-core-39.0.orig/debian/srptools.install rdma-core-39.0/debian/srptools.install
+--- rdma-core-39.0.orig/debian/srptools.install	2021-11-09 11:04:28.000000000 +0100
++++ rdma-core-39.0/debian/srptools.install	2022-08-07 09:50:18.535813935 +0200
+@@ -7,7 +7,3 @@
+ usr/sbin/ibsrpdm
+ usr/sbin/srp_daemon
+ usr/share/doc/rdma-core/ibsrpdm.md usr/share/doc/srptools/
+-usr/share/man/man5/srp_daemon.service.5
+-usr/share/man/man5/srp_daemon_port@.service.5
+-usr/share/man/man8/ibsrpdm.8
+-usr/share/man/man8/srp_daemon.8
