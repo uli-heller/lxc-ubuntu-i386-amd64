@@ -1,5 +1,30 @@
 #!/bin/sh
 #
+BN="$(basename "$0")"
+
+usage () {
+    echo "USAGE: ${BN} [-k] osname [osdir]"
+}
+
+KEEP=
+USAGE=
+while getopts 'k' opt; do
+    case $opt in
+	k)
+	    KEEP=y
+	    ;;
+	*)
+	    USAGE=y
+	    ;;
+    esac
+done
+shift "$(expr "${OPTIND}" - 1)"
+
+test -n "${USAGE}" && {
+    usage >&2
+    exit 1
+}
+
 OS="$1"
 OSDIR="$2"
 test -z "${OSDIR}" && OSDIR="${OS}"
@@ -15,10 +40,10 @@ test -z "${VERSION}" && VERSION=HEAD
 sudo true
 
 debootstrap --download-only --arch=i386 --variant=minbase "${OS}" "./${OSDIR}"
-#tar cf - "./${OSDIR}" |xz -c9 >"${OS}-debootstrap-debs.tar.xz"
+test -n "${KEEP}" && tar cf - "./${OSDIR}" |xz -c9 >"${OS}-debootstrap-debs.tar.xz"
 
 sudo debootstrap --arch=i386 --variant=minbase "${OS}" "./${OSDIR}"
-#sudo tar cf - "./${OSDIR}" |xz -c9 >"${OS}-debootstrap.tar.xz"
+test -n "${KEEP}" && sudo tar cf - "./${OSDIR}" |xz -c9 >"${OS}-debootstrap.tar.xz"
 
 sudo mkdir -p "./${OSDIR}/etc/netplan"
 sudo tee  "./${OSDIR}/etc/netplan/netplan.yaml" >/dev/null <<EOF
@@ -77,7 +102,7 @@ mkdir -p "tmp-${OS}"
 rm -rf "tmp-${OS}"
 (cd "./${OSDIR}" && sudo tar -cpf - .)|gzip -c9 >"${OS}-lxc.tar.gz"
 
-sudo rm -rf "./${OSDIR}"
+test -z "${KEEP}" && sudo rm -rf "./${OSDIR}"
 
 LXCCONTAINER="$(echo "${OS}-${VERSION}"|tr -c -d -- "-a-zA-Z0-9")-$(openssl rand -hex 5)"
 lxc image import "${OS}-metadata.tar.gz" "${OS}-lxc.tar.gz" --alias "${OS}-${VERSION}-import"
@@ -88,7 +113,7 @@ lxc image export "${OS}-${VERSION}-export" "tmp-${OS}-export"
 mv -v "tmp-${OS}-export"/* "${OS}-${VERSION}-lxcimage.tar.gz"
 rm -rf "tmp-${OS}-export"
 
-rm -f "${OS}-metadata.tar.gz" "${OS}-lxc.tar.gz"
+test -z "${KEEP}" && rm -f "${OS}-metadata.tar.gz" "${OS}-lxc.tar.gz"
 lxc delete "${LXCCONTAINER}"
 lxc image delete "${OS}-${VERSION}-import"
 lxc image delete "${OS}-${VERSION}-export"
