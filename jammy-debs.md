@@ -347,6 +347,20 @@ $ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./pyth
 
 ### Building netplan.io
 
+We know that netplan.io depends on pandoc for building.
+So we have to patch it...
+
+```
+$ PACKAGE=netplan.io
+$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}'"
+$ sudo patch -d "jammy-build/src/${PACKAGE}" <patches/jammy/netplan.io/netplan.io_no-pandoc.diff
+$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+  # Shows lots of missing packages -> install them via apt-get
+$ sudo chroot jammy-build apt-get install -y cmake cython3 libnl-3-dev libnl-route-3-dev libsystemd-dev libudev-dev ninja-build
+$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+```
+
+
 ### Installing netplan.io
 
 #### Configure "tzdata"

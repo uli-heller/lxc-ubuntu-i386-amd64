@@ -111,13 +111,17 @@ lxc launch "${OS}-${VERSION}-import" "${LXCCONTAINER}" || exit 1
 sleep 5
 lxc exec "${LXCCONTAINER}" timedatectl set-timezone Europe/Berlin  || exit 1
 lxc exec "${LXCCONTAINER}" poweroff || exit 1
-lxc publish "${LXCCONTAINER}" --alias "${OS}-${VERSION}-export"
+sleep 5
+lxc stop "${LXCCONTAINER}"
+lxc publish "${LXCCONTAINER}" --alias "${OS}-${VERSION}-export" || exit 1
 mkdir -p "tmp-${OS}-export"
-lxc image export "${OS}-${VERSION}-export" "tmp-${OS}-export"
-mv -v "tmp-${OS}-export"/* "${OS}-${VERSION}-lxcimage.tar.gz"
-rm -rf "tmp-${OS}-export"
+lxc image export "${OS}-${VERSION}-export" "tmp-${OS}-export" || exit 1
+mv -v "tmp-${OS}-export"/* "${OS}-${VERSION}-lxcimage.tar.gz" || exit 1
+rm -rf "tmp-${OS}-export" || exit 1
 
-test -z "${KEEP}" && rm -f "${OS}-metadata.tar.gz" "${OS}-lxc.tar.gz"
-lxc delete "${LXCCONTAINER}"
-lxc image delete "${OS}-${VERSION}-import"
-lxc image delete "${OS}-${VERSION}-export"
+test -z "${KEEP}" && {
+    rm -f "${OS}-metadata.tar.gz" "${OS}-lxc.tar.gz"
+    lxc delete "${LXCCONTAINER}"
+    lxc image delete "${OS}-${VERSION}-import"
+    lxc image delete "${OS}-${VERSION}-export"
+}
