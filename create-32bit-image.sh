@@ -107,9 +107,9 @@ test -z "${KEEP}" && sudo rm -rf "./${OSDIR}"
 
 LXCCONTAINER="$(echo "${OS}-${VERSION}"|tr -c -d -- "-a-zA-Z0-9")-$(openssl rand -hex 5)"
 lxc image import "${OS}-metadata.tar.gz" "${OS}-lxc.tar.gz" --alias "${OS}-${VERSION}-import"
-lxc launch "${OS}-${VERSION}-import" "${LXCCONTAINER}"
-lxc exec "${LXCCONTAINER}" timedatectl set-timezone Europe/Berlin
-lxc exec "${LXCCONTAINER}" poweroff
+lxc launch "${OS}-${VERSION}-import" "${LXCCONTAINER}" || exit 1
+lxc exec "${LXCCONTAINER}" timedatectl set-timezone Europe/Berlin  || exit 1
+lxc exec "${LXCCONTAINER}" poweroff || exit 1
 lxc publish "${LXCCONTAINER}" --alias "${OS}-${VERSION}-export"
 mkdir -p "tmp-${OS}-export"
 lxc image export "${OS}-${VERSION}-export" "tmp-${OS}-export"
