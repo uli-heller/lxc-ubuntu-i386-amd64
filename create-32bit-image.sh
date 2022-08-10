@@ -79,7 +79,7 @@ sudo chroot "./${OSDIR}" apt-get install -y iputils-ping
 sudo chroot "./${OSDIR}" apt-get install -y isc-dhcp-client
 sudo chroot "./${OSDIR}" apt-get install -y isc-dhcp-common
 sudo chroot "./${OSDIR}" apt-get install -y kbd
-sudo chroot "./${OSDIR}" apt-get install -y keyboard-configuration
+sudo chroot "./${OSDIR}" bash -c "DEBIAN_FRONTEND=noninteractive apt-get install -y keyboad-configuration"
 sudo chroot "./${OSDIR}" apt-get install -y language-pack-en
 sudo chroot "./${OSDIR}" apt-get install -y language-pack-en-base
 sudo chroot "./${OSDIR}" apt-get install -y logrotate
