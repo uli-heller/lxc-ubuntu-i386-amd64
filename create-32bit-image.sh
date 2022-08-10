@@ -69,25 +69,32 @@ sudo chroot "./${OSDIR}" apt-get install -y ca-certificates libpsl5 openssl publ
 sudo chroot "./${OSDIR}" apt-get install -y less vim
 sudo chroot "./${OSDIR}" bash -c "DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata"
 sudo chroot "./${OSDIR}" apt-get install -y apt-transport-https
-sudo chroot "./${OSDIR}" apt-get install -y console-setup console-setup-linux
+#sudo chroot "./${OSDIR}" apt-get install -y console-setup console-setup-linux # package not available?
 sudo chroot "./${OSDIR}" apt-get install -y cron
 sudo chroot "./${OSDIR}" apt-get install -y debconf-i18n
 sudo chroot "./${OSDIR}" apt-get install -y distro-info
 sudo chroot "./${OSDIR}" apt-get install -y fuse
 sudo chroot "./${OSDIR}" apt-get install -y init
-sudo chroot "./${OSDIR}" apt-get install -y iputils-ping
-sudo chroot "./${OSDIR}" apt-get install -y isc-dhcp-client
-sudo chroot "./${OSDIR}" apt-get install -y isc-dhcp-common
-sudo chroot "./${OSDIR}" apt-get install -y kbd
+#sudo chroot "./${OSDIR}" apt-get install -y iputils-ping                      # package not available?
+#sudo chroot "./${OSDIR}" apt-get install -y isc-dhcp-client                   # package not available?
+#sudo chroot "./${OSDIR}" apt-get install -y isc-dhcp-common                   # package not available?
+#sudo chroot "./${OSDIR}" apt-get install -y kbd                               # package not available?
 sudo chroot "./${OSDIR}" bash -c "DEBIAN_FRONTEND=noninteractive apt-get install -y keyboad-configuration"
 sudo chroot "./${OSDIR}" apt-get install -y language-pack-en
 sudo chroot "./${OSDIR}" apt-get install -y language-pack-en-base
-sudo chroot "./${OSDIR}" apt-get install -y logrotate
+#sudo chroot "./${OSDIR}" apt-get install -y logrotate                         # package not available?
 sudo chroot "./${OSDIR}" apt-get install -y netbase
-sudo chroot "./${OSDIR}" apt-get install -y rsyslog
+#sudo chroot "./${OSDIR}" apt-get install -y rsyslog                           # package not available?
 sudo chroot "./${OSDIR}" apt-get install -y sudo
 sudo chroot "./${OSDIR}" apt-get install -y whiptail
 
+sudo mkdir -p "./${OSDIR}/etc/sudoers.d"
+sudo tee  "./${OSDIR}/etc/sudoers.d/90-lxd" >/dev/null <<EOF
+# User rules for ubuntu
+ubuntu ALL=(ALL) NOPASSWD:ALL
+EOF
+sudo chroot "./${OSDIR}" useradd ubuntu -m
+sudo chroot "./${OSDIR}" usermod -aG sudo ubuntu
 
 # netplan.io
 # libnetplan0
@@ -130,8 +137,8 @@ lxc image import "${OS}-metadata.tar.gz" "${OS}-lxc.tar.gz" --alias "${OS}-${VER
 lxc launch "${OS}-${VERSION}-import" "${LXCCONTAINER}" || exit 1
 sleep 5
 lxc exec "${LXCCONTAINER}" timedatectl set-timezone Europe/Berlin  || exit 1
-lxc exec "${LXCCONTAINER}" poweroff || exit 1
-sleep 5
+#lxc exec "${LXCCONTAINER}" poweroff || exit 1
+#sleep 5
 lxc stop "${LXCCONTAINER}"
 lxc publish "${LXCCONTAINER}" --alias "${OS}-${VERSION}-export" || exit 1
 mkdir -p "tmp-${OS}-export"
