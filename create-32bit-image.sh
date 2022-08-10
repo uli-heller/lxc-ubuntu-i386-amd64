@@ -63,11 +63,31 @@ done
 sudo ./mount.sh "./${OSDIR}"
 sudo chroot "./${OSDIR}" apt-get update
 sudo chroot "./${OSDIR}" apt-get upgrade -y
-sudo chroot "./${OSDIR}" apt-get install -y uidmap systemd-sysv iproute2
+sudo chroot "./${OSDIR}" apt-get install -y systemd-sysv iproute2
 sudo chroot "./${OSDIR}" apt-get install -y apt-utils net-tools
 sudo chroot "./${OSDIR}" apt-get install -y ca-certificates libpsl5 openssl publicsuffix
 sudo chroot "./${OSDIR}" apt-get install -y less vim
 sudo chroot "./${OSDIR}" bash -c "DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata"
+sudo chroot "./${OSDIR}" apt-get install -y apt-transport-https
+sudo chroot "./${OSDIR}" apt-get install -y console-setup console-setup-linux
+sudo chroot "./${OSDIR}" apt-get install -y cron
+sudo chroot "./${OSDIR}" apt-get install -y debconf-i18n
+sudo chroot "./${OSDIR}" apt-get install -y distro-info
+sudo chroot "./${OSDIR}" apt-get install -y fuse
+sudo chroot "./${OSDIR}" apt-get install -y init
+sudo chroot "./${OSDIR}" apt-get install -y iputils-ping
+sudo chroot "./${OSDIR}" apt-get install -y isc-dhcp-client
+sudo chroot "./${OSDIR}" apt-get install -y isc-dhcp-common
+sudo chroot "./${OSDIR}" apt-get install -y kbd
+sudo chroot "./${OSDIR}" apt-get install -y keyboard-configuration
+sudo chroot "./${OSDIR}" apt-get install -y language-pack-en
+sudo chroot "./${OSDIR}" apt-get install -y language-pack-en-base
+sudo chroot "./${OSDIR}" apt-get install -y logrotate
+sudo chroot "./${OSDIR}" apt-get install -y netbase
+sudo chroot "./${OSDIR}" apt-get install -y rsyslog
+sudo chroot "./${OSDIR}" apt-get install -y sudo
+sudo chroot "./${OSDIR}" apt-get install -y whiptail
+
 
 # netplan.io
 # libnetplan0
