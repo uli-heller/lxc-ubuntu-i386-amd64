@@ -83,6 +83,8 @@ Here is the consolidated list of missing debs:
   - openvswitch-switch
     - libdpdk-dev
       - libfdt-dev
+- isc-dhcp-client (optional)
+  - libbind-export-dev (optional)
 
 ## Special Case pandoc
 
@@ -194,6 +196,38 @@ $ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage
 ```
 $ PACKAGE=netplan.io
 $ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./netplan.io_0.104-0dp01~focal2.1_i386.deb ./libnetplan0_0.104-0dp01~focal2.1_i386.deb"
+```
+
+### Optional Packages
+
+#### Building libbind-export-dev
+
+```
+$ PACKAGE=libbind-export-dev
+$ sudo chroot focal-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
+$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+```
+
+#### Installing libbind-export-dev
+
+```
+$ PACKAGE=libbind-export-dev
+$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./libbind-export-dev_9.11.16+dfsg-3~ubuntu1_i386.deb ./libdns-export1109_9.11.16+dfsg-3~ubuntu1_i386.deb ./libirs-export161_9.11.16+dfsg-3~ubuntu1_i386.deb ./libisc-export1105_9.11.16+dfsg-3~ubuntu1_i386.deb ./libisccc-export161_9.11.16+dfsg-3~ubuntu1_i386.deb ./libisccfg-export163_9.11.16+dfsg-3~ubuntu1_i386.deb
+```
+
+#### Building isc-dhcp-client
+
+```
+$ PACKAGE=isc-dhcp-client
+$ sudo chroot focal-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
+$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+```
+
+#### Installing isc-dhcp-client
+
+```
+$ PACKAGE=isc-dhcp-client
+$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./isc-dhcp-client_4.4.1-2.1ubuntu5.20.04.3_i386.deb
 ```
 
 ### Unmounting The Build Chroot
