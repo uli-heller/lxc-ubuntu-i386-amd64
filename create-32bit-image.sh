@@ -114,7 +114,7 @@ test -d "debs/${OS}" && {
 sudo chroot "./${OSDIR}/rootfs" apt-get update
 sudo chroot "./${OSDIR}/rootfs" apt-get upgrade -y
 sudo chroot "./${OSDIR}/rootfs" apt-get clean
-sudo chroot "./${OSDIR}/rootfs" timedatectl set-timezone Europe/Berlin
+#sudo chroot "./${OSDIR}/rootfs" timedatectl set-timezone Europe/Berlin
 sudo ./umount.sh "./${OSDIR}/rootfs"
 
 echo >"./${OSDIR}/metadata.yaml"  "architecture: \"i686\""
@@ -158,10 +158,3 @@ EOF
     cd "${OSDIR}"
     sudo tar -cpf - *
 )|gzip -c9 >"${OS}-${VERSION}-lxcimage.tar.gz"
-
-test -z "${KEEP}" && {
-    rm -f "${OS}-metadata.tar.gz" "${OS}-lxc.tar.gz"
-    lxc delete "${LXCCONTAINER}"
-    lxc image delete "${OS}-${VERSION}-import"
-    lxc image delete "${OS}-${VERSION}-export"
-}
