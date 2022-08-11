@@ -39,14 +39,14 @@ test -z "${VERSION}" && VERSION=HEAD
 # later on
 sudo true
 
-debootstrap --download-only --arch=i386 --variant=minbase "${OS}" "./${OSDIR}"
-test -n "${KEEP}" && tar cf - "./${OSDIR}" |xz -c9 >"${OS}-debootstrap-debs.tar.xz"
+debootstrap --download-only --arch=i386 --variant=minbase "${OS}" "./${OSDIR}/rootfs"
+test -n "${KEEP}" && tar cf - "./${OSDIR}/rootfs" |xz -c9 >"${OS}-debootstrap-debs.tar.xz"
 
 sudo debootstrap --arch=i386 --variant=minbase "${OS}" "./${OSDIR}"
-test -n "${KEEP}" && sudo tar cf - "./${OSDIR}" |xz -c9 >"${OS}-debootstrap.tar.xz"
+test -n "${KEEP}" && sudo tar cf - "./${OSDIR}/rootfs" |xz -c9 >"${OS}-debootstrap.tar.xz"
 
-sudo mkdir -p "./${OSDIR}/etc/netplan"
-sudo tee  "./${OSDIR}/etc/netplan/netplan.yaml" >/dev/null <<EOF
+sudo mkdir -p "./${OSDIR}/rootfs/etc/netplan"
+sudo tee  "./${OSDIR}/rootfs/etc/netplan/netplan.yaml" >/dev/null <<EOF
 network:
     version: 2
     ethernets:
@@ -54,47 +54,47 @@ network:
             dhcp4: true
 EOF
 
-sudo sed -i -e 's/$/ restricted universe multiverse/' "./${OSDIR}/etc/apt/sources.list"
-SOURCE_LINE="$(head -1 "./${OSDIR}/etc/apt/sources.list")"
+sudo sed -i -e 's/$/ restricted universe multiverse/' "./${OSDIR}/rootfs/etc/apt/sources.list"
+SOURCE_LINE="$(head -1 "./${OSDIR}/rootfs/etc/apt/sources.list")"
 for r in updates backports security; do
-  echo "${SOURCE_LINE}"|sed -e "s/${OS} main/${OS}-${r} main/"|sudo tee -a "./${OSDIR}/etc/apt/sources.list"
+  echo "${SOURCE_LINE}"|sed -e "s/${OS} main/${OS}-${r} main/"|sudo tee -a "./${OSDIR}/rootfs/etc/apt/sources.list"
 done
 
-sudo ./mount.sh "./${OSDIR}"
-sudo chroot "./${OSDIR}" apt-get update
-sudo chroot "./${OSDIR}" apt-get upgrade -y
-sudo chroot "./${OSDIR}" apt-get install -y systemd-sysv iproute2
-sudo chroot "./${OSDIR}" apt-get install -y apt-utils net-tools
-sudo chroot "./${OSDIR}" apt-get install -y ca-certificates libpsl5 openssl publicsuffix
-sudo chroot "./${OSDIR}" apt-get install -y less vim
-sudo chroot "./${OSDIR}" bash -c "DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata"
-sudo chroot "./${OSDIR}" apt-get install -y apt-transport-https
-#sudo chroot "./${OSDIR}" apt-get install -y console-setup console-setup-linux # package not available?
-sudo chroot "./${OSDIR}" apt-get install -y cron
-sudo chroot "./${OSDIR}" apt-get install -y debconf-i18n
-sudo chroot "./${OSDIR}" apt-get install -y distro-info
-sudo chroot "./${OSDIR}" apt-get install -y fuse
-sudo chroot "./${OSDIR}" apt-get install -y init
-#sudo chroot "./${OSDIR}" apt-get install -y iputils-ping                      # package not available?
-#sudo chroot "./${OSDIR}" apt-get install -y isc-dhcp-client                   # package not available?
-#sudo chroot "./${OSDIR}" apt-get install -y isc-dhcp-common                   # package not available?
-#sudo chroot "./${OSDIR}" apt-get install -y kbd                               # package not available?
-sudo chroot "./${OSDIR}" bash -c "DEBIAN_FRONTEND=noninteractive apt-get install -y keyboad-configuration"
-sudo chroot "./${OSDIR}" apt-get install -y language-pack-en
-sudo chroot "./${OSDIR}" apt-get install -y language-pack-en-base
-#sudo chroot "./${OSDIR}" apt-get install -y logrotate                         # package not available?
-sudo chroot "./${OSDIR}" apt-get install -y netbase
-#sudo chroot "./${OSDIR}" apt-get install -y rsyslog                           # package not available?
-sudo chroot "./${OSDIR}" apt-get install -y sudo
-sudo chroot "./${OSDIR}" apt-get install -y whiptail
+sudo ./mount.sh "./${OSDIR}/rootfs"
+sudo chroot "./${OSDIR}/rootfs" apt-get update
+sudo chroot "./${OSDIR}/rootfs" apt-get upgrade -y
+sudo chroot "./${OSDIR}/rootfs" apt-get install -y systemd-sysv iproute2
+sudo chroot "./${OSDIR}/rootfs" apt-get install -y apt-utils net-tools
+sudo chroot "./${OSDIR}/rootfs" apt-get install -y ca-certificates libpsl5 openssl publicsuffix
+sudo chroot "./${OSDIR}/rootfs" apt-get install -y less vim
+sudo chroot "./${OSDIR}/rootfs" bash -c "DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata"
+sudo chroot "./${OSDIR}/rootfs" apt-get install -y apt-transport-https
+#sudo chroot "./${OSDIR}/rootfs" apt-get install -y console-setup console-setup-linux # package not available?
+sudo chroot "./${OSDIR}/rootfs" apt-get install -y cron
+sudo chroot "./${OSDIR}/rootfs" apt-get install -y debconf-i18n
+sudo chroot "./${OSDIR}/rootfs" apt-get install -y distro-info
+sudo chroot "./${OSDIR}/rootfs" apt-get install -y fuse
+sudo chroot "./${OSDIR}/rootfs" apt-get install -y init
+#sudo chroot "./${OSDIR}/rootfs" apt-get install -y iputils-ping                      # package not available?
+#sudo chroot "./${OSDIR}/rootfs" apt-get install -y isc-dhcp-client                   # package not available?
+#sudo chroot "./${OSDIR}/rootfs" apt-get install -y isc-dhcp-common                   # package not available?
+#sudo chroot "./${OSDIR}/rootfs" apt-get install -y kbd                               # package not available?
+sudo chroot "./${OSDIR}/rootfs" bash -c "DEBIAN_FRONTEND=noninteractive apt-get install -y keyboad-configuration"
+sudo chroot "./${OSDIR}/rootfs" apt-get install -y language-pack-en
+sudo chroot "./${OSDIR}/rootfs" apt-get install -y language-pack-en-base
+#sudo chroot "./${OSDIR}/rootfs" apt-get install -y logrotate                         # package not available?
+sudo chroot "./${OSDIR}/rootfs" apt-get install -y netbase
+#sudo chroot "./${OSDIR}/rootfs" apt-get install -y rsyslog                           # package not available?
+sudo chroot "./${OSDIR}/rootfs" apt-get install -y sudo
+sudo chroot "./${OSDIR}/rootfs" apt-get install -y whiptail
 
-sudo mkdir -p "./${OSDIR}/etc/sudoers.d"
-sudo tee  "./${OSDIR}/etc/sudoers.d/90-lxd" >/dev/null <<EOF
+sudo mkdir -p "./${OSDIR}/rootfs/etc/sudoers.d"
+sudo tee  "./${OSDIR}/rootfs/etc/sudoers.d/90-lxd" >/dev/null <<EOF
 # User rules for ubuntu
 ubuntu ALL=(ALL) NOPASSWD:ALL
 EOF
-sudo chroot "./${OSDIR}" useradd ubuntu -m
-sudo chroot "./${OSDIR}" usermod -aG sudo ubuntu
+sudo chroot "./${OSDIR}/rootfs" useradd ubuntu -m
+sudo chroot "./${OSDIR}/rootfs" usermod -aG sudo ubuntu
 
 # netplan.io
 # libnetplan0
@@ -103,48 +103,60 @@ test -d "debs/${OS}" && {
   >"./install-packages-${OS}"
   for d in "debs/${OS}/"*; do
     b="$(basename "${d}")"
-    sudo cp "${d}" "./${OSDIR}/var/cache/apt/archives/${b}"
+    sudo cp "${d}" "./${OSDIR}/rootfs/var/cache/apt/archives/${b}"
     echo "/var/cache/apt/archives/${b}" >>"./install-packages-${OS}"
   done
-  xargs -t sudo chroot "./${OSDIR}" apt-get install -y <"./install-packages-${OS}"
+  xargs -t sudo chroot "./${OSDIR}/rootfs" apt-get install -y <"./install-packages-${OS}"
   rm -f "./install-packages-${OS}"
 }
 
-sudo chroot "./${OSDIR}" apt-get update
-sudo chroot "./${OSDIR}" apt-get upgrade -y
-sudo chroot "./${OSDIR}" apt-get clean
-sudo ./umount.sh "./${OSDIR}"
+sudo chroot "./${OSDIR}/rootfs" apt-get update
+sudo chroot "./${OSDIR}/rootfs" apt-get upgrade -y
+sudo chroot "./${OSDIR}/rootfs" apt-get clean
+sudo chroot "./${OSDIR}/rootfs" timedatectl set-timezone Europe/Berlin
+sudo ./umount.sh "./${OSDIR}/rootfs"
 
-mkdir -p "tmp-${OS}"
+echo >"./${OSDIR}/metadata.yaml"  "architecture: \"i386\""
+echo >>"./${OSDIR}/metadata.yaml" "creation_date: $(date +%s)"
+echo >>"./${OSDIR}/metadata.yaml" "properties:"
+echo >>"./${OSDIR}/metadata.yaml" "  description: \"Ubuntu ${OS} i386 - Created by $(id -un)\""
+echo >>"./${OSDIR}/metadata.yaml" "  os: \"ubuntu\""
+echo >>"./${OSDIR}/metadata.yaml" "  release: \"${OS}\""
+echo >>"./${OSDIR}/metadata.yaml" "  serial: \"$(date +%Y%m%d_%H:%M)\""
+echo >>"./${OSDIR}/metadata.yaml" "  variant: default"
+echo >>"./${OSDIR}/metadata.yaml" "templates:"
+echo >>"./${OSDIR}/metadata.yaml" "  /etc/hostname:"
+echo >>"./${OSDIR}/metadata.yaml" "    when:"
+echo >>"./${OSDIR}/metadata.yaml" "    - create"
+echo >>"./${OSDIR}/metadata.yaml" "    - copy"
+echo >>"./${OSDIR}/metadata.yaml" "    create_only: false"
+echo >>"./${OSDIR}/metadata.yaml" "    template: hostname.tpl"
+echo >>"./${OSDIR}/metadata.yaml" "    properties: {}"
+echo >>"./${OSDIR}/metadata.yaml" "  /etc/hosts:"
+echo >>"./${OSDIR}/metadata.yaml" "    when:"
+echo >>"./${OSDIR}/metadata.yaml" "    - create"
+echo >>"./${OSDIR}/metadata.yaml" "    - copy"
+echo >>"./${OSDIR}/metadata.yaml" "    create_only: false"
+echo >>"./${OSDIR}/metadata.yaml" "    template: hosts.tpl"
+echo >>"./${OSDIR}/metadata.yaml" "    properties: {}"
+
+mkdir -p "./${OSDIR}/templates"
+cat >"./${OSDIR}/templates/hosts.tpl" <<EOF
+127.0.1.1	{{ container.name }}
+127.0.0.1	localhost
+::1		localhost ip6-localhost ip6-loopback
+ff02::1		ip6-allnodes
+ff02::2		ip6-allrouters
+EOF
+
+cat >"./${OSDIR}/templates/hostname.tpl" <<EOF
+{{ container.name }}
+EOF
+
 (
-    cd  "tmp-${OS}"
-    echo >metadata.yaml  "architecture: \"i386\""
-    echo >>metadata.yaml "creation_date: $(date +%s)"
-    echo >>metadata.yaml "properties:"
-    echo >>metadata.yaml "  description: \"Ubuntu ${OS} i386 - Created by $(id -un)\""
-    echo >>metadata.yaml "  os: \"ubuntu\""
-    echo >>metadata.yaml "  release: \"${OS}\""
-
-    tar -cf - metadata.yaml
-)|gzip -c9 >"${OS}-metadata.tar.gz"
-rm -rf "tmp-${OS}"
-(cd "./${OSDIR}" && sudo tar -cpf - .)|gzip -c9 >"${OS}-lxc.tar.gz"
-
-test -z "${KEEP}" && sudo rm -rf "./${OSDIR}"
-
-LXCCONTAINER="$(echo "${OS}-${VERSION}"|tr -c -d -- "-a-zA-Z0-9")-$(openssl rand -hex 5)"
-lxc image import "${OS}-metadata.tar.gz" "${OS}-lxc.tar.gz" --alias "${OS}-${VERSION}-import"
-lxc launch "${OS}-${VERSION}-import" "${LXCCONTAINER}" || exit 1
-sleep 5
-lxc exec "${LXCCONTAINER}" timedatectl set-timezone Europe/Berlin  || exit 1
-#lxc exec "${LXCCONTAINER}" poweroff || exit 1
-#sleep 5
-lxc stop "${LXCCONTAINER}"
-lxc publish "${LXCCONTAINER}" --alias "${OS}-${VERSION}-export" || exit 1
-mkdir -p "tmp-${OS}-export"
-lxc image export "${OS}-${VERSION}-export" "tmp-${OS}-export" || exit 1
-mv -v "tmp-${OS}-export"/* "${OS}-${VERSION}-lxcimage.tar.gz" || exit 1
-rm -rf "tmp-${OS}-export" || exit 1
+    cd "${OSDIR}"
+    tar -cpf - *
+)|gzip -c9 >"${OS}-${VERSION}-lxcimage.tar.gz"
 
 test -z "${KEEP}" && {
     rm -f "${OS}-metadata.tar.gz" "${OS}-lxc.tar.gz"
