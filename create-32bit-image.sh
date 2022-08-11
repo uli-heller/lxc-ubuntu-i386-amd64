@@ -156,7 +156,7 @@ EOF
 
 (
     cd "${OSDIR}"
-    tar -cpf - *
+    sudo tar -cpf - *
 )|gzip -c9 >"${OS}-${VERSION}-lxcimage.tar.gz"
 
 test -z "${KEEP}" && {
