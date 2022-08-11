@@ -117,7 +117,7 @@ sudo chroot "./${OSDIR}/rootfs" apt-get clean
 sudo chroot "./${OSDIR}/rootfs" timedatectl set-timezone Europe/Berlin
 sudo ./umount.sh "./${OSDIR}/rootfs"
 
-echo >"./${OSDIR}/metadata.yaml"  "architecture: \"i386\""
+echo >"./${OSDIR}/metadata.yaml"  "architecture: \"i686\""
 echo >>"./${OSDIR}/metadata.yaml" "creation_date: $(date +%s)"
 echo >>"./${OSDIR}/metadata.yaml" "properties:"
 echo >>"./${OSDIR}/metadata.yaml" "  description: \"Ubuntu ${OS} i386 - Created by $(id -un)\""
