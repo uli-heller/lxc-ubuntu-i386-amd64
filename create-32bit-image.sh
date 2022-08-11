@@ -39,10 +39,11 @@ test -z "${VERSION}" && VERSION=HEAD
 # later on
 sudo true
 
+mkdir -p "./${OSDIR}/rootfs"
 debootstrap --download-only --arch=i386 --variant=minbase "${OS}" "./${OSDIR}/rootfs"
 test -n "${KEEP}" && tar cf - "./${OSDIR}/rootfs" |xz -c9 >"${OS}-debootstrap-debs.tar.xz"
 
-sudo debootstrap --arch=i386 --variant=minbase "${OS}" "./${OSDIR}"
+sudo debootstrap --arch=i386 --variant=minbase "${OS}" "./${OSDIR}/rootfs"
 test -n "${KEEP}" && sudo tar cf - "./${OSDIR}/rootfs" |xz -c9 >"${OS}-debootstrap.tar.xz"
 
 sudo mkdir -p "./${OSDIR}/rootfs/etc/netplan"
