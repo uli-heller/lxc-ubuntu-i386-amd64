@@ -1,12 +1,13 @@
-Howto create a 32bit ubuntu container
+Howto create a 32/64 bit ubuntu container
 =====================================
 
 Originally, I created this repo to describe how to setup the
 container. I planned to add the missing debs to this repo, too.
 Over time, I extended the goals. So now:
 
-- There is a ready-to-use 32 bit image within the release
-- There is a script creating the ready-to-use image
+- There is are ready-to-use 32 bit images within the release
+- There is are ready-to-use 64 bit images within the release
+- There is a script creating the ready-to-use images
 
 TLDR
 ----
