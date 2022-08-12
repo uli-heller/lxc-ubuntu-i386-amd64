@@ -8,6 +8,7 @@ usage () {
 
 KEEP=
 USAGE=
+ARCHITECTURE=i686
 while getopts 'k' opt; do
     case $opt in
 	k)
@@ -100,9 +101,9 @@ sudo chroot "./${OSDIR}/rootfs" usermod -aG sudo ubuntu
 # netplan.io
 # libnetplan0
 # python3-netifaces
-test -d "debs/${OS}" && {
+test -d "debs/${OS}/${ARCHITECTURE}" && {
   >"./install-packages-${OS}"
-  for d in "debs/${OS}/"*; do
+  for d in "debs/${OS}/${ARCHITECTURE}"*; do
     b="$(basename "${d}")"
     sudo cp "${d}" "./${OSDIR}/rootfs/var/cache/apt/archives/${b}"
     echo "/var/cache/apt/archives/${b}" >>"./install-packages-${OS}"
@@ -117,10 +118,10 @@ sudo chroot "./${OSDIR}/rootfs" apt-get clean
 #sudo chroot "./${OSDIR}/rootfs" timedatectl set-timezone Europe/Berlin
 sudo ./umount.sh "./${OSDIR}/rootfs"
 
-echo >"./${OSDIR}/metadata.yaml"  "architecture: \"i686\""
+echo >"./${OSDIR}/metadata.yaml"  "architecture: \"${ARCHITECTURE}\""
 echo >>"./${OSDIR}/metadata.yaml" "creation_date: $(date +%s)"
 echo >>"./${OSDIR}/metadata.yaml" "properties:"
-echo >>"./${OSDIR}/metadata.yaml" "  description: \"Ubuntu ${OS} i386 - Created by $(id -un)\""
+echo >>"./${OSDIR}/metadata.yaml" "  description: \"Ubuntu ${OS} ${ARCHITECTURE} - Created by $(id -un)\""
 echo >>"./${OSDIR}/metadata.yaml" "  os: \"ubuntu\""
 echo >>"./${OSDIR}/metadata.yaml" "  release: \"${OS}\""
 echo >>"./${OSDIR}/metadata.yaml" "  serial: \"$(date +%Y%m%d_%H:%M)\""
