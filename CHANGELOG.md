@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+v1.5
+----
+
+- create-image.sh, create-64bit-image.sh: New scripts
+
 v1.4
 ----
 
