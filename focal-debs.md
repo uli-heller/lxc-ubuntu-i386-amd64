@@ -21,7 +21,7 @@ Datei umbenannt 'tmp-focal-export/2427cfabcaf64df8a0d3ea8532c424826b47edba270efd
   # There is a folder named "focal-build" afterwards
 ```
 
-## Mount And Configure Build Chroot
+## Configure Build Chroot
 
 ```
 $ cat focal-build/etc/apt/sources.list|sed -e "s/^deb /deb-src /"|sudo tee focal-build/etc/apt/sources.list.d/deb-src.list >/dev/null
@@ -37,14 +37,14 @@ Reading package lists... Done
 $ sudo chroot focal-build apt-get install -y dpkg-dev
   # installs "dpkg-source" required by "apt-get source ..."
 $ sudo chroot focal-build apt-get install -y quilt
+$ sudo ./umount.sh focal-build
 ```
 
 ## Running A Test Build
 
 ```
 $ PACKAGE=(package-name)
-$ sudo chroot focal-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+$ ./build.sh focal-build "${PACKAGE}"
 ```
 
 Typically, these are the outcomes:
@@ -57,7 +57,7 @@ Typically, these are the outcomes:
 
 ```
 $ PACKAGE=netplan.io
-$ sudo chroot focal-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
+$ ./build.sh focal-build "${PACKAGE}"
 ...
 The following packages have unmet dependencies:
  builddeps:netplan.io : Depends: python3-coverage but it is not installable
@@ -85,6 +85,7 @@ Here is the consolidated list of missing debs:
       - libfdt-dev
 - isc-dhcp-client (optional)
   - libbind-export-dev (optional)
+- logrotate (optional)
 
 ## Special Case pandoc
 
@@ -96,51 +97,50 @@ so I'm going to modify all packages depending on pandoc. I'll remove pandoc from
 
 ```
 $ PACKAGE=libfdt-dev
-$ sudo chroot focal-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+$ ./build.sh focal-build "${PACKAGE}"
 ```
 
 ## Installing libfdt-dev
 
 ```
 $ PACKAGE=libfdt-dev
-$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./libfdt-dev_1.5.1-1_i386.deb ./libfdt1_1.5.1-1_i386.deb"
+$ ./install.sh focal-build "${PACKAGE}" ./libfdt-dev_1.5.1-1_i386.deb ./libfdt1_1.5.1-1_i386.deb
 ```
 
 ## Building libdpdk-dev
 
 ```
 $ PACKAGE=libdpdk-dev
-$ sudo chroot focal-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+$ ./build.sh focal-build "${PACKAGE}"
 ```
 
 ## Installing libdpdk-dev
 
 ```
 $ PACKAGE=libdpdk-dev
-$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'; apt-get install  ./libdpdk-dev_19.11.12-0ubuntu0.20.04.1_i386.deb ./librte*.deb"
+  # TODO: Does this work? ---------------------------------------------------------------vvvvvvvvvvvvv
+$ ./install.sh focal-build "${PACKAGE}" ./libdpdk-dev_19.11.12-0ubuntu0.20.04.1_i386.deb ./librte*.deb
 ```
 
 ## Building python3-netifaces
 
 ```
 $ PACKAGE=python3-netifaces
-$ sudo chroot focal-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+$ ./build.sh focal-build "${PACKAGE}"
 ```
 
 ## Installing python3-netifaces
 
 ```
 $ PACKAGE=python3-netifaces
-$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./python3-netifaces_0.10.4-1ubuntu4_i386.deb"
+$ ./install.sh focal-build "${PACKAGE}" ./python3-netifaces_0.10.4-1ubuntu4_i386.deb
 ```
 
 ## Building openvswitch-switch
 
 ```
 $ PACKAGE=openvswitch-switch
+$ sudo ./mount.sh focal-build
 $ sudo chroot focal-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
 $ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
   # Aborts with an error
@@ -152,28 +152,28 @@ $ sudo chroot focal-build rm -rf "/srv/${PACKAGE}"
 $ sudo chroot focal-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
 $ sudo patch -d "focal-build/src/${PACKAGE}" -p0 <patches/focal/openvswitch/openvswitch-2.13.5_python2.diff
 $ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+$ sudo ./umount.sh focal-build
 ```
 
 ## Installing openvswitch-switch
 
 ```
 $ PACKAGE=openvswitch-switch
-$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./openvswitch-switch_2.13.5-0dp01~focal1_i386.deb ./openvswitch-common_2.13.5-0dp01~focal1_i386.deb"
+$ ./install.sh focal-build "${PACKAGE}" ./openvswitch-switch_2.13.5-0dp01~focal1_i386.deb ./openvswitch-common_2.13.5-0dp01~focal1_i386.deb
 ```
 
 ## Building python3-coverage
 
 ```
 $ PACKAGE=python3-coverage
-$ sudo chroot focal-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+$ ./build.sh focal-build "${PACKAGE}"
 ```
 
 ## Installing python3-coverage
 
 ```
 $ PACKAGE=python3-coverage
-$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./python3-coverage_4.5.2+dfsg.1-4ubuntu1_i386.deb"
+$ ./install.sh focal-build "${PACKAGE}" ./python3-coverage_4.5.2+dfsg.1-4ubuntu1_i386.deb
 ```
 
 ## Building netplan.io
@@ -183,19 +183,21 @@ So we have to patch it...
 
 ```
 $ PACKAGE=netplan.io
+$ sudo ./mount.sh focal-build
 $ sudo chroot focal-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}'"
 $ sudo patch -d "focal-build/src/${PACKAGE}" <patches/focal/netplan.io/netplan.io_no-pandoc.diff
 $ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
   # Shows lots of missing packages -> install them via apt-get
 $ sudo chroot focal-build apt-get install -y cmake cython3 libnl-3-dev libnl-route-3-dev libsystemd-dev libudev-dev ninja-build
 $ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+$ sudo ./umount.sh focal-build
 ```
 
 ### Installing netplan.io
 
 ```
 $ PACKAGE=netplan.io
-$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./netplan.io_0.104-0dp01~focal2.1_i386.deb ./libnetplan0_0.104-0dp01~focal2.1_i386.deb"
+$ ./install.sh focal-build "${PACKAGE}" ./netplan.io_0.104-0dp01~focal2.1_i386.deb ./libnetplan0_0.104-0dp01~focal2.1_i386.deb
 ```
 
 ### Optional Packages
@@ -204,34 +206,40 @@ $ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./netp
 
 ```
 $ PACKAGE=libbind-export-dev
-$ sudo chroot focal-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+$ ./build.sh focal-build "${PACKAGE}"
 ```
 
 #### Installing libbind-export-dev
 
 ```
 $ PACKAGE=libbind-export-dev
-$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./libbind-export-dev_9.11.16+dfsg-3~ubuntu1_i386.deb ./libdns-export1109_9.11.16+dfsg-3~ubuntu1_i386.deb ./libirs-export161_9.11.16+dfsg-3~ubuntu1_i386.deb ./libisc-export1105_9.11.16+dfsg-3~ubuntu1_i386.deb ./libisccc-export161_9.11.16+dfsg-3~ubuntu1_i386.deb ./libisccfg-export163_9.11.16+dfsg-3~ubuntu1_i386.deb
+$ ./install.sh focal-build "${PACKAGE}" ./libbind-export-dev_9.11.16+dfsg-3~ubuntu1_i386.deb ./libdns-export1109_9.11.16+dfsg-3~ubuntu1_i386.deb ./libirs-export161_9.11.16+dfsg-3~ubuntu1_i386.deb ./libisc-export1105_9.11.16+dfsg-3~ubuntu1_i386.deb ./libisccc-export161_9.11.16+dfsg-3~ubuntu1_i386.deb ./libisccfg-export163_9.11.16+dfsg-3~ubuntu1_i386.deb
 ```
 
 #### Building isc-dhcp-client
 
 ```
 $ PACKAGE=isc-dhcp-client
-$ sudo chroot focal-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+$ ./build.sh focal-build "${PACKAGE}"
 ```
 
 #### Installing isc-dhcp-client
 
 ```
 $ PACKAGE=isc-dhcp-client
-$ sudo chroot focal-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./isc-dhcp-client_4.4.1-2.1ubuntu5.20.04.3_i386.deb
+$ ./install.sh focal-build "${PACKAGE}" ./isc-dhcp-client_4.4.1-2.1ubuntu5.20.04.3_i386.deb
 ```
 
-### Unmounting The Build Chroot
+#### Building logrotate
 
 ```
-$ sudo ./umount.sh jammy-build
+$ PACKAGE=logrotate
+$ ./build.sh focal-build "${PACKAGE}"
+```
+
+#### Installing isc-dhcp-client
+
+```
+$ PACKAGE=logrotate
+$ ./install.sh focal-build "${PACKAGE}" ./logrotate_3.14.0-4ubuntu3_i386.deb
 ```

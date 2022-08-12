@@ -5,6 +5,7 @@ v1.4
 ----
 
 - build.sh: New script
+- install.sh: New script
 - Added "logrotate"
 
 v1.3
