@@ -84,7 +84,8 @@ sudo chroot "./${OSDIR}/rootfs" apt-get install -y init
 sudo chroot "./${OSDIR}/rootfs" bash -c "DEBIAN_FRONTEND=noninteractive apt-get install -y keyboad-configuration"
 sudo chroot "./${OSDIR}/rootfs" apt-get install -y language-pack-en
 sudo chroot "./${OSDIR}/rootfs" apt-get install -y language-pack-en-base
-#sudo chroot "./${OSDIR}/rootfs" apt-get install -y logrotate                         # package not available?
+sudo chroot "./${OSDIR}/rootfs" apt-get install -y logrotate                          # probably already installed via debs/...
+sudo chroot "./${OSDIR}/rootfs" apt-get install -y netplan.io                         # probably already installed via debs/...
 sudo chroot "./${OSDIR}/rootfs" apt-get install -y netbase
 #sudo chroot "./${OSDIR}/rootfs" apt-get install -y rsyslog                           # package not available?
 sudo chroot "./${OSDIR}/rootfs" apt-get install -y sudo
