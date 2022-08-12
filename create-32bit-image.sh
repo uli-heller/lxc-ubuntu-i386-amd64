@@ -3,16 +3,19 @@
 BN="$(basename "$0")"
 
 usage () {
-    echo "USAGE: ${BN} [-k] osname [osdir]"
+    echo "USAGE: ${BN} [-a x86_64|i686] [-k] osname [osdir]"
 }
 
 KEEP=
 USAGE=
 ARCHITECTURE=i686
-while getopts 'k' opt; do
+while getopts 'a:k' opt; do
     case $opt in
 	k)
 	    KEEP=y
+	    ;;
+	a)
+	    ARCHITECTURE="${OPTARG}"
 	    ;;
 	*)
 	    USAGE=y
@@ -41,10 +44,10 @@ test -z "${VERSION}" && VERSION=HEAD
 sudo true
 
 mkdir -p "./${OSDIR}/rootfs"
-debootstrap --download-only --arch=i386 --variant=minbase "${OS}" "./${OSDIR}/rootfs"
+debootstrap --download-only "--arch=${ARCHITECTURE}" --variant=minbase "${OS}" "./${OSDIR}/rootfs"
 test -n "${KEEP}" && tar cf - "./${OSDIR}/rootfs" |xz -c9 >"${OS}-debootstrap-debs.tar.xz"
 
-sudo debootstrap --arch=i386 --variant=minbase "${OS}" "./${OSDIR}/rootfs"
+sudo debootstrap "--arch=${ARCHITECTURE}" --variant=minbase "${OS}" "./${OSDIR}/rootfs"
 test -n "${KEEP}" && sudo tar cf - "./${OSDIR}/rootfs" |xz -c9 >"${OS}-debootstrap.tar.xz"
 
 sudo mkdir -p "./${OSDIR}/rootfs/etc/netplan"
