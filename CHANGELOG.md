@@ -6,6 +6,7 @@ v1.5
 
 - create-image.sh, create-64bit-image.sh: New scripts
 - Changed image names: Added architecture
+- Renamed: lxc-ubuntu-32bit -> lxc-ubuntu-i686-amd64
 
 v1.4
 ----
