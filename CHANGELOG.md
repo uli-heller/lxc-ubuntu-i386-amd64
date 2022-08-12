@@ -5,6 +5,7 @@ v1.5
 ----
 
 - create-image.sh, create-64bit-image.sh: New scripts
+- Changed image names: Added architecture
 
 v1.4
 ----
