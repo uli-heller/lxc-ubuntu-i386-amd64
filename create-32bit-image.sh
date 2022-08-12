@@ -157,6 +157,8 @@ cat >"./${OSDIR}/templates/hostname.tpl" <<EOF
 EOF
 
 (
-    cd "${OSDIR}"
+    cd "./${OSDIR}"
     sudo tar -cpf - *
-)|gzip -c9 >"${OS}-${VERSION}-lxcimage.tar.gz"
+)|xz -c9 >"${OS}-${VERSION}-lxcimage.tar.xz"
+
+test -z "${KEEP}" && sudo rm -rf "./${OSDIR}"

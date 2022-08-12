@@ -7,6 +7,7 @@ v1.4
 - build.sh: New script
 - install.sh: New script
 - Added "logrotate"
+- Use xz compression
 
 v1.3
 ----
