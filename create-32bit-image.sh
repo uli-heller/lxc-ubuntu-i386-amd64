@@ -104,7 +104,7 @@ sudo chroot "./${OSDIR}/rootfs" usermod -aG sudo ubuntu
 # python3-netifaces
 test -d "debs/${OS}/${ARCHITECTURE}" && {
   >"./install-packages-${OS}"
-  for d in "debs/${OS}/${ARCHITECTURE}"*; do
+  for d in "debs/${OS}/${ARCHITECTURE}/"*; do
     b="$(basename "${d}")"
     sudo cp "${d}" "./${OSDIR}/rootfs/var/cache/apt/archives/${b}"
     echo "/var/cache/apt/archives/${b}" >>"./install-packages-${OS}"
