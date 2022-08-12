@@ -114,6 +114,7 @@ ubuntu ALL=(ALL) NOPASSWD:ALL
 EOF
 sudo chroot "./${OSDIR}/rootfs" useradd ubuntu -m
 sudo chroot "./${OSDIR}/rootfs" usermod -aG sudo ubuntu
+sudo chroot "./${OSDIR}/rootfs" chsh -s /bin/bash ubuntu
 
 # netplan.io
 # libnetplan0

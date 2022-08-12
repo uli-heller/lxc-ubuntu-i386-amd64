@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+v1.6 - unreleased
+----
+
+- Changed login shell to /bin/bash for user "ubuntu" [fixes #1]
+
 v1.5
 ----
 
