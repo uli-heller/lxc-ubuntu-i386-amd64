@@ -133,13 +133,12 @@ test -d "debs/${OS}/${ARCHITECTURE}" && {
 sudo chroot "./${OSDIR}/rootfs" apt-get update
 sudo chroot "./${OSDIR}/rootfs" apt-get upgrade -y
 sudo chroot "./${OSDIR}/rootfs" apt-get clean
-#sudo chroot "./${OSDIR}/rootfs" timedatectl set-timezone Europe/Berlin
 sudo ./umount.sh "./${OSDIR}/rootfs"
 
 echo >"./${OSDIR}/metadata.yaml"  "architecture: \"${ARCHITECTURE}\""
 echo >>"./${OSDIR}/metadata.yaml" "creation_date: $(date +%s)"
 echo >>"./${OSDIR}/metadata.yaml" "properties:"
-echo >>"./${OSDIR}/metadata.yaml" "  description: \"Ubuntu ${OS} ${ARCHITECTURE} - Created by $(id -un)\""
+echo >>"./${OSDIR}/metadata.yaml" "  description: \"Ubuntu ${OS} ${DEBOOTSTRAP_ARCHITECTURE} - Created by $(id -un)\""
 echo >>"./${OSDIR}/metadata.yaml" "  os: \"ubuntu\""
 echo >>"./${OSDIR}/metadata.yaml" "  release: \"${OS}\""
 echo >>"./${OSDIR}/metadata.yaml" "  serial: \"$(date +%Y%m%d_%H:%M)\""
@@ -176,6 +175,6 @@ EOF
 (
     cd "./${OSDIR}"
     sudo tar -cpf - *
-)|xz -c9 >"${OS}-${VERSION}-${ARCHITECTURE}-lxcimage.tar.xz"
+)|xz -c9 >"${OS}-${VERSION}-${DEBOOTSTRAP_ARCHITECTURE}-lxcimage.tar.xz"
 
 test -z "${KEEP}" && sudo rm -rf "./${OSDIR}"

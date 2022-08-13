@@ -4,7 +4,10 @@ CHANGELOG
 v1.6 - unreleased
 ----
 
+- Fixed README.md - use new naming
+- Fixed description of lxc image - use debootstrap architectures (i686/x86_64 -> i386/amd64)
 - Changed login shell to /bin/bash for user "ubuntu" [fixes #1]
+- Renamed again lxc-ubuntu-i686-amd64 -> lxc-ubuntu-i386-amd64
 
 v1.5
 ----
