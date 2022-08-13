@@ -9,15 +9,17 @@ Over time, I extended the goals. So now:
 - There is are ready-to-use 64 bit images within the release
 - There is a script creating the ready-to-use images
 
+The images are quite a bit smaller than the ubuntu standard images.
+
 TLDR
 ----
 
 ```
 ./create-32bit-image.sh focal
-# Asks for sudo password
-# Creates "focal-(version)-lxcimage.tar.gz"
-lxc image import focal-v0.5-lxcimage.tar.gz --alias focal-v0.5
-lxc launch focal-v0.5 my-running-image
+  # Asks for sudo password
+  # Creates "focal-(version)-(architecture)-lxcimage.tar.gz"
+lxc image import focal-v1.5-i386-lxcimage.tar.gz --alias focal-32bit-import
+lxc launch focal-32bit-import my-running-image
 ```
 
 Select Your Playground
@@ -34,16 +36,16 @@ Filesystem                     Size  Used Avail Use% Mounted on
 Download And Extract A Release
 ------------------------------
 
-Select the release you want to play with [here at Github](https://github.com/uli-heller/lxc-ubuntu-32bit/releases).
-As of this writing, v0.5 is the latest release, so I'm using this:
+Select the release you want to play with [here at Github](https://github.com/uli-heller/lxc-ubuntu-i386-amd64/releases).
+As of this writing, v1.5 is the latest release, so I'm using this:
 
 ```
 $ cd /data
-$ wget https://github.com/uli-heller/lxc-ubuntu-32bit/releases/download/v0.5/lxc-ubuntu-32bit-v0.5.tar.xz
-  # Creates "lxc-ubuntu-32bit-v0.5.tar.xz"
-$ xz -cd lxc-ubuntu-32bit-v0.5.tar.xz | tar xf -
-  # Extracts to the folder "lxc-ubuntu-32bit-v0.5"
-$ cd lxc-ubuntu-32bit-v0.5
+$ wget https://github.com/uli-heller/lxc-ubuntu-i386-amd64/releases/download/v1.5/lxc-ubuntu-i386-amd64-v1.5.tar.xz
+  # Creates "lxc-ubuntu-i386-amd64-v1.5.tar.xz"
+$ xz -cd lxc-ubuntu-i386-amd64-v1.5.tar.xz | tar xf -
+  # Extracts to the folder "lxc-ubuntu-i386-amd64-v1.5"
+$ cd lxc-ubuntu-i386-amd64-v1.5
 ```
 
 Create The Image Files
@@ -53,20 +55,20 @@ Create The Image Files
 $ ./create-32bit-image.sh focal
   # Typically asks for sudo password
   # Takes a couple of minutes
-  # Creates "focal-v0.5-lxcimage.tar.gz"
+  # Creates "focal-v1.5-i386-lxcimage.tar.xz"
 ```
 
 Import And Start The LXC Image
 -------------------------------
 
 ```
-$ lxc image import focal-v0.5-lxcimage.tar.gz --alias focal-v0.5-import
-$ lxc launch focal-v0.5-import focal-v0.5
+$ lxc image import focal-v1.5-i386-lxcimage.tar.xz --alias focal-32bit-import
+$ lxc launch focal-32bit-import focal-32bit
 $ lxc ls
 +------------------+---------+----------------------+------+-----------+-----------+
 |       NAME       |  STATE  |         IPV4         | IPV6 |   TYPE    | SNAPSHOTS |
 +------------------+---------+----------------------+------+-----------+-----------+
-| focal-v0.5       | RUNNING | 10.253.205.63 (eth0) |      | CONTAINER | 0         |
+| focal-32bit      | RUNNING | 10.253.205.63 (eth0) |      | CONTAINER | 0         |
 +------------------+---------+----------------------+------+-----------+-----------+
 ```
 
@@ -74,9 +76,9 @@ Cleaning Up - Delete LXC Container And LXC Image
 ------------------------------------------------
 
 ```
-$ lxc stop focal-v0.5
-$ lxc delete focal-v0.5
-$ lxc image delete focal-v0.5-import
+$ lxc stop focal-32bit
+$ lxc delete focal-32bit
+$ lxc image delete focal-32bit-import
 ```
 
 Open Topics
