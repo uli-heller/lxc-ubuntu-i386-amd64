@@ -50,6 +50,8 @@ case "${ARCHITECTURE}" in
     x86_64)
 	DEBOOTSTRAP_ARCHITECTURE=amd64
 	;;
+    i386|amd64)
+	DEBOOTSTRAP_ARCHITECTURE="${ARCHITECTURE}"	
     *)
 	usage >&2
 	exit 1
