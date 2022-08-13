@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-v1.6 - unreleased
+v1.6
 ----
 
 - Fixed README.md - use new naming, add version and architecture to imported image name
