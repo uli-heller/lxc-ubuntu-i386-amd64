@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+v1.7 - in preparation
+----
+
+- build.sh: Started to work on rebuilding a deb package
+
 v1.6
 ----
 
