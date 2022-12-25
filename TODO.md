@@ -1,14 +1,15 @@
 TODO
 ====
 
-Offen
+Open
 -----
 
-- Einfaches Bauen von DEBs - build.sh
-- Anpassen der Images an meine persönlichen Vorlieben - Option "-U"
-- Zwischenschritte
-- SSH-Schlüssel für den Container
-- SSHD_CONFIG für den Container
+- Simple building of DEBs - build.sh
 
-Erledigt
---------
+Done
+----
+
+- Added my personal preferences - option '-U'
+- Skip already done steps
+- ssh pubkeys for the container (root and ubuntu)
+- /etc/ssh/sshd_config for the container
