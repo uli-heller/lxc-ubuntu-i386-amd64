@@ -227,8 +227,8 @@ EOF
 apt install -y openssh-server
 timedatectl set-timezone Europe/Berlin
 sed -i -e 's/^#PasswordAuthentication.*$/PasswordAuthentication no/' "/etc/ssh/sshd_config"
-echo systemctl disable first-start.service|at now + 1sec
-echo "rm -f /root/first-start.sh /root/first-start.service"|at now + 5sec
+echo systemctl disable first-start.service|at now
+echo "rm -f /root/first-start.sh /root/first-start.service"|at now
 EOF
     sudo chmod +x "./${OSDIR}/rootfs/root/first-start.sh"
 
