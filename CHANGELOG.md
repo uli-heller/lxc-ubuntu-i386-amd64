@@ -6,6 +6,11 @@ v1.7 - in preparation
 
 - build.sh: Started to work on rebuilding a deb package
 - create-image.sh: New option '-U' to add my personal preferences to the images
+  - Install joe, apt-transport-https, net-tools and at	
+  - Prepare openssh for installation
+  - Added my personal SSH key
+  - Prepare timezone for initialization
+  - Fix sshd_config - no password logins
 - create-image.sh: New option '-h' to show a helpful message
 
 v1.6
