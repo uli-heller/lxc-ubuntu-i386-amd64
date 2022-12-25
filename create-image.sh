@@ -197,8 +197,9 @@ EOF
 
 test -n "${ULI_MODIFICATIONS}" && {
     sudo ./mount.sh "./${OSDIR}/rootfs"
-    sudo chroot "./${OSDIR}/rootfs" apt-get -y install joe apt-transport-https openssh-server net-tools
+    sudo chroot "./${OSDIR}/rootfs" apt-get -y install joe apt-transport-https net-tools at
     sudo chroot "./${OSDIR}/rootfs" apt-get -y clean
+    sudo chroot "./${OSDIR}/rootfs" apt-get install -y --download-only openssh-server
     sudo chroot "./${OSDIR}/rootfs" tee -a /etc/bash.bashrc >/dev/null <<EOF
 HISTFILESIZE=
 HISTSIZE=
@@ -220,15 +221,35 @@ EOF
 	    sudo chroot "./${OSDIR}/rootfs" sed -i 's/^\(HISTSIZE\|HISTFILESIZE\)/#\1/' "${f}"
 	}
     done
-    # sudo chroot "./${OSDIR}/rootfs" timedatectl set-timezone Europe/Berlin
-    #   leads to
-    #   System has not been booted with systemd as init system (PID 1). Can't operate.
-    #   Failed to connect to bus: Host is down
-    # so we do just set /etc/timezone
-    echo "Europe/Berlin" | sudo tee "./${OSDIR}/rootfs/etc/timezone" >/dev/null
 
-    sudo rm "./${OSDIR}/rootfs/etc/ssh/ssh_host"*
-    sudo sed -i -e 's/^#PasswordAuthentication.*$/PasswordAuthentication no/' "./${OSDIR}/rootfs/etc/ssh/sshd_config"
+    sudo tee "./${OSDIR}/rootfs/root/first-start.sh" >/dev/null <<EOF
+#!/bin/sh
+apt install -y openssh-server
+timedatectl set-timezone Europe/Berlin
+sed -i -e 's/^#PasswordAuthentication.*$/PasswordAuthentication no/' "/etc/ssh/sshd_config"
+echo systemctl disable first-start.service|at now + 1sec
+echo "rm -f /root/first-start.sh /root/first-start.service"|at now + 5sec
+EOF
+    sudo chmod +x "./${OSDIR}/rootfs/root/first-start.sh"
+
+    sudo tee "./${OSDIR}/rootfs/root/first-start.service" >/dev/null <<EOF
+[Unit]
+Before=systemd-user-sessions.service
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=/root/first-start.sh
+
+[Service]
+Type=oneshot
+ExecStart=/root/first-start.sh
+ExecStartPost=rm -rf /root/first-start.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+    sudo chroot "./${OSDIR}/rootfs" systemctl enable /root/first-start.service
 
     for u in root ubuntu; do
 	sudo chroot "./${OSDIR}/rootfs" sudo -u "${u}" -i /bin/sh -c "test -d .ssh || { mkdir .ssh; chmod 700 .ssh; touch .ssh/authorized_keys; chmod 600 .ssh/authorized_keys; }"
