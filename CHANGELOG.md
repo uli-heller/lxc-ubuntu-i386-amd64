@@ -1,12 +1,12 @@
 CHANGELOG
 =========
 
-v1.7 - in preparation
+v1.7
 ----
 
 - build.sh: Started to work on rebuilding a deb package
 - create-image.sh: New option '-U' to add my personal preferences to the images
-  - Install joe, apt-transport-https, net-tools and at	
+  - Install joe, apt-transport-https, net-tools and at
   - Prepare openssh for installation
   - Added my personal SSH key
   - Prepare timezone for initialization
