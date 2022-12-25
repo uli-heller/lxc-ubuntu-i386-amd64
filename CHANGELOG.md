@@ -5,6 +5,8 @@ v1.7 - in preparation
 ----
 
 - build.sh: Started to work on rebuilding a deb package
+- create-image.sh: New option '-U' to add my personal preferences to the images
+- create-image.sh: New option '-h' to show a helpful message
 
 v1.6
 ----
