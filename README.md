@@ -14,12 +14,52 @@ The images are quite a bit smaller than the ubuntu standard images.
 TLDR
 ----
 
+### Create And Run A Single Container
+
+For example:
+
+- 32 bit
+- Ubuntu-20.04 - focal
+
+Execute:
+
 ```
 ./create-32bit-image.sh focal
   # Asks for sudo password
   # Creates "focal-(version)-(architecture)-lxcimage.tar.gz"
 lxc image import focal-v1.6-i386-lxcimage.tar.gz --alias focal-v1.6-i386
 lxc launch focal-v16-i386 my-running-image
+```
+
+### Create All Container Images
+
+As of 2022-12-25, these are the container images:
+
+- jammy-v1.7-amd64-lxcimage.tar.xz ....... 64bit Ubuntu 22.04
+- uli-jammy-v1.7-amd64-lxcimage.tar.xz ... 64bit Ubuntu 22.04 with Uli's preferences
+- jammy-v1.7-i386-lxcimage.tar.xz ........ 32bit Ubuntu 22.04
+- uli-jammy-v1.7-i386-lxcimage.tar.xz .... 32bit Ubuntu 22.04 with Uli's preferences
+- focal-v1.7-amd64-lxcimage.tar.xz ....... 64bit Ubuntu 20.04
+- uli-focal-v1.7-amd64-lxcimage.tar.xz ... 64bit Ubuntu 20.04 with Uli's preferences
+- focal-v1.7-i386-lxcimage.tar.xz ........ 32bit Ubuntu 20.04
+- uli-focal-v1.7-i386-lxcimage.tar.xz .... 32bit Ubuntu 20.04 with Uli's preferences
+
+Execute all of them by executing:
+
+```
+./create-image.sh -a x86_64 -k jammy
+./create-image.sh -a x86_64 -k -U jammy
+sudo rm -rf jammy jammy*lz4 jammy*txt
+./create-image.sh -a i686 -k jammy
+./create-image.sh -a i686 -k -U jammy
+sudo rm -rf jammy jammy*lz4 jammy*txt
+
+./create-image.sh -a x86_64 -k focal
+./create-image.sh -a x86_64 -k -U focal
+sudo rm -rf focal focal*lz4 focal*txt
+./create-image.sh -a i686 -k focal
+./create-image.sh -a i686 -k -U focal
+sudo rm -rf focal focal*lz4 focal*txt
 ```
 
 Select Your Playground
