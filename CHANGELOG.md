@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-v1.8 (in preparation)
+v1.8
 ----
 
 - create-image.sh:
