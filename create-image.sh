@@ -207,8 +207,53 @@ EOF
   sudo ./umount.sh "./${OSDIR}/rootfs"
 }
 
+sudo ./mount.sh "./${OSDIR}/rootfs"
+sudo tee "./${OSDIR}/rootfs/usr/local/bin/first-start.sh" >/dev/null <<EOF
+#!/bin/sh
+INIT=
+test -d /etc/first-start || { mkdir -p /etc/first-start; INIT=complete; }
+test -s /etc/machine-id && {
+  test -z "${INIT}" && {
+    cmp /etc/machine-id /etc/first-start/machine-id 2>/dev/null || INIT=new-machine-id
+  }
+}
+test -n "${INIT}" && {
+  rm -f /etc/ssh/ssh_host_*
+  dpkg-reconfigure openssh-server
+  cp /etc/machine-id /etc/first-start/machine-id
+}
+true
+EOF
+sudo chmod +x "./${OSDIR}/rootfs/usr/local/bin/first-start.sh"
+
+sudo tee "./${OSDIR}/rootfs/lib/systemd/system/first-start.service" >/dev/null <<EOF
+[Unit]
+Before=systemd-user-sessions.service
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=/usr/local/bin/first-start.sh
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/first-start.sh
+#ExecStartPost=rm -rf /usr/local/bin/first-start.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo chroot "./${OSDIR}/rootfs" systemctl enable /lib/systemd/system/first-start.service
+
 test -d "${MODIFICATIONS_FOLDER}" && {
-    sudo ./mount.sh "./${OSDIR}/rootfs"
+    sudo tee -a "./${OSDIR}/rootfs/usr/local/bin/first-start.sh" >/dev/null <<EOF
+test "${INIT}" = "complete" && {
+  timedatectl set-timezone Europe/Berlin
+  sed -i -e 's/^#PasswordAuthentication.*$/PasswordAuthentication no/' "/etc/ssh/sshd_config"
+}
+true
+EOF
+    
     test -s "${MODIFICATIONS_FOLDER}/additional-packages" && {
         sudo chroot "./${OSDIR}/rootfs" xargs apt-get -y install <"${MODIFICATIONS_FOLDER}/additional-packages"
     }
@@ -235,39 +280,6 @@ EOF
 	}
     done
 
-    sudo tee "./${OSDIR}/rootfs/usr/local/bin/first-start.sh" >/dev/null <<EOF
-#!/bin/sh
-timedatectl set-timezone Europe/Berlin
-sed -i -e 's/^#PasswordAuthentication.*$/PasswordAuthentication no/' "/etc/ssh/sshd_config"
-RECONFIGURE=
-for k in $(find /etc/ssh -maxdepth 1 -type f -name "*host*" -not -newer /etc/machine-id|grep -v '.pub$'); do
-  rm -f "${k}"*
-  RECONFIGURE=y
-done
-test -n "${RECONFIGURE}" && dpkg-reconfigure openssh-server
-#echo systemctl disable first-start.service|at now
-#echo "rm -f /usr/local/bin/first-start.sh /lib/systemd/system/first-start.service"|at now
-EOF
-    sudo chmod +x "./${OSDIR}/rootfs/usr/local/bin/first-start.sh"
-
-    sudo tee "./${OSDIR}/rootfs/lib/systemd/system/first-start.service" >/dev/null <<EOF
-[Unit]
-Before=systemd-user-sessions.service
-Wants=network-online.target
-After=network-online.target
-ConditionPathExists=/usr/local/bin/first-start.sh
-
-[Service]
-Type=oneshot
-ExecStart=/usr/local/bin/first-start.sh
-#ExecStartPost=rm -rf /usr/local/bin/first-start.sh
-RemainAfterExit=yes
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-    sudo chroot "./${OSDIR}/rootfs" systemctl enable /lib/systemd/system/first-start.service
 
     for u in root ubuntu; do
 	sudo chroot "./${OSDIR}/rootfs" sudo -u "${u}" -i /bin/sh -c "test -d .ssh || { mkdir .ssh; chmod 700 .ssh; touch .ssh/authorized_keys; chmod 600 .ssh/authorized_keys; }"
@@ -275,8 +287,8 @@ EOF
 	    sudo chroot "./${OSDIR}/rootfs" sudo -u "${u}" -i /bin/sh -c "cat >>.ssh/authorized_keys" <"${p}"
 	done
     done
-    sudo ./umount.sh "./${OSDIR}/rootfs"
 }
+sudo ./umount.sh "./${OSDIR}/rootfs"
 
 echo >"./${OSDIR}/metadata.yaml"  "architecture: \"${ARCHITECTURE}\""
 echo >>"./${OSDIR}/metadata.yaml" "creation_date: $(date +%s)"

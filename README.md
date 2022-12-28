@@ -129,6 +129,22 @@ No open topics
 Solved Topics
 -------------
 
+### Handling of 'machine-id' and 'ssh_host*key'
+
+According to [BUILDING_IMAGES](https://systemd.io/BUILDING_IMAGES/) and
+[linuxcontainers - image handling](https://linuxcontainers.org/lxd/docs/master/image-handling/#)
+the machine-id should be different for each and every container instance.
+My observation is that they are basically constant for the standard containers.
+
+I changed this for my containers:
+
+- After `lxc launch`, the files are freshly initialized. Launching the same image twice
+  creates different sets of machine-id and ssh_host*key files
+
+- After `lxc copy`, the files are freshly initialized
+
+- After `lxc rename`, the files are freshly initialized
+
 ### Why is the 32 bit image larger than my 64 bit images?
 
 `apt-get clean` reduces the size!
