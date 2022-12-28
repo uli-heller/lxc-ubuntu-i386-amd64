@@ -118,9 +118,9 @@ esac
 
 test -z "${OSDIR}" && OSDIR="${OS}-${DEBOOTSTRAP_ARCHITECTURE}"
 
-mkdir -p "./${OSDIR}"
-sudo mkdir -p "./${OSDIR}/rootfs"
 test -e "${OS}-${DEBOOTSTRAP_ARCHITECTURE}-debootstrap-debs.tar.lz4" || {
+  mkdir -p "./${OSDIR}"
+  sudo mkdir -p "./${OSDIR}/rootfs"
   sudo debootstrap --download-only "--arch=${DEBOOTSTRAP_ARCHITECTURE}" --variant=minbase "${OS}" "./${OSDIR}/rootfs"
   test -n "${KEEP}" && tar cf - "./${OSDIR}/rootfs" |lz4 -c >"${OS}-${DEBOOTSTRAP_ARCHITECTURE}-debootstrap-debs.tar.lz4"
 }
@@ -202,8 +202,13 @@ EOF
   sudo chroot "./${OSDIR}/rootfs" apt-get update
   sudo chroot "./${OSDIR}/rootfs" apt-get upgrade -y
   sudo chroot "./${OSDIR}/rootfs" apt-get clean
-  test -n "${KEEP}" && sudo tar --one-file-system -cf - "./${OSDIR}/rootfs" |lz4 -c >"${OS}-${DEBOOTSTRAP_ARCHITECTURE}-addons.tar.lz4"
   sudo ./umount.sh "./${OSDIR}/rootfs"
+  test -n "${KEEP}" && sudo tar --one-file-system -cf - "./${OSDIR}/rootfs" |lz4 -c >"${OS}-${DEBOOTSTRAP_ARCHITECTURE}-addons.tar.lz4"
+}
+
+test -d "./${OSDIR}/rootfs" || {
+    mkdir "./${OSDIR}"
+    lz4 -cd "${OS}-${DEBOOTSTRAP_ARCHITECTURE}-addons.tar.lz4"|sudo tar -xf -
 }
 
 sudo ./mount.sh "./${OSDIR}/rootfs"
@@ -358,4 +363,4 @@ test -n "${PREFIX}" && {
     sudo tar -cpf - *
 )|xz -T0 -c9 >"${PREFIX}${OS}-${VERSION}-${DEBOOTSTRAP_ARCHITECTURE}-lxcimage.tar.xz"
 
-test -z "${KEEP}" && sudo rm -rf "./${OSDIR}"
+sudo rm -rf "./${OSDIR}"
