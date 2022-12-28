@@ -177,6 +177,7 @@ test -e "${OS}-${DEBOOTSTRAP_ARCHITECTURE}-addons.tar.lz4" || {
   #sudo chroot "./${OSDIR}/rootfs" apt-get install -y rsyslog                           # package not available?
   sudo chroot "./${OSDIR}/rootfs" apt-get install -y sudo
   sudo chroot "./${OSDIR}/rootfs" apt-get install -y whiptail
+  sudo chroot "./${OSDIR}/rootfs" apt-get install -y openssh-server
 
   sudo mkdir -p "./${OSDIR}/rootfs/etc/sudoers.d"
   sudo tee  "./${OSDIR}/rootfs/etc/sudoers.d/90-lxd" >/dev/null <<EOF
