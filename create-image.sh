@@ -356,6 +356,6 @@ test -n "${PREFIX}" && {
 (
     cd "./${OSDIR}"
     sudo tar -cpf - *
-)|xz -c9 >"${PREFIX}${OS}-${VERSION}-${DEBOOTSTRAP_ARCHITECTURE}-lxcimage.tar.xz"
+)|xz -T0 -c9 >"${PREFIX}${OS}-${VERSION}-${DEBOOTSTRAP_ARCHITECTURE}-lxcimage.tar.xz"
 
 test -z "${KEEP}" && sudo rm -rf "./${OSDIR}"
