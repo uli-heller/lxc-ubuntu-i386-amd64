@@ -10,6 +10,7 @@ v1.8 (in preparation)
   - new version: HEAD -> v1.7-3-g197e1a5
   - machine-id: Initialize on create, copy, rename
   - ssh host keys: Recreate for new machine-ids
+  - added openssh-server to all images
 - dp-modifications: Added Steffen's pubkey
 
 v1.7
