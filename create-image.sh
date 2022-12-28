@@ -289,6 +289,14 @@ echo >>"./${OSDIR}/metadata.yaml" "    - rename"
 echo >>"./${OSDIR}/metadata.yaml" "    create_only: false"
 echo >>"./${OSDIR}/metadata.yaml" "    template: hosts.tpl"
 echo >>"./${OSDIR}/metadata.yaml" "    properties: {}"
+echo >>"./${OSDIR}/metadata.yaml" "  /etc/machine-id:"
+echo >>"./${OSDIR}/metadata.yaml" "    when:"
+echo >>"./${OSDIR}/metadata.yaml" "    - create"
+echo >>"./${OSDIR}/metadata.yaml" "    - copy"
+echo >>"./${OSDIR}/metadata.yaml" "    - rename"
+echo >>"./${OSDIR}/metadata.yaml" "    create_only: false"
+echo >>"./${OSDIR}/metadata.yaml" "    template: machine-id.tpl"
+echo >>"./${OSDIR}/metadata.yaml" "    properties: {}"
 echo >>"./${OSDIR}/metadata.yaml" "  /etc/hostname:"
 echo >>"./${OSDIR}/metadata.yaml" "    when:"
 echo >>"./${OSDIR}/metadata.yaml" "    - start"
@@ -307,6 +315,13 @@ EOF
 
 cat >"./${OSDIR}/templates/hostname.tpl" <<EOF
 {{ container.name }}
+EOF
+
+# https://systemd.io/BUILDING_IMAGES/
+# - 1.: Remove the /etc/machine-id file or write the string uninitialized\n into it
+# - 2. to 5.: Don't apply to containers, the files mentioned to not exist
+cat >"./${OSDIR}/templates/machine-id.tpl" <<EOF
+uninitialized
 EOF
 
 PREFIX="${MODIFICATIONS_PREFIX}"
