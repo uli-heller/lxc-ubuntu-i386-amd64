@@ -1,6 +1,15 @@
 CHANGELOG
 =========
 
+v1.8 (in preparation)
+----
+
+- create-image.sh:
+  - new option '-m moddir'
+  - new option '-p prefix'
+  - new version: HEAD -> v1.7-3-g197e1a5
+- dp-modifications: Added Steffen's pubkey
+
 v1.7
 ----
 
