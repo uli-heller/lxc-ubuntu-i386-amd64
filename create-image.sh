@@ -235,7 +235,7 @@ EOF
 	}
     done
 
-    sudo tee "./${OSDIR}/rootfs/root/first-start.sh" >/dev/null <<EOF
+    sudo tee "./${OSDIR}/rootfs/usr/local/bin/first-start.sh" >/dev/null <<EOF
 #!/bin/sh
 timedatectl set-timezone Europe/Berlin
 sed -i -e 's/^#PasswordAuthentication.*$/PasswordAuthentication no/' "/etc/ssh/sshd_config"
@@ -245,29 +245,29 @@ for k in $(find /etc/ssh -maxdepth 1 -type f -name "*host*" -not -newer /etc/mac
   RECONFIGURE=y
 done
 test -n "${RECONFIGURE}" && dpkg-reconfigure openssh-server
-echo systemctl disable first-start.service|at now
-echo "rm -f /root/first-start.sh /root/first-start.service"|at now
+#echo systemctl disable first-start.service|at now
+#echo "rm -f /usr/local/bin/first-start.sh /lib/systemd/system/first-start.service"|at now
 EOF
-    sudo chmod +x "./${OSDIR}/rootfs/root/first-start.sh"
+    sudo chmod +x "./${OSDIR}/rootfs/usr/local/bin/first-start.sh"
 
-    sudo tee "./${OSDIR}/rootfs/root/first-start.service" >/dev/null <<EOF
+    sudo tee "./${OSDIR}/rootfs/lib/systemd/system/first-start.service" >/dev/null <<EOF
 [Unit]
 Before=systemd-user-sessions.service
 Wants=network-online.target
 After=network-online.target
-ConditionPathExists=/root/first-start.sh
+ConditionPathExists=/usr/local/bin/first-start.sh
 
 [Service]
 Type=oneshot
-ExecStart=/root/first-start.sh
-ExecStartPost=rm -rf /root/first-start.sh
+ExecStart=/usr/local/bin/first-start.sh
+#ExecStartPost=rm -rf /usr/local/bin/first-start.sh
 RemainAfterExit=yes
 
 [Install]
 WantedBy=multi-user.target
 EOF
 
-    sudo chroot "./${OSDIR}/rootfs" systemctl enable /root/first-start.service
+    sudo chroot "./${OSDIR}/rootfs" systemctl enable /lib/systemd/system/first-start.service
 
     for u in root ubuntu; do
 	sudo chroot "./${OSDIR}/rootfs" sudo -u "${u}" -i /bin/sh -c "test -d .ssh || { mkdir .ssh; chmod 700 .ssh; touch .ssh/authorized_keys; chmod 600 .ssh/authorized_keys; }"
