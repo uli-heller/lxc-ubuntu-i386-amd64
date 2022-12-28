@@ -130,7 +130,7 @@ test -e "${OS}-${DEBOOTSTRAP_ARCHITECTURE}-debootstrap-debootstrap.tar.lz4" || {
   test -n "${KEEP}" && sudo tar cf - "./${OSDIR}/rootfs" |lz4 -c >"${OS}-${DEBOOTSTRAP_ARCHITECTURE}-debootstrap-debootstrap.tar.lz4"
 }
 
-test -e "${OS}-${DEBOOTSTRAP_ARCHITECTURE}-mod1.txt" || {
+test -e "${OS}-${DEBOOTSTRAP_ARCHITECTURE}-addons.tar.lz4" || {
   sudo mkdir -p "./${OSDIR}/rootfs/etc/netplan"
   sudo tee  "./${OSDIR}/rootfs/etc/netplan/netplan.yaml" >/dev/null <<EOF
 network:
@@ -145,10 +145,7 @@ EOF
   for r in updates backports security; do
     echo "${SOURCE_LINE}"|sed -e "s/${OS} main/${OS}-${r} main/"|sudo tee -a "./${OSDIR}/rootfs/etc/apt/sources.list"
   done
-  test -n "${KEEP}" && date >"${OS}-${DEBOOTSTRAP_ARCHITECTURE}-mod1.txt"
-}
 
-test -e "${OS}-${DEBOOTSTRAP_ARCHITECTURE}-addons.tar.lz4" || {
   sudo ./mount.sh "./${OSDIR}/rootfs"
   sudo chroot "./${OSDIR}/rootfs" apt-get update
   sudo chroot "./${OSDIR}/rootfs" apt-get upgrade -y
