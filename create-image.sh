@@ -3,17 +3,23 @@
 ### BN
 ###
 ### Usage:
-###   BN [-a x86_64|i686] [-k] [-U] osname [osdir]"
+###   BN [-a x86_64|i686] [-k] [-U] [-m moddir] [-p prefix] osname [osdir]"
 ###
 ### Options:
 ###   -a x86_64|i686 ............. target architecture
 ###   -k ......................... keep intermediate files
-###   -U ......................... add my (Uli's) preferences
+###   -U ......................... add my (Uli's) preferences (synonym for '-m uli-modifications -p 'uli')
+###   -m moddir .................. add modifications of moddir
+###   -p prefix .................. prefix for the name of the final container
 ###   osname ..................... focal or jammy
 ###
 ### Examples:
+###   BN -a x86_64 jammy ......... creates 'jammy-HEAD-amd64-lxcimage.tar.xz'
+###   BN -a x86_64 -k jammy ...... creates 'jammy-HEAD-amd64-lxcimage.tar.xz' and stores intermediate steps for faster re-execution
+###
+### "Special" Examples (not suitable for general use):
 ###   BN -a x86_64 -U jammy ...... creates 'uli-jammy-HEAD-amd64-lxcimage.tar.xz'
-###   BN -a x86_64 -k -U jammy ... creates 'uli-jammy-HEAD-amd64-lxcimage.tar.xz'
+###   BN -a x86_64 -k -U jammy ... creates 'uli-jammy-HEAD-amd64-lxcimage.tar.xz' and stores intermediate steps for faster re-execution
 ###
 test -z "${BN}" && BN="$(basename "$0")"
 D="$(dirname "$0")"
@@ -31,9 +37,9 @@ KEEP=
 USAGE=
 HELP=
 ARCHITECTURE=i686
-ULI_MODIFICATIONS=
-ULI_NAME=
-while getopts 'ha:kU' opt; do
+MODIFICATIONS_FOLDER=
+MODIFICATIONS_PREFIX=
+while getopts 'ha:kUp:m:' opt; do
     case $opt in
 	k)
 	    KEEP=y
@@ -41,9 +47,15 @@ while getopts 'ha:kU' opt; do
 	a)
 	    ARCHITECTURE="${OPTARG}"
 	    ;;
+	p)
+	    MODIFICATIONS_PREFIX="${OPTARG}"
+	    ;;
+	m)
+	    MODIFICATIONS_FOLDER="${OPTARG}"
+	    ;;
 	U)
-	    ULI_MODIFICATIONS=y
-	    ULI_NAME="uli-"
+	    MODIFICATIONS_FOLDER="${D}/uli-modifications"
+	    MODIFICATIONS_PREFIX="uli"
 	    ;;
 	h)
 	    HELP=y
@@ -70,8 +82,8 @@ OSDIR="$2"
 test -z "${OSDIR}" && OSDIR="${OS}"
 # OS=focal
 
-D="$(dirname "$0")"
 VERSION="$(cat "${D}"/VERSION 2>/dev/null)"
+test -z "${VERSION}" && VERSION="$(cd "${D}" && git describe --tags 2>/dev/null)"
 test -z "${VERSION}" && VERSION=HEAD
 
 # Execute a first sudo command, so hopefully
@@ -195,7 +207,7 @@ EOF
   sudo ./umount.sh "./${OSDIR}/rootfs"
 }
 
-test -n "${ULI_MODIFICATIONS}" && {
+test -d "${MODIFICATIONS_FOLDER}" && {
     sudo ./mount.sh "./${OSDIR}/rootfs"
     sudo chroot "./${OSDIR}/rootfs" apt-get -y install joe apt-transport-https net-tools at
     sudo chroot "./${OSDIR}/rootfs" apt-get -y clean
@@ -253,7 +265,7 @@ EOF
 
     for u in root ubuntu; do
 	sudo chroot "./${OSDIR}/rootfs" sudo -u "${u}" -i /bin/sh -c "test -d .ssh || { mkdir .ssh; chmod 700 .ssh; touch .ssh/authorized_keys; chmod 600 .ssh/authorized_keys; }"
-	for p in "${D}/uli-modifications/"*.pub; do
+	for p in "${MODIFICATIONS_FOLDER}/"*.pub; do
 	    sudo chroot "./${OSDIR}/rootfs" sudo -u "${u}" -i /bin/sh -c "cat >>.ssh/authorized_keys" <"${p}"
 	done
     done
@@ -297,9 +309,14 @@ cat >"./${OSDIR}/templates/hostname.tpl" <<EOF
 {{ container.name }}
 EOF
 
+PREFIX="${MODIFICATIONS_PREFIX}"
+test -n "${PREFIX}" && {
+    expr "${PREFIX}" : '.*-$' >/dev/null || PREFIX="${PREFIX}-"
+}
+
 (
     cd "./${OSDIR}"
     sudo tar -cpf - *
-)|xz -c9 >"${ULI_NAME}${OS}-${VERSION}-${DEBOOTSTRAP_ARCHITECTURE}-lxcimage.tar.xz"
+)|xz -c9 >"${PREFIX}${OS}-${VERSION}-${DEBOOTSTRAP_ARCHITECTURE}-lxcimage.tar.xz"
 
 test -z "${KEEP}" && sudo rm -rf "./${OSDIR}"

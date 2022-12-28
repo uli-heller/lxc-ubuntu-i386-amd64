@@ -1,0 +1,2 @@
+dp-modifications/* filter=git-crypt diff=git-crypt
+uli-modifications/* filter=git-crypt diff=git-crypt
