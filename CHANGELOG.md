@@ -8,7 +8,9 @@ v1.8 (in preparation)
   - new option '-m moddir'
   - new option '-p prefix'
   - new version: HEAD -> v1.7-3-g197e1a5
+  - machine-id: Initialize on create, copy, rename
 - dp-modifications: Added Steffen's pubkey
+	
 
 v1.7
 ----
