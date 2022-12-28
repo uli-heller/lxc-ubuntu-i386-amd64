@@ -145,6 +145,50 @@ I changed this for my containers:
 
 - After `lxc rename`, the files are freshly initialized
 
+```
+uli@ulicsl:/data/qemu/lxc-ubuntu-i386-amd64-v1.8-pre$ lxc image import --alias u dp-jammy-v1.7-11-gdb2b454-amd64-lxcimage.tar.xz
+Image imported with fingerprint: 1967a2940c5d3578221ad4a4030303c7f9e7f7c8e094f3f6e017b99137d7604d
+uli@ulicsl:/data/qemu/lxc-ubuntu-i386-amd64-v1.8-pre$ lxc launch u t
+Creating t
+Starting t
+uli@ulicsl:/data/qemu/lxc-ubuntu-i386-amd64-v1.8-pre$ lxc launch u s
+Creating s
+Starting s
+uli@ulicsl:/data/qemu/lxc-ubuntu-i386-amd64-v1.8-pre$ lxc copy s r
+uli@ulicsl:/data/qemu/lxc-ubuntu-i386-amd64-v1.8-pre$ lxc start r
+uli@ulicsl:/data/qemu/lxc-ubuntu-i386-amd64-v1.8-pre$ lxc ls
++-----------------+---------+-----------------------+------+-----------+-----------+
+|      NAME       |  STATE  |         IPV4          | IPV6 |   TYPE    | SNAPSHOTS |
++-----------------+---------+-----------------------+------+-----------+-----------+
+| r               | RUNNING | 10.253.205.59 (eth0)  |      | CONTAINER | 0         |
++-----------------+---------+-----------------------+------+-----------+-----------+
+| s               | RUNNING | 10.253.205.233 (eth0) |      | CONTAINER | 0         |
++-----------------+---------+-----------------------+------+-----------+-----------+
+| t               | RUNNING | 10.253.205.92 (eth0)  |      | CONTAINER | 0         |
++-----------------+---------+-----------------------+------+-----------+-----------+
+uli@ulicsl:/data/qemu/lxc-ubuntu-i386-amd64-v1.8-pre$ ssh root@10.253.205.92 cat /etc/machine-id
+The authenticity of host '10.253.205.92 (10.253.205.92)' can't be established.
+ECDSA key fingerprint is SHA256:DdUh0eHFjNEEaMdMCT4Dk6k2k2LuF1gJPyCmwKeR6yQ.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.253.205.92' (ECDSA) to the list of known hosts.
+d886e141aee0484aa760150b4a1f720f
+uli@ulicsl:/data/qemu/lxc-ubuntu-i386-amd64-v1.8-pre$ ssh root@10.253.205.233 cat /etc/machine-id
+The authenticity of host '10.253.205.233 (10.253.205.233)' can't be established.
+ECDSA key fingerprint is SHA256:juaZQQH4a7YXsYxPPiwaB0fiKoMwRLEzRe/ejuh5mgI.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.253.205.233' (ECDSA) to the list of known hosts.
+f99dbfd572a74ca99da7217854b2d444
+uli@ulicsl:/data/qemu/lxc-ubuntu-i386-amd64-v1.8-pre$ ssh root@10.253.205.59 cat /etc/machine-id
+The authenticity of host '10.253.205.59 (10.253.205.59)' can't be established.
+ECDSA key fingerprint is SHA256:ls0Cb4gITYtnbN4MuaylXB2mD1sA5kLXG9TrZPvN6/8.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.253.205.59' (ECDSA) to the list of known hosts.
+86fd3d3aabd341aba2e905628372d426
+uli@ulicsl:/data/qemu/lxc-ubuntu-i386-amd64-v1.8-pre$ lxc stop r s t
+uli@ulicsl:/data/qemu/lxc-ubuntu-i386-amd64-v1.8-pre$ lxc delete r s t
+uli@ulicsl:/data/qemu/lxc-ubuntu-i386-amd64-v1.8-pre$ lxc image delete u
+```
+
 ### Why is the 32 bit image larger than my 64 bit images?
 
 `apt-get clean` reduces the size!
