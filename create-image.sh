@@ -209,9 +209,10 @@ EOF
 
 test -d "${MODIFICATIONS_FOLDER}" && {
     sudo ./mount.sh "./${OSDIR}/rootfs"
-    sudo chroot "./${OSDIR}/rootfs" apt-get -y install joe apt-transport-https net-tools at
+    test -s "${MODIFICATIONS_FOLDER}/additional-packages" && {
+        sudo chroot "./${OSDIR}/rootfs" xargs apt-get -y install <"${MODIFICATIONS_FOLDER}/additional-packages"
+    }
     sudo chroot "./${OSDIR}/rootfs" apt-get -y clean
-    sudo chroot "./${OSDIR}/rootfs" apt-get install -y --download-only openssh-server
     sudo chroot "./${OSDIR}/rootfs" tee -a /etc/bash.bashrc >/dev/null <<EOF
 HISTFILESIZE=
 HISTSIZE=
@@ -236,9 +237,14 @@ EOF
 
     sudo tee "./${OSDIR}/rootfs/root/first-start.sh" >/dev/null <<EOF
 #!/bin/sh
-apt install -y openssh-server
 timedatectl set-timezone Europe/Berlin
 sed -i -e 's/^#PasswordAuthentication.*$/PasswordAuthentication no/' "/etc/ssh/sshd_config"
+RECONFIGURE=
+for k in $(find /etc/ssh -maxdepth 1 -type f -name "*host*" -not -newer /etc/machine-id|grep -v '.pub$'); do
+  rm -f "${k}"*
+  RECONFIGURE=y
+done
+test -n "${RECONFIGURE}" && dpkg-reconfigure openssh-server
 echo systemctl disable first-start.service|at now
 echo "rm -f /root/first-start.sh /root/first-start.service"|at now
 EOF
