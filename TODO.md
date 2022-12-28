@@ -5,14 +5,14 @@ Open
 -----
 
 - Simple building of DEBs - build.sh
-- /etc/machine-id
-  - https://systemd.io/BUILDING_IMAGES/
-  - https://linuxcontainers.org/lxd/docs/master/image-handling/#
-- /etc/ssh/*host*key
 
 Done
 ----
 
+- /etc/machine-id
+  - https://systemd.io/BUILDING_IMAGES/
+  - https://linuxcontainers.org/lxd/docs/master/image-handling/#
+- /etc/ssh/*host*key
 - Encrypt modifications folder
 - Enable multiple potential modifications
   - modifications folder

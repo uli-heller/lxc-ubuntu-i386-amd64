@@ -9,8 +9,8 @@ v1.8 (in preparation)
   - new option '-p prefix'
   - new version: HEAD -> v1.7-3-g197e1a5
   - machine-id: Initialize on create, copy, rename
+  - ssh host keys: Recreate for new machine-ids
 - dp-modifications: Added Steffen's pubkey
-	
 
 v1.7
 ----
