@@ -79,7 +79,6 @@ test -n "${USAGE}" && {
 
 OS="$1"
 OSDIR="$2"
-test -z "${OSDIR}" && OSDIR="${OS}"
 # OS=focal
 
 VERSION="$(cat "${D}"/VERSION 2>/dev/null)"
@@ -117,19 +116,21 @@ case "${ARCHITECTURE}" in
 	;;
 esac
 
+test -z "${OSDIR}" && OSDIR="${OS}-${DEBOOTSTRAP_ARCHITECTURE}"
+
 mkdir -p "./${OSDIR}"
 sudo mkdir -p "./${OSDIR}/rootfs"
-test -e "${OS}-debootstrap-debs.tar.lz4" || {
+test -e "${OS}-${DEBOOTSTRAP_ARCHITECTURE}-debootstrap-debs.tar.lz4" || {
   sudo debootstrap --download-only "--arch=${DEBOOTSTRAP_ARCHITECTURE}" --variant=minbase "${OS}" "./${OSDIR}/rootfs"
-  test -n "${KEEP}" && tar cf - "./${OSDIR}/rootfs" |lz4 -c >"${OS}-debootstrap-debs.tar.lz4"
+  test -n "${KEEP}" && tar cf - "./${OSDIR}/rootfs" |lz4 -c >"${OS}-${DEBOOTSTRAP_ARCHITECTURE}-debootstrap-debs.tar.lz4"
 }
 
-test -e "${OS}-debootstrap-debootstrap.tar.lz4" || {
+test -e "${OS}-${DEBOOTSTRAP_ARCHITECTURE}-debootstrap-debootstrap.tar.lz4" || {
   sudo debootstrap "--arch=${DEBOOTSTRAP_ARCHITECTURE}" --variant=minbase "${OS}" "./${OSDIR}/rootfs"
-  test -n "${KEEP}" && sudo tar cf - "./${OSDIR}/rootfs" |lz4 -c >"${OS}-debootstrap-debootstrap.tar.lz4"
+  test -n "${KEEP}" && sudo tar cf - "./${OSDIR}/rootfs" |lz4 -c >"${OS}-${DEBOOTSTRAP_ARCHITECTURE}-debootstrap-debootstrap.tar.lz4"
 }
 
-test -e "${OS}-mod1.txt" || {
+test -e "${OS}-${DEBOOTSTRAP_ARCHITECTURE}-mod1.txt" || {
   sudo mkdir -p "./${OSDIR}/rootfs/etc/netplan"
   sudo tee  "./${OSDIR}/rootfs/etc/netplan/netplan.yaml" >/dev/null <<EOF
 network:
@@ -144,10 +145,10 @@ EOF
   for r in updates backports security; do
     echo "${SOURCE_LINE}"|sed -e "s/${OS} main/${OS}-${r} main/"|sudo tee -a "./${OSDIR}/rootfs/etc/apt/sources.list"
   done
-  test -n "${KEEP}" && date >"${OS}-mod1.txt"
+  test -n "${KEEP}" && date >"${OS}-${DEBOOTSTRAP_ARCHITECTURE}-mod1.txt"
 }
 
-test -e "${OS}-addons.tar.lz4" || {
+test -e "${OS}-${DEBOOTSTRAP_ARCHITECTURE}-addons.tar.lz4" || {
   sudo ./mount.sh "./${OSDIR}/rootfs"
   sudo chroot "./${OSDIR}/rootfs" apt-get update
   sudo chroot "./${OSDIR}/rootfs" apt-get upgrade -y
@@ -203,12 +204,12 @@ EOF
   sudo chroot "./${OSDIR}/rootfs" apt-get update
   sudo chroot "./${OSDIR}/rootfs" apt-get upgrade -y
   sudo chroot "./${OSDIR}/rootfs" apt-get clean
-  test -n "${KEEP}" && sudo tar --one-file-system -cf - "./${OSDIR}/rootfs" |lz4 -c >"${OS}-addons.tar.lz4"
+  test -n "${KEEP}" && sudo tar --one-file-system -cf - "./${OSDIR}/rootfs" |lz4 -c >"${OS}-${DEBOOTSTRAP_ARCHITECTURE}-addons.tar.lz4"
   sudo ./umount.sh "./${OSDIR}/rootfs"
 }
 
 sudo ./mount.sh "./${OSDIR}/rootfs"
-sudo tee "./${OSDIR}/rootfs/usr/local/bin/first-start.sh" >/dev/null <<EOF
+sudo tee "./${OSDIR}/rootfs/usr/local/bin/first-start.sh" >/dev/null <<'EOF'
 #!/bin/sh
 INIT=
 test -d /etc/first-start || { mkdir -p /etc/first-start; INIT=complete; }
@@ -246,7 +247,7 @@ EOF
 sudo chroot "./${OSDIR}/rootfs" systemctl enable /lib/systemd/system/first-start.service
 
 test -d "${MODIFICATIONS_FOLDER}" && {
-    sudo tee -a "./${OSDIR}/rootfs/usr/local/bin/first-start.sh" >/dev/null <<EOF
+    sudo tee -a "./${OSDIR}/rootfs/usr/local/bin/first-start.sh" >/dev/null <<'EOF'
 test "${INIT}" = "complete" && {
   timedatectl set-timezone Europe/Berlin
   sed -i -e 's/^#PasswordAuthentication.*$/PasswordAuthentication no/' "/etc/ssh/sshd_config"
@@ -258,7 +259,7 @@ EOF
         sudo chroot "./${OSDIR}/rootfs" xargs apt-get -y install <"${MODIFICATIONS_FOLDER}/additional-packages"
     }
     sudo chroot "./${OSDIR}/rootfs" apt-get -y clean
-    sudo chroot "./${OSDIR}/rootfs" tee -a /etc/bash.bashrc >/dev/null <<EOF
+    sudo chroot "./${OSDIR}/rootfs" tee -a /etc/bash.bashrc >/dev/null <<'EOF'
 HISTFILESIZE=
 HISTSIZE=
 HISTTIMEFORMAT="[%F %T] "
