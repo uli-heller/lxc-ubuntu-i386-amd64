@@ -33,33 +33,31 @@ lxc launch focal-v16-i386 my-running-image
 
 ### Create All Container Images
 
-As of 2022-12-25, these are the container images:
+As of 2022-12-29, these are the container images:
 
-- jammy-v1.7-amd64-lxcimage.tar.xz ....... 64bit Ubuntu 22.04
-- uli-jammy-v1.7-amd64-lxcimage.tar.xz ... 64bit Ubuntu 22.04 with Uli's preferences
-- jammy-v1.7-i386-lxcimage.tar.xz ........ 32bit Ubuntu 22.04
-- uli-jammy-v1.7-i386-lxcimage.tar.xz .... 32bit Ubuntu 22.04 with Uli's preferences
-- focal-v1.7-amd64-lxcimage.tar.xz ....... 64bit Ubuntu 20.04
-- uli-focal-v1.7-amd64-lxcimage.tar.xz ... 64bit Ubuntu 20.04 with Uli's preferences
-- focal-v1.7-i386-lxcimage.tar.xz ........ 32bit Ubuntu 20.04
-- uli-focal-v1.7-i386-lxcimage.tar.xz .... 32bit Ubuntu 20.04 with Uli's preferences
+- jammy-v1.8-amd64-lxcimage.tar.xz ....... 64bit Ubuntu 22.04
+- jammy-v1.8-i386-lxcimage.tar.xz ........ 32bit Ubuntu 22.04
+- focal-v1.8-amd64-lxcimage.tar.xz ....... 64bit Ubuntu 20.04
+- focal-v1.8-i386-lxcimage.tar.xz ........ 32bit Ubuntu 20.04
+
+Special images, **not for general use**:
+- uli-jammy-v1.8-amd64-lxcimage.tar.xz ... 64bit Ubuntu 22.04 with Uli's preferences
+- uli-jammy-v1.8-i386-lxcimage.tar.xz .... 32bit Ubuntu 22.04 with Uli's preferences
+- uli-focal-v1.8-amd64-lxcimage.tar.xz ... 64bit Ubuntu 20.04 with Uli's preferences
+- uli-focal-v1.8-i386-lxcimage.tar.xz .... 32bit Ubuntu 20.04 with Uli's preferences
+- dp-jammy-v1.8-amd64-lxcimage.tar.xz ... 64bit Ubuntu 22.04 with Uli's other set of preferences
+- dp-jammy-v1.8-i386-lxcimage.tar.xz .... 32bit Ubuntu 22.04 with Uli's other set of preferences
+- dp-focal-v1.8-amd64-lxcimage.tar.xz ... 64bit Ubuntu 20.04 with Uli's other set of preferences
+- dp-focal-v1.8-i386-lxcimage.tar.xz .... 32bit Ubuntu 20.04 with Uli's other set of preferences
 
 Execute all of them by executing:
 
 ```
-./create-image.sh -a x86_64 -k jammy
-./create-image.sh -a x86_64 -k -U jammy
-sudo rm -rf jammy jammy*lz4 jammy*txt
-./create-image.sh -a i686 -k jammy
-./create-image.sh -a i686 -k -U jammy
-sudo rm -rf jammy jammy*lz4 jammy*txt
+for r in jammy focal; do for a in x86_64 i686; do ./create-image.sh -k -a ${a} ${r}; done; done
 
-./create-image.sh -a x86_64 -k focal
-./create-image.sh -a x86_64 -k -U focal
-sudo rm -rf focal focal*lz4 focal*txt
-./create-image.sh -a i686 -k focal
-./create-image.sh -a i686 -k -U focal
-sudo rm -rf focal focal*lz4 focal*txt
+# Below, images not for general usage are created
+for r in jammy focal; do for a in x86_64 i686; do ./create-image.sh -U -k -a ${a} ${r}; done; done
+for r in jammy focal; do for a in x86_64 i686; do ./create-image.sh -n dp-modifications -p dp -k -a ${a} ${r}; done; done
 ```
 
 Select Your Playground
