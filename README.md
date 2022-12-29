@@ -57,7 +57,7 @@ for r in jammy focal; do for a in x86_64 i686; do ./create-image.sh -k -a ${a} $
 
 # Below, images not for general usage are created
 for r in jammy focal; do for a in x86_64 i686; do ./create-image.sh -U -k -a ${a} ${r}; done; done
-for r in jammy focal; do for a in x86_64 i686; do ./create-image.sh -n dp-modifications -p dp -k -a ${a} ${r}; done; done
+for r in jammy focal; do for a in x86_64 i686; do ./create-image.sh -m dp-modifications -p dp -k -a ${a} ${r}; done; done
 ```
 
 Select Your Playground
