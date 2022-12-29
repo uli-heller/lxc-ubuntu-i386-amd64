@@ -188,9 +188,11 @@ EOF
   # netplan.io
   # libnetplan0
   # python3-netifaces
-  test -d "debs/${OS}/${ARCHITECTURE}" && {
+  # logrotate
+  # at
+  test -d "debs/${OS}/${DEBOOTSTRAP_ARCHITECTURE}" && {
     >"./install-packages-${OS}"
-    for d in "debs/${OS}/${ARCHITECTURE}/"*; do
+    for d in "debs/${OS}/${DEBOOTSTRAP_ARCHITECTURE}/"*; do
       b="$(basename "${d}")"
       sudo cp "${d}" "./${OSDIR}/rootfs/var/cache/apt/archives/${b}"
       echo "/var/cache/apt/archives/${b}" >>"./install-packages-${OS}"
