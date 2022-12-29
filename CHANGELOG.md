@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+v1.8.1 (in preparation)
+------
+
+- Fix warning about package 'at' for special images (uli and dp)
+
 v1.8
 ----
 
