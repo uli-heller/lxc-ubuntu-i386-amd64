@@ -4,7 +4,8 @@ CHANGELOG
 v1.8.1 (in preparation)
 ------
 
-- Fix warning about package 'at' for special images (uli and dp)
+- Fixed warning about package 'at' for special images (uli and dp)
+- Fixed issues related to joe, joe-jupp and jupp on i386
 
 v1.8
 ----
