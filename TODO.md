@@ -5,6 +5,9 @@ Open
 -----
 
 - Simple building of DEBs - build.sh - almost done
+- Same packages for i386 and amd64
+  - i386 always has packages from debs/...
+  - amd64 is missing some of them
 
 Done
 ----
