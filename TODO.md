@@ -5,16 +5,16 @@ Open
 -----
 
 - Simple building of DEBs - build.sh - almost done
+
+Done
+----
+
 - Fix error
   ```
   The following packages have unmet dependencies:
    joe-jupp : Depends: jupp (>= 3.1.37) but it is not installable
   E: Unable to correct problems, you have held broken packages.
   ```
-
-Done
-----
-
 - Fix error "E: Package 'at' has no installation candidate"
 - /etc/machine-id
   - https://systemd.io/BUILDING_IMAGES/
