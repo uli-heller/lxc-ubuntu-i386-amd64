@@ -119,4 +119,66 @@ while [ $# -gt 0 ]; do
 done
 sudo chroot "${ROOTFS}" tee /etc/apt/sources.list <"${TMPDIR}/sources.list" >/dev/null
 sudo "${D}/umount.sh" "${ROOTFS}"
+
+#
+# Create the GPG key for the ppa
+#
+test -d "${D}/gpg" || {
+    mkdir -p "${D}/gpg"
+    chmod 700 "${D}/gpg"
+
+    cat >"${D}/gpg/lxcppa-root-and-subkey <<EOF
+Key-Type: RSA
+Key-Length: 4096
+Subkey-Type: RSA
+Subkey-Length: 4096
+Subkey-Usage: sign
+Expire-Date: 0
+Name-Real: LXC PPA Temporary Key
+Name-Comment: Used only when creating a container
+%no-protection
+%transient-key
+#Passphrase: lxc-is-great
+%commit
+EOF
+
+    gpg --homedir "${D}/gpg" --kill gpg-agent
+    gpg --homedir "${D}/gpg" --batch --full-generate-key "${D}/gpg/lxcppa-root-and-subkey"
+    gpg --homedir "${D}/gpg" --kill gpg-agent
+
+    KEY_KEYID="$(gpg --homedir "${D}/gpg" --list-keys --with-subkey-fingerprint|grep -A1 "^pub"|tail -1|tr -d " ")"
+    SUBKEY_KEYID="$(gpg --homedir "${D}/gpg" --list-keys --with-subkey-fingerprint|grep -A1 "^sub"|tail -1|tr -d " ")"
+
+    gpg --homedir "${D}/gpg" --output lxc.public.gpg    --export                "${KEY_KEYID}"
+    gpg --homedir "${D}/gpg" --output lxc.public.asc    --armor --export        "${KEY_KEYID}"
+    gpg --homedir "${D}/gpg" --output lxc.secret.gpg    --export-secret-key     "${KEY_KEYID}"
+    gpg --homedir "${D}/gpg" --output lxc.subsecret.gpg --export-secret-subkeys "${KEY_KEYID}"
+    gpg --homedir "${D}/gpg" --batch --delete-secret-keys "${KEY_KEYID}"
+    gpg --homedir "${D}/gpg" --import lxc.subsecret.gpg
+    echo "${KEY_KEYID}" >"${D}/gpg/keyid"
+    echo "${SUBKEY_KEYID}" >"${D}/gpg/subkeyid"
+    rm "${D}/gpg/lxcppa-root-and-subkey"
+}
+
+(
+    cd "${D}/debs/${OS}/${ARCHITECTURE}"
+    dpkg-scanpackages . >Packages
+    {
+	AFR="APT::FTPArchive::Release::"
+	echo "${AFR}Origin \"lxc-ubuntu\";"
+	echo "${AFR}Label \"lxc-ubuntu\";"
+	echo "${AFR}Suite \"${OS}\";"
+	echo "${AFR}Codename \"${OS}\";"
+	echo "${AFR}Architectures \"${ARCHITECTURE}\";"
+	#echo "${AFR}Components \".\";"
+	echo "${AFR}Description \"Precompiled packages for our LXC containers\";"
+    } >"Release.tmp"
+    apt-ftparchive -c "Release.tmp" release "." >"./Release"
+    rm -f "Release.tmp"
+    rm -f "Release.gpg"
+    gpg --homedir "${D}/gpg" -abs --digest-algo SHA256 "$(cat "${D}/gpg/keyid")" -o "Release.gpg" "Release"
+    rm -f "InRelease"
+    gpg --homedir "${D}/gpg" -abs --digest-algo SHA256 "$(cat "${D}/gpg/keyid")" --clearsign -o "InRelease" "Release"
+    cp "${D}/gpg/lxc.public.asc" .
+)
 cleanUp
