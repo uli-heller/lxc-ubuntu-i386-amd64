@@ -110,6 +110,9 @@ while [ $# -gt 0 ]; do
 	sudo find "${ROOTFS}/src/${PACKAGE}" -name "*.deb"|sudo xargs rm -rf
 	sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep -y '${PACKAGE}'"
 	sudo chroot "${ROOTFS}" bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+	test -d "${D}/debs/${OS}/${ARCHITECTURE}" || mkdir -p "${D}/debs/${OS}/${ARCHITECTURE}"
+	sudo cp "${ROOTFS}/src/${PACKAGE}"/*deb "${D}/debs/${OS}/${ARCHITECTURE}/."
+	sudo chown "$(id -un):$(id -gn)" "${D}/debs/${OS}/${ARCHITECTURE}"/*deb
     }
     rm -rf "${TMPDIR}/before" "${TMPDIR}/after"
     shift
