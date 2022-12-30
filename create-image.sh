@@ -118,19 +118,19 @@ esac
 
 test -z "${OSDIR}" && OSDIR="${OS}-${DEBOOTSTRAP_ARCHITECTURE}"
 
-test -e "${OS}-${DEBOOTSTRAP_ARCHITECTURE}-debootstrap-debs.tar.lz4" || {
+test -e "${OS}-${DEBOOTSTRAP_ARCHITECTURE}-01-debootstrap-debs.tar.lz4" || {
   mkdir -p "./${OSDIR}"
   sudo mkdir -p "./${OSDIR}/rootfs"
   sudo debootstrap --download-only "--arch=${DEBOOTSTRAP_ARCHITECTURE}" --variant=minbase "${OS}" "./${OSDIR}/rootfs"
-  test -n "${KEEP}" && tar cf - "./${OSDIR}/rootfs" |lz4 -c >"${OS}-${DEBOOTSTRAP_ARCHITECTURE}-debootstrap-debs.tar.lz4"
+  test -n "${KEEP}" && tar cf - "./${OSDIR}/rootfs" |lz4 -c >"${OS}-${DEBOOTSTRAP_ARCHITECTURE}-01-debootstrap-debs.tar.lz4"
 }
 
-test -e "${OS}-${DEBOOTSTRAP_ARCHITECTURE}-debootstrap-debootstrap.tar.lz4" || {
+test -e "${OS}-${DEBOOTSTRAP_ARCHITECTURE}-02-debootstrap-debootstrap.tar.lz4" || {
   sudo debootstrap "--arch=${DEBOOTSTRAP_ARCHITECTURE}" --variant=minbase "${OS}" "./${OSDIR}/rootfs"
-  test -n "${KEEP}" && sudo tar cf - "./${OSDIR}/rootfs" |lz4 -c >"${OS}-${DEBOOTSTRAP_ARCHITECTURE}-debootstrap-debootstrap.tar.lz4"
+  test -n "${KEEP}" && sudo tar cf - "./${OSDIR}/rootfs" |lz4 -c >"${OS}-${DEBOOTSTRAP_ARCHITECTURE}-02-debootstrap-debootstrap.tar.lz4"
 }
 
-test -e "${OS}-${DEBOOTSTRAP_ARCHITECTURE}-addons.tar.lz4" || {
+test -e "${OS}-${DEBOOTSTRAP_ARCHITECTURE}-03-addons.tar.lz4" || {
   sudo mkdir -p "./${OSDIR}/rootfs/etc/netplan"
   sudo tee  "./${OSDIR}/rootfs/etc/netplan/netplan.yaml" >/dev/null <<EOF
 network:
@@ -203,14 +203,14 @@ EOF
 
   sudo chroot "./${OSDIR}/rootfs" apt-get update
   sudo chroot "./${OSDIR}/rootfs" apt-get upgrade -y
-  sudo chroot "./${OSDIR}/rootfs" apt-get clean
+  #sudo chroot "./${OSDIR}/rootfs" apt-get clean
   sudo ./umount.sh "./${OSDIR}/rootfs"
-  test -n "${KEEP}" && sudo tar --one-file-system -cf - "./${OSDIR}/rootfs" |lz4 -c >"${OS}-${DEBOOTSTRAP_ARCHITECTURE}-addons.tar.lz4"
+  test -n "${KEEP}" && sudo tar --one-file-system -cf - "./${OSDIR}/rootfs" |lz4 -c >"${OS}-${DEBOOTSTRAP_ARCHITECTURE}-03-addons.tar.lz4"
 }
 
 test -d "./${OSDIR}/rootfs" || {
     mkdir "./${OSDIR}"
-    lz4 -cd "${OS}-${DEBOOTSTRAP_ARCHITECTURE}-addons.tar.lz4"|sudo tar -xf -
+    lz4 -cd "${OS}-${DEBOOTSTRAP_ARCHITECTURE}-03-addons.tar.lz4"|sudo tar -xf -
 }
 
 sudo ./mount.sh "./${OSDIR}/rootfs"
