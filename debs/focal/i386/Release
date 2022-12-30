@@ -1,0 +1,19 @@
+Architectures: i386
+Codename: focal
+Date: Fri, 30 Dec 2022 07:13:49 +0000
+Description: Precompiled packages for our LXC containers
+Label: lxc-ubuntu
+Origin: lxc-ubuntu
+Suite: focal
+MD5Sum:
+ 5ce66c1828fa3b9c2ae9e209f57aafd7             9050 Packages
+ 458ae4004dbe8c3a2c08105a02866e58              181 Release
+SHA1:
+ c2122821bb2125769a5e276c2341ccfb79e82cb1             9050 Packages
+ 038d188b29250019388877c1918f78578f366d5f              181 Release
+SHA256:
+ fe3a262a0bbc86b5597290c492cdd9ccc945edafa14c90ff9ad8151bbb4a1903             9050 Packages
+ 4ea8900f169f4f3a8d5ddf8d7e5d800da322e3f4288af18c0b526a8ab4cdc93a              181 Release
+SHA512:
+ de98fc121c87b4e303d1e30ff0f82937e38607d04fab024d307dc1803e5dc55277e3a701c67a667c8c118ccb72838554fb54515e987f352075cd1dcd24c56ab7             9050 Packages
+ 74612d5cbb9456906cd7020956c34be05d6f99bafe0e794e8703d7d9549a92d99d6fcdace90d06d3d7e36eea44c9c5d88e21c4a3dc21c1c6d89f4f347c4c16d2              181 Release

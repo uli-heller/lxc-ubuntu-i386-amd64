@@ -1,0 +1,19 @@
+Architectures: i386
+Codename: jammy
+Date: Fri, 30 Dec 2022 07:15:14 +0000
+Description: Precompiled packages for our LXC containers
+Label: lxc-ubuntu
+Origin: lxc-ubuntu
+Suite: jammy
+MD5Sum:
+ 3d5b4e2b48a593543325a6a2d86b0bb0             9075 Packages
+ 22961b9a472ce10be3b677a8251ae8b0              181 Release
+SHA1:
+ 9a04b70720255519ec723de82c6692fa7cf82aa1             9075 Packages
+ 64dc9267661bfabf2c4fa158a8d409effe12007f              181 Release
+SHA256:
+ 732e7fe67ed2bfad89285ac7d7527b57fbd34df7e9fb4e9482c6529baa915e22             9075 Packages
+ ab5d1e09298c68eb32ad949d818fea38d9f91fcd0a244020b1a68ae30479f831              181 Release
+SHA512:
+ df7a9e4df8956ecc93fa03fdc084ebf0f49a2ae0703404e667dd7b59380e36ec6fe11d9e19dbecb079c9a203d1f168a8be5101a59317b0bbed9912d972dcf82d             9075 Packages
+ 9e0fac6269e2150a24a82ca2fa2908de58dcc36d218ec8847c6ab476f41b8e7112f161b17356642a1c19822c8adde91e0d888e091e0e73e1ca2392b068f5e227              181 Release
