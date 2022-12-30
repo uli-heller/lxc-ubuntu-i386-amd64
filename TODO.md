@@ -8,6 +8,9 @@ Open
 - Same packages for i386 and amd64
   - i386 always has packages from debs/...
   - amd64 is missing some of them
+- Use only one way to specify the architecture
+  - i386 and amd64
+  - i686 and x86_64
 
 Done
 ----
