@@ -195,3 +195,15 @@ uli@ulicsl:/data/qemu/lxc-ubuntu-i386-amd64-v1.8-pre$ lxc image delete u
 
 See [jammy-debs.md](jammy-debs.md) on how I build the DEBs for jammy (22.04)
 and [focal-debs.md](focal-debs.md) for focal (20.04)!
+
+These descriptions help to bootstrap the 32 bit images. Once you have
+'almost' complete images, you'll be able to build additional debs by
+
+```
+./build.sh -a i386 -o jammy at
+./build.sh -a i386 -o jammy joe-jupp
+...
+./build.sh -a i386 -o focal at
+./build.sh -a i386 -o focal joe-jupp
+...
+```
