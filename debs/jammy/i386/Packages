@@ -1,0 +1,210 @@
+Package: at
+Version: 3.2.5-1ubuntu1
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 164
+Depends: libpam-runtime (>= 1.0.1-11), lsb-base (>= 3.2-14), libc6 (>= 2.34), libpam0g (>= 0.99.7.1), libselinux1 (>= 3.1~)
+Suggests: default-mta | mail-transport-agent
+Filename: ./at_3.2.5-1ubuntu1_i386.deb
+Size: 57346
+MD5sum: 3a44e0cd410f3c69dd36894c3bf1429f
+SHA1: 427710bc72df1e73cec4ea4a1db65db0beacde14
+SHA256: 1eb95bcce7f242ebbf4c4c248410049826a395b9eb2de6b7cbf8d5fc510a94a0
+Section: admin
+Priority: standard
+Multi-Arch: foreign
+Homepage: http://blog.calhariz.com
+Description: Delayed job execution and batch processing
+ At and batch read shell commands from standard input
+ storing them as a job to be scheduled for execution in the
+ future.
+ .
+ Use
+  at    to run the job at a specified time
+  batch to run the job when system load levels permit
+Original-Maintainer: Jose M Calhariz <calhariz@debian.org>
+
+Package: joe-jupp
+Source: jupp
+Version: 3.1.40-1
+Architecture: all
+Maintainer: Thorsten Glaser <tg@mirbsd.de>
+Installed-Size: 186
+Depends: jupp (>= 3.1.37)
+Conflicts: joe
+Replaces: joe
+Provides: joe
+Filename: ./joe-jupp_3.1.40-1_all.deb
+Size: 34566
+MD5sum: 58e3f8b649fb98fd3fd81f1a14323efb
+SHA1: fb08b78226b702738f77c66f1d3a91397ddaed87
+SHA256: 8a1ae163da907a1c8da6930347f1b266f2031b2408e8e0bf41f4394430d4bb94
+Section: editors
+Priority: optional
+Multi-Arch: foreign
+Homepage: http://www.mirbsd.org/jupp.htm
+Description: reimplement the joe Debian package using jupp
+ This package contains symbolic links to replace the Debian joe package
+ using the jupp package’s JOE implementation (binaries and manpages).
+ It also contains the appropriate conffiles and, in contrast to Debian’s
+ joe flavour, supports SELinux context copying (on Debian systems with
+ the Linux kernel), and has many bugs fixed and makes some of jupp’s new
+ features available to the joe, jstar, jmacs, jpico and rjoe flavours.
+
+Package: jupp
+Version: 3.1.40-1
+Architecture: i386
+Maintainer: Thorsten Glaser <tg@mirbsd.de>
+Installed-Size: 618
+Depends: libc6 (>= 2.34), libselinux1 (>= 3.1~), libtinfo6 (>= 6)
+Enhances: nbc
+Breaks: joe (<< 3.7-2.3~)
+Provides: editor
+Filename: ./jupp_3.1.40-1_i386.deb
+Size: 241650
+MD5sum: b9eaec134b5240badf63218bca0070b7
+SHA1: 8e97682bae5c419be47f9dbfdaf7103ca94b992f
+SHA256: db18eb17af43914316c54752e7297cee83e7702e37ed6dd73271b35a5034c982
+Section: editors
+Priority: optional
+Multi-Arch: foreign
+Homepage: http://www.mirbsd.org/jupp.htm
+Description: user friendly full screen text editor
+ JOE, the Joe’s Own Editor, has the feel of most PC text editors: the key
+ sequences are reminiscent of WordStar and Turbo C editors, but the feature
+ set is much larger than of those.  JOE has all of the features a Unix
+ user should expect: full use of termcap/terminfo, complete vi-style Unix
+ integration, a powerful configuration file and a regular expression search
+ system.  It also has eight help reference cards which are always available,
+ and an intuitive, simple, and well thought-out user interface.
+ .
+ JOE has a great screen update optimisation algorithm, multiple windows
+ (through/between which you can scroll) and lacks the confusing notion of
+ named buffers.  It has command history, tab expansion in file selection
+ menus, undo and redo functions, (un)indenting and paragraph formatting,
+ filtering highlighted blocks through any external Unix command, editing
+ a pipe into or out of a command, block move, copy, delete or filter, a
+ bracketed paste mode automatically enabled on xterm-xfree86 and decimal
+ and hexadecimal gotos for lines, columns, and file offsets.
+ .
+ Through simple QEdit-style configuration files, JOE can be set up to
+ emulate editors such as Pico and Emacs, along with a complete imitation
+ of WordStar in non-document mode, and a restricted mode version (lets you
+ edit only the files specified on the command line). JOE also has a deferred
+ screen update to handle typeahead, and it ensures that deferral is not
+ bypassed by tty buffering. It’s usable even at 2400 baud, and it will work
+ on any kind of sane terminal. Furthermore, it supports SELinux context
+ copying on Debian systems with the Linux kernel.
+ .
+ This version of JOE only comes with the “jupp” flavour, to not conflict
+ with the Debian joe package, activated. The resource files and executable
+ links and menu entries for the other flavours are still available, though,
+ in the joe-jupp package.
+
+Package: libnetplan0
+Source: netplan.io
+Version: 0.104-0dp01~jammy2.1
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 294
+Depends: libc6 (>= 2.27), libglib2.0-0 (>= 2.70.0), libuuid1 (>= 2.16), libyaml-0-2
+Filename: ./libnetplan0_0.104-0dp01~jammy2.1_i386.deb
+Size: 100488
+MD5sum: dc5c9306d74047a76e8a2ca7b2aee064
+SHA1: 11310626066ad1b44617d1994c23cb7de011bf62
+SHA256: a4fdfa0c49ccc6967bcc2e47fd060ae90afaa57e29fe9296b820ac2c0b12de14
+Section: libs
+Priority: optional
+Multi-Arch: same
+Homepage: https://netplan.io/
+Description: YAML network configuration abstraction runtime library
+ netplan reads YAML network configuration files which are written
+ by administrators, installers, cloud image instantiations, or other OS
+ deployments. During early boot it then generates backend specific
+ configuration files in /run to hand off control of devices to a particular
+ networking daemon.
+ .
+ Currently supported backends are networkd and NetworkManager.
+ .
+ This package contains the necessary runtime library files.
+Original-Maintainer: Debian netplan Maintainers <team+netplan@tracker.debian.org>
+
+Package: logrotate
+Version: 3.19.0-1ubuntu1.1
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 166
+Depends: cron | anacron | cron-daemon | systemd-sysv, libacl1 (>= 2.2.23), libc6 (>= 2.34), libpopt0 (>= 1.14), libselinux1 (>= 3.1~)
+Suggests: bsd-mailx | mailx
+Filename: ./logrotate_3.19.0-1ubuntu1.1_i386.deb
+Size: 71932
+MD5sum: 0b0e56111ff6e759897b5668a2afa24a
+SHA1: 6e5d4d75670cbbb7063d8510e277effc373f3f31
+SHA256: 6c11892794073697f81365a44c1823ccb76f98b836b758de565f9b6910683f67
+Section: admin
+Priority: important
+Multi-Arch: foreign
+Homepage: https://github.com/logrotate/logrotate
+Description: Log rotation utility
+ The logrotate utility is designed to simplify the administration of
+ log files on a system which generates a lot of log files.  Logrotate
+ allows for the automatic rotation compression, removal and mailing of
+ log files.  Logrotate can be set to handle a log file daily, weekly,
+ monthly or when the log file gets to a certain size.  Normally, logrotate
+ runs as a daily cron job.
+Original-Maintainer: Christian Göttsche <cgzones@googlemail.com>
+
+Package: netplan.io
+Version: 0.104-0dp01~jammy2.1
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 271
+Depends: libc6 (>= 2.34), libglib2.0-0 (>= 2.70.0), libnetplan0 (= 0.104-0dp01~jammy2.1), libsystemd0 (>= 243), iproute2, python3, python3-yaml, python3-netifaces, systemd (>= 248~)
+Suggests: network-manager | wpasupplicant, openvswitch-switch
+Conflicts: netplan
+Breaks: network-manager (<< 1.2.2-1), nplan (<< 0.34~)
+Replaces: nplan (<< 0.34~)
+Provides: nplan
+Filename: ./netplan.io_0.104-0dp01~jammy2.1_i386.deb
+Size: 60242
+MD5sum: 59c3732b160f9b6ae9d460b1d1a6fed3
+SHA1: d282753316d61c1435a68837d440e70eba7b020f
+SHA256: 677093a31ded8046a0385ee3142ebe205ae74d0bdba11ffedf9650d30099e7bf
+Section: net
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://netplan.io/
+Description: YAML network configuration abstraction for various backends
+ netplan reads YAML network configuration files which are written
+ by administrators, installers, cloud image instantiations, or other OS
+ deployments. During early boot it then generates backend specific
+ configuration files in /run to hand off control of devices to a particular
+ networking daemon.
+ .
+ Currently supported backends are networkd and NetworkManager.
+Original-Maintainer: Debian netplan Maintainers <team+netplan@tracker.debian.org>
+
+Package: python3-netifaces
+Source: netifaces
+Version: 0.11.0-1build2
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 57
+Depends: python3 (<< 3.11), python3 (>= 3.10~), libc6 (>= 2.4)
+Filename: ./python3-netifaces_0.11.0-1build2_i386.deb
+Size: 19220
+MD5sum: 8afecf9bba2ef6a38a52b3477fd012f8
+SHA1: 5ec1b1176391ce15880087d92f047d0f1fa45a21
+SHA256: 52a834c76ec8e36a3ed5376e3f4f5ac9bb9e7e16366f298a9cd9d67377208e3c
+Section: python
+Priority: optional
+Multi-Arch: same
+Homepage: https://alastairs-place.net/projects/netifaces/
+Description: portable network interface information - Python 3.x
+ netifaces provides a (hopefully portable-ish) way for Python programmers to
+ get access to a list of the network interfaces on the local machine, and to
+ obtain the addresses of those network interfaces.
+ .
+ This package contains the module for Python 3.x.
+Original-Maintainer: Debian Python Team <team+python@tracker.debian.org>
+
