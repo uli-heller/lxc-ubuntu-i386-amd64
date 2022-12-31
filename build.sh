@@ -17,6 +17,7 @@
 
 BN="$(basename "$0")"
 D="$(dirname "$0")"
+D="$(cd "${D}" && pwd)"
 
 help () {
    sed -rn 's/^### ?//;T;p' "$0"|sed -e "s/BN/${BN}/g"
@@ -92,27 +93,37 @@ cleanUp () {
 trap cleanUp 0 1 2 3 4 5 6 7 8 9 10 12 13 14 15
 mkdir "${TMPDIR}"
 
+RC=0
 sudo "${D}/mount.sh" "${ROOTFS}"
 sudo chroot "${ROOTFS}" cat /etc/apt/sources.list >"${TMPDIR}/sources.list"
-sed -e "s/^deb/deb-src/" <"${TMPDIR}/sources.list" >"${TMPDIR}/debsrc"
+sed -e "s/^deb /deb-src /" <"${TMPDIR}/sources.list" >"${TMPDIR}/debsrc"
 sudo chroot "${ROOTFS}" tee -a /etc/apt/sources.list <"${TMPDIR}/debsrc" >/dev/null
 sudo chroot "${ROOTFS}" apt update
 sudo chroot "${ROOTFS}" apt upgrade -y
 sudo chroot "${ROOTFS}" apt install -y dpkg-dev
 sudo chroot "${ROOTFS}" bash -c "mkdir -p /src"
-while [ $# -gt 0 ]; do
+while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
     PACKAGE="$1"
     sudo chroot "${ROOTFS}" bash -c "cd /src && mkdir -p '${PACKAGE}' && cd '${PACKAGE}' && ls *dsc" >"${TMPDIR}/before"
     sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && apt-get source --download-only '${PACKAGE}'"
     sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && ls *dsc" >"${TMPDIR}/after"
     cmp "${TMPDIR}/before" "${TMPDIR}/after" >/dev/null 2>&1 || {
-	sudo find "${ROOTFS}/src/${PACKAGE}" -mindepth 1 -maxdepth 1 -type d|sudo xargs rm -rf
-	sudo find "${ROOTFS}/src/${PACKAGE}" -name "*.deb"|sudo xargs rm -rf
-	sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep -y '${PACKAGE}'"
-	sudo chroot "${ROOTFS}" bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
-	test -d "${D}/debs/${OS}/${ARCHITECTURE}" || mkdir -p "${D}/debs/${OS}/${ARCHITECTURE}"
-	sudo cp "${ROOTFS}/src/${PACKAGE}"/*deb "${D}/debs/${OS}/${ARCHITECTURE}/."
-	sudo chown "$(id -un):$(id -gn)" "${D}/debs/${OS}/${ARCHITECTURE}"/*deb
+	(
+	    sudo find "${ROOTFS}/src/${PACKAGE}" -mindepth 1 -maxdepth 1 -type d|sudo xargs rm -rf
+	    sudo find "${ROOTFS}/src/${PACKAGE}" -name "*.deb"|sudo xargs rm -rf
+	    sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && apt-get source '${PACKAGE}'" || exit 1
+	    test -e "${D}/patches/${OS}/${PACKAGE}/"*diff && {
+		sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}'/*/. && patch -p1" <"${D}/patches/${OS}/${PACKAGE}/"*diff || exit 1
+	    }
+	    sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && apt-get build-dep -y '${PACKAGE}'" || exit 1
+	    sudo chroot "${ROOTFS}" bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+	    test -d "${D}/debs/${OS}/${ARCHITECTURE}" || mkdir -p "${D}/debs/${OS}/${ARCHITECTURE}"
+	    sudo cp "${ROOTFS}/src/${PACKAGE}"/*.deb "${D}/debs/${OS}/${ARCHITECTURE}/."
+	    sudo chown "$(id -un):$(id -gn)" "${D}/debs/${OS}/${ARCHITECTURE}"/*.deb
+	) || {
+	    sudo find "${ROOTFS}/src/${PACKAGE}" -mindepth 1 -maxdepth 1 -newer "${TMPDIR}/before"|sudo xargs rm -rf
+	    RC=1
+	}
     }
     rm -rf "${TMPDIR}/before" "${TMPDIR}/after"
     shift
@@ -123,11 +134,12 @@ sudo "${D}/umount.sh" "${ROOTFS}"
 #
 # Create the GPG key for the ppa
 #
-test -d "${D}/gpg" || {
+test "${RC}" -eq 0 && {
+  test -d "${D}/gpg" || {
     mkdir -p "${D}/gpg"
     chmod 700 "${D}/gpg"
 
-    cat >"${D}/gpg/lxcppa-root-and-subkey <<EOF
+    cat >"${D}/gpg/lxcppa-root-and-subkey" <<EOF
 Key-Type: RSA
 Key-Length: 4096
 Subkey-Type: RSA
@@ -142,25 +154,25 @@ Name-Comment: Used only when creating a container
 %commit
 EOF
 
-    gpg --homedir "${D}/gpg" --kill gpg-agent
+    gpgconf --homedir "${D}/gpg" --kill gpg-agent
     gpg --homedir "${D}/gpg" --batch --full-generate-key "${D}/gpg/lxcppa-root-and-subkey"
-    gpg --homedir "${D}/gpg" --kill gpg-agent
 
     KEY_KEYID="$(gpg --homedir "${D}/gpg" --list-keys --with-subkey-fingerprint|grep -A1 "^pub"|tail -1|tr -d " ")"
     SUBKEY_KEYID="$(gpg --homedir "${D}/gpg" --list-keys --with-subkey-fingerprint|grep -A1 "^sub"|tail -1|tr -d " ")"
 
-    gpg --homedir "${D}/gpg" --output lxc.public.gpg    --export                "${KEY_KEYID}"
-    gpg --homedir "${D}/gpg" --output lxc.public.asc    --armor --export        "${KEY_KEYID}"
-    gpg --homedir "${D}/gpg" --output lxc.secret.gpg    --export-secret-key     "${KEY_KEYID}"
-    gpg --homedir "${D}/gpg" --output lxc.subsecret.gpg --export-secret-subkeys "${KEY_KEYID}"
-    gpg --homedir "${D}/gpg" --batch --delete-secret-keys "${KEY_KEYID}"
-    gpg --homedir "${D}/gpg" --import lxc.subsecret.gpg
+    gpg --homedir "${D}/gpg" --output "${D}/gpg/lxc.public.gpg"    --export                "${KEY_KEYID}"
+    gpg --homedir "${D}/gpg" --output "${D}/gpg/lxc.public.asc"    --armor --export        "${KEY_KEYID}"
+    gpg --homedir "${D}/gpg" --output "${D}/gpg/lxc.secret.gpg"    --export-secret-key     "${KEY_KEYID}"
+    gpg --homedir "${D}/gpg" --output "${D}/gpg/lxc.subsecret.gpg" --export-secret-subkeys "${KEY_KEYID}"
+    gpg --homedir "${D}/gpg" --batch --yes --delete-secret-keys "${KEY_KEYID}"
+    gpg --homedir "${D}/gpg" --import "${D}/gpg/lxc.subsecret.gpg"
+    gpgconf --homedir "${D}/gpg" --kill gpg-agent
     echo "${KEY_KEYID}" >"${D}/gpg/keyid"
     echo "${SUBKEY_KEYID}" >"${D}/gpg/subkeyid"
     rm "${D}/gpg/lxcppa-root-and-subkey"
-}
+  }
 
-(
+  (
     cd "${D}/debs/${OS}/${ARCHITECTURE}"
     dpkg-scanpackages . >Packages
     {
@@ -176,9 +188,10 @@ EOF
     apt-ftparchive -c "Release.tmp" release "." >"./Release"
     rm -f "Release.tmp"
     rm -f "Release.gpg"
-    gpg --homedir "${D}/gpg" -abs --digest-algo SHA256 "$(cat "${D}/gpg/keyid")" -o "Release.gpg" "Release"
+    gpg --homedir "${D}/gpg" -abs --digest-algo SHA256 -u "$(cat "${D}/gpg/keyid")" -o "Release.gpg" "Release"
     rm -f "InRelease"
-    gpg --homedir "${D}/gpg" -abs --digest-algo SHA256 "$(cat "${D}/gpg/keyid")" --clearsign -o "InRelease" "Release"
+    gpg --homedir "${D}/gpg" -abs --digest-algo SHA256 -u "$(cat "${D}/gpg/keyid")" --clearsign -o "InRelease" "Release"
     cp "${D}/gpg/lxc.public.asc" .
-)
+  )
+}
 cleanUp
