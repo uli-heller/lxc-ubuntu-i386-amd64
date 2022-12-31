@@ -100,7 +100,7 @@ sed -e "s/^deb /deb-src /" <"${TMPDIR}/sources.list" >"${TMPDIR}/debsrc"
 sudo chroot "${ROOTFS}" tee -a /etc/apt/sources.list <"${TMPDIR}/debsrc" >/dev/null
 sudo chroot "${ROOTFS}" apt update
 sudo chroot "${ROOTFS}" apt upgrade -y
-sudo chroot "${ROOTFS}" apt install -y dpkg-dev
+sudo chroot "${ROOTFS}" apt install -y dpkg-dev devscripts equivs
 sudo chroot "${ROOTFS}" bash -c "mkdir -p /src"
 while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
     PACKAGE="$1"
@@ -109,14 +109,36 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
     sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && ls *dsc" >"${TMPDIR}/after"
     cmp "${TMPDIR}/before" "${TMPDIR}/after" >/dev/null 2>&1 || {
 	(
+	    set -x
 	    sudo find "${ROOTFS}/src/${PACKAGE}" -mindepth 1 -maxdepth 1 -type d|sudo xargs rm -rf
 	    sudo find "${ROOTFS}/src/${PACKAGE}" -name "*.deb"|sudo xargs rm -rf
 	    sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && apt-get source '${PACKAGE}'" || exit 1
-	    test -e "${D}/patches/${OS}/${PACKAGE}/"*diff && {
-		sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}'/*/. && patch -p1" <"${D}/patches/${OS}/${PACKAGE}/"*diff || exit 1
-	    }
-	    sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && apt-get build-dep -y '${PACKAGE}'" || exit 1
-	    sudo chroot "${ROOTFS}" bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
+	    PACKAGE_FOLDER="$(sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}'/*/. && pwd")"
+	    if [ -e "${D}/patches/${OS}/${PACKAGE}/"*diff ]; then
+		# We do have a patch for the package. Now the situation
+		# might be quite difficult related to version number
+		# and dependencies
+		#
+		# Save the changelog - it might have been modified since we created the patch
+		sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && cat debian/changelog" >"${TMPDIR}/changelog" || exit 1
+		# Modify the patch - skip changelog
+		sed -e '/^diff.*changelog$/,/^diff/ d' "${D}/patches/${OS}/${PACKAGE}/"*diff >"${TMPDIR}/diff-without-changelog"
+		# Apply the modified patch
+		sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && patch -p1" <"${TMPDIR}/diff-without-changelog" || exit 1
+		# Adjust the changelog
+		VERSION_SEARCH="$(grep "^VERSION_SEARCH=" "${D}/patches/${OS}/${PACKAGE}/changelog.parameters"|cut -d= -f2-)"
+		VERSION_REPLACE="$(grep "^VERSION_REPLACE=" "${D}/patches/${OS}/${PACKAGE}/changelog.parameters"|cut -d= -f2-)"
+		OLD_VERSION="$(head -1 "${ROOTFS}/${PACKAGE_FOLDER}/debian/changelog"|grep -o '(.*)'|tr -d '()')"
+		NEW_VERSION="$(echo "${OLD_VERSION}"|sed "s/${VERSION_SEARCH}/${VERSION_REPLACE}/")"
+		sed -e 's/\${\OS\}/'"${OS}/g" -e 's/\${\VERSION\}/'"${NEW_VERSION}/g" -e  's/\${\TIMESTAMP\}/'"$(date -R)/g" "${D}/patches/${OS}/${PACKAGE}/changelog.tpl" >"${TMPDIR}/changelog.start"
+		echo >>"${TMPDIR}/changelog.start"
+		cat "${TMPDIR}/changelog.start" "${TMPDIR}/changelog"| sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && tee debian/changelog" >/dev/null || exit 1
+		# Install dependencies
+		sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && mk-build-deps -i" || exit 1
+	    else
+		sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && apt-get build-dep -y '${PACKAGE}'" || exit 1
+	    fi
+	    sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && dpkg-buildpackage"
 	    test -d "${D}/debs/${OS}/${ARCHITECTURE}" || mkdir -p "${D}/debs/${OS}/${ARCHITECTURE}"
 	    sudo cp "${ROOTFS}/src/${PACKAGE}"/*.deb "${D}/debs/${OS}/${ARCHITECTURE}/."
 	    sudo chown "$(id -un):$(id -gn)" "${D}/debs/${OS}/${ARCHITECTURE}"/*.deb
