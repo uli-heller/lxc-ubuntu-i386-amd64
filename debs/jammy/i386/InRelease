@@ -1,3 +1,6 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
 Codename: jammy
 Date: Sat, 31 Dec 2022 09:12:15 +0000
 Description: Precompiled packages for our LXC containers
@@ -16,3 +19,19 @@ SHA256:
 SHA512:
  df7a9e4df8956ecc93fa03fdc084ebf0f49a2ae0703404e667dd7b59380e36ec6fe11d9e19dbecb079c9a203d1f168a8be5101a59317b0bbed9912d972dcf82d             9075 Packages
  f869c5e0bcfdf98920bd573230f9852ec7b67ec96f17f9abbf0c992cebef834b11050a3ba3772912579a72c58f297c4fd60e888d4e588671c428710bd323fd1f              161 Release
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEbE0xE0fB79L5gFz3ZLasNfRW7K4FAmOv/O8ACgkQZLasNfRW
+7K6zmw/+Oeu7Kq4XUGBLuwHepgeNWsmN7cxrYLipKN10iOsUtlzSwSvXsB6Rs+r3
+GwBtnp4Zj0yLNeOxY0MLlbRO2ynalqgQ7twINi17Ot2Kq1H2vkO+LmyVYvgFjmmA
+Z6JDIpelnRoBjNqh40iaiyDOhu0uZfouRT+Syesmytsq6Qlx7Plf9pnBjGUoSlCr
+OJ/ROBnVrwO7wOsh6NdLa/NVsjraNEVaybsV+vm1NBI0BXR6efeUFWRiJUzdTEhX
+rxFnN6g24Ea6V4DCkp9YeZspuKsTT96erB2H47kiSjOeUPLo+6p/f8VNI6ykasI9
+tq8+MnSS/niSnBpJfsaNfPEcWhCC5xBBWwMf2Ow7QGBzhTEAh7693NSo9YbQQspq
+WhdlBdkL8IvGHjdlCjw/9S9Yn6eDcg93iyve4AJVrYsgjJIXiuiHb3R3zgE5I46a
+Yu/hr96fxB6FPnrgqqFlVhdcfvq1qvxmh5CZbnZSaApzbiUo6voOmM1eLxjN1Ztz
+P/ogjVrpSKmCgei+nmErpq/btA1mk6dCxhNQlJHBmQ02saIJ0Lhop9rqVuXQKijy
+543Not0VbngzCHmyxo9aC5pAjI/rGSE9PcweLpcZwz9TasDBspZohazFw6KBJMvA
+78cNmCliGNPgnKWXv94Mddln3HA1dce5g+4xkCTp+uSlmOdJoCI=
+=3MxU
+-----END PGP SIGNATURE-----
