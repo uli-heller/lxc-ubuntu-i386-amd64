@@ -93,11 +93,20 @@ cleanUp () {
 trap cleanUp 0 1 2 3 4 5 6 7 8 9 10 12 13 14 15
 mkdir "${TMPDIR}"
 
+"${D}/init-gpg.sh"
+"${D}/rebuild-ppa.sh"
+
 RC=0
 sudo "${D}/mount.sh" "${ROOTFS}"
 sudo chroot "${ROOTFS}" cat /etc/apt/sources.list >"${TMPDIR}/sources.list"
 sed -e "s/^deb /deb-src /" <"${TMPDIR}/sources.list" >"${TMPDIR}/debsrc"
-sudo chroot "${ROOTFS}" tee -a /etc/apt/sources.list <"${TMPDIR}/debsrc" >/dev/null
+sudo chroot "${ROOTFS}" tee /etc/apt/sources.list.d/deb-src.list <"${TMPDIR}/debsrc" >/dev/null
+
+sudo mkdir -p "${ROOTFS}/var/cache/lxc-ppa"
+sudo cp "${D}/debs/${OS}/${ARCHITECTURE}"/*  "${ROOTFS}/var/cache/lxc-ppa"
+sudo cp "${D}/debs/${OS}/${ARCHITECTURE}"/lxc.public.gpg "${ROOTFS}/etc/apt/trusted.gpg.d/."
+echo "deb file:/var/cache/lxc-ppa/ ./"|sudo tee "${ROOTFS}/etc/apt/sources.list.d/lxc-ppa.list"
+
 sudo chroot "${ROOTFS}" apt update
 sudo chroot "${ROOTFS}" apt upgrade -y
 sudo chroot "${ROOTFS}" apt install -y dpkg-dev devscripts equivs
@@ -142,6 +151,9 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
 	    test -d "${D}/debs/${OS}/${ARCHITECTURE}" || mkdir -p "${D}/debs/${OS}/${ARCHITECTURE}"
 	    sudo cp "${ROOTFS}/src/${PACKAGE}"/*.deb "${D}/debs/${OS}/${ARCHITECTURE}/."
 	    sudo chown "$(id -un):$(id -gn)" "${D}/debs/${OS}/${ARCHITECTURE}"/*.deb
+	    "${D}/rebuild-ppa.sh"
+	    sudo cp "${D}/debs/${OS}/${ARCHITECTURE}"/*  "${ROOTFS}/var/cache/lxc-ppa"
+	    sudo chroot "${ROOTFS}" apt update
 	) || {
 	    sudo find "${ROOTFS}/src/${PACKAGE}" -mindepth 1 -maxdepth 1 -newer "${TMPDIR}/before"|sudo xargs rm -rf
 	    RC=1
