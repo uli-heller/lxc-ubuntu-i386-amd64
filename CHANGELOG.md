@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+v1.10
+-----
+
+- Recreated all DEBs using 'build.sh'
+- Install DEBs via local PPA
+
 v1.9
 ----
 
