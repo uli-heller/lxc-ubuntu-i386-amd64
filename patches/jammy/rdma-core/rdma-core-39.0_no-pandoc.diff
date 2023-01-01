@@ -1,5 +1,3 @@
-Only in rdma-core-39.0: build-deb
-Only in rdma-core-39.0/debian: .debhelper
 diff -ur rdma-core-39.0.orig/debian/changelog rdma-core-39.0/debian/changelog
 --- rdma-core-39.0.orig/debian/changelog	2022-01-27 19:57:04.000000000 +0100
 +++ rdma-core-39.0/debian/changelog	2022-08-07 09:59:39.405223257 +0200
