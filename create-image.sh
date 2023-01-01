@@ -3,23 +3,23 @@
 ### BN
 ###
 ### Usage:
-###   BN [-a x86_64|i686] [-k] [-U] [-m moddir] [-p prefix] osname [osdir]"
+###   BN [-a amd64|i386] [-k] [-U] [-m moddir] [-p prefix] osname [osdir]"
 ###
 ### Options:
-###   -a x86_64|i686 ............. target architecture
-###   -k ......................... keep intermediate files
-###   -U ......................... add my (Uli's) preferences (synonym for '-m uli-modifications -p 'uli')
-###   -m moddir .................. add modifications of moddir
-###   -p prefix .................. prefix for the name of the final container
-###   osname ..................... focal or jammy
+###   -a i386|amd64|x86_64|i686 ... target architecture
+###   -k .......................... keep intermediate files
+###   -U .......................... add my (Uli's) preferences (synonym for '-m uli-modifications -p 'uli')
+###   -m moddir ................... add modifications of moddir
+###   -p prefix ................... prefix for the name of the final container
+###   osname ...................... focal or jammy
 ###
 ### Examples:
-###   BN -a x86_64 jammy ......... creates 'jammy-HEAD-amd64-lxcimage.tar.xz'
-###   BN -a x86_64 -k jammy ...... creates 'jammy-HEAD-amd64-lxcimage.tar.xz' and stores intermediate steps for faster re-execution
+###   BN -a amd64 jammy ......... creates 'jammy-HEAD-amd64-lxcimage.tar.xz'
+###   BN -a amd64 -k jammy ...... creates 'jammy-HEAD-amd64-lxcimage.tar.xz' and stores intermediate steps for faster re-execution
 ###
 ### "Special" Examples (not suitable for general use):
-###   BN -a x86_64 -U jammy ...... creates 'uli-jammy-HEAD-amd64-lxcimage.tar.xz'
-###   BN -a x86_64 -k -U jammy ... creates 'uli-jammy-HEAD-amd64-lxcimage.tar.xz' and stores intermediate steps for faster re-execution
+###   BN -a amd64 -U jammy ...... creates 'uli-jammy-HEAD-amd64-lxcimage.tar.xz'
+###   BN -a amd64 -k -U jammy ... creates 'uli-jammy-HEAD-amd64-lxcimage.tar.xz' and stores intermediate steps for faster re-execution
 ###
 test -z "${BN}" && BN="$(basename "$0")"
 D="$(dirname "$0")"
