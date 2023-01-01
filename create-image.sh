@@ -355,7 +355,12 @@ test -n "${PREFIX}" && {
 
 (
     cd "./${OSDIR}"
-    sudo tar --exclude "rootfs/var/cache/lxc-ppa" --exclude "rootfs/etc/apt/trusted.gpg.d/lxc.public.gpg" --exclude "rootfs/etc/apt/sources.list.d/lxc-ppa.list" -cpf - *
+    sudo tar \
+	 --exclude "rootfs/var/cache/lxc-ppa"\
+	 --exclude "rootfs/etc/apt/trusted.gpg.d/lxc.public.gpg"\
+	 --exclude "rootfs/etc/apt/sources.list.d/lxc-ppa.list"\
+	 --exclude "rootfs/var/cache/apt/archives"\
+	 -cpf - *
 )|xz -T0 -c9 >"${PREFIX}${OS}-${VERSION}-${DEBOOTSTRAP_ARCHITECTURE}-lxcimage.tar.xz"
 
 sudo rm -rf "./${OSDIR}"
