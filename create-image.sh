@@ -130,6 +130,7 @@ test -e "${OS}-${DEBOOTSTRAP_ARCHITECTURE}-02-debootstrap-debootstrap.tar.lz4" |
   test -n "${KEEP}" && sudo tar cf - "./${OSDIR}/rootfs" |lz4 -c >"${OS}-${DEBOOTSTRAP_ARCHITECTURE}-02-debootstrap-debootstrap.tar.lz4"
 }
 
+ROOTFS="./${OSDIR}/rootfs"
 test -e "${OS}-${DEBOOTSTRAP_ARCHITECTURE}-03-addons.tar.lz4" || {
   sudo mkdir -p "./${OSDIR}/rootfs/etc/netplan"
   sudo tee  "./${OSDIR}/rootfs/etc/netplan/netplan.yaml" >/dev/null <<EOF
@@ -145,6 +146,11 @@ EOF
   for r in updates backports security; do
     echo "${SOURCE_LINE}"|sed -e "s/${OS} main/${OS}-${r} main/"|sudo tee -a "./${OSDIR}/rootfs/etc/apt/sources.list"
   done
+
+  sudo mkdir -p "${ROOTFS}/var/cache/lxc-ppa"
+  sudo cp "${D}/debs/${OS}/${DEBOOTSTRAP_ARCHITECTURE}"/*  "${ROOTFS}/var/cache/lxc-ppa"
+  sudo cp "${D}/debs/${OS}/${DEBOOTSTRAP_ARCHITECTURE}"/lxc.public.gpg "${ROOTFS}/etc/apt/trusted.gpg.d/."
+  echo "deb file:/var/cache/lxc-ppa/ ./"|sudo tee "${ROOTFS}/etc/apt/sources.list.d/lxc-ppa.list"
 
   sudo ./mount.sh "./${OSDIR}/rootfs"
   sudo chroot "./${OSDIR}/rootfs" apt-get update
@@ -185,26 +191,11 @@ EOF
   sudo chroot "./${OSDIR}/rootfs" usermod -aG sudo ubuntu
   sudo chroot "./${OSDIR}/rootfs" chsh -s /bin/bash ubuntu
 
-  # netplan.io
-  # libnetplan0
-  # python3-netifaces
-  # logrotate
-  # at
-  test -d "debs/${OS}/${DEBOOTSTRAP_ARCHITECTURE}" && {
-    >"./install-packages-${OS}"
-    for d in "debs/${OS}/${DEBOOTSTRAP_ARCHITECTURE}/"*; do
-      b="$(basename "${d}")"
-      sudo cp "${d}" "./${OSDIR}/rootfs/var/cache/apt/archives/${b}"
-      echo "/var/cache/apt/archives/${b}" >>"./install-packages-${OS}"
-    done
-    xargs -t sudo chroot "./${OSDIR}/rootfs" apt-get install -y <"./install-packages-${OS}"
-    rm -f "./install-packages-${OS}"
-  }
-
   sudo chroot "./${OSDIR}/rootfs" apt-get update
   sudo chroot "./${OSDIR}/rootfs" apt-get upgrade -y
   #sudo chroot "./${OSDIR}/rootfs" apt-get clean
   sudo ./umount.sh "./${OSDIR}/rootfs"
+
   test -n "${KEEP}" && sudo tar --one-file-system -cf - "./${OSDIR}/rootfs" |lz4 -c >"${OS}-${DEBOOTSTRAP_ARCHITECTURE}-03-addons.tar.lz4"
 }
 
@@ -360,9 +351,11 @@ test -n "${PREFIX}" && {
     expr "${PREFIX}" : '.*-$' >/dev/null || PREFIX="${PREFIX}-"
 }
 
+#sudo rm -rf "${ROOTFS}/var/cache/lxc-ppa" "${ROOTFS}/etc/apt/trusted.gpg.d/lxc.public.gpg" "${ROOTFS}/etc/apt/sources.list.d/lxc-ppa.list"
+
 (
     cd "./${OSDIR}"
-    sudo tar -cpf - *
+    sudo tar --exclude "rootfs/var/cache/lxc-ppa" --exclude "rootfs/etc/apt/trusted.gpg.d/lxc.public.gpg" --exclude "rootfs/etc/apt/sources.list.d/lxc-ppa.list" -cpf - *
 )|xz -T0 -c9 >"${PREFIX}${OS}-${VERSION}-${DEBOOTSTRAP_ARCHITECTURE}-lxcimage.tar.xz"
 
 sudo rm -rf "./${OSDIR}"
