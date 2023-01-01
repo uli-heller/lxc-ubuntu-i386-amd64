@@ -135,19 +135,23 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
 		# Apply the modified patch
 		sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && patch -p1" <"${TMPDIR}/diff-without-changelog" || exit 1
 		# Adjust the changelog
+		PREPARE_BUILD="$(grep "^PREPARE_BUILD=" "${D}/patches/${OS}/${PACKAGE}/changelog.parameters"|cut -d= -f2-)"
 		VERSION_SEARCH="$(grep "^VERSION_SEARCH=" "${D}/patches/${OS}/${PACKAGE}/changelog.parameters"|cut -d= -f2-)"
 		VERSION_REPLACE="$(grep "^VERSION_REPLACE=" "${D}/patches/${OS}/${PACKAGE}/changelog.parameters"|cut -d= -f2-)"
 		OLD_VERSION="$(head -1 "${ROOTFS}/${PACKAGE_FOLDER}/debian/changelog"|grep -o '(.*)'|tr -d '()')"
 		NEW_VERSION="$(echo "${OLD_VERSION}"|sed "s/${VERSION_SEARCH}/${VERSION_REPLACE}/")"
-		sed -e 's/\${\OS\}/'"${OS}/g" -e 's/\${\VERSION\}/'"${NEW_VERSION}/g" -e  's/\${\TIMESTAMP\}/'"$(date -R)/g" "${D}/patches/${OS}/${PACKAGE}/changelog.tpl" >"${TMPDIR}/changelog.start"
+		TIMESTAMP="$(date -R)"
+		sed -e 's/\${\OS\}/'"${OS}/g" -e 's/\${\VERSION\}/'"${NEW_VERSION}/g" -e  's/\${\TIMESTAMP\}/'"${TIMESTAMP}/g" "${D}/patches/${OS}/${PACKAGE}/changelog.tpl" >"${TMPDIR}/changelog.start"
+		PREPARE_BUILD_EXPANDED="$(echo "${PREPARE_BUILD}"|sed -e 's/\${\OS\}/'"${OS}/g" -e 's/\${\VERSION\}/'"${NEW_VERSION}/g" -e  's/\${\TIMESTAMP\}/'"${TIMESTAMP}/g")"
 		echo >>"${TMPDIR}/changelog.start"
 		cat "${TMPDIR}/changelog.start" "${TMPDIR}/changelog"| sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && tee debian/changelog" >/dev/null || exit 1
 		# Install dependencies
-		sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && mk-build-deps -i" || exit 1
+		echo "yes"|sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && mk-build-deps -i" || exit 1
+		test -n "${PREPARE_BUILD}" && sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && eval ${PREPARE_BUILD_EXPANDED}" || exit 1
 	    else
 		sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && apt-get build-dep -y '${PACKAGE}'" || exit 1
 	    fi
-	    sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && dpkg-buildpackage"
+	    sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && dpkg-buildpackage" || exit 1
 	    test -d "${D}/debs/${OS}/${ARCHITECTURE}" || mkdir -p "${D}/debs/${OS}/${ARCHITECTURE}"
 	    sudo cp "${ROOTFS}/src/${PACKAGE}"/*.deb "${D}/debs/${OS}/${ARCHITECTURE}/."
 	    sudo chown "$(id -un):$(id -gn)" "${D}/debs/${OS}/${ARCHITECTURE}"/*.deb
@@ -155,7 +159,7 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
 	    sudo cp "${D}/debs/${OS}/${ARCHITECTURE}"/*  "${ROOTFS}/var/cache/lxc-ppa"
 	    sudo chroot "${ROOTFS}" apt update
 	) || {
-	    sudo find "${ROOTFS}/src/${PACKAGE}" -mindepth 1 -maxdepth 1 -newer "${TMPDIR}/before"|sudo xargs rm -rf
+	    sudo find "${ROOTFS}/src/${PACKAGE}" -mindepth 1 -maxdepth 1 -newer "${TMPDIR}/before"|sudo xargs -t rm -rf
 	    RC=1
 	}
     }

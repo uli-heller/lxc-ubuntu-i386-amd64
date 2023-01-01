@@ -243,3 +243,19 @@ $ ./build.sh focal-build "${PACKAGE}"
 $ PACKAGE=logrotate
 $ ./install.sh focal-build "${PACKAGE}" ./logrotate_3.14.0-4ubuntu3_i386.deb
 ```
+
+Building Using "build.sh"
+-------------------------
+
+```
+./build.sh -a i386 -o focal python3-coverage
+./build.sh -a i386 -o focal python3-netifaces
+./build.sh -a i386 -o focal libfdt-dev
+./build.sh -a i386 -o focal libdpdk-dev
+./build.sh -a i386 -o focal openvswitch
+./build.sh -a i386 -o focal netplan.io
+
+./build.sh -a i386 -o focal at
+./build.sh -a i386 -o focal logrotate
+./build.sh -a i386 -o focal joe-jupp
+```

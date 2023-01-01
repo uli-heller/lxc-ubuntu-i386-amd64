@@ -405,3 +405,20 @@ $ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./isc-
 ```
 $ sudo ./umount.sh jammy-build
 ```
+
+Building Using "build.sh"
+-------------------------
+
+```
+./build.sh -a i386 -o jammy python3-coverage
+./build.sh -a i386 -o jammy python3-netifaces
+./build.sh -a i386 -o jammy libfdt-dev
+./build.sh -a i386 -o jammy rdma-core
+./build.sh -a i386 -o jammy libdpdk-dev
+./build.sh -a i386 -o jammy openvswitch
+./build.sh -a i386 -o jammy netplan.io
+
+./build.sh -a i386 -o jammy at
+./build.sh -a i386 -o jammy logrotate
+./build.sh -a i386 -o jammy joe-jupp
+```
