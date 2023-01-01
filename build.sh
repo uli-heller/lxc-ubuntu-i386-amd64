@@ -96,6 +96,13 @@ mkdir "${TMPDIR}"
 "${D}/init-gpg.sh"
 "${D}/rebuild-ppa.sh"
 
+#
+# replaceVariables <from >to
+#
+replaceVariables () {
+  sed -e 's/\${\OS\}/'"${OS}/g" -e 's/\${\VERSION\}/'"${NEW_VERSION}/g" -e  's/\${\TIMESTAMP\}/'"${TIMESTAMP}/g"
+}
+
 RC=0
 sudo "${D}/mount.sh" "${ROOTFS}"
 sudo chroot "${ROOTFS}" cat /etc/apt/sources.list >"${TMPDIR}/sources.list"
@@ -143,8 +150,8 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
 		OLD_VERSION="$(head -1 "${ROOTFS}/${PACKAGE_FOLDER}/debian/changelog"|grep -o '(.*)'|tr -d '()')"
 		NEW_VERSION="$(echo "${OLD_VERSION}"|sed "s/${VERSION_SEARCH}/${VERSION_REPLACE}/")"
 		TIMESTAMP="$(date -R)"
-		sed -e 's/\${\OS\}/'"${OS}/g" -e 's/\${\VERSION\}/'"${NEW_VERSION}/g" -e  's/\${\TIMESTAMP\}/'"${TIMESTAMP}/g" "${D}/patches/${OS}/${PACKAGE}/changelog.tpl" >"${TMPDIR}/changelog.start"
-		PREPARE_BUILD_EXPANDED="$(echo "${PREPARE_BUILD}"|sed -e 's/\${\OS\}/'"${OS}/g" -e 's/\${\VERSION\}/'"${NEW_VERSION}/g" -e  's/\${\TIMESTAMP\}/'"${TIMESTAMP}/g")"
+		replaceVariables <"${D}/patches/${OS}/${PACKAGE}/changelog.tpl" >"${TMPDIR}/changelog.start"
+		PREPARE_BUILD_EXPANDED="$(echo "${PREPARE_BUILD}"|replaceVariables)"
 		echo >>"${TMPDIR}/changelog.start"
 		cat "${TMPDIR}/changelog.start" "${TMPDIR}/changelog"| sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && tee debian/changelog" >/dev/null || exit 1
 		# Install dependencies
