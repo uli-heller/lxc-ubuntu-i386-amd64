@@ -122,7 +122,7 @@ sudo chroot "${ROOTFS}" bash -c "mkdir -p /src"
 while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
     PACKAGE="$1"
     sudo chroot "${ROOTFS}" bash -c "cd /src && mkdir -p '${PACKAGE}' && cd '${PACKAGE}' && ls *dsc" >"${TMPDIR}/before"
-    sudo chroot "${ROOTFS}" bash -c "cd /src && mkdir -p '${PACKAGE}' && cd '${PACKAGE}' && ls"      >"${TMPDIR}/before.ls"
+    sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && ls"      >"${TMPDIR}/before.ls"
     sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && apt-get source --download-only '${PACKAGE}'"
     sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && ls *dsc" >"${TMPDIR}/after"
     sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && ls" >"${TMPDIR}/after.ls"
@@ -179,7 +179,10 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
 	    sudo chroot "${ROOTFS}" apt update
 	) || {
 	    sudo find "${ROOTFS}/src/${PACKAGE}" -mindepth 1 -maxdepth 1 -newer "${TMPDIR}/before"|sudo xargs -t rm -rf
-	    diff "${TMPDIR}/before.ls" "${TMPDIR}/after.ls"|grep "^>"|cut -c2-|xargs rm -f
+	    (
+		cd "${ROOTFS}/src/${PACKAGE}"
+		diff "${TMPDIR}/before.ls" "${TMPDIR}/after.ls"|grep "^>"|cut -c2-|sudo xargs -t rm -f
+	    )
 	    RC=1
 	}
     }
