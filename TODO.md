@@ -4,7 +4,6 @@ TODO
 Open
 -----
 
-- Simple building of DEBs - build.sh - almost done
 - Same packages for i386 and amd64
   - i386 always has packages from debs/...
   - amd64 is missing some of them
@@ -15,6 +14,7 @@ Open
 Done
 ----
 
+- Simple building of DEBs - build.sh
 - Fix error
   ```
   The following packages have unmet dependencies:
