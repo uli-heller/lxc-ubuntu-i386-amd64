@@ -92,6 +92,7 @@ cleanUp () {
 
 trap cleanUp 0 1 2 3 4 5 6 7 8 9 10 12 13 14 15
 mkdir "${TMPDIR}"
+touch "${TMPDIR}/empty"
 
 "${D}/init-gpg.sh"
 "${D}/rebuild-ppa.sh"
@@ -132,31 +133,38 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
 	    sudo find "${ROOTFS}/src/${PACKAGE}" -name "*.deb"|sudo xargs rm -rf
 	    sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && apt-get source '${PACKAGE}'" || exit 1
 	    PACKAGE_FOLDER="$(sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}'/*/. && pwd")"
-	    if [ -e "${D}/patches/${OS}/${PACKAGE}/"*diff ]; then
+	    if [ -d "${D}/patches/${OS}/${PACKAGE}" ]; then
+		PATCH_FOLDER="${D}/patches/${OS}/${PACKAGE}"
 		# We do have a patch for the package. Now the situation
 		# might be quite difficult related to version number
 		# and dependencies
 		#
 		# Save the changelog - it might have been modified since we created the patch
 		sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && cat debian/changelog" >"${TMPDIR}/changelog" || exit 1
-		# Modify the patch - skip changelog
-		sed -e '/^diff.*changelog$/,/^diff/ d' "${D}/patches/${OS}/${PACKAGE}/"*diff >"${TMPDIR}/diff-without-changelog"
-		# Apply the modified patch
-		sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && patch -p1" <"${TMPDIR}/diff-without-changelog" || exit 1
-		# Adjust the changelog
-		PREPARE_BUILD="$(grep "^PREPARE_BUILD=" "${D}/patches/${OS}/${PACKAGE}/changelog.parameters"|cut -d= -f2-)"
-		VERSION_SEARCH="$(grep "^VERSION_SEARCH=" "${D}/patches/${OS}/${PACKAGE}/changelog.parameters"|cut -d= -f2-)"
-		VERSION_REPLACE="$(grep "^VERSION_REPLACE=" "${D}/patches/${OS}/${PACKAGE}/changelog.parameters"|cut -d= -f2-)"
+		DIFF=
+		test -e "${PATCH_FOLDER}/"*.diff && DIFF="$(echo "${PATCH_FOLDER}/"*.diff)"
+		CHANGELOG_PARAMETERS="${TMPDIR}/empty"
+		test -e "${PATCH_FOLDER}/changelog.parameters" && CHANGELOG_PARAMETERS="${PATCH_FOLDER}/changelog.parameters"
+		PREPARE_BUILD="$(grep "^PREPARE_BUILD=" "${CHANGELOG_PARAMETERS}"|cut -d= -f2-)"
+		VERSION_SEARCH="$(grep "^VERSION_SEARCH=" "${CHANGELOG_PARAMETERS}"|cut -d= -f2-)"
+		VERSION_REPLACE="$(grep "^VERSION_REPLACE=" "${CHANGELOG_PARAMETERS}"|cut -d= -f2-)"
 		OLD_VERSION="$(head -1 "${ROOTFS}/${PACKAGE_FOLDER}/debian/changelog"|grep -o '(.*)'|tr -d '()')"
 		NEW_VERSION="$(echo "${OLD_VERSION}"|sed "s/${VERSION_SEARCH}/${VERSION_REPLACE}/")"
 		TIMESTAMP="$(date -R)"
-		replaceVariables <"${D}/patches/${OS}/${PACKAGE}/changelog.tpl" >"${TMPDIR}/changelog.start"
-		PREPARE_BUILD_EXPANDED="$(echo "${PREPARE_BUILD}"|replaceVariables)"
-		echo >>"${TMPDIR}/changelog.start"
-		cat "${TMPDIR}/changelog.start" "${TMPDIR}/changelog"| sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && tee debian/changelog" >/dev/null || exit 1
+		test -n "${DIFF}" && {
+		    # Modify the patch - skip changelog
+		    sed -e '/^diff.*changelog$/,/^diff/ d' "${DIFF}" >"${TMPDIR}/diff-without-changelog"
+		    # Apply the modified patch
+		    sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && patch -p1" <"${TMPDIR}/diff-without-changelog" || exit 1
+		    # Adjust the changelog
+		    replaceVariables <"${D}/patches/${OS}/${PACKAGE}/changelog.tpl" >"${TMPDIR}/changelog.start"
+		    echo >>"${TMPDIR}/changelog.start"
+		    cat "${TMPDIR}/changelog.start" "${TMPDIR}/changelog"| sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && tee debian/changelog" >/dev/null || exit 1
+		}
 		# Install dependencies
 		echo "yes"|sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && mk-build-deps -i" || exit 1
 		test -n "${PREPARE_BUILD}" && {
+		    PREPARE_BUILD_EXPANDED="$(echo "${PREPARE_BUILD}"|replaceVariables)"
 		    sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && eval ${PREPARE_BUILD_EXPANDED}" || exit 1
 		}
 	    else
