@@ -148,9 +148,11 @@ EOF
   done
 
   sudo mkdir -p "${ROOTFS}/var/cache/lxc-ppa"
-  sudo cp "${D}/debs/${OS}/${DEBOOTSTRAP_ARCHITECTURE}"/*  "${ROOTFS}/var/cache/lxc-ppa"
-  sudo cp "${D}/debs/${OS}/${DEBOOTSTRAP_ARCHITECTURE}"/lxc.public.gpg "${ROOTFS}/etc/apt/trusted.gpg.d/."
-  echo "deb file:/var/cache/lxc-ppa/ ./"|sudo tee "${ROOTFS}/etc/apt/sources.list.d/lxc-ppa.list"
+  sudo cp "${D}/debs/${OS}/${DEBOOTSTRAP_ARCHITECTURE}"/*  "${ROOTFS}/var/cache/lxc-ppa" 2>/dev/null && {
+      sudo cp "${D}/debs/${OS}/${DEBOOTSTRAP_ARCHITECTURE}"/lxc.public.gpg "${ROOTFS}/etc/apt/trusted.gpg.d/." 2>/dev/null && {
+	  echo "deb file:/var/cache/lxc-ppa/ ./"|sudo tee "${ROOTFS}/etc/apt/sources.list.d/lxc-ppa.list"
+      }
+  }
 
   sudo ./mount.sh "./${OSDIR}/rootfs"
   sudo chroot "./${OSDIR}/rootfs" apt-get update
