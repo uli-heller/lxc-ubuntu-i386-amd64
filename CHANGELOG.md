@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+v1.11
+-----
+- Use --numeric-owner for tar file creation
+- Change ownership of metadata.yaml and templates
+
 v1.10
 -----
 
