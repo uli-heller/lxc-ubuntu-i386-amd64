@@ -1,16 +1,13 @@
 #!/bin/sh
 #
 # create-release.sh
-# create-release.sh --no-virus
 #
 
 D="$(dirname "$0")"
 D="$(cd "${D}" && pwd)"
 BN="$(basename "$0")"
-DBN="$(basename "${D}")"
 
-NO_VIRUS=
-test "$1" = "--no-virus" && NO_VIRUS="--exclude eicar"
+DBN="$(basename "${D}")"
 
 TMPDIR="/tmp/${BN}-$(openssl rand -hex 10)-$$~"
 
@@ -45,5 +42,12 @@ sha256sum "${TARXZ}" >"${TARXZ}.sha256"
 sha1sum "${TARXZ}" >"${TARXZ}.sha1"
 
 ls -1 "${TARXZ}"*
+
+for r in jammy focal; do for a in amd64 i386; do ./create-image.sh -k -a ${a} ${r}; done; done
+
+# Below, images not for general usage are created
+for r in jammy focal; do for a in amd64 i386; do ./create-image.sh -U -k -a ${a} ${r}; done; done
+for r in jammy focal; do for a in amd64 i386; do ./create-image.sh -m dp-modifications -p dp -k -a ${a} ${r}; done; done
+
 cleanUp
 exit 0
