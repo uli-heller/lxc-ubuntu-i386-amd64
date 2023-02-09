@@ -33,6 +33,9 @@ usage () {
     help|sed -n "/^Usage:/,/^\s*$/p"
 }
 
+LANG=C
+export LANG
+
 KEEP=
 USAGE=
 HELP=
