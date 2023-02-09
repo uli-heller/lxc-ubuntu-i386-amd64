@@ -5,6 +5,8 @@ v1.11
 -----
 - Use --numeric-owner for tar file creation
 - Change ownership of metadata.yaml and templates
+- Fixed warnings when creating an amd64 image
+- Fixed local warnings for perl
 
 v1.10
 -----
