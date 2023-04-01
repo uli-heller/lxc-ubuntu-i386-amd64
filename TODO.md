@@ -4,16 +4,18 @@ TODO
 Open
 ----
 
-- Unable to use packages v.11
+No open TODOs!
+
+Done
+----
+
+- Unable to use packages v1.11
   ```
   $ xz -cd dp-jammy-v1.11-amd64-lxcimage.tar.xz| tar tvf -
   tar: Das sieht nicht wie ein „tar“-Archiv aus.
   tar: Beende mit Fehlerstatus aufgrund vorheriger Fehler
   ```
-
-Done
-----
-
+  - Fixed by executing `./create-release.sh` again  
 - Use only one way to specify the architecture
   - i386 and amd64
   - i686 and x86_64
