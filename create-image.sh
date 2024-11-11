@@ -367,6 +367,7 @@ test -n "${PREFIX}" && {
 	 --exclude "rootfs/etc/apt/trusted.gpg.d/lxc.public.gpg"\
 	 --exclude "rootfs/etc/apt/sources.list.d/lxc-ppa.list"\
 	 --exclude "rootfs/var/cache/apt/archives"\
+	 --exclude "rootfs/proc/"\
 	 -cpf - *
 )|xz -T0 -c9 >"${PREFIX}${OS}-${VERSION}-${DEBOOTSTRAP_ARCHITECTURE}-lxcimage.tar.xz"
 
