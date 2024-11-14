@@ -55,7 +55,6 @@ $ ./build.sh -a i386 -o noble logrotate
 
 ### netplan.io
 
-
 ```
 $ ./build.sh -a i386 -o noble netplan.io
 ...
@@ -67,393 +66,74 @@ The following packages have unmet dependencies:
                         Depends: pandoc but it is not installable
 ```
 
-Also:
+So we have to build lots of dependencies first:
 
 ```
 ./build.sh -a i386 -o noble python3-cffi
 ./build.sh -a i386 -o noble python3-coverage
 ./build.sh -a i386 -o noble python3-pytest-cov
 ./build.sh -a i386 -o noble python3-netifaces
+./build.sh -a i386 -o noble pandoc # lots of dependencies - see below
 ```
 
-Use the debs from "focal"
--------------------------
-
-Modify "create-32bit-image.sh" and VERSION:
-
-create-32bit-image.sh:
-
-```diff
---- create-32bit-image.sh.orig	2022-08-07 07:44:57.332552947 +0200
-+++ create-32bit-image.sh	2022-08-07 07:46:20.504391786 +0200
-@@ -46,9 +46,9 @@
- # netplan.io
- # libnetplan0
- # python3-netifaces
--test -d "debs/${OS}" && {
-+test -d "debs/focal" && {
-   >"./install-packages-${OS}"
--  for d in "debs/${OS}/"*; do
-+  for d in "debs/focal/"*; do
-     b="$(basename "${d}")"
-     sudo cp "${d}" "./${OSDIR}/var/cache/apt/archives/${b}"
-     echo "/var/cache/apt/archives/${b}" >>"./install-packages-${OS}"
-```
-
-VERSION:
-
-```diff
---- VERSION.orig	2022-08-07 07:48:15.836168353 +0200
-+++ VERSION	2022-08-07 07:36:35.697525724 +0200
-@@ -1 +1 @@
--v0.5
-+v0.5-p1
-```
-
-Try to create the image:
+### pandoc
 
 ```
-$ create-32bit-image.sh jammy
+$ ./build.sh -a i386 -o noble pandoc
 ...
-Building dependency tree... Done
-Reading state information... Done
-Note, selecting 'libnetplan0' instead of '/var/cache/apt/archives/libnetplan0_0.104-0ubuntu2~20.04.2_i386.deb'
-Note, selecting 'netplan.io' instead of '/var/cache/apt/archives/netplan.io_0.104-0ubuntu2~20.04.2_i386.deb'
-Note, selecting 'python3-netifaces' instead of '/var/cache/apt/archives/python3-netifaces_0.10.4-1ubuntu4_i386.deb'
-Some packages could not be installed. This may mean that you have
-requested an impossible situation or if you are using the unstable
-distribution that some required packages have not yet been created
-or been moved out of Incoming.
-The following information may help to resolve the situation:
-
-The following packages have unmet dependencies:
- python3-netifaces : Depends: python3 (< 3.9) but 3.10.4-0ubuntu2 is to be installed
-E: Unable to correct problems, you have held broken packages.
+dpkg-checkbuilddeps: error: Unmet build dependencies: alex cdbs dh-buildinfo ghc ghc-prof happy haskell-devscripts libghc-hslua-cli-dev (<< 1.5) libghc-hslua-cli-dev (>= 1.4.1) libghc-hslua-cli-prof libghc-pandoc-dev (>= 3.1.3) libghc-pandoc-lua-engine-dev (<< 0.3) libghc-pandoc-lua-engine-dev (>= 0.2) libghc-pandoc-lua-engine-prof libghc-pandoc-prof libghc-temporary-dev (<< 1.4) libghc-temporary-prof pandoc-data
 ...
 ```
 
-Try To Install From Regular Package Sources
--------------------------------------------
+Trying to build the missing dependencies leads to:
 
-Modify "create-32bit-image.sh" and VERSION:
+- ghc -> ghc:nativ -> creates nothing
 
-create-32bit-image.sh:
+So I decided to create a netplan package without a dependency to pandoc!
 
-```diff
---- create-32bit-image.sh.orig	2022-08-07 07:44:57.332552947 +0200
-+++ create-32bit-image.sh	2022-08-07 07:54:25.615833997 +0200
-@@ -46,6 +46,8 @@
- # netplan.io
- # libnetplan0
- # python3-netifaces
-+sudo chroot "./${OSDIR}" apt-get install netplan.io
-+
- test -d "debs/${OS}" && {
-   >"./install-packages-${OS}"
-   for d in "debs/${OS}/"*; do
-```
-
-VERSION:
-
-```diff
---- VERSION.orig	2022-08-07 07:48:15.836168353 +0200
-+++ VERSION	2022-08-07 07:53:06.751777555 +0200
-@@ -1 +1 @@
--v0.5
-+v0.5-p2
-```
-
-Try to create the image:
+### netplan.io (again)
 
 ```
-$ create-32bit-image.sh jammy
-...
-Building dependency tree... Done
-Reading state information... Done
-Package netplan.io is not available, but is referred to by another package.
-This may mean that the package is missing, has been obsoleted, or
-is only available from another source
-
-E: Package 'netplan.io' has no installation candidate
-Hit:1 http://archive.ubuntu.com/ubuntu jammy InRelease
-Hit:2 http://archive.ubuntu.com/ubuntu jammy-updates InRelease
-Hit:3 http://archive.ubuntu.com/ubuntu jammy-backports InRelease
-...
+$ ./build.sh -a i386 -o noble netplan.io
+  # Creates build-noble-i386/rootfs/src/netplan.io/netplan.io-1.0.1
+  # Try to build it using "sudo chroot build-noble-i386/rootfs"
+  # Which files do need modification?
+  #   - debian/control
+  #   - debian/netplan-generator.install
+  #   - debian/netplan.io.install
 ```
 
-So: There is no easy way, we have to build the debs
-on our own!
+Once you know how to build netplan.io without pandoc,
+copy the "old" files into
 
-Building The Debs
------------------
+- patches/noble/prepare-netplan-patch/netplan.io_no-pandoc/orig
 
-According to my experiences from the past, we need this deb:
+and the new files into
 
-- netplan.io
+- patches/noble/prepare-netplan-patch/netplan.io_no-pandoc/no-pandoc
 
-Within this pagagraph, I describe how to build it.
-
-### Create The Non-working Image Keeping Intermediate Folders
-
-Note: I'm using v0.6 for this! I've done some experiments based on
-"fakeroot" and "fakechroot", but there seem to exist some issues
-related to using a 32 bit chroot within a 64 bit host environment.
-
-Create the image and the build folder:
+Create a DIFF:
 
 ```
-$ cd .../lxc-ubuntu-32bit-v0.6
-$ ./create-32bit-image.sh -k jammy jammy-build
-...
-Creating jammy-v06-9147717f2f
-Instance published with fingerprint: 5852f056cba24437126629d729fc5ab9a11f2f6dee91b681126bcd389d2d9d5a
-Image exported successfully!           
-Datei umbenannt 'tmp-jammy-export/5852f056cba24437126629d729fc5ab9a11f2f6dee91b681126bcd389d2d9d5a.tar.gz' -> 'jammy-v0.6-lxcimage.tar.gz'
-  # There is a folder named "jammy-build" afterwards
+diff -ur \
+  patches/noble/prepare-netplan-patch/netplan.io_no-pandoc/orig \
+  patches/noble/prepare-netplan-patch/netplan.io_no-pandoc/no-pandoc \
+  >patches/noble/netplan.io/no-pandoc.diff
 ```
 
-### Mount And Configure Build Chroot
+Additionally, copy the files "changelog.paramrters"
+and "changelog.tpl" from "patches/jammy/netplan.io"
+to "patches/noble/netplan.io".
+
+Now you'll be able to build:
 
 ```
-$ cat jammy-build/etc/apt/sources.list|sed -e "s/^deb /deb-src /"|sudo tee jammy-build/etc/apt/sources.list.d/deb-src.list >/dev/null
-$ sudo mkdir jammy-build/src
-$ sudo ./mount.sh jammy-build
-$ sudo chroot jammy-build apt-get update
-...
-Get:16 http://archive.ubuntu.com/ubuntu jammy-security/restricted Sources [19.0 kB]
-Get:17 http://archive.ubuntu.com/ubuntu jammy-security/universe Sources [12.0 kB]
-Fetched 19.9 MB in 5s (4264 kB/s)                        
-Reading package lists... Done
-$ sudo chroot jammy-build apt-get install -y dpkg-dev
-  # installs "dpkg-source" required by "apt-get source ..."
+$ ./build.sh -a i386 -o noble netplan.io
 ```
 
-### Running A Test Build
+### joe-jupp
 
 ```
-$ PACKAGE=(package-name)
-$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
-```
-
-Typically, these are the outcomes:
-
-- The build succeeds without any issue
-- The build preparation fails because of missing dependencies -> build the dependencies
-- The build fails (not observed so far)
-
-#### Running Test Build Of netplan.io
-
-```
-$ PACKAGE=netplan.io
-$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-...
-The following packages have unmet dependencies:
- builddeps:netplan.io : Depends: python3-coverage but it is not installable
-                        Depends: python3-netifaces but it is not installable
-                        Depends: pandoc but it is not installable
-                        Depends: openvswitch-switch but it is not installable
-E: Unable to correct problems, you have held broken packages.
-```
-
-So there are missing dependencies. We have to build these
-and come back to "netplan.io" once all of them are ready!
-
-#### Tree Of Missing Debs
-
-Here is the consolidated list of missing debs:
-
-- netplan.io
-  - python3-coverage
-  - python3-netifaces
-  - pandoc
-    - ghc
-      - ghc
-  - openvswitch-switch
-    - libdpdk-dev
-      - libfdt-dev
-      - libibverbs-dev
-        - pandoc
-
-#### Special Case pandoc
-
-Tryining to build pandoc leads to the dependency "ghc" (somehow related to Haskall)
-which has a dependency to itself. Currently, I have no idea on how to continue here,
-so I'm going to modify all packages depending on pandoc. I'll remove pandoc from these.
-
-### Building libibverbs-dev
-
-We know that libibverbs-dev depends on pandoc for building.
-So we have to patch it...
-
-```
-$ PACKAGE=libibverbs-dev
-$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}'"
-$ sudo patch -d "jammy-build/src/${PACKAGE}" <patches/jammy/rdma-core/rdma-core-39.0_no-pandoc.diff
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
-  # Shows lots of missing packages -> install them via apt-get
-$ sudo chroot jammy-build apt-get install -y cmake cython3 libnl-3-dev libnl-route-3-dev libsystemd-dev libudev-dev ninja-build
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
-```
-
-### Installing libibverbs-dev
-
-```
-$ PACKAGE=libibverbs-dev
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./libibverbs-dev_39.0-1dp01~jammy1_i386.deb ./ibverbs-providers_39.0-1dp01~jammy1_i386.deb ./libibverbs1_39.0-1dp01~jammy1_i386.deb"
-  # Later on, we will detect that we need "rdma-core", too. So we install it, too!
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./rdma-core_39.0-1dp01~jammy1_i386.deb"
-```
-
-### Building libfdt-dev
-
-```
-$ PACKAGE=libfdt-dev
-$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
-```
-
-### Installing libfdt-dev
-
-```
-$ PACKAGE=libfdt-dev
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./libfdt-dev_1.6.1-1_i386.deb ./libfdt1_1.6.1-1_i386.deb"
-```
-
-### Building libdpdk-dev
-
-```
-$ PACKAGE=libdpdk-dev
-$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
-```
-
-### Installing libdpdk-dev
-
-```
-$ PACKAGE=libdpdk-dev
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install  ./libdpdk-dev_21.11.1-0ubuntu0.3_i386.deb ./librte*.deb"
-```
-
-### Building openvswitch-switch
-
-```
-$ PACKAGE=openvswitch-switch
-$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
-```
-
-### Installing openvswitch-switch
-
-```
-$ PACKAGE=openvswitch-switch
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./openvswitch-switch_2.17.0-0ubuntu1_i386.deb ./openvswitch-common_2.17.0-0ubuntu1_i386.deb"
-```
-
-### Building python3-coverage
-
-```
-$ PACKAGE=python3-coverage
-$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
-```
-
-### Installing python3-coverage
-
-```
-$ PACKAGE=python3-coverage
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./python3-coverage_6.2+dfsg1-2build1_i386.deb"
-```
-
-### Building python3-netifaces
-
-```
-$ PACKAGE=python3-netifaces
-$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
-```
-
-### Installing python3-netifaces
-
-```
-$ PACKAGE=python3-netifaces
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./python3-netifaces_0.11.0-1build2_i386.deb"
-```
-
-### Building netplan.io
-
-We know that netplan.io depends on pandoc for building.
-So we have to patch it...
-
-```
-$ PACKAGE=netplan.io
-$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}'"
-$ sudo patch -d "jammy-build/src/${PACKAGE}" <patches/jammy/netplan.io/netplan.io_no-pandoc.diff
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
-  # Shows lots of missing packages -> install them via apt-get
-$ sudo chroot jammy-build apt-get install -y cmake cython3 libnl-3-dev libnl-route-3-dev libsystemd-dev libudev-dev ninja-build
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
-```
-
-
-### Installing netplan.io
-
-```
-$ PACKAGE=netplan.io
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./netplan.io_0.104-0dp01~jammy2.1_i386.deb ./libnetplan0_0.104-0dp01~jammy2.1_i386.deb"
-```
-
-### Optional Packages
-
-#### Building libbind-export-dev
-
-```
-$ PACKAGE=libbind-export-dev
-$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
-```
-
-#### Installing libbind-export-dev
-
-```
-$ PACKAGE=libbind-export-dev
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./libbind-export-dev_9.11.19+dfsg-2.1ubuntu3_i386.deb ./libdns-export1110_9.11.19+dfsg-2.1ubuntu3_i386.deb ./libirs-export161_9.11.19+dfsg-2.1ubuntu3_i386.deb ./libisc-export1105_9.11.19+dfsg-2.1ubuntu3_i386.deb ./libisccc-export161_9.11.19+dfsg-2.1ubuntu3_i386.deb ./libisccfg-export163_9.11.19+dfsg-2.1ubuntu3_i386.deb 
-```
-
-#### Building isc-dhcp-client
-
-```
-$ PACKAGE=isc-dhcp-client
-$ sudo chroot jammy-build bash -c "cd /src && mkdir '${PACKAGE}' && cd '${PACKAGE}' && apt-get source '${PACKAGE}' && apt-get build-dep '${PACKAGE}'"
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'*/. && dpkg-buildpackage"
-```
-
-#### Installing isc-dhcp-client
-
-```
-$ PACKAGE=isc-dhcp-client
-$ sudo chroot jammy-build bash -c "cd '/src/${PACKAGE}/'; apt-get install ./isc-dhcp-client_4.4.1-2.1ubuntu5.20.04.3_i386.deb
-```
-
-### Unmounting The Build Chroot
-
-```
-$ sudo ./umount.sh jammy-build
-```
-
-Building Using "build.sh"
--------------------------
-
-```
-./build.sh -a i386 -o jammy python3-coverage
-./build.sh -a i386 -o jammy python3-netifaces
-./build.sh -a i386 -o jammy libfdt-dev
-./build.sh -a i386 -o jammy rdma-core
-./build.sh -a i386 -o jammy libdpdk-dev
-./build.sh -a i386 -o jammy openvswitch
-./build.sh -a i386 -o jammy netplan.io
-
-./build.sh -a i386 -o jammy at
-./build.sh -a i386 -o jammy logrotate
-./build.sh -a i386 -o jammy joe-jupp
+./build.sh -a i386 -o noble jupp
+./build.sh -a i386 -o noble joe-jupp
 ```
