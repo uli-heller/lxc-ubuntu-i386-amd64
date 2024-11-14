@@ -365,10 +365,11 @@ test -n "${PREFIX}" && {
 
 (
     set -x
+    sleep 5
     sudo umount "./${OSDIR}/rootfs/proc"
     #sudo chroot "./${OSDIR}/rootfs" umount "/proc"
     sudo umount "./${OSDIR}/rootfs/sys"
-    sudo chroot "./${OSDIR}/rootfs" umount "/sys"
+    #sudo chroot "./${OSDIR}/rootfs" umount "/sys"
     cd "./${OSDIR}"
     sudo tar --numeric-owner \
 	 --exclude "rootfs/var/cache/lxc-ppa"\
@@ -380,7 +381,5 @@ test -n "${PREFIX}" && {
 	 -cpf - *
 )|xz -T0 -c9 >"${PREFIX}${OS}-${VERSION}-${DEBOOTSTRAP_ARCHITECTURE}-lxcimage.tar.xz"
 
-echo "WARTE"
-read x
 cleanUp
 
