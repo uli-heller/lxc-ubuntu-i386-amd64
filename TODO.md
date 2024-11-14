@@ -4,10 +4,17 @@ TODO
 Open
 ----
 
-- For noble, joe-jupp and jupp packages are missing
+No open TODOs.
 
 Done
 ----
+
+- For noble, joe-jupp and jupp packages are missing
+
+  ```
+  ./build.sh -a i386 -o noble jupp
+  ./build.sh -a i386 -o noble joe-jupp
+  ```
 
 - sudo DEBIAN_FRONTEND="noninteractive" apt install -y tzdata
 
