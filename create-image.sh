@@ -365,10 +365,9 @@ test -n "${PREFIX}" && {
 
 (
     set -x
-    sleep 5
-    sudo umount "./${OSDIR}/rootfs/proc"
+    sudo umount "./${OSDIR}/rootfs/proc" 2>/dev/null
     #sudo chroot "./${OSDIR}/rootfs" umount "/proc"
-    sudo umount "./${OSDIR}/rootfs/sys"
+    sudo umount "./${OSDIR}/rootfs/sys" 2>/dev/null
     #sudo chroot "./${OSDIR}/rootfs" umount "/sys"
     cd "./${OSDIR}"
     sudo tar --numeric-owner \
