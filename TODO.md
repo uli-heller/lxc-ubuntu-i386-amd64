@@ -4,7 +4,7 @@ TODO
 Open
 ----
 
-No open items.
+- For noble, joe-jupp and jupp packages are missing
 
 Done
 ----
