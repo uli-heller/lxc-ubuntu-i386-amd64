@@ -1,12 +1,12 @@
 CHANGELOG
 =========
 
-v1.12 (unreleased)
+v1.12
 -----
 
-- Started work on noble/ubuntu-24.04
+- Added support for noble (ubuntu-24.04)
   - x86_64 seems to work
-  - i386 has some issues
+  - i386 seems to work
 
 v1.11
 -----
