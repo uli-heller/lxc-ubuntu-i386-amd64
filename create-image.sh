@@ -98,8 +98,8 @@ cleanUp () {
     test -n "${OSDIR}" && {
 	sudo -n true 2>/dev/null && {
 	    sudo "${D}/umount.sh" "./${OSDIR}/rootfs" #2>/dev/null
+	    sudo rm -rf "${OSDIR}"
 	}
-	rm -rf "${OSDIR}"
     }
     exit "$RC"
 }
@@ -368,7 +368,7 @@ test -n "${PREFIX}" && {
     sudo umount "./${OSDIR}/rootfs/proc"
     #sudo chroot "./${OSDIR}/rootfs" umount "/proc"
     sudo umount "./${OSDIR}/rootfs/sys"
-    #sudo chroot "./${OSDIR}/rootfs" umount "/sys"
+    sudo chroot "./${OSDIR}/rootfs" umount "/sys"
     cd "./${OSDIR}"
     sudo tar --numeric-owner \
 	 --exclude "rootfs/var/cache/lxc-ppa"\
@@ -382,4 +382,5 @@ test -n "${PREFIX}" && {
 
 echo "WARTE"
 read x
-sudo rm -rf "./${OSDIR}"
+cleanUp
+
