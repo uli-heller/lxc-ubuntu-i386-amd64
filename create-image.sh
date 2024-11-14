@@ -331,7 +331,7 @@ echo >>"./${OSDIR}/metadata.yaml" "    - start"
 echo >>"./${OSDIR}/metadata.yaml" "    create_only: false"
 echo >>"./${OSDIR}/metadata.yaml" "    template: hostname.tpl"
 echo >>"./${OSDIR}/metadata.yaml" "    properties: {}"
-sudo chown root.root ./${OSDIR}/metadata.yaml
+sudo chown root:root ./${OSDIR}/metadata.yaml
 
 mkdir -p "./${OSDIR}/templates"
 cat >"./${OSDIR}/templates/hosts.tpl" <<EOF
@@ -351,7 +351,7 @@ EOF
 # - 2. to 5.: Don't apply to containers, the files mentioned to not exist
 cat >"./${OSDIR}/templates/machine-id.tpl" <<EOF
 EOF
-sudo chown -R root.root ./${OSDIR}/templates
+sudo chown -R root:root ./${OSDIR}/templates
 
 PREFIX="${MODIFICATIONS_PREFIX}"
 test -n "${PREFIX}" && {
