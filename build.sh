@@ -3,11 +3,11 @@
 ### build.sh
 ###
 ### Usage:
-###   build.sh -a i386|amd64 -o focal|jammy package...
+###   build.sh -a i386|amd64 -o focal|jammy|noble package...
 ###
 ### Options:
 ###   -a architecture ... i386 or amd64
-###   -o os ............. focal (20.04) or jammy (22.04)
+###   -o os ............. focal (20.04) or jammy (22.04) or noble (24.04)
 ###   -i image.tar.xz ... lxc image file
 ###   package ........... packages to build
 ###

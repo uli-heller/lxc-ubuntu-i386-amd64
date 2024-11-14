@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+v1.12 (unreleased)
+-----
+
+- Started work on noble/ubuntu-24.04
+  - x86_64 seems to work
+  - i386 has some issues
+
 v1.11
 -----
 - Use --numeric-owner for tar file creation
