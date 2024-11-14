@@ -4,7 +4,7 @@ TODO
 Open
 ----
 
-- logrotate and netplan.io for noble i386
+- logrotate and netplan.io and at for noble i386
 - sudo DEBIAN_FRONTEND="noninteractive" apt install -y tzdata
 
 Done
