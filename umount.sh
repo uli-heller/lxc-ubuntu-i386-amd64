@@ -1,8 +1,8 @@
 #!/bin/sh
 TARGET="$1"
 
-umount "${TARGET}/dev/pts"
-umount "${TARGET}/dev"
-umount "${TARGET}/proc"
-#umount "${TARGET}/run"
-umount "${TARGET}/sys"
+#set -x
+for m in dev/pts dev proc sys; do
+    umount "${TARGET}/${m}"           2>/dev/null
+    chroot "${TARGET}" umount "/${m}" 2>/dev/null
+done

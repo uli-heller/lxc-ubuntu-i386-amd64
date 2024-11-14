@@ -95,8 +95,11 @@ sudo true
 
 RC=0
 cleanUp () {
-    sudo -n true 2>/dev/null && {
-	sudo "${D}/umount.sh" "./${OSDIR}/rootfs" 2>/dev/null
+    test -n "${OSDIR}" && {
+	sudo -n true 2>/dev/null && {
+	    sudo "${D}/umount.sh" "./${OSDIR}/rootfs" #2>/dev/null
+	}
+	rm -rf "${OSDIR}"
     }
     exit "$RC"
 }
@@ -361,14 +364,22 @@ test -n "${PREFIX}" && {
 #sudo rm -rf "${ROOTFS}/var/cache/lxc-ppa" "${ROOTFS}/etc/apt/trusted.gpg.d/lxc.public.gpg" "${ROOTFS}/etc/apt/sources.list.d/lxc-ppa.list"
 
 (
+    set -x
+    sudo umount "./${OSDIR}/rootfs/proc"
+    #sudo chroot "./${OSDIR}/rootfs" umount "/proc"
+    sudo umount "./${OSDIR}/rootfs/sys"
+    #sudo chroot "./${OSDIR}/rootfs" umount "/sys"
     cd "./${OSDIR}"
     sudo tar --numeric-owner \
 	 --exclude "rootfs/var/cache/lxc-ppa"\
 	 --exclude "rootfs/etc/apt/trusted.gpg.d/lxc.public.gpg"\
 	 --exclude "rootfs/etc/apt/sources.list.d/lxc-ppa.list"\
 	 --exclude "rootfs/var/cache/apt/archives"\
-	 --exclude "rootfs/proc/"\
+	 --exclude "rootfs/proc/*"\
+	 --exclude "rootfs/sys/*"\
 	 -cpf - *
 )|xz -T0 -c9 >"${PREFIX}${OS}-${VERSION}-${DEBOOTSTRAP_ARCHITECTURE}-lxcimage.tar.xz"
 
+echo "WARTE"
+read x
 sudo rm -rf "./${OSDIR}"
