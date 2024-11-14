@@ -11,7 +11,7 @@
 ###   -U .......................... add my (Uli's) preferences (synonym for '-m uli-modifications -p 'uli')
 ###   -m moddir ................... add modifications of moddir
 ###   -p prefix ................... prefix for the name of the final container
-###   osname ...................... focal or jammy
+###   osname ...................... focal or jammy or noble
 ###
 ### Examples:
 ###   BN -a amd64 jammy ......... creates 'jammy-HEAD-amd64-lxcimage.tar.xz'

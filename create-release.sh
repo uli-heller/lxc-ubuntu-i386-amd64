@@ -43,11 +43,11 @@ sha1sum "${TARXZ}" >"${TARXZ}.sha1"
 
 ls -1 "${TARXZ}"*
 
-for r in jammy focal; do for a in amd64 i386; do ./create-image.sh -k -a ${a} ${r}; done; done
+for r in noble jammy focal; do for a in amd64 i386; do ./create-image.sh -k -a ${a} ${r}; done; done
 
 # Below, images not for general usage are created
-for r in jammy focal; do for a in amd64 i386; do ./create-image.sh -U -k -a ${a} ${r}; done; done
-for r in jammy focal; do for a in amd64 i386; do ./create-image.sh -m dp-modifications -p dp -k -a ${a} ${r}; done; done
+for r in noble jammy focal; do for a in amd64 i386; do ./create-image.sh -U -k -a ${a} ${r}; done; done
+for r in noble jammy focal; do for a in amd64 i386; do ./create-image.sh -m dp-modifications -p dp -k -a ${a} ${r}; done; done
 
 cleanUp
 exit 0
