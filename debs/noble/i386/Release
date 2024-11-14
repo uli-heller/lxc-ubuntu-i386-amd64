@@ -1,0 +1,19 @@
+Architectures: i386
+Codename: noble
+Date: Thu, 14 Nov 2024 13:18:01 +0000
+Description: Precompiled packages for our LXC containers
+Label: lxc-ubuntu
+Origin: lxc-ubuntu
+Suite: noble
+MD5Sum:
+ 01e29bcf21ad4736e1e209d055b3c349            16229 Packages
+ d1e3da79ade97f2e03a6750178159ffe              181 Release
+SHA1:
+ e16476dd2140c4411d7874c9ee034c491527db7e            16229 Packages
+ e222e7999afb51ca1049fb9c14a5c25b2f57fb7c              181 Release
+SHA256:
+ 35f40ac654189c82bb41d8bdd71a1ae270c8d8c8ccc6617c58cdab69f844fb82            16229 Packages
+ 1b1df74c8ec78c4a9841897aee5cff695326b8a4ab68ea61753576b0a5f05235              181 Release
+SHA512:
+ 2119e6de602547b625d1ee82f54796af3c2f1501b679243ae2c356fa3961b2a005712651ebfdf65f58045ac20f04941359b27b2507966303f71db46f4953d8fe            16229 Packages
+ 905c3b9c92342bb1029dcec448636c2da7c41126659d7137581727e3bcbb72f37be78115a64db133bf0273413da64cc6680eedc8d6c42ad37ed03bdd81ae6ab7              181 Release

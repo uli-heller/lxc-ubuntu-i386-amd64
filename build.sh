@@ -121,6 +121,7 @@ sudo chroot "${ROOTFS}" apt install -y dpkg-dev devscripts equivs
 sudo chroot "${ROOTFS}" bash -c "mkdir -p /src"
 while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
     PACKAGE="$1"
+    sudo chroot "${ROOTFS}" bash -c "cd /src && rm -rf '${PACKAGE}'"
     sudo chroot "${ROOTFS}" bash -c "cd /src && mkdir -p '${PACKAGE}' && cd '${PACKAGE}' && ls *dsc" >"${TMPDIR}/before"
     sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && ls"      >"${TMPDIR}/before.ls"
     sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && apt-get source --download-only '${PACKAGE}'"
@@ -128,6 +129,7 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
     sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && ls" >"${TMPDIR}/after.ls"
     cmp "${TMPDIR}/before" "${TMPDIR}/after" >/dev/null 2>&1 || {
 	(
+	    RC=0
 	    set -x
 	    sudo find "${ROOTFS}/src/${PACKAGE}" -mindepth 1 -maxdepth 1 -type d|sudo xargs rm -rf
 	    sudo find "${ROOTFS}/src/${PACKAGE}" -name "*.deb"|sudo xargs rm -rf
@@ -168,9 +170,10 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
 		    sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && eval ${PREPARE_BUILD_EXPANDED}" || exit 1
 		}
 	    else
-		sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && apt-get build-dep -y '${PACKAGE}'" || exit 1
+		sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && apt-get build-dep -y '${PACKAGE}'" || RC=1
 	    fi
-	    sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && dpkg-buildpackage" || exit 1
+	    sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C dpkg-buildpackage" || RC=1
+	    test "${RC}" -eq "0" || { echo >&2 "Probleme beim Auspacken oder bauen - EXIT"; exit 1; }
 	    test -d "${D}/debs/${OS}/${ARCHITECTURE}" || mkdir -p "${D}/debs/${OS}/${ARCHITECTURE}"
 	    sudo cp "${ROOTFS}/src/${PACKAGE}"/*.deb "${D}/debs/${OS}/${ARCHITECTURE}/."
 	    sudo chown "$(id -un):$(id -gn)" "${D}/debs/${OS}/${ARCHITECTURE}"/*.deb
@@ -178,7 +181,7 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
 	    sudo cp "${D}/debs/${OS}/${ARCHITECTURE}"/*  "${ROOTFS}/var/cache/lxc-ppa"
 	    sudo chroot "${ROOTFS}" apt update
 	) || {
-	    sudo find "${ROOTFS}/src/${PACKAGE}" -mindepth 1 -maxdepth 1 -newer "${TMPDIR}/before"|sudo xargs -t rm -rf
+	    #sudo find "${ROOTFS}/src/${PACKAGE}" -mindepth 1 -maxdepth 1 -newer "${TMPDIR}/before"|sudo xargs -t rm -rf
 	    (
 		cd "${ROOTFS}/src/${PACKAGE}"
 		diff "${TMPDIR}/before.ls" "${TMPDIR}/after.ls"|grep "^>"|cut -c2-|sudo xargs -t rm -f

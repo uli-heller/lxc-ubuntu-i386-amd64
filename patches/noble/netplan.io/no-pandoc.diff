@@ -1,0 +1,34 @@
+diff -ur orig/debian/control no-pandoc/debian/control
+--- orig/debian/control	2024-11-14 13:56:13.946012535 +0100
++++ no-pandoc/debian/control	2024-11-14 13:56:53.902041196 +0100
+@@ -33,7 +33,6 @@
+  dbus-x11 <!nocheck>,
+  pyflakes3 <!nocheck>,
+  pycodestyle <!nocheck> | pep8 <!nocheck>,
+- pandoc,
+  openvswitch-switch [ !armel !armhf !i386 !hppa !m68k !powerpc !sh4 !x32 ] <!nocheck>,
+  meson (>= 1.3.0),
+  iproute2 <!nocheck>,
+diff -ur orig/debian/netplan-generator.install no-pandoc/debian/netplan-generator.install
+--- orig/debian/netplan-generator.install	2024-11-14 14:13:50.094470714 +0100
++++ no-pandoc/debian/netplan-generator.install	2024-11-14 14:14:14.182477376 +0100
+@@ -1,6 +1,6 @@
+ usr/lib/systemd/system-generators/netplan
+ usr/libexec/netplan/generate
+-usr/share/man/man5/*
++#usr/share/man/man5/*
+ usr/share/doc/*
+ # Make sure no package ships any files in /lib/netplan/ anymore, before
+ # dropping the PLACEHOLDER (move those files to /usr/lib/netplan instead).
+Nur in no-pandoc/debian: netplan-generator.install~.
+diff -ur orig/debian/netplan.io.install no-pandoc/debian/netplan.io.install
+--- orig/debian/netplan.io.install	2024-11-14 14:14:58.238700456 +0100
++++ no-pandoc/debian/netplan.io.install	2024-11-14 14:15:11.162765396 +0100
+@@ -1,5 +1,5 @@
+ usr/share/netplan/*
+-usr/share/man/man8/*
++#usr/share/man/man8/*
+ usr/share/bash-completion/*
+ usr/sbin/netplan
+ usr/libexec/netplan/netplan-dbus
+Nur in no-pandoc/debian: netplan.io.install~.
