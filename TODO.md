@@ -4,11 +4,20 @@ TODO
 Open
 ----
 
-- logrotate and netplan.io and at for noble i386
-- sudo DEBIAN_FRONTEND="noninteractive" apt install -y tzdata
+No open items.
 
 Done
 ----
+
+- sudo DEBIAN_FRONTEND="noninteractive" apt install -y tzdata
+
+  Without the option `DEBIAN_FRONTEND="noninteractive"` we get lots of
+  error messages related to Dialog etc. Fixed!
+
+- logrotate and netplan.io and at for noble i386
+
+  Without these packages, the container instance doesn't get an IP address.
+  I created the packages and now there is an IP address
 
 - Unable to use packages v1.11
   ```
