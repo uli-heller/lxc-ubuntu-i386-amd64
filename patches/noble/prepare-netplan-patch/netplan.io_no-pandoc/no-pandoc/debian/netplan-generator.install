@@ -1,0 +1,9 @@
+usr/lib/systemd/system-generators/netplan
+usr/libexec/netplan/generate
+#usr/share/man/man5/*
+usr/share/doc/*
+# Make sure no package ships any files in /lib/netplan/ anymore, before
+# dropping the PLACEHOLDER (move those files to /usr/lib/netplan instead).
+# E.g. ubuntu-settings shipping lib/netplan/00-network-manager-all.yaml:
+# https://git.launchpad.net/ubuntu/+source/ubuntu-settings/tree/debian/ubuntu-settings.install
+../extra/PLACEHOLDER usr/lib/netplan/

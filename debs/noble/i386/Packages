@@ -1,0 +1,379 @@
+Package: at
+Version: 3.2.5-2.1ubuntu3
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 157
+Depends: libpam-runtime (>= 1.0.1-11), lsb-base (>= 3.2-14), libc6 (>= 2.38), libpam0g (>= 0.99.7.1), libselinux1 (>= 3.1~)
+Suggests: default-mta | mail-transport-agent
+Filename: ./at_3.2.5-2.1ubuntu3_i386.deb
+Size: 48678
+MD5sum: 98dd8ef630d9aef4b9f40db4f30f6eee
+SHA1: 9c439f7e0e7c2ccc3b1e2394549f94896be5e833
+SHA256: 6146bbeb98d25a131e71a6111b1d96ebdcf27d8a1f52640f3a0351cc8c04f967
+Section: admin
+Priority: standard
+Multi-Arch: foreign
+Homepage: http://blog.calhariz.com
+Description: Delayed job execution and batch processing
+ At and batch read shell commands from standard input
+ storing them as a job to be scheduled for execution in the
+ future.
+ .
+ Use
+  at    to run the job at a specified time
+  batch to run the job when system load levels permit
+Original-Maintainer: Jose M Calhariz <calhariz@debian.org>
+
+Package: libnetplan-dev
+Source: netplan.io
+Version: 1.0.1-1dp012~24.04.1~noble
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 70
+Depends: libnetplan1 (= 1.0.1-1dp012~24.04.1~noble)
+Filename: ./libnetplan-dev_1.0.1-1dp012~24.04.1~noble_i386.deb
+Size: 22028
+MD5sum: 2a10e8686aca0e9a42dac53d35a82bbf
+SHA1: f42abb0bdb97db766eb4ec26bb93823a51499389
+SHA256: f1cc5a742012e17405d108ac8337a463fff51a239b2ad396c64c0c034f693267
+Section: libdevel
+Priority: optional
+Multi-Arch: same
+Homepage: https://netplan.io/
+Description: Development files for Netplan's libnetplan runtime library
+ netplan reads YAML network configuration files which are written
+ by administrators, installers, cloud image instantiations, or other OS
+ deployments. During early boot it then generates backend specific
+ configuration files in /run to hand off control of devices to a particular
+ networking daemon.
+ .
+ Currently supported backends are networkd and NetworkManager.
+ .
+ This package contains development files for developers wanting to use
+ libnetplan in their applications.
+Original-Maintainer: Debian Netplan Maintainers <team+netplan@tracker.debian.org>
+
+Package: libnetplan1
+Source: netplan.io
+Version: 1.0.1-1dp012~24.04.1~noble
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 382
+Depends: libc6 (>= 2.38), libglib2.0-0t64 (>= 2.75.3), libuuid1 (>= 2.16), libyaml-0-2
+Filename: ./libnetplan1_1.0.1-1dp012~24.04.1~noble_i386.deb
+Size: 131884
+MD5sum: 8ce480153ac63a5b79044e86354668a4
+SHA1: d7ccddf0765da605ce9c305f3e08987d464310b0
+SHA256: 1faa5c8bdbb09265baeae0f01a5cce2e8632c78226b24315ce30ba4db725d606
+Section: libs
+Priority: optional
+Multi-Arch: same
+Homepage: https://netplan.io/
+Description: Declarative network configuration runtime library
+ netplan reads YAML network configuration files which are written
+ by administrators, installers, cloud image instantiations, or other OS
+ deployments. During early boot it then generates backend specific
+ configuration files in /run to hand off control of devices to a particular
+ networking daemon.
+ .
+ Currently supported backends are networkd and NetworkManager.
+ .
+ This package contains the necessary runtime library files.
+Original-Maintainer: Debian Netplan Maintainers <team+netplan@tracker.debian.org>
+
+Package: logrotate
+Version: 3.21.0-2build1
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 144
+Depends: cron | anacron | cron-daemon | systemd-sysv, libacl1 (>= 2.2.23), libc6 (>= 2.38), libpopt0 (>= 1.14), libselinux1 (>= 3.1~)
+Suggests: bsd-mailx | mailx
+Filename: ./logrotate_3.21.0-2build1_i386.deb
+Size: 54952
+MD5sum: b55215b91c30b4260db3a9d67044ee65
+SHA1: a0af2a92d98c1677086191979920d540c22d5a89
+SHA256: 40bd17ddb97e12bd716afe2e0613459ea41b42c0f7c20145d2bd995ae638a5eb
+Section: admin
+Priority: important
+Multi-Arch: foreign
+Homepage: https://github.com/logrotate/logrotate
+Description: Log rotation utility
+ The logrotate utility is designed to simplify the administration of
+ log files on a system which generates a lot of log files.  Logrotate
+ allows for the automatic rotation compression, removal and mailing of
+ log files.  Logrotate can be set to handle a log file daily, weekly,
+ monthly or when the log file gets to a certain size.  Normally, logrotate
+ runs as a daily cron job.
+Original-Maintainer: Christian Göttsche <cgzones@googlemail.com>
+
+Package: netplan-generator
+Source: netplan.io
+Version: 1.0.1-1dp012~24.04.1~noble
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 94
+Depends: libc6 (>= 2.34), libglib2.0-0t64 (>= 2.70.0), libnetplan1 (= 1.0.1-1dp012~24.04.1~noble), systemd (>= 248~)
+Suggests: network-manager | wpasupplicant, openvswitch-switch, iw
+Breaks: netplan.io (<< 0.106.1-8~)
+Replaces: netplan.io (<< 0.106.1-8~)
+Filename: ./netplan-generator_1.0.1-1dp012~24.04.1~noble_i386.deb
+Size: 26250
+MD5sum: b2d7f3945b418925ba1ea1a0e6ae77ec
+SHA1: a7244f8962ca167f1fecc6659ac4d1c00ea1bf79
+SHA256: 220135d27237cbc61f6ff107bafe266bf4f69f02150c782e45bfe6949acca13f
+Section: net
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://netplan.io/
+Description: Declarative network configuration systemd-generator
+ netplan reads YAML network configuration files which are written
+ by administrators, installers, cloud image instantiations, or other OS
+ deployments. During early boot it then generates backend specific
+ configuration files in /run to hand off control of devices to a particular
+ networking daemon.
+ .
+ Currently supported backends are networkd and NetworkManager.
+ .
+ This package provides a systemd-generator to configure networking daemons
+ at boot time.
+Original-Maintainer: Debian Netplan Maintainers <team+netplan@tracker.debian.org>
+
+Package: netplan.io
+Version: 1.0.1-1dp012~24.04.1~noble
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 302
+Depends: libc6 (>= 2.34), libglib2.0-0t64 (>= 2.70.0), libnetplan1 (= 1.0.1-1dp012~24.04.1~noble), libsystemd0 (>= 243), iproute2, netplan-generator, python3, python3-dbus, python3-netplan, python3-netifaces, python3-yaml, systemd (>= 248~)
+Recommends: python3-rich
+Filename: ./netplan.io_1.0.1-1dp012~24.04.1~noble_i386.deb
+Size: 69714
+MD5sum: de07d724750cebeead9ae7abcdcf7357
+SHA1: 5e9b4d47d6f3d60787bd33ad3c9e81554abc8cd6
+SHA256: a25a51fa337da3c9bf31d6b19ce9c146070690b0fd6b7f74dfa8d0c649214ee7
+Section: net
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://netplan.io/
+Description: Declarative network configuration for various backends
+ netplan reads YAML network configuration files which are written
+ by administrators, installers, cloud image instantiations, or other OS
+ deployments. During early boot it then generates backend specific
+ configuration files in /run to hand off control of devices to a particular
+ networking daemon.
+ .
+ Currently supported backends are networkd and NetworkManager.
+Original-Maintainer: Debian Netplan Maintainers <team+netplan@tracker.debian.org>
+
+Package: python-cffi-doc
+Source: python-cffi
+Version: 1.16.0-2build1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 870
+Depends: libjs-sphinxdoc (>= 7.2.2)
+Filename: ./python-cffi-doc_1.16.0-2build1_all.deb
+Size: 146848
+MD5sum: 621d3cd1c3c3776f87374640f308aa56
+SHA1: 744cf7019d2e379db31ad46f38e3d19de153b034
+SHA256: c288af8712a04b4d721138f4b4efa2f4dec7b1585bf4708b22a2d9c35a78afe9
+Section: doc
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://cffi.readthedocs.org/
+Description: Foreign Function Interface for Python calling C code - documentation
+ Convenient and reliable way of calling C code from Python.
+ .
+ The aim of this project is to provide a convenient and reliable way of calling
+ C code from Python. It keeps Python logic in Python, and minimises the C
+ required. It is able to work at either the C API or ABI level, unlike most
+ other approaches, that only support the ABI level.
+ .
+ This package contains the developer documentation for cffi.
+Original-Maintainer: Debian Python Team <team+python@tracker.debian.org>
+
+Package: python-coverage-doc
+Source: python-coverage
+Version: 7.4.4+dfsg1-0ubuntu2
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 1543
+Depends: libjs-jquery (>= 3.6.0), libjs-sphinxdoc (>= 7.2.2), sphinx-rtd-theme-common (>= 2.0.0+dfsg)
+Filename: ./python-coverage-doc_7.4.4+dfsg1-0ubuntu2_all.deb
+Size: 377084
+MD5sum: 1bac502ae1beb6579abc0046f08142be
+SHA1: a3d8c133f2d12073e4a993db5ae7d41af276729a
+SHA256: 8016cca759c02190cc5acca917632a9dc6b25f31537c3c281812c96888fe9a8e
+Section: doc
+Priority: optional
+Homepage: https://coverage.readthedocs.io/
+Description: code coverage tool for Python — documentation
+ Coverage.py is a tool for measuring code coverage of Python programs.
+ It monitors your program, noting which parts of the code have been
+ executed, then analyzes the source to identify code that could have
+ been executed but was not.
+ .
+ This package installs the HTML documentation for Coverage.py.
+Original-Maintainer: Ben Finney <bignose@debian.org>
+
+Package: python3-cffi
+Source: python-cffi
+Version: 1.16.0-2build1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 413
+Depends: python3-cffi-backend (<< 1.16.0-2build1+c), python3-cffi-backend (>= 1.16.0-2build1), python3-pycparser, python3:any
+Suggests: python3-dev
+Filename: ./python3-cffi_1.16.0-2build1_all.deb
+Size: 89512
+MD5sum: 5d872214a92190173ffcd7a98d063920
+SHA1: 5bb38f91ce721378f423a5e21f8b1cd9c6d9da9a
+SHA256: 35e6b4fd28614bf6c9964591f8793b01ede7053392259b90d71bbe16d354214f
+Section: python
+Priority: optional
+Homepage: https://cffi.readthedocs.org/
+Description: Foreign Function Interface for Python 3 calling C code
+ Convenient and reliable way of calling C code from Python 3.
+ .
+ The aim of this project is to provide a convenient and reliable way of calling
+ C code from Python. It keeps Python logic in Python, and minimises the C
+ required. It is able to work at either the C API or ABI level, unlike most
+ other approaches, that only support the ABI level.
+ .
+ This package contains the necessary build and runtime support for cffi
+ modules.
+Original-Maintainer: Debian Python Team <team+python@tracker.debian.org>
+
+Package: python3-cffi-backend
+Source: python-cffi
+Version: 1.16.0-2build1
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 210
+Depends: python3 (<< 3.13), python3 (>= 3.12~), libc6 (>= 2.38), libffi8 (>= 3.4)
+Provides: python3-cffi-backend-api-9729, python3-cffi-backend-api-max (= 10495), python3-cffi-backend-api-min (= 9729)
+Filename: ./python3-cffi-backend_1.16.0-2build1_i386.deb
+Size: 94746
+MD5sum: d3d514b62471f39ba5f7d6b3b7edc587
+SHA1: c18654e211f3f3d02460bab3e1756a74b2ebae33
+SHA256: fbb7ba9e246d6f8fd0dc50922497dcfdf5340d1661796360fc4757b18a2cbee5
+Section: python
+Priority: optional
+Multi-Arch: same
+Homepage: https://cffi.readthedocs.org/
+Description: Foreign Function Interface for Python 3 calling C code - runtime
+ Convenient and reliable way of calling C code from Python 3.
+ .
+ The aim of this project is to provide a convenient and reliable way of calling
+ C code from Python. It keeps Python logic in Python, and minimises the C
+ required. It is able to work at either the C API or ABI level, unlike most
+ other approaches, that only support the ABI level.
+ .
+ This package contains the runtime support for pre-built cffi modules.
+Original-Maintainer: Debian Python Team <team+python@tracker.debian.org>
+
+Package: python3-coverage
+Source: python-coverage
+Version: 7.4.4+dfsg1-0ubuntu2
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 720
+Depends: python3-pkg-resources, python3 (<< 3.13), python3 (>= 3.12~), python3.12:any, python3:any, libc6 (>= 2.4)
+Suggests: python-coverage-doc
+Filename: ./python3-coverage_7.4.4+dfsg1-0ubuntu2_i386.deb
+Size: 175178
+MD5sum: 88cb374f0c8125b05f09ce3bb22c439f
+SHA1: ffe7b8b2190a7b032e27335bf6e1000d69116559
+SHA256: 77fb2e55dfec4515f988c180d577c1d9f810c174fbee3bd270227f42f06592eb
+Section: python
+Priority: optional
+Homepage: https://coverage.readthedocs.io/
+Description: code coverage tool for Python 3
+ Coverage.py is a tool for measuring code coverage of Python programs.
+ It monitors your program, noting which parts of the code have been
+ executed, then analyzes the source to identify code that could have
+ been executed but was not.
+ .
+ Coverage measurement is typically used to gauge the effectiveness of
+ tests. It can show which parts of your code are being exercised by
+ tests, and which are not.
+ .
+ This package installs the Python version 3 ‘coverage’ library, and the
+ ‘python3-coverage’ program to perform and report coverage tests.
+Original-Maintainer: Ben Finney <bignose@debian.org>
+
+Package: python3-netifaces
+Source: netifaces
+Version: 0.11.0-2build3
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 56
+Depends: python3 (<< 3.13), python3 (>= 3.12~), libc6 (>= 2.4)
+Filename: ./python3-netifaces_0.11.0-2build3_i386.deb
+Size: 18550
+MD5sum: 28c767ea6ad5731b3b5b36c92b29ef23
+SHA1: 2945f22ddb40857d26dcd924108fd6bc32c986d8
+SHA256: ee48012b74018ee5349defb97e511790df5b6c98435048ea6f75ed734359d9d4
+Section: python
+Priority: optional
+Multi-Arch: same
+Homepage: https://alastairs-place.net/projects/netifaces/
+Description: portable network interface information - Python 3.x
+ netifaces provides a (hopefully portable-ish) way for Python programmers to
+ get access to a list of the network interfaces on the local machine, and to
+ obtain the addresses of those network interfaces.
+ .
+ This package contains the module for Python 3.x.
+Original-Maintainer: Debian Python Team <team+python@tracker.debian.org>
+
+Package: python3-netplan
+Source: netplan.io
+Version: 1.0.1-1dp012~24.04.1~noble
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 122
+Depends: libc6 (>= 2.4), libnetplan1 (= 1.0.1-1dp012~24.04.1~noble), python3, python3-cffi-backend
+Breaks: netplan.io (<< 0.107-3~)
+Replaces: netplan.io (<< 0.107-3~)
+Filename: ./python3-netplan_1.0.1-1dp012~24.04.1~noble_i386.deb
+Size: 33798
+MD5sum: 83119fcc8bee45f54352fb57cb04df2e
+SHA1: 49143c88c6dec9a632591e1f89c83a78c665e831
+SHA256: 2206d34119129327929e97e9b9e3be1b1ab84231afe8475a61387978dfcfa372
+Section: python
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://netplan.io/
+Description: Declarative network configuration Python bindings
+ netplan reads YAML network configuration files which are written
+ by administrators, installers, cloud image instantiations, or other OS
+ deployments. During early boot it then generates backend specific
+ configuration files in /run to hand off control of devices to a particular
+ networking daemon.
+ .
+ Currently supported backends are networkd and NetworkManager.
+ .
+ This package provides a CFFI based Python bindings to libnetplan.
+Original-Maintainer: Debian Netplan Maintainers <team+netplan@tracker.debian.org>
+
+Package: python3-pytest-cov
+Source: python-pytest-cov
+Version: 4.1.0-1
+Architecture: all
+Maintainer: Federico Ceratto <federico@debian.org>
+Installed-Size: 93
+Depends: python3-coverage, python3-pytest (>= 3.6), python3:any, libjs-jquery, libjs-jquery-hotkeys, libjs-jquery-isonscreen, libjs-jquery-tablesorter, libjs-jquery-throttle-debounce
+Filename: ./python3-pytest-cov_4.1.0-1_all.deb
+Size: 27120
+MD5sum: e79a2a5dfc4a450152b1b2cb632ea4a2
+SHA1: d241b24af9a7a85913f8e6b5d088ed1fa0737b83
+SHA256: 60401bbce30c00cb0c4258058f2e9ed4b5573d80c544a337c568b6ed12f64c01
+Section: python
+Priority: optional
+Homepage: https://github.com/pytest-dev/pytest-cov
+Description: py.test plugin to produce coverage reports for Python3
+ This py.test plugin produces coverage reports. It supports both centralised
+ and distributed testing across multiple hosts. It can run parallel tests on
+ different platforms, architectures, and Python versions.
+ It supports coverage of subprocesses and can produce reports in text, HTML,
+ XML and annotated source code.
+
