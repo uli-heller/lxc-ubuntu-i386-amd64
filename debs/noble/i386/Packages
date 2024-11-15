@@ -109,10 +109,10 @@ Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 70
 Depends: libnetplan1 (= 1.0.1-1dp012~24.04.1~noble)
 Filename: ./libnetplan-dev_1.0.1-1dp012~24.04.1~noble_i386.deb
-Size: 22028
-MD5sum: 2a10e8686aca0e9a42dac53d35a82bbf
-SHA1: f42abb0bdb97db766eb4ec26bb93823a51499389
-SHA256: f1cc5a742012e17405d108ac8337a463fff51a239b2ad396c64c0c034f693267
+Size: 22034
+MD5sum: 9d70d52483a6920b9c39d15528206947
+SHA1: b3646195676bb415875c38afda854508e1fa9ebf
+SHA256: 157e0b4626d46430e04aff4226cfd8914971de914af46df1eb642c8aa5886864
 Section: libdevel
 Priority: optional
 Multi-Arch: same
@@ -138,10 +138,10 @@ Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 382
 Depends: libc6 (>= 2.38), libglib2.0-0t64 (>= 2.75.3), libuuid1 (>= 2.16), libyaml-0-2
 Filename: ./libnetplan1_1.0.1-1dp012~24.04.1~noble_i386.deb
-Size: 131884
-MD5sum: 8ce480153ac63a5b79044e86354668a4
-SHA1: d7ccddf0765da605ce9c305f3e08987d464310b0
-SHA256: 1faa5c8bdbb09265baeae0f01a5cce2e8632c78226b24315ce30ba4db725d606
+Size: 131852
+MD5sum: 677fc859deb62498d93306a73ffde256
+SHA1: f157b3affcb8cfd7dbbcd6c52a6bf74ab69bf59e
+SHA256: 11e86d660f874d0e80a37daa6ad00d415b73808cfcbaac9afaa7acb64f4209a5
 Section: libs
 Priority: optional
 Multi-Arch: same
@@ -194,10 +194,10 @@ Suggests: network-manager | wpasupplicant, openvswitch-switch, iw
 Breaks: netplan.io (<< 0.106.1-8~)
 Replaces: netplan.io (<< 0.106.1-8~)
 Filename: ./netplan-generator_1.0.1-1dp012~24.04.1~noble_i386.deb
-Size: 26250
-MD5sum: b2d7f3945b418925ba1ea1a0e6ae77ec
-SHA1: a7244f8962ca167f1fecc6659ac4d1c00ea1bf79
-SHA256: 220135d27237cbc61f6ff107bafe266bf4f69f02150c782e45bfe6949acca13f
+Size: 26228
+MD5sum: 537fbedd50db5726890b86b63c6cc3cb
+SHA1: 795a9036ee820b84446f76deee78dd97d550aae6
+SHA256: 1649003842778cc4205174b95fa8735617ae922ebe45b0650d6cca696674f29c
 Section: net
 Priority: optional
 Multi-Arch: foreign
@@ -223,10 +223,10 @@ Installed-Size: 302
 Depends: libc6 (>= 2.34), libglib2.0-0t64 (>= 2.70.0), libnetplan1 (= 1.0.1-1dp012~24.04.1~noble), libsystemd0 (>= 243), iproute2, netplan-generator, python3, python3-dbus, python3-netplan, python3-netifaces, python3-yaml, systemd (>= 248~)
 Recommends: python3-rich
 Filename: ./netplan.io_1.0.1-1dp012~24.04.1~noble_i386.deb
-Size: 69714
-MD5sum: de07d724750cebeead9ae7abcdcf7357
-SHA1: 5e9b4d47d6f3d60787bd33ad3c9e81554abc8cd6
-SHA256: a25a51fa337da3c9bf31d6b19ce9c146070690b0fd6b7f74dfa8d0c649214ee7
+Size: 69726
+MD5sum: 5976af34aff46035889d2a04d5da1177
+SHA1: 91065d9ed7fc896684be457cf9edb00fd0650c4f
+SHA256: c5dedee53afaa436e7f642d0f85f2890800659700bab3af7135dc4766ccc950f
 Section: net
 Priority: optional
 Multi-Arch: foreign
@@ -412,10 +412,10 @@ Depends: libc6 (>= 2.4), libnetplan1 (= 1.0.1-1dp012~24.04.1~noble), python3, py
 Breaks: netplan.io (<< 0.107-3~)
 Replaces: netplan.io (<< 0.107-3~)
 Filename: ./python3-netplan_1.0.1-1dp012~24.04.1~noble_i386.deb
-Size: 33798
-MD5sum: 83119fcc8bee45f54352fb57cb04df2e
-SHA1: 49143c88c6dec9a632591e1f89c83a78c665e831
-SHA256: 2206d34119129327929e97e9b9e3be1b1ab84231afe8475a61387978dfcfa372
+Size: 33786
+MD5sum: edb793f878b9386242e5b9351ea775d6
+SHA1: 6aa86542372ca2512e58dd56bf0e9555ed0f4953
+SHA256: b116e4d45ede03e8274d9773eacd1cea0eddb06e1352e558ed8c5a2366d68ee8
 Section: python
 Priority: optional
 Multi-Arch: foreign
