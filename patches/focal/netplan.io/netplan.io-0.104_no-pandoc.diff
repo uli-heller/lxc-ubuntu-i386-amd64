@@ -1,19 +1,6 @@
-diff -Nur netplan.io-0.104.orig/debian/changelog netplan.io-0.104/debian/changelog
---- netplan.io-0.104.orig/debian/changelog	2022-06-29 17:54:23.000000000 +0200
-+++ netplan.io-0.104/debian/changelog	2022-08-07 15:37:42.374857979 +0200
-@@ -1,3 +1,9 @@
-+netplan.io (0.104-0dp01~focal2.1) focal; urgency=medium
-+
-+  * Removed dependeny to pandoc
-+
-+ -- Uli Heller <uli.heller@daemons-point.com>  Sun, 07 Aug 2022 10:50:40 +0200
-+
- netplan.io (0.104-0ubuntu2~20.04.2) focal; urgency=medium
- 
-   * Cherry pick d/p/dbus-Remove-the-upper-limit-on-try-timeout.patch
-diff -Nur netplan.io-0.104.orig/debian/control netplan.io-0.104/debian/control
---- netplan.io-0.104.orig/debian/control	2022-06-29 17:54:23.000000000 +0200
-+++ netplan.io-0.104/debian/control	2022-08-07 15:36:13.786980793 +0200
+diff -ur orig/debian/control no-pandoc/debian/control
+--- orig/debian/control	2024-11-15 14:30:56.339248449 +0100
++++ no-pandoc/debian/control	2024-11-15 14:33:30.198747930 +0100
 @@ -26,7 +26,6 @@
   pyflakes3 <!nocheck>,
   pycodestyle <!nocheck> | pep8 <!nocheck>,
@@ -22,123 +9,9 @@ diff -Nur netplan.io-0.104.orig/debian/control netplan.io-0.104/debian/control
   openvswitch-switch [!riscv64] <!nocheck>,
  Vcs-Git: https://salsa.debian.org/debian/netplan.io.git
  Vcs-Browser: https://salsa.debian.org/debian/netplan.io
-diff -Nur netplan.io-0.104.orig/debian/patches/series netplan.io-0.104/debian/patches/series
---- netplan.io-0.104.orig/debian/patches/series	2022-06-29 17:54:23.000000000 +0200
-+++ netplan.io-0.104/debian/patches/series	2022-08-07 15:35:49.015015281 +0200
-@@ -10,3 +10,5 @@
- 0010-nm-fix-rendering-of-password-for-unknown-passthrough.patch
- 0003-Add-tristate-type-for-offload-options-LP-1956264-270.patch
- 0004-tests-ethernets-fix-autopkgtest-with-alternating-def.patch
-+uli-pandoc
-+uli-pandoc-2
-diff -Nur netplan.io-0.104.orig/debian/patches/uli-pandoc netplan.io-0.104/debian/patches/uli-pandoc
---- netplan.io-0.104.orig/debian/patches/uli-pandoc	1970-01-01 01:00:00.000000000 +0100
-+++ netplan.io-0.104/debian/patches/uli-pandoc	2022-08-07 15:35:49.015015281 +0200
-@@ -0,0 +1,47 @@
-+Description: <short summary of the patch>
-+ TODO: Put a short summary on the line above and replace this paragraph
-+ with a longer explanation of this change. Complete the meta-information
-+ with other relevant fields (see below for details). To make it easier, the
-+ information below has been extracted from the changelog. Adjust it or drop
-+ it.
-+ .
-+ netplan.io (0.104-0dp01~focal2.1) focal; urgency=medium
-+ .
-+   * Removed dependeny to pandoc
-+Author: Uli Heller <uli.heller@daemons-point.com>
-+
-+---
-+The information above should follow the Patch Tagging Guidelines, please
-+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
-+are templates for supplementary fields that you might want to add:
-+
-+Origin: <vendor|upstream|other>, <url of original patch>
-+Bug: <url in upstream bugtracker>
-+Bug-Debian: https://bugs.debian.org/<bugnumber>
-+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
-+Forwarded: <no|not-needed|url proving that it has been forwarded>
-+Reviewed-By: <name and email of someone who approved the patch>
-+Last-Update: 2022-08-07
-+
-+--- netplan.io-0.104.orig/Makefile
-++++ netplan.io-0.104/Makefile
-+@@ -149,13 +149,13 @@ install: default
-+ 	sed -e "s#@ROOTLIBEXECDIR@#$(ROOTLIBEXECDIR)#" $< > $@
-+ 
-+ 
-+-%.html: %.md
-+-	pandoc -s --metadata title="Netplan reference" --toc -o $@ $<
-++#%.html: %.md
-++#	pandoc -s --metadata title="Netplan reference" --toc -o $@ $<
-+ 
-+-doc/netplan.5: doc/manpage-header.md doc/netplan.md doc/manpage-footer.md
-+-	pandoc -s -o $@ $^
-++#doc/netplan.5: doc/manpage-header.md doc/netplan.md doc/manpage-footer.md
-++#	pandoc -s -o $@ $^
-+ 
-+-%.8: %.md
-+-	pandoc -s -o $@ $^
-++#%.8: %.md
-++#	pandoc -s -o $@ $^
-+ 
-+ .PHONY: clean
-diff -Nur netplan.io-0.104.orig/debian/patches/uli-pandoc-2 netplan.io-0.104/debian/patches/uli-pandoc-2
---- netplan.io-0.104.orig/debian/patches/uli-pandoc-2	1970-01-01 01:00:00.000000000 +0100
-+++ netplan.io-0.104/debian/patches/uli-pandoc-2	2022-08-07 15:35:49.015015281 +0200
-@@ -0,0 +1,50 @@
-+Description: <short summary of the patch>
-+ TODO: Put a short summary on the line above and replace this paragraph
-+ with a longer explanation of this change. Complete the meta-information
-+ with other relevant fields (see below for details). To make it easier, the
-+ information below has been extracted from the changelog. Adjust it or drop
-+ it.
-+ .
-+ netplan.io (0.104-0dp01~focal2.1) focal; urgency=medium
-+ .
-+   * Removed dependeny to pandoc
-+Author: Uli Heller <uli.heller@daemons-point.com>
-+
-+---
-+The information above should follow the Patch Tagging Guidelines, please
-+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
-+are templates for supplementary fields that you might want to add:
-+
-+Origin: <vendor|upstream|other>, <url of original patch>
-+Bug: <url in upstream bugtracker>
-+Bug-Debian: https://bugs.debian.org/<bugnumber>
-+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
-+Forwarded: <no|not-needed|url proving that it has been forwarded>
-+Reviewed-By: <name and email of someone who approved the patch>
-+Last-Update: 2022-08-07
-+
-+--- netplan.io-0.104.orig/Makefile
-++++ netplan.io-0.104/Makefile
-+@@ -50,7 +50,7 @@ PYFLAKES3 ?= $(shell command -v pyflakes
-+ PYCODESTYLE3 ?= $(shell command -v pycodestyle-3 || command -v pycodestyle || command -v pep8 || echo true)
-+ NOSETESTS3 ?= $(shell command -v nosetests-3 || command -v nosetests3 || echo true)
-+ 
-+-default: netplan/_features.py generate netplan-dbus dbus/io.netplan.Netplan.service doc/netplan.html doc/netplan.5 doc/netplan-generate.8 doc/netplan-apply.8 doc/netplan-try.8 doc/netplan-dbus.8 doc/netplan-get.8 doc/netplan-set.8
-++default: netplan/_features.py generate netplan-dbus dbus/io.netplan.Netplan.service
-+ 
-+ %.o: src/%.c
-+ 	$(CC) $(BUILDFLAGS) $(CFLAGS) $(LDFLAGS) -c $^ `pkg-config --cflags --libs glib-2.0 gio-2.0 yaml-0.1 uuid`
-+@@ -134,10 +134,10 @@ install: default
-+ 	install -m 644 include/*.h $(DESTDIR)/$(INCLUDEDIR)/netplan/
-+ 	# TODO: install pkg-config once available
-+ 	# docs, data
-+-	install -m 644 doc/*.html $(DESTDIR)/$(DOCDIR)/netplan/
-++	#install -m 644 doc/*.html $(DESTDIR)/$(DOCDIR)/netplan/
-+ 	install -m 644 examples/*.yaml $(DESTDIR)/$(DOCDIR)/netplan/examples/
-+-	install -m 644 doc/*.5 $(DESTDIR)/$(MANDIR)/man5/
-+-	install -m 644 doc/*.8 $(DESTDIR)/$(MANDIR)/man8/
-++	#install -m 644 doc/*.5 $(DESTDIR)/$(MANDIR)/man5/
-++	#install -m 644 doc/*.8 $(DESTDIR)/$(MANDIR)/man8/
-+ 	install -T -D -m 644 netplan.completions $(DESTDIR)/$(BASH_COMPLETIONS_DIR)/netplan
-+ 	# dbus
-+ 	mkdir -p $(DESTDIR)/$(DATADIR)/dbus-1/system.d $(DESTDIR)/$(DATADIR)/dbus-1/system-services
-diff -Nur netplan.io-0.104.orig/Makefile netplan.io-0.104/Makefile
---- netplan.io-0.104.orig/Makefile	2022-02-16 17:01:19.000000000 +0100
-+++ netplan.io-0.104/Makefile	2022-08-07 15:35:49.015015281 +0200
+diff -ur orig/Makefile no-pandoc/Makefile
+--- orig/Makefile	2024-11-15 14:31:10.783200450 +0100
++++ no-pandoc/Makefile	2024-11-15 14:33:30.198747930 +0100
 @@ -50,7 +50,7 @@
  PYCODESTYLE3 ?= $(shell command -v pycodestyle-3 || command -v pycodestyle || command -v pep8 || echo true)
  NOSETESTS3 ?= $(shell command -v nosetests-3 || command -v nosetests3 || echo true)

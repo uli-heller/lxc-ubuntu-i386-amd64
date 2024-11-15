@@ -3,16 +3,18 @@
 ### build.sh
 ###
 ### Usage:
-###   build.sh -a i386|amd64 -o focal|jammy|noble package...
+###   build.sh [-h] -a i386|amd64 -o focal|jammy|noble [-r|package...]
 ###
 ### Options:
 ###   -a architecture ... i386 or amd64
 ###   -o os ............. focal (20.04) or jammy (22.04) or noble (24.04)
 ###   -i image.tar.xz ... lxc image file
+###   -r ................ rebuild all required packages for the architecture/os
 ###   package ........... packages to build
 ###
 ### Examples:
 ###   ./build.sh -a i386 -o jammy at
+###   ./build.sh -a i386 -o noble -r
 ###
 
 BN="$(basename "$0")"
@@ -27,13 +29,14 @@ usage () {
     help|sed -n "/^Usage:/,/^\s*$/p"
 }
 
-OS=jammy
+OS=noble
 ARCHITECTURE=i386
 IMAGE=
 HELP=
 USAGE=
+REBUILD=
 
-while getopts 'ha:o:i:' opt; do
+while getopts 'hra:o:i:' opt; do
     case $opt in
         a)
             ARCHITECTURE="${OPTARG}"
@@ -47,6 +50,9 @@ while getopts 'ha:o:i:' opt; do
         h)
             HELP=y
             ;;
+	r)
+	    REBUILD=y
+	    ;;
         *)
             USAGE=y
             ;;
@@ -62,6 +68,17 @@ test -n "${HELP}" && {
 test -n "${USAGE}" && {
     usage >&2
     exit 1
+}
+
+#
+# Extend parameter list for 'rebuild'
+#
+test -n "${REBUILD}" && {
+    test -s "${D}/debs/${OS}/${ARCHITECTURE}/rebuild.conf" && {
+	for p in $(cat "${D}/debs/${OS}/${ARCHITECTURE}/rebuild.conf"|grep -v '^#'); do
+	    set -- "${p}" "$@"
+	done
+    }
 }
 
 sudo true || exit 1
@@ -164,7 +181,7 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
 		    cat "${TMPDIR}/changelog.start" "${TMPDIR}/changelog"| sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && tee debian/changelog" >/dev/null || exit 1
 		}
 		# Install dependencies
-		echo "yes"|sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && mk-build-deps -i" || exit 1
+		echo "yes"|sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C mk-build-deps -i" || exit 1
 		test -n "${PREPARE_BUILD}" && {
 		    PREPARE_BUILD_EXPANDED="$(echo "${PREPARE_BUILD}"|replaceVariables)"
 		    sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && eval ${PREPARE_BUILD_EXPANDED}" || exit 1
@@ -172,7 +189,7 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
 	    else
 		sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && apt-get build-dep -y '${PACKAGE}'" || RC=1
 	    fi
-	    sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C dpkg-buildpackage" || RC=1
+	    sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C dpkg-buildpackage --build=binary" || RC=1
 	    test "${RC}" -eq "0" || { echo >&2 "Probleme beim Auspacken oder bauen - EXIT"; exit 1; }
 	    test -d "${D}/debs/${OS}/${ARCHITECTURE}" || mkdir -p "${D}/debs/${OS}/${ARCHITECTURE}"
 	    sudo cp "${ROOTFS}/src/${PACKAGE}"/*.deb "${D}/debs/${OS}/${ARCHITECTURE}/."
@@ -188,6 +205,11 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
 	    )
 	    RC=1
 	}
+    }
+    test "${RC}" -ne 0 && {
+	echo >&2 "${BN}: error building package '${PACKAGE}' -> ABORTING"
+	cleanUp
+	exit 1
     }
     rm -rf "${TMPDIR}/before" "${TMPDIR}/after" "${TMPDIR}/before.ls" "${TMPDIR}/after.ls"
     shift
