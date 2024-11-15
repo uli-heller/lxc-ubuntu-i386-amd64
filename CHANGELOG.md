@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+v1.12.1
+-------
+
+- Updated debs for focal and jammy
+- Lots of docs updates
+
 v1.12
 -----
 
