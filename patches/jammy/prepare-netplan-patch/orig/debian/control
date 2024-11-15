@@ -1,0 +1,103 @@
+Source: netplan.io
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+XSBC-Original-Maintainer: Debian Netplan Maintainers <team+netplan@tracker.debian.org>
+Uploaders:
+ Andrej Shadura <andrewsh@debian.org>,
+ Lukas Märdian <slyon@debian.org>,
+Section: net
+Priority: optional
+Standards-Version: 4.6.2
+Rules-Requires-Root: no
+Build-Depends:
+ debhelper-compat (= 13),
+ pkg-config,
+ bash-completion,
+ libyaml-dev,
+ libglib2.0-dev,
+ uuid-dev,
+ python3,
+ python3-coverage <!nocheck>,
+ python3-dbus <!nocheck>,
+ python3-pytest <!nocheck>,
+ python3-pytest-cov <!nocheck>,
+ python3-yaml <!nocheck>,
+ python3-netifaces <!nocheck>,
+ libcmocka-dev,
+ libsystemd-dev,
+ systemd,
+ dbus-x11 <!nocheck>,
+ pyflakes3 <!nocheck>,
+ pycodestyle <!nocheck> | pep8 <!nocheck>,
+ pandoc,
+ openvswitch-switch <!nocheck>,
+ meson,
+Vcs-Git: https://git.launchpad.net/~ubuntu-core-dev/netplan/+git/ubuntu
+Vcs-Browser: https://git.launchpad.net/~ubuntu-core-dev/netplan/+git/ubuntu
+Homepage: https://netplan.io/
+
+Package: netplan.io
+Architecture: linux-any
+Multi-Arch: foreign
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+ iproute2,
+ libnetplan0 (= ${binary:Version}),
+ python3,
+ python3-dbus,
+ python3-yaml,
+ python3-netifaces,
+ systemd (>= 248~),
+Suggests:
+ network-manager | wpasupplicant,
+ openvswitch-switch,
+ python3-rich,
+ iw,
+Conflicts: netplan
+Breaks: nplan (<< 0.34~)
+Replaces: nplan (<< 0.34~)
+Provides: nplan
+Description: YAML network configuration abstraction for various backends
+ netplan reads YAML network configuration files which are written
+ by administrators, installers, cloud image instantiations, or other OS
+ deployments. During early boot it then generates backend specific
+ configuration files in /run to hand off control of devices to a particular
+ networking daemon.
+ .
+ Currently supported backends are networkd and NetworkManager.
+
+Package: libnetplan0
+Section: libs
+Architecture: linux-any
+Multi-Arch: same
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+Description: YAML network configuration abstraction runtime library
+ netplan reads YAML network configuration files which are written
+ by administrators, installers, cloud image instantiations, or other OS
+ deployments. During early boot it then generates backend specific
+ configuration files in /run to hand off control of devices to a particular
+ networking daemon.
+ .
+ Currently supported backends are networkd and NetworkManager.
+ .
+ This package contains the necessary runtime library files.
+
+Package: libnetplan-dev
+Section: libdevel
+Architecture: linux-any
+Multi-Arch: same
+Depends: ${misc:Depends},
+ libnetplan0 (= ${binary:Version}),
+Description: Development files for netplan's libnetplan runtime library
+ netplan reads YAML network configuration files which are written
+ by administrators, installers, cloud image instantiations, or other OS
+ deployments. During early boot it then generates backend specific
+ configuration files in /run to hand off control of devices to a particular
+ networking daemon.
+ .
+ Currently supported backends are networkd and NetworkManager.
+ .
+ This package contains development files for developers wanting to use
+ libnetplan in their applications.

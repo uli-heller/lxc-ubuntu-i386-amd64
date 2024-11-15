@@ -1,0 +1,61 @@
+diff -ur orig/debian/control no-pandoc/debian/control
+--- orig/debian/control	2024-11-15 10:34:54.367428744 +0100
++++ no-pandoc/debian/control	2024-11-15 10:47:12.309622243 +0100
+@@ -28,7 +28,6 @@
+  dbus-x11 <!nocheck>,
+  pyflakes3 <!nocheck>,
+  pycodestyle <!nocheck> | pep8 <!nocheck>,
+- pandoc,
+  openvswitch-switch <!nocheck>,
+  meson,
+ Vcs-Git: https://git.launchpad.net/~ubuntu-core-dev/netplan/+git/ubuntu
+Nur in no-pandoc/debian: patches.
+diff -ur orig/Makefile no-pandoc/Makefile
+--- orig/Makefile	2024-11-15 10:34:19.215489977 +0100
++++ no-pandoc/Makefile	2024-11-15 10:46:44.777694343 +0100
+@@ -67,7 +67,7 @@
+ PYTEST3 ?= $(shell command -v pytest-3 || command -v pytest3 || echo true)
+ PYCOVERAGE ?= $(shell command -v python3-coverage || echo true)
+ 
+-default: netplan/_features.py generate netplan-dbus dbus/io.netplan.Netplan.service doc/netplan.html doc/netplan.5 doc/netplan-generate.8 doc/netplan-apply.8 doc/netplan-try.8 doc/netplan-dbus.8 doc/netplan-get.8 doc/netplan-set.8
++default: netplan/_features.py generate netplan-dbus dbus/io.netplan.Netplan.service
+ 
+ %.o: src/%.c src/_features.h
+ 	$(CC) $(BUILDFLAGS) $(CFLAGS) $(LDFLAGS) -c $^ `pkg-config --cflags --libs glib-2.0 gio-2.0 yaml-0.1 uuid`
+@@ -161,10 +161,10 @@
+ 	install -m 644 include/*.h $(DESTDIR)/$(INCLUDEDIR)/netplan/
+ 	# TODO: install pkg-config once available
+ 	# docs, data
+-	install -m 644 doc/*.html $(DESTDIR)/$(DOCDIR)/netplan/
++	#install -m 644 doc/*.html $(DESTDIR)/$(DOCDIR)/netplan/
+ 	install -m 644 examples/*.yaml $(DESTDIR)/$(DOCDIR)/netplan/examples/
+-	install -m 644 doc/*.5 $(DESTDIR)/$(MANDIR)/man5/
+-	install -m 644 doc/*.8 $(DESTDIR)/$(MANDIR)/man8/
++	#install -m 644 doc/*.5 $(DESTDIR)/$(MANDIR)/man5/
++	#install -m 644 doc/*.8 $(DESTDIR)/$(MANDIR)/man8/
+ 	install -T -D -m 644 netplan.completions $(DESTDIR)/$(BASH_COMPLETIONS_DIR)/netplan
+ 	# dbus
+ 	mkdir -p $(DESTDIR)/$(DATADIR)/dbus-1/system.d $(DESTDIR)/$(DATADIR)/dbus-1/system-services
+@@ -176,13 +176,13 @@
+ 	sed -e "s#@ROOTLIBEXECDIR@#$(ROOTLIBEXECDIR)#" $< > $@
+ 
+ 
+-%.html: %.md
+-	pandoc -s --metadata title="Netplan reference" --toc -o $@ $<
+-
+-doc/netplan.5: doc/manpage-header.md doc/structure-id.md doc/netplan-yaml.md doc/manpage-footer.md
+-	pandoc -s -o $@ --from=markdown-smart $^
+-
+-%.8: %.md
+-	pandoc -s -o $@ --shift-heading-level-by=-1 --from=markdown-smart $^
++#%.html: %.md
++#	pandoc -s --metadata title="Netplan reference" --toc -o $@ $<
++#
++#doc/netplan.5: doc/manpage-header.md doc/structure-id.md doc/netplan-yaml.md doc/manpage-footer.md
++#	pandoc -s -o $@ --from=markdown-smart $^
++#
++#%.8: %.md
++#	pandoc -s -o $@ --shift-heading-level-by=-1 --from=markdown-smart $^
+ 
+ .PHONY: clean
+Nur in no-pandoc: .pc.
