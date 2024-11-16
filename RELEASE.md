@@ -8,7 +8,7 @@ Introduction
 ------------
 
 There is a release v1.11. It happened in February 2023.
-Now, roughly 18 months later, release v1.12 is about
+Now, roughly 18 months later, release v1.12.1 is about
 to be released. For this, I'd like to get new containers
 based on the new implementation. Ideally, the new
 containers will have recent versions of our extra debs!
