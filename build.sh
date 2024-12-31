@@ -3,11 +3,12 @@
 ### build.sh
 ###
 ### Usage:
-###   build.sh [-h] -a i386|amd64 -o focal|jammy|noble [-r|package...]
+###   build.sh [-h] -a i386|amd64 -o focal|jammy|noble [-s focal|jammy|noble] [-r|package...]
 ###
 ### Options:
 ###   -a architecture ... i386 or amd64
-###   -o os ............. focal (20.04) or jammy (22.04) or noble (24.04)
+###   -o os ............. target: focal (20.04) or jammy (22.04) or noble (24.04)
+###   -s os ............. source: focal (20.04) or jammy (22.04) or noble (24.04)
 ###   -i image.tar.xz ... lxc image file
 ###   -r ................ rebuild all required packages for the architecture/os
 ###   package ........... packages to build
@@ -30,19 +31,23 @@ usage () {
 }
 
 OS=noble
+SOURCE_OS=
 ARCHITECTURE=i386
 IMAGE=
 HELP=
 USAGE=
 REBUILD=
 
-while getopts 'hra:o:i:' opt; do
+while getopts 'hra:o:i:s:' opt; do
     case $opt in
         a)
             ARCHITECTURE="${OPTARG}"
             ;;
         o)
             OS="${OPTARG}"
+            ;;
+        s)
+            SOURCE_OS="${OPTARG}"
             ;;
 	i)
 	    IMAGE="${OPTARG}"
@@ -69,6 +74,8 @@ test -n "${USAGE}" && {
     usage >&2
     exit 1
 }
+
+test -z "${SOURCE_OS}" && SOURCE_OS="${OS}"
 
 #
 # Extend parameter list for 'rebuild'
@@ -124,7 +131,7 @@ replaceVariables () {
 RC=0
 sudo "${D}/mount.sh" "${ROOTFS}"
 sudo chroot "${ROOTFS}" cat /etc/apt/sources.list >"${TMPDIR}/sources.list"
-sed -e "s/^deb /deb-src /" <"${TMPDIR}/sources.list" >"${TMPDIR}/debsrc"
+sed -e "s/^deb /deb-src /" -e "s/${OS}/${SOURCE_OS}" <"${TMPDIR}/sources.list" >"${TMPDIR}/debsrc"
 sudo chroot "${ROOTFS}" tee /etc/apt/sources.list.d/deb-src.list <"${TMPDIR}/debsrc" >/dev/null
 
 sudo mkdir -p "${ROOTFS}/var/cache/lxc-ppa"
