@@ -1,0 +1,151 @@
+Package: dh-golang
+Version: 1.53
+Architecture: all
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Installed-Size: 66
+Depends: debhelper, libdpkg-perl, perl:any
+Provides: dh-sequence-golang
+Filename: ./dh-golang_1.53_all.deb
+Size: 25804
+MD5sum: 92e3c69069d123cdbdf168c67065a58a
+SHA1: ecc1c5fd3aeed52c2fce9e40988adfa39c0b6241
+SHA256: d8742b38e7042f95993fc08c53ddb9f7e8b6ca030f04c6a7df1114825bde2297
+Section: devel
+Priority: optional
+Multi-Arch: foreign
+Description: debhelper add-on for packaging software written in Go (golang)
+ dh-golang provides a debhelper sequence addon named 'golang', a buildsystem
+ module named 'golang' and a command called dh_golang.
+ .
+ The golang debhelper buildsystem is designed to make packaging programs
+ written in Go very simple.
+
+Package: gocryptfs
+Version: 1.8.0-1ubuntu0.1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 10728
+Depends: libfuse2, libc6 (>= 2.4), libssl1.1 (>= 1.1.0)
+Built-Using: golang-1.13 (= 1.13.8-1ubuntu1.2), golang-github-hanwen-go-fuse (= 2.0.3-1), golang-github-jacobsa-crypto (= 0.0~git20190317.9f44e2d+dfsg1-3), golang-github-rfjakob-eme (= 1.1.1-1), golang-github-sabhiram-go-gitignore (= 1.0.2-2), golang-go.crypto (= 1:0.0~git20200221.2aa609c-1), golang-golang-x-sync (= 0.0~git20190911.cd5d95a-1), golang-golang-x-sys (= 0.0~git20211216.1d35b9e-1)
+Filename: ./gocryptfs_1.8.0-1ubuntu0.1_amd64.deb
+Size: 2055264
+MD5sum: 8e3588be494ed66e7ff97c231bf063d5
+SHA1: e635bd0bbdd5148cd35a1bd30d88a13b1694b3ea
+SHA256: 09e2bdf515c7a3e0b32b5eafc270c1d1b1dc0ef1a3c1c08046b6c8a0f777d912
+Section: devel
+Priority: optional
+Homepage: https://github.com/rfjakob/gocryptfs
+Description: Encrypted overlay filesystem written in Go
+ gocryptfs is built on top of the excellent go-fuse
+ (https://github.com/hanwen/go-fuse) FUSE library and its
+ LoopbackFileSystem API.
+ .
+ This project was inspired by EncFS and strives to fix its
+ security issues while providing good performance (benchmarks
+ (https://nuetzlich.net/gocryptfs/comparison/#performance)).
+ .
+ For details on the security of gocryptfs see the Security
+ (https://nuetzlich.net/gocryptfs/security/) design document.
+Original-Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
+
+Package: golang-github-hanwen-go-fuse-dev
+Source: golang-github-hanwen-go-fuse
+Version: 2.0.3-1
+Architecture: all
+Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
+Installed-Size: 566
+Depends: golang-any, golang-golang-x-sys-dev
+Filename: ./golang-github-hanwen-go-fuse-dev_2.0.3-1_all.deb
+Size: 105528
+MD5sum: 86d04e222588e5a08f600a0565413ef0
+SHA1: c6b6fe475ea1256ef496397d747fd74a63fb1e0f
+SHA256: 12ea2d8817ba5188f72ecd2967edf4d2a76c595dd106d2e61176f976f4c70537
+Section: devel
+Priority: optional
+Homepage: https://github.com/hanwen/go-fuse
+Description: Native Go bindings for the FUSE kernel module
+ This package offers native Go bindings for FUSE, and has several features:
+ .
+  * High speed: as fast as libfuse using the gc compiler for single
+    threaded loads.
+ .
+  * Supports in-process mounting of different FileSystems onto
+    subdirectories of the FUSE mount.
+ .
+  * Supports 3 interfaces for writing filesystems:
+    - PathFileSystem: define filesystems in terms path names.
+    - NodeFileSystem: define filesystems in terms of inodes.
+    - RawFileSystem: define filesystems in terms of FUSE's raw
+      wire protocol.
+ .
+  * Both NodeFileSystem and PathFileSystem support manipulation of true
+    hardlinks.
+ .
+ The package also includes two fleshed out examples, zipfs and unionfs.
+
+Package: golang-github-pkg-xattr-dev
+Source: golang-github-pkg-xattr
+Version: 0.4.2-1
+Architecture: all
+Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
+Installed-Size: 49
+Filename: ./golang-github-pkg-xattr-dev_0.4.2-1_all.deb
+Size: 9308
+MD5sum: a78a64b112aeac762190b2e9af301714
+SHA1: 5db06889058189ce3b02d3f0f950c553a5cfd9d4
+SHA256: 3034b52f2ab7bb2150d5b5861941063e4042a69665b1e3d35855078f008dc29f
+Section: devel
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://github.com/pkg/xattr
+Description: Extended attribute support for Go
+ This library allows manipulating filesystem extended attributes
+ in Go.
+ .
+ Linux, Darwin and FreeBSD are supported.
+
+Package: golang-github-rfjakob-eme-dev
+Source: golang-github-rfjakob-eme
+Version: 1.1.1-1
+Architecture: all
+Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
+Installed-Size: 43
+Filename: ./golang-github-rfjakob-eme-dev_1.1.1-1_all.deb
+Size: 12136
+MD5sum: d78758cd012a12acaf499ebd329f8d9f
+SHA1: 3bb6e7808f7feef4e2355e1109468296627873e8
+SHA256: 281a44ea7d90cbcc7fc06f4bc082efb064c3b582021fec31bec8b481f6c9882d
+Section: devel
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://github.com/rfjakob/eme
+Description: EME wide-block encryption for Go
+ EME for Go is a wide-block encryption mode developed by Halevi and
+ Rogaway in 2003 [eme]. (see references below)
+ .
+ EME uses multiple invocations of a block cipher to construct a new cipher
+ of bigger block size (in multiples of 16 bytes, up to 2048 bytes).
+
+Package: golang-golang-x-sys-dev
+Source: golang-golang-x-sys
+Version: 0.0~git20211216.1d35b9e-1
+Architecture: all
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Installed-Size: 5953
+Filename: ./golang-golang-x-sys-dev_0.0~git20211216.1d35b9e-1_all.deb
+Size: 361704
+MD5sum: 197265a565d4ea7d1d40518668901af9
+SHA1: 8d41e9d770868a03e4c272dfdeb7b71cad7c60d3
+SHA256: 8f642532fa9679b75b44af252c041a7c7b3774d5bce51cc3f0ebe20ba984f5c2
+Section: golang
+Priority: optional
+Multi-Arch: foreign
+Homepage: http://golang.org/x/sys
+Description: Low-level interaction with the operating system
+ This repository holds supplemental Go packages for low-level interactions with
+ the operating system.
+ .
+ The primary use of this package is inside other packages that provide a more
+ portable interface to the system, such as "os", "time" and "net". Use those
+ packages rather than this one if you can.
+

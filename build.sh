@@ -49,15 +49,15 @@ while getopts 'hra:o:i:s:' opt; do
         s)
             SOURCE_OS="${OPTARG}"
             ;;
-	i)
-	    IMAGE="${OPTARG}"
-	    ;;
+        i)
+            IMAGE="${OPTARG}"
+            ;;
         h)
             HELP=y
             ;;
-	r)
-	    REBUILD=y
-	    ;;
+        r)
+            REBUILD=y
+            ;;
         *)
             USAGE=y
             ;;
@@ -77,14 +77,32 @@ test -n "${USAGE}" && {
 
 test -z "${SOURCE_OS}" && SOURCE_OS="${OS}"
 
+SOURCE_FROM_DIFFERENT_OS=
+test "${SOURCE_OS}" != "${OS}" && SOURCE_FROM_DIFFERENT_OS=y
+case "${OS}" in
+    focal)
+	COMPAT=12
+	;;
+    jammy)
+	COMPAT=13
+	;;
+    noble)
+	COMPAT=13
+	;;
+    default)
+	COMPAT=12
+	;;
+esac
+
+
 #
 # Extend parameter list for 'rebuild'
 #
 test -n "${REBUILD}" && {
     test -s "${D}/debs/${OS}/${ARCHITECTURE}/rebuild.conf" && {
-	for p in $(cat "${D}/debs/${OS}/${ARCHITECTURE}/rebuild.conf"|grep -v '^#'); do
-	    set -- "${p}" "$@"
-	done
+        for p in $(cat "${D}/debs/${OS}/${ARCHITECTURE}/rebuild.conf"|grep -v '^#'); do
+            set -- "${p}" "$@"
+        done
     }
 }
 
@@ -109,7 +127,7 @@ test -d "${ROOTFS}" || {
 cleanUp () {
     rm -rf "${TMPDIR}"
     test "$(df "${ROOTFS}/dev"|cut -d" " -f1)" != "$(df "${ROOTFS}/tmp"|cut -d" " -f1)" && {
-	sudo "${D}/umount.sh" "${ROOTFS}"
+        sudo "${D}/umount.sh" "${ROOTFS}"
     }
     test -n "${RC}" && exit "${RC}"
 }
@@ -119,7 +137,7 @@ mkdir "${TMPDIR}"
 touch "${TMPDIR}/empty"
 
 "${D}/init-gpg.sh"
-"${D}/rebuild-ppa.sh"
+"${D}/rebuild-ppa.sh" "${ARCHITECTURE}" "${OS}"
 
 #
 # replaceVariables <from >to
@@ -129,9 +147,13 @@ replaceVariables () {
 }
 
 RC=0
-sudo "${D}/mount.sh" "${ROOTFS}"
+sudo "${D}/mount.sh" "${ROOTFS}" || {
+    echo >&2 "${BN}: Probleme beim Einbinden von '${ROOTFS}'"
+    exit 1
+}
+
 sudo chroot "${ROOTFS}" cat /etc/apt/sources.list >"${TMPDIR}/sources.list"
-sed -e "s/^deb /deb-src /" -e "s/${OS}/${SOURCE_OS}" <"${TMPDIR}/sources.list" >"${TMPDIR}/debsrc"
+sed -e "s/^deb /deb-src /" -e "s/${OS}/${SOURCE_OS}/" <"${TMPDIR}/sources.list" >"${TMPDIR}/debsrc"
 sudo chroot "${ROOTFS}" tee /etc/apt/sources.list.d/deb-src.list <"${TMPDIR}/debsrc" >/dev/null
 
 sudo mkdir -p "${ROOTFS}/var/cache/lxc-ppa"
@@ -152,71 +174,75 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
     sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && ls *dsc" >"${TMPDIR}/after"
     sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && ls" >"${TMPDIR}/after.ls"
     cmp "${TMPDIR}/before" "${TMPDIR}/after" >/dev/null 2>&1 || {
-	(
-	    RC=0
-	    set -x
-	    sudo find "${ROOTFS}/src/${PACKAGE}" -mindepth 1 -maxdepth 1 -type d|sudo xargs rm -rf
-	    sudo find "${ROOTFS}/src/${PACKAGE}" -name "*.deb"|sudo xargs rm -rf
-	    sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && apt-get source '${PACKAGE}'" || exit 1
-	    PACKAGE_FOLDER="$(sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}'/*/. && pwd")"
-	    if [ -d "${D}/patches/${OS}/${PACKAGE}" ]; then
-		PATCH_FOLDER="${D}/patches/${OS}/${PACKAGE}"
-		# We do have a patch for the package. Now the situation
-		# might be quite difficult related to version number
-		# and dependencies
-		#
-		# Save the changelog - it might have been modified since we created the patch
-		sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && cat debian/changelog" >"${TMPDIR}/changelog" || exit 1
-		DIFF=
-		test -e "${PATCH_FOLDER}/"*.diff && DIFF="$(echo "${PATCH_FOLDER}/"*.diff)"
-		CHANGELOG_PARAMETERS="${TMPDIR}/empty"
-		test -e "${PATCH_FOLDER}/changelog.parameters" && CHANGELOG_PARAMETERS="${PATCH_FOLDER}/changelog.parameters"
-		PREPARE_BUILD="$(grep "^PREPARE_BUILD=" "${CHANGELOG_PARAMETERS}"|cut -d= -f2-)"
-		VERSION_SEARCH="$(grep "^VERSION_SEARCH=" "${CHANGELOG_PARAMETERS}"|cut -d= -f2-)"
-		VERSION_REPLACE="$(grep "^VERSION_REPLACE=" "${CHANGELOG_PARAMETERS}"|cut -d= -f2-)"
-		OLD_VERSION="$(head -1 "${ROOTFS}/${PACKAGE_FOLDER}/debian/changelog"|grep -o '(.*)'|tr -d '()')"
-		NEW_VERSION="$(echo "${OLD_VERSION}"|sed "s/${VERSION_SEARCH}/${VERSION_REPLACE}/")"
-		TIMESTAMP="$(date -R)"
-		test -n "${DIFF}" && {
-		    # Modify the patch - skip changelog
-		    sed -e '/^diff.*changelog$/,/^diff/ d' "${DIFF}" >"${TMPDIR}/diff-without-changelog"
-		    # Apply the modified patch
-		    sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && patch -p1" <"${TMPDIR}/diff-without-changelog" || exit 1
-		    # Adjust the changelog
-		    replaceVariables <"${D}/patches/${OS}/${PACKAGE}/changelog.tpl" >"${TMPDIR}/changelog.start"
-		    echo >>"${TMPDIR}/changelog.start"
-		    cat "${TMPDIR}/changelog.start" "${TMPDIR}/changelog"| sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && tee debian/changelog" >/dev/null || exit 1
-		}
-		# Install dependencies
+        (
+            RC=0
+            set -x
+            sudo find "${ROOTFS}/src/${PACKAGE}" -mindepth 1 -maxdepth 1 -type d|sudo xargs rm -rf
+            sudo find "${ROOTFS}/src/${PACKAGE}" -name "*.deb"|sudo xargs rm -rf
+            sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && apt-get source '${PACKAGE}'" || exit 1
+            PACKAGE_FOLDER="$(sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}'/*/. && pwd")"
+            test -n "${SOURCE_FROM_DIFFERENT_OS}" && {
+                sudo sed -i -e "s/debhelper-compat\s*([^)]*)/debhelper-compat (=${COMPAT})/" "${ROOTFS}/${PACKAGE_FOLDER}/debian/control"
+            }
+            if [ -d "${D}/patches/${OS}/${PACKAGE}" ]; then
+                PATCH_FOLDER="${D}/patches/${OS}/${PACKAGE}"
+                # We do have a patch for the package. Now the situation
+                # might be quite difficult related to version number
+                # and dependencies
+                #
+                # Save the changelog - it might have been modified since we created the patch
+                sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && cat debian/changelog" >"${TMPDIR}/changelog" || exit 1
+                DIFF=
+                test -e "${PATCH_FOLDER}/"*.diff && DIFF="$(echo "${PATCH_FOLDER}/"*.diff)"
+                CHANGELOG_PARAMETERS="${TMPDIR}/empty"
+                test -e "${PATCH_FOLDER}/changelog.parameters" && CHANGELOG_PARAMETERS="${PATCH_FOLDER}/changelog.parameters"
+                PREPARE_BUILD="$(grep "^PREPARE_BUILD=" "${CHANGELOG_PARAMETERS}"|cut -d= -f2-)"
+                VERSION_SEARCH="$(grep "^VERSION_SEARCH=" "${CHANGELOG_PARAMETERS}"|cut -d= -f2-)"
+                VERSION_REPLACE="$(grep "^VERSION_REPLACE=" "${CHANGELOG_PARAMETERS}"|cut -d= -f2-)"
+                OLD_VERSION="$(head -1 "${ROOTFS}/${PACKAGE_FOLDER}/debian/changelog"|grep -o '(.*)'|tr -d '()')"
+                NEW_VERSION="$(echo "${OLD_VERSION}"|sed "s/${VERSION_SEARCH}/${VERSION_REPLACE}/")"
+                TIMESTAMP="$(date -R)"
+                test -n "${DIFF}" && {
+                    # Modify the patch - skip changelog
+                    sed -e '/^diff.*changelog$/,/^diff/ d' "${DIFF}" >"${TMPDIR}/diff-without-changelog"
+                    # Apply the modified patch
+                    sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && patch -p1" <"${TMPDIR}/diff-without-changelog" || exit 1
+                    # Adjust the changelog
+                    replaceVariables <"${D}/patches/${OS}/${PACKAGE}/changelog.tpl" >"${TMPDIR}/changelog.start"
+                    echo >>"${TMPDIR}/changelog.start"
+                    cat "${TMPDIR}/changelog.start" "${TMPDIR}/changelog"| sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && tee debian/changelog" >/dev/null || exit 1
+                }
+                # Install dependencies
+                echo "yes"|sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C mk-build-deps -i" || exit 1
+                test -n "${PREPARE_BUILD}" && {
+                    PREPARE_BUILD_EXPANDED="$(echo "${PREPARE_BUILD}"|replaceVariables)"
+                    sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && eval ${PREPARE_BUILD_EXPANDED}" || exit 1
+                }
+            else
+                #sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && apt-get build-dep -y '${PACKAGE}'" || RC=1
 		echo "yes"|sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C mk-build-deps -i" || exit 1
-		test -n "${PREPARE_BUILD}" && {
-		    PREPARE_BUILD_EXPANDED="$(echo "${PREPARE_BUILD}"|replaceVariables)"
-		    sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && eval ${PREPARE_BUILD_EXPANDED}" || exit 1
-		}
-	    else
-		sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && apt-get build-dep -y '${PACKAGE}'" || RC=1
-	    fi
-	    sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C dpkg-buildpackage --build=binary" || RC=1
-	    test "${RC}" -eq "0" || { echo >&2 "Probleme beim Auspacken oder bauen - EXIT"; exit 1; }
-	    test -d "${D}/debs/${OS}/${ARCHITECTURE}" || mkdir -p "${D}/debs/${OS}/${ARCHITECTURE}"
-	    sudo cp "${ROOTFS}/src/${PACKAGE}"/*.deb "${D}/debs/${OS}/${ARCHITECTURE}/."
-	    sudo chown "$(id -un):$(id -gn)" "${D}/debs/${OS}/${ARCHITECTURE}"/*.deb
-	    "${D}/rebuild-ppa.sh"
-	    sudo cp "${D}/debs/${OS}/${ARCHITECTURE}"/*  "${ROOTFS}/var/cache/lxc-ppa"
-	    sudo chroot "${ROOTFS}" apt update
-	) || {
-	    #sudo find "${ROOTFS}/src/${PACKAGE}" -mindepth 1 -maxdepth 1 -newer "${TMPDIR}/before"|sudo xargs -t rm -rf
-	    (
-		cd "${ROOTFS}/src/${PACKAGE}"
-		diff "${TMPDIR}/before.ls" "${TMPDIR}/after.ls"|grep "^>"|cut -c2-|sudo xargs -t rm -f
-	    )
-	    RC=1
-	}
+            fi
+            sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C dpkg-buildpackage --build=binary" || RC=1
+            test "${RC}" -eq "0" || { echo >&2 "Probleme beim Auspacken oder bauen - EXIT"; exit 1; }
+            test -d "${D}/debs/${OS}/${ARCHITECTURE}" || mkdir -p "${D}/debs/${OS}/${ARCHITECTURE}"
+            sudo cp "${ROOTFS}/src/${PACKAGE}"/*.deb "${D}/debs/${OS}/${ARCHITECTURE}/."
+            sudo chown "$(id -un):$(id -gn)" "${D}/debs/${OS}/${ARCHITECTURE}"/*.deb
+            "${D}/rebuild-ppa.sh"
+            sudo cp "${D}/debs/${OS}/${ARCHITECTURE}"/*  "${ROOTFS}/var/cache/lxc-ppa"
+            sudo chroot "${ROOTFS}" apt update
+        ) || {
+            #sudo find "${ROOTFS}/src/${PACKAGE}" -mindepth 1 -maxdepth 1 -newer "${TMPDIR}/before"|sudo xargs -t rm -rf
+            (
+                cd "${ROOTFS}/src/${PACKAGE}" || { echo >&2 "${BN}: Fehler mit '${ROOTFS}/src/${PACKAGE}'"; exit 1; }
+                diff "${TMPDIR}/before.ls" "${TMPDIR}/after.ls"|grep "^>"|cut -c2-|sudo xargs -t rm -f
+            )
+            RC=1
+        }
     }
     test "${RC}" -ne 0 && {
-	echo >&2 "${BN}: error building package '${PACKAGE}' -> ABORTING"
-	cleanUp
-	exit 1
+        echo >&2 "${BN}: error building package '${PACKAGE}' -> ABORTING"
+        cleanUp
+        exit 1
     }
     rm -rf "${TMPDIR}/before" "${TMPDIR}/after" "${TMPDIR}/before.ls" "${TMPDIR}/after.ls"
     shift
@@ -233,14 +259,14 @@ test "${RC}" -eq 0 && {
     cd "${D}/debs/${OS}/${ARCHITECTURE}"
     dpkg-scanpackages . >Packages
     {
-	AFR="APT::FTPArchive::Release::"
-	echo "${AFR}Origin \"lxc-ubuntu\";"
-	echo "${AFR}Label \"lxc-ubuntu\";"
-	echo "${AFR}Suite \"${OS}\";"
-	echo "${AFR}Codename \"${OS}\";"
-	echo "${AFR}Architectures \"${ARCHITECTURE}\";"
-	#echo "${AFR}Components \".\";"
-	echo "${AFR}Description \"Precompiled packages for our LXC containers\";"
+        AFR="APT::FTPArchive::Release::"
+        echo "${AFR}Origin \"lxc-ubuntu\";"
+        echo "${AFR}Label \"lxc-ubuntu\";"
+        echo "${AFR}Suite \"${OS}\";"
+        echo "${AFR}Codename \"${OS}\";"
+        echo "${AFR}Architectures \"${ARCHITECTURE}\";"
+        #echo "${AFR}Components \".\";"
+        echo "${AFR}Description \"Precompiled packages for our LXC containers\";"
     } >"Release.tmp"
     apt-ftparchive -c "Release.tmp" release "." >"./Release"
     rm -f "Release.tmp"
