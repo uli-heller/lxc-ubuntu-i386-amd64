@@ -1,0 +1,38 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Architectures: amd64
+Codename: jammy
+Date: Wed, 01 Jan 2025 12:34:16 +0000
+Description: Precompiled packages for our LXC containers
+Label: lxc-ubuntu
+Origin: lxc-ubuntu
+Suite: jammy
+MD5Sum:
+ 69b3818edaee15d236a2d4bb435bd28a             3905 Packages
+ 6e158b161a628319f92af48443c21b56              182 Release
+SHA1:
+ 4eb6410c098d8227d6dc0be36bb5721356925d65             3905 Packages
+ 9143cc713a53bf1962a42a0e3332b68cebf5a185              182 Release
+SHA256:
+ 1b9e0c1b9f77375175a9636eece8868d91a000f1d0543c6a34d213f7bc0baafb             3905 Packages
+ 9f07a78549a085e3aaec5a498a031c886cea6e5f323d1e7e15c46d3378a0fbcb              182 Release
+SHA512:
+ c6b29997052397164c34d90604b118c372e0206f1838fb9ca3cbaece5ba5d4574f2fed6e6e8e65261266525ad9a9998dd19aca5b661eda366228bccebc4d0322             3905 Packages
+ 8ae9fddc6db54eb13cfb545121b39673f3477a3e41dda3df8d9e449826680e1821742b4790108350a538dd5a1ea950266622b7c9d583957e47cb0cd6167f7348              182 Release
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEE82hycVroFa5OYg3TOC3lxFUcsDQFAmd1NkgACgkQOC3lxFUc
+sDR1nRAA6+xEhAy8EuYdXIgfWIHP8zpHi3QLSkBu2svpDCU4FpSo4/JI4F9GFXMc
+sSXQ8bdtdxgMRuGu3ThwhoOKenajzIou6hnYWoSVCVeuz603drBZlX6AnGBcy9f2
+GSIyDrnx0idAm+hP5HcDuUowfNzXYX9omqdqCmg0RIopTNDPL1apQzudmSL4QvqE
+bJKohzycKu/ARWT82zkQh0q4y3mRiBugfHbYiAT839AFt7dnwsw9gAY+Cm4L3y+U
+qnT7ZRfr2x2QeAjPK4yj2T6VjV5AO4tMQ1iR0pkjqh7sdJ2+/wvR6210stN8ztpA
+xX2J8MDGgNJlFV+vpSJ2GbhncHzrZnt3B94PYGIX5gjrRS1Zs/CldNeTQz6rsGs2
+kkzJNoUyKzeX2yV5jPPbnU9KBp4wG5tJ+kUOuYWr3FDKwhUawGmG1SDnnvGVWXKw
+BmW2EgpJp/2JPkamYTT+iCx2J4dFq8pl9oF9vLVF/4byJLOdQDV4iV62yjZTCLpm
+mKV6DU+fI08Fk/yj9GEUVNgl4NPayajYSrrLl3+M5B91+25irIHFeUfY+0hpEI+M
+aayhnUK3shbmQLYx/2mYzjxMrz62V9GUpmIKW70Ta2SXpHA6zVMJjbBzG0lYai8C
+BKkzlRI8upq/zkHiM7YUDD9Olt/JAdePsd2YabzyJD/hB1dioZs=
+=q8re
+-----END PGP SIGNATURE-----

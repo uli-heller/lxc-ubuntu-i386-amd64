@@ -27,6 +27,7 @@ Aufrufe:
 - Baut das Paket "gocryptfs" aus 22.04 (jammy) für 20.04 (focal): `./build.sh -a amd64 -s jammy -o focal gocryptfs`
   - Klappt, wenn man zuvor die ganzen Abhängigkeiten baut - siehe "Herausforderungen"
 - Baut das Paket "gocryptfs" aus 24.04 (noble) für 20.04 (focal): `./build.sh -a amd64 -b "DEB_BUILD_OPTIONS=nostrip" -s noble -o focal gocryptfs`
+  - Die Option `-b "DEB_BUILD_OPTIONS=nostrip"` behebt die Probleme mit "dwz"
   - `./build.sh -a amd64 -s noble -o focal golang-github-hanwen-go-fuse-dev` ... klappt nicht
     - Neuere Go-Version
       ```
@@ -64,6 +65,9 @@ Aufrufe:
     - `./build.sh -a amd64 -s noble -o focal golang-any`
     - Probleme mit golang-golang-x-sys-dev
     - `./build.sh -a amd64 -s noble -o focal golang-golang-x-sys-dev`
+- Baut das Paket "gocryptfs" aus 24.04 (noble) für 22.04 (jammy): `./build.sh -a amd64 -s noble -o jammy gocryptfs`
+  - `./build.sh -a amd64 -s noble -o jammy golang-github-hanwen-go-fuse-dev`
+  - `./build.sh -a amd64 -s noble -o jammy golang-github-sabhiram-go-gitignore-dev`
 
 Herausforderungen
 -----------------
