@@ -3,7 +3,7 @@
 ### build.sh
 ###
 ### Usage:
-###   build.sh [-h] -a i386|amd64 -o focal|jammy|noble [-s focal|jammy|noble] [-r|package...]
+###   build.sh [-h] -a i386|amd64 [-b build-options] -o focal|jammy|noble [-s focal|jammy|noble] [-r|package...]
 ###
 ### Options:
 ###   -a architecture ... i386 or amd64
@@ -11,6 +11,7 @@
 ###   -s os ............. source: focal (20.04) or jammy (22.04) or noble (24.04)
 ###   -i image.tar.xz ... lxc image file
 ###   -r ................ rebuild all required packages for the architecture/os
+###   -b build-options .. prepend 'dpkg-buildpackage' with build-options
 ###   package ........... packages to build
 ###
 ### Examples:
@@ -37,8 +38,9 @@ IMAGE=
 HELP=
 USAGE=
 REBUILD=
+BUILD_OPTIONS=
 
-while getopts 'hra:o:i:s:' opt; do
+while getopts 'hra:b:o:i:s:' opt; do
     case $opt in
         a)
             ARCHITECTURE="${OPTARG}"
@@ -52,6 +54,9 @@ while getopts 'hra:o:i:s:' opt; do
         i)
             IMAGE="${OPTARG}"
             ;;
+	b)
+	    BUILD_OPTIONS="${OPTARG}"
+	    ;;
         h)
             HELP=y
             ;;
@@ -222,7 +227,7 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
                 #sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && apt-get build-dep -y '${PACKAGE}'" || RC=1
 		echo "yes"|sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C mk-build-deps -i" || exit 1
             fi
-            sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C dpkg-buildpackage --build=binary" || RC=1
+            sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C ${BUILD_OPTIONS} dpkg-buildpackage --build=binary" || RC=1
             test "${RC}" -eq "0" || { echo >&2 "Probleme beim Auspacken oder bauen - EXIT"; exit 1; }
             test -d "${D}/debs/${OS}/${ARCHITECTURE}" || mkdir -p "${D}/debs/${OS}/${ARCHITECTURE}"
             sudo cp "${ROOTFS}/src/${PACKAGE}"/*.deb "${D}/debs/${OS}/${ARCHITECTURE}/."
