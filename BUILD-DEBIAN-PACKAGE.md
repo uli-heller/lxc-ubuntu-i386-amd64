@@ -25,7 +25,45 @@ Aufrufe:
 - Baut das Paket "gocryptfs" für 20.04 (focal): `./build.sh -a amd64 -o focal -s focal gocryptfs`
   - Paket liegt danach unter debs/focal/amd64/gocryptfs_1.7.1-1ubuntu0.1_amd64.deb
 - Baut das Paket "gocryptfs" aus 22.04 (jammy) für 20.04 (focal): `./build.sh -a amd64 -s jammy -o focal gocryptfs`
-  - Fehlermeldungen!
+  - Klappt, wenn man zuvor die ganzen Abhängigkeiten baut - siehe "Herausforderungen"
+- Baut das Paket "gocryptfs" aus 24.04 (noble) für 20.04 (focal): `./build.sh -a amd64 -b "DEB_BUILD_OPTIONS=nostrip" -s noble -o focal gocryptfs`
+  - `./build.sh -a amd64 -s noble -o focal golang-github-hanwen-go-fuse-dev` ... klappt nicht
+    - Neuere Go-Version
+      ```
+      sudo chroot build-focal-amd64/rootfs bash
+      apt install golang-1.22
+      rm /usr/bin/go
+      rm /usr/bin/gofmt
+      echo >/usr/bin/go <<'EOF'
+      #!/bin/sh
+      GOROOT=/usr/lib/go-1.22
+      export GOROOT
+      exec "${GOROOT}/bin/go" "$@"
+      EOF
+      chmod +x /usr/bin/go
+      echo >/usr/bin/gofmt <<'EOF'
+      #!/bin/sh
+      GOROOT=/usr/lib/go-1.22
+      export GOROOT
+      exec "${GOROOT}/bin/gofmt" "$@"
+      EOF
+      chmod +x /usr/bin/gofmt
+      go version #1.22
+    
+      # update-alternatives --install /usr/bin/go go /usr/lib/go-1.22/bin/go 3
+      # update-alternatives --install /usr/bin/gofmt gofmt /usr/lib/go-1.22/bin/gofmt 3
+      # go version --> Fehlermeldung
+      ```
+    - Damit klappt's!
+  - `./build.sh -a amd64 -s noble -o focal golang-github-moby-sys-dev`
+    - Probleme bei "mount"
+    - `./build.sh -a amd64 -b "DEB_BUILD_OPTIONS=nocheck" -s noble -o focal golang-github-moby-sys-dev`
+  - `./build.sh -a amd64 -s noble -o focal golang-github-sabhiram-go-gitignore-dev`
+  - `./build.sh -a amd64 -s noble -o focal golang-golang-x-term-dev`
+    - Probleme mit golang-any
+    - `./build.sh -a amd64 -s noble -o focal golang-any`
+    - Probleme mit golang-golang-x-sys-dev
+    - `./build.sh -a amd64 -s noble -o focal golang-golang-x-sys-dev`
 
 Herausforderungen
 -----------------

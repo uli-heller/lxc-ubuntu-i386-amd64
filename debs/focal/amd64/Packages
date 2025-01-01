@@ -20,18 +20,51 @@ Description: debhelper add-on for packaging software written in Go (golang)
  The golang debhelper buildsystem is designed to make packaging programs
  written in Go very simple.
 
-Package: gocryptfs
-Version: 1.8.0-1ubuntu0.1
+Package: gccgo-go
+Source: golang-defaults
+Version: 2:1.22~2build1
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Installed-Size: 10728
-Depends: libfuse2, libc6 (>= 2.4), libssl1.1 (>= 1.1.0)
-Built-Using: golang-1.13 (= 1.13.8-1ubuntu1.2), golang-github-hanwen-go-fuse (= 2.0.3-1), golang-github-jacobsa-crypto (= 0.0~git20190317.9f44e2d+dfsg1-3), golang-github-rfjakob-eme (= 1.1.1-1), golang-github-sabhiram-go-gitignore (= 1.0.2-2), golang-go.crypto (= 1:0.0~git20200221.2aa609c-1), golang-golang-x-sync (= 0.0~git20190911.cd5d95a-1), golang-golang-x-sys (= 0.0~git20211216.1d35b9e-1)
-Filename: ./gocryptfs_1.8.0-1ubuntu0.1_amd64.deb
-Size: 2055264
-MD5sum: 8e3588be494ed66e7ff97c231bf063d5
-SHA1: e635bd0bbdd5148cd35a1bd30d88a13b1694b3ea
-SHA256: 09e2bdf515c7a3e0b32b5eafc270c1d1b1dc0ef1a3c1c08046b6c8a0f777d912
+Installed-Size: 67
+Depends: g++-14, gccgo-14
+Conflicts: golang-go
+Filename: ./gccgo-go_1.22~2build1_amd64.deb
+Size: 44876
+MD5sum: 74811f990d55f305e821196d4cb919f0
+SHA1: db632059a45a7aba45a00fa95b7a591d890b725d
+SHA256: 92eb8d273953903a092b121ccd75b4471b7c27f832d6f5739678f09175c3a5b1
+Section: golang
+Priority: optional
+Multi-Arch: same
+Homepage: https://golang.org
+Description: Go programming language -- gccgo
+ The Go programming language is an open source project to make programmers more
+ productive. Go is expressive, concise, clean, and efficient. Its concurrency
+ mechanisms make it easy to write programs that get the most out of multicore
+ and networked machines, while its novel type system enables flexible and
+ modular program construction. Go compiles quickly to machine code yet has the
+ convenience of garbage collection and the power of run-time reflection. It's a
+ fast, statically typed, compiled language that feels like a dynamically typed,
+ interpreted language.
+ .
+ Installing this package will install the gccgo implementation as /usr/bin/go.
+ It conflicts with golang-go.
+Original-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>
+
+Package: gocryptfs
+Version: 2.4.0-1ubuntu0.24.04.2
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 12996
+Depends: libc6 (>= 2.4), libssl1.1 (>= 1.1.0)
+Recommends: fuse3
+Suggests: fido2-tools
+Built-Using: golang-1.22 (= 1.22.2-2~20.04.2), golang-github-hanwen-go-fuse (= 2.4.2-2), golang-github-jacobsa-crypto (= 0.0~git20190317.9f44e2d+dfsg1-3), golang-github-rfjakob-eme (= 1.1.1-1), golang-github-sabhiram-go-gitignore (= 1.0.2+git20210923.525f6e1-1), golang-github-spf13-pflag (= 1.0.5-1), golang-go.crypto (= 1:0.0~git20200221.2aa609c-1), golang-golang-x-sys (= 0.17.0-1), golang-golang-x-term (= 0.17.0-1)
+Filename: ./gocryptfs_2.4.0-1ubuntu0.24.04.2_amd64.deb
+Size: 5559864
+MD5sum: 006cb28ca2b5511188922ca8cd85a5f6
+SHA1: 9efcdc61a35322c327429812c3ae1edec23f8208
+SHA256: 61535590ba115a9121ad30347a03355721b7caa49f9a28c53e2b0803fdf393f8
 Section: devel
 Priority: optional
 Homepage: https://github.com/rfjakob/gocryptfs
@@ -48,20 +81,119 @@ Description: Encrypted overlay filesystem written in Go
  (https://nuetzlich.net/gocryptfs/security/) design document.
 Original-Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
 
+Package: golang
+Source: golang-defaults
+Version: 2:1.22~2build1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 13
+Depends: golang-1.22, golang-doc (>= 2:1.22~2build1), golang-go (>= 2:1.22~2build1), golang-src (>= 2:1.22~2build1)
+Filename: ./golang_1.22~2build1_amd64.deb
+Size: 6156
+MD5sum: 2b7f37d6b5301722ac5cba1ae74481a5
+SHA1: c0b5601c27fdec9dc14f6609123c64e245006633
+SHA256: cf9ad3267f46b752d8e6fb2f20bf46d41b511a0140d99d4ebc9d05558fa2dd1c
+Section: golang
+Priority: optional
+Multi-Arch: same
+Homepage: https://golang.org
+Description: Go programming language compiler - metapackage
+ The Go programming language is an open source project to make
+ programmers more productive. Go is expressive, concise, clean, and
+ efficient. Its concurrency mechanisms make it easy to write programs
+ that get the most out of multicore and networked machines, while its
+ novel type system enables flexible and modular program construction.
+ Go compiles quickly to machine code yet has the convenience of
+ garbage collection and the power of run-time reflection. It's a
+ fast, statically typed, compiled language that feels like a
+ dynamically typed, interpreted language.
+ .
+ This package is a metapackage that, when installed, guarantees
+ that (most of) a full Go development environment is installed.
+Original-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>
+
+Package: golang-any
+Source: golang-defaults
+Version: 2:1.22~2build1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 13
+Depends: golang-go (>= 2:1.22~2build1)
+Filename: ./golang-any_1.22~2build1_amd64.deb
+Size: 6292
+MD5sum: 705c1e183beb4bacc4b20796ee09cf87
+SHA1: f52c8f71cb9ddd306b81cc7af61f4240011ed9e7
+SHA256: f24d57deb8a7af979c6902317c4027ff702309192a26f90bebe6c06b2499f730
+Section: golang
+Priority: optional
+Multi-Arch: same
+Homepage: https://golang.org
+Description: Go programming language -- gccgo on "non-Go" platforms
+ The Go programming language is an open source project to make programmers more
+ productive. Go is expressive, concise, clean, and efficient. Its concurrency
+ mechanisms make it easy to write programs that get the most out of multicore
+ and networked machines, while its novel type system enables flexible and
+ modular program construction. Go compiles quickly to machine code yet has the
+ convenience of garbage collection and the power of run-time reflection. It's a
+ fast, statically typed, compiled language that feels like a dynamically typed,
+ interpreted language.
+ .
+ This is a dependency package that depends on the default Go toolchain and
+ compiled standard library or gccgo on architectures that do not have a native
+ toolchain ("gc compiler") port. Because the gccgo and Go releases are not on
+ the same schedule, it is not guaranteed that the version of the Go language
+ provided by the version of gccgo that this package depends upon will match the
+ version of this package.
+Original-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>
+
+Package: golang-doc
+Source: golang-defaults
+Version: 2:1.22~2build1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 13
+Depends: golang-1.22-doc, golang-go (>= 2:1.22~2build1)
+Filename: ./golang-doc_1.22~2build1_all.deb
+Size: 6224
+MD5sum: c54d6dc093c61d8fd36a63a40d435c3c
+SHA1: 0aa20b7f6ed27940d0dfd503134d95357dadbc81
+SHA256: 5110d9c2c34f0bec40bed5868c1a5d24b659a964ee014de096ba51d304d7395a
+Section: doc
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://golang.org
+Description: Go programming language - documentation
+ The Go programming language is an open source project to make
+ programmers more productive. Go is expressive, concise, clean, and
+ efficient. Its concurrency mechanisms make it easy to write programs
+ that get the most out of multicore and networked machines, while its
+ novel type system enables flexible and modular program construction.
+ Go compiles quickly to machine code yet has the convenience of
+ garbage collection and the power of run-time reflection. It's a fast,
+ statically typed, compiled language that feels like a dynamically
+ typed, interpreted language.
+ .
+ This is a dependency package that depends on the default Go documentation. You
+ can view the formatted documentation by installing the golang-golang-x-tools
+ package, running "godoc --http=:6060", and then visiting
+ http://localhost:6060/doc/install.html.
+Original-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>
+
 Package: golang-github-hanwen-go-fuse-dev
 Source: golang-github-hanwen-go-fuse
-Version: 2.0.3-1
+Version: 2.4.2-2
 Architecture: all
 Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
-Installed-Size: 566
-Depends: golang-any, golang-golang-x-sys-dev
-Filename: ./golang-github-hanwen-go-fuse-dev_2.0.3-1_all.deb
-Size: 105528
-MD5sum: 86d04e222588e5a08f600a0565413ef0
-SHA1: c6b6fe475ea1256ef496397d747fd74a63fb1e0f
-SHA256: 12ea2d8817ba5188f72ecd2967edf4d2a76c595dd106d2e61176f976f4c70537
-Section: devel
+Installed-Size: 552
+Depends: golang-golang-x-sys-dev
+Filename: ./golang-github-hanwen-go-fuse-dev_2.4.2-2_all.deb
+Size: 105432
+MD5sum: e70818e837be19dd838fa428b5c5e420
+SHA1: d8b437360f815d52861ee1a1685e09fe0cbf703a
+SHA256: e87627d8856fe635d9d8f9be9d33e7d39814252448053def59a426518c9ba8ce
+Section: golang
 Priority: optional
+Multi-Arch: foreign
 Homepage: https://github.com/hanwen/go-fuse
 Description: Native Go bindings for the FUSE kernel module
  This package offers native Go bindings for FUSE, and has several features:
@@ -82,6 +214,32 @@ Description: Native Go bindings for the FUSE kernel module
     hardlinks.
  .
  The package also includes two fleshed out examples, zipfs and unionfs.
+
+Package: golang-github-moby-sys-dev
+Source: golang-github-moby-sys
+Version: 0.0~git20231105.a4e0878-1
+Architecture: all
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Installed-Size: 256
+Depends: golang-golang-x-sys-dev (>= 0.0~git20201101~)
+Filename: ./golang-github-moby-sys-dev_0.0~git20231105.a4e0878-1_all.deb
+Size: 51448
+MD5sum: d3910789981a682fb4e1aba560c58355
+SHA1: 5c6084cc10c78ea374917b53dbb35d53cebd2acf
+SHA256: 4f25b0d33190db5ed0a8c13175eedd95567306951f82c7caee81f61a578b5dbb
+Section: golang
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://github.com/moby/sys
+Description: Go Library for system information and operation
+ It provides following Go libraries:
+ .
+  * github.com/moby/sys/mount
+  * github.com/moby/sys/mountinfo
+  * github.com/moby/sys/sequential
+  * github.com/moby/sys/signal
+  * github.com/moby/sys/symlink
+  * github.com/moby/sys/user
 
 Package: golang-github-pkg-xattr-dev
 Source: golang-github-pkg-xattr
@@ -126,21 +284,80 @@ Description: EME wide-block encryption for Go
  EME uses multiple invocations of a block cipher to construct a new cipher
  of bigger block size (in multiples of 16 bytes, up to 2048 bytes).
 
-Package: golang-golang-x-sys-dev
-Source: golang-golang-x-sys
-Version: 0.0~git20211216.1d35b9e-1
+Package: golang-github-sabhiram-go-gitignore-dev
+Source: golang-github-sabhiram-go-gitignore
+Version: 1.0.2+git20210923.525f6e1-1
 Architecture: all
 Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
-Installed-Size: 5953
-Filename: ./golang-golang-x-sys-dev_0.0~git20211216.1d35b9e-1_all.deb
-Size: 361704
-MD5sum: 197265a565d4ea7d1d40518668901af9
-SHA1: 8d41e9d770868a03e4c272dfdeb7b71cad7c60d3
-SHA256: 8f642532fa9679b75b44af252c041a7c7b3774d5bce51cc3f0ebe20ba984f5c2
+Installed-Size: 50
+Depends: golang-github-stretchr-testify-dev
+Filename: ./golang-github-sabhiram-go-gitignore-dev_1.0.2+git20210923.525f6e1-1_all.deb
+Size: 9376
+MD5sum: 50e6203e763b89114ed3f9146feaac80
+SHA1: 102cea3c11e6796db01ff1a3c6fef6ba6a086a59
+SHA256: 3b8694f22b53b48474bec11eec60459f3490110b63d62b2d3766b34f2187ea08
+Section: devel
+Priority: optional
+Homepage: https://github.com/sabhiram/go-gitignore
+Description: gitignore parser for go
+ This implements a library to check a pattern includes or excludes
+ certain filesystem paths. It can be useful to parse a .gitignore file,
+ as the author does, or for other path specifications.
+ .
+ At the time of writing, this module is a prequisite for Gocryptfs
+ versions 1.7.1 and up.
+
+Package: golang-go
+Source: golang-defaults
+Version: 2:1.22~2build1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 70
+Depends: golang-1.22-go, golang-src (>= 2:1.22~2build1)
+Suggests: git
+Conflicts: gccgo-go
+Breaks: gccgo-5 (<< 5.3.1-12~), gccgo-6 (<< 6-20160319-1~), golang-go-darwin-386, golang-go-darwin-amd64, golang-go-freebsd-386, golang-go-freebsd-amd64, golang-go-freebsd-arm, golang-go-linux-386, golang-go-linux-amd64, golang-go-linux-arm, golang-go-netbsd-386, golang-go-netbsd-amd64, golang-go-windows-386, golang-go-windows-amd64
+Replaces: golang-go-darwin-386, golang-go-darwin-amd64, golang-go-freebsd-386, golang-go-freebsd-amd64, golang-go-freebsd-arm, golang-go-linux-386, golang-go-linux-amd64, golang-go-linux-arm, golang-go-netbsd-386, golang-go-netbsd-amd64, golang-go-windows-386, golang-go-windows-amd64
+Filename: ./golang-go_1.22~2build1_amd64.deb
+Size: 45372
+MD5sum: a575bb81c618f97ae9b323c6b119dd52
+SHA1: 9008c33a9bcd091f5b3197f01c5bae45ae6b4a56
+SHA256: 1894234c127b6f224bd8269a13d237add47dffc5fe38c3a21e5735c5567d5868
+Section: golang
+Priority: optional
+Multi-Arch: same
+Homepage: https://golang.org
+Description: Go programming language compiler, linker, compiled stdlib
+ The Go programming language is an open source project to make programmers more
+ productive. Go is expressive, concise, clean, and efficient. Its concurrency
+ mechanisms make it easy to write programs that get the most out of multicore
+ and networked machines, while its novel type system enables flexible and
+ modular program construction. Go compiles quickly to machine code yet has the
+ convenience of garbage collection and the power of run-time reflection. It's a
+ fast, statically typed, compiled language that feels like a dynamically typed,
+ interpreted language.
+ .
+ This is a dependency package that depends on the default Go toolchain and
+ compiled standard library. It is only built on architectures that have a
+ native toolchain ("gc compiler"). Packages that want to build with whichever
+ of gc or gccgo is available should depend on golang-any.
+Original-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>
+
+Package: golang-golang-x-sys-dev
+Source: golang-golang-x-sys
+Version: 0.17.0-1
+Architecture: all
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Installed-Size: 7196
+Filename: ./golang-golang-x-sys-dev_0.17.0-1_all.deb
+Size: 402156
+MD5sum: 401398944da502599f872f08a5c8eb7b
+SHA1: 30576b9bf8956451cdc212fecb8ee977200e8e9d
+SHA256: d5783d2a566ca4719209180afb2cb2f5e78ecf5145641744b6017d107a5672f3
 Section: golang
 Priority: optional
 Multi-Arch: foreign
-Homepage: http://golang.org/x/sys
+Homepage: https://golang.org/x/sys
 Description: Low-level interaction with the operating system
  This repository holds supplemental Go packages for low-level interactions with
  the operating system.
@@ -148,4 +365,53 @@ Description: Low-level interaction with the operating system
  The primary use of this package is inside other packages that provide a more
  portable interface to the system, such as "os", "time" and "net". Use those
  packages rather than this one if you can.
+
+Package: golang-golang-x-term-dev
+Source: golang-golang-x-term
+Version: 0.17.0-1
+Architecture: all
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Installed-Size: 64
+Depends: golang-golang-x-sys-dev (>= 0.17.0)
+Filename: ./golang-golang-x-term-dev_0.17.0-1_all.deb
+Size: 14676
+MD5sum: 0ee466b6d84736e150acdec39312b1ff
+SHA1: 1223b5027d432b2447cd0ecedc771665b5cffcd1
+SHA256: 112a334cd62721ad84946fbf7c3d511066e8d3c8be48c9e43d62d9aaf37213f2
+Section: golang
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://golang.org/x/term
+Description: Go terminal and console support (library)
+ This repository provides Go terminal and console support packages.
+
+Package: golang-src
+Source: golang-defaults
+Version: 2:1.22~2build1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 14
+Depends: golang-1.22-src
+Filename: ./golang-src_1.22~2build1_all.deb
+Size: 6176
+MD5sum: e5b86c664a98902f8db9c85fe9093967
+SHA1: ecbfddd734c40698d49b288a5128ea0de69044eb
+SHA256: 4e77e6ffbc1b5289c0b33315f9c1001e3716a543ca0a35549a888f60f213a674
+Section: golang
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://golang.org
+Description: Go programming language - source files
+ The Go programming language is an open source project to make programmers more
+ productive. Go is expressive, concise, clean, and efficient. Its concurrency
+ mechanisms make it easy to write programs that get the most out of multicore
+ and networked machines, while its novel type system enables flexible and
+ modular program construction. Go compiles quickly to machine code yet has the
+ convenience of garbage collection and the power of run-time reflection. It's a
+ fast, statically typed, compiled language that feels like a dynamically typed,
+ interpreted language.
+ .
+ This is a dependency package that depends on the default Go standard library
+ source code, which is needed for the go build process.
+Original-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>
 
