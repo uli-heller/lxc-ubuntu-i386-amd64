@@ -138,8 +138,20 @@ ROOTFS="${OSDIR}/rootfs"
 test -d "${ROOTFS}" || {
   test -z "${IMAGE}" && IMAGE="$(echo "${D}/${OS}-"*"-${ARCHITECTURE}-lxcimage.tar.xz")"
   test -e "${IMAGE}" || {
-    echo >&2 "${BN}: LXC image '${IMAGE}' does not exist!"
-    exit 1
+    # Check github
+    #set -x
+    LATEST_VERSION="$(git tag -l|sort -r -V|head -1)"
+    GITHUB_URL="$(git remote get-url origin)"
+    expr "${GITHUB_URL}" : http >/dev/null || {
+	GITHUB_URL="https://github.com/$(echo "${GITHUB_URL}"|cut -d ":" -f 2-)"
+    }
+    #https://github.com/uli-heller/lxc-ubuntu-i386-amd64/releases/download/v1.12.1/jammy-v1.12.1-amd64-lxcimage.tar.xz
+    IMAGE="${OS}-${LATEST_VERSION}-${ARCHITECTURE}-lxcimage.tar.xz"
+    DOWNLOAD_URL="${GITHUB_URL}/releases/download/${LATEST_VERSION}/${IMAGE}"
+    wget "${DOWNLOAD_URL}" || {
+	echo >&2 "${BN}: LXC image '${IMAGE}' cannot be downloaded!"
+	exit 1
+    }
   }
   xz -cd "${IMAGE}"|( cd "${OSDIR}" ; sudo tar -xf -; )
 }
