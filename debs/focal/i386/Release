@@ -1,18 +1,18 @@
 Codename: focal
-Date: Tue, 31 Dec 2024 10:02:13 +0000
+Date: Thu, 02 Jan 2025 23:14:03 +0000
 Description: Precompiled packages for our LXC containers
 Label: lxc-ubuntu
 Origin: lxc-ubuntu
 Suite: focal
 MD5Sum:
  4765922843fd6634a40d4ca09f374bcf           235471 Packages
- e7decc95aa268f84e21724c3038dd9c6              161 Release
+ b08c53f482b41a5178fd29d651333421              161 Release
 SHA1:
  d7d027e69640ba1e8466d2d61d60decde7db14cd           235471 Packages
- 4f8352897171f256b3dc06a087eff3bcc6ae09cd              161 Release
+ 988d8e1ae9145a78d16ee1d021f29a701411c312              161 Release
 SHA256:
  d29d738b2d6070dc29b84c27b25882ef0e45be6d0a278d817f6a9329594976ca           235471 Packages
- 009d2bb443a8efe8c6fae33f4931afb606f2204da9df7a9ac965504169035a45              161 Release
+ 44f10e4005fffc5e28f62cf3e4655c40823529aef7dfdf4bdff7ea8d24c835e4              161 Release
 SHA512:
  c1809902e177406316748f44d74e8f0eac0dab0c7ef0d5e7eeca41b9e9ec7e30d580a76fc15ed4e7d282a96127c4b8808ba2febd16b16824f9630f0e2cc99496           235471 Packages
- e5acf4a5c343bf64ba967e6c943bb9b9c0ad6685cc4ff31663039b18adc630dbff681bb0dc11561784c7a6741888bea5760cd2eb45a8b468489023f7417ec6de              161 Release
+ bdb8e2c92e9ea8b3d5be3427353ffd6e9ad7f156847b4c1cf14ab396851150ef97e824d6843450cded282182652433a21ada2341d6ca10ac72428506ecb0d169              161 Release

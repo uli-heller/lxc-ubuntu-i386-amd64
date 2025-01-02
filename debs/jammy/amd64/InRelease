@@ -1,38 +1,37 @@
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA256
 
-Architectures: amd64
 Codename: jammy
-Date: Thu, 02 Jan 2025 19:37:33 +0000
+Date: Thu, 02 Jan 2025 23:14:04 +0000
 Description: Precompiled packages for our LXC containers
 Label: lxc-ubuntu
 Origin: lxc-ubuntu
 Suite: jammy
 MD5Sum:
  21ed9e89d1ebfeda6143597dfa616b9d            16120 Packages
- 9114b9755240f2a3d5e2c59915cd0ec9              182 Release
+ 78db7539fd38c5a26f47c41124522ab8              161 Release
 SHA1:
  7a2f89ad77aa1c1c1457de85a13d7a4bb2be0ba3            16120 Packages
- 1967ad34cee7df222ec5251671079a23aa398a1e              182 Release
+ 7dbe8773ae664fdf16c079b6b0e2f95d381ae689              161 Release
 SHA256:
  d5211dd814f11afba1525390588069df611e59138aebc1b9691775edc0df758a            16120 Packages
- d729b44eded36bd2fff296f3540ad793b11d4db4bf51c366e79ba55a7011c69d              182 Release
+ bd3d87b73a8ed5c7d5b3a7a2e784e1dd9e796665f76453733a440ce3acd4310f              161 Release
 SHA512:
  2ce5c29901916a041870ea7f434c8733c59caf7e7382fe212ee772b2a1699667f87a9bca3b3177f2fdfc466105e2e420ecb0eed95cbbe85cd4bb8e78889f95a1            16120 Packages
- cb46c4df13f5d8ae4c808e3c2ef645907cea95df82a51831600a61e9dfae7748fc30a46e45c7e20ff085d0b27d16f78e1dd9a3352201efe4bfb58fe6ff9bc4cd              182 Release
+ f0cfa64d07f475fb6f7e16b3ef5df2f293e379c2b9045355d5313a59355ac4bb051e1c7680694784fb75b149e741b455371d1532d8d95922bb6de66a9da08827              161 Release
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEE82hycVroFa5OYg3TOC3lxFUcsDQFAmd26v0ACgkQOC3lxFUc
-sDT5QRAAkj0xax9d0dBa4Ya0Yskc5SxcmKwh2Q5EGqjfZEpsk0sqXjGWshnFHz2r
-8B+CaiTRTxbOOmQDeaXHZ0YnQkSGPV0fqDF67suybaLDhCim0hlQaZWIXLVu39WD
-4TEA7DKcpoxa0ixzeldrqX2yXP3wo+KwI6CJlbURYtW2VoJUheGjRRfyaNafkF4q
-6CmCamXNbDdvCZwV4r/plL5S126QRW9ZTrMCZODWvl424Ea0ciNAFMjBVbohAJsj
-loleDepZPVbIH/tmQM7xrlkETKlbFx9Lg+9689rpwCrTd/UZi51UDfRgMZV0G5ue
-49tU+jDZ6GGqQl0CVqIztLwB828EFX1qkj02u7yHrHl6lwe7eOtAie2sMDCS+sRJ
-JFdnTDi6fwXRGfcDjAbdlvouEw0iMyGpc2n3HcIZqG5t30hlEOceHThvY37ompkn
-ESbj0L4xnPwn6GPBo21bYyXYsvL1Mq8626MHLm3LcCOuGjwTVr1SS0IWjZf0iJNc
-mCl6ROkETURoyxHj2s2gC7DMpMLcPH/mUE4ZELVMqrER/UmVpv/dotYf1vFnEzo/
-IqRZRXHkPGeT70s8wsHRPGoiddxhpF/iKDr1oYfCtFvzToI4igG0PeJsUjuYluEf
-LCa3hUhBW+rZYrHf9KyTGfvm/o888+2ezgtGJsDOAgA/N9uwuBo=
-=Hm4u
+iQIzBAEBCAAdFiEE82hycVroFa5OYg3TOC3lxFUcsDQFAmd3HbwACgkQOC3lxFUc
+sDRgcA//XHo3iybU+nb6+h8+ZwYMWaTE4KBFhKAGKq65RdYVeERg7GvGD7rlBQNW
+61vs/bsFrDuIw4fCVBRjnrFArmKfZr2dgjDKu8mwvwNpIHGPDglXzJeeDTDeVocy
+ejewJH6qTlnslVW9we3E62hqVAdGKBr0mlIMtBO0OYS7WLmyjZxz1EGoEvVwC4dI
+l0C8n2W+HnNmWucnxAzdmkBVout479/GYvHZMKvN/VNDM+0Gw1j2J8DiXOVEK93O
+9qx/qOgX4XK+RiBw9KDhBesujfodqECi9kP8fu+RIsSv2xzqmhfTT7cynR5kp9kX
+lq0zhqa7m5Gmk0DkxzMPwJY/AGOnv/4DJxZitmN1qAwjPhIk0ovebKd+w0sunITR
+zk+GEsQWwk8mSNjXhG+RFfUIYueV9F1MB9xY6LLVkI0YLnDUUQBUm+nyMXAQniau
+N5/C8hoyKUQnbVCBT7f+deYvDsddQmu4jAETVaTzOS9Gr3emD8GP7aKGS32c5s3b
+68q8ioYZ17ItQZfvgoqI2zxPtiR+iSdCibIwa/vVY6669LMW6whRIBgkbDBkuEti
+npOhGKV9A3FGgHcRFIoCKoSB4YTXn2bRC3sTkbENyzpk0qgksWhdWdTRh0UHfvEm
+hQ186gfcPKHqmnCifI/Do/Bj4gkUZb7Ds9qxdCvBErzhlFkyDL0=
+=i08Z
 -----END PGP SIGNATURE-----
