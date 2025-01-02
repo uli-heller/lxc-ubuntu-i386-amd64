@@ -196,7 +196,7 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
     cmp "${TMPDIR}/before" "${TMPDIR}/after" >/dev/null 2>&1 || {
         (
             RC=0
-            set -x
+            #set -x
             sudo find "${ROOTFS}/src/${PACKAGE}" -mindepth 1 -maxdepth 1 -type d|sudo xargs rm -rf
             sudo find "${ROOTFS}/src/${PACKAGE}" -name "*.deb"|sudo xargs rm -rf
             sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && apt-get source '${PACKAGE}'" || exit 1
