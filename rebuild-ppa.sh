@@ -40,6 +40,7 @@ for ppa in "${D}/debs/"*/*; do
             rm -f "Release.tmp"
             rm -f "Release.gpg"
             gpg --homedir "${D}/gpg" -abs --digest-algo SHA256 -u "$(cat "${D}/gpg/keyid")" -o "Release.gpg" "Release"
+            rm -f "Packages.gpg"
             gpg --homedir "${D}/gpg" -abs --digest-algo SHA256 -u "$(cat "${D}/gpg/keyid")" -o "Packages.gpg" "Packages"
             rm -f "InRelease"
             gpg --homedir "${D}/gpg" -abs --digest-algo SHA256 -u "$(cat "${D}/gpg/keyid")" --clearsign -o "InRelease" "Release"
