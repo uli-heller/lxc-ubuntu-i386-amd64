@@ -242,7 +242,7 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
                 #sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && apt-get build-dep -y '${PACKAGE}'" || RC=1
 		echo "yes"|sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C mk-build-deps -i" || exit 1
             fi
-            sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && rm -f *build-deps_*deb" || exit 1
+            sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && rm -f *build-deps_*" || exit 1
             sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C DEBFULLNAME='${DEBFULLNAME}' DEBEMAIL='${DEBEMAIL}' debchange --distribution '${OS}' --local '~${VERSION_MIDDLE}~${OS}' 'Repackaged for ${OS}'" || RC=1
             PACKAGE_FOLDER="$(sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}'/*/. && pwd")"
 	    #PACKAGE_FOLDER="${PACKAGE_FOLDER}~${VERSION_MIDDLE}~${OS}"
