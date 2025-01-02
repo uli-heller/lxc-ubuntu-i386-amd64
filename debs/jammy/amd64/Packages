@@ -1,5 +1,5 @@
 Package: gocryptfs
-Version: 2.4.0-1ubuntu0.24.04.2
+Version: 2.4.0-1ubuntu0.24.04.2~uh~jammy1
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 8071
@@ -7,11 +7,11 @@ Depends: libc6 (>= 2.34), libssl3 (>= 3.0.0~~alpha1)
 Recommends: fuse3
 Suggests: fido2-tools
 Built-Using: golang-1.18 (= 1.18.1-1ubuntu1.2), golang-github-hanwen-go-fuse (= 2.4.2-2), golang-github-jacobsa-crypto (= 0.0~git20190317.9f44e2d+dfsg1-4), golang-github-rfjakob-eme (= 1.1.1-1), golang-github-sabhiram-go-gitignore (= 1.0.2+git20210923.525f6e1-1), golang-github-spf13-pflag (= 1.0.5-2), golang-go.crypto (= 1:0.0~git20211202.5770296-1), golang-golang-x-sys (= 0.0~git20211216.1d35b9e-1), golang-golang-x-term (= 0.0~git20210615.6886f2d-1)
-Filename: ./gocryptfs_2.4.0-1ubuntu0.24.04.2_amd64.deb
-Size: 1948350
-MD5sum: d66057577eb4bb5f97f44fd93557ebc7
-SHA1: a0a22b08c2582c50fc298334b24742fb95617685
-SHA256: ce4a66407503ab5207a8bc2724c87d2d2280e0d26199cedf11a37bf482672bef
+Filename: ./gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~jammy1_amd64.deb
+Size: 1948508
+MD5sum: 0769dec1627c3d80c75fc7594ea438ae
+SHA1: 5e1acf51e1d198ef3169723964331bdd26dee456
+SHA256: feacb46615edc8b7aaf7b24e694ed8b049d51625b52dc6b3cb29606c64c6991b
 Section: devel
 Priority: optional
 Homepage: https://github.com/rfjakob/gocryptfs
@@ -27,63 +27,4 @@ Description: Encrypted overlay filesystem written in Go
  For details on the security of gocryptfs see the Security
  (https://nuetzlich.net/gocryptfs/security/) design document.
 Original-Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
-
-Package: golang-github-hanwen-go-fuse-dev
-Source: golang-github-hanwen-go-fuse
-Version: 2.4.2-2
-Architecture: all
-Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
-Installed-Size: 552
-Depends: golang-golang-x-sys-dev
-Filename: ./golang-github-hanwen-go-fuse-dev_2.4.2-2_all.deb
-Size: 107972
-MD5sum: 831181a5890a10c8bd2f345cdc270c89
-SHA1: e610a2db758064b7ff0f7c9865a887285607b053
-SHA256: 5d44cb6da2a0d3a82901f609ec6d4567a1a3dd872952a9eab18817b4cad63cee
-Section: golang
-Priority: optional
-Multi-Arch: foreign
-Homepage: https://github.com/hanwen/go-fuse
-Description: Native Go bindings for the FUSE kernel module
- This package offers native Go bindings for FUSE, and has several features:
- .
-  * High speed: as fast as libfuse using the gc compiler for single
-    threaded loads.
- .
-  * Supports in-process mounting of different FileSystems onto
-    subdirectories of the FUSE mount.
- .
-  * Supports 3 interfaces for writing filesystems:
-    - PathFileSystem: define filesystems in terms path names.
-    - NodeFileSystem: define filesystems in terms of inodes.
-    - RawFileSystem: define filesystems in terms of FUSE's raw
-      wire protocol.
- .
-  * Both NodeFileSystem and PathFileSystem support manipulation of true
-    hardlinks.
- .
- The package also includes two fleshed out examples, zipfs and unionfs.
-
-Package: golang-github-sabhiram-go-gitignore-dev
-Source: golang-github-sabhiram-go-gitignore
-Version: 1.0.2+git20210923.525f6e1-1
-Architecture: all
-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
-Installed-Size: 50
-Depends: golang-github-stretchr-testify-dev
-Filename: ./golang-github-sabhiram-go-gitignore-dev_1.0.2+git20210923.525f6e1-1_all.deb
-Size: 9452
-MD5sum: fda0720e74456e37af85ef9db57d87cb
-SHA1: a23dc3c0b4dbc00696392c3c3d5ef7ca2bbe625f
-SHA256: 876fa4dc127e5f1d497da012531bafa07a15e7b0d361159d42efb071d5836232
-Section: devel
-Priority: optional
-Homepage: https://github.com/sabhiram/go-gitignore
-Description: gitignore parser for go
- This implements a library to check a pattern includes or excludes
- certain filesystem paths. It can be useful to parse a .gitignore file,
- as the author does, or for other path specifications.
- .
- At the time of writing, this module is a prequisite for Gocryptfs
- versions 1.7.1 and up.
 
