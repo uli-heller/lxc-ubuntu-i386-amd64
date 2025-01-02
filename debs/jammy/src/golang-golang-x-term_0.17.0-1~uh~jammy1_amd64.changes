@@ -1,0 +1,32 @@
+Format: 1.8
+Date: Thu, 02 Jan 2025 19:36:29 +0000
+Source: golang-golang-x-term
+Binary: golang-golang-x-term-dev
+Built-For-Profiles: noudeb
+Architecture: source all
+Version: 0.17.0-1~uh~jammy1
+Distribution: jammy
+Urgency: medium
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-golang-x-term-dev - Go terminal and console support (library)
+Changes:
+ golang-golang-x-term (0.17.0-1~uh~jammy1) jammy; urgency=medium
+ .
+   * Repackaged for jammy
+Checksums-Sha1:
+ cf026faf93923fd7f4acff9e281beb8ac97eef5f 1389 golang-golang-x-term_0.17.0-1~uh~jammy1.dsc
+ 35b8958958e5fc670ea18bea713ce02340e5fccb 2848 golang-golang-x-term_0.17.0-1~uh~jammy1.debian.tar.xz
+ b26e21b5772a781554f36c4ac3c6d29fb83c44b8 15036 golang-golang-x-term-dev_0.17.0-1~uh~jammy1_all.deb
+ 7640e0355ac6de40766803bd80937ec1511b74f2 6405 golang-golang-x-term_0.17.0-1~uh~jammy1_amd64.buildinfo
+Checksums-Sha256:
+ 79d10bbd43892eead63104c820d5373fca1957bbc14ddd56912f45a2fd6579ce 1389 golang-golang-x-term_0.17.0-1~uh~jammy1.dsc
+ 9d2a0a9a0247b41bca132749959a8baaa9ddf46258db922298b75de9b2827d21 2848 golang-golang-x-term_0.17.0-1~uh~jammy1.debian.tar.xz
+ b7ed230d3e9295d58c010e184a3cc34dccd9067a8b66f801a9cb50c8ac9618aa 15036 golang-golang-x-term-dev_0.17.0-1~uh~jammy1_all.deb
+ 733b42b5faf63c9f932e3ca9274e65b8c319a8b42ca59a6e4642e4ee16a08fcb 6405 golang-golang-x-term_0.17.0-1~uh~jammy1_amd64.buildinfo
+Files:
+ d76afd14864e3fe9cb28b28117037ce4 1389 golang optional golang-golang-x-term_0.17.0-1~uh~jammy1.dsc
+ d87c2f0728ef2a4a4617c0a730322af7 2848 golang optional golang-golang-x-term_0.17.0-1~uh~jammy1.debian.tar.xz
+ a33ed959515048bdfd3f8411423b83aa 15036 golang optional golang-golang-x-term-dev_0.17.0-1~uh~jammy1_all.deb
+ de4613f6893093428f462c0e87016b1b 6405 golang optional golang-golang-x-term_0.17.0-1~uh~jammy1_amd64.buildinfo

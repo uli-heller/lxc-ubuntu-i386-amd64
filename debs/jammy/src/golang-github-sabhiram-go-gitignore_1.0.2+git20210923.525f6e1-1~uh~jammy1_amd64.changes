@@ -1,0 +1,32 @@
+Format: 1.8
+Date: Thu, 02 Jan 2025 19:34:24 +0000
+Source: golang-github-sabhiram-go-gitignore
+Binary: golang-github-sabhiram-go-gitignore-dev
+Built-For-Profiles: noudeb
+Architecture: source all
+Version: 1.0.2+git20210923.525f6e1-1~uh~jammy1
+Distribution: jammy
+Urgency: medium
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-github-sabhiram-go-gitignore-dev - gitignore parser for go
+Changes:
+ golang-github-sabhiram-go-gitignore (1.0.2+git20210923.525f6e1-1~uh~jammy1) jammy; urgency=medium
+ .
+   * Repackaged for jammy
+Checksums-Sha1:
+ ba7150a9bec0a52533ef72b440966b7005d26eab 1660 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~jammy1.dsc
+ 73cbdb79a55bf9087a8d601fd7313ed24428919b 2644 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~jammy1.debian.tar.xz
+ 160fe2f3bc21ede8a9ac154aea2e63a21be03e17 9528 golang-github-sabhiram-go-gitignore-dev_1.0.2+git20210923.525f6e1-1~uh~jammy1_all.deb
+ 0126b3e0f62c1e761266688e1d180fd2acfa655d 6854 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~jammy1_amd64.buildinfo
+Checksums-Sha256:
+ e773a98a9c2df5893b12ac965d2ca6fec18431194ead1db24e889cecf89df497 1660 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~jammy1.dsc
+ 7dce0d0131fc66796d59525401c23ab27fdd31f3ea9f69ab1513f4950561428f 2644 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~jammy1.debian.tar.xz
+ c844fefc74c1ec4371be4abbd6197611b1dbb42070a59565935977113fa65c63 9528 golang-github-sabhiram-go-gitignore-dev_1.0.2+git20210923.525f6e1-1~uh~jammy1_all.deb
+ 9eae311558a0127b8c4e4286e988a11a75b472d3483a0c7d1b279c1e672b14a3 6854 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~jammy1_amd64.buildinfo
+Files:
+ 74cfb4c5cacb8cca3814682618c5644a 1660 devel optional golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~jammy1.dsc
+ 5893c217424e0045d394b6f88411527d 2644 devel optional golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~jammy1.debian.tar.xz
+ 8f867653178fc6df3e54aef8d425cb7d 9528 devel optional golang-github-sabhiram-go-gitignore-dev_1.0.2+git20210923.525f6e1-1~uh~jammy1_all.deb
+ 961795959e5e5fa489c5aecdca4ab3f8 6854 devel optional golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~jammy1_amd64.buildinfo

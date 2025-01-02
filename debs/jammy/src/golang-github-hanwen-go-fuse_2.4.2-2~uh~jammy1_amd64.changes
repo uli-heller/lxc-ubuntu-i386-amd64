@@ -1,0 +1,32 @@
+Format: 1.8
+Date: Thu, 02 Jan 2025 19:33:36 +0000
+Source: golang-github-hanwen-go-fuse
+Binary: golang-github-hanwen-go-fuse-dev
+Built-For-Profiles: noudeb
+Architecture: source all
+Version: 2.4.2-2~uh~jammy1
+Distribution: jammy
+Urgency: medium
+Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-github-hanwen-go-fuse-dev - Native Go bindings for the FUSE kernel module
+Changes:
+ golang-github-hanwen-go-fuse (2.4.2-2~uh~jammy1) jammy; urgency=medium
+ .
+   * Repackaged for jammy
+Checksums-Sha1:
+ c82fd6d96dce8e9d2fae9950aae43deeb47cda55 1476 golang-github-hanwen-go-fuse_2.4.2-2~uh~jammy1.dsc
+ 301b36155790b1811f860fd265aa8d037aad1227 5700 golang-github-hanwen-go-fuse_2.4.2-2~uh~jammy1.debian.tar.xz
+ 6d2b10eb7200793270824914f18ea745be15ea8f 108100 golang-github-hanwen-go-fuse-dev_2.4.2-2~uh~jammy1_all.deb
+ 1276544b4098f96ce78174304280bfbc58d3400b 6447 golang-github-hanwen-go-fuse_2.4.2-2~uh~jammy1_amd64.buildinfo
+Checksums-Sha256:
+ 1625b75b867c87856bfb479dc7f1722d6bf64ac15b3d6e15f2a1a7822f710e25 1476 golang-github-hanwen-go-fuse_2.4.2-2~uh~jammy1.dsc
+ 265a8d579637721edade5089cc2c1f334579137e6bd826e710a96b15e0030d5d 5700 golang-github-hanwen-go-fuse_2.4.2-2~uh~jammy1.debian.tar.xz
+ d8432ab567185580b507d2e82a9ef432ebb5fa62e5d925e57179b6c6a36b6528 108100 golang-github-hanwen-go-fuse-dev_2.4.2-2~uh~jammy1_all.deb
+ 6f0a9be73c4d1fb71d2acc3b195ad9b1900e500cc3db99ff7ad103a88d381893 6447 golang-github-hanwen-go-fuse_2.4.2-2~uh~jammy1_amd64.buildinfo
+Files:
+ 4fad4b5c78b365b7f5751a10ba461e28 1476 golang optional golang-github-hanwen-go-fuse_2.4.2-2~uh~jammy1.dsc
+ f2d8c36682fdc6d0ecedfc12f0ac4d02 5700 golang optional golang-github-hanwen-go-fuse_2.4.2-2~uh~jammy1.debian.tar.xz
+ f3798b1db801defcc1ca9391a4aaa02e 108100 golang optional golang-github-hanwen-go-fuse-dev_2.4.2-2~uh~jammy1_all.deb
+ 1440f41c9844654347b21da967393165 6447 golang optional golang-github-hanwen-go-fuse_2.4.2-2~uh~jammy1_amd64.buildinfo

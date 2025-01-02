@@ -1,0 +1,32 @@
+Format: 1.8
+Date: Thu, 02 Jan 2025 19:34:03 +0000
+Source: golang-github-moby-sys
+Binary: golang-github-moby-sys-dev
+Built-For-Profiles: noudeb
+Architecture: source all
+Version: 0.0~git20231105.a4e0878-1~uh~jammy1
+Distribution: jammy
+Urgency: medium
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-github-moby-sys-dev - Go Library for system information and operation
+Changes:
+ golang-github-moby-sys (0.0~git20231105.a4e0878-1~uh~jammy1) jammy; urgency=medium
+ .
+   * Repackaged for jammy
+Checksums-Sha1:
+ 782d04260c9476a262eca44fce62e2a82e34796a 1482 golang-github-moby-sys_0.0~git20231105.a4e0878-1~uh~jammy1.dsc
+ 509274bfb3bf05c24525a9dfd2032128fbe65139 2312 golang-github-moby-sys_0.0~git20231105.a4e0878-1~uh~jammy1.debian.tar.xz
+ cac4500dda846c8b60d8a567a9f71be448fc759b 55240 golang-github-moby-sys-dev_0.0~git20231105.a4e0878-1~uh~jammy1_all.deb
+ f474d3f2c965410bf67c1e4378cee5fdce1874f1 6530 golang-github-moby-sys_0.0~git20231105.a4e0878-1~uh~jammy1_amd64.buildinfo
+Checksums-Sha256:
+ b6d7d508deb59831f5ecd5e3e874b57937ab97d38afad08067eca3ad0836c02c 1482 golang-github-moby-sys_0.0~git20231105.a4e0878-1~uh~jammy1.dsc
+ 0455fb06121fc6825225a54ebd5a09ada6bb3d83e34938fbfeaa1f1b169f4bd9 2312 golang-github-moby-sys_0.0~git20231105.a4e0878-1~uh~jammy1.debian.tar.xz
+ 7f4690a02190e0ef0114ade42667379e34033243687a40c14d3a6a185d928c1f 55240 golang-github-moby-sys-dev_0.0~git20231105.a4e0878-1~uh~jammy1_all.deb
+ f624e60cf6226c7a2e8b92fd88c97e9cef5988c27d0f6449b60e2c59d6559bc1 6530 golang-github-moby-sys_0.0~git20231105.a4e0878-1~uh~jammy1_amd64.buildinfo
+Files:
+ 1c22e2c72a4418948bb3acd0395e6048 1482 golang optional golang-github-moby-sys_0.0~git20231105.a4e0878-1~uh~jammy1.dsc
+ 8d7654da05b641bdf4d78b5b4fb9ff06 2312 golang optional golang-github-moby-sys_0.0~git20231105.a4e0878-1~uh~jammy1.debian.tar.xz
+ 18a5fda9e06eb45e34145fda687961d1 55240 golang optional golang-github-moby-sys-dev_0.0~git20231105.a4e0878-1~uh~jammy1_all.deb
+ 6c64edb38d9cf0501574ac9197c52bfc 6530 golang optional golang-github-moby-sys_0.0~git20231105.a4e0878-1~uh~jammy1_amd64.buildinfo

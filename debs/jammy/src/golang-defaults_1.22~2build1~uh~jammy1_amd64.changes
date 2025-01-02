@@ -1,0 +1,53 @@
+Format: 1.8
+Date: Thu, 02 Jan 2025 19:34:49 +0000
+Source: golang-defaults
+Binary: gccgo-go golang golang-any golang-doc golang-go golang-src
+Built-For-Profiles: noudeb
+Architecture: source amd64 all
+Version: 2:1.22~2build1~uh~jammy1
+Distribution: jammy
+Urgency: medium
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ gccgo-go   - Go programming language -- gccgo
+ golang     - Go programming language compiler - metapackage
+ golang-any - Go programming language -- gccgo on "non-Go" platforms
+ golang-doc - Go programming language - documentation
+ golang-go  - Go programming language compiler, linker, compiled stdlib
+ golang-src - Go programming language - source files
+Changes:
+ golang-defaults (2:1.22~2build1~uh~jammy1) jammy; urgency=medium
+ .
+   * Repackaged for jammy
+Checksums-Sha1:
+ d2d08b67412ae8e04f76e72512a45c1473776d17 1579 golang-defaults_1.22~2build1~uh~jammy1.dsc
+ a341ebe9a374cd508e9d71163df893e8c2939561 31192 golang-defaults_1.22~2build1~uh~jammy1.tar.xz
+ 4840f948715d171a5727b96ebe3349bd0ea42b69 44622 gccgo-go_1.22~2build1~uh~jammy1_amd64.deb
+ ba8d1d1afeee6622c56b510cfd36a3648e995055 6334 golang-any_1.22~2build1~uh~jammy1_amd64.deb
+ 47ecd5bf11a47c2a6eaa45a2a8656344906516ae 7589 golang-defaults_1.22~2build1~uh~jammy1_amd64.buildinfo
+ 2c2e547e1bc383b5307332d7717bda4bda89b29a 6264 golang-doc_1.22~2build1~uh~jammy1_all.deb
+ 5cb20f349c22aedc996bdc29e1235511ecdefcc1 45146 golang-go_1.22~2build1~uh~jammy1_amd64.deb
+ ca1f3bbb750d9bc01a01827c172a1ba41ef31b4e 6232 golang-src_1.22~2build1~uh~jammy1_all.deb
+ ba16272f1de2caea5bda38a08500e49ffa6144e1 6216 golang_1.22~2build1~uh~jammy1_amd64.deb
+Checksums-Sha256:
+ 517d90ab2262c32ddb1a35190a5ad61cbc7ed1e9932b572513020f8ca1bcead9 1579 golang-defaults_1.22~2build1~uh~jammy1.dsc
+ 9f41e9cbc97f161a7151f5faeaf816ffed47ce2066dfb5f465cb771ac3e53c8a 31192 golang-defaults_1.22~2build1~uh~jammy1.tar.xz
+ 9b0dcc6cb6b6c0236c60d48db3ab49965f320af57df41582159a2404e26b8546 44622 gccgo-go_1.22~2build1~uh~jammy1_amd64.deb
+ 311e495659b25f5c623253d4c24f8ffd36358f4e3f2fd451b4f00c66724641f1 6334 golang-any_1.22~2build1~uh~jammy1_amd64.deb
+ c3f4731ae72b57c0ebfc4556b93550fd8ba982c6a506371c874d7d4216a20e4e 7589 golang-defaults_1.22~2build1~uh~jammy1_amd64.buildinfo
+ bc1ec854a08144d31e436927cf0cddae476301e47b9c906d9e1dba5a96621f64 6264 golang-doc_1.22~2build1~uh~jammy1_all.deb
+ 3fbaed737d89b8e19cb3aa9d0749cfda2204c8f0c063a8f1e7fa5d2f06a33458 45146 golang-go_1.22~2build1~uh~jammy1_amd64.deb
+ 6e4cfa6197bd98012f998a815affe5781a99d46a992d48adb731f21ee6c170f6 6232 golang-src_1.22~2build1~uh~jammy1_all.deb
+ ecf22814a6836f9f93f2ed77fa418e7afa233e3b7e2220ddad6665e821054c0b 6216 golang_1.22~2build1~uh~jammy1_amd64.deb
+Files:
+ 4f9bfe1e42cc23497123623c8e554f2c 1579 golang optional golang-defaults_1.22~2build1~uh~jammy1.dsc
+ 04e34fcb7e903834c389295c8c4ed613 31192 golang optional golang-defaults_1.22~2build1~uh~jammy1.tar.xz
+ 79cc780e4ef99f6b9362293ac528f922 44622 golang optional gccgo-go_1.22~2build1~uh~jammy1_amd64.deb
+ 71e2d527d4dcf1f28d8492d0d2890a51 6334 golang optional golang-any_1.22~2build1~uh~jammy1_amd64.deb
+ 7d2871e41f853328ad6ce0a50777d09b 7589 golang optional golang-defaults_1.22~2build1~uh~jammy1_amd64.buildinfo
+ 35cd03dec83e4b10fca71e44099b684b 6264 doc optional golang-doc_1.22~2build1~uh~jammy1_all.deb
+ 96038efecc307b6885b1a56042e41746 45146 golang optional golang-go_1.22~2build1~uh~jammy1_amd64.deb
+ 92078c402728617d6adfa2a20479eb3c 6232 golang optional golang-src_1.22~2build1~uh~jammy1_all.deb
+ 5b87fb0522444871d4ff2e0539bb79fc 6216 golang optional golang_1.22~2build1~uh~jammy1_amd64.deb
+Original-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>

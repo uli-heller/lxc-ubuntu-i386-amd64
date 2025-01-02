@@ -133,11 +133,11 @@ Jammy
 -----
 
 ```
-./build.sh -S -a amd64 -s jammy -o focal golang-github-hanwen-go-fuse-dev
-./build.sh -S -a amd64 -s jammy -o focal golang-github-pkg-xattr-dev
-./build.sh -S -a amd64 -s jammy -o focal golang-github-rfjakob-eme-dev
-./build.sh -S -a amd64 -s jammy -o focal dh-golang
-./build.sh -S -a amd64 -s jammy -o focal golang-golang-x-sys-dev
-
-./build.sh -S -a amd64 -s jammy -o focal golang-golang-x-term-dev
-./build.sh -S -a amd64 -s jammy -o focal gocryptfs
+./build.sh -S -a amd64 -s noble -o jammy golang-github-hanwen-go-fuse-dev
+./build.sh -S -a amd64 -b "DEB_BUILD_OPTIONS=nocheck" -s noble -o jammy golang-github-moby-sys-dev
+./build.sh -S -a amd64 -s noble -o jammy golang-github-sabhiram-go-gitignore-dev
+./build.sh -S -a amd64 -s noble -o jammy golang-any
+./build.sh -S -a amd64 -s noble -o jammy golang-golang-x-sys-dev
+./build.sh -S -a amd64 -s noble -o jammy golang-golang-x-term-dev
+./build.sh -S -a amd64 -b "DEB_BUILD_OPTIONS=nostrip" -s noble -o jammy gocryptfs
+```

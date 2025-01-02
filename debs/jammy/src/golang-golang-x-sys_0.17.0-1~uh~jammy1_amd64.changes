@@ -1,0 +1,32 @@
+Format: 1.8
+Date: Thu, 02 Jan 2025 19:35:53 +0000
+Source: golang-golang-x-sys
+Binary: golang-golang-x-sys-dev
+Built-For-Profiles: noudeb
+Architecture: source all
+Version: 0.17.0-1~uh~jammy1
+Distribution: jammy
+Urgency: medium
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-golang-x-sys-dev - Low-level interaction with the operating system
+Changes:
+ golang-golang-x-sys (0.17.0-1~uh~jammy1) jammy; urgency=medium
+ .
+   * Repackaged for jammy
+Checksums-Sha1:
+ 16bd7ead24141d9895d18a32442937a8f43a186e 1381 golang-golang-x-sys_0.17.0-1~uh~jammy1.dsc
+ 7690b24269077acd96a21a39feefd69846cec034 6696 golang-golang-x-sys_0.17.0-1~uh~jammy1.debian.tar.xz
+ 185a179c5f1b8e20efa79ca30ab7855a857ea09f 426402 golang-golang-x-sys-dev_0.17.0-1~uh~jammy1_all.deb
+ 769e5e69092582cfc1b93cb08f4837739750537b 6351 golang-golang-x-sys_0.17.0-1~uh~jammy1_amd64.buildinfo
+Checksums-Sha256:
+ 984db08ae8ab7925126bb525f8b292281440e2eccb05205ce254612da5494db0 1381 golang-golang-x-sys_0.17.0-1~uh~jammy1.dsc
+ 8b42048cd6119a3786a8d720f760733834e5babf4a24e1434168e1630b39a0d6 6696 golang-golang-x-sys_0.17.0-1~uh~jammy1.debian.tar.xz
+ fdd1f3d63821472e3625aeade3058bfc64d045646e7da99407e671bd6f9cea6e 426402 golang-golang-x-sys-dev_0.17.0-1~uh~jammy1_all.deb
+ 34443e6c4af379e4c72da718531d6a21ff777c0a4a5550d1af66e24830f12483 6351 golang-golang-x-sys_0.17.0-1~uh~jammy1_amd64.buildinfo
+Files:
+ 335be983f14b8ed9f94c780c3210378a 1381 golang optional golang-golang-x-sys_0.17.0-1~uh~jammy1.dsc
+ b2b9d1c5c5fa1f2c244440f7b13e9918 6696 golang optional golang-golang-x-sys_0.17.0-1~uh~jammy1.debian.tar.xz
+ 012f89b5bfd093dd0e7f7e1dd0d732f9 426402 golang optional golang-golang-x-sys-dev_0.17.0-1~uh~jammy1_all.deb
+ 4d95d5dfdc0a65ab4c4de3ef2acfd811 6351 golang optional golang-golang-x-sys_0.17.0-1~uh~jammy1_amd64.buildinfo
