@@ -1,0 +1,31 @@
+Format: 1.8
+Date: Thu, 02 Jan 2025 19:21:52 +0000
+Source: golang-github-pkg-xattr
+Binary: golang-github-pkg-xattr-dev
+Architecture: source all
+Version: 0.4.2-1~uh~focal1
+Distribution: focal
+Urgency: medium
+Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-github-pkg-xattr-dev - Extended attribute support for Go
+Changes:
+ golang-github-pkg-xattr (0.4.2-1~uh~focal1) focal; urgency=medium
+ .
+   * Repackaged for focal
+Checksums-Sha1:
+ 3e67bc6c15c8bed9384bd5cb471da6ffbbed0ac4 1389 golang-github-pkg-xattr_0.4.2-1~uh~focal1.dsc
+ b77cd733a15fdaf11abfd8d19a8eea45b2791c45 3108 golang-github-pkg-xattr_0.4.2-1~uh~focal1.debian.tar.xz
+ d02498648b7da32f1119b142a73dedfae28e7365 9392 golang-github-pkg-xattr-dev_0.4.2-1~uh~focal1_all.deb
+ 060298c4996c175889784ff9c26f7decd2b159a1 5839 golang-github-pkg-xattr_0.4.2-1~uh~focal1_amd64.buildinfo
+Checksums-Sha256:
+ 89bf1a4e0eb8ee3ff4a69381b7cf855983ef0a2462a6d20e796bdde35255dda6 1389 golang-github-pkg-xattr_0.4.2-1~uh~focal1.dsc
+ 748ce4a65c91b0b35a9cf41890eca535d6751ff192fb0d5508215799311c4d21 3108 golang-github-pkg-xattr_0.4.2-1~uh~focal1.debian.tar.xz
+ 274e5c8073c92446e6bde02bba44a853036adb7c351d257db52e5408f6c7ae0e 9392 golang-github-pkg-xattr-dev_0.4.2-1~uh~focal1_all.deb
+ d56f8e548cbe509526385a446f666eec9fa3b92ecd6154b7e4da30f6eff8a66c 5839 golang-github-pkg-xattr_0.4.2-1~uh~focal1_amd64.buildinfo
+Files:
+ ed391d584d31c78fa38eb2e26bdd19e0 1389 devel optional golang-github-pkg-xattr_0.4.2-1~uh~focal1.dsc
+ 9d3e71c85c27df89ce39a9a40609851f 3108 devel optional golang-github-pkg-xattr_0.4.2-1~uh~focal1.debian.tar.xz
+ 4aaca2b03b54e5046c43f745df0d1bcd 9392 devel optional golang-github-pkg-xattr-dev_0.4.2-1~uh~focal1_all.deb
+ 87e55bdbd4df3ef317c7ae212e0189a9 5839 devel optional golang-github-pkg-xattr_0.4.2-1~uh~focal1_amd64.buildinfo

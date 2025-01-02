@@ -1,3 +1,25 @@
+Package: dh-golang
+Version: 1.53~uh~focal1
+Architecture: all
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Installed-Size: 66
+Depends: debhelper, libdpkg-perl, perl:any
+Provides: dh-sequence-golang
+Filename: ./dh-golang_1.53~uh~focal1_all.deb
+Size: 25868
+MD5sum: 5543fad78805762c2e1729f2e7e75130
+SHA1: d6a6045fc8a1eb09afe2a59ad7523967601badfe
+SHA256: 2e949144c24156626baf2ce53c7bba520675ade77ebcce4b87ad0d4df72625d6
+Section: devel
+Priority: optional
+Multi-Arch: foreign
+Description: debhelper add-on for packaging software written in Go (golang)
+ dh-golang provides a debhelper sequence addon named 'golang', a buildsystem
+ module named 'golang' and a command called dh_golang.
+ .
+ The golang debhelper buildsystem is designed to make packaging programs
+ written in Go very simple.
+
 Package: gccgo-go
 Source: golang-defaults
 Version: 2:1.22~2build1~uh~focal1
@@ -28,6 +50,36 @@ Description: Go programming language -- gccgo
  Installing this package will install the gccgo implementation as /usr/bin/go.
  It conflicts with golang-go.
 Original-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>
+
+Package: gocryptfs
+Version: 2.4.0-1ubuntu0.24.04.2~uh~focal1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 12996
+Depends: libc6 (>= 2.4), libssl1.1 (>= 1.1.0)
+Recommends: fuse3
+Suggests: fido2-tools
+Built-Using: golang-1.22 (= 1.22.2-2~20.04.2), golang-github-hanwen-go-fuse (= 2.4.2-2), golang-github-jacobsa-crypto (= 0.0~git20190317.9f44e2d+dfsg1-3), golang-github-rfjakob-eme (= 1.1.1-1), golang-github-sabhiram-go-gitignore (= 1.0.2+git20210923.525f6e1-1), golang-github-spf13-pflag (= 1.0.5-1), golang-go.crypto (= 1:0.0~git20200221.2aa609c-1), golang-golang-x-sys (= 0.17.0-1), golang-golang-x-term (= 0.17.0-1)
+Filename: ./gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~focal1_amd64.deb
+Size: 5557928
+MD5sum: c6a666b565e2147f94cfde959b535bf6
+SHA1: 7a1c2e3b8385a96445eb6b0cba0f656409b795a0
+SHA256: 437e3274e48051ed93213db66bb7e2966f4386e0f47ae5c5e2c9d8087f9f92ac
+Section: devel
+Priority: optional
+Homepage: https://github.com/rfjakob/gocryptfs
+Description: Encrypted overlay filesystem written in Go
+ gocryptfs is built on top of the excellent go-fuse
+ (https://github.com/hanwen/go-fuse) FUSE library and its
+ LoopbackFileSystem API.
+ .
+ This project was inspired by EncFS and strives to fix its
+ security issues while providing good performance (benchmarks
+ (https://nuetzlich.net/gocryptfs/comparison/#performance)).
+ .
+ For details on the security of gocryptfs see the Security
+ (https://nuetzlich.net/gocryptfs/security/) design document.
+Original-Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
 
 Package: golang
 Source: golang-defaults
@@ -188,6 +240,49 @@ Description: Go Library for system information and operation
   * github.com/moby/sys/signal
   * github.com/moby/sys/symlink
   * github.com/moby/sys/user
+
+Package: golang-github-pkg-xattr-dev
+Source: golang-github-pkg-xattr
+Version: 0.4.2-1~uh~focal1
+Architecture: all
+Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
+Installed-Size: 49
+Filename: ./golang-github-pkg-xattr-dev_0.4.2-1~uh~focal1_all.deb
+Size: 9392
+MD5sum: 4aaca2b03b54e5046c43f745df0d1bcd
+SHA1: d02498648b7da32f1119b142a73dedfae28e7365
+SHA256: 274e5c8073c92446e6bde02bba44a853036adb7c351d257db52e5408f6c7ae0e
+Section: devel
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://github.com/pkg/xattr
+Description: Extended attribute support for Go
+ This library allows manipulating filesystem extended attributes
+ in Go.
+ .
+ Linux, Darwin and FreeBSD are supported.
+
+Package: golang-github-rfjakob-eme-dev
+Source: golang-github-rfjakob-eme
+Version: 1.1.1-1~uh~focal1
+Architecture: all
+Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
+Installed-Size: 43
+Filename: ./golang-github-rfjakob-eme-dev_1.1.1-1~uh~focal1_all.deb
+Size: 12168
+MD5sum: 21bb8ef1329bea2e7b849038a031f7b7
+SHA1: 10d95bea203a15f6fb6435495020a9b79c2d8411
+SHA256: 7a56e800e7504ec5a5dde9ab2b22f580580f6fe67d73737ce3f95f683c77abd2
+Section: devel
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://github.com/rfjakob/eme
+Description: EME wide-block encryption for Go
+ EME for Go is a wide-block encryption mode developed by Halevi and
+ Rogaway in 2003 [eme]. (see references below)
+ .
+ EME uses multiple invocations of a block cipher to construct a new cipher
+ of bigger block size (in multiples of 16 bytes, up to 2048 bytes).
 
 Package: golang-github-sabhiram-go-gitignore-dev
 Source: golang-github-sabhiram-go-gitignore

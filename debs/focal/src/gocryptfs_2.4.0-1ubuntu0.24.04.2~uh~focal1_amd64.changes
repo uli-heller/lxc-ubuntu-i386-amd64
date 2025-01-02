@@ -1,0 +1,32 @@
+Format: 1.8
+Date: Thu, 02 Jan 2025 19:27:07 +0000
+Source: gocryptfs
+Binary: gocryptfs
+Architecture: source amd64
+Version: 2.4.0-1ubuntu0.24.04.2~uh~focal1
+Distribution: focal
+Urgency: medium
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ gocryptfs  - Encrypted overlay filesystem written in Go
+Changes:
+ gocryptfs (2.4.0-1ubuntu0.24.04.2~uh~focal1) focal; urgency=medium
+ .
+   * Repackaged for focal
+Checksums-Sha1:
+ ad9e70eb6cb957a6e370c2447560523e84c0678c 1884 gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~focal1.dsc
+ f56ac5c50bd89963afed587635459cad640bd86e 10716 gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~focal1.debian.tar.xz
+ 857c88e49e8f27f5fc462db7238c9e86cb2840bd 7058 gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~focal1_amd64.buildinfo
+ 7a1c2e3b8385a96445eb6b0cba0f656409b795a0 5557928 gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~focal1_amd64.deb
+Checksums-Sha256:
+ bd8b92cf221aa346e05c7239c84832c47242c969c9798c0177fcdd6df695d4fe 1884 gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~focal1.dsc
+ 40c0320a7de8193539438a98a67571fec07d64f891cdaad24f39fa08061c6774 10716 gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~focal1.debian.tar.xz
+ 94ea053dbc091da87849805b878d086a7d26419bb1a5261985c24a4289a8b992 7058 gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~focal1_amd64.buildinfo
+ 437e3274e48051ed93213db66bb7e2966f4386e0f47ae5c5e2c9d8087f9f92ac 5557928 gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~focal1_amd64.deb
+Files:
+ 161e5c3f85113b910f49f42fc5c457f5 1884 devel optional gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~focal1.dsc
+ 74f5d68249aa63be8f5bd1f3622b8c33 10716 devel optional gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~focal1.debian.tar.xz
+ e498724381d07810c931d7a696548749 7058 devel optional gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~focal1_amd64.buildinfo
+ c6a666b565e2147f94cfde959b535bf6 5557928 devel optional gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~focal1_amd64.deb
+Original-Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
