@@ -1,0 +1,31 @@
+Format: 1.8
+Date: Thu, 02 Jan 2025 19:13:02 +0000
+Source: golang-github-hanwen-go-fuse
+Binary: golang-github-hanwen-go-fuse-dev
+Architecture: source all
+Version: 2.4.2-2~uh~focal1
+Distribution: focal
+Urgency: medium
+Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-github-hanwen-go-fuse-dev - Native Go bindings for the FUSE kernel module
+Changes:
+ golang-github-hanwen-go-fuse (2.4.2-2~uh~focal1) focal; urgency=medium
+ .
+   * Repackaged for focal
+Checksums-Sha1:
+ eab79333dc98687a0da66f9379a545e86c8c93bb 1476 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.dsc
+ c129ca92fdf6b49892e893776887a479164440dd 5692 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.debian.tar.xz
+ 6bd72f14957ba433d74e475888b25e3f53fb94a4 105516 golang-github-hanwen-go-fuse-dev_2.4.2-2~uh~focal1_all.deb
+ 095dbfb3b4c1fd879192b9c922d456e20307e9b7 5885 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1_amd64.buildinfo
+Checksums-Sha256:
+ 676e69c0ee6f3033df17473bd818a32b1edc1b7a7b6ddd699d406ff149ebfb31 1476 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.dsc
+ a3932010bff9513b84e9dd0fc0a7253db7e95607a96d24b3ef5fa765ceb743bc 5692 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.debian.tar.xz
+ 1a13786ead37b090aec6c81653b7ab746f237e6876eac380a3640b45a31750ed 105516 golang-github-hanwen-go-fuse-dev_2.4.2-2~uh~focal1_all.deb
+ 652704d022ec7e1164cbe3af265db91930e1244b74d8dbe861fffaef5552b10f 5885 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1_amd64.buildinfo
+Files:
+ 4104bed25a2ce53cc1400b59bc138f0d 1476 golang optional golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.dsc
+ ce90982bafb269a4d69b510fe94583d6 5692 golang optional golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.debian.tar.xz
+ 5286b243b0adf7c5e1a647875cfb414d 105516 golang optional golang-github-hanwen-go-fuse-dev_2.4.2-2~uh~focal1_all.deb
+ b8264cf494cdc43c5a5b230755e93dbc 5885 golang optional golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1_amd64.buildinfo

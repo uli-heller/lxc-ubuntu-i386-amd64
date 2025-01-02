@@ -1,0 +1,31 @@
+Format: 1.8
+Date: Thu, 02 Jan 2025 19:13:27 +0000
+Source: golang-github-moby-sys
+Binary: golang-github-moby-sys-dev
+Architecture: source all
+Version: 0.0~git20231105.a4e0878-1~uh~focal1
+Distribution: focal
+Urgency: medium
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-github-moby-sys-dev - Go Library for system information and operation
+Changes:
+ golang-github-moby-sys (0.0~git20231105.a4e0878-1~uh~focal1) focal; urgency=medium
+ .
+   * Repackaged for focal
+Checksums-Sha1:
+ 1d918463a95e0fce7fbffa6866956f2ad379610f 1482 golang-github-moby-sys_0.0~git20231105.a4e0878-1~uh~focal1.dsc
+ cd66ed19bcf562e9d7f53c2e6f9cefb6013cec36 2308 golang-github-moby-sys_0.0~git20231105.a4e0878-1~uh~focal1.debian.tar.xz
+ 26698f2299b6e62e378726c8e8fac9adfbfd41ee 51556 golang-github-moby-sys-dev_0.0~git20231105.a4e0878-1~uh~focal1_all.deb
+ 327d0b24241db6ca074ca05a04cd44e143838cdf 5968 golang-github-moby-sys_0.0~git20231105.a4e0878-1~uh~focal1_amd64.buildinfo
+Checksums-Sha256:
+ f2aae6911e149372bb65078fe3b316c7a8aafc17ce84d180540a9f7bd325b16c 1482 golang-github-moby-sys_0.0~git20231105.a4e0878-1~uh~focal1.dsc
+ 0cfbee4bc03d913f1b20aa80f2222d7ab76af7dcbe9e9d8fb751e55e88f73c5e 2308 golang-github-moby-sys_0.0~git20231105.a4e0878-1~uh~focal1.debian.tar.xz
+ a0a1660026de916c63fc16541e41217fc74c3c2669f4cb22a5c44495be6d1cd2 51556 golang-github-moby-sys-dev_0.0~git20231105.a4e0878-1~uh~focal1_all.deb
+ bf53ee81016f1c9b118c95db763d3572288f30824d0e16d7ed48cf2d29058251 5968 golang-github-moby-sys_0.0~git20231105.a4e0878-1~uh~focal1_amd64.buildinfo
+Files:
+ d9d47450034bf356fd0a5dc40c46e15b 1482 golang optional golang-github-moby-sys_0.0~git20231105.a4e0878-1~uh~focal1.dsc
+ 8bd5329ba5da4085aedbfb537c0497f1 2308 golang optional golang-github-moby-sys_0.0~git20231105.a4e0878-1~uh~focal1.debian.tar.xz
+ 8505a43a7fa6f44a1f46424325a741bc 51556 golang optional golang-github-moby-sys-dev_0.0~git20231105.a4e0878-1~uh~focal1_all.deb
+ f00877877dd4b1ebf8c3df5c8744e48f 5968 golang optional golang-github-moby-sys_0.0~git20231105.a4e0878-1~uh~focal1_amd64.buildinfo

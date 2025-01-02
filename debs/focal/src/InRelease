@@ -1,0 +1,37 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Codename: focal
+Date: Thu, 02 Jan 2025 19:16:00 +0000
+Description: Precompiled packages for our LXC containers
+Label: lxc-ubuntu
+Origin: lxc-ubuntu
+Suite: focal
+MD5Sum:
+ d41d8cd98f00b204e9800998ecf8427e                0 Packages
+ 91a48a3105b8e49f57d49e98eedc1712              161 Release
+SHA1:
+ da39a3ee5e6b4b0d3255bfef95601890afd80709                0 Packages
+ 05c36506f931d0751088f46964d642ccfce3d6e9              161 Release
+SHA256:
+ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855                0 Packages
+ bebd2142d0bb5012bb3508f7414ce585af8b90eb1f6f07d99007d8b6ca570c73              161 Release
+SHA512:
+ cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e                0 Packages
+ 6df8406583648845760ae6bd000b425e5637d56024b1253ba7bbc436160d8b884316f4283407edecd8abaca409461dbcebeec5ff7452b27ffaca2375f35ea0b0              161 Release
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEE82hycVroFa5OYg3TOC3lxFUcsDQFAmd25fAACgkQOC3lxFUc
+sDT3TBAAyQiY42H1LbCL2U/NqByLsDCWKSU3zBtJpGsOmSyrjqejgTzm/Mj8SfBQ
+8uZxPr+AbvHdD60P1h0GlIMhd+Y5Qy4ojUZLHTZHisdmcglnRLl/brArngOEsS62
+P8RCiqVlSpK919rBrzlnP6/bYISKDk388fB+pOlkKnZuAdfvUMY8KUa5qQjEmwGI
+Eu4guxlBDCaREb2MC8oiTKPxAIiZ6L2XHgwITExJRzMdp0KIvKRax3UNxajWmaev
+udgvj70qYlf7YkdSOZJnnrbyCfYB//dSkiwAaseyk69O75NqKnEgPooVMoLeeMxd
+gWChvSD1sko64py8ioTMDBM+Gb1k+8dBOgW4uabjVIspGbHwxNECric30P+NgWFS
+D1YxMVf9kT+7rAWxAbLX18OBkRAQgPUOd7EXbRr6IOSekHFLaFtJO4TmJ/XYvDgk
++51xD3Q3dDMfzcPHleyksHBd7P8IisuRhpz/c2eR6qFneSiGLAd+13Y8JHXApRyG
+Q8UckE0Ezs79lsh1YVswQ+nTEC6/ReRDBfuBWDUX9rrjme1csyRT1q7eMgPJmRli
+OOFLIHE/D1amDYht0kTBARjS3srHNuu+spaPrLhDNf/FB9v1AiMP6T4R6qUukG5i
+Z2GOkKh2Na8fCdcd85mRiDcFMNajh0uw7qYKNXpNHvcoo0KyIGE=
+=wFG4
+-----END PGP SIGNATURE-----

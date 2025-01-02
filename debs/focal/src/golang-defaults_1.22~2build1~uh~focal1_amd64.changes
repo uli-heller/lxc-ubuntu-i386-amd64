@@ -1,0 +1,52 @@
+Format: 1.8
+Date: Thu, 02 Jan 2025 19:14:36 +0000
+Source: golang-defaults
+Binary: gccgo-go golang golang-any golang-doc golang-go golang-src
+Architecture: source amd64 all
+Version: 2:1.22~2build1~uh~focal1
+Distribution: focal
+Urgency: medium
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ gccgo-go   - Go programming language -- gccgo
+ golang     - Go programming language compiler - metapackage
+ golang-any - Go programming language -- gccgo on "non-Go" platforms
+ golang-doc - Go programming language - documentation
+ golang-go  - Go programming language compiler, linker, compiled stdlib
+ golang-src - Go programming language - source files
+Changes:
+ golang-defaults (2:1.22~2build1~uh~focal1) focal; urgency=medium
+ .
+   * Repackaged for focal
+Checksums-Sha1:
+ 6cd3842e9a3e1b7256b30db5f680c00d82dc3dc6 1579 golang-defaults_1.22~2build1~uh~focal1.dsc
+ 63897e0a966cf0505c7d02cceadf6946ccfcee5e 31200 golang-defaults_1.22~2build1~uh~focal1.tar.xz
+ 8295bad35cf3a8bcfb3d247b32fb4a7ac5d1a5fe 44948 gccgo-go_1.22~2build1~uh~focal1_amd64.deb
+ d30526b9b22364b6261c11bc2e6a6973d933e872 6360 golang-any_1.22~2build1~uh~focal1_amd64.deb
+ b84486da7f196e564ac4b70bfbf32a9dcc983523 7043 golang-defaults_1.22~2build1~uh~focal1_amd64.buildinfo
+ 5fda8fa5564faa988f3035f493302dbf17ba0042 6296 golang-doc_1.22~2build1~uh~focal1_all.deb
+ 294530053a4f526bd4ae829570561a5a3a2e8db9 45444 golang-go_1.22~2build1~uh~focal1_amd64.deb
+ b986556d265fd84f83fad75a82303b1ff4df14a0 6248 golang-src_1.22~2build1~uh~focal1_all.deb
+ b93a7be3103c25e0f52e448b0424c7a33a766e6d 6232 golang_1.22~2build1~uh~focal1_amd64.deb
+Checksums-Sha256:
+ 186a368e5d3dfcda292f2c7fee2bc2de514e8feaca4c71ce992efb6df0f3b727 1579 golang-defaults_1.22~2build1~uh~focal1.dsc
+ 4c7b5b7fd637b4d8ada5335612769718f2ec4e4732ef126739b1796229de15be 31200 golang-defaults_1.22~2build1~uh~focal1.tar.xz
+ b0db1026ed90ae709244bc9b8680741af3f1a1642a104382cda70f63d9ad2945 44948 gccgo-go_1.22~2build1~uh~focal1_amd64.deb
+ 6f396d6c6a97138f98e36799775f543d208887492c7dd2aa8da338c9afbcf967 6360 golang-any_1.22~2build1~uh~focal1_amd64.deb
+ c490ae1bf2c2cff06002af2f28a91fa6b076089a463a2a06ed3b9c64468f9109 7043 golang-defaults_1.22~2build1~uh~focal1_amd64.buildinfo
+ 982a32db68d7ad0e2c0a7d34c32341eac42a81148228731e174d6f052b0f6ea2 6296 golang-doc_1.22~2build1~uh~focal1_all.deb
+ de221ca7cddb18d5740f8773e5d4e93d1eab510d0ae723bf3945c4837423a07b 45444 golang-go_1.22~2build1~uh~focal1_amd64.deb
+ fe8d34cd0e4bb3306fd14ffad076bec6e0ff4ed8ea6bca030f0c8b8beb550073 6248 golang-src_1.22~2build1~uh~focal1_all.deb
+ 33db605e8bce75ed1d112937b5a19425ea260ab042ef83f6a19d455fa3dc8c80 6232 golang_1.22~2build1~uh~focal1_amd64.deb
+Files:
+ 1f16e8f195ae39649c7390d65e57a399 1579 golang optional golang-defaults_1.22~2build1~uh~focal1.dsc
+ 7f4b1453841bdf30b1c902b81b2d3ad1 31200 golang optional golang-defaults_1.22~2build1~uh~focal1.tar.xz
+ fb4305023ed7673812900e25e41ba3a4 44948 golang optional gccgo-go_1.22~2build1~uh~focal1_amd64.deb
+ 9b05ef0e398ee5ddc1b784a5c48cbbe9 6360 golang optional golang-any_1.22~2build1~uh~focal1_amd64.deb
+ 666614966754b4ade772820b232808ae 7043 golang optional golang-defaults_1.22~2build1~uh~focal1_amd64.buildinfo
+ 177c754db6a3f36714c929f0556b25db 6296 doc optional golang-doc_1.22~2build1~uh~focal1_all.deb
+ ff191a5fa99fce051abf3b32a10013ee 45444 golang optional golang-go_1.22~2build1~uh~focal1_amd64.deb
+ 47aa2894e9c041687cbf73adb6eb14e9 6248 golang optional golang-src_1.22~2build1~uh~focal1_all.deb
+ 5c4fc221a8f6aa53b1ed2ba8a0a07624 6232 golang optional golang_1.22~2build1~uh~focal1_amd64.deb
+Original-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>

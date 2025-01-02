@@ -1,0 +1,31 @@
+Format: 1.8
+Date: Thu, 02 Jan 2025 19:13:51 +0000
+Source: golang-github-sabhiram-go-gitignore
+Binary: golang-github-sabhiram-go-gitignore-dev
+Architecture: source all
+Version: 1.0.2+git20210923.525f6e1-1~uh~focal1
+Distribution: focal
+Urgency: medium
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-github-sabhiram-go-gitignore-dev - gitignore parser for go
+Changes:
+ golang-github-sabhiram-go-gitignore (1.0.2+git20210923.525f6e1-1~uh~focal1) focal; urgency=medium
+ .
+   * Repackaged for focal
+Checksums-Sha1:
+ dd2246b8ebe6b95a8d548304d8b02a3b7e30e797 1660 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~focal1.dsc
+ 5b927ddf0442672110e53fade807be18b3865e49 2644 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~focal1.debian.tar.xz
+ 275ebcfb8dd575739424a55c770802d6b7e52cf6 9464 golang-github-sabhiram-go-gitignore-dev_1.0.2+git20210923.525f6e1-1~uh~focal1_all.deb
+ 6d630f3f820341dfdc7c6d0d0bafa680aaf800b8 6253 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~focal1_amd64.buildinfo
+Checksums-Sha256:
+ 1c5d880bea9c597706a2fb4b40fa6707fbca650546540bdc4eb9c019b64c4d2e 1660 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~focal1.dsc
+ 612d467a5464b37ecad8c4051a86d4f050e18ef01d9121f33e76f2b3ac325bb2 2644 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~focal1.debian.tar.xz
+ 7dd68af69a5a93d04dc7fb1470a44ad5c15cbd296b9f2e0a2444795f93b55c86 9464 golang-github-sabhiram-go-gitignore-dev_1.0.2+git20210923.525f6e1-1~uh~focal1_all.deb
+ fa2e33a47baa8741da29057bbaa8f045ce5a989817179665257e6c350a556109 6253 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~focal1_amd64.buildinfo
+Files:
+ c8fa7e37027656a135b7b14a55930df1 1660 devel optional golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~focal1.dsc
+ 329e1343c7039321cf075d3ad572b591 2644 devel optional golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~focal1.debian.tar.xz
+ 65321468347c739cf52684d603d1e166 9464 devel optional golang-github-sabhiram-go-gitignore-dev_1.0.2+git20210923.525f6e1-1~uh~focal1_all.deb
+ 036be9fef35458b905613882bb1ece14 6253 devel optional golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~focal1_amd64.buildinfo

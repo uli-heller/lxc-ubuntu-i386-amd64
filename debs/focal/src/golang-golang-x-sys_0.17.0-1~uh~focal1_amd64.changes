@@ -1,0 +1,31 @@
+Format: 1.8
+Date: Thu, 02 Jan 2025 19:15:20 +0000
+Source: golang-golang-x-sys
+Binary: golang-golang-x-sys-dev
+Architecture: source all
+Version: 0.17.0-1~uh~focal1
+Distribution: focal
+Urgency: medium
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-golang-x-sys-dev - Low-level interaction with the operating system
+Changes:
+ golang-golang-x-sys (0.17.0-1~uh~focal1) focal; urgency=medium
+ .
+   * Repackaged for focal
+Checksums-Sha1:
+ a8f068c124a70e05df7455e06e45d2385dd66e9f 1381 golang-golang-x-sys_0.17.0-1~uh~focal1.dsc
+ a25cae19c782bf0211e49e9eff59cee1ea6d8bb3 6696 golang-golang-x-sys_0.17.0-1~uh~focal1.debian.tar.xz
+ 125f4d6d21fc904aa95483555ba5b54395932d6d 402904 golang-golang-x-sys-dev_0.17.0-1~uh~focal1_all.deb
+ 444aac8c06767ab12ad9a437f0fd45b3b46e8b91 5781 golang-golang-x-sys_0.17.0-1~uh~focal1_amd64.buildinfo
+Checksums-Sha256:
+ 2dfa81c7b6494a846e6fe3300fa84b58710838291558527ce9c818c501f92234 1381 golang-golang-x-sys_0.17.0-1~uh~focal1.dsc
+ de411514e4cc1686f1e9aed1756f3ed412bb5921318a8520a24df130067db5fa 6696 golang-golang-x-sys_0.17.0-1~uh~focal1.debian.tar.xz
+ 96508ff45ee61ee5276caa8434943ec7a51858be32f500cc47c802dc9d9b9646 402904 golang-golang-x-sys-dev_0.17.0-1~uh~focal1_all.deb
+ 93d85f895ca80c8bafaf97517b6902ecaad3326e977897743fa43bcc431f8570 5781 golang-golang-x-sys_0.17.0-1~uh~focal1_amd64.buildinfo
+Files:
+ 50d1778c8d7dc2f46dcefb5955e925ba 1381 golang optional golang-golang-x-sys_0.17.0-1~uh~focal1.dsc
+ 33c97a90994d9c8adaf63dce62479e8b 6696 golang optional golang-golang-x-sys_0.17.0-1~uh~focal1.debian.tar.xz
+ 2ce8ee14508c589e048f44474bb97ffc 402904 golang optional golang-golang-x-sys-dev_0.17.0-1~uh~focal1_all.deb
+ 2307f31a428c46b0c4c2d1a438a1bdb9 5781 golang optional golang-golang-x-sys_0.17.0-1~uh~focal1_amd64.buildinfo
