@@ -3,12 +3,14 @@
 ### build.sh
 ###
 ### Usage:
-###   build.sh [-h] -a i386|amd64 [-b build-options] -o focal|jammy|noble [-s focal|jammy|noble] [-r|package...]
+###   build.sh [-h] -a i386|amd64 [-b build-options] [-S] [-V middle-part] -o focal|jammy|noble [-s focal|jammy|noble] [-r|package...]
 ###
 ### Options:
 ###   -a architecture ... i386 or amd64
 ###   -o os ............. target: focal (20.04) or jammy (22.04) or noble (24.04)
 ###   -s os ............. source: focal (20.04) or jammy (22.04) or noble (24.04)
+###   -S ................ create source package, too
+###   -V middle-part .... middle part of version number, i.e. 2.4-0~(middle-part)~focal1
 ###   -i image.tar.xz ... lxc image file
 ###   -r ................ rebuild all required packages for the architecture/os
 ###   -b build-options .. prepend 'dpkg-buildpackage' with build-options
@@ -39,8 +41,14 @@ HELP=
 USAGE=
 REBUILD=
 BUILD_OPTIONS=
+SOURCE_PACKAGE=
+VERSION_MIDDLE_DEFAULT="uh"
+VERSION_MIDDLE=
 
-while getopts 'hra:b:o:i:s:' opt; do
+DEBEMAIL=uli@heller.cool
+DEBFULLNAME="Uli Heller"
+
+while getopts 'hra:b:o:i:s:SV:' opt; do
     case $opt in
         a)
             ARCHITECTURE="${OPTARG}"
@@ -50,6 +58,12 @@ while getopts 'hra:b:o:i:s:' opt; do
             ;;
         s)
             SOURCE_OS="${OPTARG}"
+            ;;
+	S)
+	    SOURCE_PACKAGE="y"
+	    ;;
+        V)
+            VERSION_MIDDLE="${OPTARG}"
             ;;
         i)
             IMAGE="${OPTARG}"
@@ -99,6 +113,7 @@ case "${OS}" in
 	;;
 esac
 
+test -z "${VERSION_MIDDLE}" && VERSION_MIDDLE="${VERSION_MIDDLE_DEFAULT}"
 
 #
 # Extend parameter list for 'rebuild'
@@ -227,11 +242,21 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
                 #sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && apt-get build-dep -y '${PACKAGE}'" || RC=1
 		echo "yes"|sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C mk-build-deps -i" || exit 1
             fi
-            sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C ${BUILD_OPTIONS} dpkg-buildpackage --build=binary" || RC=1
+            sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C DEBFULLNAME='${DEBFULLNAME}' DEBEMAIL='${DEBEMAIL}' debchange --distribution '${OS}' --local '~${VERSION_MIDDLE}~${OS}' 'Repackaged for ${OS}'" || RC=1
+            PACKAGE_FOLDER="$(sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}'/*/. && pwd")"
+	    #PACKAGE_FOLDER="${PACKAGE_FOLDER}~${VERSION_MIDDLE}~${OS}"
+	    DPKG_BUILDPACKAGE_OPTS="--build=binary"
+	    test -n "${SOURCE_PACKAGE}" && DPKG_BUILDPACKAGE_OPTS=
+            sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C ${BUILD_OPTIONS} dpkg-buildpackage ${DPKG_BUILDPACKAGE_OPTS}" || RC=1
             test "${RC}" -eq "0" || { echo >&2 "Probleme beim Auspacken oder bauen - EXIT"; exit 1; }
             test -d "${D}/debs/${OS}/${ARCHITECTURE}" || mkdir -p "${D}/debs/${OS}/${ARCHITECTURE}"
             sudo cp "${ROOTFS}/src/${PACKAGE}"/*.deb "${D}/debs/${OS}/${ARCHITECTURE}/."
             sudo chown "$(id -un):$(id -gn)" "${D}/debs/${OS}/${ARCHITECTURE}"/*.deb
+	    test -n "${SOURCE_PACKAGE}" && {
+		test -d "${D}/debs/${OS}/src" || mkdir -p "${D}/debs/${OS}/src"
+		sudo cp $(ls "${ROOTFS}/src/${PACKAGE}/"*|grep -v '.deb$') "${D}/debs/${OS}/src/."
+		sudo chown "$(id -un):$(id -gn)" "${D}/debs/${OS}/src"/*
+	    }
             "${D}/rebuild-ppa.sh"
             sudo cp "${D}/debs/${OS}/${ARCHITECTURE}"/*  "${ROOTFS}/var/cache/lxc-ppa"
             sudo chroot "${ROOTFS}" apt update
