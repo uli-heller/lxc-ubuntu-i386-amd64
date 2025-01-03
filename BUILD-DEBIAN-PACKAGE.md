@@ -198,5 +198,7 @@ Ich bin grob so vorgegangen:
 - `dpkg-source -x *.dsc`
 - `cd golang-github-aperturerobotics-jacobsa-crypto-1.0.2/`
 - debian/control anpassen: "=13" -> "=12", "jammy" -> "focal"
-- `dpkg-buildpackage` ... klappt!
-- 
+- `LC_ALL=C dpkg-buildpackage` ... klappt!
+- `cp build-proot-focal-amd64/rootfs/src/golang-github-aperturerobotics-jacobsa-crypto/golang-github-aperturerobotics-jacobsa-crypto* debs/focal/src/.`
+- `mv -v debs/focal/src/*deb debs/focal/amd64/.`
+- `./rebuild-ppa.sh`
