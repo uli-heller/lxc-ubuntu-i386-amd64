@@ -4,17 +4,17 @@ Binary: golang-golang-x-term-dev
 Architecture: all source
 Version: 0.17.0-1~uh~focal1
 Checksums-Md5:
- 459dcf36b925b70333f5dc80043e39a7 1389 golang-golang-x-term_0.17.0-1~uh~focal1.dsc
- fa6b697ae4d1499fd792052989ea6a9b 14756 golang-golang-x-term-dev_0.17.0-1~uh~focal1_all.deb
+ 3b80a988c6bc0138d30e9618f39ba4bc 1389 golang-golang-x-term_0.17.0-1~uh~focal1.dsc
+ 4cac2a0c5a33c6ad8f565038b7e07a50 14760 golang-golang-x-term-dev_0.17.0-1~uh~focal1_all.deb
 Checksums-Sha1:
- e9c3bd61af0454115bba4096c70539844064b70f 1389 golang-golang-x-term_0.17.0-1~uh~focal1.dsc
- 9f91eff7afb924256825336cb26a476753cb313f 14756 golang-golang-x-term-dev_0.17.0-1~uh~focal1_all.deb
+ 7c76dcd434cf38a2611dc49497555bda64350581 1389 golang-golang-x-term_0.17.0-1~uh~focal1.dsc
+ 403d3266d0c2365338523664df675394a0580cb2 14760 golang-golang-x-term-dev_0.17.0-1~uh~focal1_all.deb
 Checksums-Sha256:
- f7b04c73144ea761d0505d431014283c86f9abba339ac251c23366c8e6e414dc 1389 golang-golang-x-term_0.17.0-1~uh~focal1.dsc
- 444e91e8df953f737f3d8640b3071798ff85eeafc4b1e0a8a75f31139fa64536 14756 golang-golang-x-term-dev_0.17.0-1~uh~focal1_all.deb
+ 8a73c6b4de6ab1ca4890a6ace6d09d8f17c69fe20d944189b04b31d2988b00a4 1389 golang-golang-x-term_0.17.0-1~uh~focal1.dsc
+ 0f5c17c016f5455d16a667ea382635bd0b4f8655f9d87f4e081e1a92a95c71bf 14760 golang-golang-x-term-dev_0.17.0-1~uh~focal1_all.deb
 Build-Origin: Ubuntu
 Build-Architecture: amd64
-Build-Date: Thu, 02 Jan 2025 19:16:00 +0000
+Build-Date: Fri, 03 Jan 2025 15:07:30 +0000
 Build-Tainted-By:
  merged-usr-via-symlinks
  usr-local-has-programs
@@ -41,7 +41,7 @@ Installed-Build-Depends:
  debhelper (= 12.10ubuntu1),
  debianutils (= 4.9.1),
  dh-autoreconf (= 19),
- dh-golang (= 1.53),
+ dh-golang (= 1.53~uh~focal1),
  dh-strip-nondeterminism (= 1.7.0-1),
  diffutils (= 1:3.7-3),
  dpkg (= 1.19.7ubuntu3.2),
@@ -59,10 +59,10 @@ Installed-Build-Depends:
  gettext-base (= 0.19.8.1-10build1),
  golang-1.22-go (= 1.22.2-2~20.04.2),
  golang-1.22-src (= 1.22.2-2~20.04.2),
- golang-any (= 2:1.22~2build1),
- golang-go (= 2:1.22~2build1),
- golang-golang-x-sys-dev (= 0.17.0-1),
- golang-src (= 2:1.22~2build1),
+ golang-any (= 2:1.22~2build1~uh~focal1),
+ golang-go (= 2:1.22~2build1~uh~focal1),
+ golang-golang-x-sys-dev (= 0.17.0-1~uh~focal1),
+ golang-src (= 2:1.22~2build1~uh~focal1),
  grep (= 3.4-1),
  groff-base (= 1.22.4-4build1),
  gzip (= 1.10-0ubuntu4.1),
@@ -171,4 +171,4 @@ Environment:
  DEB_BUILD_OPTIONS="parallel=16"
  LANG="de_DE.UTF-8"
  LC_ALL="C"
- SOURCE_DATE_EPOCH="1735845351"
+ SOURCE_DATE_EPOCH="1735916833"

@@ -29,10 +29,10 @@ Installed-Size: 67
 Depends: g++-14, gccgo-14
 Conflicts: golang-go
 Filename: ./gccgo-go_1.22~2build1~uh~focal1_amd64.deb
-Size: 44948
-MD5sum: fb4305023ed7673812900e25e41ba3a4
-SHA1: 8295bad35cf3a8bcfb3d247b32fb4a7ac5d1a5fe
-SHA256: b0db1026ed90ae709244bc9b8680741af3f1a1642a104382cda70f63d9ad2945
+Size: 44944
+MD5sum: 7e604869bb184e51fc333d57f81a47d7
+SHA1: cdd8050264957e8974142217b80f5a6aacd76efe
+SHA256: 656ad86bfbb033aa10cd7f3cf1927b025d5df16ced17c88b4bdd4358926119dc
 Section: golang
 Priority: optional
 Multi-Arch: same
@@ -59,12 +59,12 @@ Installed-Size: 12996
 Depends: libc6 (>= 2.4), libssl1.1 (>= 1.1.0)
 Recommends: fuse3
 Suggests: fido2-tools
-Built-Using: golang-1.22 (= 1.22.2-2~20.04.2), golang-github-hanwen-go-fuse (= 2.4.2-2), golang-github-jacobsa-crypto (= 0.0~git20190317.9f44e2d+dfsg1-3), golang-github-rfjakob-eme (= 1.1.1-1), golang-github-sabhiram-go-gitignore (= 1.0.2+git20210923.525f6e1-1), golang-github-spf13-pflag (= 1.0.5-1), golang-go.crypto (= 1:0.0~git20200221.2aa609c-1), golang-golang-x-sys (= 0.17.0-1), golang-golang-x-term (= 0.17.0-1)
+Built-Using: golang-1.22 (= 1.22.2-2~20.04.2), golang-github-hanwen-go-fuse (= 2.4.2-2~uh~focal1), golang-github-jacobsa-crypto (= 0.0~git20190317.9f44e2d+dfsg1-3), golang-github-rfjakob-eme (= 1.1.1-1~uh~focal1), golang-github-sabhiram-go-gitignore (= 1.0.2+git20210923.525f6e1-1~uh~focal1), golang-github-spf13-pflag (= 1.0.5-1), golang-go.crypto (= 1:0.0~git20200221.2aa609c-1), golang-golang-x-sys (= 0.17.0-1~uh~focal1), golang-golang-x-term (= 0.17.0-1~uh~focal1)
 Filename: ./gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~focal1_amd64.deb
-Size: 5557928
-MD5sum: c6a666b565e2147f94cfde959b535bf6
-SHA1: 7a1c2e3b8385a96445eb6b0cba0f656409b795a0
-SHA256: 437e3274e48051ed93213db66bb7e2966f4386e0f47ae5c5e2c9d8087f9f92ac
+Size: 5560036
+MD5sum: 391e2820277093f8c9351e3405891616
+SHA1: 265044eefe8012185496e8265e30ae2c8a2bf41e
+SHA256: 9f3a428585aecd332de06dca7516f7f68b4f6a6a075e2a531b59d42b65bce600
 Section: devel
 Priority: optional
 Homepage: https://github.com/rfjakob/gocryptfs
@@ -89,10 +89,10 @@ Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 13
 Depends: golang-1.22, golang-doc (>= 2:1.22~2build1~uh~focal1), golang-go (>= 2:1.22~2build1~uh~focal1), golang-src (>= 2:1.22~2build1~uh~focal1)
 Filename: ./golang_1.22~2build1~uh~focal1_amd64.deb
-Size: 6232
-MD5sum: 5c4fc221a8f6aa53b1ed2ba8a0a07624
-SHA1: b93a7be3103c25e0f52e448b0424c7a33a766e6d
-SHA256: 33db605e8bce75ed1d112937b5a19425ea260ab042ef83f6a19d455fa3dc8c80
+Size: 6228
+MD5sum: 331aca7d016841c10c7044fe59c0e9f9
+SHA1: 1ce303f4ca03fded46f3c515f1b47c6ca445a7da
+SHA256: 9262d0d5c84b98a8cd1fbef1fd78d733aaefc5c136eddb0da48917426e18cda0
 Section: golang
 Priority: optional
 Multi-Arch: same
@@ -121,9 +121,9 @@ Installed-Size: 13
 Depends: golang-go (>= 2:1.22~2build1~uh~focal1)
 Filename: ./golang-any_1.22~2build1~uh~focal1_amd64.deb
 Size: 6360
-MD5sum: 9b05ef0e398ee5ddc1b784a5c48cbbe9
-SHA1: d30526b9b22364b6261c11bc2e6a6973d933e872
-SHA256: 6f396d6c6a97138f98e36799775f543d208887492c7dd2aa8da338c9afbcf967
+MD5sum: abe795d77cfb2dd06c2b2b674cbc0c9f
+SHA1: a78894710f233bcad6a4ab50e8fa44883caf6e74
+SHA256: 375335288fbde7045f2f3acf71f4a4fdc3e097e433cbd7f843d3446279f0e813
 Section: golang
 Priority: optional
 Multi-Arch: same
@@ -154,10 +154,10 @@ Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 13
 Depends: golang-1.22-doc, golang-go (>= 2:1.22~2build1~uh~focal1)
 Filename: ./golang-doc_1.22~2build1~uh~focal1_all.deb
-Size: 6296
-MD5sum: 177c754db6a3f36714c929f0556b25db
-SHA1: 5fda8fa5564faa988f3035f493302dbf17ba0042
-SHA256: 982a32db68d7ad0e2c0a7d34c32341eac42a81148228731e174d6f052b0f6ea2
+Size: 6288
+MD5sum: 0e72299e9517dc6b6d391116e385d2b9
+SHA1: 9b3a476b628de325e626b06be5618c051585bc21
+SHA256: a35f3db832a3cdc4c8aff4a3860bc03a8ecdb94e29fc3419918d6ac34f1e1a22
 Section: doc
 Priority: optional
 Multi-Arch: foreign
@@ -187,10 +187,10 @@ Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org
 Installed-Size: 552
 Depends: golang-golang-x-sys-dev
 Filename: ./golang-github-hanwen-go-fuse-dev_2.4.2-2~uh~focal1_all.deb
-Size: 105516
-MD5sum: 5286b243b0adf7c5e1a647875cfb414d
-SHA1: 6bd72f14957ba433d74e475888b25e3f53fb94a4
-SHA256: 1a13786ead37b090aec6c81653b7ab746f237e6876eac380a3640b45a31750ed
+Size: 105524
+MD5sum: b671bec562c14d864e915a877b0d9d57
+SHA1: 24a04ba0cf18ae1a8439aa6f3123944692001cdd
+SHA256: 875ea4ce4ca44aea07d34ab66b4b8b257f39438a25b4c1913311635901dbc478
 Section: golang
 Priority: optional
 Multi-Arch: foreign
@@ -223,10 +223,10 @@ Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
 Installed-Size: 256
 Depends: golang-golang-x-sys-dev (>= 0.0~git20201101~)
 Filename: ./golang-github-moby-sys-dev_0.0~git20231105.a4e0878-1~uh~focal1_all.deb
-Size: 51556
-MD5sum: 8505a43a7fa6f44a1f46424325a741bc
-SHA1: 26698f2299b6e62e378726c8e8fac9adfbfd41ee
-SHA256: a0a1660026de916c63fc16541e41217fc74c3c2669f4cb22a5c44495be6d1cd2
+Size: 51544
+MD5sum: bf3e81c6aa843e10221be60188f7b3df
+SHA1: 07ec84346a833fbd2a43e1d262b34ea53c496bb6
+SHA256: 239f3d36b7626430b3fce2ba4da9f217ffd7a8c2440398d2809878cb4f361675
 Section: golang
 Priority: optional
 Multi-Arch: foreign
@@ -292,10 +292,10 @@ Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
 Installed-Size: 50
 Depends: golang-github-stretchr-testify-dev
 Filename: ./golang-github-sabhiram-go-gitignore-dev_1.0.2+git20210923.525f6e1-1~uh~focal1_all.deb
-Size: 9464
-MD5sum: 65321468347c739cf52684d603d1e166
-SHA1: 275ebcfb8dd575739424a55c770802d6b7e52cf6
-SHA256: 7dd68af69a5a93d04dc7fb1470a44ad5c15cbd296b9f2e0a2444795f93b55c86
+Size: 9456
+MD5sum: 2921b0e6a52335495d71dae1daeda106
+SHA1: f22013041bb6dbc2b24727aa3721215023e8821f
+SHA256: be611cac325bc4fae2ad8870237fe896c660d41972910e7b3cbb4044acf50c88
 Section: devel
 Priority: optional
 Homepage: https://github.com/sabhiram/go-gitignore
@@ -319,10 +319,10 @@ Conflicts: gccgo-go
 Breaks: gccgo-5 (<< 5.3.1-12~), gccgo-6 (<< 6-20160319-1~), golang-go-darwin-386, golang-go-darwin-amd64, golang-go-freebsd-386, golang-go-freebsd-amd64, golang-go-freebsd-arm, golang-go-linux-386, golang-go-linux-amd64, golang-go-linux-arm, golang-go-netbsd-386, golang-go-netbsd-amd64, golang-go-windows-386, golang-go-windows-amd64
 Replaces: golang-go-darwin-386, golang-go-darwin-amd64, golang-go-freebsd-386, golang-go-freebsd-amd64, golang-go-freebsd-arm, golang-go-linux-386, golang-go-linux-amd64, golang-go-linux-arm, golang-go-netbsd-386, golang-go-netbsd-amd64, golang-go-windows-386, golang-go-windows-amd64
 Filename: ./golang-go_1.22~2build1~uh~focal1_amd64.deb
-Size: 45444
-MD5sum: ff191a5fa99fce051abf3b32a10013ee
-SHA1: 294530053a4f526bd4ae829570561a5a3a2e8db9
-SHA256: de221ca7cddb18d5740f8773e5d4e93d1eab510d0ae723bf3945c4837423a07b
+Size: 45440
+MD5sum: 05344c3dcfe847bec01bf6f9b896b98b
+SHA1: df67d9622e1c953f55e4679f8794cee35cc647e0
+SHA256: 9b62053b82c11a8747fb5008e08d50b4a8c01aab83d905b25f05c283b035b34d
 Section: golang
 Priority: optional
 Multi-Arch: same
@@ -350,10 +350,10 @@ Architecture: all
 Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
 Installed-Size: 7196
 Filename: ./golang-golang-x-sys-dev_0.17.0-1~uh~focal1_all.deb
-Size: 402904
-MD5sum: 2ce8ee14508c589e048f44474bb97ffc
-SHA1: 125f4d6d21fc904aa95483555ba5b54395932d6d
-SHA256: 96508ff45ee61ee5276caa8434943ec7a51858be32f500cc47c802dc9d9b9646
+Size: 402820
+MD5sum: 9cf5ccf4afefd563d4720c8dbe780d20
+SHA1: 872427d73d5367f43c20601c79540efeecde7cd6
+SHA256: 46a988f2dd21f7315650491c27c232be1d9dcffe070303407bfc85f16432a8df
 Section: golang
 Priority: optional
 Multi-Arch: foreign
@@ -374,10 +374,10 @@ Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
 Installed-Size: 64
 Depends: golang-golang-x-sys-dev (>= 0.17.0)
 Filename: ./golang-golang-x-term-dev_0.17.0-1~uh~focal1_all.deb
-Size: 14756
-MD5sum: fa6b697ae4d1499fd792052989ea6a9b
-SHA1: 9f91eff7afb924256825336cb26a476753cb313f
-SHA256: 444e91e8df953f737f3d8640b3071798ff85eeafc4b1e0a8a75f31139fa64536
+Size: 14760
+MD5sum: 4cac2a0c5a33c6ad8f565038b7e07a50
+SHA1: 403d3266d0c2365338523664df675394a0580cb2
+SHA256: 0f5c17c016f5455d16a667ea382635bd0b4f8655f9d87f4e081e1a92a95c71bf
 Section: golang
 Priority: optional
 Multi-Arch: foreign
@@ -393,10 +393,10 @@ Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 14
 Depends: golang-1.22-src
 Filename: ./golang-src_1.22~2build1~uh~focal1_all.deb
-Size: 6248
-MD5sum: 47aa2894e9c041687cbf73adb6eb14e9
-SHA1: b986556d265fd84f83fad75a82303b1ff4df14a0
-SHA256: fe8d34cd0e4bb3306fd14ffad076bec6e0ff4ed8ea6bca030f0c8b8beb550073
+Size: 6244
+MD5sum: 280dff10d97db8f43a9df7d57a56316a
+SHA1: dd3878e3f006b4fa65af58f10b2daf9bb257eb44
+SHA256: 51298221ef23461e9e6549823de9755a430f656245ae859d47762b18d5b79953
 Section: golang
 Priority: optional
 Multi-Arch: foreign

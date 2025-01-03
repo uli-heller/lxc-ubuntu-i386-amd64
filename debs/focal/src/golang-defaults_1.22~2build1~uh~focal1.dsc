@@ -18,9 +18,9 @@ Package-List:
  golang-go deb golang optional arch=amd64,arm64,armel,armhf,i386,mips,mips64el,mipsel,ppc64,ppc64el,riscv64,s390x
  golang-src deb golang optional arch=all
 Checksums-Sha1:
- 63897e0a966cf0505c7d02cceadf6946ccfcee5e 31200 golang-defaults_1.22~2build1~uh~focal1.tar.xz
+ ef54cd65fc3566c2ca23391be630083d06786bba 31192 golang-defaults_1.22~2build1~uh~focal1.tar.xz
 Checksums-Sha256:
- 4c7b5b7fd637b4d8ada5335612769718f2ec4e4732ef126739b1796229de15be 31200 golang-defaults_1.22~2build1~uh~focal1.tar.xz
+ 5d70837a22310ac00d6781e6e931ec5cf186fb83ca07b0bd0b29ec33a04e4465 31192 golang-defaults_1.22~2build1~uh~focal1.tar.xz
 Files:
- 7f4b1453841bdf30b1c902b81b2d3ad1 31200 golang-defaults_1.22~2build1~uh~focal1.tar.xz
+ c1f0f32281c7239f905cefd89d620907 31192 golang-defaults_1.22~2build1~uh~focal1.tar.xz
 Original-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>

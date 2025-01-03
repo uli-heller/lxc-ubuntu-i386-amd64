@@ -4,32 +4,32 @@ Binary: golang-go golang-any gccgo-go golang-src golang-doc golang
 Architecture: all amd64 source
 Version: 2:1.22~2build1~uh~focal1
 Checksums-Md5:
- 1f16e8f195ae39649c7390d65e57a399 1579 golang-defaults_1.22~2build1~uh~focal1.dsc
- fb4305023ed7673812900e25e41ba3a4 44948 gccgo-go_1.22~2build1~uh~focal1_amd64.deb
- 9b05ef0e398ee5ddc1b784a5c48cbbe9 6360 golang-any_1.22~2build1~uh~focal1_amd64.deb
- 177c754db6a3f36714c929f0556b25db 6296 golang-doc_1.22~2build1~uh~focal1_all.deb
- ff191a5fa99fce051abf3b32a10013ee 45444 golang-go_1.22~2build1~uh~focal1_amd64.deb
- 47aa2894e9c041687cbf73adb6eb14e9 6248 golang-src_1.22~2build1~uh~focal1_all.deb
- 5c4fc221a8f6aa53b1ed2ba8a0a07624 6232 golang_1.22~2build1~uh~focal1_amd64.deb
+ 8ee8402e04fbaa26f35a3608fa1ea723 1579 golang-defaults_1.22~2build1~uh~focal1.dsc
+ 7e604869bb184e51fc333d57f81a47d7 44944 gccgo-go_1.22~2build1~uh~focal1_amd64.deb
+ abe795d77cfb2dd06c2b2b674cbc0c9f 6360 golang-any_1.22~2build1~uh~focal1_amd64.deb
+ 0e72299e9517dc6b6d391116e385d2b9 6288 golang-doc_1.22~2build1~uh~focal1_all.deb
+ 05344c3dcfe847bec01bf6f9b896b98b 45440 golang-go_1.22~2build1~uh~focal1_amd64.deb
+ 280dff10d97db8f43a9df7d57a56316a 6244 golang-src_1.22~2build1~uh~focal1_all.deb
+ 331aca7d016841c10c7044fe59c0e9f9 6228 golang_1.22~2build1~uh~focal1_amd64.deb
 Checksums-Sha1:
- 6cd3842e9a3e1b7256b30db5f680c00d82dc3dc6 1579 golang-defaults_1.22~2build1~uh~focal1.dsc
- 8295bad35cf3a8bcfb3d247b32fb4a7ac5d1a5fe 44948 gccgo-go_1.22~2build1~uh~focal1_amd64.deb
- d30526b9b22364b6261c11bc2e6a6973d933e872 6360 golang-any_1.22~2build1~uh~focal1_amd64.deb
- 5fda8fa5564faa988f3035f493302dbf17ba0042 6296 golang-doc_1.22~2build1~uh~focal1_all.deb
- 294530053a4f526bd4ae829570561a5a3a2e8db9 45444 golang-go_1.22~2build1~uh~focal1_amd64.deb
- b986556d265fd84f83fad75a82303b1ff4df14a0 6248 golang-src_1.22~2build1~uh~focal1_all.deb
- b93a7be3103c25e0f52e448b0424c7a33a766e6d 6232 golang_1.22~2build1~uh~focal1_amd64.deb
+ 87da238121f378f645a600eda1d07b57fc08ebf6 1579 golang-defaults_1.22~2build1~uh~focal1.dsc
+ cdd8050264957e8974142217b80f5a6aacd76efe 44944 gccgo-go_1.22~2build1~uh~focal1_amd64.deb
+ a78894710f233bcad6a4ab50e8fa44883caf6e74 6360 golang-any_1.22~2build1~uh~focal1_amd64.deb
+ 9b3a476b628de325e626b06be5618c051585bc21 6288 golang-doc_1.22~2build1~uh~focal1_all.deb
+ df67d9622e1c953f55e4679f8794cee35cc647e0 45440 golang-go_1.22~2build1~uh~focal1_amd64.deb
+ dd3878e3f006b4fa65af58f10b2daf9bb257eb44 6244 golang-src_1.22~2build1~uh~focal1_all.deb
+ 1ce303f4ca03fded46f3c515f1b47c6ca445a7da 6228 golang_1.22~2build1~uh~focal1_amd64.deb
 Checksums-Sha256:
- 186a368e5d3dfcda292f2c7fee2bc2de514e8feaca4c71ce992efb6df0f3b727 1579 golang-defaults_1.22~2build1~uh~focal1.dsc
- b0db1026ed90ae709244bc9b8680741af3f1a1642a104382cda70f63d9ad2945 44948 gccgo-go_1.22~2build1~uh~focal1_amd64.deb
- 6f396d6c6a97138f98e36799775f543d208887492c7dd2aa8da338c9afbcf967 6360 golang-any_1.22~2build1~uh~focal1_amd64.deb
- 982a32db68d7ad0e2c0a7d34c32341eac42a81148228731e174d6f052b0f6ea2 6296 golang-doc_1.22~2build1~uh~focal1_all.deb
- de221ca7cddb18d5740f8773e5d4e93d1eab510d0ae723bf3945c4837423a07b 45444 golang-go_1.22~2build1~uh~focal1_amd64.deb
- fe8d34cd0e4bb3306fd14ffad076bec6e0ff4ed8ea6bca030f0c8b8beb550073 6248 golang-src_1.22~2build1~uh~focal1_all.deb
- 33db605e8bce75ed1d112937b5a19425ea260ab042ef83f6a19d455fa3dc8c80 6232 golang_1.22~2build1~uh~focal1_amd64.deb
+ d3722fd955bfb5a3cad037031b5a14e5e9b24140fe451c73e1b9fb1b69ff441e 1579 golang-defaults_1.22~2build1~uh~focal1.dsc
+ 656ad86bfbb033aa10cd7f3cf1927b025d5df16ced17c88b4bdd4358926119dc 44944 gccgo-go_1.22~2build1~uh~focal1_amd64.deb
+ 375335288fbde7045f2f3acf71f4a4fdc3e097e433cbd7f843d3446279f0e813 6360 golang-any_1.22~2build1~uh~focal1_amd64.deb
+ a35f3db832a3cdc4c8aff4a3860bc03a8ecdb94e29fc3419918d6ac34f1e1a22 6288 golang-doc_1.22~2build1~uh~focal1_all.deb
+ 9b62053b82c11a8747fb5008e08d50b4a8c01aab83d905b25f05c283b035b34d 45440 golang-go_1.22~2build1~uh~focal1_amd64.deb
+ 51298221ef23461e9e6549823de9755a430f656245ae859d47762b18d5b79953 6244 golang-src_1.22~2build1~uh~focal1_all.deb
+ 9262d0d5c84b98a8cd1fbef1fd78d733aaefc5c136eddb0da48917426e18cda0 6228 golang_1.22~2build1~uh~focal1_amd64.deb
 Build-Origin: Ubuntu
 Build-Architecture: amd64
-Build-Date: Thu, 02 Jan 2025 19:14:39 +0000
+Build-Date: Fri, 03 Jan 2025 15:04:37 +0000
 Build-Tainted-By:
  merged-usr-via-symlinks
  usr-local-has-programs
@@ -180,4 +180,4 @@ Environment:
  DEB_BUILD_OPTIONS="parallel=16"
  LANG="de_DE.UTF-8"
  LC_ALL="C"
- SOURCE_DATE_EPOCH="1735845276"
+ SOURCE_DATE_EPOCH="1735916669"

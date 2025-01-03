@@ -15,11 +15,11 @@ Package-List:
  golang-github-sabhiram-go-gitignore-dev deb devel optional arch=all
 Checksums-Sha1:
  3313298b0b1522adbeb55562c1e34dad0d281571 8444 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1.orig.tar.xz
- 5b927ddf0442672110e53fade807be18b3865e49 2644 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~focal1.debian.tar.xz
+ 4acf57526186491e745bafd004359a0e7bb33bb7 2648 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~focal1.debian.tar.xz
 Checksums-Sha256:
  e6ea659519a3fa5fe136085d9a3b8b37ab33c558118278a1179358dd1aaa9446 8444 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1.orig.tar.xz
- 612d467a5464b37ecad8c4051a86d4f050e18ef01d9121f33e76f2b3ac325bb2 2644 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~focal1.debian.tar.xz
+ 878d9af02233efeeb0aece258b4401d36fb335de9be99d26ccbc24017a6ed9c2 2648 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~focal1.debian.tar.xz
 Files:
  4ef876ff267905561318b8c833e1a42c 8444 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1.orig.tar.xz
- 329e1343c7039321cf075d3ad572b591 2644 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~focal1.debian.tar.xz
+ 991436b3de0a5b5a593416084a5a3da0 2648 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~focal1.debian.tar.xz
 Go-Import-Path: github.com/sabhiram/go-gitignore

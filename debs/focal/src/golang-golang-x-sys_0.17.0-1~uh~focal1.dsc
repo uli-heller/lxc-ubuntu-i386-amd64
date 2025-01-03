@@ -15,11 +15,11 @@ Package-List:
  golang-golang-x-sys-dev deb golang optional arch=all
 Checksums-Sha1:
  b363450312895636b57b173f239b80048cfbe699 1446309 golang-golang-x-sys_0.17.0.orig.tar.gz
- a25cae19c782bf0211e49e9eff59cee1ea6d8bb3 6696 golang-golang-x-sys_0.17.0-1~uh~focal1.debian.tar.xz
+ 0d20ef539fec4fe8aa3241a190a16ddded8f4d43 6704 golang-golang-x-sys_0.17.0-1~uh~focal1.debian.tar.xz
 Checksums-Sha256:
  ac396e3c66940e34fdd1d422a9628ab2a5118249118f2a36f65082d32e709e7a 1446309 golang-golang-x-sys_0.17.0.orig.tar.gz
- de411514e4cc1686f1e9aed1756f3ed412bb5921318a8520a24df130067db5fa 6696 golang-golang-x-sys_0.17.0-1~uh~focal1.debian.tar.xz
+ 2e5963bf1946df1a8ec85b226a3fd64fd02e3268e36ee115d25c2bca3ea03151 6704 golang-golang-x-sys_0.17.0-1~uh~focal1.debian.tar.xz
 Files:
  fff45f6edce665d4ab42a18817bb212d 1446309 golang-golang-x-sys_0.17.0.orig.tar.gz
- 33c97a90994d9c8adaf63dce62479e8b 6696 golang-golang-x-sys_0.17.0-1~uh~focal1.debian.tar.xz
+ 5f80093571fb5719f98be00b07ee1da7 6704 golang-golang-x-sys_0.17.0-1~uh~focal1.debian.tar.xz
 Go-Import-Path: golang.org/x/sys

@@ -14,11 +14,11 @@ Package-List:
  golang-github-hanwen-go-fuse-dev deb golang optional arch=all
 Checksums-Sha1:
  ed201bb9ea9d147549fc56fef52230c5ea75ffc5 197719 golang-github-hanwen-go-fuse_2.4.2.orig.tar.gz
- c129ca92fdf6b49892e893776887a479164440dd 5692 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.debian.tar.xz
+ 82d8221ae0aefda0bb06cdedfd86b194346a6231 5688 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.debian.tar.xz
 Checksums-Sha256:
  baf5483fad078605dca84836b827a04950cf3560e1ff82688561ce65b73a531f 197719 golang-github-hanwen-go-fuse_2.4.2.orig.tar.gz
- a3932010bff9513b84e9dd0fc0a7253db7e95607a96d24b3ef5fa765ceb743bc 5692 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.debian.tar.xz
+ 3231ed9c95781fc593c39c010d2ddebf75deb1aabfbd49e856555c7880fcd2ec 5688 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.debian.tar.xz
 Files:
  1712d5bf947627441408f6a46e3fdd2e 197719 golang-github-hanwen-go-fuse_2.4.2.orig.tar.gz
- ce90982bafb269a4d69b510fe94583d6 5692 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.debian.tar.xz
+ a01dd6ea1166868f222d3d6363dc7bd3 5688 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.debian.tar.xz
 Go-Import-Path: github.com/hanwen/go-fuse

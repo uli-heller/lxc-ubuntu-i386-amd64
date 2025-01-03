@@ -16,12 +16,12 @@ Package-List:
  gocryptfs deb devel optional arch=any
 Checksums-Sha1:
  f969a80b4cfcf5ca869d723f3f4487322ef45b01 1134296 gocryptfs_2.4.0.orig.tar.xz
- f56ac5c50bd89963afed587635459cad640bd86e 10716 gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~focal1.debian.tar.xz
+ 453216977e47bf9eeae74c88b574ef7bceea13c9 10720 gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~focal1.debian.tar.xz
 Checksums-Sha256:
  7cd65c3fd5f02d822432458e82e4c13223a6e959cb6568ffe5313e88c0a81dbe 1134296 gocryptfs_2.4.0.orig.tar.xz
- 40c0320a7de8193539438a98a67571fec07d64f891cdaad24f39fa08061c6774 10716 gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~focal1.debian.tar.xz
+ 071c1745e690bf457f44c512da6ebceedd31d67fa3ca0840ff9a215fca5b0c68 10720 gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~focal1.debian.tar.xz
 Files:
  c58c300e84ac0667c0ec52b79e3a5ce0 1134296 gocryptfs_2.4.0.orig.tar.xz
- 74f5d68249aa63be8f5bd1f3622b8c33 10716 gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~focal1.debian.tar.xz
+ d5e1999adbe023a58694f6c44e0d143d 10720 gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~focal1.debian.tar.xz
 Go-Import-Path: github.com/rfjakob/gocryptfs
 Original-Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>

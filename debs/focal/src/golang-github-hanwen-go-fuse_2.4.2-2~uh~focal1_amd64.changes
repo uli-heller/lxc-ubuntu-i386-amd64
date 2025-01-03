@@ -1,5 +1,5 @@
 Format: 1.8
-Date: Thu, 02 Jan 2025 19:13:02 +0000
+Date: Fri, 03 Jan 2025 15:00:30 +0000
 Source: golang-github-hanwen-go-fuse
 Binary: golang-github-hanwen-go-fuse-dev
 Architecture: source all
@@ -15,17 +15,17 @@ Changes:
  .
    * Repackaged for focal
 Checksums-Sha1:
- eab79333dc98687a0da66f9379a545e86c8c93bb 1476 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.dsc
- c129ca92fdf6b49892e893776887a479164440dd 5692 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.debian.tar.xz
- 6bd72f14957ba433d74e475888b25e3f53fb94a4 105516 golang-github-hanwen-go-fuse-dev_2.4.2-2~uh~focal1_all.deb
- 095dbfb3b4c1fd879192b9c922d456e20307e9b7 5885 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1_amd64.buildinfo
+ 235ec6396b78726e9c4ebca2ae4702b6d0c3608f 1476 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.dsc
+ 82d8221ae0aefda0bb06cdedfd86b194346a6231 5688 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.debian.tar.xz
+ 24a04ba0cf18ae1a8439aa6f3123944692001cdd 105524 golang-github-hanwen-go-fuse-dev_2.4.2-2~uh~focal1_all.deb
+ 7903352257d031eead9904303f363ee8bf27e181 5935 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1_amd64.buildinfo
 Checksums-Sha256:
- 676e69c0ee6f3033df17473bd818a32b1edc1b7a7b6ddd699d406ff149ebfb31 1476 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.dsc
- a3932010bff9513b84e9dd0fc0a7253db7e95607a96d24b3ef5fa765ceb743bc 5692 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.debian.tar.xz
- 1a13786ead37b090aec6c81653b7ab746f237e6876eac380a3640b45a31750ed 105516 golang-github-hanwen-go-fuse-dev_2.4.2-2~uh~focal1_all.deb
- 652704d022ec7e1164cbe3af265db91930e1244b74d8dbe861fffaef5552b10f 5885 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1_amd64.buildinfo
+ a650de1c16dd96e66f4242e96feedb395d71d8fbbb6882da68dc73d353c03414 1476 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.dsc
+ 3231ed9c95781fc593c39c010d2ddebf75deb1aabfbd49e856555c7880fcd2ec 5688 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.debian.tar.xz
+ 875ea4ce4ca44aea07d34ab66b4b8b257f39438a25b4c1913311635901dbc478 105524 golang-github-hanwen-go-fuse-dev_2.4.2-2~uh~focal1_all.deb
+ 45d4eaf8fccf9d44b327359570bb2b157c7cefe838337ecb798b40050d486209 5935 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1_amd64.buildinfo
 Files:
- 4104bed25a2ce53cc1400b59bc138f0d 1476 golang optional golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.dsc
- ce90982bafb269a4d69b510fe94583d6 5692 golang optional golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.debian.tar.xz
- 5286b243b0adf7c5e1a647875cfb414d 105516 golang optional golang-github-hanwen-go-fuse-dev_2.4.2-2~uh~focal1_all.deb
- b8264cf494cdc43c5a5b230755e93dbc 5885 golang optional golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1_amd64.buildinfo
+ 19f97918275824a421cdacf0683b827c 1476 golang optional golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.dsc
+ a01dd6ea1166868f222d3d6363dc7bd3 5688 golang optional golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.debian.tar.xz
+ b671bec562c14d864e915a877b0d9d57 105524 golang optional golang-github-hanwen-go-fuse-dev_2.4.2-2~uh~focal1_all.deb
+ 68b0c47aa805cb222f1f3a151a2fa858 5935 golang optional golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1_amd64.buildinfo

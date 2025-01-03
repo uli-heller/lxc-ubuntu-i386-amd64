@@ -1,5 +1,5 @@
 Format: 1.8
-Date: Thu, 02 Jan 2025 19:15:51 +0000
+Date: Fri, 03 Jan 2025 15:07:13 +0000
 Source: golang-golang-x-term
 Binary: golang-golang-x-term-dev
 Architecture: source all
@@ -15,17 +15,17 @@ Changes:
  .
    * Repackaged for focal
 Checksums-Sha1:
- e9c3bd61af0454115bba4096c70539844064b70f 1389 golang-golang-x-term_0.17.0-1~uh~focal1.dsc
- 24ba9cd618d1d889a36b71ecaf15cafcf20eea9a 2840 golang-golang-x-term_0.17.0-1~uh~focal1.debian.tar.xz
- 9f91eff7afb924256825336cb26a476753cb313f 14756 golang-golang-x-term-dev_0.17.0-1~uh~focal1_all.deb
- 4df601c8bbf07844dfb030a6a75ca11983754fae 5825 golang-golang-x-term_0.17.0-1~uh~focal1_amd64.buildinfo
+ 7c76dcd434cf38a2611dc49497555bda64350581 1389 golang-golang-x-term_0.17.0-1~uh~focal1.dsc
+ a7d17683e92dfdf19d3a6fa402188c712629c1c7 2848 golang-golang-x-term_0.17.0-1~uh~focal1.debian.tar.xz
+ 403d3266d0c2365338523664df675394a0580cb2 14760 golang-golang-x-term-dev_0.17.0-1~uh~focal1_all.deb
+ 926d19f854e232fb773f5811b1dc07e5992a4ee8 5875 golang-golang-x-term_0.17.0-1~uh~focal1_amd64.buildinfo
 Checksums-Sha256:
- f7b04c73144ea761d0505d431014283c86f9abba339ac251c23366c8e6e414dc 1389 golang-golang-x-term_0.17.0-1~uh~focal1.dsc
- 948ff3d51fa8b62f0da4ad0df1f9ca51471865733d350789331290f065d2ada7 2840 golang-golang-x-term_0.17.0-1~uh~focal1.debian.tar.xz
- 444e91e8df953f737f3d8640b3071798ff85eeafc4b1e0a8a75f31139fa64536 14756 golang-golang-x-term-dev_0.17.0-1~uh~focal1_all.deb
- 3d66ffd44eb46560f52eca3e9bc566c426dc32b01726d8de639f16c4febb3d62 5825 golang-golang-x-term_0.17.0-1~uh~focal1_amd64.buildinfo
+ 8a73c6b4de6ab1ca4890a6ace6d09d8f17c69fe20d944189b04b31d2988b00a4 1389 golang-golang-x-term_0.17.0-1~uh~focal1.dsc
+ 7cbf1300865baf58e7b7b707e79a3f3c31e2b0b09e9636c96e4bf8f8198a6871 2848 golang-golang-x-term_0.17.0-1~uh~focal1.debian.tar.xz
+ 0f5c17c016f5455d16a667ea382635bd0b4f8655f9d87f4e081e1a92a95c71bf 14760 golang-golang-x-term-dev_0.17.0-1~uh~focal1_all.deb
+ 8d1514aa8f2591f0e76a5f93bb2fb7a944616d8da84287639c9600928f746f77 5875 golang-golang-x-term_0.17.0-1~uh~focal1_amd64.buildinfo
 Files:
- 459dcf36b925b70333f5dc80043e39a7 1389 golang optional golang-golang-x-term_0.17.0-1~uh~focal1.dsc
- 3b7a375578f5f5e5eaea3d06b4b8bf9d 2840 golang optional golang-golang-x-term_0.17.0-1~uh~focal1.debian.tar.xz
- fa6b697ae4d1499fd792052989ea6a9b 14756 golang optional golang-golang-x-term-dev_0.17.0-1~uh~focal1_all.deb
- b11150e171a1e92b5033429df7e75e4c 5825 golang optional golang-golang-x-term_0.17.0-1~uh~focal1_amd64.buildinfo
+ 3b80a988c6bc0138d30e9618f39ba4bc 1389 golang optional golang-golang-x-term_0.17.0-1~uh~focal1.dsc
+ 9d7bdc3d062f867fa6a29ecf535a2d0c 2848 golang optional golang-golang-x-term_0.17.0-1~uh~focal1.debian.tar.xz
+ 4cac2a0c5a33c6ad8f565038b7e07a50 14760 golang optional golang-golang-x-term-dev_0.17.0-1~uh~focal1_all.deb
+ bbeab33f6816b18c64883c9640d51946 5875 golang optional golang-golang-x-term_0.17.0-1~uh~focal1_amd64.buildinfo
