@@ -3,7 +3,7 @@
 ### build-proot.sh
 ###
 ### Usage:
-###   build-proot.sh [-h] -a i386|amd64 [-b build-options] [-S] [-V middle-part] -o focal|jammy|noble [-s focal|jammy|noble] [-r|package...]
+###   build-proot.sh [-h] -a i386|amd64 [-b build-options] [-S] [-R] [-V middle-part] -o focal|jammy|noble [-s focal|jammy|noble] [-r|package...]
 ###
 ### Options:
 ###   -a architecture ... i386 or amd64
@@ -13,8 +13,9 @@
 ###   -V middle-part .... middle part of version number, i.e. 2.4-0~uh~focal1
 ###   -i image.tar.xz ... lxc image file
 ###   -r ................ rebuild all required packages for the architecture/os
+###   -R ................ use "root" for build (required by GOCRYPTFS for example)
 ###   -b build-options .. prepend 'dpkg-buildpackage' with build-options
-###   package ........... packages to build
+###   package ........... package to build
 ###
 ### Examples:
 ###   ./build.sh -a i386 -o jammy at
@@ -43,13 +44,16 @@ REBUILD=
 BUILD_OPTIONS=
 SOURCE_PACKAGE=
 VERSION_MIDDLE="uh"
+USE_ROOT=
 
 DEBEMAIL=uli@heller.cool
 DEBFULLNAME="Uli Heller"
 LC_ALL=C
 export LC_ALL
 
-while getopts 'hra:b:o:i:s:SV:' opt; do
+USER_GROUP="$(id -un):$(id -gn)"
+
+while getopts 'hra:b:o:i:s:RSV:' opt; do
     case $opt in
         a)
             ARCHITECTURE="${OPTARG}"
@@ -63,6 +67,9 @@ while getopts 'hra:b:o:i:s:SV:' opt; do
         S)
             SOURCE_PACKAGE="y"
             ;;
+	R)
+	    USE_ROOT="y"
+	    ;;
         V)
             VERSION_MIDDLE="${OPTARG}"
             ;;
@@ -104,7 +111,17 @@ myProot () {
     "${PROOT}" -0 -w / -b /dev -b /dev/pts -b /proc -b /sys -r "$@"
 }
 
+myExec () {
+    if [ -n "${USE_ROOT}" ]; then
+        "${D}/exec.sh" "$@"
+    else
+        myProot "$@"
+    fi
+}
+
 test -z "${SOURCE_OS}" && SOURCE_OS="${OS}"
+
+test -n "${USE_ROOT}" && sudo true
 
 SOURCE_FROM_DIFFERENT_OS=
 test "${SOURCE_OS}" != "${OS}" && SOURCE_FROM_DIFFERENT_OS=y
@@ -198,8 +215,8 @@ myProot "${ROOTFS}" apt install -y dpkg-dev devscripts equivs
 myProot "${ROOTFS}" bash -c "mkdir -p /src"
 while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
     PACKAGE="$1"
-    myProot "${ROOTFS}" bash -c "cd /src && rm -rf '${PACKAGE}'"
-    myProot "${ROOTFS}" bash -c "cd /src && mkdir -p '${PACKAGE}' && cd '${PACKAGE}' && ls *dsc" >"${TMPDIR}/before"
+    myExec "${ROOTFS}" bash -c "cd /src && rm -rf '${PACKAGE}'"
+    myProot "${ROOTFS}" bash -c "cd /src && mkdir -p '${PACKAGE}' && cd '${PACKAGE}' && ls *dsc 2>/dev/null" >"${TMPDIR}/before"
     myProot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && ls"      >"${TMPDIR}/before.ls"
     myProot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && apt-get source --download-only '${PACKAGE}'"
     myProot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && ls *dsc" >"${TMPDIR}/after"
@@ -220,9 +237,12 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
             # tar: gocryptfs-2.4.0/tests/example_filesystems/v1.3-reverse/longname_255_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx: Cannot open: File name too long
             # tar: Exiting with failure status due to previous errors
 	    # ...
-            #myProot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && apt-get source '${PACKAGE}'" || exit 1
-	    ( cd "${ROOTFS}/src/${PACKAGE}" && dpkg-source -x "${PACKAGE}"*dsc) || exit 1
+            myExec "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && dpkg-source -x '${PACKAGE}'*dsc" || exit 1
+	    #( cd "${ROOTFS}/src/${PACKAGE}" && dpkg-source -x "${PACKAGE}"*dsc) || exit 1
             PACKAGE_FOLDER="$(myProot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}'/*/. && pwd")"
+	    test "${USER_GROUP}" != "$(stat --format "%u:%g" "${ROOTFS}/${PACKAGE_FOLDER}")" && {
+		sudo chown -R "${USER_GROUP}" "${ROOTFS}/${PACKAGE_FOLDER}"
+	    }
             test -n "${SOURCE_FROM_DIFFERENT_OS}" && {
                 sed -i -e "s/debhelper-compat\s*([^)]*)/debhelper-compat (=${COMPAT})/" "${ROOTFS}/${PACKAGE_FOLDER}/debian/control"
             }
@@ -275,7 +295,7 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
             #PACKAGE_FOLDER="${PACKAGE_FOLDER}~${VERSION_MIDDLE}~${OS}"
             DPKG_BUILDPACKAGE_OPTS="--build=binary"
             test -n "${SOURCE_PACKAGE}" && DPKG_BUILDPACKAGE_OPTS=
-            myProot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C ${BUILD_OPTIONS} dpkg-buildpackage ${DPKG_BUILDPACKAGE_OPTS}" || RC=1
+            myExec "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C ${BUILD_OPTIONS} dpkg-buildpackage ${DPKG_BUILDPACKAGE_OPTS}" || RC=1
             test "${RC}" -eq "0" || { echo >&2 "Probleme beim Auspacken oder bauen - EXIT"; exit 1; }
             test -d "${D}/debs/${OS}/${ARCHITECTURE}" || mkdir -p "${D}/debs/${OS}/${ARCHITECTURE}"
             cp "${ROOTFS}/src/${PACKAGE}"/*.deb "${D}/debs/${OS}/${ARCHITECTURE}/."
