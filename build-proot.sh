@@ -237,7 +237,7 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
             # tar: gocryptfs-2.4.0/tests/example_filesystems/v1.3-reverse/longname_255_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx: Cannot open: File name too long
             # tar: Exiting with failure status due to previous errors
 	    # ...
-            myExec "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && dpkg-source -x '${PACKAGE}'*dsc" || exit 1
+            myExec "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && dpkg-source -x *.dsc" || exit 1
 	    #( cd "${ROOTFS}/src/${PACKAGE}" && dpkg-source -x "${PACKAGE}"*dsc) || exit 1
             PACKAGE_FOLDER="$(myProot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}'/*/. && pwd")"
 	    test "${USER_GROUP}" != "$(stat --format "%u:%g" "${ROOTFS}/${PACKAGE_FOLDER}")" && {
