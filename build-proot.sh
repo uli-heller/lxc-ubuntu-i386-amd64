@@ -98,6 +98,10 @@ PROOT="$(which proot)" || {
     exit 1
 }
 
+myProot () {
+    "${PROOT}" -0 -w / -b /dev -b /dev/pts -b /proc -b /sys -r "$@"
+}
+
 test -z "${SOURCE_OS}" && SOURCE_OS="${OS}"
 
 SOURCE_FROM_DIFFERENT_OS=
@@ -177,35 +181,35 @@ replaceVariables () {
 
 RC=0
 
-"${PROOT}" -S "${ROOTFS}" cat /etc/apt/sources.list >"${TMPDIR}/sources.list"
+myProot "${ROOTFS}" cat /etc/apt/sources.list >"${TMPDIR}/sources.list"
 sed -e "s/^deb /deb-src /" -e "s/${OS}/${SOURCE_OS}/" <"${TMPDIR}/sources.list" >"${TMPDIR}/debsrc"
-"${PROOT}" -S "${ROOTFS}" tee /etc/apt/sources.list.d/deb-src.list <"${TMPDIR}/debsrc" >/dev/null
+myProot "${ROOTFS}" tee /etc/apt/sources.list.d/deb-src.list <"${TMPDIR}/debsrc" >/dev/null
 
 mkdir -p "${ROOTFS}/var/cache/lxc-ppa"
 cp "${D}/debs/${OS}/${ARCHITECTURE}"/*  "${ROOTFS}/var/cache/lxc-ppa"
 cp "${D}/debs/${OS}/${ARCHITECTURE}"/lxc.public.gpg "${ROOTFS}/etc/apt/trusted.gpg.d/."
 echo "deb file:/var/cache/lxc-ppa/ ./"|tee "${ROOTFS}/etc/apt/sources.list.d/lxc-ppa.list"
 
-"${PROOT}" -S "${ROOTFS}" apt update
-"${PROOT}" -S "${ROOTFS}" apt upgrade -y
-"${PROOT}" -S "${ROOTFS}" apt install -y dpkg-dev devscripts equivs
-"${PROOT}" -S "${ROOTFS}" bash -c "mkdir -p /src"
+myProot "${ROOTFS}" apt update
+myProot "${ROOTFS}" apt upgrade -y
+myProot "${ROOTFS}" apt install -y dpkg-dev devscripts equivs
+myProot "${ROOTFS}" bash -c "mkdir -p /src"
 while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
     PACKAGE="$1"
-    "${PROOT}" -S "${ROOTFS}" bash -c "cd /src && rm -rf '${PACKAGE}'"
-    "${PROOT}" -S "${ROOTFS}" bash -c "cd /src && mkdir -p '${PACKAGE}' && cd '${PACKAGE}' && ls *dsc" >"${TMPDIR}/before"
-    "${PROOT}" -S "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && ls"      >"${TMPDIR}/before.ls"
-    "${PROOT}" -S "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && apt-get source --download-only '${PACKAGE}'"
-    "${PROOT}" -S "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && ls *dsc" >"${TMPDIR}/after"
-    "${PROOT}" -S "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && ls" >"${TMPDIR}/after.ls"
+    myProot "${ROOTFS}" bash -c "cd /src && rm -rf '${PACKAGE}'"
+    myProot "${ROOTFS}" bash -c "cd /src && mkdir -p '${PACKAGE}' && cd '${PACKAGE}' && ls *dsc" >"${TMPDIR}/before"
+    myProot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && ls"      >"${TMPDIR}/before.ls"
+    myProot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && apt-get source --download-only '${PACKAGE}'"
+    myProot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && ls *dsc" >"${TMPDIR}/after"
+    myProot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && ls" >"${TMPDIR}/after.ls"
     cmp "${TMPDIR}/before" "${TMPDIR}/after" >/dev/null 2>&1 || {
         (
             RC=0
             #set -x
             find "${ROOTFS}/src/${PACKAGE}" -mindepth 1 -maxdepth 1 -type d|xargs rm -rf
             find "${ROOTFS}/src/${PACKAGE}" -name "*.deb"|xargs rm -rf
-            "${PROOT}" -S "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && apt-get source '${PACKAGE}'" || exit 1
-            PACKAGE_FOLDER="$("${PROOT}" -S "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}'/*/. && pwd")"
+            myProot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && apt-get source '${PACKAGE}'" || exit 1
+            PACKAGE_FOLDER="$(myProot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}'/*/. && pwd")"
             test -n "${SOURCE_FROM_DIFFERENT_OS}" && {
                 sed -i -e "s/debhelper-compat\s*([^)]*)/debhelper-compat (=${COMPAT})/" "${ROOTFS}/${PACKAGE_FOLDER}/debian/control"
             }
@@ -216,7 +220,7 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
                 # and dependencies
                 #
                 # Save the changelog - it might have been modified since we created the patch
-                "${PROOT}" -S "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && cat debian/changelog" >"${TMPDIR}/changelog" || exit 1
+                myProot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && cat debian/changelog" >"${TMPDIR}/changelog" || exit 1
                 DIFF=
                 test -e "${PATCH_FOLDER}/"*.diff && DIFF="$(echo "${PATCH_FOLDER}/"*.diff)"
                 CHANGELOG_PARAMETERS="${TMPDIR}/empty"
@@ -231,34 +235,34 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
                     # Modify the patch - skip changelog
                     sed -e '/^diff.*changelog$/,/^diff/ d' "${DIFF}" >"${TMPDIR}/diff-without-changelog"
                     # Apply the modified patch
-                    "${PROOT}" -S "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && patch -p1" <"${TMPDIR}/diff-without-changelog" || exit 1
+                    myProot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && patch -p1" <"${TMPDIR}/diff-without-changelog" || exit 1
                     # Adjust the changelog
                     replaceVariables <"${D}/patches/${OS}/${PACKAGE}/changelog.tpl" >"${TMPDIR}/changelog.start"
                     echo >>"${TMPDIR}/changelog.start"
-                    cat "${TMPDIR}/changelog.start" "${TMPDIR}/changelog"| "${PROOT}" -S "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && tee debian/changelog" >/dev/null || exit 1
+                    cat "${TMPDIR}/changelog.start" "${TMPDIR}/changelog"| myProot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && tee debian/changelog" >/dev/null || exit 1
                 }
                 # Install dependencies
-                echo "yes"|"${PROOT}" -S "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C mk-build-deps -i" || exit 1
+                echo "yes"|myProot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C mk-build-deps -i" || exit 1
                 test -n "${PREPARE_BUILD}" && {
                     PREPARE_BUILD_EXPANDED="$(echo "${PREPARE_BUILD}"|replaceVariables)"
-                    "${PROOT}" -S "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && eval ${PREPARE_BUILD_EXPANDED}" || exit 1
+                    myProot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && eval ${PREPARE_BUILD_EXPANDED}" || exit 1
                 }
             else
-                #"${PROOT}" -S "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && apt-get build-dep -y '${PACKAGE}'" || RC=1
-                echo "yes"|"${PROOT}" -S "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C mk-build-deps -i" || exit 1
+                #myProot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && apt-get build-dep -y '${PACKAGE}'" || RC=1
+                echo "yes"|myProot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C mk-build-deps -i" || exit 1
             fi
-            BUILD_DEPS_DEBS="$("${PROOT}" -S "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && ls *build-deps_*")"
+            BUILD_DEPS_DEBS="$(myProot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && ls *build-deps_*")"
             for b in ${BUILD_DEPS_DEBS}; do
-                p="$("${PROOT}" -S "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && dpkg --info '${b}'" | grep "^\s*Package:\s*" | sed -e "s/^\s*Package:\s*//")"
-                "${PROOT}" -S "${ROOTFS}" apt purge -y "${p}"
-                "${PROOT}" -S "${ROOTFS}" rm -f "${PACKAGE_FOLDER}/${b}" || exit 1
+                p="$(myProot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && dpkg --info '${b}'" | grep "^\s*Package:\s*" | sed -e "s/^\s*Package:\s*//")"
+                myProot "${ROOTFS}" apt purge -y "${p}"
+                myProot "${ROOTFS}" rm -f "${PACKAGE_FOLDER}/${b}" || exit 1
             done
-            "${PROOT}" -S "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C DEBFULLNAME='${DEBFULLNAME}' DEBEMAIL='${DEBEMAIL}' debchange --distribution '${OS}' --local '~${VERSION_MIDDLE}~${OS}' 'Repackaged for ${OS}'" || RC=1
-            PACKAGE_FOLDER="$("${PROOT}" -S "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}'/*/. && pwd")"
+            myProot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C DEBFULLNAME='${DEBFULLNAME}' DEBEMAIL='${DEBEMAIL}' debchange --distribution '${OS}' --local '~${VERSION_MIDDLE}~${OS}' 'Repackaged for ${OS}'" || RC=1
+            PACKAGE_FOLDER="$(myProot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}'/*/. && pwd")"
             #PACKAGE_FOLDER="${PACKAGE_FOLDER}~${VERSION_MIDDLE}~${OS}"
             DPKG_BUILDPACKAGE_OPTS="--build=binary"
             test -n "${SOURCE_PACKAGE}" && DPKG_BUILDPACKAGE_OPTS=
-            "${PROOT}" -S "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C ${BUILD_OPTIONS} dpkg-buildpackage ${DPKG_BUILDPACKAGE_OPTS}" || RC=1
+            myProot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C ${BUILD_OPTIONS} dpkg-buildpackage ${DPKG_BUILDPACKAGE_OPTS}" || RC=1
             test "${RC}" -eq "0" || { echo >&2 "Probleme beim Auspacken oder bauen - EXIT"; exit 1; }
             test -d "${D}/debs/${OS}/${ARCHITECTURE}" || mkdir -p "${D}/debs/${OS}/${ARCHITECTURE}"
             cp "${ROOTFS}/src/${PACKAGE}"/*.deb "${D}/debs/${OS}/${ARCHITECTURE}/."
@@ -270,7 +274,7 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
             }
             "${D}/rebuild-ppa.sh"
             cp "${D}/debs/${OS}/${ARCHITECTURE}"/*  "${ROOTFS}/var/cache/lxc-ppa"
-            "${PROOT}" -S "${ROOTFS}" apt update
+            myProot "${ROOTFS}" apt update
         ) || {
             #find "${ROOTFS}/src/${PACKAGE}" -mindepth 1 -maxdepth 1 -newer "${TMPDIR}/before"|xargs -t rm -rf
             (
@@ -288,7 +292,7 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
     rm -rf "${TMPDIR}/before" "${TMPDIR}/after" "${TMPDIR}/before.ls" "${TMPDIR}/after.ls"
     shift
 done
-"${PROOT}" -S "${ROOTFS}" tee /etc/apt/sources.list <"${TMPDIR}/sources.list" >/dev/null
+myProot "${ROOTFS}" tee /etc/apt/sources.list <"${TMPDIR}/sources.list" >/dev/null
 
 #
 # Create the GPG key for the ppa

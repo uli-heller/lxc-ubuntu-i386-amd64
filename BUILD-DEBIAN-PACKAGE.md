@@ -13,6 +13,8 @@ für Ubuntu-20.04 baue. Also:
 - ... auspacken
 - ... bauen
 
+Idealerweise klappt das ohne "root".
+
 build.sh
 --------
 
@@ -116,8 +118,10 @@ Mit weiteren Korrekturen
 - `./build.sh -a amd64 -s jammy -o focal golang-golang-x-sys-dev` klappt
 - `./build.sh -a amd64 -s jammy -o focal gocryptfs` klappt nun auch und erzeugt "gocryptfs_1.8.0-1ubuntu0.1_amd64.deb"
 
-Focal
------
+Mit "root"
+----------
+
+### Focal
 
 ```
 ./build.sh -S -a amd64 -s noble -o focal golang-github-hanwen-go-fuse-dev
@@ -129,11 +133,28 @@ Focal
 ./build.sh -S -a amd64 -b "DEB_BUILD_OPTIONS=nostrip" -s noble -o focal gocryptfs
 ```
 
-Jammy
------
+### Jammy
 
 ```
 ./build.sh -S -a amd64 -s noble -o jammy golang-github-hanwen-go-fuse-dev
+./build.sh -S -a amd64 -b "DEB_BUILD_OPTIONS=nocheck" -s noble -o jammy golang-github-moby-sys-dev
+./build.sh -S -a amd64 -s noble -o jammy golang-github-sabhiram-go-gitignore-dev
+./build.sh -S -a amd64 -s noble -o jammy golang-any
+./build.sh -S -a amd64 -s noble -o jammy golang-golang-x-sys-dev
+./build.sh -S -a amd64 -s noble -o jammy golang-golang-x-term-dev
+./build.sh -S -a amd64 -b "DEB_BUILD_OPTIONS=nostrip" -s noble -o jammy gocryptfs
+```
+
+Ohne "root"
+-----------
+
+### Focal
+
+### Jammy
+
+```
+./build-proot.sh -S -a amd64 -s noble -o jammy golang-github-hanwen-go-fuse-dev
+
 ./build.sh -S -a amd64 -b "DEB_BUILD_OPTIONS=nocheck" -s noble -o jammy golang-github-moby-sys-dev
 ./build.sh -S -a amd64 -s noble -o jammy golang-github-sabhiram-go-gitignore-dev
 ./build.sh -S -a amd64 -s noble -o jammy golang-any
