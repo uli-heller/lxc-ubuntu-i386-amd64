@@ -59,18 +59,18 @@ while getopts 'hra:b:o:i:s:SV:' opt; do
         s)
             SOURCE_OS="${OPTARG}"
             ;;
-	S)
-	    SOURCE_PACKAGE="y"
-	    ;;
+        S)
+            SOURCE_PACKAGE="y"
+            ;;
         V)
             VERSION_MIDDLE="${OPTARG}"
             ;;
         i)
             IMAGE="${OPTARG}"
             ;;
-	b)
-	    BUILD_OPTIONS="${OPTARG}"
-	    ;;
+        b)
+            BUILD_OPTIONS="${OPTARG}"
+            ;;
         h)
             HELP=y
             ;;
@@ -100,17 +100,17 @@ SOURCE_FROM_DIFFERENT_OS=
 test "${SOURCE_OS}" != "${OS}" && SOURCE_FROM_DIFFERENT_OS=y
 case "${OS}" in
     focal)
-	COMPAT=12
-	;;
+        COMPAT=12
+        ;;
     jammy)
-	COMPAT=13
-	;;
+        COMPAT=13
+        ;;
     noble)
-	COMPAT=13
-	;;
+        COMPAT=13
+        ;;
     default)
-	COMPAT=12
-	;;
+        COMPAT=12
+        ;;
 esac
 
 test -z "${VERSION_MIDDLE}" && VERSION_MIDDLE="${VERSION_MIDDLE_DEFAULT}"
@@ -143,14 +143,14 @@ test -d "${ROOTFS}" || {
     LATEST_VERSION="$(git tag -l|sort -r -V|head -1)"
     GITHUB_URL="$(git remote get-url origin)"
     expr "${GITHUB_URL}" : http >/dev/null || {
-	GITHUB_URL="https://github.com/$(echo "${GITHUB_URL}"|cut -d ":" -f 2-)"
+        GITHUB_URL="https://github.com/$(echo "${GITHUB_URL}"|cut -d ":" -f 2-)"
     }
     #https://github.com/uli-heller/lxc-ubuntu-i386-amd64/releases/download/v1.12.1/jammy-v1.12.1-amd64-lxcimage.tar.xz
     IMAGE="${OS}-${LATEST_VERSION}-${ARCHITECTURE}-lxcimage.tar.xz"
     DOWNLOAD_URL="${GITHUB_URL}/releases/download/${LATEST_VERSION}/${IMAGE}"
     wget "${DOWNLOAD_URL}" || {
-	echo >&2 "${BN}: LXC image '${IMAGE}' cannot be downloaded!"
-	exit 1
+        echo >&2 "${BN}: LXC image '${IMAGE}' cannot be downloaded!"
+        exit 1
     }
   }
   xz -cd "${IMAGE}"|( cd "${OSDIR}" ; sudo tar -xf -; )
@@ -252,24 +252,29 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
                 }
             else
                 #sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && apt-get build-dep -y '${PACKAGE}'" || RC=1
-		echo "yes"|sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C mk-build-deps -i" || exit 1
+                echo "yes"|sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C mk-build-deps -i" || exit 1
             fi
-            sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && rm -f *build-deps_*" || exit 1
+            BUILD_DEPS_DEBS="$(sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && ls *build-deps_*")"
+            for b in ${BUILD_DEPS_DEBS}; do
+                p="$(sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && dpkg --info '${b}'" | grep "^\s*Package:\s*" | sed -e "s/^\s*Package:\s*//")"
+                sudo chroot "${ROOTFS}" apt purge -y "${p}"
+                sudo chroot "${ROOTFS}" rm -f "${PACKAGE_FOLDER}/${b}" || exit 1
+            done
             sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C DEBFULLNAME='${DEBFULLNAME}' DEBEMAIL='${DEBEMAIL}' debchange --distribution '${OS}' --local '~${VERSION_MIDDLE}~${OS}' 'Repackaged for ${OS}'" || RC=1
             PACKAGE_FOLDER="$(sudo chroot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}'/*/. && pwd")"
-	    #PACKAGE_FOLDER="${PACKAGE_FOLDER}~${VERSION_MIDDLE}~${OS}"
-	    DPKG_BUILDPACKAGE_OPTS="--build=binary"
-	    test -n "${SOURCE_PACKAGE}" && DPKG_BUILDPACKAGE_OPTS=
+            #PACKAGE_FOLDER="${PACKAGE_FOLDER}~${VERSION_MIDDLE}~${OS}"
+            DPKG_BUILDPACKAGE_OPTS="--build=binary"
+            test -n "${SOURCE_PACKAGE}" && DPKG_BUILDPACKAGE_OPTS=
             sudo chroot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C ${BUILD_OPTIONS} dpkg-buildpackage ${DPKG_BUILDPACKAGE_OPTS}" || RC=1
             test "${RC}" -eq "0" || { echo >&2 "Probleme beim Auspacken oder bauen - EXIT"; exit 1; }
             test -d "${D}/debs/${OS}/${ARCHITECTURE}" || mkdir -p "${D}/debs/${OS}/${ARCHITECTURE}"
             sudo cp "${ROOTFS}/src/${PACKAGE}"/*.deb "${D}/debs/${OS}/${ARCHITECTURE}/."
             sudo chown "$(id -un):$(id -gn)" "${D}/debs/${OS}/${ARCHITECTURE}"/*.deb
-	    test -n "${SOURCE_PACKAGE}" && {
-		test -d "${D}/debs/${OS}/src" || mkdir -p "${D}/debs/${OS}/src"
-		sudo cp $(ls "${ROOTFS}/src/${PACKAGE}/"*|grep -v '.deb$') "${D}/debs/${OS}/src/."
-		sudo chown "$(id -un):$(id -gn)" "${D}/debs/${OS}/src"/*
-	    }
+            test -n "${SOURCE_PACKAGE}" && {
+                test -d "${D}/debs/${OS}/src" || mkdir -p "${D}/debs/${OS}/src"
+                sudo cp $(ls "${ROOTFS}/src/${PACKAGE}/"*|grep -v '.deb$') "${D}/debs/${OS}/src/."
+                sudo chown "$(id -un):$(id -gn)" "${D}/debs/${OS}/src"/*
+            }
             "${D}/rebuild-ppa.sh"
             sudo cp "${D}/debs/${OS}/${ARCHITECTURE}"/*  "${ROOTFS}/var/cache/lxc-ppa"
             sudo chroot "${ROOTFS}" apt update
