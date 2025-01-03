@@ -240,7 +240,7 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
             myExec "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && dpkg-source -x *.dsc" || exit 1
 	    #( cd "${ROOTFS}/src/${PACKAGE}" && dpkg-source -x "${PACKAGE}"*dsc) || exit 1
             PACKAGE_FOLDER="$(myProot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}'/*/. && pwd")"
-	    test "${USER_GROUP}" != "$(stat --format "%u:%g" "${ROOTFS}/${PACKAGE_FOLDER}")" && {
+	    test "${USER_GROUP}" != "$(stat --format "%U:%G" "${ROOTFS}/${PACKAGE_FOLDER}")" && {
 		sudo chown -R "${USER_GROUP}" "${ROOTFS}/${PACKAGE_FOLDER}"
 	    }
             test -n "${SOURCE_FROM_DIFFERENT_OS}" && {
