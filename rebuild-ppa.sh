@@ -1,4 +1,4 @@
-#°/bin/sh
+#!/bin/sh
 BN="$(basename "$0")"
 D="$(dirname "$0")"
 D="$(cd "${D}" && pwd)"
@@ -7,6 +7,26 @@ P_ARCHITECTURE="$1"
 P_OS="$2"
 
 P_FILES="InRelease lxc.public.asc lxc.public.gpg Packages Packages.gpg Release Release.gpg"
+
+# $1 ... baseline file
+# $2 ... compare files
+findNewerFiles () {
+    (
+        RC=1
+        BASELINE_FILE="$1"
+        BASELINE_TIMESTAMP="$(stat --format "%Y" "${BASELINE_FILE}")"
+        while [ $# -gt 0 ]; do
+            COMPARE_FILE="$1"
+            COMPARE_TIMESTAMP="$(stat --format "%Y" "${COMPARE_FILE}")"
+            test "${COMPARE_TIMESTAMP}" -gt "${BASELINE_TIMESTAMP}" && {
+                echo "${COMPARE_FILE}"
+                RC=0
+            }
+	    shift
+        done
+        exit "${RC}"
+    )
+}
 
 test -n "${P_ARCHITECTURE}" && {
     test -n "${P_OS}" && {
@@ -31,7 +51,7 @@ for ppa in "${D}/debs/"*/*; do
             fi
         fi
     done
-    if [ -n "$(find "${ppa}" -newer "${ppa}/${NEWEST}")"  ]; then
+    if [ -n "$(findNewerFiles "${ppa}/${NEWEST}" "${ppa}"/*)"  ]; then
         UPDATE_THIS_PPA=y
     fi
     test -n "${UPDATE_THIS_PPA}" && {
