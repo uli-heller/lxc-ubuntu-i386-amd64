@@ -158,7 +158,9 @@ Ohne "root" - beinahe
 # ... ohne "root" klappen die Tests nicht
 ./build-proot.sh -S -a amd64 -b "DEB_BUILD_OPTIONS=nocheck" -s noble -o focal golang-golang-x-sys-dev
 ./build-proot.sh -S -a amd64 -s noble -o focal golang-golang-x-term-dev
-./build-proot.sh -S -R -a amd64 -b "DEB_BUILD_OPTIONS=nostrip" -s noble -o focal gocryptfs
+# ... geht nur mit "root", wegen langen Dateinamen (2025-01-03)
+#     Korrigiert mit proot-5.4.0.3
+./build-proot.sh -S -a amd64 -b "DEB_BUILD_OPTIONS=nostrip" -s noble -o focal gocryptfs
 ```
 
 ### Jammy
@@ -172,7 +174,8 @@ Ohne "root" - beinahe
 ./build-proot.sh -S -a amd64 -b "DEB_BUILD_OPTIONS=nocheck" -s noble -o jammy golang-golang-x-sys-dev
 ./build-proot.sh -S -a amd64 -s noble -o jammy golang-golang-x-term-dev
 # ... geht nur mit "root", wegen langen Dateinamen (2025-01-03)
-./build-proot.sh -S -R -a amd64 -b "DEB_BUILD_OPTIONS=nostrip" -s noble -o jammy gocryptfs
+#     Korrigiert mit proot-5.4.0.3
+./build-proot.sh -S -a amd64 -b "DEB_BUILD_OPTIONS=nostrip" -s noble -o jammy gocryptfs
 ```
 
 golang-github-aperturerobotics-jacobsa-crypto
