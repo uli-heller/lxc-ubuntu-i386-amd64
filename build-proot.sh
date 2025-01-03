@@ -46,6 +46,8 @@ VERSION_MIDDLE="uh"
 
 DEBEMAIL=uli@heller.cool
 DEBFULLNAME="Uli Heller"
+LC_ALL=C
+export LC_ALL
 
 while getopts 'hra:b:o:i:s:SV:' opt; do
     case $opt in
@@ -269,7 +271,7 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
             chown "$(id -un):$(id -gn)" "${D}/debs/${OS}/${ARCHITECTURE}"/*.deb
             test -n "${SOURCE_PACKAGE}" && {
                 test -d "${D}/debs/${OS}/src" || mkdir -p "${D}/debs/${OS}/src"
-                cp $(ls "${ROOTFS}/src/${PACKAGE}/"*|grep -v '.deb$') "${D}/debs/${OS}/src/."
+                cp $(find "${ROOTFS}/src/${PACKAGE}" -maxdepth 1 -type f -not -name "*.deb") "${D}/debs/${OS}/src/."
                 chown "$(id -un):$(id -gn)" "${D}/debs/${OS}/src"/*
             }
             "${D}/rebuild-ppa.sh"
