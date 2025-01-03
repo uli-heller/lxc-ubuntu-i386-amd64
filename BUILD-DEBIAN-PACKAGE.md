@@ -174,3 +174,29 @@ Ohne "root" - beinahe
 # ... geht nur mit "root", wegen langen Dateinamen (2025-01-03)
 ./build-proot.sh -S -R -a amd64 -b "DEB_BUILD_OPTIONS=nostrip" -s noble -o jammy gocryptfs
 ```
+
+golang-github-aperturerobotics-jacobsa-crypto
+---------------------------------------------
+
+### Jammy
+
+Ich bin grob so vorgegangen:
+
+- Ausgangspunkt: golang-github-jacobsa-crypto
+- `uupdate -u jacobsa-crypto-1.0.2.tar.gz`
+- Viele Dateien angepasst:
+  - jacobsa/crypto -> aperturerobotics/jacobsa-crypto
+- `dpkg-buildpackage` -> klappt
+
+### Focal
+
+- Ausgangspunkt sind die Pakete für Jammy
+  - `mkdir build-proot-focal-amd64/rootfs/src/golang-github-aperturerobotics-jacobsa-crypto`
+  - `cp debs/jammy/src/*aper* build-proot-focal-amd64/rootfs/src/golang-github-aperturerobotics-jacobsa-crypto`
+- `proot -r build-proot-focal-amd64/rootfs -b /proc -b /dev -b /dev/pts -b /sys -w / bash`
+- `cd /src/golang-github-aperturerobotics-jacobsa-crypto/`
+- `dpkg-source -x *.dsc`
+- `cd golang-github-aperturerobotics-jacobsa-crypto-1.0.2/`
+- debian/control anpassen: "=13" -> "=12", "jammy" -> "focal"
+- `dpkg-buildpackage` ... klappt!
+- 

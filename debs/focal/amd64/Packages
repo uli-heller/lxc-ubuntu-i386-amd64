@@ -179,6 +179,29 @@ Description: Go programming language - documentation
  http://localhost:6060/doc/install.html.
 Original-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>
 
+Package: golang-github-aperturerobotics-jacobsa-crypto-dev
+Source: golang-github-aperturerobotics-jacobsa-crypto
+Version: 1.0.2-0~uh~focal1
+Architecture: all
+Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
+Installed-Size: 3708
+Depends: golang-github-jacobsa-oglematchers-dev, golang-github-jacobsa-ogletest-dev
+Filename: ./golang-github-aperturerobotics-jacobsa-crypto-dev_1.0.2-0~uh~focal1_all.deb
+Size: 2202304
+MD5sum: 35b10341d7015255ef2ce41f17212fb6
+SHA1: 9014e38b5b8e7f3b5615d45f3f43320aa54afb05
+SHA256: 7446f8ad4e71a27d54ec045216f78aa2429f6cf63b8e1bb3f6d95096663f38c8
+Section: devel
+Priority: optional
+Homepage: https://github.com/aperturerobotics/jacobsa-crypto
+Description: Some Go cryptography routines that are not included in the Go standard library
+ This repository contains Go packages related to cryptographic standards
+ that are not included in the Go standard library. These include:
+ • SIV mode (http://go.pkgdoc.org/github.com/jacobsa/crypto/siv),
+  which provides deterministic encryption with authentication.
+ • CMAC (http://go.pkgdoc.org/github.com/jacobsa/crypto/cmac),
+  a message authentication system used by SIV mode.
+
 Package: golang-github-hanwen-go-fuse-dev
 Source: golang-github-hanwen-go-fuse
 Version: 2.4.2-2~uh~focal1
