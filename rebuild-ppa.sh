@@ -6,6 +6,8 @@ D="$(cd "${D}" && pwd)"
 P_ARCHITECTURE="$1"
 P_OS="$2"
 
+P_FILES="InRelease lxc.public.asc lxc.public.gpg Packages Packages.gpg Release Release.gpg"
+
 test -n "${P_ARCHITECTURE}" && {
     test -n "${P_OS}" && {
         mkdir -p "${D}/debs/${P_OS}/${P_ARCHITECTURE}"
@@ -14,12 +16,22 @@ test -n "${P_ARCHITECTURE}" && {
 
 "${D}/init-gpg.sh"
 for ppa in "${D}/debs/"*/*; do
-    ARCHITECTTURE="$(basename "${ppa}")"
+    ARCHITECTURE="$(basename "${ppa}")"
     OS="$(basename "$(dirname "${ppa}")")"
     UPDATE_THIS_PPA=
-    if [ ! -e "${ppa}/lxc.public.gpg" ]; then
-        UPDATE_THIS_PPA=y
-    elif [ -n "$(find "${ppa}" -newer "${ppa}/lxc.public.gpg")"  ]; then
+    NEWEST=
+    for f in ${P_FILES}; do
+        if [ ! -e "${ppa}/${f}" ]; then
+            UPDATE_THIS_PPA=y
+        else
+            if [ -z "${NEWEST}" ]; then
+                NEWEST="${f}"
+            elif [ "$(stat --format "%Y" "${ppa}/${f}")" -gt "$(stat --format "%Y" "${ppa}/${NEWEST}")" ]; then
+                NEWEST="${f}"
+            fi
+        fi
+    done
+    if [ -n "$(find "${ppa}" -newer "${ppa}/${NEWEST}")"  ]; then
         UPDATE_THIS_PPA=y
     fi
     test -n "${UPDATE_THIS_PPA}" && {
