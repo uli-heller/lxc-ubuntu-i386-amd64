@@ -4,17 +4,17 @@ Binary: gocryptfs
 Architecture: amd64 source
 Version: 2.4.0-1ubuntu0.24.04.2~uh~jammy1
 Checksums-Md5:
- 4bf6041a736fef464edb9ce50a123b12 1884 gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~jammy1.dsc
- 31199762adfa89240be2340764a6ddd2 5793090 gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~jammy1_amd64.deb
+ fd7be46cb2d07daf05b3574d91851c31 1884 gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~jammy1.dsc
+ 1d190ee15e6719abdcac40b75c5da5b1 5793118 gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~jammy1_amd64.deb
 Checksums-Sha1:
- 22db5b9994a2b17f03f4f7b380647c513de02135 1884 gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~jammy1.dsc
- 5cf085d9879f2cc39d8c90ac4c0a3e2b52fd61b4 5793090 gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~jammy1_amd64.deb
+ b3fbcf090771b44919f621a038bfb63b4f0a6c5b 1884 gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~jammy1.dsc
+ 56695382731fee885a103f306e361436ef874c87 5793118 gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~jammy1_amd64.deb
 Checksums-Sha256:
- 73e3e0ac2c1d56274dbd1ae257cceb78ec0e0c888cb0c8a746b8558c3db260af 1884 gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~jammy1.dsc
- d9ecaf3972f3ed9f7f7865441fe10103e77472c6e3d5870fc6693c0126394e15 5793090 gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~jammy1_amd64.deb
+ 961ba2ec63a8e96ee0603c2ca3ed2515802ed99054f18edc24dded9eaabadf38 1884 gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~jammy1.dsc
+ ec7e9845f3462752a0f843f4de1840b9a1fff6b405f80383c2f94582610f8b7d 5793118 gocryptfs_2.4.0-1ubuntu0.24.04.2~uh~jammy1_amd64.deb
 Build-Origin: Ubuntu
 Build-Architecture: amd64
-Build-Date: Thu, 02 Jan 2025 19:37:29 +0000
+Build-Date: Fri, 03 Jan 2025 14:51:24 +0000
 Build-Tainted-By:
  merged-usr-via-aliased-dirs
  usr-local-has-programs
@@ -212,4 +212,4 @@ Environment:
  DEB_BUILD_PROFILES="noudeb"
  LANG="de_DE.UTF-8"
  LC_ALL="C"
- SOURCE_DATE_EPOCH="1735846621"
+ SOURCE_DATE_EPOCH="1735915856"
