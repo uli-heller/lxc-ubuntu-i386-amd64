@@ -145,10 +145,21 @@ Mit "root"
 ./build.sh -S -a amd64 -b "DEB_BUILD_OPTIONS=nostrip" -s noble -o jammy gocryptfs
 ```
 
-Ohne "root"
------------
+Ohne "root" - beinahe
+---------------------
 
 ### Focal
+
+```
+./build-proot.sh -S -a amd64 -s noble -o focal golang-github-hanwen-go-fuse-dev
+./build-proot.sh -S -a amd64 -b "DEB_BUILD_OPTIONS=nocheck" -s noble -o focal golang-github-moby-sys-dev
+./build-proot.sh -S -a amd64 -s noble -o focal golang-github-sabhiram-go-gitignore-dev
+./build-proot.sh -S -a amd64 -s noble -o focal golang-any
+# ... ohne "root" klappen die Tests nicht
+./build-proot.sh -S -a amd64 -b "DEB_BUILD_OPTIONS=nocheck" -s noble -o focal golang-golang-x-sys-dev
+./build-proot.sh -S -a amd64 -s noble -o focal golang-golang-x-term-dev
+./build-proot.sh -S -R -a amd64 -b "DEB_BUILD_OPTIONS=nostrip" -s noble -o focal gocryptfs
+```
 
 ### Jammy
 
@@ -157,7 +168,9 @@ Ohne "root"
 ./build-proot.sh -S -a amd64 -b "DEB_BUILD_OPTIONS=nocheck" -s noble -o jammy golang-github-moby-sys-dev
 ./build-proot.sh -S -a amd64 -s noble -o jammy golang-github-sabhiram-go-gitignore-dev
 ./build-proot.sh -S -a amd64 -s noble -o jammy golang-any
+# ... ohne "root" klappen die Tests nicht
 ./build-proot.sh -S -a amd64 -b "DEB_BUILD_OPTIONS=nocheck" -s noble -o jammy golang-golang-x-sys-dev
 ./build-proot.sh -S -a amd64 -s noble -o jammy golang-golang-x-term-dev
-./build-proot.sh -S -a amd64 -b "DEB_BUILD_OPTIONS=nostrip" -s noble -o jammy gocryptfs
+# ... geht nur mit "root", wegen langen Dateinamen (2025-01-03)
+./build-proot.sh -S -R -a amd64 -b "DEB_BUILD_OPTIONS=nostrip" -s noble -o jammy gocryptfs
 ```
