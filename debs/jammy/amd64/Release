@@ -1,18 +1,23 @@
+Architectures: amd64
 Codename: jammy
-Date: Thu, 02 Jan 2025 23:14:04 +0000
+Date: Fri, 03 Jan 2025 10:12:11 +0000
 Description: Precompiled packages for our LXC containers
 Label: lxc-ubuntu
 Origin: lxc-ubuntu
 Suite: jammy
 MD5Sum:
- 21ed9e89d1ebfeda6143597dfa616b9d            16120 Packages
- 78db7539fd38c5a26f47c41124522ab8              161 Release
+ f2f26df006230ef6661ad7e40982bce7            18475 Packages
+ 3043bf116e53215bd4142413e0263714              833 Packages.gpg
+ 0727bd6580ea3eacdca578fb663f6482              182 Release
 SHA1:
- 7a2f89ad77aa1c1c1457de85a13d7a4bb2be0ba3            16120 Packages
- 7dbe8773ae664fdf16c079b6b0e2f95d381ae689              161 Release
+ 785651d539f6ee220f898d4d5cf70f4e02987484            18475 Packages
+ ca8203b48a6664ee2134532bade5584d1956f411              833 Packages.gpg
+ 1acd1bf1131139869da6fe92d5ae5690ca0fbefb              182 Release
 SHA256:
- d5211dd814f11afba1525390588069df611e59138aebc1b9691775edc0df758a            16120 Packages
- bd3d87b73a8ed5c7d5b3a7a2e784e1dd9e796665f76453733a440ce3acd4310f              161 Release
+ 38cffa853270004c6bff7b9763dd8fc1f445e3683fb748acd45ebfb3e3e7b462            18475 Packages
+ c5a21392b10a00878e2f4dd55ccd333e1d63836f8dd61cdd9298b56a67e81a12              833 Packages.gpg
+ 71fe3287abe3c3633a8d227e3ccfe49c92bd79fa13d540f634f95b26c193175d              182 Release
 SHA512:
- 2ce5c29901916a041870ea7f434c8733c59caf7e7382fe212ee772b2a1699667f87a9bca3b3177f2fdfc466105e2e420ecb0eed95cbbe85cd4bb8e78889f95a1            16120 Packages
- f0cfa64d07f475fb6f7e16b3ef5df2f293e379c2b9045355d5313a59355ac4bb051e1c7680694784fb75b149e741b455371d1532d8d95922bb6de66a9da08827              161 Release
+ 4e6c7660a5e744a72169beb2f82aecedc4a139da32710ec266d1938d1bd3516b63ece778078a87be45e29d8e53c36880004e3ae3e98bb73176731dbef2274c87            18475 Packages
+ a976dec97ed0e3d3c856504cfcb0e7e13a6ba81f316059e776532dccffcd8806aa51ebb6a3c55d46afb41e7a84b0e6b304d60c8593b2a2369cdb642f20b22334              833 Packages.gpg
+ 9db1aafe827ba5169c3f189ba79d4ff6197162294811632cdd480e5e1617c88b39ac4918660be03ef9a2c5c8a90992f60735020aae1b4251188cdcf62ce01c10              182 Release
