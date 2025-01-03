@@ -1,18 +1,23 @@
+Architectures: src
 Codename: jammy
-Date: Thu, 02 Jan 2025 23:14:07 +0000
+Date: Fri, 03 Jan 2025 08:46:40 +0000
 Description: Precompiled packages for our LXC containers
 Label: lxc-ubuntu
 Origin: lxc-ubuntu
 Suite: jammy
 MD5Sum:
  d41d8cd98f00b204e9800998ecf8427e                0 Packages
- 5d9db3d0b29b8e72145a1e514c959ea9              161 Release
+ a9b9ac66a2e529c83ec0824edba010a0              833 Packages.gpg
+ 60a2a950632228ebf10c63cfdcd44d63              180 Release
 SHA1:
  da39a3ee5e6b4b0d3255bfef95601890afd80709                0 Packages
- b17943a9d99299732538900b34a9c626a9ce7db7              161 Release
+ 6aeffadd5cb552a941575a6e0bd845a72fc24061              833 Packages.gpg
+ a577395bee63eab8c14725d22ea34ec9efd9e70e              180 Release
 SHA256:
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855                0 Packages
- 2d095e415ee79890e51613d67ef7b090494cab9fb3b9ec3f3679aa426f641cc3              161 Release
+ aa304016bc1bd0e49717ccb289d0d1ad08f700685844df0f98c64991890a530f              833 Packages.gpg
+ b3413912ba18f7bdb1deefcd078bcfce88cf77b86be5339d8b65b161f2615cb1              180 Release
 SHA512:
  cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e                0 Packages
- ca4fba1251ad67ed3877bae7a6d0671a1bb2a5c3cbac99c1c5a69b802e36e7362e8b32fa1db3b66aeb358f078d6516faa16a8e5eaa38c75c1fa3ba1a0c2a9359              161 Release
+ 9933010d781a0bf11264b485f12f5247dc0e882391132fa2bfa63d33938651dd23a882d52209f75b03cd0250fd6fd76bfd9b914471755878ecbcaf3b13b2e457              833 Packages.gpg
+ ff289de8ff66e64c72ec2639eae5a0fb449c8857b5612c1807647f2d7d24f0a3fe29ffc5066c09dac87e98a01aacd80756348872a4fbb370243ba4255ba65f60              180 Release
