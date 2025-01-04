@@ -6,25 +6,12 @@
       "self": "https://www.virustotal.com/api/v3/files/3eee590ea7f2798def75a77c51b68e033d4a38846885d30f04f090e3d1b36b47"
     },
     "attributes": {
-      "sha256": "3eee590ea7f2798def75a77c51b68e033d4a38846885d30f04f090e3d1b36b47",
-      "ssdeep": "384:mz0FShIT+usmkcCXZo6Cx0wtuNnsVx2fKIaFCqoWbBUskv+At/iT/i9By9/YliTR:m+Sh6GBo3NuNm0dcyHv+AtU/eMNSj12V",
-      "type_extension": "gzip",
-      "sha1": "47c8d0cbaedbdd9acfe0daac8be21f89d96c5666",
-      "last_submission_date": 1735928479,
-      "unique_sources": 1,
-      "type_description": "GZIP",
-      "size": 25348,
-      "last_analysis_stats": {
-        "malicious": 0,
-        "suspicious": 0,
-        "undetected": 61,
-        "harmless": 0,
-        "timeout": 0,
-        "confirmed-timeout": 0,
-        "failure": 0,
-        "type-unsupported": 14
-      },
-      "vhash": "e49857005fb47a43e8b1260dd72b20df",
+      "trid": [
+        {
+          "file_type": "GZipped data",
+          "probability": 100
+        }
+      ],
       "bundle_info": {
         "highest_datetime": "2023-11-06 18:51:25",
         "lowest_datetime": "2023-11-06 18:51:25",
@@ -45,22 +32,23 @@
         "type": "GZIP",
         "uncompressed_size": 75171
       },
-      "reputation": 0,
+      "size": 25348,
+      "meaningful_name": "qrterminal-3.2.0.tar.gz",
       "last_analysis_date": 1735928479,
-      "times_submitted": 1,
-      "last_modification_date": 1735935729,
-      "magic": "POSIX tar archive (gzip compressed data, from Unix)",
-      "type_tags": [
-        "compressed",
-        "gzip"
-      ],
+      "sha1": "47c8d0cbaedbdd9acfe0daac8be21f89d96c5666",
+      "vhash": "e49857005fb47a43e8b1260dd72b20df",
+      "ssdeep": "384:mz0FShIT+usmkcCXZo6Cx0wtuNnsVx2fKIaFCqoWbBUskv+At/iT/i9By9/YliTR:m+Sh6GBo3NuNm0dcyHv+AtU/eMNSj12V",
+      "reputation": 0,
+      "last_submission_date": 1735928479,
+      "magika": "GZIP",
       "filecondis": {
         "dhash": "4e0e0e0e0f0f0f4e",
         "raw_md5": "cc525da71ed6921e608d206f506248af"
       },
-      "type_tag": "gzip",
       "first_submission_date": 1735928479,
-      "magika": "GZIP",
+      "type_tag": "gzip",
+      "tlsh": "T1E5B2E16248D31463677B4EE0BA5A1924072DD21F82AF345DCF431817FB0B9C6E97924D",
+      "times_submitted": 1,
       "last_analysis_results": {
         "Bkav": {
           "method": "blacklist",
@@ -666,23 +654,50 @@
       "names": [
         "qrterminal-3.2.0.tar.gz"
       ],
-      "total_votes": {
-        "harmless": 0,
-        "malicious": 0
-      },
-      "trid": [
-        {
-          "file_type": "GZipped data",
-          "probability": 100
-        }
-      ],
-      "md5": "96fb47a484943361b017ce922869bd16",
+      "magic": "POSIX tar archive (gzip compressed data, from Unix)",
       "tags": [
         "gzip",
         "tar-bundle"
       ],
-      "meaningful_name": "qrterminal-3.2.0.tar.gz",
-      "tlsh": "T1E5B2E16248D31463677B4EE0BA5A1924072DD21F82AF345DCF431817FB0B9C6E97924D"
+      "last_analysis_stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "undetected": 61,
+        "harmless": 0,
+        "timeout": 0,
+        "confirmed-timeout": 0,
+        "failure": 0,
+        "type-unsupported": 14
+      },
+      "sha256": "3eee590ea7f2798def75a77c51b68e033d4a38846885d30f04f090e3d1b36b47",
+      "type_tags": [
+        "compressed",
+        "gzip"
+      ],
+      "type_extension": "gzip",
+      "unique_sources": 1,
+      "type_description": "GZIP",
+      "last_modification_date": 1735928530,
+      "md5": "96fb47a484943361b017ce922869bd16",
+      "total_votes": {
+        "harmless": 0,
+        "malicious": 0
+      }
     }
   }
 }
+
+-----BEGIN SSH SIGNATURE-----
+U1NIU0lHAAAAAQAAAEoAAAAac2stc3NoLWVkMjU1MTlAb3BlbnNzaC5jb20AAAAgVxWvvT
+hhdVZi5ii/IZu73FbO2JvpDry3kbA0iXGhiWEAAAAEc3NoOgAAAARmaWxlAAAAAAAAAAZz
+aGE1MTIAAABnAAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAQBRQR1fycuS+63
+UDanU/ZNZhwdkVfqfN/X0jo608yW1szHmXVZolvxXIXJ97uK8yYB0IlwnG24wDT3MDapsD
+HQQBAAKN+Q==
+-----END SSH SIGNATURE-----
+USER=uli
+HOST=ulicsl
+TIMESTAMP=2025-01-03_19:22:15
+TIMESTAMP_SIGNATURE=2025-01-03_19:22:15
+TYPE=ssh
+IDENTITY_FILE=/tmp/dp-sig.sh-9ed96b2e3543f7300f476dca00ad18d6aea412805aeced3fd1c25c57c0869b49-2694954~/identity.pub
+SHA256=679acc2e255310b87efee49f4694733d51646b1cde15222010e6b1c1a75d8358
