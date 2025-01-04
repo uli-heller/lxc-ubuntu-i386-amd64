@@ -2,22 +2,22 @@ Format: 1.0
 Source: qrterminal
 Binary: qrterminal golang-github-mdp-qrterminal-dev
 Architecture: all amd64 source
-Version: 3.2.0-2ubuntu0.24.04.2~uh~jammy1~uh~focal1
+Version: 3.2.0-2ubuntu0.24.04.2~uh~focal2
 Checksums-Md5:
- 2e7aff5be9304713fccced32cbe13d8c 1522 qrterminal_3.2.0-2ubuntu0.24.04.2~uh~jammy1~uh~focal1.dsc
- 4e17cc71f0a65b7bbd7411f104fc67a9 6124 golang-github-mdp-qrterminal-dev_3.2.0-2ubuntu0.24.04.2~uh~jammy1~uh~focal1_all.deb
- 6fff1986d1a8dd7ae0351ac926e85006 1269460 qrterminal_3.2.0-2ubuntu0.24.04.2~uh~jammy1~uh~focal1_amd64.deb
+ aa3e17b32b89cb667cb4676301fc64e4 1508 qrterminal_3.2.0-2ubuntu0.24.04.2~uh~focal2.dsc
+ a0ba021315d3961a840414051fa68964 6124 golang-github-mdp-qrterminal-dev_3.2.0-2ubuntu0.24.04.2~uh~focal2_all.deb
+ 9feb656c2b9de1de291282937ec40608 1269804 qrterminal_3.2.0-2ubuntu0.24.04.2~uh~focal2_amd64.deb
 Checksums-Sha1:
- b0062fcaeff566374c5e3eec033a885681e1e840 1522 qrterminal_3.2.0-2ubuntu0.24.04.2~uh~jammy1~uh~focal1.dsc
- fb009ac2f1f750d99a39c330b0041a420af13cc4 6124 golang-github-mdp-qrterminal-dev_3.2.0-2ubuntu0.24.04.2~uh~jammy1~uh~focal1_all.deb
- b75719dd5e0b3dc4d19a48605a0862e6f6e0586b 1269460 qrterminal_3.2.0-2ubuntu0.24.04.2~uh~jammy1~uh~focal1_amd64.deb
+ 7e2dbf673d4eea72e37c3040db59843122258b27 1508 qrterminal_3.2.0-2ubuntu0.24.04.2~uh~focal2.dsc
+ 3819f8179d6e6bf56af64d8e2b75036e4f762803 6124 golang-github-mdp-qrterminal-dev_3.2.0-2ubuntu0.24.04.2~uh~focal2_all.deb
+ 3e29db8c5d34fa0edb29b328c69fc1fa6612762a 1269804 qrterminal_3.2.0-2ubuntu0.24.04.2~uh~focal2_amd64.deb
 Checksums-Sha256:
- b68c5ae37c82a04ca756e7d33ad9502ce112f47386b0053b8aa4afc26d8f4c04 1522 qrterminal_3.2.0-2ubuntu0.24.04.2~uh~jammy1~uh~focal1.dsc
- 6f7bc84dbe3730a145e21c0de1eeeaaece3081036b7b62348441e281b9e65c29 6124 golang-github-mdp-qrterminal-dev_3.2.0-2ubuntu0.24.04.2~uh~jammy1~uh~focal1_all.deb
- 7b0fd8fc7656716593f70daf3bd9ea9c171b67e59934f3d25d84880c418ac3ee 1269460 qrterminal_3.2.0-2ubuntu0.24.04.2~uh~jammy1~uh~focal1_amd64.deb
+ 84a8525ac7ad4e214010f82f88d684f29bd7cc63dc1f20dd10248442e2821593 1508 qrterminal_3.2.0-2ubuntu0.24.04.2~uh~focal2.dsc
+ 2aeb83d07775842a238c6c90953a89d32deaf3bbb8dedcee19cdfa3b5bd6a7f6 6124 golang-github-mdp-qrterminal-dev_3.2.0-2ubuntu0.24.04.2~uh~focal2_all.deb
+ 60a4ffe8e776dd2537673a4cd2864371a547953475ad1a21c1fbfab75e127ba8 1269804 qrterminal_3.2.0-2ubuntu0.24.04.2~uh~focal2_amd64.deb
 Build-Origin: Ubuntu
 Build-Architecture: amd64
-Build-Date: Sat, 04 Jan 2025 16:37:54 +0000
+Build-Date: Sat, 04 Jan 2025 17:08:34 +0000
 Build-Tainted-By:
  merged-usr-via-symlinks
  usr-local-has-programs
@@ -67,6 +67,7 @@ Installed-Build-Depends:
  golang-github-mattn-go-isatty-dev (= 0.0.8-2),
  golang-go (= 2:1.22~2build1~uh~focal1),
  golang-golang-x-sys-dev (= 0.17.0-1~uh~focal1),
+ golang-golang-x-term-dev (= 0.17.0-1~uh~focal1),
  golang-rsc-qr-dev (= 0.0~git20161121.48b2ede-1),
  golang-src (= 2:1.22~2build1~uh~focal1),
  grep (= 3.4-1),
@@ -179,4 +180,4 @@ Environment:
  DEB_BUILD_OPTIONS="nostrip parallel=12"
  LANG="de_DE.UTF-8"
  LC_ALL="C"
- SOURCE_DATE_EPOCH="1736008661"
+ SOURCE_DATE_EPOCH="1735985529"

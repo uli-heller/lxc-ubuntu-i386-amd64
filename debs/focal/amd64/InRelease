@@ -3,40 +3,40 @@ Hash: SHA256
 
 Architectures: amd64
 Codename: focal
-Date: Sat, 04 Jan 2025 16:38:00 +0000
+Date: Sat, 04 Jan 2025 17:08:41 +0000
 Description: Precompiled packages for our LXC containers
 Label: lxc-ubuntu
 Origin: lxc-ubuntu
 Suite: focal
 MD5Sum:
- 5fbf486345cf0ceffcfba540aaeae7a1            21932 Packages
- 8c6721cca29544d0b2431f40f07c8461              833 Packages.gpg
- d5b99ac985758adc283bdeb2f0ffb5b8              182 Release
+ 723ee6b9f9621ceb0ba0f6fa18849305            21932 Packages
+ aca6b3b5f7c0ca125649a37ff4151d05              833 Packages.gpg
+ f8f2c14ad3625c8e364b0e85aa91a573              182 Release
 SHA1:
- f5774d4b0c64319304a8a3012c52de6654b0167b            21932 Packages
- b3622d9b1e181e65680067ce0466be9206c5d2c3              833 Packages.gpg
- b7008f650fbfd8884719bb4d841995a5ea0fa935              182 Release
+ 361f39188b353611eb13be901ed5e01a71dac24c            21932 Packages
+ 9aac65c8362e5c78fb055adc003cab4d788a08db              833 Packages.gpg
+ 6c7427a2ddc10fbbcfdf835a4ba9be74950e6d3d              182 Release
 SHA256:
- dfab99553223a7c2da2dd8721ca4617b1ec73c2215a53326fa2223e3cf0f7e5f            21932 Packages
- 61f916914447f654d09a0bbf169e07d22508bb781e20e5824deca99e223d2914              833 Packages.gpg
- f466b901440f99a737c4e801fa77cb1b9e030f33bc45cfce9428dde45e3f88cf              182 Release
+ d25f6b13a572213ce7a92f0d9620ee40e5e0482ce5c2d4889580422649f5172d            21932 Packages
+ 6238e1780dcd7786e71e8992799efd50557cd7bd3efec72fd5f748f0737bb656              833 Packages.gpg
+ 9b877d95bb7165b76e1bd8f176ef2f73ae7b3506a44f705c7a4662290d1e7475              182 Release
 SHA512:
- bdb3d84ea692c7ed931884cbb8932605f5b1e06c360f12a2c87cbdf1400e841fee5e76e1f29f47d7e3a2d5b5b8802343bb51d48f3e5830831d516fca14a1f81a            21932 Packages
- f2a64bb64394ff4a62620621e178dcbb908ab34bc48d3967ac8e2252289745eacdcfb606aadb94a98501d67e4f02592df1a99ce4e295527db2433d5095a7c346              833 Packages.gpg
- 03805d8300aa94bff49c610098439c0638b8d73336f1f400e7c54baf0d1f5945108c29e781ecc7bf43b0acbcf6a881d4d04fed5bc91302450ecf2b39221b99aa              182 Release
+ 7aee938de091d31589b04f8dd520c404cbad3711e6050f7c972e189da5aa8765ac85c6e8242fe05cb98f562ac7cce60da9dc80e33b3c24b678e07bc126167c82            21932 Packages
+ d71511d904c1b9d8dabd258e2ae3430612fede67bcb379b7efea2e23c8e47f0b9c130a6730c65b6f2cfd13306d31c9e128fa1a1b1640265f5c7f1cb4d93d68d1              833 Packages.gpg
+ 45738c8a678959f5af6750a7f0694a531e0a876b2968b702e239146251b61e12f9596e9b6099cde818974968ff91ecf422baf27d7169d792297ddffd443ec4b8              182 Release
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEE82hycVroFa5OYg3TOC3lxFUcsDQFAmd5Y+gACgkQOC3lxFUc
-sDR+VxAAloqXBEg5WtSEizPuAnFHnU6SSgD2+WEWnDNXIFIfrYOZ96Xjl7j7hcjk
-tY3h3xcxVUS6CrU0bEWnYyOV3rO3dIWhui5s/gLd71q3BqkGE85bsDcFZKeraK3c
-iZjrkrDZo0hAfWqzmFEjgZLNm0z5mQbeHkSIRAISMCwxoIblQ3FiIkLjcWjkz0KS
-tqv3csy+3PADdy9pbNreCeKRldvTZr/DMacpQUxvpAMVhEvMlTFjLV5Y9miZy3qd
-K5YjHgINKG9VDKbk7ne2tza/+NKmwvFnJzD0Fa86Mtu9U7CLqwhKlY8EKc/ap//B
-n4Hyj8vTmRBmWcYMGUAWHyNnirZXq+lnBFl7O6SrSEYFSBwleIUkvIeJH+EsZ2Pc
-OmWro7lDWzXqDQ4Tp/AUamtqoOPNH7ytkBVSXFsBqtlwgiguXc7y/u8Ad3EGooFg
-6C141KAZtiGf08FfG7AmKrB1wiXzQSXr/qdYpdGRX24aL0UoBw2pj5w65aLYOGqw
-CHxnjI1TC+6jzUobu3EDkowFhk972oiYXcoqslX4RE2PQan07qB/fQj/TWrazf/C
-IHZwgGjX6d4D+KZRybsnpyxXhh00bJ1QqZ+W5ky6la/lA2VR8N9SeRTQvhMasFIX
-dpn56nua67L+rTzP1mDl9b0LuqYcELhHlN/oKZpcXLI6KTkP9SY=
-=BGcY
+iQIzBAEBCAAdFiEE82hycVroFa5OYg3TOC3lxFUcsDQFAmd5axkACgkQOC3lxFUc
+sDTxtA/9EuxyAG46kb36rMKjjhiCHWg4K2+3wr+64qbOsff4V/6nqRJtbabfLd5t
+k/n1Kr/QZU3iC0tnena+qtHRr2zBizJsbuy7rRWIOqzU+oeSvBt72h4irYKSXKSu
+MZr4jFWsblVfmm4L1g4ctXzqfQeVCieO9vUl+uObGXgrpchVZdemsPLUsCQfN4Uw
+1gf1AcMY9RMLTN9RNzGnMUnUeYz13lhEqMuSKzEcR/cbS9x4IyBTA2Qr+kZzq20/
+qMXPneCqrKvzpnk+Zu/SP7obCsXLKPAEHdNZxFjriOwp/zWXqwiMZIv3evOMap/c
+nKgLu/Bt12iMoBls5/TS6uo1TJqs65O0bglRc1AfjR2lioKxRi7CwdUAABlmdzN4
+F3w62p3HvCO3iECXSJfbFRBCkkKqANIx+IblqVijLvjc6xYpK2lA+61+0xVIPKUw
+cl6W/snj5hbjLbi/ZtzJoIlkOsAtjlZUk0Jczb84b5MnlwCRGtDvJUG+PJYrHc1h
+3fTgd6BYY8iIq0PqjUA3FITnH0MzSF2yJaj5VyVaLd/zvVavM/EfVWJVMlsNYrMU
+ao+rXccvKpn3fX9l7WOc3wHaFGddW57wBCBR13lLC3lyAqOGxqLKXHSiKX8+okdn
+vqfO2kbU/a2s4XrS12D+coW9sS3LP+cjCvJVKD6+YobDADEKkGo=
+=mcB0
 -----END PGP SIGNATURE-----
