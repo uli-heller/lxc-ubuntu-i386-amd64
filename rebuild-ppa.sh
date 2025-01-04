@@ -22,8 +22,30 @@ findNewerFiles () {
                 echo "${COMPARE_FILE}"
                 RC=0
             }
-	    shift
+            shift
         done
+        exit "${RC}"
+    )
+}
+
+#
+# $1 ... Packages file
+#
+findMissingFiles () {
+    (
+        RC=0
+        FOLDER="$(dirname "$1")"
+        if [ -s "$1" ]; then
+            for f in $(grep "Filename:" "$1"|cut -d " " -f 2-); do
+                test -e "${FOLDER}/${f}" || {
+                    echo "${FOLDER}/${f}"
+                    RC=1
+                }
+            done
+        else
+            echo "$1"
+            RC=1
+        fi
         exit "${RC}"
     )
 }
@@ -52,6 +74,9 @@ for ppa in "${D}/debs/"*/*; do
         fi
     done
     if [ -n "$(findNewerFiles "${ppa}/${NEWEST}" "${ppa}"/*)"  ]; then
+        UPDATE_THIS_PPA=y
+    fi
+    if [ -n "$(findMissingFiles "${ppa}/Packages")" ]; then
         UPDATE_THIS_PPA=y
     fi
     test -n "${UPDATE_THIS_PPA}" && {
