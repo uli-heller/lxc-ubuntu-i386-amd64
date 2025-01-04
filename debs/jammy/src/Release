@@ -1,23 +1,23 @@
 Architectures: src
 Codename: jammy
-Date: Sat, 04 Jan 2025 10:04:39 +0000
+Date: Sat, 04 Jan 2025 10:44:52 +0000
 Description: Precompiled packages for our LXC containers
 Label: lxc-ubuntu
 Origin: lxc-ubuntu
 Suite: jammy
 MD5Sum:
  d41d8cd98f00b204e9800998ecf8427e                0 Packages
- cbf669b0d022db72aa7bc0bc1a8549e8              833 Packages.gpg
- 49a37c88559446273d8d374f53f1f5b4              180 Release
+ 6cb708492681f6e16180361bcd9b8456              833 Packages.gpg
+ a7058d69d6188d41cba3db04612f44ca              180 Release
 SHA1:
  da39a3ee5e6b4b0d3255bfef95601890afd80709                0 Packages
- ed36442fe7dcc5ead1e61c5c640cfd4d283cbcfd              833 Packages.gpg
- 9e7c72e80b95001daf535e3ba937c9e1f5834ad3              180 Release
+ 6a4acb4b61523e60912c91d568d286dd879da2b4              833 Packages.gpg
+ afcead383177602c2df060af63b6dfd090082531              180 Release
 SHA256:
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855                0 Packages
- ca87883499345eb9d8e663eb2fd926fc1b48a9acfd429609d4413459312ae7ab              833 Packages.gpg
- c2c5f51dba16ce5df9310da3bab4dba8bb9b886ba5542d799bdc539f356ca8a2              180 Release
+ 9c62876e46ade4870ffec902ebc4da5f0b637e40b04ca66a712ae0e77fefb093              833 Packages.gpg
+ 98783c1b3fbbdfe937f26bc1ec6acc51d1537667f27772b69f337f2a26aee1be              180 Release
 SHA512:
  cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e                0 Packages
- 058e144a4bc76875e1c78c536a847e5b28214417846a23f846704c260ca1c4ecdbb091aad82878c6ec7a89d163afb524d01aacc8a6b83e9f0a24919dce082253              833 Packages.gpg
- 4e8f099365d7aa41ee14924182adf74143f637cfb140b404f6fe36ea35c7015a832e602d57d8b7b73888aa1b8138eef022ee5d7bd01aec35c6c5f540e66af473              180 Release
+ 2f216ab89a5d87cf9b3026f3e2c2687bdd31990290a3a7c0ddaabb8788b7ec5a9f59da072409bd750694b980be82571138ae6f9a5e0375c272392d67cce6fb48              833 Packages.gpg
+ a024536d19bf15e96591e89fce5098b97a4779d111cceffdf8c85b5fd66459d50cb0f5238aa29a68f6cdea380dcead202398c24b93b6d07ab3407807b424ea55              180 Release

@@ -3,40 +3,40 @@ Hash: SHA256
 
 Architectures: amd64
 Codename: focal
-Date: Fri, 03 Jan 2025 15:28:12 +0000
+Date: Sat, 04 Jan 2025 16:38:00 +0000
 Description: Precompiled packages for our LXC containers
 Label: lxc-ubuntu
 Origin: lxc-ubuntu
 Suite: focal
 MD5Sum:
- a5d94e37924b65818b698f219b9e1748            19688 Packages
- f0029b3c2c960179bdd3b0475498fab4              833 Packages.gpg
- 8be252fa7e0d132c06d7860d62f9c5c5              182 Release
+ 5fbf486345cf0ceffcfba540aaeae7a1            21932 Packages
+ 8c6721cca29544d0b2431f40f07c8461              833 Packages.gpg
+ d5b99ac985758adc283bdeb2f0ffb5b8              182 Release
 SHA1:
- 1db7a47c33045159fa8a9dc35d6f22ac8c46be59            19688 Packages
- 12cd811f415345704afc84e75e9256ae64f6713f              833 Packages.gpg
- 8b03938707700fc385770369026eeb58dd6aa815              182 Release
+ f5774d4b0c64319304a8a3012c52de6654b0167b            21932 Packages
+ b3622d9b1e181e65680067ce0466be9206c5d2c3              833 Packages.gpg
+ b7008f650fbfd8884719bb4d841995a5ea0fa935              182 Release
 SHA256:
- 29f7a15b08d26b482ff2077940293d360ccc36b1cf525c80dea78e9dd7663b8f            19688 Packages
- 8940415ee24beda75ef599cbf08f9ca6063b81025fdca5913921e40ca491bad6              833 Packages.gpg
- 651e3e385e4b9c9480b65453052c366f05a433b5b2df062848e37b8da1aa9aa5              182 Release
+ dfab99553223a7c2da2dd8721ca4617b1ec73c2215a53326fa2223e3cf0f7e5f            21932 Packages
+ 61f916914447f654d09a0bbf169e07d22508bb781e20e5824deca99e223d2914              833 Packages.gpg
+ f466b901440f99a737c4e801fa77cb1b9e030f33bc45cfce9428dde45e3f88cf              182 Release
 SHA512:
- 6f9964f787d38d822013c0e68d369fc2f55b9db3ad90abc89806c770b7c9ff526163aac804ffd368953ee37a490e7a18469215d475bd879177f35792273e0ef7            19688 Packages
- 1ccac2b265f627941037feda96de860142dc72f7003a5b6c2ca8c3f720f6ecba8f74b3d17549fd54fa00514b170958ed864ec55665da92743a3773b4d87afcd1              833 Packages.gpg
- 704cd5967a226415fb2966bdb72ef8fc2490791500a7a66b2509ffaeee717927da8c2e8b3dd65737e44dd78b61a380cefce60c953a235f8d5acd05f5d84a586c              182 Release
+ bdb3d84ea692c7ed931884cbb8932605f5b1e06c360f12a2c87cbdf1400e841fee5e76e1f29f47d7e3a2d5b5b8802343bb51d48f3e5830831d516fca14a1f81a            21932 Packages
+ f2a64bb64394ff4a62620621e178dcbb908ab34bc48d3967ac8e2252289745eacdcfb606aadb94a98501d67e4f02592df1a99ce4e295527db2433d5095a7c346              833 Packages.gpg
+ 03805d8300aa94bff49c610098439c0638b8d73336f1f400e7c54baf0d1f5945108c29e781ecc7bf43b0acbcf6a881d4d04fed5bc91302450ecf2b39221b99aa              182 Release
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEE82hycVroFa5OYg3TOC3lxFUcsDQFAmd4AgwACgkQOC3lxFUc
-sDQwthAAr6q012wQ6sefShdnMsZ+V/NhHiO2gvKHWsOwpcvRTPOKjo8yLuRYdubV
-ToSfsnP8JiF1Lp2QI64Qmv/FGV7FdO3fj4ugI0JkkhcLmlEoCefjc7sRVFsbXW/S
-cmABjD83QcJn+J9h4nfWeCqKwSaiuF6gLoWC/IVxLqclcwTbxMExL7IWKwYSjXuB
-Tm1fIRn1KDRu+gubhsMkfEhzCfg0BpAeoYoOxZLnG/iQPPG/2UaB9Ws/n5it+Ss7
-Jti4idvk3XURb5OvbeSUvJ40lPxAc/VCkBfDYylSfpETRtJbbUVbR9aO66HNHP3r
-J+rrlmqa/KNWz8IGBzxOPuziwlkk58mn7uevShdw1Bp0AMk/qk+rv6UVif0JCzQ1
-gZV+GD77+Gmm32gE0oCrpQKn2hBZ09MMJFvZVmJyTPtd1mLmSL2RAOp5eLxCW5zU
-BxG0yUO7Fnh7p2vVnAxS2wChfqqbyOcQMP7BcECheg4Q/fHlIuQiP8UqtNcfjxv8
-XEDh0VzvTaNzSv2nR+ahj/Y833uX272+60rEyEtM/9OIH+3RsT9bEW2JAOYXYFfm
-JtIXxJPIdXiHsmbGs/PaYQ8//LFsfrfyvYbJtEgXb9wDMRjDlmI1V60722ESHJX8
-FophA6XgpVBbgCLAa3k1Rh/sTojTWLC19ec8AaqtrY9CVOgI87o=
-=JLMY
+iQIzBAEBCAAdFiEE82hycVroFa5OYg3TOC3lxFUcsDQFAmd5Y+gACgkQOC3lxFUc
+sDR+VxAAloqXBEg5WtSEizPuAnFHnU6SSgD2+WEWnDNXIFIfrYOZ96Xjl7j7hcjk
+tY3h3xcxVUS6CrU0bEWnYyOV3rO3dIWhui5s/gLd71q3BqkGE85bsDcFZKeraK3c
+iZjrkrDZo0hAfWqzmFEjgZLNm0z5mQbeHkSIRAISMCwxoIblQ3FiIkLjcWjkz0KS
+tqv3csy+3PADdy9pbNreCeKRldvTZr/DMacpQUxvpAMVhEvMlTFjLV5Y9miZy3qd
+K5YjHgINKG9VDKbk7ne2tza/+NKmwvFnJzD0Fa86Mtu9U7CLqwhKlY8EKc/ap//B
+n4Hyj8vTmRBmWcYMGUAWHyNnirZXq+lnBFl7O6SrSEYFSBwleIUkvIeJH+EsZ2Pc
+OmWro7lDWzXqDQ4Tp/AUamtqoOPNH7ytkBVSXFsBqtlwgiguXc7y/u8Ad3EGooFg
+6C141KAZtiGf08FfG7AmKrB1wiXzQSXr/qdYpdGRX24aL0UoBw2pj5w65aLYOGqw
+CHxnjI1TC+6jzUobu3EDkowFhk972oiYXcoqslX4RE2PQan07qB/fQj/TWrazf/C
+IHZwgGjX6d4D+KZRybsnpyxXhh00bJ1QqZ+W5ky6la/lA2VR8N9SeRTQvhMasFIX
+dpn56nua67L+rTzP1mDl9b0LuqYcELhHlN/oKZpcXLI6KTkP9SY=
+=BGcY
 -----END PGP SIGNATURE-----

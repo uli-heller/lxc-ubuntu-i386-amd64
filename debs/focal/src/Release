@@ -1,23 +1,23 @@
 Architectures: src
 Codename: focal
-Date: Fri, 03 Jan 2025 15:28:13 +0000
+Date: Sat, 04 Jan 2025 16:37:55 +0000
 Description: Precompiled packages for our LXC containers
 Label: lxc-ubuntu
 Origin: lxc-ubuntu
 Suite: focal
 MD5Sum:
  d41d8cd98f00b204e9800998ecf8427e                0 Packages
- 33d359aea8c3f2e6a770601f87dbcf11              833 Packages.gpg
- 072677128b14c02773bc8907fda2194f              180 Release
+ 565991bc59a7514f8c094816434f9090              833 Packages.gpg
+ 395d03eaa34d811a8a23ed0ede88f61b              180 Release
 SHA1:
  da39a3ee5e6b4b0d3255bfef95601890afd80709                0 Packages
- e3b303178ed9d45ff7717196e3bbbf645313638e              833 Packages.gpg
- 00c79c969392167096793bcb8a581c9309d0cc56              180 Release
+ f5a535bbf2004f72e450f6fe6b274bbe74462ef5              833 Packages.gpg
+ 96ab7bd9cbe4d4a063d3c70a5fbdf08c36409e58              180 Release
 SHA256:
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855                0 Packages
- 9a31c6bbf66635b36c91d152c78c865ef2fe184e973cc7b4bbe10962a70dc302              833 Packages.gpg
- b637631b50f7724b332ecf6755ec78716c61a2d7856ea56ad0680f56d977556e              180 Release
+ 7826e78d3cdeda7cc8178ae4da033c014484804c9ab56d989d16a029d44fc169              833 Packages.gpg
+ beef2c9541cce5cc6a52cd6e02dbcaea997b80e4c6ae96021f44051db9ee62e4              180 Release
 SHA512:
  cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e                0 Packages
- cfb92ce51bab114976ca0d7bbea48143fb450d0a63d82454bd92dc04f80afeefb82393f2caa304636e144b51d42b32291243c06700572baa646fad17b7b0402b              833 Packages.gpg
- 60b1cb0798cc3b2a0623a46054d0185960c507fa3a8d1f1dae81bd6619a392fbdd2f9da3c535d18bd295f9828b5223303148ab196835d6b328a332fc99b9c605              180 Release
+ c1e2ef9015ee475075537d8494fa5db68ad54cd00ed73eb8e4d2f607c839b6a52f8d12229f86a691400d046056dee55affc6d274bae4c3161d0caf34ee4a3ce8              833 Packages.gpg
+ 92cc065d371e30a843ac48e5776657dbf166abb8fc65b80a182e7e1a3eb43e3842653d3e0a2dd827227605a433c035447b84e7c2f7356285e62a5dd68d7c5cf8              180 Release
