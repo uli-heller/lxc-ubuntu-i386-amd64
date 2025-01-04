@@ -225,7 +225,7 @@ qrterminal und golang-github-mdp-qrterminal-dev
 Nachdem es für Jammy bereits gebaut wurde, ist es für Focal einfacher:
 
 - `./build-proot.sh -S -a amd64 -b "DEB_BUILD_OPTIONS=nostrip" -s jammy -o focal qrterminal`
-  TBD
+  Nach ersten Problemen klappt es!
 
 ### Probleme
 
@@ -322,6 +322,38 @@ dpkg-buildpackage: info: binary and diff upload (original source NOT included)
 ```
 
 Hat geklappt!
+
+#### Focal - cannot find package "golang.org/x/term"
+
+```
+$ ./build-proot.sh -S -a amd64 -s jammy -o focal qrterminal
+...
+dh binary --builddirectory=_build --buildsystem=golang --with=golang
+   dh_update_autotools_config -O--builddirectory=_build -O--buildsystem=golang
+   dh_autoreconf -O--builddirectory=_build -O--buildsystem=golang
+   dh_auto_configure -O--builddirectory=_build -O--buildsystem=golang
+   dh_auto_build -O--builddirectory=_build -O--buildsystem=golang
+_build/src/github.com/mdp/qrterminal/qrterminal.go:10:2: cannot find package "golang.org/x/term" in any of:
+	/usr/lib/go-1.22/src/golang.org/x/term (from $GOROOT)
+	/src/qrterminal/qrterminal-3.2.0/_build/src/golang.org/x/term (from $GOPATH)
+	cd _build && go install -trimpath -v -p 12 github.com/mdp/qrterminal github.com/mdp/qrterminal/cmd/qrterminal
+src/github.com/mdp/qrterminal/qrterminal.go:10:2: cannot find package "golang.org/x/term" in any of:
+	/usr/lib/go-1.22/src/golang.org/x/term (from $GOROOT)
+	/src/qrterminal/qrterminal-3.2.0/_build/src/golang.org/x/term (from $GOPATH)
+dh_auto_build: error: cd _build && go install -trimpath -v -p 12 github.com/mdp/qrterminal github.com/mdp/qrterminal/cmd/qrterminal returned exit code 1
+make: *** [debian/rules:4: binary] Error 1
+dpkg-buildpackage: error: debian/rules binary subprocess returned exit status 2
+Probleme beim Auspacken oder bauen - EXIT
+...
+```
+
+Abhilfe:
+
+- Nochmal zu "jammy"
+- debian/control anpassen - `Build-Depends: ... golang-golang-x-term-dev`
+- debian/changelog anpassen - `3.2.0-2ubuntu0.24.04.2~uh~jammy1` -> `3.2.0-2ubuntu0.24.04.2~uh~jammy2`
+- Nochmal bauen
+- Nochmal ablegen
 
 #### Jammy - libqtermwidget5-1-dev:amd64 < none @un H > (>= 1.4.0)
 
