@@ -324,7 +324,10 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
                 myProot "${ROOTFS}" apt purge -y "${p}"
                 myProot "${ROOTFS}" rm -f "${PACKAGE_FOLDER}/${b}" || exit 1
             done
-            myProot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C DEBFULLNAME='${DEBFULLNAME}' DEBEMAIL='${DEBEMAIL}' debchange --distribution '${OS}' --local '~${VERSION_MIDDLE}~${OS}' 'Repackaged for ${OS}'" || RC=1
+            sed -i -e "1 s/~${VERSION_MIDDLE}~${SOURCE_OS}/~${VERSION_MIDDLE}~${OS}/" "${ROOTFS}/${PACKAGE_FOLDER}/debian/changelog"
+            test -z "$(head -1 "${ROOTFS}/${PACKAGE_FOLDER}/debian/changelog"|grep "~${VERSION_MIDDLE}~${OS}")" && {
+                myProot "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C DEBFULLNAME='${DEBFULLNAME}' DEBEMAIL='${DEBEMAIL}' debchange --distribution '${OS}' --local '~${VERSION_MIDDLE}~${OS}' 'Repackaged for ${OS}'" || RC=1
+            }
             PACKAGE_FOLDER="$(myProot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}'/*/. && pwd")"
             #PACKAGE_FOLDER="${PACKAGE_FOLDER}~${VERSION_MIDDLE}~${OS}"
             DPKG_BUILDPACKAGE_OPTS="--build=binary"
