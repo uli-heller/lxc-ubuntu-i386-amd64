@@ -67,9 +67,9 @@ while getopts 'hra:b:o:i:s:RSV:' opt; do
         S)
             SOURCE_PACKAGE="y"
             ;;
-	R)
-	    USE_ROOT="y"
-	    ;;
+        R)
+            USE_ROOT="y"
+            ;;
         V)
             VERSION_MIDDLE="${OPTARG}"
             ;;
@@ -198,6 +198,28 @@ replaceVariables () {
   sed -e 's/\${\OS\}/'"${OS}/g" -e 's/\${\VERSION\}/'"${NEW_VERSION}/g" -e  's/\${\TIMESTAMP\}/'"${TIMESTAMP}/g"
 }
 
+#
+# $1 ... dsc file
+# $2 ... destination folder
+#
+copyDscAndIncludedFiles () {
+    (
+        DSC="$1"
+        DESTINATION="$2"
+        cp "${DSC}" "${DESTINATION}/." || {
+            echo >&2 "${BN}: Copying '${DSC}' to folder '${DESTINATION}' failed"
+            exit 1
+        }
+        SOURCE="$(dirname "${DSC}")"
+        for f in $(sed -n -e '/^Files:/,/^[^ ]/ p' "${DSC}" | grep "^ " | cut -d " " -f 4-); do
+            cp "${SOURCE}/${f}" "${DESTINATION}/." || {
+                echo >&2 "${BN}: Copying '${SOURCE}/${f}' to folder '${DESTINATION}' failed"
+                exit 1
+            }
+        done
+    )
+}
+
 RC=0
 
 myProot "${ROOTFS}" cat /etc/apt/sources.list >"${TMPDIR}/sources.list"
@@ -218,7 +240,19 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
     myExec "${ROOTFS}" bash -c "cd /src && rm -rf '${PACKAGE}'"
     myProot "${ROOTFS}" bash -c "cd /src && mkdir -p '${PACKAGE}' && cd '${PACKAGE}' && ls *dsc 2>/dev/null" >"${TMPDIR}/before"
     myProot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && ls"      >"${TMPDIR}/before.ls"
-    myProot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && apt-get source --download-only '${PACKAGE}'"
+    #
+    # When we do have a "local" package underneath debs/(source_os)/srv,
+    # then use this!
+    #
+    set -x
+    LOCAL_PACKAGE="$(ls "${D}/debs/${SOURCE_OS}/src/${PACKAGE}"*.dsc|sort -r -V|head -1)"
+    if [ -e "${LOCAL_PACKAGE}" ]; then
+        #cp "$(dirname "${LOCAL_PACKAGE}")/$(basename "${LOCAL_PACKAGE}" .dsc"* "${ROOTFS}/src/${PACKAGE}/."
+        copyDscAndIncludedFiles "${LOCAL_PACKAGE}" "${ROOTFS}/src/${PACKAGE}/."
+    else
+        myProot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && apt-get source --download-only '${PACKAGE}'"
+    fi
+    set +x
     myProot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && ls *dsc" >"${TMPDIR}/after"
     myProot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && ls" >"${TMPDIR}/after.ls"
     cmp "${TMPDIR}/before" "${TMPDIR}/after" >/dev/null 2>&1 || {
@@ -227,22 +261,22 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
             #set -x
             find "${ROOTFS}/src/${PACKAGE}" -mindepth 1 -maxdepth 1 -type d|xargs rm -rf
             find "${ROOTFS}/src/${PACKAGE}" -name "*.deb"|xargs rm -rf
-	    # 2025-01-03 - gocryptfs
-	    # ...
-	    # dpkg-source: info: extracting gocryptfs in gocryptfs-2.4.0
+            # 2025-01-03 - gocryptfs
+            # ...
+            # dpkg-source: info: extracting gocryptfs in gocryptfs-2.4.0
             # dpkg-source: info: unpacking gocryptfs_2.4.0.orig.tar.xz
             # tar: gocryptfs-2.4.0/tests/example_filesystems/content/longname_255_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx: Cannot open: File name too long
             # tar: gocryptfs-2.4.0/tests/example_filesystems/v1.1-reverse-plaintextnames/longname_255_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx: Cannot open: File name too long
             # tar: gocryptfs-2.4.0/tests/example_filesystems/v1.1-reverse/longname_255_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx: Cannot open: File name too long
             # tar: gocryptfs-2.4.0/tests/example_filesystems/v1.3-reverse/longname_255_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx: Cannot open: File name too long
             # tar: Exiting with failure status due to previous errors
-	    # ...
+            # ...
             myExec "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && dpkg-source -x *.dsc" || exit 1
-	    #( cd "${ROOTFS}/src/${PACKAGE}" && dpkg-source -x "${PACKAGE}"*dsc) || exit 1
+            #( cd "${ROOTFS}/src/${PACKAGE}" && dpkg-source -x "${PACKAGE}"*dsc) || exit 1
             PACKAGE_FOLDER="$(myProot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}'/*/. && pwd")"
-	    test "${USER_GROUP}" != "$(stat --format "%U:%G" "${ROOTFS}/${PACKAGE_FOLDER}")" && {
-		sudo chown -R "${USER_GROUP}" "${ROOTFS}/${PACKAGE_FOLDER}"
-	    }
+            test "${USER_GROUP}" != "$(stat --format "%U:%G" "${ROOTFS}/${PACKAGE_FOLDER}")" && {
+                sudo chown -R "${USER_GROUP}" "${ROOTFS}/${PACKAGE_FOLDER}"
+            }
             test -n "${SOURCE_FROM_DIFFERENT_OS}" && {
                 sed -i -e "s/debhelper-compat\s*([^)]*)/debhelper-compat (=${COMPAT})/" "${ROOTFS}/${PACKAGE_FOLDER}/debian/control"
             }
