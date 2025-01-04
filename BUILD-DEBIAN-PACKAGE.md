@@ -212,13 +212,20 @@ Ich bin grob so vorgegangen:
 - `mv -v debs/focal/src/*deb debs/focal/amd64/.`
 - `./rebuild-ppa.sh`
 
-qrterminal und ...
-------------------------
+qrterminal und golang-github-mdp-qrterminal-dev
+-----------------------------------------------
 
 ### Jammy
 
 - `./build-proot.sh -S -a amd64 -b "DEB_BUILD_OPTIONS=nostrip" -s noble -o jammy qrterminal`
   Erzeugt die Version 3.0.0. Danach noch manuell aktualisiert auf 3.2.0!
+
+### Focal
+
+Nachdem es für Jammy bereits gebaut wurde, ist es für Focal einfacher:
+
+- `./build-proot.sh -S -a amd64 -b "DEB_BUILD_OPTIONS=nostrip" -s jammy -o focal qrterminal`
+  TBD
 
 ### Probleme
 
