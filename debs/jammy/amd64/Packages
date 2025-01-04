@@ -239,6 +239,31 @@ Description: Some Go cryptography routines that are not included in the Go stand
  • CMAC (http://go.pkgdoc.org/github.com/jacobsa/crypto/cmac),
   a message authentication system used by SIV mode.
 
+Package: golang-github-mdp-qrterminal-dev
+Source: qrterminal
+Version: 3.0.0-2ubuntu0.24.04.2~uh~jammy1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 25
+Depends: golang-github-mattn-go-colorable-dev, golang-rsc-qr-dev
+Filename: ./golang-github-mdp-qrterminal-dev_3.0.0-2ubuntu0.24.04.2~uh~jammy1_all.deb
+Size: 5208
+MD5sum: a61d3bc4c778ba1a8c414a62cbee32d9
+SHA1: 453eddf6bf44ec678241056505543163f88a61a5
+SHA256: 59925047d8abe828fb764c69fe38d01d72e5a0c38d2f3504ae0d2cfae8d57626
+Section: golang
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://github.com/mdp/qrterminal
+Description: Display QR Codes in terminal (library)
+ A golang library for generating QR codes in the terminal.
+ .
+ Originally this was a port of the NodeJS version. Recently it's been updated
+ to allow for smaller code generation using ASCII 'half blocks'
+ .
+ This package contains the golang library for github.com/mdp/qrterminal
+Original-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+
 Package: golang-github-moby-sys-dev
 Source: golang-github-moby-sys
 Version: 0.0~git20231105.a4e0878-1~uh~jammy1
@@ -395,4 +420,27 @@ Description: Go programming language - source files
  This is a dependency package that depends on the default Go standard library
  source code, which is needed for the go build process.
 Original-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>
+
+Package: qrterminal
+Version: 3.0.0-2ubuntu0.24.04.2~uh~jammy1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 2181
+Built-Using: golang-1.22 (= 1.22.2-2~22.04.2), golang-github-mattn-go-colorable (= 0.1.12-1), golang-github-mattn-go-isatty (= 0.0.14-1), golang-golang-x-sys (= 0.17.0-1~uh~jammy1), golang-rsc-qr (= 0.0~git20161121.48b2ede-1.1)
+Filename: ./qrterminal_3.0.0-2ubuntu0.24.04.2~uh~jammy1_amd64.deb
+Size: 1309562
+MD5sum: 1dee7cf3efd5eb167bf63bd69559b60c
+SHA1: 2ec10156cc7cd34236c53acd9e8fe42d8bd4b3fd
+SHA256: f6a255c1dae28d9f7d4d4bc70d1bb1f86826ea7fad408fa0ab9baa556c499016
+Section: golang
+Priority: optional
+Homepage: https://github.com/mdp/qrterminal
+Description: Display QR Codes in terminal (program)
+ A golang library for generating QR codes in the terminal.
+ .
+ Originally this was a port of the NodeJS version. Recently it's been updated
+ to allow for smaller code generation using ASCII 'half blocks'
+ .
+ This package contains the command line program qrterminal.
+Original-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
 

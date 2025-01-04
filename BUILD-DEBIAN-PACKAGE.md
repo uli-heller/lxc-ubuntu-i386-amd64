@@ -212,14 +212,113 @@ Ich bin grob so vorgegangen:
 - `mv -v debs/focal/src/*deb debs/focal/amd64/.`
 - `./rebuild-ppa.sh`
 
-qterminal und ...
+qrterminal und ...
 ------------------------
 
 ### Jammy
 
+- `./build-proot.sh -S -a amd64 -b "DEB_BUILD_OPTIONS=nostrip" -s noble -o jammy qrterminal`
+  Erzeugt die Version 3.0.0. Danach noch manuell aktualisiert auf 3.2.0!
+
 ### Probleme
 
+#### Jammy - Aktualisierung von 3.0.0 auf 3.2.0
+
+```
+$ cp .../qrterminal-3.2.0.tar.gz* build-proot-jammy-amd64/rootfs/src/qrterminal/.
+$ proot -S build-proot-jammy-amd64/rootfs -w / bash
+# cd /src/qrterminal/qrterminal-3.0.0
+# LC_ALL=C DEBFULLNAME="Uli Heller"   DEBEMAIL=uli@heller.cool uupdate -u ../qrterminal-3.2.0.tar.gz
+uupdate: New Release will be 3.2.0-0ubuntu1.
+uupdate: Untarring the new sourcecode archive ../qrterminal-3.2.0.tar.gz
+uupdate: Unpacking the debian/ directory from version 3.0.0-2ubuntu0.24.04.2~uh~jammy1 worked fine.
+uupdate: Remember: Your current directory is the OLD sourcearchive!
+uupdate: Do a "cd ../qrterminal-3.2.0" to see the new package
+```
+
+debian/changelog anpassen:
+
+```diff
+--- debian/changelog.orig	2025-01-04 10:13:02.881677948 +0000
++++ debian/changelog	2025-01-04 10:12:52.629340960 +0000
+@@ -1,4 +1,4 @@
+-qrterminal (3.2.0-0ubuntu1) UNRELEASED; urgency=medium
++qrterminal (3.2.0-2ubuntu0.24.04.2~uh~jammy1) jammy; urgency=medium
+ 
+   * New upstream release.
+```
+
+Nochmal bauen:
+
+```
+$ ./proot.sh build-proot-jammy-amd64/rootfs bash
+# cd /src/qrterminal/qrterminal-3.2.0
+# LC_ALL=C DEB_BUILD_OPTIONS=nostrip dpkg-buildpackage
+...
+dpkg-gencontrol: warning: Depends field of package qrterminal: substitution variable ${shlibs:Depends} used, but is not defined
+   dh_md5sums -O--builddirectory=_build -O--buildsystem=golang
+   dh_builddeb -O--builddirectory=_build -O--buildsystem=golang
+dpkg-deb: building package 'golang-github-mdp-qrterminal-dev' in '../golang-github-mdp-qrterminal-dev_3.2.0-2ubuntu0.24.04.2~uh~jammy1_all.deb'.
+dpkg-deb: building package 'qrterminal' in '../qrterminal_3.2.0-2ubuntu0.24.04.2~uh~jammy1_amd64.deb'.
+ dpkg-genbuildinfo -O../qrterminal_3.2.0-2ubuntu0.24.04.2~uh~jammy1_amd64.buildinfo
+ dpkg-genchanges -O../qrterminal_3.2.0-2ubuntu0.24.04.2~uh~jammy1_amd64.changes
+dpkg-genchanges: info: including full source code in upload
+ dpkg-source --after-build .
+dpkg-buildpackage: info: full upload (original source is included)
+```
+
+Pakete ablegen:
+
+```
+$ cp build-proot-jammy-amd64/rootfs/src/qrterminal/*3.2.0* debs/jammy/src/.
+$ mv -v debs/jammy/src/*3.2.0*deb debs/jammy/amd64/.
+Datei umbenannt 'debs/jammy/src/golang-github-mdp-qrterminal-dev_3.2.0-2ubuntu0.24.04.2~uh~jammy1_all.deb' -> 'debs/jammy/amd64/./golang-github-mdp-qrterminal-dev_3.2.0-2ubuntu0.24.04.2~uh~jammy1_all.deb'
+Datei umbenannt 'debs/jammy/src/qrterminal_3.2.0-2ubuntu0.24.04.2~uh~jammy1_amd64.deb' -> 'debs/jammy/amd64/./qrterminal_3.2.0-2ubuntu0.24.04.2~uh~jammy1_amd64.deb'
+```
+
+#### Jammy - Probleme mit "dwz"
+
+```
+$ ./build-proot.sh -S -a amd64 -s noble -o jammy qrterminal
+...
+   dh_compress -O--builddirectory=_build -O--buildsystem=golang
+   dh_fixperms -O--builddirectory=_build -O--buildsystem=golang
+   dh_missing -O--builddirectory=_build -O--buildsystem=golang
+   dh_dwz -a -O--builddirectory=_build -O--buildsystem=golang
+dwz: debian/qrterminal/usr/bin/qrterminal: Found compressed .debug_abbrev section, not attempting dwz compression
+dh_dwz: error: dwz -- debian/qrterminal/usr/bin/qrterminal returned exit code 1
+dh_dwz: error: Aborting due to earlier error
+make: *** [debian/rules:4: binary] Error 2
+dpkg-buildpackage: error: debian/rules binary subprocess returned exit status 2
+Probleme beim Auspacken oder bauen - EXIT
+rm -f qrterminal_3.0.0-2ubuntu0.24.04.2.debian.tar.xz qrterminal_3.0.0-2ubuntu0.24.04.2.dsc qrterminal_3.0.0.orig.tar.gz
+build-proot.sh: error building package 'qrterminal' -> ABORTING
+```
+
+Korrekturversuch analog zu GOCRYPTFS - Option '-b "DEB_BUILD_OPTIONS=nostrip"':
+
+```
+$ ./build-proot.sh -S -a amd64 -b "DEB_BUILD_OPTIONS=nostrip" -s noble -o jammy qrterminal
+...
+dpkg-gencontrol: warning: Depends field of package qrterminal: substitution variable ${shlibs:Depends} used, but is not defined
+   dh_md5sums -O--builddirectory=_build -O--buildsystem=golang
+   dh_builddeb -O--builddirectory=_build -O--buildsystem=golang
+dpkg-deb: building package 'golang-github-mdp-qrterminal-dev' in '../golang-github-mdp-qrterminal-dev_3.0.0-2ubuntu0.24.04.2~uh~jammy1_all.deb'.
+dpkg-deb: building package 'qrterminal' in '../qrterminal_3.0.0-2ubuntu0.24.04.2~uh~jammy1_amd64.deb'.
+ dpkg-genbuildinfo -O../qrterminal_3.0.0-2ubuntu0.24.04.2~uh~jammy1_amd64.buildinfo
+ dpkg-genchanges -O../qrterminal_3.0.0-2ubuntu0.24.04.2~uh~jammy1_amd64.changes
+dpkg-genchanges: warning: the current version (3.0.0-2ubuntu0.24.04.2~uh~jammy1) is earlier than the previous one (3.0.0-2ubuntu0.24.04.2)
+dpkg-genchanges: info: not including original source code in upload
+ dpkg-source --after-build .
+dpkg-buildpackage: info: binary and diff upload (original source NOT included)
+...
+```
+
+Hat geklappt!
+
 #### Jammy - libqtermwidget5-1-dev:amd64 < none @un H > (>= 1.4.0)
+
+Schrott! Ich habe mich vertippt und "qterminal" statt "qrterminal" gebaut!
 
 ```
 $ ./build-proot.sh -S -a amd64 -s noble -o jammy qterminal
