@@ -30,19 +30,19 @@ Description: Go programming language -- gccgo
 Original-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>
 
 Package: gocryptfs
-Version: 2.4.0.51-1ubuntu0.24.04.2~uh~jammy1
+Version: 2.4.0.54-1ubuntu0.24.04.2~uh~jammy2
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Installed-Size: 13020
+Installed-Size: 13094
 Depends: libc6 (>= 2.34), libssl3 (>= 3.0.0~~alpha1)
 Recommends: fuse3
 Suggests: fido2-tools
-Built-Using: golang-1.22 (= 1.22.2-2~22.04.2), golang-github-aperturerobotics-jacobsa-crypto (= 1.0.2-0~uh~jammy1), golang-github-hanwen-go-fuse (= 2.4.2-2~uh~jammy1), golang-github-rfjakob-eme (= 1.1.1-1), golang-github-sabhiram-go-gitignore (= 1.0.2+git20210923.525f6e1-1~uh~jammy1), golang-github-spf13-pflag (= 1.0.5-2), golang-go.crypto (= 1:0.0~git20211202.5770296-1), golang-golang-x-sys (= 0.17.0-1~uh~jammy1), golang-golang-x-term (= 0.17.0-1~uh~jammy1)
-Filename: ./gocryptfs_2.4.0.51-1ubuntu0.24.04.2~uh~jammy1_amd64.deb
-Size: 5798358
-MD5sum: 6b5c80b063a19838bdc8ae58868403c5
-SHA1: 93802df4ccbc588941f68d065cffb78d07b9146a
-SHA256: 85c0a9d4a91b71366bd38795ebb8a990e476e48c86c5d89bf581da86c4da9b34
+Built-Using: golang-1.22 (= 1.22.2-2~22.04.2), golang-github-aperturerobotics-jacobsa-crypto (= 1.0.2-0~uh~jammy1), golang-github-hanwen-go-fuse (= 2.4.2-2~uh~jammy1), golang-github-rfjakob-eme (= 1.1.1-1), golang-github-sabhiram-go-gitignore (= 1.0.2+git20210923.525f6e1-1~uh~jammy1), golang-github-spf13-pflag (= 1.0.5-2), golang-go.crypto (= 1:0.0~git20211202.5770296-1), golang-golang-x-sys (= 0.17.0-1~uh~jammy1), golang-golang-x-term (= 0.17.0-1~uh~jammy1), golang-rsc-qr (= 0.0~git20161121.48b2ede-1.1), qrterminal (= 3.2.0-2ubuntu0.24.04.2~uh~jammy2)
+Filename: ./gocryptfs_2.4.0.54-1ubuntu0.24.04.2~uh~jammy2_amd64.deb
+Size: 5831652
+MD5sum: eb06b70c0dee0db5ae165934d0777f0b
+SHA1: a0517acfd0729eb7716e8f8cf52587faea7d25ab
+SHA256: be79923538a639927dbc5d87110ef8056a43e1e996e6806f048b531e85820959
 Section: devel
 Priority: optional
 Homepage: https://github.com/rfjakob/gocryptfs
