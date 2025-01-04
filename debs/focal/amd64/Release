@@ -1,23 +1,23 @@
 Architectures: amd64
 Codename: focal
-Date: Sat, 04 Jan 2025 17:28:58 +0000
+Date: Sat, 04 Jan 2025 18:24:25 +0000
 Description: Precompiled packages for our LXC containers
 Label: lxc-ubuntu
 Origin: lxc-ubuntu
 Suite: focal
 MD5Sum:
- 5652a8b54533f7fae8df25d9f3d3adaa            21892 Packages
- aca6b3b5f7c0ca125649a37ff4151d05              833 Packages.gpg
- d10e813a397a042ae68b9522915acc2c              182 Release
+ e5ee13ae4d02526d1e197ba4680e1311            21995 Packages
+ 436c1d142f8ecf54435f860e0d8e0620              833 Packages.gpg
+ 15c7438efdc42651c0683c3fc6fd1546              182 Release
 SHA1:
- 53b872c590c5012b999903def119662285d46ae8            21892 Packages
- 9aac65c8362e5c78fb055adc003cab4d788a08db              833 Packages.gpg
- f55216a411d14735a4f883bb63b4941fe1f0c121              182 Release
+ 3d457a61a3974a69bbb8d3e372a51b374abe0ab3            21995 Packages
+ e30d45d1efeb5837f07cea80b8a6582effa9c722              833 Packages.gpg
+ 6f0f1a892fb13f3ad7714349cd0e0183a3267ca1              182 Release
 SHA256:
- 1afd65eb0c1bb97ef9f9969687cd3e8aceecedfe0477039e596bcedc664ac4ca            21892 Packages
- 6238e1780dcd7786e71e8992799efd50557cd7bd3efec72fd5f748f0737bb656              833 Packages.gpg
- 041837e8ca2b27dfe301a9d506c1653ae8b029a85547d7e1a1b84f226912c238              182 Release
+ 4c6ee53866fe8f71a875c6a2194537667686787b9809bbbb104e87bd044101c0            21995 Packages
+ 743a689c91ecfb27c8a0b4f34e9769459bf03af6f8ad46c1def0356a40b3f905              833 Packages.gpg
+ fed0aefcaaa1e47ee65a2a379411cfbefa79b9cbd952c0acda625d6ca888d923              182 Release
 SHA512:
- b28a942f964f7b13a7971b06683bb3c979a5afe0e604db2fc38f08265d61243a5fa25ed301aa937a047d1f0a0f3907377e36c35fb8269da1b22c6f42e05bce95            21892 Packages
- d71511d904c1b9d8dabd258e2ae3430612fede67bcb379b7efea2e23c8e47f0b9c130a6730c65b6f2cfd13306d31c9e128fa1a1b1640265f5c7f1cb4d93d68d1              833 Packages.gpg
- af87c858ada9a7bbb3a4f35d52d6084437a4c73563b1d9384969c58880b83cd70f7ac9c96ad81ea4f20e2b8345e59f1b6396fb773ef85cf882ee0ab8177cb102              182 Release
+ cba5a5da9a347831a3bf1c5f222594bd88997659a7823c624b7c725e3a23f7348708f9b06e5ecb6ca1af4bafb3c864e0740c0529de7f63e0c0c66bf04d561ae6            21995 Packages
+ 71d1a09e0c9422621a4e6eff520536aaf2478253c02828f6bbe0a3da03babce4cf0ac871b95d1bc0237940bd995ed501dd2c4e283d95d6fc762f2a00053d5e3a              833 Packages.gpg
+ 58a8d8dc43bea9088075ec10729a08c0d94855e2e61eecce6edc0dccb7f37c7de24b79f2d553e5d92668ad21440aa684f5e819fc0204c384ed969c0a9f577912              182 Release
