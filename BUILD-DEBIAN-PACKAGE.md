@@ -145,8 +145,14 @@ Mit "root"
 ./build.sh -S -a amd64 -b "DEB_BUILD_OPTIONS=nostrip" -s noble -o jammy gocryptfs
 ```
 
-Ohne "root" - beinahe
----------------------
+Ohne "root"
+-----------
+
+Hierfür verwende ich PROOT.
+Das hat(te) leider Probleme mit langen Dateinamen.
+Hab eine Korrektur dafür erarbeitet und in PROOT-5.4.0.3
+veröffentlicht! Nun geht es ohne "root". Davor mußte ich
+bei "gocryptfs" die Option "-R" verwenden!
 
 ### Focal
 
@@ -205,3 +211,135 @@ Ich bin grob so vorgegangen:
 - `cp build-proot-focal-amd64/rootfs/src/golang-github-aperturerobotics-jacobsa-crypto/golang-github-aperturerobotics-jacobsa-crypto* debs/focal/src/.`
 - `mv -v debs/focal/src/*deb debs/focal/amd64/.`
 - `./rebuild-ppa.sh`
+
+qterminal und ...
+------------------------
+
+### Jammy
+
+### Probleme
+
+#### Jammy - libqtermwidget5-1-dev:amd64 < none @un H > (>= 1.4.0)
+
+```
+$ ./build-proot.sh -S -a amd64 -s noble -o jammy qterminal
+...
+
+Selecting previously unselected package qterminal-build-deps.
+(Reading database ... 53176 files and directories currently installed.)
+Preparing to unpack qterminal-build-deps_1.4.0-0ubuntu5_all.deb ...
+Unpacking qterminal-build-deps (1.4.0-0ubuntu5) ...
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Correcting dependencies...Starting pkgProblemResolver with broken count: 1
+Starting 2 pkgProblemResolver with broken count: 1
+Investigating (0) qterminal-build-deps:amd64 < 1.4.0-0ubuntu5 @iU K Nb Ib >
+Broken qterminal-build-deps:amd64 Depends on libqtermwidget5-1-dev:amd64 < none @un H > (>= 1.4.0)
+  Removing qterminal-build-deps:amd64 because I can't find libqtermwidget5-1-dev:amd64
+Done
+...
+```
+
+Versuch 1: Versionsnummer entfernt auch debian/control.
+
+```diff
+--- debian/control~	2025-01-04 09:37:00.000000000 +0000
++++ debian/control	2025-01-04 09:40:49.997594053 +0000
+@@ -13,7 +13,7 @@
+                libkf5windowsystem-dev,
+                libqt5svg5-dev,
+                libqt5x11extras5-dev,
+-               libqtermwidget5-1-dev (>= 1.4.0),
++               libqtermwidget5-1-dev,
+                libutf8proc-dev,
+                libx11-dev,
+                lxqt-build-tools (>= 0.13.0)
+```
+
+Klappt leider auch nicht:
+
+```
+# mk-build-deps -i
+...
+Reading state information... Done
+Correcting dependencies...Starting pkgProblemResolver with broken count: 1
+Starting 2 pkgProblemResolver with broken count: 1
+Investigating (0) qterminal-build-deps:amd64 < 1.4.0-0ubuntu5 @iU K Nb Ib >
+Broken qterminal-build-deps:amd64 Depends on libqtermwidget5-1-dev:amd64 < none @un H >
+  Removing qterminal-build-deps:amd64 because I can't find libqtermwidget5-1-dev:amd64
+Done
+ Done
+Starting pkgProblemResolver with broken count: 0
+Starting 2 pkgProblemResolver with broken count: 0
+...
+
+# apt-cache search ".*qter.*"|grep qtermwid
+libqtermwidget5-0 - Terminal emulator widget for Qt 5 (shared libraries)
+libqtermwidget5-0-dev - Terminal emulator widget for Qt 5 (development files)
+qml-module-qmltermwidget - QML port of qtermwidget
+qtermwidget5-data - Terminal emulator widget for Qt 5 (data files)
+```
+
+Also: Auch noch "5-1" ersetzen durch "5-0":
+
+```diff
++++ debian/control	2025-01-04 09:45:12.120978303 +0000
+@@ -13,7 +13,7 @@
+                libkf5windowsystem-dev,
+                libqt5svg5-dev,
+                libqt5x11extras5-dev,
+-               libqtermwidget5-1-dev (>= 1.4.0),
++               libqtermwidget5-0-dev,
+                libutf8proc-dev,
+                libx11-dev,
+                lxqt-build-tools (>= 0.13.0)
+```
+
+Nun bei `mk-build-deps -i` - Mecker wegen lxqt-build-tools:
+
+```
+# mk-build-deps -i
+...
+Reading state information... Done
+Correcting dependencies...Starting pkgProblemResolver with broken count: 1
+Starting 2 pkgProblemResolver with broken count: 1
+Investigating (0) qterminal-build-deps:amd64 < 1.4.0-0ubuntu5 @iU K Nb Ib >
+Broken qterminal-build-deps:amd64 Depends on lxqt-build-tools:amd64 < none | 0.10.0-1ubuntu1 @un uH > (>= 0.13.0)
+  Removing qterminal-build-deps:amd64 because I can't find lxqt-build-tools:amd64
+Done
+ Done
+Starting pkgProblemResolver with broken count: 0
+Starting 2 pkgProblemResolver with broken count: 0
+...
+```
+
+Finale Version von "debian/control":
+
+```diff
+--- debian/control.orig	2025-01-04 09:44:59.733796416 +0000
++++ debian/control	2025-01-04 09:47:27.090114759 +0000
+@@ -13,10 +13,10 @@
+                libkf5windowsystem-dev,
+                libqt5svg5-dev,
+                libqt5x11extras5-dev,
+-               libqtermwidget5-1-dev (>= 1.4.0),
++               libqtermwidget5-0-dev,
+                libutf8proc-dev,
+                libx11-dev,
+-               lxqt-build-tools (>= 0.13.0)
++               lxqt-build-tools
+ Standards-Version: 4.6.2
+ Vcs-Browser: https://git.lubuntu.me/Lubuntu/qterminal-packaging
+ Vcs-Git: https://git.lubuntu.me/Lubuntu/qterminal-packaging.git
+```
+
+Changelog anpassen:
+
+```
+# DEBFULLNAME="Uli Heller" \
+  DEBEMAIL=uli@heller.cool \
+  debchange --changelog debian/changelog \
+    --distribution focal --local "~uli2" \
+    "Manually repackaged for jammy/22.04"
+```
