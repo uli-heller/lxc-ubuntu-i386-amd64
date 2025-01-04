@@ -240,16 +240,16 @@ Description: Native Go bindings for the FUSE kernel module
 
 Package: golang-github-mdp-qrterminal-dev
 Source: qrterminal
-Version: 3.2.0-2ubuntu0.24.04.2~uh~jammy2~uh~focal1
+Version: 3.2.0-2ubuntu0.24.04.2~uh~focal2
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 29
 Depends: golang-github-mattn-go-colorable-dev, golang-rsc-qr-dev
-Filename: ./golang-github-mdp-qrterminal-dev_3.2.0-2ubuntu0.24.04.2~uh~jammy2~uh~focal1_all.deb
-Size: 6148
-MD5sum: 103631b37228d99c370cac6098fa9731
-SHA1: bf1eb820abfeedcf4c9b43e9576fdbdf0e93eb1f
-SHA256: 992dd5ad84a865ff4116fe6884509003626d21cdad185faabc6bd16c8d2306fd
+Filename: ./golang-github-mdp-qrterminal-dev_3.2.0-2ubuntu0.24.04.2~uh~focal2_all.deb
+Size: 6124
+MD5sum: a0ba021315d3961a840414051fa68964
+SHA1: 3819f8179d6e6bf56af64d8e2b75036e4f762803
+SHA256: 2aeb83d07775842a238c6c90953a89d32deaf3bbb8dedcee19cdfa3b5bd6a7f6
 Section: golang
 Priority: optional
 Multi-Arch: foreign
@@ -464,16 +464,16 @@ Description: Go programming language - source files
 Original-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>
 
 Package: qrterminal
-Version: 3.2.0-2ubuntu0.24.04.2~uh~jammy2~uh~focal1
+Version: 3.2.0-2ubuntu0.24.04.2~uh~focal2
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 2206
 Built-Using: golang-1.22 (= 1.22.2-2~20.04.2), golang-github-mattn-go-colorable (= 0.0.9-3), golang-github-mattn-go-isatty (= 0.0.8-2), golang-golang-x-sys (= 0.17.0-1~uh~focal1), golang-golang-x-term (= 0.17.0-1~uh~focal1), golang-rsc-qr (= 0.0~git20161121.48b2ede-1)
-Filename: ./qrterminal_3.2.0-2ubuntu0.24.04.2~uh~jammy2~uh~focal1_amd64.deb
-Size: 1269928
-MD5sum: 6ee56eae677e4da5a1b67e17dfb85a0f
-SHA1: b01013fb043861ecf713fe9ace2228c0de1a2313
-SHA256: fb8bb08af780bb31e9d1af26afa1020d5382d3c655eb18b4927aff5f8b1cb41a
+Filename: ./qrterminal_3.2.0-2ubuntu0.24.04.2~uh~focal2_amd64.deb
+Size: 1269804
+MD5sum: 9feb656c2b9de1de291282937ec40608
+SHA1: 3e29db8c5d34fa0edb29b328c69fc1fa6612762a
+SHA256: 60a4ffe8e776dd2537673a4cd2864371a547953475ad1a21c1fbfab75e127ba8
 Section: golang
 Priority: optional
 Homepage: https://github.com/mdp/qrterminal
