@@ -1,0 +1,39 @@
+Format: 1.8
+Date: Tue, 07 Jan 2025 06:48:28 +0000
+Source: qrterminal
+Binary: golang-github-mdp-qrterminal-dev qrterminal
+Architecture: source all amd64
+Version: 3.2.0.3-2ubuntu0.24.04.2~uh~focal2
+Distribution: jammy
+Urgency: medium
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-github-mdp-qrterminal-dev - Display QR Codes in terminal (library)
+ qrterminal - Display QR Codes in terminal (program)
+Changes:
+ qrterminal (3.2.0.3-2ubuntu0.24.04.2~uh~focal2) jammy; urgency=medium
+ .
+   * New upstream release.
+Checksums-Sha1:
+ e2898b0c193a0451609a35dbe6e7c4a63073c901 1522 qrterminal_3.2.0.3-2ubuntu0.24.04.2~uh~focal2.dsc
+ 8147aae5c85057c22cd31848a34287ace4ced0fe 25438 qrterminal_3.2.0.3.orig.tar.gz
+ e34f5e92fadcedd45b329ecad60dd93f27bf5851 2752 qrterminal_3.2.0.3-2ubuntu0.24.04.2~uh~focal2.debian.tar.xz
+ 06c88bf1cf63cb92600722bbaa63195998a9d0e7 6224 golang-github-mdp-qrterminal-dev_3.2.0.3-2ubuntu0.24.04.2~uh~focal2_all.deb
+ 971e1aa33e128d3b2bcbbd89d3d9f3d632c7419b 6591 qrterminal_3.2.0.3-2ubuntu0.24.04.2~uh~focal2_amd64.buildinfo
+ d0fc72f873f0e982b958a3e8dd7c0a0385012fd1 1269936 qrterminal_3.2.0.3-2ubuntu0.24.04.2~uh~focal2_amd64.deb
+Checksums-Sha256:
+ 482f99a9ca9c29b64693c5a37a99adf310211fdea079bb6d50718d52cff676e6 1522 qrterminal_3.2.0.3-2ubuntu0.24.04.2~uh~focal2.dsc
+ 50c89ab304bf437d4c18f6632bd50bc240a2c059fdf9f9852d5bcaa83a831880 25438 qrterminal_3.2.0.3.orig.tar.gz
+ 6481ee56ada55349e530b30b6e165855ba410e0381895b8a7e827cf8213b5be9 2752 qrterminal_3.2.0.3-2ubuntu0.24.04.2~uh~focal2.debian.tar.xz
+ 74b0b95d70095cea1f5f2f748f59f48e9b3a123cabab4c357d98a17d97539efb 6224 golang-github-mdp-qrterminal-dev_3.2.0.3-2ubuntu0.24.04.2~uh~focal2_all.deb
+ 3acd293ea9998ee7bec82b48d95db934858a2e87476f06c643bab5883b33fd7b 6591 qrterminal_3.2.0.3-2ubuntu0.24.04.2~uh~focal2_amd64.buildinfo
+ f681f20ca95c8a3fbbe874f352cd6480e2b70c3e868576f00ce6fb1fa43327da 1269936 qrterminal_3.2.0.3-2ubuntu0.24.04.2~uh~focal2_amd64.deb
+Files:
+ ad09e0cec82609aa06d23580785ad941 1522 golang optional qrterminal_3.2.0.3-2ubuntu0.24.04.2~uh~focal2.dsc
+ 46a17aa8b2bad3b27557acaed44e166a 25438 golang optional qrterminal_3.2.0.3.orig.tar.gz
+ 0db54d5c4bb00a6bcbb748c04fffd9f5 2752 golang optional qrterminal_3.2.0.3-2ubuntu0.24.04.2~uh~focal2.debian.tar.xz
+ 6a31acc3d291ced36601e3aeb2666c45 6224 golang optional golang-github-mdp-qrterminal-dev_3.2.0.3-2ubuntu0.24.04.2~uh~focal2_all.deb
+ b2c9620bf539e62fb98b852436b8c50f 6591 golang optional qrterminal_3.2.0.3-2ubuntu0.24.04.2~uh~focal2_amd64.buildinfo
+ f3dadcaee23dab9684591563d18c021f 1269936 golang optional qrterminal_3.2.0.3-2ubuntu0.24.04.2~uh~focal2_amd64.deb
+Original-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
