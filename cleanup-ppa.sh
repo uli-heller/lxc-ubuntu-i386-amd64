@@ -3,7 +3,10 @@ BN="$(basename "$0")"
 D="$(dirname "$0")"
 D="$(cd "${D}" && pwd)"
 
-ALL_PPAS="${D}/debs"
+ALL_PPAS="$1"
+test -z "${ALL_PPAS}" && {
+  ALL_PPAS="${D}/debs"
+}
 
 TMPDIR="/tmp/${BN}-$(date +%s+%N|sha256sum|cut -d " " -f 1)-$$~"
 
