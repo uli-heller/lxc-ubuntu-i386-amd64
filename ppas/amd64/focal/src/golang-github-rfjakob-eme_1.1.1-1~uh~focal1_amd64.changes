@@ -1,0 +1,31 @@
+Format: 1.8
+Date: Thu, 02 Jan 2025 19:22:24 +0000
+Source: golang-github-rfjakob-eme
+Binary: golang-github-rfjakob-eme-dev
+Architecture: source all
+Version: 1.1.1-1~uh~focal1
+Distribution: focal
+Urgency: medium
+Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-github-rfjakob-eme-dev - EME wide-block encryption for Go
+Changes:
+ golang-github-rfjakob-eme (1.1.1-1~uh~focal1) focal; urgency=medium
+ .
+   * Repackaged for focal
+Checksums-Sha1:
+ 227ec65a5b92247990f367938e14c753ad34e7a4 1395 golang-github-rfjakob-eme_1.1.1-1~uh~focal1.dsc
+ b60ba182fa7732769d5f1859fd40a8df632c6ef5 3352 golang-github-rfjakob-eme_1.1.1-1~uh~focal1.debian.tar.xz
+ 10d95bea203a15f6fb6435495020a9b79c2d8411 12168 golang-github-rfjakob-eme-dev_1.1.1-1~uh~focal1_all.deb
+ edad2421735a859f6e20df2e51dd7573107fa2c0 5819 golang-github-rfjakob-eme_1.1.1-1~uh~focal1_amd64.buildinfo
+Checksums-Sha256:
+ d4cc3b50764576fdbe2cf5f871f2ee81f085afad2e1caa1573cb04f9feb1f3ab 1395 golang-github-rfjakob-eme_1.1.1-1~uh~focal1.dsc
+ 05707b74a892cd85714733b6d60175525a9af4c2d23074a9b0c2536332d89088 3352 golang-github-rfjakob-eme_1.1.1-1~uh~focal1.debian.tar.xz
+ 7a56e800e7504ec5a5dde9ab2b22f580580f6fe67d73737ce3f95f683c77abd2 12168 golang-github-rfjakob-eme-dev_1.1.1-1~uh~focal1_all.deb
+ ee2ae61b3a7176b9f5637e9ce42af9ef8da7e48b9f0c231be896681521093c0c 5819 golang-github-rfjakob-eme_1.1.1-1~uh~focal1_amd64.buildinfo
+Files:
+ 4bb89c0f0452f46fbe73719f609f82b0 1395 devel optional golang-github-rfjakob-eme_1.1.1-1~uh~focal1.dsc
+ 939168f6c736e13d170c6731706ce867 3352 devel optional golang-github-rfjakob-eme_1.1.1-1~uh~focal1.debian.tar.xz
+ 21bb8ef1329bea2e7b849038a031f7b7 12168 devel optional golang-github-rfjakob-eme-dev_1.1.1-1~uh~focal1_all.deb
+ 46b3bf6790085b894c54c36d39eeef86 5819 devel optional golang-github-rfjakob-eme_1.1.1-1~uh~focal1_amd64.buildinfo

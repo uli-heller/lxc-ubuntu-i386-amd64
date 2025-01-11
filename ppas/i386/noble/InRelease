@@ -1,0 +1,50 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Architectures: i386
+Codename: noble
+Date: Sat, 11 Jan 2025 18:32:40 +0000
+Description: Precompiled packages for our LXC containers
+Label: lxc-ubuntu
+Origin: lxc-ubuntu
+Suite: noble
+MD5Sum:
+ 39bd76a02833eb07f082278b2d74c2c1            17550 Packages
+ 0b2d1c1ceb4c6a7c0b92f916fbc3b74d              833 Packages.gpg
+ 7efbe5e60e6018f1fedcf9410fc6dacd              181 Release
+ d41d8cd98f00b204e9800998ecf8427e                0 Sources
+ 0a3ced5810169a3242e20aa2a55a09e5              833 Sources.gpg
+SHA1:
+ 3ba266013e5aba9245e37b5a706b6c89f2f08bc4            17550 Packages
+ 3ab2456a07843c9a53acb56ff535175da3f1aea3              833 Packages.gpg
+ fb08b070ee5a87aac51e1e78d456f8523516163a              181 Release
+ da39a3ee5e6b4b0d3255bfef95601890afd80709                0 Sources
+ b5ff8b76813524b73418b5df7d314d24c59a544b              833 Sources.gpg
+SHA256:
+ a3563320152c30f25da36093a50fe2233d280c82358135cb2f591540f8f01e20            17550 Packages
+ 18a4311b834cba85c2846ce358c9fe97a3bf51802a508898b3641779be036d70              833 Packages.gpg
+ 2b4e081042ac83cd213a170171c64893ea856088b0c11318d1b814ade9f17855              181 Release
+ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855                0 Sources
+ 99d0b69d7716ade99a3f1487d1ebffa87ee7c2eeae4f8c2baac0d54815f5855e              833 Sources.gpg
+SHA512:
+ f087c0d8ad5f9961856148bfb563c79a542c7017fa3d73b48118e9a0c9ce6a198801bf9b2c2f411e2ec850eabb879fc673c61cdcca20384e0c2f490d697c02dd            17550 Packages
+ 1f9db90736da7199631fb924adb5e82d31fbfd2117fd1c602457e77d70c5419df154fc7e175f2886a88ed1c0e5afd88f3903c5f31db56e2731755c1cfc5654fe              833 Packages.gpg
+ 781f7304fe9ab3f5873ad6fb2509d00733f24a4f1522de8d3dc6de1ecdeec3081ff876bf1eb70af9d916c6d8279d693bd5bd727054fc190919fc0a6694e2e09c              181 Release
+ cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e                0 Sources
+ 9759606f93f3292a8b16399700c61fe88006ac8a8032be92aeb4889df63d9884ee1a17ad57fdfc7bfefec01d6b4f156f6def131fe1c8c85adb803d59a384c0a4              833 Sources.gpg
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEE82hycVroFa5OYg3TOC3lxFUcsDQFAmeCuUgACgkQOC3lxFUc
+sDTWwA//WJCaRAMFsCP3QJapapjT5koHI1GveyvML+P9kdtDVOm/6KCgkFy0uzGl
+9khtyAuRZjtfI89rrAHe5oBYTdfkqTo+PwJVWLUr2tG7MdfGM5jxaF1AK6MrIpc6
+0K+ITTVjEwVdo8nh4HEErPuI1STizA+k5XV5X0WYLcuEjsjII/3y3BvEUDpV0cKp
+iTdedZ3DLUK80H5zooTfym65IcomAEmAfvyWC2CSZKnNU3ZVNKP+QunTURXsZzsb
+8LRVIE4aki+Tc2UGK5V9BgbzaFtSods7GdmGtSFCb9G79Pza1YkGMAuWwMSWnH8G
+KhQCK+KMemixaAbrKneBEWd+c2GqTgQbJqFqdK5yjPRWJsbKDVqq+JwnwA/rkMy5
+zbwW7WE5R0ZMdp609jxToi+qm52DooyuJA06Em9L7Jt7YY5BUOI8f9idr2NzAHx4
+XfFusuDb2EXWgzHbL6O4gKGhqOLryBWn8k4i2ckEAFgwsce/iDbUwP6rrWjDeH2Q
+lEjEtNYPazkWiTPW1aBGpiKxbI7aX/C1f78b1KzQZlzjKvnbIAGElnyldTgfAf+J
+bS6DvAg4UcUTNM7AGFApZVQrWAVDEvpL8b99VjJwleJQS/J5zgLIsXSqI0BYUzW6
+nxhBhmXIJx1J5LH0Sgq1Tgt9n3rrtXvhStgiq/6opRfZIDWJP5E=
+=0jE7
+-----END PGP SIGNATURE-----

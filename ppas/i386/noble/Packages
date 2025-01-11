@@ -1,0 +1,402 @@
+Package: at
+Version: 3.2.5-2.1ubuntu3
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 157
+Depends: libpam-runtime (>= 1.0.1-11), lsb-base (>= 3.2-14), libc6 (>= 2.38), libpam0g (>= 0.99.7.1), libselinux1 (>= 3.1~)
+Suggests: default-mta | mail-transport-agent
+Filename: noble/debs/at_3.2.5-2.1ubuntu3_i386.deb
+Size: 48678
+MD5sum: 98dd8ef630d9aef4b9f40db4f30f6eee
+SHA1: 9c439f7e0e7c2ccc3b1e2394549f94896be5e833
+SHA256: 6146bbeb98d25a131e71a6111b1d96ebdcf27d8a1f52640f3a0351cc8c04f967
+Section: admin
+Priority: standard
+Multi-Arch: foreign
+Homepage: http://blog.calhariz.com
+Description: Delayed job execution and batch processing
+ At and batch read shell commands from standard input
+ storing them as a job to be scheduled for execution in the
+ future.
+ .
+ Use
+  at    to run the job at a specified time
+  batch to run the job when system load levels permit
+Original-Maintainer: Jose M Calhariz <calhariz@debian.org>
+
+Package: joe-jupp
+Source: jupp
+Version: 3.1.41-1
+Architecture: all
+Maintainer: Thorsten Glaser <tg@mirbsd.de>
+Installed-Size: 186
+Depends: jupp (>= 3.1.37)
+Conflicts: joe
+Replaces: joe
+Provides: joe
+Filename: noble/debs/joe-jupp_3.1.41-1_all.deb
+Size: 34398
+MD5sum: bfb8e0dc87fa06e863fc5ba43dc3dfc2
+SHA1: e69fa7eb97841d3cb18ace83fb366f1006c8310c
+SHA256: 993f821d8d43b2327ebc781292e6413be3f0de7bc93e4b3bd9ce50a08e1d1b5f
+Section: editors
+Priority: optional
+Multi-Arch: foreign
+Homepage: http://www.mirbsd.org/jupp.htm
+Description: reimplement the joe Debian package using jupp
+ This package contains symbolic links to replace the Debian joe package
+ using the jupp package’s JOE implementation (binaries and manpages).
+ It also contains the appropriate conffiles and, in contrast to Debian’s
+ joe flavour, supports SELinux context copying (on Debian systems with
+ the Linux kernel), and has many bugs fixed and makes some of jupp’s new
+ features available to the joe, jstar, jmacs, jpico and rjoe flavours.
+
+Package: jupp
+Version: 3.1.41-1
+Architecture: i386
+Maintainer: Thorsten Glaser <tg@mirbsd.de>
+Installed-Size: 613
+Depends: libc6 (>= 2.38), libselinux1 (>= 3.1~), libtinfo6 (>= 6)
+Enhances: nbc
+Breaks: joe (<< 3.7-2.3~)
+Provides: editor
+Filename: noble/debs/jupp_3.1.41-1_i386.deb
+Size: 234754
+MD5sum: 27f7e3c9efeb1967350f60c8c5f71b63
+SHA1: 3eadeb75b75281c5ca81dd7bec25c94879387d35
+SHA256: 932b50da8c74ac69496276a9a346464db2ac3ad9595be064fa1233441d3b73fb
+Section: editors
+Priority: optional
+Multi-Arch: foreign
+Homepage: http://www.mirbsd.org/jupp.htm
+Description: user friendly full screen text editor
+ JOE, the Joe’s Own Editor, has the feel of most PC text editors: the key
+ sequences are reminiscent of WordStar and Turbo C editors, but the feature
+ set is much larger than of those.  JOE has all of the features a Unix
+ user should expect: full use of termcap/terminfo, complete vi-style Unix
+ integration, a powerful configuration file and a regular expression search
+ system.  It also has eight help reference cards which are always available,
+ and an intuitive, simple, and well thought-out user interface.
+ .
+ JOE has a great screen update optimisation algorithm, multiple windows
+ (through/between which you can scroll) and lacks the confusing notion of
+ named buffers.  It has command history, tab expansion in file selection
+ menus, undo and redo functions, (un)indenting and paragraph formatting,
+ filtering highlighted blocks through any external Unix command, editing
+ a pipe into or out of a command, block move, copy, delete or filter, a
+ bracketed paste mode automatically enabled on xterm-xfree86 and decimal
+ and hexadecimal gotos for lines, columns, and file offsets.
+ .
+ Through simple QEdit-style configuration files, JOE can be set up to
+ emulate editors such as Pico and Emacs, along with a complete imitation
+ of WordStar in non-document mode, and a restricted mode version (lets you
+ edit only the files specified on the command line). JOE also has a deferred
+ screen update to handle typeahead, and it ensures that deferral is not
+ bypassed by tty buffering. It’s usable even at 2400 baud, and it will work
+ on any kind of sane terminal. Furthermore, it supports SELinux context
+ copying on Debian systems with the Linux kernel.
+ .
+ This version of JOE only comes with the “jupp” flavour, to not conflict
+ with the Debian joe package, activated. The resource files and executable
+ links and menu entries for the other flavours are still available, though,
+ in the joe-jupp package.
+
+Package: libnetplan-dev
+Source: netplan.io
+Version: 1.0.1-1dp012~24.04.1~noble
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 70
+Depends: libnetplan1 (= 1.0.1-1dp012~24.04.1~noble)
+Filename: noble/debs/libnetplan-dev_1.0.1-1dp012~24.04.1~noble_i386.deb
+Size: 22034
+MD5sum: 9d70d52483a6920b9c39d15528206947
+SHA1: b3646195676bb415875c38afda854508e1fa9ebf
+SHA256: 157e0b4626d46430e04aff4226cfd8914971de914af46df1eb642c8aa5886864
+Section: libdevel
+Priority: optional
+Multi-Arch: same
+Homepage: https://netplan.io/
+Description: Development files for Netplan's libnetplan runtime library
+ netplan reads YAML network configuration files which are written
+ by administrators, installers, cloud image instantiations, or other OS
+ deployments. During early boot it then generates backend specific
+ configuration files in /run to hand off control of devices to a particular
+ networking daemon.
+ .
+ Currently supported backends are networkd and NetworkManager.
+ .
+ This package contains development files for developers wanting to use
+ libnetplan in their applications.
+Original-Maintainer: Debian Netplan Maintainers <team+netplan@tracker.debian.org>
+
+Package: libnetplan1
+Source: netplan.io
+Version: 1.0.1-1dp012~24.04.1~noble
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 382
+Depends: libc6 (>= 2.38), libglib2.0-0t64 (>= 2.75.3), libuuid1 (>= 2.16), libyaml-0-2
+Filename: noble/debs/libnetplan1_1.0.1-1dp012~24.04.1~noble_i386.deb
+Size: 131852
+MD5sum: 677fc859deb62498d93306a73ffde256
+SHA1: f157b3affcb8cfd7dbbcd6c52a6bf74ab69bf59e
+SHA256: 11e86d660f874d0e80a37daa6ad00d415b73808cfcbaac9afaa7acb64f4209a5
+Section: libs
+Priority: optional
+Multi-Arch: same
+Homepage: https://netplan.io/
+Description: Declarative network configuration runtime library
+ netplan reads YAML network configuration files which are written
+ by administrators, installers, cloud image instantiations, or other OS
+ deployments. During early boot it then generates backend specific
+ configuration files in /run to hand off control of devices to a particular
+ networking daemon.
+ .
+ Currently supported backends are networkd and NetworkManager.
+ .
+ This package contains the necessary runtime library files.
+Original-Maintainer: Debian Netplan Maintainers <team+netplan@tracker.debian.org>
+
+Package: logrotate
+Version: 3.21.0-2build1
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 144
+Depends: cron | anacron | cron-daemon | systemd-sysv, libacl1 (>= 2.2.23), libc6 (>= 2.38), libpopt0 (>= 1.14), libselinux1 (>= 3.1~)
+Suggests: bsd-mailx | mailx
+Filename: noble/debs/logrotate_3.21.0-2build1_i386.deb
+Size: 54952
+MD5sum: b55215b91c30b4260db3a9d67044ee65
+SHA1: a0af2a92d98c1677086191979920d540c22d5a89
+SHA256: 40bd17ddb97e12bd716afe2e0613459ea41b42c0f7c20145d2bd995ae638a5eb
+Section: admin
+Priority: important
+Multi-Arch: foreign
+Homepage: https://github.com/logrotate/logrotate
+Description: Log rotation utility
+ The logrotate utility is designed to simplify the administration of
+ log files on a system which generates a lot of log files.  Logrotate
+ allows for the automatic rotation compression, removal and mailing of
+ log files.  Logrotate can be set to handle a log file daily, weekly,
+ monthly or when the log file gets to a certain size.  Normally, logrotate
+ runs as a daily cron job.
+Original-Maintainer: Christian Göttsche <cgzones@googlemail.com>
+
+Package: netplan-generator
+Source: netplan.io
+Version: 1.0.1-1dp012~24.04.1~noble
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 94
+Depends: libc6 (>= 2.34), libglib2.0-0t64 (>= 2.70.0), libnetplan1 (= 1.0.1-1dp012~24.04.1~noble), systemd (>= 248~)
+Suggests: network-manager | wpasupplicant, openvswitch-switch, iw
+Breaks: netplan.io (<< 0.106.1-8~)
+Replaces: netplan.io (<< 0.106.1-8~)
+Filename: noble/debs/netplan-generator_1.0.1-1dp012~24.04.1~noble_i386.deb
+Size: 26228
+MD5sum: 537fbedd50db5726890b86b63c6cc3cb
+SHA1: 795a9036ee820b84446f76deee78dd97d550aae6
+SHA256: 1649003842778cc4205174b95fa8735617ae922ebe45b0650d6cca696674f29c
+Section: net
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://netplan.io/
+Description: Declarative network configuration systemd-generator
+ netplan reads YAML network configuration files which are written
+ by administrators, installers, cloud image instantiations, or other OS
+ deployments. During early boot it then generates backend specific
+ configuration files in /run to hand off control of devices to a particular
+ networking daemon.
+ .
+ Currently supported backends are networkd and NetworkManager.
+ .
+ This package provides a systemd-generator to configure networking daemons
+ at boot time.
+Original-Maintainer: Debian Netplan Maintainers <team+netplan@tracker.debian.org>
+
+Package: netplan.io
+Version: 1.0.1-1dp012~24.04.1~noble
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 302
+Depends: libc6 (>= 2.34), libglib2.0-0t64 (>= 2.70.0), libnetplan1 (= 1.0.1-1dp012~24.04.1~noble), libsystemd0 (>= 243), iproute2, netplan-generator, python3, python3-dbus, python3-netplan, python3-netifaces, python3-yaml, systemd (>= 248~)
+Recommends: python3-rich
+Filename: noble/debs/netplan.io_1.0.1-1dp012~24.04.1~noble_i386.deb
+Size: 69726
+MD5sum: 5976af34aff46035889d2a04d5da1177
+SHA1: 91065d9ed7fc896684be457cf9edb00fd0650c4f
+SHA256: c5dedee53afaa436e7f642d0f85f2890800659700bab3af7135dc4766ccc950f
+Section: net
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://netplan.io/
+Description: Declarative network configuration for various backends
+ netplan reads YAML network configuration files which are written
+ by administrators, installers, cloud image instantiations, or other OS
+ deployments. During early boot it then generates backend specific
+ configuration files in /run to hand off control of devices to a particular
+ networking daemon.
+ .
+ Currently supported backends are networkd and NetworkManager.
+Original-Maintainer: Debian Netplan Maintainers <team+netplan@tracker.debian.org>
+
+Package: python-cffi-doc
+Source: python-cffi
+Version: 1.16.0-2build1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 870
+Depends: libjs-sphinxdoc (>= 7.2.2)
+Filename: noble/debs/python-cffi-doc_1.16.0-2build1_all.deb
+Size: 146848
+MD5sum: 621d3cd1c3c3776f87374640f308aa56
+SHA1: 744cf7019d2e379db31ad46f38e3d19de153b034
+SHA256: c288af8712a04b4d721138f4b4efa2f4dec7b1585bf4708b22a2d9c35a78afe9
+Section: doc
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://cffi.readthedocs.org/
+Description: Foreign Function Interface for Python calling C code - documentation
+ Convenient and reliable way of calling C code from Python.
+ .
+ The aim of this project is to provide a convenient and reliable way of calling
+ C code from Python. It keeps Python logic in Python, and minimises the C
+ required. It is able to work at either the C API or ABI level, unlike most
+ other approaches, that only support the ABI level.
+ .
+ This package contains the developer documentation for cffi.
+Original-Maintainer: Debian Python Team <team+python@tracker.debian.org>
+
+Package: python3-cffi
+Source: python-cffi
+Version: 1.16.0-2build1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 413
+Depends: python3-cffi-backend (<< 1.16.0-2build1+c), python3-cffi-backend (>= 1.16.0-2build1), python3-pycparser, python3:any
+Suggests: python3-dev
+Filename: noble/debs/python3-cffi_1.16.0-2build1_all.deb
+Size: 89512
+MD5sum: 5d872214a92190173ffcd7a98d063920
+SHA1: 5bb38f91ce721378f423a5e21f8b1cd9c6d9da9a
+SHA256: 35e6b4fd28614bf6c9964591f8793b01ede7053392259b90d71bbe16d354214f
+Section: python
+Priority: optional
+Homepage: https://cffi.readthedocs.org/
+Description: Foreign Function Interface for Python 3 calling C code
+ Convenient and reliable way of calling C code from Python 3.
+ .
+ The aim of this project is to provide a convenient and reliable way of calling
+ C code from Python. It keeps Python logic in Python, and minimises the C
+ required. It is able to work at either the C API or ABI level, unlike most
+ other approaches, that only support the ABI level.
+ .
+ This package contains the necessary build and runtime support for cffi
+ modules.
+Original-Maintainer: Debian Python Team <team+python@tracker.debian.org>
+
+Package: python3-cffi-backend
+Source: python-cffi
+Version: 1.16.0-2build1
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 210
+Depends: python3 (<< 3.13), python3 (>= 3.12~), libc6 (>= 2.38), libffi8 (>= 3.4)
+Provides: python3-cffi-backend-api-9729, python3-cffi-backend-api-max (= 10495), python3-cffi-backend-api-min (= 9729)
+Filename: noble/debs/python3-cffi-backend_1.16.0-2build1_i386.deb
+Size: 94746
+MD5sum: d3d514b62471f39ba5f7d6b3b7edc587
+SHA1: c18654e211f3f3d02460bab3e1756a74b2ebae33
+SHA256: fbb7ba9e246d6f8fd0dc50922497dcfdf5340d1661796360fc4757b18a2cbee5
+Section: python
+Priority: optional
+Multi-Arch: same
+Homepage: https://cffi.readthedocs.org/
+Description: Foreign Function Interface for Python 3 calling C code - runtime
+ Convenient and reliable way of calling C code from Python 3.
+ .
+ The aim of this project is to provide a convenient and reliable way of calling
+ C code from Python. It keeps Python logic in Python, and minimises the C
+ required. It is able to work at either the C API or ABI level, unlike most
+ other approaches, that only support the ABI level.
+ .
+ This package contains the runtime support for pre-built cffi modules.
+Original-Maintainer: Debian Python Team <team+python@tracker.debian.org>
+
+Package: python3-netifaces
+Source: netifaces
+Version: 0.11.0-2build3
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 56
+Depends: python3 (<< 3.13), python3 (>= 3.12~), libc6 (>= 2.4)
+Filename: noble/debs/python3-netifaces_0.11.0-2build3_i386.deb
+Size: 18550
+MD5sum: 28c767ea6ad5731b3b5b36c92b29ef23
+SHA1: 2945f22ddb40857d26dcd924108fd6bc32c986d8
+SHA256: ee48012b74018ee5349defb97e511790df5b6c98435048ea6f75ed734359d9d4
+Section: python
+Priority: optional
+Multi-Arch: same
+Homepage: https://alastairs-place.net/projects/netifaces/
+Description: portable network interface information - Python 3.x
+ netifaces provides a (hopefully portable-ish) way for Python programmers to
+ get access to a list of the network interfaces on the local machine, and to
+ obtain the addresses of those network interfaces.
+ .
+ This package contains the module for Python 3.x.
+Original-Maintainer: Debian Python Team <team+python@tracker.debian.org>
+
+Package: python3-netplan
+Source: netplan.io
+Version: 1.0.1-1dp012~24.04.1~noble
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 122
+Depends: libc6 (>= 2.4), libnetplan1 (= 1.0.1-1dp012~24.04.1~noble), python3, python3-cffi-backend
+Breaks: netplan.io (<< 0.107-3~)
+Replaces: netplan.io (<< 0.107-3~)
+Filename: noble/debs/python3-netplan_1.0.1-1dp012~24.04.1~noble_i386.deb
+Size: 33786
+MD5sum: edb793f878b9386242e5b9351ea775d6
+SHA1: 6aa86542372ca2512e58dd56bf0e9555ed0f4953
+SHA256: b116e4d45ede03e8274d9773eacd1cea0eddb06e1352e558ed8c5a2366d68ee8
+Section: python
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://netplan.io/
+Description: Declarative network configuration Python bindings
+ netplan reads YAML network configuration files which are written
+ by administrators, installers, cloud image instantiations, or other OS
+ deployments. During early boot it then generates backend specific
+ configuration files in /run to hand off control of devices to a particular
+ networking daemon.
+ .
+ Currently supported backends are networkd and NetworkManager.
+ .
+ This package provides a CFFI based Python bindings to libnetplan.
+Original-Maintainer: Debian Netplan Maintainers <team+netplan@tracker.debian.org>
+
+Package: python3-pytest-cov
+Source: python-pytest-cov
+Version: 4.1.0-1
+Architecture: all
+Maintainer: Federico Ceratto <federico@debian.org>
+Installed-Size: 93
+Depends: python3-coverage, python3-pytest (>= 3.6), python3:any, libjs-jquery, libjs-jquery-hotkeys, libjs-jquery-isonscreen, libjs-jquery-tablesorter, libjs-jquery-throttle-debounce
+Filename: noble/debs/python3-pytest-cov_4.1.0-1_all.deb
+Size: 27120
+MD5sum: e79a2a5dfc4a450152b1b2cb632ea4a2
+SHA1: d241b24af9a7a85913f8e6b5d088ed1fa0737b83
+SHA256: 60401bbce30c00cb0c4258058f2e9ed4b5573d80c544a337c568b6ed12f64c01
+Section: python
+Priority: optional
+Homepage: https://github.com/pytest-dev/pytest-cov
+Description: py.test plugin to produce coverage reports for Python3
+ This py.test plugin produces coverage reports. It supports both centralised
+ and distributed testing across multiple hosts. It can run parallel tests on
+ different platforms, architectures, and Python versions.
+ It supports coverage of subprocesses and can produce reports in text, HTML,
+ XML and annotated source code.
+

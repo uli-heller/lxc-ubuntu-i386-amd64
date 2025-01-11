@@ -1,0 +1,31 @@
+Format: 1.8
+Date: Thu, 02 Jan 2025 19:23:21 +0000
+Source: dh-golang
+Binary: dh-golang
+Architecture: source all
+Version: 1.53~uh~focal1
+Distribution: focal
+Urgency: medium
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ dh-golang  - debhelper add-on for packaging software written in Go (golang)
+Changes:
+ dh-golang (1.53~uh~focal1) focal; urgency=medium
+ .
+   * Repackaged for focal
+Checksums-Sha1:
+ d02346218cc0b6fa043ab65f8e55a73ef0251c66 901 dh-golang_1.53~uh~focal1.dsc
+ 7affabd2990c6d313d11c560fd263500bdaa2d23 17964 dh-golang_1.53~uh~focal1.tar.xz
+ d6a6045fc8a1eb09afe2a59ad7523967601badfe 25868 dh-golang_1.53~uh~focal1_all.deb
+ 8352ace6fb3b42771517a12fb0858cb00dc2f960 5595 dh-golang_1.53~uh~focal1_amd64.buildinfo
+Checksums-Sha256:
+ 881c43abf18d57da4a33728afa912452dd85c26e4e26de5bdd4bf8e4178a79be 901 dh-golang_1.53~uh~focal1.dsc
+ 06a742da02640b20adae4ca63213db39d264a38d2bd9c3359abf99c610973bc2 17964 dh-golang_1.53~uh~focal1.tar.xz
+ 2e949144c24156626baf2ce53c7bba520675ade77ebcce4b87ad0d4df72625d6 25868 dh-golang_1.53~uh~focal1_all.deb
+ 0036e0d10c310f54c266eae6743ab6e2aec223a17b483bb950a0bee51f0bae02 5595 dh-golang_1.53~uh~focal1_amd64.buildinfo
+Files:
+ 9cc503336c9a3529de19fae433ea58ca 901 devel optional dh-golang_1.53~uh~focal1.dsc
+ e0f001e7fb68ad1b7abc2b5b03df89f1 17964 devel optional dh-golang_1.53~uh~focal1.tar.xz
+ 5543fad78805762c2e1729f2e7e75130 25868 devel optional dh-golang_1.53~uh~focal1_all.deb
+ 99ee607cf97ea3d3209c0cb181513a26 5595 devel optional dh-golang_1.53~uh~focal1_amd64.buildinfo

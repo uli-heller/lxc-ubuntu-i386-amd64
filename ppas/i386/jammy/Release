@@ -1,0 +1,31 @@
+Architectures: i386
+Codename: jammy
+Date: Sat, 11 Jan 2025 18:32:40 +0000
+Description: Precompiled packages for our LXC containers
+Label: lxc-ubuntu
+Origin: lxc-ubuntu
+Suite: jammy
+MD5Sum:
+ 4031d8feb419f82c6355ff4600a119f9           296181 Packages
+ f4ea23d729c039c2146f6e1fce27cc45              833 Packages.gpg
+ 80d3d875f7e1c4e0365812f4a7f5aab8              181 Release
+ d41d8cd98f00b204e9800998ecf8427e                0 Sources
+ 0a3ced5810169a3242e20aa2a55a09e5              833 Sources.gpg
+SHA1:
+ e34ee3ced55f3e4023f74d87fe4dd21ad932a7cd           296181 Packages
+ 784402845cb86f12e8c6d9d6edd2cffd42cf52dd              833 Packages.gpg
+ ebfae22e65b130f3c7ad01c89ec5bbf1f5a872c3              181 Release
+ da39a3ee5e6b4b0d3255bfef95601890afd80709                0 Sources
+ b5ff8b76813524b73418b5df7d314d24c59a544b              833 Sources.gpg
+SHA256:
+ 18cc9aaa9a58fe84266cc55d79fe852874804ca580c36cfd990b89dee2af17c5           296181 Packages
+ effc74ddf6ae62daacb4d49935a30e5a0fb02216eeced2ee167c6a77eba0eaef              833 Packages.gpg
+ 7bf8a63fb75adc0741ec6a15cb0e91bfef16cfa7d3ad92f74861f017d31fc523              181 Release
+ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855                0 Sources
+ 99d0b69d7716ade99a3f1487d1ebffa87ee7c2eeae4f8c2baac0d54815f5855e              833 Sources.gpg
+SHA512:
+ e70e92ca62532619b4f16c41efd0a115a3440ce5be091a80a5be15bc989dfdce941507cf952ce3613c7d7d3a4276bde6adbca17a090b0ab59dd18f8a62c1c9d3           296181 Packages
+ d08048749abd8705fbb58afffd1d34b5e108db4a9cd476bf711ea2883a0baaab335e8e5548798ef98c8bc9cb41c4f1c72e46fbf0062c1c654c541e5d5b939aec              833 Packages.gpg
+ ec0b2cb91106caca4db1db4e517b04952a50c22ca111a3623d88d38d6f9f9c9a065d835b72ecdc44c3f67c33369910a75967958374861b50941fa4c5e8b79c86              181 Release
+ cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e                0 Sources
+ 9759606f93f3292a8b16399700c61fe88006ac8a8032be92aeb4889df63d9884ee1a17ad57fdfc7bfefec01d6b4f156f6def131fe1c8c85adb803d59a384c0a4              833 Sources.gpg

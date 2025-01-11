@@ -1,0 +1,31 @@
+Format: 1.8
+Date: Fri, 03 Jan 2025 15:07:13 +0000
+Source: golang-golang-x-term
+Binary: golang-golang-x-term-dev
+Architecture: source all
+Version: 0.17.0-1~uh~focal1
+Distribution: focal
+Urgency: medium
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-golang-x-term-dev - Go terminal and console support (library)
+Changes:
+ golang-golang-x-term (0.17.0-1~uh~focal1) focal; urgency=medium
+ .
+   * Repackaged for focal
+Checksums-Sha1:
+ 7c76dcd434cf38a2611dc49497555bda64350581 1389 golang-golang-x-term_0.17.0-1~uh~focal1.dsc
+ a7d17683e92dfdf19d3a6fa402188c712629c1c7 2848 golang-golang-x-term_0.17.0-1~uh~focal1.debian.tar.xz
+ 403d3266d0c2365338523664df675394a0580cb2 14760 golang-golang-x-term-dev_0.17.0-1~uh~focal1_all.deb
+ 926d19f854e232fb773f5811b1dc07e5992a4ee8 5875 golang-golang-x-term_0.17.0-1~uh~focal1_amd64.buildinfo
+Checksums-Sha256:
+ 8a73c6b4de6ab1ca4890a6ace6d09d8f17c69fe20d944189b04b31d2988b00a4 1389 golang-golang-x-term_0.17.0-1~uh~focal1.dsc
+ 7cbf1300865baf58e7b7b707e79a3f3c31e2b0b09e9636c96e4bf8f8198a6871 2848 golang-golang-x-term_0.17.0-1~uh~focal1.debian.tar.xz
+ 0f5c17c016f5455d16a667ea382635bd0b4f8655f9d87f4e081e1a92a95c71bf 14760 golang-golang-x-term-dev_0.17.0-1~uh~focal1_all.deb
+ 8d1514aa8f2591f0e76a5f93bb2fb7a944616d8da84287639c9600928f746f77 5875 golang-golang-x-term_0.17.0-1~uh~focal1_amd64.buildinfo
+Files:
+ 3b80a988c6bc0138d30e9618f39ba4bc 1389 golang optional golang-golang-x-term_0.17.0-1~uh~focal1.dsc
+ 9d7bdc3d062f867fa6a29ecf535a2d0c 2848 golang optional golang-golang-x-term_0.17.0-1~uh~focal1.debian.tar.xz
+ 4cac2a0c5a33c6ad8f565038b7e07a50 14760 golang optional golang-golang-x-term-dev_0.17.0-1~uh~focal1_all.deb
+ bbeab33f6816b18c64883c9640d51946 5875 golang optional golang-golang-x-term_0.17.0-1~uh~focal1_amd64.buildinfo

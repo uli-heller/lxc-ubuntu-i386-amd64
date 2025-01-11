@@ -1,0 +1,35 @@
+Format: 1.8
+Date: Fri, 03 Jan 2025 09:47:48 +0000
+Source: golang-github-aperturerobotics-jacobsa-crypto
+Binary: golang-github-aperturerobotics-jacobsa-crypto-dev
+Built-For-Profiles: noudeb
+Architecture: source all
+Version: 1.0.2-0~uh~jammy1
+Distribution: jammy
+Urgency: medium
+Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-github-aperturerobotics-jacobsa-crypto-dev - Some Go cryptography routines that are not included in the Go sta
+Changes:
+ golang-github-aperturerobotics-jacobsa-crypto (1.0.2-0~uh~jammy1) jammy; urgency=medium
+ .
+   * New upstream release.
+Checksums-Sha1:
+ f5003340edd78eb4882b02e041b9a5f74dba32b8 1702 golang-github-aperturerobotics-jacobsa-crypto_1.0.2-0~uh~jammy1.dsc
+ 7f7d39aafc01b01352f0ad5bec4cf0a69c36ecc8 3656377 golang-github-aperturerobotics-jacobsa-crypto_1.0.2.orig.tar.gz
+ 75ef9e14b1e88162da0744fd31dd72c9b36eac05 4820 golang-github-aperturerobotics-jacobsa-crypto_1.0.2-0~uh~jammy1.debian.tar.xz
+ 829100da99895ec381417bc23e43009f7c43d460 2227834 golang-github-aperturerobotics-jacobsa-crypto-dev_1.0.2-0~uh~jammy1_all.deb
+ f5ecdef6a5da4ced0bf873fce566953d7fa5446b 6957 golang-github-aperturerobotics-jacobsa-crypto_1.0.2-0~uh~jammy1_amd64.buildinfo
+Checksums-Sha256:
+ f8c6f0e86ce2ce325a104a2870554692cc2e414acfe0618f13c8da603ac11351 1702 golang-github-aperturerobotics-jacobsa-crypto_1.0.2-0~uh~jammy1.dsc
+ e5741a7da338e9c269f940a9ddf74cb72da8007eed589677c7db4bce2b64fad4 3656377 golang-github-aperturerobotics-jacobsa-crypto_1.0.2.orig.tar.gz
+ 011f64672139dd937eea8be9fd4fe45d5027f190b033dbced49ec75962ba14ca 4820 golang-github-aperturerobotics-jacobsa-crypto_1.0.2-0~uh~jammy1.debian.tar.xz
+ 7233259ac8afbaa6328ea9c95ffacc07de78f6f231af1342ce109bd20836c4b0 2227834 golang-github-aperturerobotics-jacobsa-crypto-dev_1.0.2-0~uh~jammy1_all.deb
+ bb07363dd3c482618dd9f52e9aac93af0a5d5c1829475497fd846a325980f53c 6957 golang-github-aperturerobotics-jacobsa-crypto_1.0.2-0~uh~jammy1_amd64.buildinfo
+Files:
+ 22cb59ae68535c2035b5960810fafc26 1702 devel optional golang-github-aperturerobotics-jacobsa-crypto_1.0.2-0~uh~jammy1.dsc
+ 3ea97db09f25e43a4492f6ecab7f120f 3656377 devel optional golang-github-aperturerobotics-jacobsa-crypto_1.0.2.orig.tar.gz
+ 7ca73aa27c2ffbc5a88a4a27ea836ecf 4820 devel optional golang-github-aperturerobotics-jacobsa-crypto_1.0.2-0~uh~jammy1.debian.tar.xz
+ ff66889ee225eeb928fab4629abc08c0 2227834 devel optional golang-github-aperturerobotics-jacobsa-crypto-dev_1.0.2-0~uh~jammy1_all.deb
+ fe3d213081c0d567ce47aae561426aa5 6957 devel optional golang-github-aperturerobotics-jacobsa-crypto_1.0.2-0~uh~jammy1_amd64.buildinfo

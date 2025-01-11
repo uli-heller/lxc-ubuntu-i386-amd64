@@ -1,0 +1,32 @@
+Format: 1.8
+Date: Fri, 03 Jan 2025 09:32:02 +0000
+Source: golang-github-jacobsa-crypto
+Binary: golang-github-jacobsa-crypto-dev
+Built-For-Profiles: noudeb
+Architecture: source all
+Version: 0.0~git20190317.9f44e2d+dfsg1-4~uh~jammy1
+Distribution: jammy
+Urgency: medium
+Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-github-jacobsa-crypto-dev - Some Go cryptography routines that are not included in the Go sta
+Changes:
+ golang-github-jacobsa-crypto (0.0~git20190317.9f44e2d+dfsg1-4~uh~jammy1) jammy; urgency=medium
+ .
+   * Repackaged for jammy
+Checksums-Sha1:
+ 784dce08afa812b48f0347c96145c9a964295b9e 1683 golang-github-jacobsa-crypto_0.0~git20190317.9f44e2d+dfsg1-4~uh~jammy1.dsc
+ 3f07908014673eac83fc9367f2414ea38fd17245 4796 golang-github-jacobsa-crypto_0.0~git20190317.9f44e2d+dfsg1-4~uh~jammy1.debian.tar.xz
+ bac367667d3c7405782f2977e67ff10e2d6c7652 2227308 golang-github-jacobsa-crypto-dev_0.0~git20190317.9f44e2d+dfsg1-4~uh~jammy1_all.deb
+ 6ddacb16c50313bc1abcaeec5c832ea19b323e21 7001 golang-github-jacobsa-crypto_0.0~git20190317.9f44e2d+dfsg1-4~uh~jammy1_amd64.buildinfo
+Checksums-Sha256:
+ ddecb7eef8d35b64fa7072757b416c1572ee7b845e91f8e66118c31ab0c4983e 1683 golang-github-jacobsa-crypto_0.0~git20190317.9f44e2d+dfsg1-4~uh~jammy1.dsc
+ 370559c6c4d48ca6233ec026a2dde3059cfaaed21fd1a85d346c4bf796f19c43 4796 golang-github-jacobsa-crypto_0.0~git20190317.9f44e2d+dfsg1-4~uh~jammy1.debian.tar.xz
+ 3d56ee50f260b10ca2377bce200e1e563efb4c226035f96cc4258e98a63d9595 2227308 golang-github-jacobsa-crypto-dev_0.0~git20190317.9f44e2d+dfsg1-4~uh~jammy1_all.deb
+ fe8350dab18bed49a1271320d40cff35c7e723fc5203ee4b6b9ec5d245dabea3 7001 golang-github-jacobsa-crypto_0.0~git20190317.9f44e2d+dfsg1-4~uh~jammy1_amd64.buildinfo
+Files:
+ 15e04c7da39cb7bcec16193c575ddc90 1683 devel optional golang-github-jacobsa-crypto_0.0~git20190317.9f44e2d+dfsg1-4~uh~jammy1.dsc
+ 2ab091cf0c1e596f4e879d955325447b 4796 devel optional golang-github-jacobsa-crypto_0.0~git20190317.9f44e2d+dfsg1-4~uh~jammy1.debian.tar.xz
+ a8b38d98fab23a02a26dea834813d6eb 2227308 devel optional golang-github-jacobsa-crypto-dev_0.0~git20190317.9f44e2d+dfsg1-4~uh~jammy1_all.deb
+ fe5baeb72e2cd471a5dae183e6de23bd 7001 devel optional golang-github-jacobsa-crypto_0.0~git20190317.9f44e2d+dfsg1-4~uh~jammy1_amd64.buildinfo

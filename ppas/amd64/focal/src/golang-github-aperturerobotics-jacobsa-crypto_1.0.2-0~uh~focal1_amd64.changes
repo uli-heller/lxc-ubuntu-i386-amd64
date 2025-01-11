@@ -1,0 +1,34 @@
+Format: 1.8
+Date: Fri, 03 Jan 2025 09:47:48 +0000
+Source: golang-github-aperturerobotics-jacobsa-crypto
+Binary: golang-github-aperturerobotics-jacobsa-crypto-dev
+Architecture: source all
+Version: 1.0.2-0~uh~focal1
+Distribution: focal
+Urgency: medium
+Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-github-aperturerobotics-jacobsa-crypto-dev - Some Go cryptography routines that are not included in the Go sta
+Changes:
+ golang-github-aperturerobotics-jacobsa-crypto (1.0.2-0~uh~focal1) focal; urgency=medium
+ .
+   * New upstream release.
+Checksums-Sha1:
+ f11e66c66e83a4224e3f6b65ad843713b7a62ec6 1702 golang-github-aperturerobotics-jacobsa-crypto_1.0.2-0~uh~focal1.dsc
+ 7f7d39aafc01b01352f0ad5bec4cf0a69c36ecc8 3656377 golang-github-aperturerobotics-jacobsa-crypto_1.0.2.orig.tar.gz
+ 8f79eb5061e3547e8b9d18220a93daf18d3cd10f 4820 golang-github-aperturerobotics-jacobsa-crypto_1.0.2-0~uh~focal1.debian.tar.xz
+ 9014e38b5b8e7f3b5615d45f3f43320aa54afb05 2202304 golang-github-aperturerobotics-jacobsa-crypto-dev_1.0.2-0~uh~focal1_all.deb
+ e744da9df738f2dbd9786190de0c324a5d957dcc 6433 golang-github-aperturerobotics-jacobsa-crypto_1.0.2-0~uh~focal1_amd64.buildinfo
+Checksums-Sha256:
+ 5581412277c26dfb897b5e3ba406b0857f9858bb0e81a4feb33c803bcacebe86 1702 golang-github-aperturerobotics-jacobsa-crypto_1.0.2-0~uh~focal1.dsc
+ e5741a7da338e9c269f940a9ddf74cb72da8007eed589677c7db4bce2b64fad4 3656377 golang-github-aperturerobotics-jacobsa-crypto_1.0.2.orig.tar.gz
+ 2c60c91182a7ef523b91f66a3277a80b0577a789ff22ecb8dd23bfe73345e81f 4820 golang-github-aperturerobotics-jacobsa-crypto_1.0.2-0~uh~focal1.debian.tar.xz
+ 7446f8ad4e71a27d54ec045216f78aa2429f6cf63b8e1bb3f6d95096663f38c8 2202304 golang-github-aperturerobotics-jacobsa-crypto-dev_1.0.2-0~uh~focal1_all.deb
+ 76b9889d04e9353eb6bfe849828f75f195b36480a82a2a5c4e7f1c4fea68750d 6433 golang-github-aperturerobotics-jacobsa-crypto_1.0.2-0~uh~focal1_amd64.buildinfo
+Files:
+ e1ebb495d152c5206fa6b913fe5e4ecc 1702 devel optional golang-github-aperturerobotics-jacobsa-crypto_1.0.2-0~uh~focal1.dsc
+ 3ea97db09f25e43a4492f6ecab7f120f 3656377 devel optional golang-github-aperturerobotics-jacobsa-crypto_1.0.2.orig.tar.gz
+ c773eea6cf0d3c8b550327b4a61aab29 4820 devel optional golang-github-aperturerobotics-jacobsa-crypto_1.0.2-0~uh~focal1.debian.tar.xz
+ 35b10341d7015255ef2ce41f17212fb6 2202304 devel optional golang-github-aperturerobotics-jacobsa-crypto-dev_1.0.2-0~uh~focal1_all.deb
+ 41681b29b03b23b854ba3a9e0d3ad34c 6433 devel optional golang-github-aperturerobotics-jacobsa-crypto_1.0.2-0~uh~focal1_amd64.buildinfo

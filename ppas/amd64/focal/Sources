@@ -1,0 +1,360 @@
+Format: 3.0 (native)
+Package: dh-golang
+Binary: dh-golang
+Architecture: all
+Version: 1.53~uh~focal1
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Michael Stapelberg <stapelberg@debian.org>, Martina Ferrari <tincho@debian.org>, Anthony Fok <foka@debian.org>, Dr. Tobias Quathamer <toddy@debian.org>,
+Standards-Version: 4.6.0
+Vcs-Browser: https://salsa.debian.org/go-team/packages/dh-golang
+Vcs-Git: https://salsa.debian.org/go-team/packages/dh-golang.git
+Build-Depends: debhelper-compat (= 12), libmodule-install-perl
+Package-List:
+ dh-golang deb devel optional arch=all
+Directory: focal/src
+Checksums-Sha1:
+ d02346218cc0b6fa043ab65f8e55a73ef0251c66 901 dh-golang_1.53~uh~focal1.dsc
+ 7affabd2990c6d313d11c560fd263500bdaa2d23 17964 dh-golang_1.53~uh~focal1.tar.xz
+Checksums-Sha256:
+ 881c43abf18d57da4a33728afa912452dd85c26e4e26de5bdd4bf8e4178a79be 901 dh-golang_1.53~uh~focal1.dsc
+ 06a742da02640b20adae4ca63213db39d264a38d2bd9c3359abf99c610973bc2 17964 dh-golang_1.53~uh~focal1.tar.xz
+Files:
+ 9cc503336c9a3529de19fae433ea58ca 901 dh-golang_1.53~uh~focal1.dsc
+ e0f001e7fb68ad1b7abc2b5b03df89f1 17964 dh-golang_1.53~uh~focal1.tar.xz
+
+Format: 3.0 (quilt)
+Package: gocryptfs
+Binary: gocryptfs
+Architecture: any
+Version: 2.4.0.54-1ubuntu0.24.04.2~uh~focal2
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Uploaders: Felix Lechner <felix.lechner@lease-up.com>, Dmitry Smirnov <onlyjob@debian.org>
+Homepage: https://github.com/rfjakob/gocryptfs
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/gocryptfs
+Vcs-Git: https://salsa.debian.org/go-team/packages/gocryptfs.git
+Testsuite: autopkgtest
+Testsuite-Triggers: @builddeps@
+Build-Depends: debhelper-compat (= 12), dh-golang, golang-github-hanwen-go-fuse-dev (>= 2.1.0+git20220112~), golang-github-aperturerobotics-jacobsa-crypto-dev, golang-github-mdp-qrterminal-dev, golang-github-moby-sys-dev, golang-github-pkg-xattr-dev (>= 0.4.1), golang-github-rfjakob-eme-dev (>= 1.1.1), golang-github-sabhiram-go-gitignore-dev (>= 1.0.2+git20210923~), golang-github-spf13-pflag-dev, golang-golang-x-crypto-dev, golang-golang-x-sys-dev (>= 0.0~git20200501.0.bc7a7d4), golang-golang-x-term-dev, pandoc, pkg-config, libssl-dev
+Package-List:
+ gocryptfs deb devel optional arch=any
+Directory: focal/src
+Checksums-Sha1:
+ e1fda0d2940faf040b7c5bb0a4c0676316bef172 1907 gocryptfs_2.4.0.54-1ubuntu0.24.04.2~uh~focal2.dsc
+ a23210d9d71fd7d3434b83710db85f38c2bd7fe0 1379775 gocryptfs_2.4.0.54.orig.tar.gz
+ 106d5bdf5967a5d07ea096e3897d22d513e1f924 10788 gocryptfs_2.4.0.54-1ubuntu0.24.04.2~uh~focal2.debian.tar.xz
+Checksums-Sha256:
+ b5ee1c45dd95610437fcbbd4a168440b66560720696fbea0dfccf618dedbc96f 1907 gocryptfs_2.4.0.54-1ubuntu0.24.04.2~uh~focal2.dsc
+ b14e96441a5db025d3edef25363d006122503ded009291e60e6111915091fe99 1379775 gocryptfs_2.4.0.54.orig.tar.gz
+ f2ba21d1c034fc8cf46982b6d8626b0db0fed28f1c627c84f62ce93c02f3d141 10788 gocryptfs_2.4.0.54-1ubuntu0.24.04.2~uh~focal2.debian.tar.xz
+Files:
+ f917449dc6e196fb9ecbb080a3a9f087 1907 gocryptfs_2.4.0.54-1ubuntu0.24.04.2~uh~focal2.dsc
+ 7be65a5381ecd641ef10f92eb61a906e 1379775 gocryptfs_2.4.0.54.orig.tar.gz
+ 2e9d30deef5d91b57a3471749b843572 10788 gocryptfs_2.4.0.54-1ubuntu0.24.04.2~uh~focal2.debian.tar.xz
+Go-Import-Path: github.com/rfjakob/gocryptfs
+Original-Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
+
+Format: 3.0 (native)
+Package: golang-defaults
+Binary: golang-go, golang-any, gccgo-go, golang-src, golang-doc, golang
+Architecture: any all
+Version: 2:1.22~2build1~uh~focal1
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Uploaders: Michael Stapelberg <stapelberg@debian.org>, Paul Tagliamonte <paultag@debian.org>, Tianon Gravi <tianon@debian.org>, Michael Hudson-Doyle <mwhudson@debian.org>, Martina Ferrari <tina@debian.org>, Dr. Tobias Quathamer <toddy@debian.org>, Anthony Fok <foka@debian.org>
+Homepage: https://golang.org
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/compiler/golang-defaults
+Vcs-Git: https://salsa.debian.org/go-team/compiler/golang-defaults.git
+Build-Depends: debhelper-compat (= 12), dh-exec
+Package-List:
+ gccgo-go deb golang optional arch=any
+ golang deb golang optional arch=amd64,arm64,armel,armhf,i386,mips,mips64el,mipsel,ppc64el,riscv64,s390x
+ golang-any deb golang optional arch=any
+ golang-doc deb doc optional arch=all
+ golang-go deb golang optional arch=amd64,arm64,armel,armhf,i386,mips,mips64el,mipsel,ppc64,ppc64el,riscv64,s390x
+ golang-src deb golang optional arch=all
+Directory: focal/src
+Checksums-Sha1:
+ 87da238121f378f645a600eda1d07b57fc08ebf6 1579 golang-defaults_1.22~2build1~uh~focal1.dsc
+ ef54cd65fc3566c2ca23391be630083d06786bba 31192 golang-defaults_1.22~2build1~uh~focal1.tar.xz
+Checksums-Sha256:
+ d3722fd955bfb5a3cad037031b5a14e5e9b24140fe451c73e1b9fb1b69ff441e 1579 golang-defaults_1.22~2build1~uh~focal1.dsc
+ 5d70837a22310ac00d6781e6e931ec5cf186fb83ca07b0bd0b29ec33a04e4465 31192 golang-defaults_1.22~2build1~uh~focal1.tar.xz
+Files:
+ 8ee8402e04fbaa26f35a3608fa1ea723 1579 golang-defaults_1.22~2build1~uh~focal1.dsc
+ c1f0f32281c7239f905cefd89d620907 31192 golang-defaults_1.22~2build1~uh~focal1.tar.xz
+Original-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>
+
+Format: 3.0 (quilt)
+Package: golang-github-aperturerobotics-jacobsa-crypto
+Binary: golang-github-aperturerobotics-jacobsa-crypto-dev
+Architecture: all
+Version: 1.0.2-0~uh~focal1
+Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
+Uploaders: Felix Lechner <felix.lechner@lease-up.com>,
+Homepage: https://github.com/aperturerobotics/jacobsa-crypto
+Standards-Version: 4.4.1
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-jacobsa-crypto
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-jacobsa-crypto.git
+Testsuite: autopkgtest
+Testsuite-Triggers: golang-any
+Build-Depends: debhelper-compat (= 12), dh-golang, golang-any, golang-github-jacobsa-oglematchers-dev, golang-github-jacobsa-ogletest-dev
+Package-List:
+ golang-github-aperturerobotics-jacobsa-crypto-dev deb devel optional arch=all
+Directory: focal/src
+Checksums-Sha1:
+ f11e66c66e83a4224e3f6b65ad843713b7a62ec6 1702 golang-github-aperturerobotics-jacobsa-crypto_1.0.2-0~uh~focal1.dsc
+ 7f7d39aafc01b01352f0ad5bec4cf0a69c36ecc8 3656377 golang-github-aperturerobotics-jacobsa-crypto_1.0.2.orig.tar.gz
+ 8f79eb5061e3547e8b9d18220a93daf18d3cd10f 4820 golang-github-aperturerobotics-jacobsa-crypto_1.0.2-0~uh~focal1.debian.tar.xz
+Checksums-Sha256:
+ 5581412277c26dfb897b5e3ba406b0857f9858bb0e81a4feb33c803bcacebe86 1702 golang-github-aperturerobotics-jacobsa-crypto_1.0.2-0~uh~focal1.dsc
+ e5741a7da338e9c269f940a9ddf74cb72da8007eed589677c7db4bce2b64fad4 3656377 golang-github-aperturerobotics-jacobsa-crypto_1.0.2.orig.tar.gz
+ 2c60c91182a7ef523b91f66a3277a80b0577a789ff22ecb8dd23bfe73345e81f 4820 golang-github-aperturerobotics-jacobsa-crypto_1.0.2-0~uh~focal1.debian.tar.xz
+Files:
+ e1ebb495d152c5206fa6b913fe5e4ecc 1702 golang-github-aperturerobotics-jacobsa-crypto_1.0.2-0~uh~focal1.dsc
+ 3ea97db09f25e43a4492f6ecab7f120f 3656377 golang-github-aperturerobotics-jacobsa-crypto_1.0.2.orig.tar.gz
+ c773eea6cf0d3c8b550327b4a61aab29 4820 golang-github-aperturerobotics-jacobsa-crypto_1.0.2-0~uh~focal1.debian.tar.xz
+Go-Import-Path: github.com/aperturerobotics/jacobsa-crypto
+
+Format: 3.0 (quilt)
+Package: golang-github-hanwen-go-fuse
+Binary: golang-github-hanwen-go-fuse-dev
+Architecture: all
+Version: 2.4.2-2~uh~focal1
+Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
+Uploaders: Julian Gilbey <jdg@debian.org>, Dmitry Smirnov <onlyjob@debian.org>, Michael Stapelberg <stapelberg@debian.org>
+Homepage: https://github.com/hanwen/go-fuse
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-hanwen-go-fuse
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-hanwen-go-fuse.git
+Build-Depends: debhelper-compat (= 12), dh-golang, golang-any, golang-golang-x-sys-dev
+Package-List:
+ golang-github-hanwen-go-fuse-dev deb golang optional arch=all
+Directory: focal/src
+Checksums-Sha1:
+ 235ec6396b78726e9c4ebca2ae4702b6d0c3608f 1476 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.dsc
+ ed201bb9ea9d147549fc56fef52230c5ea75ffc5 197719 golang-github-hanwen-go-fuse_2.4.2.orig.tar.gz
+ 82d8221ae0aefda0bb06cdedfd86b194346a6231 5688 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.debian.tar.xz
+Checksums-Sha256:
+ a650de1c16dd96e66f4242e96feedb395d71d8fbbb6882da68dc73d353c03414 1476 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.dsc
+ baf5483fad078605dca84836b827a04950cf3560e1ff82688561ce65b73a531f 197719 golang-github-hanwen-go-fuse_2.4.2.orig.tar.gz
+ 3231ed9c95781fc593c39c010d2ddebf75deb1aabfbd49e856555c7880fcd2ec 5688 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.debian.tar.xz
+Files:
+ 19f97918275824a421cdacf0683b827c 1476 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.dsc
+ 1712d5bf947627441408f6a46e3fdd2e 197719 golang-github-hanwen-go-fuse_2.4.2.orig.tar.gz
+ a01dd6ea1166868f222d3d6363dc7bd3 5688 golang-github-hanwen-go-fuse_2.4.2-2~uh~focal1.debian.tar.xz
+Go-Import-Path: github.com/hanwen/go-fuse
+
+Format: 3.0 (quilt)
+Package: golang-github-moby-sys
+Binary: golang-github-moby-sys-dev
+Architecture: all
+Version: 0.0~git20231105.a4e0878-1~uh~focal1
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Shengjing Zhu <zhsj@debian.org>,
+Homepage: https://github.com/moby/sys
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-moby-sys
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-moby-sys.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 12), dh-golang, golang-any, golang-golang-x-sys-dev (>= 0.0~git20201101~)
+Package-List:
+ golang-github-moby-sys-dev deb golang optional arch=all
+Directory: focal/src
+Checksums-Sha1:
+ 495884ac2a9adef162e479aede9c2718bc65b719 1482 golang-github-moby-sys_0.0~git20231105.a4e0878-1~uh~focal1.dsc
+ 22a8f196931925f73547c83ef8b2b8be575c8f0b 68831 golang-github-moby-sys_0.0~git20231105.a4e0878.orig.tar.gz
+ 5ae9db89574e11f0e015805c84ffeee6ce2beb19 2312 golang-github-moby-sys_0.0~git20231105.a4e0878-1~uh~focal1.debian.tar.xz
+Checksums-Sha256:
+ 287b41b881e2b77f1441f432e4f91ee1e54df7c7911f31ae1df9294af43321e9 1482 golang-github-moby-sys_0.0~git20231105.a4e0878-1~uh~focal1.dsc
+ 1bd2674ecbefc7717874a4c3c330f0bb664435c40180befab852218acbac4a18 68831 golang-github-moby-sys_0.0~git20231105.a4e0878.orig.tar.gz
+ b2c7ddf9c94a39e44b8f5aa25a068c88972269bfa37cf0783fb835e32c865cdb 2312 golang-github-moby-sys_0.0~git20231105.a4e0878-1~uh~focal1.debian.tar.xz
+Files:
+ 8baaf48054db43645574f44a3780e292 1482 golang-github-moby-sys_0.0~git20231105.a4e0878-1~uh~focal1.dsc
+ e5ff13aee86e66f812d65bd46dc7e324 68831 golang-github-moby-sys_0.0~git20231105.a4e0878.orig.tar.gz
+ 41c9eac4d2328ae6f5c25e8eaccf628b 2312 golang-github-moby-sys_0.0~git20231105.a4e0878-1~uh~focal1.debian.tar.xz
+Go-Import-Path: github.com/moby/sys
+
+Format: 3.0 (quilt)
+Package: golang-github-pkg-xattr
+Binary: golang-github-pkg-xattr-dev
+Architecture: all
+Version: 0.4.2-1~uh~focal1
+Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
+Uploaders: Félix Sipma <felix+debian@gueux.org>
+Homepage: https://github.com/pkg/xattr
+Standards-Version: 4.5.1
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-pkg-xattr
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-pkg-xattr.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 12), dh-golang, golang-any, golang-golang-x-sys-dev (>= 0.0~git20181026.95b1ffb)
+Package-List:
+ golang-github-pkg-xattr-dev deb devel optional arch=all
+Directory: focal/src
+Checksums-Sha1:
+ 3e67bc6c15c8bed9384bd5cb471da6ffbbed0ac4 1389 golang-github-pkg-xattr_0.4.2-1~uh~focal1.dsc
+ e2c2f64f5363356813b0cc4917aa6e4d7556ccb4 8876 golang-github-pkg-xattr_0.4.2.orig.tar.gz
+ b77cd733a15fdaf11abfd8d19a8eea45b2791c45 3108 golang-github-pkg-xattr_0.4.2-1~uh~focal1.debian.tar.xz
+Checksums-Sha256:
+ 89bf1a4e0eb8ee3ff4a69381b7cf855983ef0a2462a6d20e796bdde35255dda6 1389 golang-github-pkg-xattr_0.4.2-1~uh~focal1.dsc
+ 89710f9202bf07792b5d86237c86959881146379c0d5d16e8a1b2950b41b06cd 8876 golang-github-pkg-xattr_0.4.2.orig.tar.gz
+ 748ce4a65c91b0b35a9cf41890eca535d6751ff192fb0d5508215799311c4d21 3108 golang-github-pkg-xattr_0.4.2-1~uh~focal1.debian.tar.xz
+Files:
+ ed391d584d31c78fa38eb2e26bdd19e0 1389 golang-github-pkg-xattr_0.4.2-1~uh~focal1.dsc
+ 4fb36c152df14fcc7bd012a9b62304d9 8876 golang-github-pkg-xattr_0.4.2.orig.tar.gz
+ 9d3e71c85c27df89ce39a9a40609851f 3108 golang-github-pkg-xattr_0.4.2-1~uh~focal1.debian.tar.xz
+Go-Import-Path: github.com/pkg/xattr
+
+Format: 3.0 (quilt)
+Package: golang-github-rfjakob-eme
+Binary: golang-github-rfjakob-eme-dev
+Architecture: all
+Version: 1.1.1-1~uh~focal1
+Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
+Uploaders: Felix Lechner <felix.lechner@lease-up.com>,
+Homepage: https://github.com/rfjakob/eme
+Standards-Version: 4.5.0
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-rfjakob-eme
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-rfjakob-eme.git
+Testsuite: autopkgtest
+Testsuite-Triggers: @builddeps@
+Build-Depends: debhelper-compat (= 12), dh-golang, golang-any
+Package-List:
+ golang-github-rfjakob-eme-dev deb devel optional arch=all
+Directory: focal/src
+Checksums-Sha1:
+ 227ec65a5b92247990f367938e14c753ad34e7a4 1395 golang-github-rfjakob-eme_1.1.1-1~uh~focal1.dsc
+ b20d2d2a02aa88dc6ed3016089d333d5154238da 23431 golang-github-rfjakob-eme_1.1.1.orig.tar.gz
+ b60ba182fa7732769d5f1859fd40a8df632c6ef5 3352 golang-github-rfjakob-eme_1.1.1-1~uh~focal1.debian.tar.xz
+Checksums-Sha256:
+ d4cc3b50764576fdbe2cf5f871f2ee81f085afad2e1caa1573cb04f9feb1f3ab 1395 golang-github-rfjakob-eme_1.1.1-1~uh~focal1.dsc
+ 45e5c3c54e26819a62b306f7e0daf80c6ea82b6109362b5284e0f8451dbc2a48 23431 golang-github-rfjakob-eme_1.1.1.orig.tar.gz
+ 05707b74a892cd85714733b6d60175525a9af4c2d23074a9b0c2536332d89088 3352 golang-github-rfjakob-eme_1.1.1-1~uh~focal1.debian.tar.xz
+Files:
+ 4bb89c0f0452f46fbe73719f609f82b0 1395 golang-github-rfjakob-eme_1.1.1-1~uh~focal1.dsc
+ 611410b856b95b234d943ded08dca482 23431 golang-github-rfjakob-eme_1.1.1.orig.tar.gz
+ 939168f6c736e13d170c6731706ce867 3352 golang-github-rfjakob-eme_1.1.1-1~uh~focal1.debian.tar.xz
+Go-Import-Path: github.com/rfjakob/eme
+
+Format: 3.0 (quilt)
+Package: golang-github-sabhiram-go-gitignore
+Binary: golang-github-sabhiram-go-gitignore-dev
+Architecture: all
+Version: 1.0.2+git20210923.525f6e1-1~uh~focal1
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Felix Lechner <felix.lechner@lease-up.com>
+Homepage: https://github.com/sabhiram/go-gitignore
+Standards-Version: 4.6.0
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-sabhiram-go-gitignore
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-sabhiram-go-gitignore.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 12), dh-golang, golang-any, golang-github-stretchr-testify-dev
+Package-List:
+ golang-github-sabhiram-go-gitignore-dev deb devel optional arch=all
+Directory: focal/src
+Checksums-Sha1:
+ 4e048b109174c8d667bf7006c84bceef0523d76f 1660 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~focal1.dsc
+ 3313298b0b1522adbeb55562c1e34dad0d281571 8444 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1.orig.tar.xz
+ 4acf57526186491e745bafd004359a0e7bb33bb7 2648 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~focal1.debian.tar.xz
+Checksums-Sha256:
+ 6c1682902e92fd45a03f45f16b5744fd7a07bd64ec252f939b82149a9731f477 1660 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~focal1.dsc
+ e6ea659519a3fa5fe136085d9a3b8b37ab33c558118278a1179358dd1aaa9446 8444 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1.orig.tar.xz
+ 878d9af02233efeeb0aece258b4401d36fb335de9be99d26ccbc24017a6ed9c2 2648 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~focal1.debian.tar.xz
+Files:
+ b4facd574b6a1b942fb89f738d8c4646 1660 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~focal1.dsc
+ 4ef876ff267905561318b8c833e1a42c 8444 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1.orig.tar.xz
+ 991436b3de0a5b5a593416084a5a3da0 2648 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~focal1.debian.tar.xz
+Go-Import-Path: github.com/sabhiram/go-gitignore
+
+Format: 3.0 (quilt)
+Package: golang-golang-x-sys
+Binary: golang-golang-x-sys-dev
+Architecture: all
+Version: 0.17.0-1~uh~focal1
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Michael Stapelberg <stapelberg@debian.org>, Anthony Fok <foka@debian.org>, Martina Ferrari <tina@debian.org>
+Homepage: https://golang.org/x/sys
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-golang-x-sys
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-golang-x-sys.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 12), dh-sequence-golang, golang-any (>= 2:1.18~)
+Package-List:
+ golang-golang-x-sys-dev deb golang optional arch=all
+Directory: focal/src
+Checksums-Sha1:
+ b0c05591456684ff791d5ed1d24c9f6c30021ea5 1381 golang-golang-x-sys_0.17.0-1~uh~focal1.dsc
+ b363450312895636b57b173f239b80048cfbe699 1446309 golang-golang-x-sys_0.17.0.orig.tar.gz
+ 0d20ef539fec4fe8aa3241a190a16ddded8f4d43 6704 golang-golang-x-sys_0.17.0-1~uh~focal1.debian.tar.xz
+Checksums-Sha256:
+ 32dc918300bc62d6c74291cbde7bf36785f0ea9bfaaf8dce397f2d7781fbace1 1381 golang-golang-x-sys_0.17.0-1~uh~focal1.dsc
+ ac396e3c66940e34fdd1d422a9628ab2a5118249118f2a36f65082d32e709e7a 1446309 golang-golang-x-sys_0.17.0.orig.tar.gz
+ 2e5963bf1946df1a8ec85b226a3fd64fd02e3268e36ee115d25c2bca3ea03151 6704 golang-golang-x-sys_0.17.0-1~uh~focal1.debian.tar.xz
+Files:
+ 834096ec1f80cb2d479e4adf32f8921c 1381 golang-golang-x-sys_0.17.0-1~uh~focal1.dsc
+ fff45f6edce665d4ab42a18817bb212d 1446309 golang-golang-x-sys_0.17.0.orig.tar.gz
+ 5f80093571fb5719f98be00b07ee1da7 6704 golang-golang-x-sys_0.17.0-1~uh~focal1.debian.tar.xz
+Go-Import-Path: golang.org/x/sys
+
+Format: 3.0 (quilt)
+Package: golang-golang-x-term
+Binary: golang-golang-x-term-dev
+Architecture: all
+Version: 0.17.0-1~uh~focal1
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Arnaud Rebillout <elboulangero@gmail.com>, Anthony Fok <foka@debian.org>
+Homepage: https://golang.org/x/term
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-golang-x-term
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-golang-x-term.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 12), dh-sequence-golang, golang-any (>= 2:1.17~), golang-golang-x-sys-dev (>= 0.17.0)
+Package-List:
+ golang-golang-x-term-dev deb golang optional arch=all
+Directory: focal/src
+Checksums-Sha1:
+ 7c76dcd434cf38a2611dc49497555bda64350581 1389 golang-golang-x-term_0.17.0-1~uh~focal1.dsc
+ fae65ddd3960c884e4f360c2263fa890495eef32 13736 golang-golang-x-term_0.17.0.orig.tar.xz
+ a7d17683e92dfdf19d3a6fa402188c712629c1c7 2848 golang-golang-x-term_0.17.0-1~uh~focal1.debian.tar.xz
+Checksums-Sha256:
+ 8a73c6b4de6ab1ca4890a6ace6d09d8f17c69fe20d944189b04b31d2988b00a4 1389 golang-golang-x-term_0.17.0-1~uh~focal1.dsc
+ 7ec5ea04475ea9d7e4f06fc9b9b6a5176481e161189ac1728212c438dc5648bb 13736 golang-golang-x-term_0.17.0.orig.tar.xz
+ 7cbf1300865baf58e7b7b707e79a3f3c31e2b0b09e9636c96e4bf8f8198a6871 2848 golang-golang-x-term_0.17.0-1~uh~focal1.debian.tar.xz
+Files:
+ 3b80a988c6bc0138d30e9618f39ba4bc 1389 golang-golang-x-term_0.17.0-1~uh~focal1.dsc
+ ce4c0c37aa65bdc1c71b9e0d2b214f33 13736 golang-golang-x-term_0.17.0.orig.tar.xz
+ 9d7bdc3d062f867fa6a29ecf535a2d0c 2848 golang-golang-x-term_0.17.0-1~uh~focal1.debian.tar.xz
+Go-Import-Path: golang.org/x/term
+
+Format: 3.0 (quilt)
+Package: qrterminal
+Binary: qrterminal, golang-github-mdp-qrterminal-dev
+Architecture: any all
+Version: 3.2.0.3-2ubuntu0.24.04.2~uh~focal2
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Uploaders: Stephen Gelman <ssgelm@debian.org>
+Homepage: https://github.com/mdp/qrterminal
+Standards-Version: 4.6.1.0
+Vcs-Browser: https://salsa.debian.org/go-team/packages/qrterminal
+Vcs-Git: https://salsa.debian.org/go-team/packages/qrterminal.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 12), dh-golang, golang-any, golang-github-mattn-go-colorable-dev, golang-rsc-qr-dev, golang-golang-x-term-dev
+Package-List:
+ golang-github-mdp-qrterminal-dev deb golang optional arch=all
+ qrterminal deb golang optional arch=any
+Directory: focal/src
+Checksums-Sha1:
+ e2898b0c193a0451609a35dbe6e7c4a63073c901 1522 qrterminal_3.2.0.3-2ubuntu0.24.04.2~uh~focal2.dsc
+ 8147aae5c85057c22cd31848a34287ace4ced0fe 25438 qrterminal_3.2.0.3.orig.tar.gz
+ e34f5e92fadcedd45b329ecad60dd93f27bf5851 2752 qrterminal_3.2.0.3-2ubuntu0.24.04.2~uh~focal2.debian.tar.xz
+Checksums-Sha256:
+ 482f99a9ca9c29b64693c5a37a99adf310211fdea079bb6d50718d52cff676e6 1522 qrterminal_3.2.0.3-2ubuntu0.24.04.2~uh~focal2.dsc
+ 50c89ab304bf437d4c18f6632bd50bc240a2c059fdf9f9852d5bcaa83a831880 25438 qrterminal_3.2.0.3.orig.tar.gz
+ 6481ee56ada55349e530b30b6e165855ba410e0381895b8a7e827cf8213b5be9 2752 qrterminal_3.2.0.3-2ubuntu0.24.04.2~uh~focal2.debian.tar.xz
+Files:
+ ad09e0cec82609aa06d23580785ad941 1522 qrterminal_3.2.0.3-2ubuntu0.24.04.2~uh~focal2.dsc
+ 46a17aa8b2bad3b27557acaed44e166a 25438 qrterminal_3.2.0.3.orig.tar.gz
+ 0db54d5c4bb00a6bcbb748c04fffd9f5 2752 qrterminal_3.2.0.3-2ubuntu0.24.04.2~uh~focal2.debian.tar.xz
+Go-Import-Path: github.com/mdp/qrterminal
+Original-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+

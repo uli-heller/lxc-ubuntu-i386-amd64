@@ -1,0 +1,31 @@
+Architectures: i386
+Codename: focal
+Date: Sat, 11 Jan 2025 18:32:37 +0000
+Description: Precompiled packages for our LXC containers
+Label: lxc-ubuntu
+Origin: lxc-ubuntu
+Suite: focal
+MD5Sum:
+ 6a7d4eec47666b320e4f57c6ac1dcbc2           232175 Packages
+ c35bc0b30784b53fda6259fb21f8d0d6              833 Packages.gpg
+ c25bfd3f20e415a33f36cf06cc7d6654              181 Release
+ d41d8cd98f00b204e9800998ecf8427e                0 Sources
+ 5af9fd033c28b4aec43facb2bdf03567              833 Sources.gpg
+SHA1:
+ 5a3cd42997e8eb3ba374663c8bccec3bfafa51d7           232175 Packages
+ 0455584b50e2a9ce08e12a42eb144072b9bdcb64              833 Packages.gpg
+ 26c326302ae614b5b3e0b5fb2c9389a101c387e9              181 Release
+ da39a3ee5e6b4b0d3255bfef95601890afd80709                0 Sources
+ 437d8ea6ec22620c965c86425b1c427897b8eef5              833 Sources.gpg
+SHA256:
+ 775300be5cfd5dd33256a91596f495689fa31230b5a9ccfa63bb7d482e226e01           232175 Packages
+ bb3ac4e221c006928f25680f656781a9599ad45e3e4ac687809e917805318fe4              833 Packages.gpg
+ b985c3d94fde46b6f9f9c58f70b30f03ef6c34aa331bbc0301d90699abee1132              181 Release
+ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855                0 Sources
+ bcee3e775adc121c81dd9a71765d991301e13a0dc6722d91f150a2cb5e5130e9              833 Sources.gpg
+SHA512:
+ ea283b4ac47ada0b6b691b4e330b34b82e6828f16687d8aeab409c4f050b1645a2d72745ad108e8ddd69a2a1cf2c37fb76a25679b14b2b94e0de71788f20da4b           232175 Packages
+ 21dee36a1105589cbffc8decb3da6cf2aa5b5dfb9ad6e5bae67b1900440453dfbf8c12c1a9cc23e66c536ba5db7cb4cf8d6c913eeb26e677fc336fcbbb2e058b              833 Packages.gpg
+ 22f5e936618cb83f504b07cf0afccee32b021dca79caa6db18d2448af0d25ee1d14b9884d8778c16538d53fdf10323c71d80c949471cc89d0031bd18879cc7e1              181 Release
+ cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e                0 Sources
+ e431d2712fb45f9ec5d15f8841f390e83cb389d42107fa6d8db29400acf06d8ef2f36b366ec390b0e40ac8fe6589b045b926849a997f80d9ee09a03a62e1e2ba              833 Sources.gpg

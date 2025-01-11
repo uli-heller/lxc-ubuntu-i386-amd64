@@ -1,0 +1,50 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Architectures: amd64
+Codename: jammy
+Date: Sat, 11 Jan 2025 18:32:34 +0000
+Description: Precompiled packages for our LXC containers
+Label: lxc-ubuntu
+Origin: lxc-ubuntu
+Suite: jammy
+MD5Sum:
+ 108a5c72367407907dd6573af671546f            18778 Packages
+ bed4d8b5d02de346307b4e6cffb5f8a1              833 Packages.gpg
+ 34e56a523c5aefb29489dfb24ff70d86              182 Release
+ 846ede7c0c31a1d32f75dc2de9813053            19276 Sources
+ 69fe50eebb9e0693925accf5d18ccced              833 Sources.gpg
+SHA1:
+ 3b993abd265b47dbb5bd70b2a28e5e317f7bd117            18778 Packages
+ d2dec3dc4ca5c01b1e82f188ae5ab7fcf6e6a7ac              833 Packages.gpg
+ ad19e17712911bafc164ccddde1673e4948e0846              182 Release
+ 90cc71e55502611996bab9377ea57bae0225622c            19276 Sources
+ d2d2e0ffe025ee933d2994e2fd0204a2c25d3aaf              833 Sources.gpg
+SHA256:
+ 1478fe8986d4796c4a35c18d41a0a618076e118819db432d9e60b0d5016c447c            18778 Packages
+ 1b0ca98686d0f1f24794ff9b23ed9c53ff77a2e3d3005608972d4699dff559d0              833 Packages.gpg
+ 2ff5705a232d33ae9a5dadde735df6793313ec1fae7abee2ef340d6b6c6cc38f              182 Release
+ 31b4003387b4ebbe197134cc18884e191b614eef837f33d78d3afc00992361f5            19276 Sources
+ 79c04003bea70f24d0a875569e95e5a20b444a19883a47c55dce1b3078cfde41              833 Sources.gpg
+SHA512:
+ b9201001b3750795ea479071fa28dde53195f4cf08bd65c4afb765b80b50672c6a47f8cd2e590cee0ec3d9914ff8a3699c8b0c60c82e24e7fc3eecb47a92151b            18778 Packages
+ babe7ee1757f2245b01f782d55a787ac531ed7087a7aaa26968b3622dde95e3deece47d5e89a85ffab74c86602f15b7b8c11e83d73b22874b3598eeacbc29ddf              833 Packages.gpg
+ 2baceaef7d135000d3d9b29e69e541dc5798683aeba5c0f785d7500cd55272fc7636233ad64dac6cfbd2c6952701ff139fc9157781898b6717f2460bae8314a7              182 Release
+ bbed5bd8d385b77bc67fd6516d8b6237c8fdb755ec4996d8d7c557339c1ee67947c749bc9b720d6b87da6059bbd39c7eb0f19589ef9834efb33a2f1d1c6cce4e            19276 Sources
+ 194f012b18018b8181504cf738466908203b8540decb372197ec723e8c20efe5e3ad6eb5201e8c0f95d06def0424f875e2d0ada1d4e5bcb73e49670b8b13b4ba              833 Sources.gpg
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEE82hycVroFa5OYg3TOC3lxFUcsDQFAmeCuUIACgkQOC3lxFUc
+sDT8mQ/7BLX+WQsozsAGp4qBJ7JrSBttj9TgnbZJ+hfsViWKfYc8CGxpGMwBcldo
+bJcDpirCMZkhFUWydNCE7M0ScDlATOhynpsRPjIP+2P7qvTEQwdoyrrZ36DTFOD7
+K36hN5fUTgp4ZxS03m9b11oTENLC5eo/Bg2E/ojUV2CkiGS/HpDQnF7Eu7Tmqz2w
+EHRh9eXR+QrVMrjgIX8ZV1clDQKeYOSHYnhzn2MOnWwI56qMMXU22UpjQHV8P340
++t+zLq+NJHVZn9QymDF+U6tiY08/qyn/X4CnY+tT7P6PFB2tkocBSD5sR6iMDvL9
+LdhrhNU24IGtDJnuIV7xrj9Mv2tP9/kHXqzuZnI6IqDJT9IZos9n8MXsljGyZM2f
+opPpPXBvjQifev+76T+Ushb5TbvPdM/KEk8P9v2aCPHTpJgJWJ81bkH08+FtVfiA
+vUF1KdK+e/Q9toU6WLh37EKqy9IhBxNQ121mZ1Nvc4wFuvBZLuwySA96R8D2KohZ
+bctkMU8caZbqynw2Lq6/o3Vl4/75pbdWHvZH3CPp7c8WbEsByazownYNk32Eryts
+6xXbvPMd6WTA70NU43l6DItX1YpWhNzDjBoHXIKyiAdrqk4wOnJh3l+Mi/TglwAJ
+s6Jir0SHOXsqSk/dBrvG2c7j/feSoCxGVluLf1Gr2sZ/29e3APE=
+=5ODn
+-----END PGP SIGNATURE-----
