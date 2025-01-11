@@ -1,6 +1,47 @@
 Verify usability of PPAs
 ========================
 
+debs
+----
+
+- change into proot filesystem
+
+  ```
+  $ ./proot.sh build-proot-jammy-amd64/rootfs -b debs:/debs bash
+  groups: cannot find name for group ID 108
+  groups: cannot find name for group ID 113
+  groups: cannot find name for group ID 10000
+  To run a command as administrator (user "root"), use "sudo <command>".
+  See "man sudo_root" for details.
+
+  root:/# ls /debs
+  focal  jammy  noble
+  ```
+
+- add ppa
+
+  - variant A
+
+    ```
+    root:/# cat >/etc/apt/sources.list.d/debs-proot.list <<EOF
+    deb file:/debs/jammy amd64/
+    deb-src file:/debs/jammy src/
+    EOF
+    ```
+
+    Leads to: `W: Conflicting distribution: file:/debs/jammy amd64/ InRelease (expected amd64/ but got jammy)`
+
+  - variant B
+
+    ```
+    root:/# cat >/etc/apt/sources.list.d/debs-proot.list <<EOF
+    deb file:/debs/jammy/amd64 ./
+    deb-src file:/debs/jammy/src/ ./
+    EOF
+    ```
+
+    Leads to: `W: Skipping acquire of configured file 'Sources' as repository 'file:/debs/jammy/src ./ InRelease' does not seem to provide it (sources.list entry misspelt?)`
+
 dprepo
 ------
 
