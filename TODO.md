@@ -8,6 +8,11 @@ Open
   - Keep DEBs required to setup the container images here
   - Move additional DEBs to somewhere else
 
+- Create files "Sources" and "InRelease" for sources
+
+- Repackage local debs in order to allow "similar" configurations
+  for deb and deb-src
+
 - Verify: Are the PPAs usable?
 
 - Unify and/or rename:
