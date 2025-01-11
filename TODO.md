@@ -4,7 +4,51 @@ TODO
 Open
 ----
 
-No open TODOs.
+- Verify: Are the PPAs usable?
+
+- Unify and/or rename:
+  - 2025-01
+    - debs <-- rename to ppa?
+      - focal
+        - amd64
+	  - Packages
+	- i386
+	  - Packages
+	- src <-- separate src for each arch?
+	  - Sources
+      - jammy
+        - amd64
+	- i386
+	- src
+      - noble
+	- i386
+  - dprepo
+    - ubuntu
+      - 20.04_x86_64
+        - Packages
+	- Sources
+        - debs
+        - src
+      - 20.04_i686
+        - Packages
+	- Sources
+        - debs
+        - src
+      - 22.04_x86_64
+        - Packages
+	- Sources
+        - debs
+        - src
+      - 22.04_i686
+        - Packages
+	- Sources
+        - debs
+        - src
+      - 24.04_x86_64
+        - Packages
+	- Sources
+        - debs
+        - src
 
 Done
 ----
