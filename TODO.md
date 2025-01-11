@@ -4,6 +4,10 @@ TODO
 Open
 ----
 
+- Separation
+  - Keep DEBs required to setup the container images here
+  - Move additional DEBs to somewhere else
+
 - Verify: Are the PPAs usable?
 
 - Unify and/or rename:
