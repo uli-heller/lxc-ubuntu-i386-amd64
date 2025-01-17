@@ -15,6 +15,7 @@
 ###   -r ................ rebuild all required packages for the architecture/os
 ###   -R ................ use "root" for build (required by GOCRYPTFS for example)
 ###   -b build-options .. prepend 'dpkg-buildpackage' with build-options
+###   -k ................ keep sources even on failures
 ###   package ........... package to build
 ###
 ### Examples:
@@ -45,6 +46,7 @@ BUILD_OPTIONS=
 SOURCE_PACKAGE=
 VERSION_MIDDLE="uh"
 USE_ROOT=
+KEEP=
 
 DEBEMAIL=uli@heller.cool
 DEBFULLNAME="Uli Heller"
@@ -53,7 +55,7 @@ export LC_ALL
 
 USER_GROUP="$(id -un):$(id -gn)"
 
-while getopts 'hra:b:o:i:s:RSV:' opt; do
+while getopts 'hkra:b:o:i:s:RSV:' opt; do
     case $opt in
         a)
             ARCHITECTURE="${OPTARG}"
@@ -84,6 +86,9 @@ while getopts 'hra:b:o:i:s:RSV:' opt; do
             ;;
         r)
             REBUILD=y
+            ;;
+        k)
+            KEEP=y
             ;;
         *)
             USAGE=y
@@ -347,7 +352,7 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
             myProot "${ROOTFS}" apt update
         ) || {
             #find "${ROOTFS}/src/${PACKAGE}" -mindepth 1 -maxdepth 1 -newer "${TMPDIR}/before"|xargs -t rm -rf
-            (
+            test -z "${KEEP}" && (
                 cd "${ROOTFS}/src/${PACKAGE}" || { echo >&2 "${BN}: Fehler mit '${ROOTFS}/src/${PACKAGE}'"; exit 1; }
                 diff "${TMPDIR}/before.ls" "${TMPDIR}/after.ls"|grep "^>"|cut -c2-|xargs -t rm -f
             )
