@@ -332,29 +332,6 @@ Description: EME wide-block encryption for Go
  EME uses multiple invocations of a block cipher to construct a new cipher
  of bigger block size (in multiples of 16 bytes, up to 2048 bytes).
 
-Package: golang-github-sabhiram-go-gitignore-dev
-Source: golang-github-sabhiram-go-gitignore
-Version: 1.0.2+git20210923.525f6e1-1~uh~focal1
-Architecture: all
-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
-Installed-Size: 50
-Depends: golang-github-stretchr-testify-dev
-Filename: ./golang-github-sabhiram-go-gitignore-dev_1.0.2+git20210923.525f6e1-1~uh~focal1_all.deb
-Size: 9456
-MD5sum: 2921b0e6a52335495d71dae1daeda106
-SHA1: f22013041bb6dbc2b24727aa3721215023e8821f
-SHA256: be611cac325bc4fae2ad8870237fe896c660d41972910e7b3cbb4044acf50c88
-Section: devel
-Priority: optional
-Homepage: https://github.com/sabhiram/go-gitignore
-Description: gitignore parser for go
- This implements a library to check a pattern includes or excludes
- certain filesystem paths. It can be useful to parse a .gitignore file,
- as the author does, or for other path specifications.
- .
- At the time of writing, this module is a prequisite for Gocryptfs
- versions 1.7.1 and up.
-
 Package: golang-go
 Source: golang-defaults
 Version: 2:1.22~2build1~uh~focal1

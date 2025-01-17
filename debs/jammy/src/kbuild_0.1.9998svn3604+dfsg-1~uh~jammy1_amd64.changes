@@ -1,0 +1,35 @@
+Format: 1.8
+Date: Fri, 17 Jan 2025 21:38:38 +0000
+Source: kbuild
+Binary: kbuild
+Built-For-Profiles: noudeb
+Architecture: source amd64
+Version: 1:0.1.9998svn3604+dfsg-1~uh~jammy1
+Distribution: jammy
+Urgency: medium
+Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ kbuild     - framework for writing simple makefiles for complex tasks
+Changes:
+ kbuild (1:0.1.9998svn3604+dfsg-1~uh~jammy1) jammy; urgency=medium
+ .
+   * Repackaged for jammy
+Checksums-Sha1:
+ e53d820137291f148a2d20a0154c2e42976aa781 1268 kbuild_0.1.9998svn3604+dfsg-1~uh~jammy1.dsc
+ 4b345b54d89ca98446f7e5e761bd62ff477fe808 13136 kbuild_0.1.9998svn3604+dfsg-1~uh~jammy1.debian.tar.xz
+ 1c0926ddc2a780cb5baa971bc335988971fa3dc1 2046834 kbuild-dbgsym_0.1.9998svn3604+dfsg-1~uh~jammy1_amd64.ddeb
+ 8aa570f73963c94569053b3b57f6d8742577805c 7131 kbuild_0.1.9998svn3604+dfsg-1~uh~jammy1_amd64.buildinfo
+ 981cd4eb2afa2b2c9b7ace9818a224eaf8b4e8a3 742632 kbuild_0.1.9998svn3604+dfsg-1~uh~jammy1_amd64.deb
+Checksums-Sha256:
+ 4ddc520c8f53be863545c7259e307c79449eb87752784dd766f8b1d43e51ea34 1268 kbuild_0.1.9998svn3604+dfsg-1~uh~jammy1.dsc
+ 3e8578beb61f76186cbe927c27b107c4e34046685df8fa30ac4daf3e692a0626 13136 kbuild_0.1.9998svn3604+dfsg-1~uh~jammy1.debian.tar.xz
+ d6c3ebef64fc40881e1ae1d53b2a55f24e6dae0d65675aeec2038f1c9434508d 2046834 kbuild-dbgsym_0.1.9998svn3604+dfsg-1~uh~jammy1_amd64.ddeb
+ 637904c2b23f51274819c05b3ea32ce09afde9ef9cfe482e3abc95a872965e03 7131 kbuild_0.1.9998svn3604+dfsg-1~uh~jammy1_amd64.buildinfo
+ 69137b9ef666f45a0888a30582448f4aebf13ca6a425566aaf64c045cdc6e8c7 742632 kbuild_0.1.9998svn3604+dfsg-1~uh~jammy1_amd64.deb
+Files:
+ 88fdaa2f9bc2db6f6ec8478ddac95f9c 1268 devel optional kbuild_0.1.9998svn3604+dfsg-1~uh~jammy1.dsc
+ 98fa7e75a1ece46297a34905aa80d336 13136 devel optional kbuild_0.1.9998svn3604+dfsg-1~uh~jammy1.debian.tar.xz
+ d9d01ef64683e70ab72168e21d68dbb9 2046834 debug optional kbuild-dbgsym_0.1.9998svn3604+dfsg-1~uh~jammy1_amd64.ddeb
+ cbc125de737dc18baa0b94e1a232f675 7131 devel optional kbuild_0.1.9998svn3604+dfsg-1~uh~jammy1_amd64.buildinfo
+ dbab51e8c4ebe457232b99d424a7c294 742632 devel optional kbuild_0.1.9998svn3604+dfsg-1~uh~jammy1_amd64.deb

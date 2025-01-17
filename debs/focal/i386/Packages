@@ -4041,88 +4041,6 @@ Description: Open vSwitch VTEP utilities
  VTEP-configured database and a VTEP emulator.
 Original-Maintainer: Open vSwitch developers <dev@openvswitch.org>
 
-Package: pypy-coverage
-Source: python-coverage
-Version: 4.5.2+dfsg.1-4ubuntu1
-Architecture: all
-Maintainer: Ben Finney <bignose@debian.org>
-Installed-Size: 477
-Depends: pypy-pkg-resources, pypy
-Recommends: libjs-jquery-isonscreen, libjs-jquery-tablesorter, libjs-jquery-throttle-debounce, libjs-jquery
-Suggests: python-coverage-doc
-Filename: ./pypy-coverage_4.5.2+dfsg.1-4ubuntu1_all.deb
-Size: 134224
-MD5sum: 93214fa28f2b9473a5cbc27702d430de
-SHA1: f88f6fdc7a2b5df481b138cbc3eef35a411fbab5
-SHA256: 01b81f6af05b2354e5a18b22b014dd0cb3c69b23901da59459509208c5e41b44
-Section: python
-Priority: optional
-Homepage: http://nedbatchelder.com/code/coverage/
-Description: code coverage tool for Python 2 PyPy
- Coverage.py is a tool for measuring code coverage of Python programs.
- It monitors your program, noting which parts of the code have been
- executed, then analyzes the source to identify code that could have
- been executed but was not.
- .
- Coverage measurement is typically used to gauge the effectiveness of
- tests. It can show which parts of your code are being exercised by
- tests, and which are not.
- .
- This package installs the Python 2 ‘coverage’ library built for PyPy, and the
- ‘pypy-coverage’ program to perform and report coverage tests.
-
-Package: python-coverage
-Version: 4.5.2+dfsg.1-4ubuntu1
-Architecture: i386
-Maintainer: Ben Finney <bignose@debian.org>
-Installed-Size: 520
-Depends: python-pkg-resources, python2 (<< 2.8), python2 (>= 2.7~), python2:any (<< 2.8), python2:any (>= 2.7~), libc6 (>= 2.4)
-Recommends: libjs-jquery-isonscreen, libjs-jquery-tablesorter, libjs-jquery-throttle-debounce, libjs-jquery
-Suggests: python-coverage-doc
-Filename: ./python-coverage_4.5.2+dfsg.1-4ubuntu1_i386.deb
-Size: 145476
-MD5sum: e1ddcf0c2f0609cba9e44f41cd8b20f8
-SHA1: 84ca726d8395a1a92d7694a6cded813230070f77
-SHA256: 1def73ee9d37134e8f2f6289982a727153c593a66e82828ce97caf3e64a92083
-Section: python
-Priority: optional
-Homepage: http://nedbatchelder.com/code/coverage/
-Description: code coverage tool for Python 2
- Coverage.py is a tool for measuring code coverage of Python programs.
- It monitors your program, noting which parts of the code have been
- executed, then analyzes the source to identify code that could have
- been executed but was not.
- .
- Coverage measurement is typically used to gauge the effectiveness of
- tests. It can show which parts of your code are being exercised by
- tests, and which are not.
- .
- This package installs the Python version 2 ‘coverage’ library, and the
- ‘python2-coverage’ program to perform and report coverage tests.
-
-Package: python-coverage-doc
-Source: python-coverage
-Version: 4.5.2+dfsg.1-4ubuntu1
-Architecture: all
-Maintainer: Ben Finney <bignose@debian.org>
-Installed-Size: 698
-Depends: libjs-sphinxdoc (>= 1.0), sphinx-rtd-theme-common (>= 0.4.3+dfsg)
-Filename: ./python-coverage-doc_4.5.2+dfsg.1-4ubuntu1_all.deb
-Size: 134904
-MD5sum: 93af7c7f040775f5abdc714784849960
-SHA1: 4ab6b17713bca51aafa20b0e8b1a5660ee9996c9
-SHA256: 5d301d1d544f779e2fe99db4d400238451723007b41c3330e9324a608d389149
-Section: doc
-Priority: optional
-Homepage: http://nedbatchelder.com/code/coverage/
-Description: code coverage tool for Python — documentation
- Coverage.py is a tool for measuring code coverage of Python programs.
- It monitors your program, noting which parts of the code have been
- executed, then analyzes the source to identify code that could have
- been executed but was not.
- .
- This package installs the HTML documentation for Coverage.py.
-
 Package: python-netifaces
 Source: netifaces
 Version: 0.10.4-1ubuntu4
@@ -4170,36 +4088,6 @@ Description: portable network interface information - Python 2.x debug extension
  This package contains debug symbols of python-netifaces.
 Build-Ids: 2a4545a947714593ea3af5d6d874b792f47303cd ac7d17fcda041125ecab0cae95236e37b6566369
 Python-Version: 2.7
-
-Package: python3-coverage
-Source: python-coverage
-Version: 4.5.2+dfsg.1-4ubuntu1
-Architecture: i386
-Maintainer: Ben Finney <bignose@debian.org>
-Installed-Size: 518
-Depends: python3-pkg-resources, python3 (<< 3.9), python3 (>= 3.8~), python3:any, libc6 (>= 2.4)
-Recommends: libjs-jquery-isonscreen, libjs-jquery-tablesorter, libjs-jquery-throttle-debounce, libjs-jquery
-Suggests: python-coverage-doc
-Filename: ./python3-coverage_4.5.2+dfsg.1-4ubuntu1_i386.deb
-Size: 145176
-MD5sum: af2d71fa0d8a2bf2058ee99634737d07
-SHA1: 540024c5b525dffca21d12049c2284c910e128a0
-SHA256: 44b8ff38154900e7c01e05f1b2355cf3fd0f4c95183cdeb187cf320337765e62
-Section: python
-Priority: optional
-Homepage: http://nedbatchelder.com/code/coverage/
-Description: code coverage tool for Python 3
- Coverage.py is a tool for measuring code coverage of Python programs.
- It monitors your program, noting which parts of the code have been
- executed, then analyzes the source to identify code that could have
- been executed but was not.
- .
- Coverage measurement is typically used to gauge the effectiveness of
- tests. It can show which parts of your code are being exercised by
- tests, and which are not.
- .
- This package installs the Python version 3 ‘coverage’ library, and the
- ‘python3-coverage’ program to perform and report coverage tests.
 
 Package: python3-netifaces
 Source: netifaces

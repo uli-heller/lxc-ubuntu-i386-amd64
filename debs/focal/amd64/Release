@@ -1,23 +1,23 @@
 Architectures: amd64
 Codename: focal
-Date: Tue, 07 Jan 2025 06:54:54 +0000
+Date: Fri, 17 Jan 2025 21:42:40 +0000
 Description: Precompiled packages for our LXC containers
 Label: lxc-ubuntu
 Origin: lxc-ubuntu
 Suite: focal
 MD5Sum:
- 9422dd952ad0a86e2585fe49e839acbd            22003 Packages
+ 1936647fb7b4a0cecbde35e83f86e366            21031 Packages
  84cf623e99edfaf431653b1228e03569              833 Packages.gpg
- 52fab21506c38d02cc77be2d93efdf77              182 Release
+ 5f5f2d92f7fc4662bdca05c45d290b65              182 Release
 SHA1:
- 33061806a8528e985e071455386154ac6ea1fa6c            22003 Packages
+ b71b5c79fc0e321a09734a78409c8a335ff7de9f            21031 Packages
  f0990e7586cfb811b7a553fb5fe7c73e651a5ea3              833 Packages.gpg
- 4a961b8feac40c4d0bef4a6dbdab5f814179f978              182 Release
+ f8fecb79e503399c3d46108c5362241556ae022f              182 Release
 SHA256:
- 8f37173772946e11dd261ad85b9eccce6baab813fa653d7f7117472cce8f4c55            22003 Packages
+ 4b931c3d4ebf8425de8e31fcf8859f70d35a53d73e24e180ec326a82aecbba1e            21031 Packages
  a9b37a0d4a48fa892aa00f5804e3797335ba69277b1b77f0e8e45b53ae265b46              833 Packages.gpg
- 5d81d90670b9d231562367b22673bf6da8adb95d386d5d526608c718f36914d0              182 Release
+ d603bac7465e99bd735930bebbceb8fd28088705bf0d7cb8f02f032d940a154e              182 Release
 SHA512:
- eb89a35111e85420df122867c5eaa55d1bd7b7bd69031a58276edee6b200162338ef758b84b1ba73f8d340c10b7e434923757071569dedae8c1289c15aee38d2            22003 Packages
+ 65cf23a460fd08ef1b3d248da5adbea242423e20f3df16d31cee9a6420a054cec8ce624fc979caea3f139f210efa584f6cbe9f727f6f230deda085c335c7a9d8            21031 Packages
  e0e732f52198b9cfb23fcf5264e62a6f885461ee9308c325d04b9051789df5f77774514596b213da4840d6a64058190440571b6ab1a25c3af697eb836152a160              833 Packages.gpg
- 4a1ab5c36c1876163622bae315d8af549e86804bdec9fddd6104fb2bc6bdb54952903d2f129a730529d9baaf8a5c38735b2b9840f474209e9bb4194f9064d16d              182 Release
+ 407f5f027eea8efcf622831ed964a6226f38809a85275ddac83a2ac99bf8f79afa93b8bd96e35de6d7d6a1bba751445bdac82b6406c4f65f40b8ca1f86d88fae              182 Release

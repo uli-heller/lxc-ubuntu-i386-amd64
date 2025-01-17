@@ -5028,58 +5028,6 @@ Description: Open vSwitch VTEP utilities
  VTEP-configured database and a VTEP emulator.
 Original-Maintainer: Open vSwitch developers <dev@openvswitch.org>
 
-Package: python-coverage-doc
-Source: python-coverage
-Version: 6.2+dfsg1-2build1
-Architecture: all
-Maintainer: Ben Finney <bignose@debian.org>
-Installed-Size: 1267
-Depends: libjs-sphinxdoc (>= 4.3), sphinx-rtd-theme-common (>= 1.0.0+dfsg)
-Filename: ./python-coverage-doc_6.2+dfsg1-2build1_all.deb
-Size: 344066
-MD5sum: c556d7f55908ab6dc994747bbf9a1e25
-SHA1: 39a7e5634fae468253c0570bdfa6e220887c4376
-SHA256: d89980c70011039e5bdbf969bae75099fd865548ba99dcbfc85151e50ec98582
-Section: doc
-Priority: optional
-Homepage: https://coverage.readthedocs.io/
-Description: code coverage tool for Python — documentation
- Coverage.py is a tool for measuring code coverage of Python programs.
- It monitors your program, noting which parts of the code have been
- executed, then analyzes the source to identify code that could have
- been executed but was not.
- .
- This package installs the HTML documentation for Coverage.py.
-
-Package: python3-coverage
-Source: python-coverage
-Version: 6.2+dfsg1-2build1
-Architecture: i386
-Maintainer: Ben Finney <bignose@debian.org>
-Installed-Size: 619
-Depends: python3-pkg-resources, python3 (<< 3.11), python3 (>= 3.10~), python3:any, libc6 (>= 2.4)
-Suggests: python-coverage-doc
-Filename: ./python3-coverage_6.2+dfsg1-2build1_i386.deb
-Size: 155604
-MD5sum: df44f5fd733f7c9fc0192eda4e42fe48
-SHA1: 3e91e5ce5dfa886c0d4a5abe65e314b14e675b2c
-SHA256: 4edd775bffd27a1ba131152547ea10296c20753b7c5c94e9f1b38cc7226a4d73
-Section: python
-Priority: optional
-Homepage: https://coverage.readthedocs.io/
-Description: code coverage tool for Python 3
- Coverage.py is a tool for measuring code coverage of Python programs.
- It monitors your program, noting which parts of the code have been
- executed, then analyzes the source to identify code that could have
- been executed but was not.
- .
- Coverage measurement is typically used to gauge the effectiveness of
- tests. It can show which parts of your code are being exercised by
- tests, and which are not.
- .
- This package installs the Python version 3 ‘coverage’ library, and the
- ‘python3-coverage’ program to perform and report coverage tests.
-
 Package: python3-netifaces
 Source: netifaces
 Version: 0.11.0-1build2

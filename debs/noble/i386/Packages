@@ -268,30 +268,6 @@ Description: Foreign Function Interface for Python calling C code - documentatio
  This package contains the developer documentation for cffi.
 Original-Maintainer: Debian Python Team <team+python@tracker.debian.org>
 
-Package: python-coverage-doc
-Source: python-coverage
-Version: 7.4.4+dfsg1-0ubuntu2
-Architecture: all
-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Installed-Size: 1543
-Depends: libjs-jquery (>= 3.6.0), libjs-sphinxdoc (>= 7.2.2), sphinx-rtd-theme-common (>= 2.0.0+dfsg)
-Filename: ./python-coverage-doc_7.4.4+dfsg1-0ubuntu2_all.deb
-Size: 377084
-MD5sum: 1bac502ae1beb6579abc0046f08142be
-SHA1: a3d8c133f2d12073e4a993db5ae7d41af276729a
-SHA256: 8016cca759c02190cc5acca917632a9dc6b25f31537c3c281812c96888fe9a8e
-Section: doc
-Priority: optional
-Homepage: https://coverage.readthedocs.io/
-Description: code coverage tool for Python — documentation
- Coverage.py is a tool for measuring code coverage of Python programs.
- It monitors your program, noting which parts of the code have been
- executed, then analyzes the source to identify code that could have
- been executed but was not.
- .
- This package installs the HTML documentation for Coverage.py.
-Original-Maintainer: Ben Finney <bignose@debian.org>
-
 Package: python3-cffi
 Source: python-cffi
 Version: 1.16.0-2build1
@@ -347,36 +323,6 @@ Description: Foreign Function Interface for Python 3 calling C code - runtime
  .
  This package contains the runtime support for pre-built cffi modules.
 Original-Maintainer: Debian Python Team <team+python@tracker.debian.org>
-
-Package: python3-coverage
-Source: python-coverage
-Version: 7.4.4+dfsg1-0ubuntu2
-Architecture: i386
-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Installed-Size: 720
-Depends: python3-pkg-resources, python3 (<< 3.13), python3 (>= 3.12~), python3.12:any, python3:any, libc6 (>= 2.4)
-Suggests: python-coverage-doc
-Filename: ./python3-coverage_7.4.4+dfsg1-0ubuntu2_i386.deb
-Size: 175178
-MD5sum: 88cb374f0c8125b05f09ce3bb22c439f
-SHA1: ffe7b8b2190a7b032e27335bf6e1000d69116559
-SHA256: 77fb2e55dfec4515f988c180d577c1d9f810c174fbee3bd270227f42f06592eb
-Section: python
-Priority: optional
-Homepage: https://coverage.readthedocs.io/
-Description: code coverage tool for Python 3
- Coverage.py is a tool for measuring code coverage of Python programs.
- It monitors your program, noting which parts of the code have been
- executed, then analyzes the source to identify code that could have
- been executed but was not.
- .
- Coverage measurement is typically used to gauge the effectiveness of
- tests. It can show which parts of your code are being exercised by
- tests, and which are not.
- .
- This package installs the Python version 3 ‘coverage’ library, and the
- ‘python3-coverage’ program to perform and report coverage tests.
-Original-Maintainer: Ben Finney <bignose@debian.org>
 
 Package: python3-netifaces
 Source: netifaces
