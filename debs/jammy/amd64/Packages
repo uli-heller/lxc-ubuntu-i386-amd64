@@ -216,29 +216,6 @@ Description: Native Go bindings for the FUSE kernel module
  .
  The package also includes two fleshed out examples, zipfs and unionfs.
 
-Package: golang-github-jacobsa-crypto-dev
-Source: golang-github-jacobsa-crypto
-Version: 0.0~git20190317.9f44e2d+dfsg1-4~uh~jammy1
-Architecture: all
-Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
-Installed-Size: 3702
-Depends: golang-github-jacobsa-oglematchers-dev, golang-github-jacobsa-ogletest-dev
-Filename: ./golang-github-jacobsa-crypto-dev_0.0~git20190317.9f44e2d+dfsg1-4~uh~jammy1_all.deb
-Size: 2227308
-MD5sum: a8b38d98fab23a02a26dea834813d6eb
-SHA1: bac367667d3c7405782f2977e67ff10e2d6c7652
-SHA256: 3d56ee50f260b10ca2377bce200e1e563efb4c226035f96cc4258e98a63d9595
-Section: devel
-Priority: optional
-Homepage: https://github.com/jacobsa/crypto
-Description: Some Go cryptography routines that are not included in the Go standard library
- This repository contains Go packages related to cryptographic standards
- that are not included in the Go standard library. These include:
- • SIV mode (http://go.pkgdoc.org/github.com/jacobsa/crypto/siv),
-  which provides deterministic encryption with authentication.
- • CMAC (http://go.pkgdoc.org/github.com/jacobsa/crypto/cmac),
-  a message authentication system used by SIV mode.
-
 Package: golang-github-mdp-qrterminal-dev
 Source: qrterminal
 Version: 3.2.0.3-2ubuntu0.24.04.2~uh~jammy2
@@ -289,29 +266,6 @@ Description: Go Library for system information and operation
   * github.com/moby/sys/signal
   * github.com/moby/sys/symlink
   * github.com/moby/sys/user
-
-Package: golang-github-sabhiram-go-gitignore-dev
-Source: golang-github-sabhiram-go-gitignore
-Version: 1.0.2+git20210923.525f6e1-1~uh~jammy1
-Architecture: all
-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
-Installed-Size: 50
-Depends: golang-github-stretchr-testify-dev
-Filename: ./golang-github-sabhiram-go-gitignore-dev_1.0.2+git20210923.525f6e1-1~uh~jammy1_all.deb
-Size: 9528
-MD5sum: 8f867653178fc6df3e54aef8d425cb7d
-SHA1: 160fe2f3bc21ede8a9ac154aea2e63a21be03e17
-SHA256: c844fefc74c1ec4371be4abbd6197611b1dbb42070a59565935977113fa65c63
-Section: devel
-Priority: optional
-Homepage: https://github.com/sabhiram/go-gitignore
-Description: gitignore parser for go
- This implements a library to check a pattern includes or excludes
- certain filesystem paths. It can be useful to parse a .gitignore file,
- as the author does, or for other path specifications.
- .
- At the time of writing, this module is a prequisite for Gocryptfs
- versions 1.7.1 and up.
 
 Package: golang-go
 Source: golang-defaults
@@ -420,6 +374,40 @@ Description: Go programming language - source files
  This is a dependency package that depends on the default Go standard library
  source code, which is needed for the go build process.
 Original-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>
+
+Package: kbuild
+Version: 1:0.1.9998svn3604+dfsg-1~uh~jammy1
+Architecture: amd64
+Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debian.org>
+Installed-Size: 3722
+Depends: libc6 (>= 2.34)
+Filename: ./kbuild_0.1.9998svn3604+dfsg-1~uh~jammy1_amd64.deb
+Size: 742632
+MD5sum: dbab51e8c4ebe457232b99d424a7c294
+SHA1: 981cd4eb2afa2b2c9b7ace9818a224eaf8b4e8a3
+SHA256: 69137b9ef666f45a0888a30582448f4aebf13ca6a425566aaf64c045cdc6e8c7
+Section: devel
+Priority: optional
+Homepage: https://svn.netlabs.org/kbuild
+Description: framework for writing simple makefiles for complex tasks
+ The goals of the kBuild framework:
+  - Similar behavior cross all supported platforms.
+  - Flexibility, don't create unnecessary restrictions preventing ad-hoc
+    solutions.
+  - Makefile can very simple to write and maintain.
+ .
+ There are four concepts being tried out in the current kBuild incaration:
+  - One configuration file for a subtree automatically included.
+  - Target configuration templates as the primary mechanism for makefile
+    simplification.
+  - Tools and SDKs for helping out the templates with flexibility.
+  - Non-recursive makefile method by using sub-makefiles.
+ .
+ kBuild does not provide any facilities for checking compiler/library/header
+ configurations, that's not in its scope. If this is important for your
+ project, check out the autoconf tool in the GNU build system. It is possible
+ to use kBuild together with autoconf if you like, but you might just as well
+ use the full GNU package.
 
 Package: qrterminal
 Version: 3.2.0.3-2ubuntu0.24.04.2~uh~jammy2

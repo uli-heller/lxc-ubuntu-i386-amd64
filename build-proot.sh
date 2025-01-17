@@ -189,7 +189,7 @@ mkdir "${TMPDIR}"
 touch "${TMPDIR}/empty"
 
 "${D}/init-gpg.sh"
-"${D}/rebuild-ppa.sh" "${ARCHITECTURE}" "${OS}"
+"${D}/rebuild-debs.sh" "${ARCHITECTURE}" "${OS}"
 
 #
 # replaceVariables <from >to
@@ -342,7 +342,7 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
                 cp $(find "${ROOTFS}/src/${PACKAGE}" -maxdepth 1 -type f -not -name "*.deb") "${D}/debs/${OS}/src/."
                 chown "$(id -un):$(id -gn)" "${D}/debs/${OS}/src"/*
             }
-            "${D}/rebuild-ppa.sh"
+            "${D}/rebuild-debs.sh"
             cp "${D}/debs/${OS}/${ARCHITECTURE}"/*  "${ROOTFS}/var/cache/lxc-ppa"
             myProot "${ROOTFS}" apt update
         ) || {
