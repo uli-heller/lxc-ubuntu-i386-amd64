@@ -220,7 +220,7 @@ sed -e "s/^deb /deb-src /" -e "s/${OS}/${SOURCE_OS}/" <"${TMPDIR}/sources.list" 
 myProot "${ROOTFS}" tee /etc/apt/sources.list.d/deb-src.list <"${TMPDIR}/debsrc" >/dev/null
 
 mkdir -p "${ROOTFS}/var/cache/lxc-ppa"
-cp "${D}/ppas/${ARCHITECTURE}/${OS}"/*  "${ROOTFS}/var/cache/lxc-ppa"
+cp -r "${D}/ppas/${ARCHITECTURE}/${OS}"/*  "${ROOTFS}/var/cache/lxc-ppa"
 cp "${D}/ppas/${ARCHITECTURE}/${OS}"/lxc.public.gpg "${ROOTFS}/etc/apt/trusted.gpg.d/."
 echo "deb file:/var/cache/lxc-ppa/ ./"|tee "${ROOTFS}/etc/apt/sources.list.d/lxc-ppa.list"
 
