@@ -20,11 +20,11 @@ Package-List:
  virtualbox-source deb contrib/kernel optional arch=amd64
 Checksums-Sha1:
  df6cfdd02e421af587e64b6855d8049056e20af3 78681676 virtualbox_7.0.16-dfsg.orig.tar.xz
- e66c54fbcea0bdb2ecce8a970b27e2644810366a 78720 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~jammy1.debian.tar.xz
+ 3b83fc8685fec77552b4e311aff4474ec63258fa 78724 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~jammy1.debian.tar.xz
 Checksums-Sha256:
  9af16b80e8f18c7f3f7f935817e6ce094904c1c392a86e37c16773d7b1d25997 78681676 virtualbox_7.0.16-dfsg.orig.tar.xz
- 9cdf62b9334debf3b0bfce0f850caf0b0b36bd7443fa86668858075bc3593c42 78720 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~jammy1.debian.tar.xz
+ daa31df964987b875368a4c70324b6f0ae627cf0e443df6f1f058aa331d283eb 78724 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~jammy1.debian.tar.xz
 Files:
  eea3497f179943f5a3b02204a2f863a0 78681676 virtualbox_7.0.16-dfsg.orig.tar.xz
- 00aefd11571e295e51f087bf8fec1af3 78720 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~jammy1.debian.tar.xz
+ 65488be991a7f96546f320005086c4a7 78724 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~jammy1.debian.tar.xz
 Original-Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debian.org>
