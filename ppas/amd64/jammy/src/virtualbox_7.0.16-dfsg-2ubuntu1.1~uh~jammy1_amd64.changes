@@ -1,0 +1,65 @@
+Format: 1.8
+Date: Fri, 17 Jan 2025 22:47:14 +0000
+Source: virtualbox
+Binary: virtualbox virtualbox-dkms virtualbox-guest-utils virtualbox-guest-x11 virtualbox-qt virtualbox-source
+Built-For-Profiles: noudeb
+Architecture: source amd64
+Version: 7.0.16-dfsg-2ubuntu1.1~uh~jammy1
+Distribution: jammy
+Urgency: medium
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ virtualbox - x86 virtualization solution - base binaries
+ virtualbox-dkms - x86 virtualization solution - kernel module sources for dkms
+ virtualbox-guest-utils - x86 virtualization solution - non-X11 guest utilities
+ virtualbox-guest-x11 - x86 virtualization solution - X11 guest utilities
+ virtualbox-qt - x86 virtualization solution - Qt based user interface
+ virtualbox-source - x86 virtualization solution - kernel module source
+Changes:
+ virtualbox (7.0.16-dfsg-2ubuntu1.1~uh~jammy1) jammy; urgency=medium
+ .
+   * Repackaged for jammy
+Checksums-Sha1:
+ 565efae73ee182c9a691c27b27bb052d3f352f5f 2816 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~jammy1.dsc
+ 3b83fc8685fec77552b4e311aff4474ec63258fa 78724 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~jammy1.debian.tar.xz
+ 31455f75c1115bff958a5845872004cf34596975 92144908 virtualbox-dbgsym_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.ddeb
+ 4d95cb996b4bf4c70eff2b0ffa6bebaa1d924b1d 793410 virtualbox-dkms_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.deb
+ 29bdad3f5bfbe0d273934a609fee8e30f307bebd 2221808 virtualbox-guest-utils-dbgsym_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.ddeb
+ feb1b7df058313b4a12f4ebafa9145c8972a2861 479400 virtualbox-guest-utils_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.deb
+ 4ccb5c80a9128cbdfe47a778c8850db77f1fe31b 1117776 virtualbox-guest-x11-dbgsym_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.ddeb
+ e3d4ee964e8cb7e519e1d450a31ecd40534952f3 337108 virtualbox-guest-x11_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.deb
+ 59d8e7b83da1c9be794e0d2b759dd6612db03ecd 77177450 virtualbox-qt-dbgsym_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.ddeb
+ 3fffeb65e3fe1fbf70e701f11b5b0b08746ca21f 25237878 virtualbox-qt_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.deb
+ a5e469653388977a03cc2f6c66025d20d50a6228 909098 virtualbox-source_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.deb
+ 35d62aa235f9182130b503aaf1bd891eac13fdf9 28846 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.buildinfo
+ c3e77c4a3f888e3481fa436988928277d21fd1e2 31832436 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.deb
+Checksums-Sha256:
+ 342f16f3d031103454d878a5d098039a5766626cd13b6ac3497d88e5686e37d0 2816 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~jammy1.dsc
+ daa31df964987b875368a4c70324b6f0ae627cf0e443df6f1f058aa331d283eb 78724 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~jammy1.debian.tar.xz
+ 3ab36227623f7fcf48ece4c791713966c128f7618797a21177c580217022047a 92144908 virtualbox-dbgsym_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.ddeb
+ ca81d25cfadfac4ea5ce6930bf5a458005de05dc593f28efd07ce3a263d26031 793410 virtualbox-dkms_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.deb
+ 24d32fa524355aea9b103fe649fcc6731f334ba56380f47b2c295f999eb13b48 2221808 virtualbox-guest-utils-dbgsym_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.ddeb
+ 7537a06b6744c367c8444daaa4e761366d725cee3cd3f507e85fac20885d2020 479400 virtualbox-guest-utils_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.deb
+ b83037bf9b1e5758fc9b36a70f35ddbb87ac87d5cc955d919b21b79a87833573 1117776 virtualbox-guest-x11-dbgsym_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.ddeb
+ a67110ef7c4edc292d1d4407d613aa3ec25e76ce3d2d0cee3a732504ffaf1a2d 337108 virtualbox-guest-x11_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.deb
+ e4c718b6507947674a9877730f7e190f9839a2ba68abf0164aab366dacc2a237 77177450 virtualbox-qt-dbgsym_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.ddeb
+ 80c769aa606f4d63f4d9bd786b515a280d6ba2266b8dee6f407599d3c32f20d4 25237878 virtualbox-qt_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.deb
+ db5660d258f0f009f5e2df437be9bcbaea091d9b50a21bac8cb2fe0f61a6d37c 909098 virtualbox-source_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.deb
+ 97d7121ee76ec5728236979cc1fbfe67de8ddefcc6e1f66878079fe84e9e688b 28846 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.buildinfo
+ 7d246ac237f55fbd6c406406251b87e06dbe193a4e19c696cf2aa8e792eb9614 31832436 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.deb
+Files:
+ 3a77d98a97e7c4f01f86643957813fe5 2816 contrib/misc optional virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~jammy1.dsc
+ 65488be991a7f96546f320005086c4a7 78724 contrib/misc optional virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~jammy1.debian.tar.xz
+ 5ad8f818fcda35e792b4a89d990e41a5 92144908 contrib/debug optional virtualbox-dbgsym_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.ddeb
+ a28ef29de80ce24101e17f1c77cfab62 793410 contrib/kernel optional virtualbox-dkms_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.deb
+ 1989d43729e9b25cea36f39f65c06b20 2221808 contrib/debug optional virtualbox-guest-utils-dbgsym_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.ddeb
+ 7cc54b31a38e62eaa04b7b4580c5a8a9 479400 contrib/misc optional virtualbox-guest-utils_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.deb
+ 1b9f591b4b4cbb9e7d8384d0d355b9b4 1117776 contrib/debug optional virtualbox-guest-x11-dbgsym_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.ddeb
+ 97c6af8cdf1fee13b5cc1ac1bdabc87e 337108 contrib/x11 optional virtualbox-guest-x11_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.deb
+ a6edce2431ed141d12c6530397452943 77177450 contrib/debug optional virtualbox-qt-dbgsym_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.ddeb
+ 7330a1d455f12eac3f88db07dc42d93e 25237878 contrib/misc optional virtualbox-qt_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.deb
+ 7359950d5e2ddbc79330f217a8f71d30 909098 contrib/kernel optional virtualbox-source_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.deb
+ a3454f88b9987e6fb1fe6257ba7f9c9b 28846 contrib/misc optional virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.buildinfo
+ cd805f0e993bc48e45dfd88fa41579ad 31832436 contrib/misc optional virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.deb
+Original-Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debian.org>
