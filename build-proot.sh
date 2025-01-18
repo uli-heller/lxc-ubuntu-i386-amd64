@@ -336,7 +336,7 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
                 chown "$(id -un):$(id -gn)" "${D}/ppas/${ARCHITECTURE}/${OS}/src"/*
             }
             "${D}/rebuild-ppas.sh"
-            cp "${D}/ppas/${ARCHITECTURE}/${OS}"/*  "${ROOTFS}/var/cache/lxc-ppa"
+            cp -r "${D}/ppas/${ARCHITECTURE}/${OS}"/*  "${ROOTFS}/var/cache/lxc-ppa"
             myProot "${ROOTFS}" apt update
         ) || {
             #find "${ROOTFS}/src/${PACKAGE}" -mindepth 1 -maxdepth 1 -newer "${TMPDIR}/before"|xargs -t rm -rf
