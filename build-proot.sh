@@ -3,7 +3,7 @@
 ### build-proot.sh
 ###
 ### Usage:
-###   build-proot.sh [-h] -a i386|amd64 [-b build-options] [-S] [-R] [-V middle-part] -o focal|jammy|noble [-s focal|jammy|noble] [-r|package...]
+###   build-proot.sh [-h] -a i386|amd64 [-b build-options] [-S] [-R] [-V middle-part] -o focal|jammy|noble [-s focal|jammy|noble] package...
 ###
 ### Options:
 ###   -a architecture ... i386 or amd64
@@ -12,7 +12,6 @@
 ###   -S ................ create source package, too
 ###   -V middle-part .... middle part of version number, i.e. 2.4-0~uh~focal1
 ###   -i image.tar.xz ... lxc image file
-###   -r ................ rebuild all required packages for the architecture/os
 ###   -R ................ use "root" for build (required by GOCRYPTFS for example)
 ###   -b build-options .. prepend 'dpkg-buildpackage' with build-options
 ###   -k ................ keep sources even on failures
@@ -20,7 +19,7 @@
 ###
 ### Examples:
 ###   ./build.sh -a i386 -o jammy at
-###   ./build.sh -a i386 -o noble -r
+###   ./build.sh -a amd64 -o jammy -s noble -S -R virtualbox
 ###
 
 BN="$(basename "$0")"
@@ -145,17 +144,6 @@ case "${OS}" in
         ;;
 esac
 
-#
-# Extend parameter list for 'rebuild'
-#
-test -n "${REBUILD}" && {
-    test -s "${D}/debs/${OS}/${ARCHITECTURE}/rebuild.conf" && {
-        for p in $(cat "${D}/debs/${OS}/${ARCHITECTURE}/rebuild.conf"|grep -v '^#'); do
-            set -- "${p}" "$@"
-        done
-    }
-}
-
 OSDIR="build-proot-${OS}-${ARCHITECTURE}"
 
 test -d "${OSDIR}" || mkdir "${OSDIR}"
@@ -194,7 +182,7 @@ mkdir "${TMPDIR}"
 touch "${TMPDIR}/empty"
 
 "${D}/init-gpg.sh"
-"${D}/rebuild-debs.sh" "${ARCHITECTURE}" "${OS}"
+"${D}/rebuild-ppas.sh" "${ARCHITECTURE}" "${OS}"
 
 #
 # replaceVariables <from >to
@@ -232,8 +220,8 @@ sed -e "s/^deb /deb-src /" -e "s/${OS}/${SOURCE_OS}/" <"${TMPDIR}/sources.list" 
 myProot "${ROOTFS}" tee /etc/apt/sources.list.d/deb-src.list <"${TMPDIR}/debsrc" >/dev/null
 
 mkdir -p "${ROOTFS}/var/cache/lxc-ppa"
-cp "${D}/debs/${OS}/${ARCHITECTURE}"/*  "${ROOTFS}/var/cache/lxc-ppa"
-cp "${D}/debs/${OS}/${ARCHITECTURE}"/lxc.public.gpg "${ROOTFS}/etc/apt/trusted.gpg.d/."
+cp "${D}/ppas/${ARCHITECTURE}/${OS}"/*  "${ROOTFS}/var/cache/lxc-ppa"
+cp "${D}/ppas/${ARCHITECTURE}/${OS}"/lxc.public.gpg "${ROOTFS}/etc/apt/trusted.gpg.d/."
 echo "deb file:/var/cache/lxc-ppa/ ./"|tee "${ROOTFS}/etc/apt/sources.list.d/lxc-ppa.list"
 
 myProot "${ROOTFS}" apt update
@@ -246,11 +234,11 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
     myProot "${ROOTFS}" bash -c "cd /src && mkdir -p '${PACKAGE}' && cd '${PACKAGE}' && ls *dsc 2>/dev/null" >"${TMPDIR}/before"
     myProot "${ROOTFS}" bash -c "cd /src && cd '${PACKAGE}' && ls"      >"${TMPDIR}/before.ls"
     #
-    # When we do have a "local" package underneath debs/(source_os)/srv,
+    # When we do have a "local" package underneath ppas/(arch)/(source_os)/srv,
     # then use this!
     #
     set -x
-    LOCAL_PACKAGE="$(ls "${D}/debs/${SOURCE_OS}/src/${PACKAGE}"*.dsc|sort -r -V|head -1)"
+    LOCAL_PACKAGE="$(ls "${D}/ppas/${ARCHITECTURE}/${SOURCE_OS}/src/${PACKAGE}"*.dsc|sort -r -V|head -1)"
     if [ -e "${LOCAL_PACKAGE}" ]; then
         #cp "$(dirname "${LOCAL_PACKAGE}")/$(basename "${LOCAL_PACKAGE}" .dsc"* "${ROOTFS}/src/${PACKAGE}/."
         copyDscAndIncludedFiles "${LOCAL_PACKAGE}" "${ROOTFS}/src/${PACKAGE}/."
@@ -339,16 +327,16 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
             test -n "${SOURCE_PACKAGE}" && DPKG_BUILDPACKAGE_OPTS=
             myExec "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C ${BUILD_OPTIONS} dpkg-buildpackage ${DPKG_BUILDPACKAGE_OPTS}" || RC=1
             test "${RC}" -eq "0" || { echo >&2 "Probleme beim Auspacken oder bauen - EXIT"; exit 1; }
-            test -d "${D}/debs/${OS}/${ARCHITECTURE}" || mkdir -p "${D}/debs/${OS}/${ARCHITECTURE}"
-            cp "${ROOTFS}/src/${PACKAGE}"/*.deb "${D}/debs/${OS}/${ARCHITECTURE}/."
-            chown "$(id -un):$(id -gn)" "${D}/debs/${OS}/${ARCHITECTURE}"/*.deb
+            test -d "${D}/ppas/${ARCHITECTURE}/${OS}" || mkdir -p "${D}/ppas/${ARCHITECTURE}/${OS}"
+            cp "${ROOTFS}/src/${PACKAGE}"/*.deb "${D}/ppas/${ARCHITECTURE}/${OS}/."
+            chown "$(id -un):$(id -gn)" "${D}/ppas/${ARCHITECTURE}/${OS}"/*.deb
             test -n "${SOURCE_PACKAGE}" && {
-                test -d "${D}/debs/${OS}/src" || mkdir -p "${D}/debs/${OS}/src"
-                cp $(find "${ROOTFS}/src/${PACKAGE}" -maxdepth 1 -type f -not -name "*.deb") "${D}/debs/${OS}/src/."
-                chown "$(id -un):$(id -gn)" "${D}/debs/${OS}/src"/*
+                test -d "${D}/ppas/${ARCHITECTURE}/${OS}/src" || mkdir -p "${D}/ppas/${ARCHITECTURE}/${OS}/src"
+                cp $(find "${ROOTFS}/src/${PACKAGE}" -maxdepth 1 -type f -not -name "*.deb") "${D}/ppas/${ARCHITECTURE}/${OS}/src/."
+                chown "$(id -un):$(id -gn)" "${D}/ppas/${ARCHITECTURE}/${OS}/src"/*
             }
-            "${D}/rebuild-debs.sh"
-            cp "${D}/debs/${OS}/${ARCHITECTURE}"/*  "${ROOTFS}/var/cache/lxc-ppa"
+            "${D}/rebuild-ppas.sh"
+            cp "${D}/ppas/${ARCHITECTURE}/${OS}"/*  "${ROOTFS}/var/cache/lxc-ppa"
             myProot "${ROOTFS}" apt update
         ) || {
             #find "${ROOTFS}/src/${PACKAGE}" -mindepth 1 -maxdepth 1 -newer "${TMPDIR}/before"|xargs -t rm -rf
@@ -375,7 +363,7 @@ myProot "${ROOTFS}" tee /etc/apt/sources.list <"${TMPDIR}/sources.list" >/dev/nu
 test "${RC}" -eq 0 && {
   "${D}/init-gpg.sh"
   (
-    cd "${D}/debs/${OS}/${ARCHITECTURE}"
+    cd "${D}/ppas/${ARCHITECTURE}/${OS}"
     dpkg-scanpackages . >Packages
     {
         AFR="APT::FTPArchive::Release::"
