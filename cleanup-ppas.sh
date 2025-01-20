@@ -23,13 +23,18 @@ mkdir "${TMPDIR}"
 cat >"${TMPDIR}/do-not-delete" <<EOF
 InRelease
 Packages
+Packages.bz2
+Packages.gz
 Packages.gpg
 Release
 Release.gpg
 Sources
+Sources.bz2
+Sources.gz
 Sources.gpg
 lxc-public.asc
 lxc-public.gpg
+gpg-key-id
 EOF
 
 find "${ALL_PPAS}" -name "Sources" -or -name "Packages"|xargs -n1 dirname|sort -u >"${TMPDIR}/all-ppas"
@@ -89,7 +94,7 @@ while read -r PPA; do
     find "${PPA}" -type f|sort >"${TMPDIR}/all-files"
     while read -r FILE; do
 	B_FILE="$(basename "${FILE}")"
-	N_FILE="$(echo "${FILE}"|sed -e 's!\.\(changes\|buildinfo\|virustotal.*\)$!!')"
+	N_FILE="$(echo "${FILE}"|sed -e 's!\.\(changes\|buildinfo\|virustotal.*\|urls\)$!!')"
 	grep "^${B_FILE}$" "${TMPDIR}/do-not-delete" >/dev/null && continue
 	grep "^${N_FILE}$" "${TMPDIR}/required-files" >/dev/null && continue
 	grep "^${FILE}$" "${TMPDIR}/required-files" >/dev/null && continue
