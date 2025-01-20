@@ -1,0 +1,39 @@
+Format: 1.8
+Date: Sat, 18 Jan 2025 13:39:40 +0000
+Source: libtpms
+Binary: libtpms-dev libtpms0
+Architecture: source amd64
+Version: 0.9.3-0ubuntu4~uh~focal1
+Distribution: focal
+Urgency: medium
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ libtpms-dev - libtpms header files and man pages
+ libtpms0   - TPM emulation library
+Changes:
+ libtpms (0.9.3-0ubuntu4~uh~focal1) focal; urgency=medium
+ .
+   * Repackaged for focal
+Checksums-Sha1:
+ 0d59038130a9732c2c95265eab67efca41e21b78 1247 libtpms_0.9.3-0ubuntu4~uh~focal1.dsc
+ 7c455300101fa584d6e2f1149cd75aa2500416d5 13516 libtpms_0.9.3-0ubuntu4~uh~focal1.debian.tar.xz
+ afbd824d341d6bd06bdc3d7c2da184944be0fc39 445548 libtpms-dev_0.9.3-0ubuntu4~uh~focal1_amd64.deb
+ ab304b14779294bf3958529e85f245dcc3c9fd4c 964296 libtpms0-dbgsym_0.9.3-0ubuntu4~uh~focal1_amd64.ddeb
+ ede053f9b3f70fc9e9ada56d4bcd083f366b6b3e 321488 libtpms0_0.9.3-0ubuntu4~uh~focal1_amd64.deb
+ 6ab3ecf091205042a19773779b7d472bf7f5fc73 6378 libtpms_0.9.3-0ubuntu4~uh~focal1_amd64.buildinfo
+Checksums-Sha256:
+ 69d8632e878722c1613a5547aef20feadbf949029a827379d782df466b42f9b3 1247 libtpms_0.9.3-0ubuntu4~uh~focal1.dsc
+ 5b9c1262c5089497de8ae99a7baa6e30931029fa5ce8d4a6c19ee771fef2e79c 13516 libtpms_0.9.3-0ubuntu4~uh~focal1.debian.tar.xz
+ dd65ecf5ec400c0825fa3fadc867931eb708ac777140ca029b0e05cdb08f6854 445548 libtpms-dev_0.9.3-0ubuntu4~uh~focal1_amd64.deb
+ 65952bf9c2987735678e8a2443f41f5ec9e94bb64c452c85a85ccd12dce7c8c2 964296 libtpms0-dbgsym_0.9.3-0ubuntu4~uh~focal1_amd64.ddeb
+ 13f17e06153be1a8234248f7a7192386d65448494ad96c6ac203ef0bc76c69c9 321488 libtpms0_0.9.3-0ubuntu4~uh~focal1_amd64.deb
+ 8af63d2e243669c75ad161375594ce71ca0f2bb27d4117ca791daf0cfbff4b89 6378 libtpms_0.9.3-0ubuntu4~uh~focal1_amd64.buildinfo
+Files:
+ 50342e3c1f58812e8a8dd85c7f401143 1247 libs optional libtpms_0.9.3-0ubuntu4~uh~focal1.dsc
+ 15a07a63301f091e73777f72713c3427 13516 libs optional libtpms_0.9.3-0ubuntu4~uh~focal1.debian.tar.xz
+ be393aa7d51a39ab483ce7e688479235 445548 libdevel optional libtpms-dev_0.9.3-0ubuntu4~uh~focal1_amd64.deb
+ d382b586fda48dc613e0580eb5919bfe 964296 debug optional libtpms0-dbgsym_0.9.3-0ubuntu4~uh~focal1_amd64.ddeb
+ 898699d29240e71ab7cefc917146b18d 321488 libs optional libtpms0_0.9.3-0ubuntu4~uh~focal1_amd64.deb
+ b9550895ef48620b7ad5e6416481e7d0 6378 libs optional libtpms_0.9.3-0ubuntu4~uh~focal1_amd64.buildinfo
+Original-Maintainer: Seunghun Han <kkamagui@gmail.com>

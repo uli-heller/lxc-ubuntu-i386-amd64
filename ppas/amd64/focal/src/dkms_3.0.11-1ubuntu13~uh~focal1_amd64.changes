@@ -1,0 +1,40 @@
+Format: 1.8
+Date: Sat, 18 Jan 2025 13:30:51 +0000
+Source: dkms
+Binary: dh-dkms dkms dkms-test-dkms
+Architecture: source all amd64
+Version: 3.0.11-1ubuntu13~uh~focal1
+Distribution: focal
+Urgency: medium
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ dh-dkms    - debhelper addon for the Dynamic Kernel Module System (DKMS)
+ dkms       - Dynamic Kernel Module System (DKMS)
+ dkms-test-dkms - trivial dkms test kernel module
+Changes:
+ dkms (3.0.11-1ubuntu13~uh~focal1) focal; urgency=medium
+ .
+   * Repackaged for focal
+Checksums-Sha1:
+ facb7c98d22f4ccdc03b1143b73454902a84ec1c 1522 dkms_3.0.11-1ubuntu13~uh~focal1.dsc
+ e4ad3cb05ae8b5fcf6dc01bd9591f85f22ee02a8 26112 dkms_3.0.11-1ubuntu13~uh~focal1.debian.tar.xz
+ 759c021b52db713ea30431ab844cb8a726164e9f 23780 dh-dkms_3.0.11-1ubuntu13~uh~focal1_all.deb
+ 666f2c7beb6effa297c4f26fe20582a80e523085 19260 dkms-test-dkms_3.0.11-1ubuntu13~uh~focal1_amd64.deb
+ f9e1016958c2eb7cfc6ef8a0e7c6574ff3e2fbda 59600 dkms_3.0.11-1ubuntu13~uh~focal1_all.deb
+ ff27fde902218b731e7bf13e269f3a0ff698b679 6139 dkms_3.0.11-1ubuntu13~uh~focal1_amd64.buildinfo
+Checksums-Sha256:
+ ed3b368814c9875bcb83adb7dc3cc133287495dc2f814b882facabcec2c8aa17 1522 dkms_3.0.11-1ubuntu13~uh~focal1.dsc
+ b1042e99c0881c54d67abb435a3ef3e14f079a8d9ee9529795b26234ae034acd 26112 dkms_3.0.11-1ubuntu13~uh~focal1.debian.tar.xz
+ c28ce2a298c636341c413ab6d4a2fa02286929d3e43331e6ef0237ba5ce8aab0 23780 dh-dkms_3.0.11-1ubuntu13~uh~focal1_all.deb
+ 20788a36673c7c463fead2778d01bde457fe2c2db135f875471a74740ebe6f74 19260 dkms-test-dkms_3.0.11-1ubuntu13~uh~focal1_amd64.deb
+ 0c698f2f631af481ac31a4bd5b8b53f31ac3132c8eb9bc07aa786bc4b0e9918f 59600 dkms_3.0.11-1ubuntu13~uh~focal1_all.deb
+ 1be9a5223c7c95cdd0c0be402fb92dbe582863e72bc9a37fa57f7d9f3e3fac18 6139 dkms_3.0.11-1ubuntu13~uh~focal1_amd64.buildinfo
+Files:
+ f63a11348799eb044dde7883608d2803 1522 kernel optional dkms_3.0.11-1ubuntu13~uh~focal1.dsc
+ acb22dc63215f05c04bc44d5905af135 26112 kernel optional dkms_3.0.11-1ubuntu13~uh~focal1.debian.tar.xz
+ e725359ccdfac62f8de597cf49ee476f 23780 kernel optional dh-dkms_3.0.11-1ubuntu13~uh~focal1_all.deb
+ 233b3c8929d54ae5b94f6cf692a2783f 19260 kernel optional dkms-test-dkms_3.0.11-1ubuntu13~uh~focal1_amd64.deb
+ 6ee8cd8a3d8fb4a4677388901abe1629 59600 kernel optional dkms_3.0.11-1ubuntu13~uh~focal1_all.deb
+ 58d736665bd05537a14fd32118fb7cd0 6139 kernel optional dkms_3.0.11-1ubuntu13~uh~focal1_amd64.buildinfo
+Original-Maintainer: Dynamic Kernel Module System Team <dkms@packages.debian.org>

@@ -1,0 +1,34 @@
+Format: 1.8
+Date: Sat, 18 Jan 2025 13:33:55 +0000
+Source: kbuild
+Binary: kbuild
+Architecture: source amd64
+Version: 1:0.1.9998svn3604+dfsg-1~uh~focal1
+Distribution: focal
+Urgency: medium
+Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ kbuild     - framework for writing simple makefiles for complex tasks
+Changes:
+ kbuild (1:0.1.9998svn3604+dfsg-1~uh~focal1) focal; urgency=medium
+ .
+   * Repackaged for focal
+Checksums-Sha1:
+ a57e6896b2c14e1fb10ab530bee1a806cd845dbf 1268 kbuild_0.1.9998svn3604+dfsg-1~uh~focal1.dsc
+ 506a480d0debc1b1b19fe5708b87158bd6f7f843 13124 kbuild_0.1.9998svn3604+dfsg-1~uh~focal1.debian.tar.xz
+ 74ed9059ba6638077925f39a261e448aa5f41131 2070760 kbuild-dbgsym_0.1.9998svn3604+dfsg-1~uh~focal1_amd64.ddeb
+ 01f035fda3e01368444d1600c01575f768e5ac12 6320 kbuild_0.1.9998svn3604+dfsg-1~uh~focal1_amd64.buildinfo
+ 58ab0ae53291b01f043bb074f880c0ed548192ac 699012 kbuild_0.1.9998svn3604+dfsg-1~uh~focal1_amd64.deb
+Checksums-Sha256:
+ 01e878f0cd38d39d255ab147b8caa794535087d04bfddc565a11a040e2d8b79c 1268 kbuild_0.1.9998svn3604+dfsg-1~uh~focal1.dsc
+ fe5e288fa16725ae7b4e3dba44f623f498327804aa15d3c93b1a65d8141615b3 13124 kbuild_0.1.9998svn3604+dfsg-1~uh~focal1.debian.tar.xz
+ 922e762a1541e155f90c0dea005e78e28ea408e784e7215cdb1a85a777b0484c 2070760 kbuild-dbgsym_0.1.9998svn3604+dfsg-1~uh~focal1_amd64.ddeb
+ 808dc5ab26bf26441d0b0f9bb1ee2e6517d4c795d38374514d2a946522f7239f 6320 kbuild_0.1.9998svn3604+dfsg-1~uh~focal1_amd64.buildinfo
+ ef6372c3ad459edebb373178d9a0153f0ea2a3fc45931a27e27135c375647215 699012 kbuild_0.1.9998svn3604+dfsg-1~uh~focal1_amd64.deb
+Files:
+ dad61edd3af13829356edc00dd88d88e 1268 devel optional kbuild_0.1.9998svn3604+dfsg-1~uh~focal1.dsc
+ 934812cb90c3782e7407389ddef66f8e 13124 devel optional kbuild_0.1.9998svn3604+dfsg-1~uh~focal1.debian.tar.xz
+ 7ca403a3e00673e27b1f6f2ee8daf1fe 2070760 debug optional kbuild-dbgsym_0.1.9998svn3604+dfsg-1~uh~focal1_amd64.ddeb
+ b45c3c76520ac634c250660a35943614 6320 devel optional kbuild_0.1.9998svn3604+dfsg-1~uh~focal1_amd64.buildinfo
+ 1007f3349b49522ea5e7f252f0c9b662 699012 devel optional kbuild_0.1.9998svn3604+dfsg-1~uh~focal1_amd64.deb

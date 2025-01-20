@@ -1,0 +1,64 @@
+Format: 1.8
+Date: Sat, 18 Jan 2025 13:49:09 +0000
+Source: virtualbox
+Binary: virtualbox virtualbox-dkms virtualbox-guest-utils virtualbox-guest-x11 virtualbox-qt virtualbox-source
+Architecture: source amd64
+Version: 7.0.16-dfsg-2ubuntu1.1~uh~focal1
+Distribution: focal
+Urgency: medium
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ virtualbox - x86 virtualization solution - base binaries
+ virtualbox-dkms - x86 virtualization solution - kernel module sources for dkms
+ virtualbox-guest-utils - x86 virtualization solution - non-X11 guest utilities
+ virtualbox-guest-x11 - x86 virtualization solution - X11 guest utilities
+ virtualbox-qt - x86 virtualization solution - Qt based user interface
+ virtualbox-source - x86 virtualization solution - kernel module source
+Changes:
+ virtualbox (7.0.16-dfsg-2ubuntu1.1~uh~focal1) focal; urgency=medium
+ .
+   * Repackaged for focal
+Checksums-Sha1:
+ bca1e9edd45b584a22ce88056faae2b27ddc0347 2803 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~focal1.dsc
+ ec7f2417eec50e26fb759c047d5d34b01f7f0968 79232 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~focal1.debian.tar.xz
+ 523fa894376a0a7c0482b6571503416450bea13d 89860412 virtualbox-dbgsym_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.ddeb
+ 6bcc92ba1bd8000fa5d9e599cee20ddf5efe29d8 768572 virtualbox-dkms_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
+ 63c04be1129dd667d25ad58d74b6ddc263493c88 2012968 virtualbox-guest-utils-dbgsym_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.ddeb
+ 7790c219c5c19b014def8cbe2bd37825fa554959 428516 virtualbox-guest-utils_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
+ e863e88ef71bd656acaf3f217b3de03195b62f55 1043720 virtualbox-guest-x11-dbgsym_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.ddeb
+ 7e8a8142774dda987cc365a09c41eb1cc0761e9e 307576 virtualbox-guest-x11_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
+ 93c0e7afd6089096d6725581d6e38ac7f5021b78 58131524 virtualbox-qt-dbgsym_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.ddeb
+ ff7d1929b516ee64162787b57537fbd574798f73 24846088 virtualbox-qt_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
+ 5834bbcc6543b6052b382144492e625c58561f2a 910320 virtualbox-source_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
+ a398192fe5ec6283f436773d75b9eb48b7058c64 28155 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.buildinfo
+ 32f14a534463d14d0e8a6d1448f27f1f7982bcb5 29753808 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
+Checksums-Sha256:
+ b1b80f83758e7d8a565d1818fd01c6ca307f2b5fb9feff9def64c2708f3b8a34 2803 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~focal1.dsc
+ 8388ff36978ef96e343baaa39bdb94712cd1a89bc41c249f1db5f57a6e524909 79232 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~focal1.debian.tar.xz
+ dc5983dd07f779af5d8a62ea0c5d361c86e009eabcf3a9b8b506ade3cedb713c 89860412 virtualbox-dbgsym_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.ddeb
+ 3f71ca67fcf26883be963fe51371d0b63c30e0916c3b1f7c4fb143b6d8a21585 768572 virtualbox-dkms_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
+ de39b113fa93e85ed0c06dfc25429119c47c8aaf6de79e20e025c2e01552d184 2012968 virtualbox-guest-utils-dbgsym_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.ddeb
+ 59076dad35b6cf7a7bdd4ed409fad4cde4242f6d3660dff8d265e6d12d6cc67d 428516 virtualbox-guest-utils_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
+ 579603c7dde4c09a04b643a263a4245f74066f7d9bd0b5b10ae136fa3593418b 1043720 virtualbox-guest-x11-dbgsym_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.ddeb
+ aafa698d7840911993c82a7e5c394dc38269c0ea056a066f7357188086729471 307576 virtualbox-guest-x11_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
+ c5f5ee0b3a46bfffd6b39f33eb3553377942873e57a8637a3ebc97089ace4448 58131524 virtualbox-qt-dbgsym_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.ddeb
+ 8935bc8be8a9cb8c05efa9b7b80321acdcd0638f7edca30b6dbda04c78846f32 24846088 virtualbox-qt_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
+ 262241099cb83d6effac1e73536ea18b42a9824df692ed42cb943757bf6b6fa8 910320 virtualbox-source_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
+ 11cd045bad6c9dd0eb6cd8f03f3ae1a18cb2342073795658241a5be249386fe4 28155 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.buildinfo
+ 6dc60555cc71c7a5e23242493626e39736a54bbdbd43ed059c0ce8edebf9bbc2 29753808 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
+Files:
+ b1981ef3c037a79a3f2950f26f1c39b9 2803 contrib/misc optional virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~focal1.dsc
+ d0e03282fb31237d578eda6b3f00e940 79232 contrib/misc optional virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~focal1.debian.tar.xz
+ 2770399a8715d005b68f1d0c0de109c8 89860412 contrib/debug optional virtualbox-dbgsym_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.ddeb
+ cead7bf07a76094f0d7b1a3920df2d40 768572 contrib/kernel optional virtualbox-dkms_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
+ 50a4e59b865a7ac7e88962def552428a 2012968 contrib/debug optional virtualbox-guest-utils-dbgsym_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.ddeb
+ 3296fa58d7bc47b9c41ebd86fd9c2e66 428516 contrib/misc optional virtualbox-guest-utils_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
+ 063d4eb344e40ea04d0911d6e02e5900 1043720 contrib/debug optional virtualbox-guest-x11-dbgsym_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.ddeb
+ d5df979b734d01d5a9dae77733f529ef 307576 contrib/x11 optional virtualbox-guest-x11_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
+ e4da2d44b77d971228648e34cee9bc73 58131524 contrib/debug optional virtualbox-qt-dbgsym_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.ddeb
+ cfd53331b69765ce60c12d2d48778e4b 24846088 contrib/misc optional virtualbox-qt_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
+ cf26d1bc7d7891ea1dab010a80735106 910320 contrib/kernel optional virtualbox-source_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
+ 8092940033ef26eedcc9bee4638e3682 28155 contrib/misc optional virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.buildinfo
+ c2083f000b3efe0f2efde016b587c0bf 29753808 contrib/misc optional virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
+Original-Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debian.org>

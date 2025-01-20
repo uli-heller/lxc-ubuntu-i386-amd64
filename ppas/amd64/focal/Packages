@@ -1,3 +1,31 @@
+Package: dh-dkms
+Source: dkms
+Version: 3.0.11-1ubuntu13~uh~focal1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 44
+Depends: perl:any
+Breaks: dkms (<< 3.0.3-3~)
+Replaces: dkms (<< 3.0.3-3~)
+Provides: dh-sequence-dkms
+Filename: focal/debs/dh-dkms_3.0.11-1ubuntu13~uh~focal1_all.deb
+Size: 23780
+MD5sum: e725359ccdfac62f8de597cf49ee476f
+SHA1: 759c021b52db713ea30431ab844cb8a726164e9f
+SHA256: c28ce2a298c636341c413ab6d4a2fa02286929d3e43331e6ef0237ba5ce8aab0
+Section: kernel
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://github.com/dell/dkms
+Description: debhelper addon for the Dynamic Kernel Module System (DKMS)
+ DKMS is a framework designed to allow individual kernel modules to be upgraded
+ without changing the whole kernel. It is also very easy to rebuild modules as
+ you upgrade kernels.
+ .
+ This package provides a debhelper add-on 'dkms' that simplifies packaging of
+ dkms kernel module source packages.
+Original-Maintainer: Dynamic Kernel Module System Team <dkms@packages.debian.org>
+
 Package: dh-golang
 Version: 1.53~uh~focal1
 Architecture: all
@@ -19,6 +47,53 @@ Description: debhelper add-on for packaging software written in Go (golang)
  .
  The golang debhelper buildsystem is designed to make packaging programs
  written in Go very simple.
+
+Package: dkms
+Version: 3.0.11-1ubuntu13~uh~focal1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 199
+Pre-Depends: lsb-release
+Depends: kmod | kldutils, gcc, gcc-13, dpkg-dev, make | build-essential, patch
+Recommends: fakeroot, sudo, linux-headers-generic | linux-headers-686-pae | linux-headers-amd64 | linux-headers
+Suggests: menu, e2fsprogs
+Provides: dkms-autopkgtest (= 3.0.11-1ubuntu13~uh~focal1)
+Filename: focal/debs/dkms_3.0.11-1ubuntu13~uh~focal1_all.deb
+Size: 59600
+MD5sum: 6ee8cd8a3d8fb4a4677388901abe1629
+SHA1: f9e1016958c2eb7cfc6ef8a0e7c6574ff3e2fbda
+SHA256: 0c698f2f631af481ac31a4bd5b8b53f31ac3132c8eb9bc07aa786bc4b0e9918f
+Section: kernel
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://github.com/dell/dkms
+Description: Dynamic Kernel Module System (DKMS)
+ DKMS is a framework designed to allow individual kernel modules to be upgraded
+ without changing the whole kernel. It is also very easy to rebuild modules as
+ you upgrade kernels.
+Original-Maintainer: Dynamic Kernel Module System Team <dkms@packages.debian.org>
+
+Package: dkms-test-dkms
+Source: dkms
+Version: 3.0.11-1ubuntu13~uh~focal1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 31
+Depends: dkms (>= 2.1.0.0)
+Filename: focal/debs/dkms-test-dkms_3.0.11-1ubuntu13~uh~focal1_amd64.deb
+Size: 19260
+MD5sum: 233b3c8929d54ae5b94f6cf692a2783f
+SHA1: 666f2c7beb6effa297c4f26fe20582a80e523085
+SHA256: 20788a36673c7c463fead2778d01bde457fe2c2db135f875471a74740ebe6f74
+Section: kernel
+Priority: optional
+Homepage: https://github.com/dell/dkms
+Description: trivial dkms test kernel module
+ This package provides the dkms source code for the dkms-test kernel module.
+ .
+ This package is only intended for ci tests and not expected to be installed
+ on regular systems
+Original-Maintainer: Dynamic Kernel Module System Team <dkms@packages.debian.org>
 
 Package: gccgo-go
 Source: golang-defaults
@@ -440,6 +515,212 @@ Description: Go programming language - source files
  source code, which is needed for the go build process.
 Original-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>
 
+Package: kbuild
+Version: 1:0.1.9998svn3604+dfsg-1~uh~focal1
+Architecture: amd64
+Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debian.org>
+Installed-Size: 3746
+Depends: libc6 (>= 2.17)
+Filename: focal/debs/kbuild_0.1.9998svn3604+dfsg-1~uh~focal1_amd64.deb
+Size: 699012
+MD5sum: 1007f3349b49522ea5e7f252f0c9b662
+SHA1: 58ab0ae53291b01f043bb074f880c0ed548192ac
+SHA256: ef6372c3ad459edebb373178d9a0153f0ea2a3fc45931a27e27135c375647215
+Section: devel
+Priority: optional
+Homepage: https://svn.netlabs.org/kbuild
+Description: framework for writing simple makefiles for complex tasks
+ The goals of the kBuild framework:
+  - Similar behavior cross all supported platforms.
+  - Flexibility, don't create unnecessary restrictions preventing ad-hoc
+    solutions.
+  - Makefile can very simple to write and maintain.
+ .
+ There are four concepts being tried out in the current kBuild incaration:
+  - One configuration file for a subtree automatically included.
+  - Target configuration templates as the primary mechanism for makefile
+    simplification.
+  - Tools and SDKs for helping out the templates with flexibility.
+  - Non-recursive makefile method by using sub-makefiles.
+ .
+ kBuild does not provide any facilities for checking compiler/library/header
+ configurations, that's not in its scope. If this is important for your
+ project, check out the autoconf tool in the GNU build system. It is possible
+ to use kBuild together with autoconf if you like, but you might just as well
+ use the full GNU package.
+
+Package: libdecor-0-0
+Source: libdecor-0
+Version: 0.2.2-1build2~uh~focal1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 58
+Depends: libc6 (>= 2.8), libwayland-client0 (>= 1.18)
+Recommends: default-libdecor-0-plugin-1 | libdecor-0-plugin-1
+Conflicts: libdecor
+Replaces: libdecor
+Filename: focal/debs/libdecor-0-0_0.2.2-1build2~uh~focal1_amd64.deb
+Size: 14924
+MD5sum: 3c32bab9fe8c8521eff10d7fc586253e
+SHA1: dfb4499cbf363442e897fedc2e4876d2b5fcd672
+SHA256: c181382ad69d3bb327dbf6bb107d100c92e88f200cb5f65444a3bb9d69bcc8f2
+Section: libs
+Priority: optional
+Multi-Arch: same
+Homepage: https://gitlab.freedesktop.org/libdecor/libdecor
+Description: client-side window decoration library
+ libdecor is a library that can help Wayland clients draw window
+ decorations for them. It aims to provide multiple backends that implements the
+ decoration drawing.
+ .
+ This package contains the runtime library.
+Original-Maintainer: Debian SDL packages maintainers <pkg-sdl-maintainers@lists.alioth.debian.org>
+
+Package: libdecor-0-dev
+Source: libdecor-0
+Version: 0.2.2-1build2~uh~focal1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 32
+Depends: libdecor-0-0 (= 0.2.2-1build2~uh~focal1), libwayland-dev
+Conflicts: libdecor-dev
+Replaces: libdecor-dev
+Filename: focal/debs/libdecor-0-dev_0.2.2-1build2~uh~focal1_amd64.deb
+Size: 7608
+MD5sum: 715ed27801d83435752e372278cf5371
+SHA1: c44d7e2a969ca3bd6a0b0aa6eac656491edb3c9d
+SHA256: a7a16c379ed1145dd8114b6dc72593924f1489e9e0843d1a5105a35ef00f61d3
+Section: libdevel
+Priority: optional
+Multi-Arch: same
+Homepage: https://gitlab.freedesktop.org/libdecor/libdecor
+Description: client-side window decoration library - development files
+ libdecor is a library that can help Wayland clients draw window
+ decorations for them. It aims to provide multiple backends that implements the
+ decoration drawing.
+ .
+ This package contains development files.
+Original-Maintainer: Debian SDL packages maintainers <pkg-sdl-maintainers@lists.alioth.debian.org>
+
+Package: libdecor-0-plugin-1-cairo
+Source: libdecor-0
+Version: 0.2.2-1build2~uh~focal1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 74
+Depends: libc6 (>= 2.29), libcairo2 (>= 1.14.0), libdbus-1-3 (>= 1.9.14), libdecor-0-0 (= 0.2.2-1build2~uh~focal1), libglib2.0-0 (>= 2.12.0), libpango-1.0-0 (>= 1.14.0), libpangocairo-1.0-0 (>= 1.14.0), libwayland-client0 (>= 1.18), libwayland-cursor0 (>= 1.18)
+Conflicts: libdecor-plugin-cairo
+Replaces: libdecor-plugin-cairo
+Provides: libdecor-0-plugin-1
+Filename: focal/debs/libdecor-0-plugin-1-cairo_0.2.2-1build2~uh~focal1_amd64.deb
+Size: 20864
+MD5sum: bd47e3ead6608d400b068e58af1a1089
+SHA1: 9bd8edd81d483d6d963cdaecfe383d3d3730b83b
+SHA256: 57a774cb5e2bb2281cafe1de1d76a6c50b90aba9f59fe3443708860830fe99f8
+Section: libs
+Priority: optional
+Multi-Arch: same
+Homepage: https://gitlab.freedesktop.org/libdecor/libdecor
+Description: libdecor decoration plugin using Cairo
+ libdecor is a library that can help Wayland clients draw window
+ decorations for them. It aims to provide multiple backends that implements the
+ decoration drawing.
+ .
+ This package contains a backend that draws window decorations using Cairo.
+Original-Maintainer: Debian SDL packages maintainers <pkg-sdl-maintainers@lists.alioth.debian.org>
+
+Package: libdecor-0-plugin-1-gtk
+Source: libdecor-0
+Version: 0.2.2-1build2~uh~focal1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 86
+Depends: libc6 (>= 2.29), libcairo2 (>= 1.14.0), libdbus-1-3 (>= 1.9.14), libdecor-0-0 (= 0.2.2-1build2~uh~focal1), libglib2.0-0 (>= 2.12.0), libgtk-3-0 (>= 3.19.12), libwayland-client0 (>= 1.18), libwayland-cursor0 (>= 1.18)
+Conflicts: libdecor-plugin-gtk
+Replaces: libdecor-plugin-gtk
+Provides: default-libdecor-0-plugin-1, libdecor-0-plugin-1
+Filename: focal/debs/libdecor-0-plugin-1-gtk_0.2.2-1build2~uh~focal1_amd64.deb
+Size: 22652
+MD5sum: a44a73eaa15e2629048377304742a295
+SHA1: 029868f5ca76fce511f73d6e9786fb42e8e472d3
+SHA256: d120b071492fa5475a8cb0093d044b85082b9de9d98a529043531ddf3a6d75ce
+Section: libs
+Priority: optional
+Multi-Arch: same
+Homepage: https://gitlab.freedesktop.org/libdecor/libdecor
+Description: libdecor decoration plugin using GTK
+ libdecor is a library that can help Wayland clients draw window
+ decorations for them. It aims to provide multiple backends that implements the
+ decoration drawing.
+ .
+ This package contains a backend that draws window decorations using GTK.
+Original-Maintainer: Debian SDL packages maintainers <pkg-sdl-maintainers@lists.alioth.debian.org>
+
+Package: libdecor-tests
+Source: libdecor-0
+Version: 0.2.2-1build2~uh~focal1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 102
+Depends: libc6 (>= 2.28), libdbus-1-3 (>= 1.9.14), libdecor-0-0 (= 0.2.2-1build2~uh~focal1), libegl1, libgcc-s1 (>= 3.0), libopengl0, libstdc++6 (>= 5), libwayland-client0 (>= 1.18), libwayland-cursor0 (>= 1.18), libwayland-egl1 (>= 1.18), libxkbcommon0 (>= 0.5.0)
+Filename: focal/debs/libdecor-tests_0.2.2-1build2~uh~focal1_amd64.deb
+Size: 21988
+MD5sum: 34f4ca729e3ebebc6347e6bb50b9fa75
+SHA1: ae7c8f7c1907888d718fef084a23ad5a4ac38efa
+SHA256: ada41c9edd2c565c199f45d20425882f4718329d9b6c36fcaf2e3616695f14d7
+Section: misc
+Priority: optional
+Homepage: https://gitlab.freedesktop.org/libdecor/libdecor
+Description: manual tests for libdecor
+ libdecor is a library that can help Wayland clients draw window
+ decorations for them. It aims to provide multiple backends that implements the
+ decoration drawing.
+ .
+ This package contains manual test programs. Automated tests might be added
+ to this package in future versions.
+Original-Maintainer: Debian SDL packages maintainers <pkg-sdl-maintainers@lists.alioth.debian.org>
+
+Package: libtpms-dev
+Source: libtpms
+Version: 0.9.3-0ubuntu4~uh~focal1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 2202
+Depends: libtpms0 (= 0.9.3-0ubuntu4~uh~focal1)
+Filename: focal/debs/libtpms-dev_0.9.3-0ubuntu4~uh~focal1_amd64.deb
+Size: 445548
+MD5sum: be393aa7d51a39ab483ce7e688479235
+SHA1: afbd824d341d6bd06bdc3d7c2da184944be0fc39
+SHA256: dd65ecf5ec400c0825fa3fadc867931eb708ac777140ca029b0e05cdb08f6854
+Section: libdevel
+Priority: optional
+Homepage: https://github.com/stefanberger/libtpms
+Description: libtpms header files and man pages
+ The libtpms-dev package provides header files and man pages for the
+ functions provided by libtpms.
+Original-Maintainer: Seunghun Han <kkamagui@gmail.com>
+
+Package: libtpms0
+Source: libtpms
+Version: 0.9.3-0ubuntu4~uh~focal1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 962
+Depends: openssl, libc6 (>= 2.17), libssl1.1 (>= 1.1.1)
+Filename: focal/debs/libtpms0_0.9.3-0ubuntu4~uh~focal1_amd64.deb
+Size: 321488
+MD5sum: 898699d29240e71ab7cefc917146b18d
+SHA1: ede053f9b3f70fc9e9ada56d4bcd083f366b6b3e
+SHA256: 13f17e06153be1a8234248f7a7192386d65448494ad96c6ac203ef0bc76c69c9
+Section: libs
+Priority: optional
+Multi-Arch: same
+Homepage: https://github.com/stefanberger/libtpms
+Description: TPM emulation library
+ Libtpms is a library that provides TPM functionality. Libtpm is used
+ by swtpm package.
+Original-Maintainer: Seunghun Han <kkamagui@gmail.com>
+
 Package: qrterminal
 Version: 3.2.0.3-2ubuntu0.24.04.2~uh~focal2
 Architecture: amd64
@@ -462,4 +743,169 @@ Description: Display QR Codes in terminal (program)
  .
  This package contains the command line program qrterminal.
 Original-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+
+Package: virtualbox
+Version: 7.0.16-dfsg-2ubuntu1.1~uh~focal1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 133484
+Depends: adduser, iproute2, procps, virtualbox-dkms (>= 7.0.16-dfsg-2ubuntu1.1~uh~focal1) | virtualbox-source (>= 7.0.16-dfsg-2ubuntu1.1~uh~focal1) | virtualbox-modules, python3 (<< 3.9), python3 (>= 3.8~), python3.8, python3:any, libc6 (>= 2.29), libcurl3-gnutls (>= 7.16.2), libdevmapper1.02.1 (>= 2:1.02.97), libgcc-s1 (>= 3.0), libgl1, libgsoap-2.8.91, liblzf1 (>= 1.5), libpng16-16 (>= 1.6.2-1), libsdl2-2.0-0 (>= 2.0.10), libssl1.1 (>= 1.1.1), libstdc++6 (>= 9), libtpms0 (>= 0.8.0~dev1), libvncserver1 (>= 0.9.10), libvpx6 (>= 1.6.0), libx11-6, libxml2 (>= 2.7.4), libxt6, zlib1g (>= 1:1.1.4)
+Recommends: virtualbox-qt (= 7.0.16-dfsg-2ubuntu1.1~uh~focal1), libqt5core5a (>= 5.12.2), libqt5gui5 (>= 5.0.2) | libqt5gui5-gles (>= 5.0.2), libqt5opengl5 (>= 5.0.2), libqt5widgets5 (>= 5.0.2), libxcb1, libxcursor1 (>> 1.1.2), libxext6
+Suggests: vde2, virtualbox-guest-additions-iso
+Conflicts: virtualbox-2.0, virtualbox-2.1, virtualbox-2.2, virtualbox-3.0, virtualbox-3.1, virtualbox-3.2, virtualbox-4.0, virtualbox-4.1, virtualbox-4.2, virtualbox-4.3, virtualbox-5.0, virtualbox-5.1, virtualbox-5.2, virtualbox-6.0, virtualbox-6.1, virtualbox-7.0
+Breaks: python3-minimal (<< 3.12.3-0ubuntu2~)
+Filename: focal/debs/virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
+Size: 29753808
+MD5sum: c2083f000b3efe0f2efde016b587c0bf
+SHA1: 32f14a534463d14d0e8a6d1448f27f1f7982bcb5
+SHA256: 6dc60555cc71c7a5e23242493626e39736a54bbdbd43ed059c0ce8edebf9bbc2
+Section: contrib/misc
+Priority: optional
+Homepage: https://www.virtualbox.org
+Description: x86 virtualization solution - base binaries
+ VirtualBox is a free x86 virtualization solution allowing a wide range
+ of x86 operating systems such as Windows, DOS, BSD or Linux to run on a
+ Linux system.
+ .
+ This package provides the binaries for VirtualBox. Either the virtualbox-dkms
+ or the virtualbox-source package is also required in order to compile the
+ kernel modules needed for virtualbox. A graphical user interface for
+ VirtualBox is provided by the package virtualbox-qt.
+Original-Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debian.org>
+
+Package: virtualbox-dkms
+Source: virtualbox
+Version: 7.0.16-dfsg-2ubuntu1.1~uh~focal1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 5986
+Depends: dkms (>= 2.1.0.0)
+Recommends: virtualbox (>= 7.0.16-dfsg-2ubuntu1.1~uh~focal1)
+Provides: virtualbox-modules
+Filename: focal/debs/virtualbox-dkms_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
+Size: 768572
+MD5sum: cead7bf07a76094f0d7b1a3920df2d40
+SHA1: 6bcc92ba1bd8000fa5d9e599cee20ddf5efe29d8
+SHA256: 3f71ca67fcf26883be963fe51371d0b63c30e0916c3b1f7c4fb143b6d8a21585
+Section: contrib/kernel
+Priority: optional
+Homepage: https://www.virtualbox.org
+Description: x86 virtualization solution - kernel module sources for dkms
+ VirtualBox is a free x86 virtualization solution allowing a wide range
+ of x86 operating systems such as Windows, DOS, BSD or Linux to run on a
+ Linux system.
+ .
+ This package provides the source code for the virtualbox kernel module to be
+ build with dkms. Kernel sources or headers are required to compile this
+ module.
+Original-Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debian.org>
+
+Package: virtualbox-guest-utils
+Source: virtualbox
+Version: 7.0.16-dfsg-2ubuntu1.1~uh~focal1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 1893
+Depends: adduser, pciutils, libc6 (>= 2.17), libpam0g (>= 0.99.7.1), zlib1g (>= 1:1.1.4)
+Suggests: virtualbox-guest-x11 (= 7.0.16-dfsg-2ubuntu1.1~uh~focal1)
+Filename: focal/debs/virtualbox-guest-utils_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
+Size: 428516
+MD5sum: 3296fa58d7bc47b9c41ebd86fd9c2e66
+SHA1: 7790c219c5c19b014def8cbe2bd37825fa554959
+SHA256: 59076dad35b6cf7a7bdd4ed409fad4cde4242f6d3660dff8d265e6d12d6cc67d
+Section: contrib/misc
+Priority: optional
+Homepage: https://www.virtualbox.org
+Description: x86 virtualization solution - non-X11 guest utilities
+ VirtualBox is a free x86 virtualization solution allowing a wide range
+ of x86 operating systems such as Windows, DOS, BSD or Linux to run on a
+ Linux system.
+ .
+ This package provides the non-X11 guest utilities for VirtualBox. These
+ utilities are meant to be run inside the virtual machine.
+ They provide closer integration and allow to share data through shared folders
+ between the host system and the virtual machine.
+Original-Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debian.org>
+
+Package: virtualbox-guest-x11
+Source: virtualbox
+Version: 7.0.16-dfsg-2ubuntu1.1~uh~focal1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 797
+Depends: libnotify-bin, x11-xserver-utils, virtualbox-guest-utils (= 7.0.16-dfsg-2ubuntu1.1~uh~focal1), libc6 (>= 2.17), libx11-6 (>= 2:1.4.99.1), libxext6, libxmu6, libxt6, xorg-video-abi-24, xserver-xorg-core (>= 2:1.18.99.901)
+Provides: xorg-driver-video
+Filename: focal/debs/virtualbox-guest-x11_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
+Size: 307576
+MD5sum: d5df979b734d01d5a9dae77733f529ef
+SHA1: 7e8a8142774dda987cc365a09c41eb1cc0761e9e
+SHA256: aafa698d7840911993c82a7e5c394dc38269c0ea056a066f7357188086729471
+Section: contrib/x11
+Priority: optional
+Homepage: https://www.virtualbox.org
+Description: x86 virtualization solution - X11 guest utilities
+ VirtualBox is a free x86 virtualization solution allowing a wide range
+ of x86 operating systems such as Windows, DOS, BSD or Linux to run on a
+ Linux system.
+ .
+ This package provides the X11 guest utilities for VirtualBox. These utilities
+ are meant to be run inside the virtual machine.
+ They provide closer integration and improve the interactive performance.
+Modaliases: vboxx11(pci:v000080EEd0000BEEFsv00000000sd00000000bc*sc*i*)
+Original-Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debian.org>
+
+Package: virtualbox-qt
+Source: virtualbox
+Version: 7.0.16-dfsg-2ubuntu1.1~uh~focal1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 52222
+Depends: virtualbox (= 7.0.16-dfsg-2ubuntu1.1~uh~focal1), libc6 (>= 2.29), libgcc-s1 (>= 3.0), libqt5core5a (>= 5.12.2), libqt5dbus5 (>= 5.0.2), libqt5gui5 (>= 5.11.0~rc1) | libqt5gui5-gles (>= 5.11.0~rc1), libqt5help5 (>= 5.9.0), libqt5printsupport5 (>= 5.0.2), libqt5widgets5 (>= 5.12.2), libqt5x11extras5 (>= 5.6.0), libqt5xml5 (>= 5.0.2), libstdc++6 (>= 5.2), libx11-6, libxcb1
+Breaks: virtualbox (<< 4.1.6-dfsg-2~)
+Replaces: virtualbox (<< 4.1.6-dfsg-2~)
+Filename: focal/debs/virtualbox-qt_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
+Size: 24846088
+MD5sum: cfd53331b69765ce60c12d2d48778e4b
+SHA1: ff7d1929b516ee64162787b57537fbd574798f73
+SHA256: 8935bc8be8a9cb8c05efa9b7b80321acdcd0638f7edca30b6dbda04c78846f32
+Section: contrib/misc
+Priority: optional
+Homepage: https://www.virtualbox.org
+Description: x86 virtualization solution - Qt based user interface
+ VirtualBox is a free x86 virtualization solution allowing a wide range
+ of x86 operating systems such as Windows, DOS, BSD or Linux to run on a
+ Linux system.
+ .
+ This package provides the Qt based graphical user interface for VirtualBox.
+Original-Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debian.org>
+
+Package: virtualbox-source
+Source: virtualbox
+Version: 7.0.16-dfsg-2ubuntu1.1~uh~focal1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 923
+Depends: build-essential, bzip2, debhelper-compat (= 12), kbuild, module-assistant
+Recommends: virtualbox (>= 7.0.16-dfsg-2ubuntu1.1~uh~focal1)
+Filename: focal/debs/virtualbox-source_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
+Size: 910320
+MD5sum: cf26d1bc7d7891ea1dab010a80735106
+SHA1: 5834bbcc6543b6052b382144492e625c58561f2a
+SHA256: 262241099cb83d6effac1e73536ea18b42a9824df692ed42cb943757bf6b6fa8
+Section: contrib/kernel
+Priority: optional
+Homepage: https://www.virtualbox.org
+Description: x86 virtualization solution - kernel module source
+ VirtualBox is a free x86 virtualization solution allowing a wide range
+ of x86 operating systems such as Windows, DOS, BSD or Linux to run on a
+ Linux system.
+ .
+ This package provides the source code for the virtualbox kernel module.
+ The virtualbox package is also required in order to make use of these
+ modules. Kernel sources or headers are required to compile this module.
+ .
+ The source is placed under /usr/src, and after decompression it can
+ be built to produce a virtualbox-modules-_KVERS_ providing
+ "virtualbox-modules" package.
+Original-Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debian.org>
 

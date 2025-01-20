@@ -1,0 +1,60 @@
+Format: 1.8
+Date: Sat, 18 Jan 2025 14:03:00 +0000
+Source: libdecor-0
+Binary: libdecor-0-0 libdecor-0-dev libdecor-0-plugin-1-cairo libdecor-0-plugin-1-gtk libdecor-tests
+Architecture: source amd64
+Version: 0.2.2-1build2~uh~focal1
+Distribution: focal
+Urgency: medium
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ libdecor-0-0 - client-side window decoration library
+ libdecor-0-dev - client-side window decoration library - development files
+ libdecor-0-plugin-1-cairo - libdecor decoration plugin using Cairo
+ libdecor-0-plugin-1-gtk - libdecor decoration plugin using GTK
+ libdecor-tests - manual tests for libdecor
+Changes:
+ libdecor-0 (0.2.2-1build2~uh~focal1) focal; urgency=medium
+ .
+   * Repackaged for focal
+Checksums-Sha1:
+ ad9c76a6b388db7066eede0a5f38fd7567ea4705 1937 libdecor-0_0.2.2-1build2~uh~focal1.dsc
+ 6d68e9dedd5b88fa07cd21f5d4faa056207241ca 6408 libdecor-0_0.2.2-1build2~uh~focal1.debian.tar.xz
+ 7e9ee9f7f39b0a5ca2868342ad9368b989457755 34800 libdecor-0-0-dbgsym_0.2.2-1build2~uh~focal1_amd64.ddeb
+ dfb4499cbf363442e897fedc2e4876d2b5fcd672 14924 libdecor-0-0_0.2.2-1build2~uh~focal1_amd64.deb
+ c44d7e2a969ca3bd6a0b0aa6eac656491edb3c9d 7608 libdecor-0-dev_0.2.2-1build2~uh~focal1_amd64.deb
+ 94a31fff1b3480e76b89fe70abdf9ce78560e258 62436 libdecor-0-plugin-1-cairo-dbgsym_0.2.2-1build2~uh~focal1_amd64.ddeb
+ 9bd8edd81d483d6d963cdaecfe383d3d3730b83b 20864 libdecor-0-plugin-1-cairo_0.2.2-1build2~uh~focal1_amd64.deb
+ 6a7e0707196366227f1fe174490a3163d5502be8 69180 libdecor-0-plugin-1-gtk-dbgsym_0.2.2-1build2~uh~focal1_amd64.ddeb
+ 029868f5ca76fce511f73d6e9786fb42e8e472d3 22652 libdecor-0-plugin-1-gtk_0.2.2-1build2~uh~focal1_amd64.deb
+ cfcf94cdd9ad61f6fcddcf00bb89efe726e02e0a 18256 libdecor-0_0.2.2-1build2~uh~focal1_amd64.buildinfo
+ 393b8f8a4ddc002dd9ae85d4e8195468a623479e 75028 libdecor-tests-dbgsym_0.2.2-1build2~uh~focal1_amd64.ddeb
+ ae7c8f7c1907888d718fef084a23ad5a4ac38efa 21988 libdecor-tests_0.2.2-1build2~uh~focal1_amd64.deb
+Checksums-Sha256:
+ a142cee2652f008d918a81c3630847e48aeb8de8800f6fde068ebd9e8966eeba 1937 libdecor-0_0.2.2-1build2~uh~focal1.dsc
+ 0b3d90232db3571c1421d8143024e3c9e5851ca86d4d57759a8ba36750ff5e6a 6408 libdecor-0_0.2.2-1build2~uh~focal1.debian.tar.xz
+ 2b882c17e70fd8d0b901afe2a1f2fa323ba5e3a43561ec33ec7df2fa88b6c026 34800 libdecor-0-0-dbgsym_0.2.2-1build2~uh~focal1_amd64.ddeb
+ c181382ad69d3bb327dbf6bb107d100c92e88f200cb5f65444a3bb9d69bcc8f2 14924 libdecor-0-0_0.2.2-1build2~uh~focal1_amd64.deb
+ a7a16c379ed1145dd8114b6dc72593924f1489e9e0843d1a5105a35ef00f61d3 7608 libdecor-0-dev_0.2.2-1build2~uh~focal1_amd64.deb
+ 41823b8f0c44217e6641a3ae1d0fd33097aa111cc89203de968edbc2f3aa9c4f 62436 libdecor-0-plugin-1-cairo-dbgsym_0.2.2-1build2~uh~focal1_amd64.ddeb
+ 57a774cb5e2bb2281cafe1de1d76a6c50b90aba9f59fe3443708860830fe99f8 20864 libdecor-0-plugin-1-cairo_0.2.2-1build2~uh~focal1_amd64.deb
+ d0826b122328afe5e5abcaba75d5a2670b159b88c8cdc46e3cda5f94a218e453 69180 libdecor-0-plugin-1-gtk-dbgsym_0.2.2-1build2~uh~focal1_amd64.ddeb
+ d120b071492fa5475a8cb0093d044b85082b9de9d98a529043531ddf3a6d75ce 22652 libdecor-0-plugin-1-gtk_0.2.2-1build2~uh~focal1_amd64.deb
+ c0d575a514b6d740e186eed26248169fb110e24af6c26e6c164817aa56ea3b9e 18256 libdecor-0_0.2.2-1build2~uh~focal1_amd64.buildinfo
+ 731009a71406d8f0a487f1934b7515b77c8915870b1f3a6d23a881932ac20cf9 75028 libdecor-tests-dbgsym_0.2.2-1build2~uh~focal1_amd64.ddeb
+ ada41c9edd2c565c199f45d20425882f4718329d9b6c36fcaf2e3616695f14d7 21988 libdecor-tests_0.2.2-1build2~uh~focal1_amd64.deb
+Files:
+ 24c602ca4d93413bf8328cad27a29f8c 1937 x11 optional libdecor-0_0.2.2-1build2~uh~focal1.dsc
+ 9eab9b7dfdce8ab63b778c8df5473741 6408 x11 optional libdecor-0_0.2.2-1build2~uh~focal1.debian.tar.xz
+ bc69e60c718bcdfdcbd40a01ec243059 34800 debug optional libdecor-0-0-dbgsym_0.2.2-1build2~uh~focal1_amd64.ddeb
+ 3c32bab9fe8c8521eff10d7fc586253e 14924 libs optional libdecor-0-0_0.2.2-1build2~uh~focal1_amd64.deb
+ 715ed27801d83435752e372278cf5371 7608 libdevel optional libdecor-0-dev_0.2.2-1build2~uh~focal1_amd64.deb
+ 7f9b101bc4eccec1598221c54cb5cd3e 62436 debug optional libdecor-0-plugin-1-cairo-dbgsym_0.2.2-1build2~uh~focal1_amd64.ddeb
+ bd47e3ead6608d400b068e58af1a1089 20864 libs optional libdecor-0-plugin-1-cairo_0.2.2-1build2~uh~focal1_amd64.deb
+ 48edbf1e64ab7982dbd0afd3c0834365 69180 debug optional libdecor-0-plugin-1-gtk-dbgsym_0.2.2-1build2~uh~focal1_amd64.ddeb
+ a44a73eaa15e2629048377304742a295 22652 libs optional libdecor-0-plugin-1-gtk_0.2.2-1build2~uh~focal1_amd64.deb
+ 186813c82acb6cb56b04a1dcc3a5d3e8 18256 x11 optional libdecor-0_0.2.2-1build2~uh~focal1_amd64.buildinfo
+ cca51cc49e56e69797695f7d24ce7e60 75028 debug optional libdecor-tests-dbgsym_0.2.2-1build2~uh~focal1_amd64.ddeb
+ 34f4ca729e3ebebc6347e6bb50b9fa75 21988 misc optional libdecor-tests_0.2.2-1build2~uh~focal1_amd64.deb
+Original-Maintainer: Debian SDL packages maintainers <pkg-sdl-maintainers@lists.alioth.debian.org>

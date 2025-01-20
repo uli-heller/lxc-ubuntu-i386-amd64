@@ -23,6 +23,72 @@ Files:
  e0f001e7fb68ad1b7abc2b5b03df89f1 17964 dh-golang_1.53~uh~focal1.tar.xz
 
 Format: 3.0 (quilt)
+Package: dkms
+Binary: dkms, dh-dkms, dkms-test-dkms
+Architecture: all amd64
+Version: 3.0.11-1ubuntu13
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Uploaders: David Paleino <dapal@debian.org>, Petter Reinholdtsen <pere@debian.org>, Aron Xu <aron@debian.org>, Mario Limonciello <Mario_Limonciello@dell.com>, Andreas Beckmann <anbe@debian.org>,
+Homepage: https://github.com/dell/dkms
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/debian/dkms
+Vcs-Git: https://salsa.debian.org/debian/dkms.git
+Testsuite: autopkgtest, autopkgtest-pkg-dkms
+Testsuite-Triggers: linux-headers-generic, linux-headers-rpi, linux-image-generic, openssl
+Build-Depends: debhelper-compat (= 13)
+Package-List:
+ dh-dkms deb kernel optional arch=all
+ dkms deb kernel optional arch=all
+ dkms-test-dkms deb kernel optional arch=amd64
+Directory: focal/src
+Checksums-Sha1:
+ 4e355b996f5af3d15bac21aeb0d21417eb5e36b1 2394 dkms_3.0.11-1ubuntu13.dsc
+ e3abd2af84bfe53bcda15d6ba6b4a43e6c526999 93521 dkms_3.0.11.orig.tar.gz
+ d33c40d21761c8dc8abc22551aabce56958a918f 26068 dkms_3.0.11-1ubuntu13.debian.tar.xz
+Checksums-Sha256:
+ 19c1738a3b356f6d69819d996b4f6fddf0e94778758fa8f5b7a4412c7bb5c585 2394 dkms_3.0.11-1ubuntu13.dsc
+ c5582aa7ab1815d23c63adc09fdf96f04842381a76471d205f3b183e90b3d4d1 93521 dkms_3.0.11.orig.tar.gz
+ a50b8cdb78d39ea4e4223f47eee80f6e814e5dcf4276c37fbc536ab7acbe35c9 26068 dkms_3.0.11-1ubuntu13.debian.tar.xz
+Files:
+ 4b6b9651d88a2c443babed3e7197298b 2394 dkms_3.0.11-1ubuntu13.dsc
+ 14586490dbe1421f34991d3f8d092b27 93521 dkms_3.0.11.orig.tar.gz
+ 5b3cdf4de1b2f4e5b03e0f2454d08482 26068 dkms_3.0.11-1ubuntu13.debian.tar.xz
+Original-Maintainer: Dynamic Kernel Module System Team <dkms@packages.debian.org>
+
+Format: 3.0 (quilt)
+Package: dkms
+Binary: dkms, dh-dkms, dkms-test-dkms
+Architecture: all amd64
+Version: 3.0.11-1ubuntu13~uh~focal1
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Uploaders: David Paleino <dapal@debian.org>, Petter Reinholdtsen <pere@debian.org>, Aron Xu <aron@debian.org>, Mario Limonciello <Mario_Limonciello@dell.com>, Andreas Beckmann <anbe@debian.org>,
+Homepage: https://github.com/dell/dkms
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/debian/dkms
+Vcs-Git: https://salsa.debian.org/debian/dkms.git
+Testsuite: autopkgtest, autopkgtest-pkg-dkms
+Testsuite-Triggers: linux-headers-generic, linux-headers-rpi, linux-image-generic, openssl
+Build-Depends: debhelper-compat (= 12)
+Package-List:
+ dh-dkms deb kernel optional arch=all
+ dkms deb kernel optional arch=all
+ dkms-test-dkms deb kernel optional arch=amd64
+Directory: focal/src
+Checksums-Sha1:
+ facb7c98d22f4ccdc03b1143b73454902a84ec1c 1522 dkms_3.0.11-1ubuntu13~uh~focal1.dsc
+ e3abd2af84bfe53bcda15d6ba6b4a43e6c526999 93521 dkms_3.0.11.orig.tar.gz
+ e4ad3cb05ae8b5fcf6dc01bd9591f85f22ee02a8 26112 dkms_3.0.11-1ubuntu13~uh~focal1.debian.tar.xz
+Checksums-Sha256:
+ ed3b368814c9875bcb83adb7dc3cc133287495dc2f814b882facabcec2c8aa17 1522 dkms_3.0.11-1ubuntu13~uh~focal1.dsc
+ c5582aa7ab1815d23c63adc09fdf96f04842381a76471d205f3b183e90b3d4d1 93521 dkms_3.0.11.orig.tar.gz
+ b1042e99c0881c54d67abb435a3ef3e14f079a8d9ee9529795b26234ae034acd 26112 dkms_3.0.11-1ubuntu13~uh~focal1.debian.tar.xz
+Files:
+ f63a11348799eb044dde7883608d2803 1522 dkms_3.0.11-1ubuntu13~uh~focal1.dsc
+ 14586490dbe1421f34991d3f8d092b27 93521 dkms_3.0.11.orig.tar.gz
+ acb22dc63215f05c04bc44d5905af135 26112 dkms_3.0.11-1ubuntu13~uh~focal1.debian.tar.xz
+Original-Maintainer: Dynamic Kernel Module System Team <dkms@packages.debian.org>
+
+Format: 3.0 (quilt)
 Package: gocryptfs
 Binary: gocryptfs
 Architecture: any
@@ -327,6 +393,194 @@ Files:
 Go-Import-Path: golang.org/x/term
 
 Format: 3.0 (quilt)
+Package: kbuild
+Binary: kbuild
+Architecture: any
+Version: 1:0.1.9998svn3604+dfsg-1
+Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debian.org>
+Uploaders: Ritesh Raj Sarraf <rrs@debian.org>, Gianfranco Costamagna <locutusofborg@debian.org>
+Homepage: https://svn.netlabs.org/kbuild
+Standards-Version: 4.6.0
+Vcs-Browser: https://salsa.debian.org/pkg-virtualbox-team/kbuild
+Vcs-Git: https://salsa.debian.org/pkg-virtualbox-team/kbuild.git
+Build-Depends: debhelper-compat (= 13), byacc, flex, libacl1-dev, texinfo, pkg-config
+Package-List:
+ kbuild deb devel optional arch=any
+Directory: focal/src
+Checksums-Sha1:
+ 8a9e971ded2759e763403258b4e8739e9e68b10b 2111 kbuild_0.1.9998svn3604+dfsg-1.dsc
+ 3e1c6d325872e4b54798236d7332fbb3a743c3ae 6143358 kbuild_0.1.9998svn3604+dfsg.orig.tar.gz
+ c0554bcf8b6781d7ee7e4f17cd6999d44e5d2418 13068 kbuild_0.1.9998svn3604+dfsg-1.debian.tar.xz
+Checksums-Sha256:
+ 3ff1d52caa1b11de5292c0cd9e8dca40c56002af64f6046c9ac706e8ddb1cbad 2111 kbuild_0.1.9998svn3604+dfsg-1.dsc
+ d71820c6ee9f47a145e7a7baf8bf865b1b0f5a9d118a1f98b06f181442b9fb7a 6143358 kbuild_0.1.9998svn3604+dfsg.orig.tar.gz
+ 9009f273111bd564f5b0c06b3ffef9e92d35c544da9239f16c4692e6871dc9bd 13068 kbuild_0.1.9998svn3604+dfsg-1.debian.tar.xz
+Files:
+ 89d827c395d85db5990d6a0c7b26d75e 2111 kbuild_0.1.9998svn3604+dfsg-1.dsc
+ 6aea3f7c243eb90f2ea645aed899212a 6143358 kbuild_0.1.9998svn3604+dfsg.orig.tar.gz
+ 1c4f98f4e4da6fb32f1e3a3456f1663c 13068 kbuild_0.1.9998svn3604+dfsg-1.debian.tar.xz
+
+Format: 3.0 (quilt)
+Package: kbuild
+Binary: kbuild
+Architecture: any
+Version: 1:0.1.9998svn3604+dfsg-1~uh~focal1
+Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debian.org>
+Uploaders: Ritesh Raj Sarraf <rrs@debian.org>, Gianfranco Costamagna <locutusofborg@debian.org>
+Homepage: https://svn.netlabs.org/kbuild
+Standards-Version: 4.6.0
+Vcs-Browser: https://salsa.debian.org/pkg-virtualbox-team/kbuild
+Vcs-Git: https://salsa.debian.org/pkg-virtualbox-team/kbuild.git
+Build-Depends: debhelper-compat (= 12), byacc, flex, libacl1-dev, texinfo, pkg-config
+Package-List:
+ kbuild deb devel optional arch=any
+Directory: focal/src
+Checksums-Sha1:
+ a57e6896b2c14e1fb10ab530bee1a806cd845dbf 1268 kbuild_0.1.9998svn3604+dfsg-1~uh~focal1.dsc
+ 3e1c6d325872e4b54798236d7332fbb3a743c3ae 6143358 kbuild_0.1.9998svn3604+dfsg.orig.tar.gz
+ 506a480d0debc1b1b19fe5708b87158bd6f7f843 13124 kbuild_0.1.9998svn3604+dfsg-1~uh~focal1.debian.tar.xz
+Checksums-Sha256:
+ 01e878f0cd38d39d255ab147b8caa794535087d04bfddc565a11a040e2d8b79c 1268 kbuild_0.1.9998svn3604+dfsg-1~uh~focal1.dsc
+ d71820c6ee9f47a145e7a7baf8bf865b1b0f5a9d118a1f98b06f181442b9fb7a 6143358 kbuild_0.1.9998svn3604+dfsg.orig.tar.gz
+ fe5e288fa16725ae7b4e3dba44f623f498327804aa15d3c93b1a65d8141615b3 13124 kbuild_0.1.9998svn3604+dfsg-1~uh~focal1.debian.tar.xz
+Files:
+ dad61edd3af13829356edc00dd88d88e 1268 kbuild_0.1.9998svn3604+dfsg-1~uh~focal1.dsc
+ 6aea3f7c243eb90f2ea645aed899212a 6143358 kbuild_0.1.9998svn3604+dfsg.orig.tar.gz
+ 934812cb90c3782e7407389ddef66f8e 13124 kbuild_0.1.9998svn3604+dfsg-1~uh~focal1.debian.tar.xz
+
+Format: 3.0 (quilt)
+Package: libdecor-0
+Binary: libdecor-0-0, libdecor-0-dev, libdecor-0-plugin-1-cairo, libdecor-0-plugin-1-gtk, libdecor-tests
+Architecture: any
+Version: 0.2.2-1build2
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Uploaders: Christian Rauch <Rauch.Christian@gmx.de>, Simon McVittie <smcv@debian.org>
+Homepage: https://gitlab.freedesktop.org/libdecor/libdecor
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/sdl-team/libdecor-0
+Vcs-Git: https://salsa.debian.org/sdl-team/libdecor-0.git
+Testsuite: autopkgtest
+Testsuite-Triggers: build-essential, libdbus-1-dev, libwayland-dev, libxkbcommon-dev, pkg-config, wayland-protocols, weston
+Build-Depends: debhelper-compat (= 13), libcairo2-dev, libdbus-1-dev, libegl-dev <!noinsttest>, libgl-dev <!noinsttest>, libgtk-3-dev, libopengl-dev <!noinsttest>, libpango1.0-dev, libwayland-dev (>= 1.18), libxkbcommon-dev <!noinsttest>, meson, pkg-config, wayland-protocols
+Package-List:
+ libdecor-0-0 deb libs optional arch=any
+ libdecor-0-dev deb libdevel optional arch=any
+ libdecor-0-plugin-1-cairo deb libs optional arch=any
+ libdecor-0-plugin-1-gtk deb libs optional arch=any
+ libdecor-tests deb misc optional arch=any profile=!noinsttest
+Directory: focal/src
+Checksums-Sha1:
+ 3875e3f973a770593a85fb3c51a072f0aed7208c 2817 libdecor-0_0.2.2-1build2.dsc
+ 06d36c8b8fcf179a31f498df9ab57dfde977069d 63748 libdecor-0_0.2.2.orig.tar.gz
+ 7d833f61a5050f462c20e82fae5868fb4814a6c4 6356 libdecor-0_0.2.2-1build2.debian.tar.xz
+Checksums-Sha256:
+ cec8b683c12f4885f0db9f68185f4f084fe72307c3af91281ed027e8df36e9cb 2817 libdecor-0_0.2.2-1build2.dsc
+ 40a1d8be07d8b1f66e8fb98a1f4a84549ca6bf992407198a5055952be80a8525 63748 libdecor-0_0.2.2.orig.tar.gz
+ b3f63f4e40680de69b00c043fb91b968dd1604183e237530be44df23fd289957 6356 libdecor-0_0.2.2-1build2.debian.tar.xz
+Files:
+ 0ecbd2dd979855146a7c1131a7618757 2817 libdecor-0_0.2.2-1build2.dsc
+ 94223f6d80a9ae542655f70cc2c95eaf 63748 libdecor-0_0.2.2.orig.tar.gz
+ 3e73169637d647262a2e2b60b2d14708 6356 libdecor-0_0.2.2-1build2.debian.tar.xz
+Original-Maintainer: Debian SDL packages maintainers <pkg-sdl-maintainers@lists.alioth.debian.org>
+
+Format: 3.0 (quilt)
+Package: libdecor-0
+Binary: libdecor-0-0, libdecor-0-dev, libdecor-0-plugin-1-cairo, libdecor-0-plugin-1-gtk, libdecor-tests
+Architecture: any
+Version: 0.2.2-1build2~uh~focal1
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Uploaders: Christian Rauch <Rauch.Christian@gmx.de>, Simon McVittie <smcv@debian.org>
+Homepage: https://gitlab.freedesktop.org/libdecor/libdecor
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/sdl-team/libdecor-0
+Vcs-Git: https://salsa.debian.org/sdl-team/libdecor-0.git
+Testsuite: autopkgtest
+Testsuite-Triggers: build-essential, libdbus-1-dev, libwayland-dev, libxkbcommon-dev, pkg-config, wayland-protocols, weston
+Build-Depends: debhelper-compat (= 12), libcairo2-dev, libdbus-1-dev, libegl-dev <!noinsttest>, libgl-dev <!noinsttest>, libgtk-3-dev, libopengl-dev <!noinsttest>, libpango1.0-dev, libwayland-dev (>= 1.18), libxkbcommon-dev <!noinsttest>, meson, pkg-config, wayland-protocols
+Package-List:
+ libdecor-0-0 deb libs optional arch=any
+ libdecor-0-dev deb libdevel optional arch=any
+ libdecor-0-plugin-1-cairo deb libs optional arch=any
+ libdecor-0-plugin-1-gtk deb libs optional arch=any
+ libdecor-tests deb misc optional arch=any profile=!noinsttest
+Directory: focal/src
+Checksums-Sha1:
+ ad9c76a6b388db7066eede0a5f38fd7567ea4705 1937 libdecor-0_0.2.2-1build2~uh~focal1.dsc
+ 06d36c8b8fcf179a31f498df9ab57dfde977069d 63748 libdecor-0_0.2.2.orig.tar.gz
+ 6d68e9dedd5b88fa07cd21f5d4faa056207241ca 6408 libdecor-0_0.2.2-1build2~uh~focal1.debian.tar.xz
+Checksums-Sha256:
+ a142cee2652f008d918a81c3630847e48aeb8de8800f6fde068ebd9e8966eeba 1937 libdecor-0_0.2.2-1build2~uh~focal1.dsc
+ 40a1d8be07d8b1f66e8fb98a1f4a84549ca6bf992407198a5055952be80a8525 63748 libdecor-0_0.2.2.orig.tar.gz
+ 0b3d90232db3571c1421d8143024e3c9e5851ca86d4d57759a8ba36750ff5e6a 6408 libdecor-0_0.2.2-1build2~uh~focal1.debian.tar.xz
+Files:
+ 24c602ca4d93413bf8328cad27a29f8c 1937 libdecor-0_0.2.2-1build2~uh~focal1.dsc
+ 94223f6d80a9ae542655f70cc2c95eaf 63748 libdecor-0_0.2.2.orig.tar.gz
+ 9eab9b7dfdce8ab63b778c8df5473741 6408 libdecor-0_0.2.2-1build2~uh~focal1.debian.tar.xz
+Original-Maintainer: Debian SDL packages maintainers <pkg-sdl-maintainers@lists.alioth.debian.org>
+
+Format: 3.0 (quilt)
+Package: libtpms
+Binary: libtpms-dev, libtpms0
+Architecture: any
+Version: 0.9.3-0ubuntu4
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Homepage: https://github.com/stefanberger/libtpms
+Standards-Version: 4.5.1
+Vcs-Browser: https://salsa.debian.org/debian/libtpms
+Vcs-Git: https://salsa.debian.org/debian/libtpms.git
+Testsuite: autopkgtest
+Testsuite-Triggers: @builddeps@
+Build-Depends: debhelper-compat (= 13), dh-exec, gawk, libssl-dev, libtool, pkg-config
+Package-List:
+ libtpms-dev deb libdevel optional arch=any
+ libtpms0 deb libs optional arch=any
+Directory: focal/src
+Checksums-Sha1:
+ 02dfd4a2b3ee676e7726294a0b343fbbcfe225c5 2127 libtpms_0.9.3-0ubuntu4.dsc
+ 5e1d71f78c07780e03a7bad6f026387793131f4a 1263192 libtpms_0.9.3.orig.tar.gz
+ 0976d299ad87ae926ffa8d1850393a3d277488e3 13468 libtpms_0.9.3-0ubuntu4.debian.tar.xz
+Checksums-Sha256:
+ 3d7ca45c47cba7d18f5ca0c1f1ed3657c42234aeca94e47f10b71905016a47c2 2127 libtpms_0.9.3-0ubuntu4.dsc
+ b7f10437f9a569bbadf2c66b74328c21b649abe3c2b940cc8322391091b20c14 1263192 libtpms_0.9.3.orig.tar.gz
+ 322bc775429a32e4371156bd815ff6e41443fa5e1168b3ff7660e9d7f98102da 13468 libtpms_0.9.3-0ubuntu4.debian.tar.xz
+Files:
+ 5dfa51cbe74d506bfb97e98278f96619 2127 libtpms_0.9.3-0ubuntu4.dsc
+ f90124b851319d0ba96ded836a630a00 1263192 libtpms_0.9.3.orig.tar.gz
+ 2c130d45466f4ae6dabda56ac1d90ca4 13468 libtpms_0.9.3-0ubuntu4.debian.tar.xz
+Original-Maintainer: Seunghun Han <kkamagui@gmail.com>
+
+Format: 3.0 (quilt)
+Package: libtpms
+Binary: libtpms-dev, libtpms0
+Architecture: any
+Version: 0.9.3-0ubuntu4~uh~focal1
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Homepage: https://github.com/stefanberger/libtpms
+Standards-Version: 4.5.1
+Vcs-Browser: https://salsa.debian.org/debian/libtpms
+Vcs-Git: https://salsa.debian.org/debian/libtpms.git
+Testsuite: autopkgtest
+Testsuite-Triggers: @builddeps@
+Build-Depends: debhelper-compat (= 12), dh-exec, gawk, libssl-dev, libtool, pkg-config
+Package-List:
+ libtpms-dev deb libdevel optional arch=any
+ libtpms0 deb libs optional arch=any
+Directory: focal/src
+Checksums-Sha1:
+ 0d59038130a9732c2c95265eab67efca41e21b78 1247 libtpms_0.9.3-0ubuntu4~uh~focal1.dsc
+ 5e1d71f78c07780e03a7bad6f026387793131f4a 1263192 libtpms_0.9.3.orig.tar.gz
+ 7c455300101fa584d6e2f1149cd75aa2500416d5 13516 libtpms_0.9.3-0ubuntu4~uh~focal1.debian.tar.xz
+Checksums-Sha256:
+ 69d8632e878722c1613a5547aef20feadbf949029a827379d782df466b42f9b3 1247 libtpms_0.9.3-0ubuntu4~uh~focal1.dsc
+ b7f10437f9a569bbadf2c66b74328c21b649abe3c2b940cc8322391091b20c14 1263192 libtpms_0.9.3.orig.tar.gz
+ 5b9c1262c5089497de8ae99a7baa6e30931029fa5ce8d4a6c19ee771fef2e79c 13516 libtpms_0.9.3-0ubuntu4~uh~focal1.debian.tar.xz
+Files:
+ 50342e3c1f58812e8a8dd85c7f401143 1247 libtpms_0.9.3-0ubuntu4~uh~focal1.dsc
+ f90124b851319d0ba96ded836a630a00 1263192 libtpms_0.9.3.orig.tar.gz
+ 15a07a63301f091e73777f72713c3427 13516 libtpms_0.9.3-0ubuntu4~uh~focal1.debian.tar.xz
+Original-Maintainer: Seunghun Han <kkamagui@gmail.com>
+
+Format: 3.0 (quilt)
 Package: qrterminal
 Binary: qrterminal, golang-github-mdp-qrterminal-dev
 Architecture: any all
@@ -357,4 +611,74 @@ Files:
  0db54d5c4bb00a6bcbb748c04fffd9f5 2752 qrterminal_3.2.0.3-2ubuntu0.24.04.2~uh~focal2.debian.tar.xz
 Go-Import-Path: github.com/mdp/qrterminal
 Original-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+
+Format: 3.0 (quilt)
+Package: virtualbox
+Binary: virtualbox-qt, virtualbox, virtualbox-dkms, virtualbox-source, virtualbox-guest-x11, virtualbox-guest-utils
+Architecture: amd64 i386
+Version: 7.0.16-dfsg-2ubuntu1.1
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Uploaders: Ritesh Raj Sarraf <rrs@debian.org>, Gianfranco Costamagna <locutusofborg@debian.org>
+Homepage: https://www.virtualbox.org
+Standards-Version: 4.6.1
+Vcs-Browser: https://salsa.debian.org/pkg-virtualbox-team/virtualbox
+Vcs-Git: https://salsa.debian.org/pkg-virtualbox-team/virtualbox.git
+Testsuite: autopkgtest-pkg-dkms
+Build-Depends: bzip2, debhelper-compat (= 12), default-jdk, jaxws, dh-python, dh-sequence-dkms, docbook-xml, docbook-xsl, dpkg-dev (>= 1.15.6~), g++-multilib, genisoimage, glslang-tools, gsoap, acpica-tools, kbuild (>= 1:0.1.9998svn3589~), libasound2-dev, libcap-dev, libcurl4-gnutls-dev, libdevmapper-dev, libdrm-dev, libegl1-mesa-dev, libgl1-mesa-dev, libglu1-mesa-dev, libgsoap-dev, liblzf-dev, liblzma-dev, libidl-dev, libogg-dev, libpam0g-dev, libpixman-1-dev, libpng-dev, libpulse-dev, libqt5x11extras5-dev, libqt5opengl5-dev, qttools5-dev, libsdl1.2-dev, libsdl2-dev, libssl-dev, libtpms-dev, libvncserver-dev, libvorbis-dev, libvpx-dev, libx11-dev, libxcomposite-dev, libxcursor-dev, libxdamage-dev, libxext-dev, libxi-dev, libxinerama-dev, libxml2-dev, libxml2-utils, libxmu-dev, libxrandr-dev, libxrender-dev, libxslt1-dev, libxt-dev, lsb-release, lynx, makeself, module-assistant, nasm, python3-dev, texlive-fonts-extra, texlive-fonts-recommended, texlive-latex-extra, texlive-latex-recommended, uuid-dev, x11proto-gl-dev, x11proto-xf86dri-dev, xserver-xorg-dev, xsltproc, yasm, zlib1g-dev
+Package-List:
+ virtualbox deb contrib/misc optional arch=amd64
+ virtualbox-dkms deb contrib/kernel optional arch=amd64
+ virtualbox-guest-utils deb contrib/misc optional arch=amd64,i386
+ virtualbox-guest-x11 deb contrib/x11 optional arch=amd64,i386
+ virtualbox-qt deb contrib/misc optional arch=amd64
+ virtualbox-source deb contrib/kernel optional arch=amd64
+Directory: focal/src
+Checksums-Sha1:
+ 26fa8657e432d1ab944ff294dd28a861609d22f2 3696 virtualbox_7.0.16-dfsg-2ubuntu1.1.dsc
+ df6cfdd02e421af587e64b6855d8049056e20af3 78681676 virtualbox_7.0.16-dfsg.orig.tar.xz
+ 828f6112f9197000aa0a74cf26c67f234cf52f08 78684 virtualbox_7.0.16-dfsg-2ubuntu1.1.debian.tar.xz
+Checksums-Sha256:
+ 6318ff230413d7e4aacfa2b11fd8423c8da9577c6c60ff3e4760b2f72c2e7414 3696 virtualbox_7.0.16-dfsg-2ubuntu1.1.dsc
+ 9af16b80e8f18c7f3f7f935817e6ce094904c1c392a86e37c16773d7b1d25997 78681676 virtualbox_7.0.16-dfsg.orig.tar.xz
+ bb9da029c1545d587b769b377b12452ddad9e47d991139a195a6e4c8498fe84e 78684 virtualbox_7.0.16-dfsg-2ubuntu1.1.debian.tar.xz
+Files:
+ 43ce6afffb88b54fb0f99c9f9fbc5136 3696 virtualbox_7.0.16-dfsg-2ubuntu1.1.dsc
+ eea3497f179943f5a3b02204a2f863a0 78681676 virtualbox_7.0.16-dfsg.orig.tar.xz
+ e46057e430f568ed6fcb07253aaaabdd 78684 virtualbox_7.0.16-dfsg-2ubuntu1.1.debian.tar.xz
+Original-Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debian.org>
+
+Format: 3.0 (quilt)
+Package: virtualbox
+Binary: virtualbox-qt, virtualbox, virtualbox-dkms, virtualbox-source, virtualbox-guest-x11, virtualbox-guest-utils
+Architecture: amd64 i386
+Version: 7.0.16-dfsg-2ubuntu1.1~uh~focal1
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Uploaders: Ritesh Raj Sarraf <rrs@debian.org>, Gianfranco Costamagna <locutusofborg@debian.org>
+Homepage: https://www.virtualbox.org
+Standards-Version: 4.6.1
+Vcs-Browser: https://salsa.debian.org/pkg-virtualbox-team/virtualbox
+Vcs-Git: https://salsa.debian.org/pkg-virtualbox-team/virtualbox.git
+Testsuite: autopkgtest-pkg-dkms
+Build-Depends: bzip2, debhelper-compat (= 12), default-jdk, jaxws, dh-python, dh-sequence-dkms, docbook-xml, docbook-xsl, dpkg-dev (>= 1.15.6~), g++-multilib, genisoimage, glslang-tools, gsoap, acpica-tools, kbuild (>= 1:0.1.9998svn3589~), libasound2-dev, libcap-dev, libcurl4-gnutls-dev, libdevmapper-dev, libdrm-dev, libegl1-mesa-dev, libgl1-mesa-dev, libglu1-mesa-dev, libgsoap-dev, liblzf-dev, liblzma-dev, libidl-dev, libogg-dev, libpam0g-dev, libpixman-1-dev, libpng-dev, libpulse-dev, libqt5x11extras5-dev, libqt5opengl5-dev, qttools5-dev, libsdl1.2-dev, libssl-dev, libtpms-dev, libvncserver-dev, libvorbis-dev, libvpx-dev, libx11-dev, libxcomposite-dev, libxcursor-dev, libxdamage-dev, libxext-dev, libxi-dev, libxinerama-dev, libxml2-dev, libxml2-utils, libxmu-dev, libxrandr-dev, libxrender-dev, libxslt1-dev, libxt-dev, lsb-release, lynx, makeself, module-assistant, nasm, python3-dev, texlive-fonts-extra, texlive-fonts-recommended, texlive-latex-extra, texlive-latex-recommended, uuid-dev, x11proto-gl-dev, x11proto-xf86dri-dev, xserver-xorg-dev, xsltproc, yasm, zlib1g-dev
+Package-List:
+ virtualbox deb contrib/misc optional arch=amd64
+ virtualbox-dkms deb contrib/kernel optional arch=amd64
+ virtualbox-guest-utils deb contrib/misc optional arch=amd64,i386
+ virtualbox-guest-x11 deb contrib/x11 optional arch=amd64,i386
+ virtualbox-qt deb contrib/misc optional arch=amd64
+ virtualbox-source deb contrib/kernel optional arch=amd64
+Directory: focal/src
+Checksums-Sha1:
+ bca1e9edd45b584a22ce88056faae2b27ddc0347 2803 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~focal1.dsc
+ df6cfdd02e421af587e64b6855d8049056e20af3 78681676 virtualbox_7.0.16-dfsg.orig.tar.xz
+ ec7f2417eec50e26fb759c047d5d34b01f7f0968 79232 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~focal1.debian.tar.xz
+Checksums-Sha256:
+ b1b80f83758e7d8a565d1818fd01c6ca307f2b5fb9feff9def64c2708f3b8a34 2803 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~focal1.dsc
+ 9af16b80e8f18c7f3f7f935817e6ce094904c1c392a86e37c16773d7b1d25997 78681676 virtualbox_7.0.16-dfsg.orig.tar.xz
+ 8388ff36978ef96e343baaa39bdb94712cd1a89bc41c249f1db5f57a6e524909 79232 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~focal1.debian.tar.xz
+Files:
+ b1981ef3c037a79a3f2950f26f1c39b9 2803 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~focal1.dsc
+ eea3497f179943f5a3b02204a2f863a0 78681676 virtualbox_7.0.16-dfsg.orig.tar.xz
+ d0e03282fb31237d578eda6b3f00e940 79232 virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~focal1.debian.tar.xz
+Original-Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debian.org>
 
