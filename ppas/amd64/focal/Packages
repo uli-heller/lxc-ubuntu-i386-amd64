@@ -745,20 +745,19 @@ Description: Display QR Codes in terminal (program)
 Original-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
 
 Package: virtualbox
-Version: 7.0.16-dfsg-2ubuntu1.1~uh~focal1
+Version: 7.0.16-dfsg-2ubuntu1.1~uh~focal2
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 133484
-Depends: adduser, iproute2, procps, virtualbox-dkms (>= 7.0.16-dfsg-2ubuntu1.1~uh~focal1) | virtualbox-source (>= 7.0.16-dfsg-2ubuntu1.1~uh~focal1) | virtualbox-modules, python3 (<< 3.9), python3 (>= 3.8~), python3.8, python3:any, libc6 (>= 2.29), libcurl3-gnutls (>= 7.16.2), libdevmapper1.02.1 (>= 2:1.02.97), libgcc-s1 (>= 3.0), libgl1, libgsoap-2.8.91, liblzf1 (>= 1.5), libpng16-16 (>= 1.6.2-1), libsdl2-2.0-0 (>= 2.0.10), libssl1.1 (>= 1.1.1), libstdc++6 (>= 9), libtpms0 (>= 0.8.0~dev1), libvncserver1 (>= 0.9.10), libvpx6 (>= 1.6.0), libx11-6, libxml2 (>= 2.7.4), libxt6, zlib1g (>= 1:1.1.4)
-Recommends: virtualbox-qt (= 7.0.16-dfsg-2ubuntu1.1~uh~focal1), libqt5core5a (>= 5.12.2), libqt5gui5 (>= 5.0.2) | libqt5gui5-gles (>= 5.0.2), libqt5opengl5 (>= 5.0.2), libqt5widgets5 (>= 5.0.2), libxcb1, libxcursor1 (>> 1.1.2), libxext6
+Depends: adduser, iproute2, procps, virtualbox-dkms (>= 7.0.16-dfsg-2ubuntu1.1~uh~focal2) | virtualbox-source (>= 7.0.16-dfsg-2ubuntu1.1~uh~focal2) | virtualbox-modules, python3 (<< 3.9), python3 (>= 3.8~), python3.8, python3:any, libc6 (>= 2.29), libcurl3-gnutls (>= 7.16.2), libdevmapper1.02.1 (>= 2:1.02.97), libgcc-s1 (>= 3.0), libgl1, libgsoap-2.8.91, liblzf1 (>= 1.5), libpng16-16 (>= 1.6.2-1), libsdl2-2.0-0 (>= 2.0.10), libssl1.1 (>= 1.1.1), libstdc++6 (>= 9), libtpms0 (>= 0.8.0~dev1), libvncserver1 (>= 0.9.10), libvpx6 (>= 1.6.0), libx11-6, libxml2 (>= 2.7.4), libxt6, zlib1g (>= 1:1.1.4)
+Recommends: virtualbox-qt (= 7.0.16-dfsg-2ubuntu1.1~uh~focal2), libqt5core5a (>= 5.12.2), libqt5gui5 (>= 5.0.2) | libqt5gui5-gles (>= 5.0.2), libqt5opengl5 (>= 5.0.2), libqt5widgets5 (>= 5.0.2), libxcb1, libxcursor1 (>> 1.1.2), libxext6
 Suggests: vde2, virtualbox-guest-additions-iso
 Conflicts: virtualbox-2.0, virtualbox-2.1, virtualbox-2.2, virtualbox-3.0, virtualbox-3.1, virtualbox-3.2, virtualbox-4.0, virtualbox-4.1, virtualbox-4.2, virtualbox-4.3, virtualbox-5.0, virtualbox-5.1, virtualbox-5.2, virtualbox-6.0, virtualbox-6.1, virtualbox-7.0
-Breaks: python3-minimal (<< 3.12.3-0ubuntu2~)
-Filename: focal/debs/virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
-Size: 29753808
-MD5sum: c2083f000b3efe0f2efde016b587c0bf
-SHA1: 32f14a534463d14d0e8a6d1448f27f1f7982bcb5
-SHA256: 6dc60555cc71c7a5e23242493626e39736a54bbdbd43ed059c0ce8edebf9bbc2
+Filename: focal/debs/virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~focal2_amd64.deb
+Size: 29737376
+MD5sum: 71318805b70643edbdd4b142e248f007
+SHA1: 48efdca156120a6ccb794224044ae2d203f41ba2
+SHA256: 929634c01c9a854a1012d063837b29c41fc6b836720466f05e97cdecf6c4ad09
 Section: contrib/misc
 Priority: optional
 Homepage: https://www.virtualbox.org
@@ -775,18 +774,18 @@ Original-Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debi
 
 Package: virtualbox-dkms
 Source: virtualbox
-Version: 7.0.16-dfsg-2ubuntu1.1~uh~focal1
+Version: 7.0.16-dfsg-2ubuntu1.1~uh~focal2
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 5986
 Depends: dkms (>= 2.1.0.0)
-Recommends: virtualbox (>= 7.0.16-dfsg-2ubuntu1.1~uh~focal1)
+Recommends: virtualbox (>= 7.0.16-dfsg-2ubuntu1.1~uh~focal2)
 Provides: virtualbox-modules
-Filename: focal/debs/virtualbox-dkms_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
-Size: 768572
-MD5sum: cead7bf07a76094f0d7b1a3920df2d40
-SHA1: 6bcc92ba1bd8000fa5d9e599cee20ddf5efe29d8
-SHA256: 3f71ca67fcf26883be963fe51371d0b63c30e0916c3b1f7c4fb143b6d8a21585
+Filename: focal/debs/virtualbox-dkms_7.0.16-dfsg-2ubuntu1.1~uh~focal2_amd64.deb
+Size: 768680
+MD5sum: bbc3754dfaef8896829b4803b4b1efee
+SHA1: ab917e21e36ad6fb3dcfa648c55597ea6e69bee6
+SHA256: 54c19dd2a4b645ff5b038a6b8bb4494d4fbf36e6d19c7ee598536d39bda3b44a
 Section: contrib/kernel
 Priority: optional
 Homepage: https://www.virtualbox.org
@@ -802,17 +801,17 @@ Original-Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debi
 
 Package: virtualbox-guest-utils
 Source: virtualbox
-Version: 7.0.16-dfsg-2ubuntu1.1~uh~focal1
+Version: 7.0.16-dfsg-2ubuntu1.1~uh~focal2
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 1893
 Depends: adduser, pciutils, libc6 (>= 2.17), libpam0g (>= 0.99.7.1), zlib1g (>= 1:1.1.4)
-Suggests: virtualbox-guest-x11 (= 7.0.16-dfsg-2ubuntu1.1~uh~focal1)
-Filename: focal/debs/virtualbox-guest-utils_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
+Suggests: virtualbox-guest-x11 (= 7.0.16-dfsg-2ubuntu1.1~uh~focal2)
+Filename: focal/debs/virtualbox-guest-utils_7.0.16-dfsg-2ubuntu1.1~uh~focal2_amd64.deb
 Size: 428516
-MD5sum: 3296fa58d7bc47b9c41ebd86fd9c2e66
-SHA1: 7790c219c5c19b014def8cbe2bd37825fa554959
-SHA256: 59076dad35b6cf7a7bdd4ed409fad4cde4242f6d3660dff8d265e6d12d6cc67d
+MD5sum: a619a3c912db93a5b8416bcdd2f2f408
+SHA1: 261cbc81a8087eb2a6f355fb135081d1d4ca350d
+SHA256: 2be8d123ff7ed988cc392ff017c28b475917a711a7f45c15343f73892ef04e47
 Section: contrib/misc
 Priority: optional
 Homepage: https://www.virtualbox.org
@@ -829,17 +828,17 @@ Original-Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debi
 
 Package: virtualbox-guest-x11
 Source: virtualbox
-Version: 7.0.16-dfsg-2ubuntu1.1~uh~focal1
+Version: 7.0.16-dfsg-2ubuntu1.1~uh~focal2
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 797
-Depends: libnotify-bin, x11-xserver-utils, virtualbox-guest-utils (= 7.0.16-dfsg-2ubuntu1.1~uh~focal1), libc6 (>= 2.17), libx11-6 (>= 2:1.4.99.1), libxext6, libxmu6, libxt6, xorg-video-abi-24, xserver-xorg-core (>= 2:1.18.99.901)
+Depends: libnotify-bin, x11-xserver-utils, virtualbox-guest-utils (= 7.0.16-dfsg-2ubuntu1.1~uh~focal2), libc6 (>= 2.17), libx11-6 (>= 2:1.4.99.1), libxext6, libxmu6, libxt6, xorg-video-abi-24, xserver-xorg-core (>= 2:1.18.99.901)
 Provides: xorg-driver-video
-Filename: focal/debs/virtualbox-guest-x11_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
-Size: 307576
-MD5sum: d5df979b734d01d5a9dae77733f529ef
-SHA1: 7e8a8142774dda987cc365a09c41eb1cc0761e9e
-SHA256: aafa698d7840911993c82a7e5c394dc38269c0ea056a066f7357188086729471
+Filename: focal/debs/virtualbox-guest-x11_7.0.16-dfsg-2ubuntu1.1~uh~focal2_amd64.deb
+Size: 307588
+MD5sum: a1c5418d56ecd5d9f85e6ebd96dd03cc
+SHA1: 3de8eb157005c945a0ee710d98166ef86967ad0f
+SHA256: 6fbfa2a036a9363a19ab79c032ca5026ff8075e87ccd6407a0cd6b0ae5b2ecd2
 Section: contrib/x11
 Priority: optional
 Homepage: https://www.virtualbox.org
@@ -856,18 +855,18 @@ Original-Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debi
 
 Package: virtualbox-qt
 Source: virtualbox
-Version: 7.0.16-dfsg-2ubuntu1.1~uh~focal1
+Version: 7.0.16-dfsg-2ubuntu1.1~uh~focal2
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 52222
-Depends: virtualbox (= 7.0.16-dfsg-2ubuntu1.1~uh~focal1), libc6 (>= 2.29), libgcc-s1 (>= 3.0), libqt5core5a (>= 5.12.2), libqt5dbus5 (>= 5.0.2), libqt5gui5 (>= 5.11.0~rc1) | libqt5gui5-gles (>= 5.11.0~rc1), libqt5help5 (>= 5.9.0), libqt5printsupport5 (>= 5.0.2), libqt5widgets5 (>= 5.12.2), libqt5x11extras5 (>= 5.6.0), libqt5xml5 (>= 5.0.2), libstdc++6 (>= 5.2), libx11-6, libxcb1
+Depends: virtualbox (= 7.0.16-dfsg-2ubuntu1.1~uh~focal2), libc6 (>= 2.29), libgcc-s1 (>= 3.0), libqt5core5a (>= 5.12.2), libqt5dbus5 (>= 5.0.2), libqt5gui5 (>= 5.11.0~rc1) | libqt5gui5-gles (>= 5.11.0~rc1), libqt5help5 (>= 5.9.0), libqt5printsupport5 (>= 5.0.2), libqt5widgets5 (>= 5.12.2), libqt5x11extras5 (>= 5.6.0), libqt5xml5 (>= 5.0.2), libstdc++6 (>= 5.2), libx11-6, libxcb1
 Breaks: virtualbox (<< 4.1.6-dfsg-2~)
 Replaces: virtualbox (<< 4.1.6-dfsg-2~)
-Filename: focal/debs/virtualbox-qt_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
-Size: 24846088
-MD5sum: cfd53331b69765ce60c12d2d48778e4b
-SHA1: ff7d1929b516ee64162787b57537fbd574798f73
-SHA256: 8935bc8be8a9cb8c05efa9b7b80321acdcd0638f7edca30b6dbda04c78846f32
+Filename: focal/debs/virtualbox-qt_7.0.16-dfsg-2ubuntu1.1~uh~focal2_amd64.deb
+Size: 24846188
+MD5sum: 7343d2852efa3cd50e304ec0723dd3c9
+SHA1: 2acffd27c0238b90c987713dbbd9b8103cf18081
+SHA256: 6a5fe4bb3b90b1379892f93a3f41bfd70a7700baf78deec4b91055fe68ac7595
 Section: contrib/misc
 Priority: optional
 Homepage: https://www.virtualbox.org
@@ -881,17 +880,17 @@ Original-Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debi
 
 Package: virtualbox-source
 Source: virtualbox
-Version: 7.0.16-dfsg-2ubuntu1.1~uh~focal1
+Version: 7.0.16-dfsg-2ubuntu1.1~uh~focal2
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Installed-Size: 923
+Installed-Size: 922
 Depends: build-essential, bzip2, debhelper-compat (= 12), kbuild, module-assistant
-Recommends: virtualbox (>= 7.0.16-dfsg-2ubuntu1.1~uh~focal1)
-Filename: focal/debs/virtualbox-source_7.0.16-dfsg-2ubuntu1.1~uh~focal1_amd64.deb
-Size: 910320
-MD5sum: cf26d1bc7d7891ea1dab010a80735106
-SHA1: 5834bbcc6543b6052b382144492e625c58561f2a
-SHA256: 262241099cb83d6effac1e73536ea18b42a9824df692ed42cb943757bf6b6fa8
+Recommends: virtualbox (>= 7.0.16-dfsg-2ubuntu1.1~uh~focal2)
+Filename: focal/debs/virtualbox-source_7.0.16-dfsg-2ubuntu1.1~uh~focal2_amd64.deb
+Size: 909948
+MD5sum: 61ecacef5d5f0a5a369a5612f21dc2c5
+SHA1: 22bff58ceec71c4b3fa6af0bcf413341130a7644
+SHA256: 3997dc2f250184925cb6b830db9024ad135576967a8983f76c9f9e1d5fe09e77
 Section: contrib/kernel
 Priority: optional
 Homepage: https://www.virtualbox.org
