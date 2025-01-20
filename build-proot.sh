@@ -328,7 +328,7 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
             myExec "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C ${BUILD_OPTIONS} dpkg-buildpackage ${DPKG_BUILDPACKAGE_OPTS}" || RC=1
             test "${RC}" -eq "0" || { echo >&2 "Probleme beim Auspacken oder bauen - EXIT"; exit 1; }
             test -d "${D}/ppas/${ARCHITECTURE}/${OS}" || mkdir -p "${D}/ppas/${ARCHITECTURE}/${OS}"
-            cp "${ROOTFS}/src/${PACKAGE}"/*.deb "${D}/ppas/${ARCHITECTURE}/${OS}/."
+            cp "${ROOTFS}/src/${PACKAGE}"/*.deb "${D}/ppas/${ARCHITECTURE}/${OS}/debs/."
             chown "$(id -un):$(id -gn)" "${D}/ppas/${ARCHITECTURE}/${OS}"/*.deb
             test -n "${SOURCE_PACKAGE}" && {
                 test -d "${D}/ppas/${ARCHITECTURE}/${OS}/src" || mkdir -p "${D}/ppas/${ARCHITECTURE}/${OS}/src"
