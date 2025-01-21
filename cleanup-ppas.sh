@@ -49,6 +49,7 @@ getParameter () {
 
 while read -r PPA; do
     rm -f "${TMPDIR}/required-files"
+    touch "${TMPDIR}/required-files"
     PPA_PARENT="$(dirname "${PPA}")"
     PACKAGES="${PPA}/Packages"
     test -s "${PACKAGES}" && {
