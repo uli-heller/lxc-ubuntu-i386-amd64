@@ -433,19 +433,19 @@ Description: Display QR Codes in terminal (program)
 Original-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
 
 Package: virtualbox
-Version: 7.0.16-dfsg-2ubuntu1.1~uh~jammy1
+Version: 7.0.22-2ubuntu1.1~uh~jammy1
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Installed-Size: 133422
-Depends: adduser, iproute2, procps, virtualbox-dkms (>= 7.0.16-dfsg-2ubuntu1.1~uh~jammy1) | virtualbox-source (>= 7.0.16-dfsg-2ubuntu1.1~uh~jammy1) | virtualbox-modules, python3 (<< 3.11), python3 (>= 3.10~), python3.10, python3:any, libc6 (>= 2.34), libcurl3-gnutls (>= 7.16.2), libdevmapper1.02.1 (>= 2:1.02.97), libgcc-s1 (>= 3.0), libgl1, libgsoap-2.8.117 (>= 2.8.117), liblzf1 (>= 1.5), libpng16-16 (>= 1.6.2-1), libsdl2-2.0-0 (>= 2.0.12), libssl3 (>= 3.0.0~~alpha1), libstdc++6 (>= 12), libtpms0 (>= 0.8.0~dev1), libvncserver1 (>= 0.9.10), libvpx7 (>= 1.10.0), libx11-6, libxml2 (>= 2.7.4), libxt6, zlib1g (>= 1:1.1.4)
-Recommends: virtualbox-qt (= 7.0.16-dfsg-2ubuntu1.1~uh~jammy1), libqt5core5a (>= 5.15.1), libqt5gui5 (>= 5.0.2) | libqt5gui5-gles (>= 5.0.2), libqt5opengl5 (>= 5.0.2), libqt5widgets5 (>= 5.0.2), libxcb1, libxcursor1 (>> 1.1.2), libxext6
+Installed-Size: 133455
+Depends: adduser, iproute2, procps, virtualbox-dkms (>= 7.0.22-2ubuntu1.1~uh~jammy1) | virtualbox-source (>= 7.0.22-2ubuntu1.1~uh~jammy1) | virtualbox-modules, python3 (<< 3.11), python3 (>= 3.10~), python3.10, python3:any, libc6 (>= 2.34), libcurl3-gnutls (>= 7.16.2), libdevmapper1.02.1 (>= 2:1.02.97), libgcc-s1 (>= 3.0), libgl1, libgsoap-2.8.117 (>= 2.8.117), liblzf1 (>= 1.5), libpng16-16 (>= 1.6.2-1), libsdl2-2.0-0 (>= 2.0.12), libssl3 (>= 3.0.0~~alpha1), libstdc++6 (>= 12), libtpms0 (>= 0.8.0~dev1), libvncserver1 (>= 0.9.10), libvpx7 (>= 1.10.0), libx11-6, libxml2 (>= 2.7.4), libxt6, zlib1g (>= 1:1.1.4)
+Recommends: virtualbox-qt (= 7.0.22-2ubuntu1.1~uh~jammy1), libqt5core5a (>= 5.15.1), libqt5gui5 (>= 5.0.2) | libqt5gui5-gles (>= 5.0.2), libqt5opengl5 (>= 5.0.2), libqt5widgets5 (>= 5.0.2), libxcb1, libxcursor1 (>> 1.1.2), libxext6
 Suggests: vde2, virtualbox-guest-additions-iso
 Conflicts: virtualbox-2.0, virtualbox-2.1, virtualbox-2.2, virtualbox-3.0, virtualbox-3.1, virtualbox-3.2, virtualbox-4.0, virtualbox-4.1, virtualbox-4.2, virtualbox-4.3, virtualbox-5.0, virtualbox-5.1, virtualbox-5.2, virtualbox-6.0, virtualbox-6.1, virtualbox-7.0
-Filename: jammy/debs/virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.deb
-Size: 31832436
-MD5sum: cd805f0e993bc48e45dfd88fa41579ad
-SHA1: c3e77c4a3f888e3481fa436988928277d21fd1e2
-SHA256: 7d246ac237f55fbd6c406406251b87e06dbe193a4e19c696cf2aa8e792eb9614
+Filename: jammy/debs/virtualbox_7.0.22-2ubuntu1.1~uh~jammy1_amd64.deb
+Size: 31778558
+MD5sum: 2ed7d098137762044ae2e8b14866465e
+SHA1: 9dd8300112bad3e5f680aac42e1f160b3ed70789
+SHA256: 8f1bdaad48e03540872771fcc769b84f5cb7ee755f9fada7e623d196abd869eb
 Section: contrib/misc
 Priority: optional
 Homepage: https://www.virtualbox.org
@@ -462,18 +462,18 @@ Original-Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debi
 
 Package: virtualbox-dkms
 Source: virtualbox
-Version: 7.0.16-dfsg-2ubuntu1.1~uh~jammy1
+Version: 7.0.22-2ubuntu1.1~uh~jammy1
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Installed-Size: 5986
+Installed-Size: 5988
 Depends: dkms (>= 2.1.0.0)
-Recommends: virtualbox (>= 7.0.16-dfsg-2ubuntu1.1~uh~jammy1)
+Recommends: virtualbox (>= 7.0.22-2ubuntu1.1~uh~jammy1)
 Provides: virtualbox-modules
-Filename: jammy/debs/virtualbox-dkms_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.deb
-Size: 793410
-MD5sum: a28ef29de80ce24101e17f1c77cfab62
-SHA1: 4d95cb996b4bf4c70eff2b0ffa6bebaa1d924b1d
-SHA256: ca81d25cfadfac4ea5ce6930bf5a458005de05dc593f28efd07ce3a263d26031
+Filename: jammy/debs/virtualbox-dkms_7.0.22-2ubuntu1.1~uh~jammy1_amd64.deb
+Size: 794192
+MD5sum: 3157ab710293d613f4ed7b77dbef4ee5
+SHA1: 679d130902c0bb543c4c4f785c839da37c7b3fde
+SHA256: 18671eb36ef58f56f9427a28c585aaf432719e66097a1634a415b681d97616fd
 Section: contrib/kernel
 Priority: optional
 Homepage: https://www.virtualbox.org
@@ -489,17 +489,17 @@ Original-Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debi
 
 Package: virtualbox-guest-utils
 Source: virtualbox
-Version: 7.0.16-dfsg-2ubuntu1.1~uh~jammy1
+Version: 7.0.22-2ubuntu1.1~uh~jammy1
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Installed-Size: 1909
+Installed-Size: 1905
 Depends: adduser, pciutils, libc6 (>= 2.34), libpam0g (>= 0.99.7.1), zlib1g (>= 1:1.1.4)
-Suggests: virtualbox-guest-x11 (= 7.0.16-dfsg-2ubuntu1.1~uh~jammy1)
-Filename: jammy/debs/virtualbox-guest-utils_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.deb
-Size: 479400
-MD5sum: 7cc54b31a38e62eaa04b7b4580c5a8a9
-SHA1: feb1b7df058313b4a12f4ebafa9145c8972a2861
-SHA256: 7537a06b6744c367c8444daaa4e761366d725cee3cd3f507e85fac20885d2020
+Suggests: virtualbox-guest-x11 (= 7.0.22-2ubuntu1.1~uh~jammy1)
+Filename: jammy/debs/virtualbox-guest-utils_7.0.22-2ubuntu1.1~uh~jammy1_amd64.deb
+Size: 478658
+MD5sum: def630f5410bb3ef989fec7a75d4acb3
+SHA1: 9221bdae9a4af38251c374906e2d4bca2ee7ab90
+SHA256: a5c12d8c54d40efa0f41fa41a7945e265f87fab4764d0a98b2c991be7351e792
 Section: contrib/misc
 Priority: optional
 Homepage: https://www.virtualbox.org
@@ -516,17 +516,17 @@ Original-Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debi
 
 Package: virtualbox-guest-x11
 Source: virtualbox
-Version: 7.0.16-dfsg-2ubuntu1.1~uh~jammy1
+Version: 7.0.22-2ubuntu1.1~uh~jammy1
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 793
-Depends: libnotify-bin, x11-xserver-utils, virtualbox-guest-utils (= 7.0.16-dfsg-2ubuntu1.1~uh~jammy1), libc6 (>= 2.34), libx11-6 (>= 2:1.4.99.1), libxext6, libxmu6 (>= 2:1.1.3), libxt6, xorg-video-abi-25, xserver-xorg-core (>= 2:21.1.1)
+Depends: libnotify-bin, x11-xserver-utils, virtualbox-guest-utils (= 7.0.22-2ubuntu1.1~uh~jammy1), libc6 (>= 2.34), libx11-6 (>= 2:1.4.99.1), libxext6, libxmu6 (>= 2:1.1.3), libxt6, xorg-video-abi-25, xserver-xorg-core (>= 2:21.1.1)
 Provides: xorg-driver-video
-Filename: jammy/debs/virtualbox-guest-x11_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.deb
-Size: 337108
-MD5sum: 97c6af8cdf1fee13b5cc1ac1bdabc87e
-SHA1: e3d4ee964e8cb7e519e1d450a31ecd40534952f3
-SHA256: a67110ef7c4edc292d1d4407d613aa3ec25e76ce3d2d0cee3a732504ffaf1a2d
+Filename: jammy/debs/virtualbox-guest-x11_7.0.22-2ubuntu1.1~uh~jammy1_amd64.deb
+Size: 336592
+MD5sum: f9e474de3f949c267bfbd2b1f2ec0f7c
+SHA1: 3e4049cc45c8dc9e850825d6139b8a8eda9872c0
+SHA256: 08ece9ce52d75a483fc60c05b12b9d9074d41c60eb42af4a24d02f730bca7bab
 Section: contrib/x11
 Priority: optional
 Homepage: https://www.virtualbox.org
@@ -543,18 +543,18 @@ Original-Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debi
 
 Package: virtualbox-qt
 Source: virtualbox
-Version: 7.0.16-dfsg-2ubuntu1.1~uh~jammy1
+Version: 7.0.22-2ubuntu1.1~uh~jammy1
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Installed-Size: 51691
-Depends: virtualbox (= 7.0.16-dfsg-2ubuntu1.1~uh~jammy1), libc6 (>= 2.34), libgcc-s1 (>= 3.0), libqt5core5a (>= 5.15.1), libqt5dbus5 (>= 5.14.1), libqt5gui5 (>= 5.14.1) | libqt5gui5-gles (>= 5.14.1), libqt5help5 (>= 5.15.1), libqt5printsupport5 (>= 5.0.2), libqt5widgets5 (>= 5.15.1), libqt5x11extras5 (>= 5.6.0), libqt5xml5 (>= 5.0.2), libstdc++6 (>= 5.2), libx11-6, libxcb1
+Installed-Size: 51968
+Depends: virtualbox (= 7.0.22-2ubuntu1.1~uh~jammy1), libc6 (>= 2.34), libgcc-s1 (>= 3.0), libqt5core5a (>= 5.15.1), libqt5dbus5 (>= 5.14.1), libqt5gui5 (>= 5.14.1) | libqt5gui5-gles (>= 5.14.1), libqt5help5 (>= 5.15.1), libqt5printsupport5 (>= 5.0.2), libqt5widgets5 (>= 5.15.1), libqt5x11extras5 (>= 5.6.0), libqt5xml5 (>= 5.0.2), libstdc++6 (>= 5.2), libx11-6, libxcb1
 Breaks: virtualbox (<< 4.1.6-dfsg-2~)
 Replaces: virtualbox (<< 4.1.6-dfsg-2~)
-Filename: jammy/debs/virtualbox-qt_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.deb
-Size: 25237878
-MD5sum: 7330a1d455f12eac3f88db07dc42d93e
-SHA1: 3fffeb65e3fe1fbf70e701f11b5b0b08746ca21f
-SHA256: 80c769aa606f4d63f4d9bd786b515a280d6ba2266b8dee6f407599d3c32f20d4
+Filename: jammy/debs/virtualbox-qt_7.0.22-2ubuntu1.1~uh~jammy1_amd64.deb
+Size: 25287188
+MD5sum: 9e2f8c981c882591e8db02d4f45f5065
+SHA1: 3f066fff91f300abaadc619a6d2243a417640c35
+SHA256: dc5878935f8d867d5a021d44ff1acc0070897dc2e1119c94a63f5c83452dd22d
 Section: contrib/misc
 Priority: optional
 Homepage: https://www.virtualbox.org
@@ -568,17 +568,17 @@ Original-Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debi
 
 Package: virtualbox-source
 Source: virtualbox
-Version: 7.0.16-dfsg-2ubuntu1.1~uh~jammy1
+Version: 7.0.22-2ubuntu1.1~uh~jammy1
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Installed-Size: 922
+Installed-Size: 923
 Depends: build-essential, bzip2, debhelper-compat (= 13), kbuild, module-assistant
-Recommends: virtualbox (>= 7.0.16-dfsg-2ubuntu1.1~uh~jammy1)
-Filename: jammy/debs/virtualbox-source_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.deb
-Size: 909098
-MD5sum: 7359950d5e2ddbc79330f217a8f71d30
-SHA1: a5e469653388977a03cc2f6c66025d20d50a6228
-SHA256: db5660d258f0f009f5e2df437be9bcbaea091d9b50a21bac8cb2fe0f61a6d37c
+Recommends: virtualbox (>= 7.0.22-2ubuntu1.1~uh~jammy1)
+Filename: jammy/debs/virtualbox-source_7.0.22-2ubuntu1.1~uh~jammy1_amd64.deb
+Size: 910384
+MD5sum: db84f799c3d79972e214fbe3b7225910
+SHA1: 9b42d9a0ac02e7b84d51628470e8e1da39bde12d
+SHA256: 799827049643e345021d5e5a9e8fdb1945a225acabe2889efea851b6f40390ad
 Section: contrib/kernel
 Priority: optional
 Homepage: https://www.virtualbox.org
