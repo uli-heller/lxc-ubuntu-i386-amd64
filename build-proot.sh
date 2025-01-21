@@ -385,7 +385,7 @@ test "${RC}" -eq 0 && {
     rm -f "${OS}/Release.tmp"
     rm -f "${OS}/Release.gpg"
     gpg --homedir "${D}/gpg" -abs --digest-algo SHA256 -u "$(cat "${D}/gpg/keyid")" -o "${OS}/Release.gpg" "${OS}/Release"
-    rm -f "InRelease"
+    rm -f "${OS}/InRelease"
     gpg --homedir "${D}/gpg" -abs --digest-algo SHA256 -u "$(cat "${D}/gpg/keyid")" --clearsign -o "${OS}/InRelease" "${OS}/Release"
     cp "${D}/gpg/lxc.public.asc" .
     cp "${D}/gpg/lxc.public.gpg" .
