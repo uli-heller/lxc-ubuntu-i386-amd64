@@ -224,7 +224,7 @@ rm -rf "${ROOTFS}/var/cache/lxc-ppa"
 rm -f "${ROOTFS}/var/cache/${OS}/*.deb" 2>/dev/null
 cp -r "${D}/ppas/${ARCHITECTURE}/${OS}"/*  "${ROOTFS}/var/cache/${OS}"
 cp "${D}/ppas/${ARCHITECTURE}/${OS}"/lxc.public.gpg "${ROOTFS}/etc/apt/trusted.gpg.d/."
-echo "deb file:/var/cache/${OS} ./"|tee "${ROOTFS}/etc/apt/sources.list.d/lxc-ppa.list"
+echo "deb file:/var/cache ${OS}/"|tee "${ROOTFS}/etc/apt/sources.list.d/lxc-ppa.list"
 
 myProot "${ROOTFS}" apt update
 myProot "${ROOTFS}" apt upgrade -y
@@ -342,7 +342,7 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
                 chown "$(id -un):$(id -gn)" "${D}/ppas/${ARCHITECTURE}/${OS}/src"/*
             }
             "${D}/rebuild-ppas.sh"
-            cp -r "${D}/ppas/${ARCHITECTURE}/${OS}"/*  "${ROOTFS}/var/cache/lxc-ppa"
+            cp -r "${D}/ppas/${ARCHITECTURE}/${OS}"/*  "${ROOTFS}/var/cache/${OS}/."
             myProot "${ROOTFS}" apt update
         ) || {
             #find "${ROOTFS}/src/${PACKAGE}" -mindepth 1 -maxdepth 1 -newer "${TMPDIR}/before"|xargs -t rm -rf
@@ -369,8 +369,8 @@ myProot "${ROOTFS}" tee /etc/apt/sources.list <"${TMPDIR}/sources.list" >/dev/nu
 test "${RC}" -eq 0 && {
   "${D}/init-gpg.sh"
   (
-    cd "${D}/ppas/${ARCHITECTURE}/${OS}"
-    dpkg-scanpackages . >Packages
+    cd "${D}/ppas/${ARCHITECTURE}"
+    dpkg-scanpackages "${OS}" >"${OS}/Packages"
     {
         AFR="APT::FTPArchive::Release::"
         echo "${AFR}Origin \"lxc-ubuntu\";"
@@ -380,13 +380,13 @@ test "${RC}" -eq 0 && {
         echo "${AFR}Architectures \"${ARCHITECTURE}\";"
         #echo "${AFR}Components \".\";"
         echo "${AFR}Description \"Precompiled packages for our LXC containers\";"
-    } >"Release.tmp"
-    apt-ftparchive -c "Release.tmp" release "." >"./Release"
-    rm -f "Release.tmp"
-    rm -f "Release.gpg"
-    gpg --homedir "${D}/gpg" -abs --digest-algo SHA256 -u "$(cat "${D}/gpg/keyid")" -o "Release.gpg" "Release"
+    } >"${OS}/Release.tmp"
+    apt-ftparchive -c "${OS}/Release.tmp" release "${OS}" >"${OS}/Release"
+    rm -f "${OS}/Release.tmp"
+    rm -f "${OS}/Release.gpg"
+    gpg --homedir "${D}/gpg" -abs --digest-algo SHA256 -u "$(cat "${D}/gpg/keyid")" -o "${OS}/Release.gpg" "${OS}/Release"
     rm -f "InRelease"
-    gpg --homedir "${D}/gpg" -abs --digest-algo SHA256 -u "$(cat "${D}/gpg/keyid")" --clearsign -o "InRelease" "Release"
+    gpg --homedir "${D}/gpg" -abs --digest-algo SHA256 -u "$(cat "${D}/gpg/keyid")" --clearsign -o "${OS}/InRelease" "${OS}/Release"
     cp "${D}/gpg/lxc.public.asc" .
     cp "${D}/gpg/lxc.public.gpg" .
   )
