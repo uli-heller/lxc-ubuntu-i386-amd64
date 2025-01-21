@@ -224,7 +224,7 @@ rm -rf "${ROOTFS}/var/cache/lxc-ppa"
 rm -f "${ROOTFS}/var/cache/${OS}/*.deb" 2>/dev/null
 cp -r "${D}/ppas/${ARCHITECTURE}/${OS}"/*  "${ROOTFS}/var/cache/${OS}"
 cp "${D}/ppas/${ARCHITECTURE}/${OS}"/lxc.public.gpg "${ROOTFS}/etc/apt/trusted.gpg.d/."
-echo "deb file:/var/cache ${OS}/"|tee "${ROOTFS}/etc/apt/sources.list.d/lxc-ppa.list"
+echo "deb file:/var/cache/${OS} ./"|tee "${ROOTFS}/etc/apt/sources.list.d/lxc-ppa.list"
 
 myProot "${ROOTFS}" apt update
 myProot "${ROOTFS}" apt upgrade -y
