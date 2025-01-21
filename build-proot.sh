@@ -219,11 +219,12 @@ myProot "${ROOTFS}" cat /etc/apt/sources.list >"${TMPDIR}/sources.list"
 sed -e "s/^deb /deb-src /" -e "s/${OS}/${SOURCE_OS}/" <"${TMPDIR}/sources.list" >"${TMPDIR}/debsrc"
 myProot "${ROOTFS}" tee /etc/apt/sources.list.d/deb-src.list <"${TMPDIR}/debsrc" >/dev/null
 
-mkdir -p "${ROOTFS}/var/cache/lxc-ppa"
-rm -f "${ROOTFS}/var/cache/lxc-ppa/*.deb" 2>/dev/null
-cp -r "${D}/ppas/${ARCHITECTURE}/${OS}"/*  "${ROOTFS}/var/cache/lxc-ppa"
+mkdir -p "${ROOTFS}/var/cache/${OS}"
+rm -rf "${ROOTFS}/var/cache/lxc-ppa"
+rm -f "${ROOTFS}/var/cache/${OS}/*.deb" 2>/dev/null
+cp -r "${D}/ppas/${ARCHITECTURE}/${OS}"/*  "${ROOTFS}/var/cache/${OS}"
 cp "${D}/ppas/${ARCHITECTURE}/${OS}"/lxc.public.gpg "${ROOTFS}/etc/apt/trusted.gpg.d/."
-echo "deb file:/var/cache/lxc-ppa/ ./"|tee "${ROOTFS}/etc/apt/sources.list.d/lxc-ppa.list"
+echo "deb file:/var/cache ${OS}/"|tee "${ROOTFS}/etc/apt/sources.list.d/lxc-ppa.list"
 
 myProot "${ROOTFS}" apt update
 myProot "${ROOTFS}" apt upgrade -y
