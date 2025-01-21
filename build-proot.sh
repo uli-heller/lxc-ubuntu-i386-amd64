@@ -220,12 +220,14 @@ sed -e "s/^deb /deb-src /" -e "s/${OS}/${SOURCE_OS}/" <"${TMPDIR}/sources.list" 
 myProot "${ROOTFS}" tee /etc/apt/sources.list.d/deb-src.list <"${TMPDIR}/debsrc" >/dev/null
 
 mkdir -p "${ROOTFS}/var/cache/lxc-ppa"
+rm -f "${ROOTFS}/var/cache/lxc-ppa/*.deb" 2>/dev/null
 cp -r "${D}/ppas/${ARCHITECTURE}/${OS}"/*  "${ROOTFS}/var/cache/lxc-ppa"
 cp "${D}/ppas/${ARCHITECTURE}/${OS}"/lxc.public.gpg "${ROOTFS}/etc/apt/trusted.gpg.d/."
 echo "deb file:/var/cache/lxc-ppa/ ./"|tee "${ROOTFS}/etc/apt/sources.list.d/lxc-ppa.list"
 
 myProot "${ROOTFS}" apt update
 myProot "${ROOTFS}" apt upgrade -y
+myProot "${ROOTFS}" apt autoremove -y
 myProot "${ROOTFS}" apt install -y dpkg-dev devscripts equivs
 myProot "${ROOTFS}" bash -c "mkdir -p /src"
 while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
@@ -238,7 +240,7 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
     # then use this!
     #
     set -x
-    LOCAL_PACKAGE="$(ls "${D}/ppas/${ARCHITECTURE}/${SOURCE_OS}/src/${PACKAGE}"*.dsc|sort -r -V|head -1)"
+    LOCAL_PACKAGE="$(ls "${D}/ppas/${ARCHITECTURE}/${SOURCE_OS}/src/${PACKAGE}"*.dsc 2>/dev/null|sort -r -V|head -1)"
     if [ -e "${LOCAL_PACKAGE}" ]; then
         #cp "$(dirname "${LOCAL_PACKAGE}")/$(basename "${LOCAL_PACKAGE}" .dsc"* "${ROOTFS}/src/${PACKAGE}/."
         copyDscAndIncludedFiles "${LOCAL_PACKAGE}" "${ROOTFS}/src/${PACKAGE}/."
