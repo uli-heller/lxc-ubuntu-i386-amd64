@@ -115,6 +115,13 @@ myProot () {
     "${PROOT}" -0 -w / -b /dev -b /dev/pts -b /proc -b /sys -r "$@"
 }
 
+myProotUser () {
+    (
+	PATH="$(echo "${PATH}"|tr ":" "\n"|grep -v /home|tr "\n" ":"|sed -e 's/:$//')"
+	exec "${PROOT}" -R "$@"
+    )
+}
+
 myExec () {
     if [ -n "${USE_ROOT}" ]; then
         "${D}/exec.sh" "$@"
@@ -328,7 +335,7 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
             #PACKAGE_FOLDER="${PACKAGE_FOLDER}~${VERSION_MIDDLE}~${OS}"
             DPKG_BUILDPACKAGE_OPTS="--build=binary"
             test -n "${SOURCE_PACKAGE}" && DPKG_BUILDPACKAGE_OPTS=
-            myExec "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C ${BUILD_OPTIONS} dpkg-buildpackage ${DPKG_BUILDPACKAGE_OPTS}" || RC=1
+            myProotUser "${ROOTFS}" bash -c "cd '${PACKAGE_FOLDER}' && LC_ALL=C ${BUILD_OPTIONS} dpkg-buildpackage ${DPKG_BUILDPACKAGE_OPTS}" || RC=1
             test "${RC}" -eq "0" || { echo >&2 "Probleme beim Auspacken oder bauen - EXIT"; exit 1; }
             test -d "${D}/ppas/${ARCHITECTURE}/${OS}/debs" || mkdir -p "${D}/ppas/${ARCHITECTURE}/${OS}/debs"
             cp "${ROOTFS}/src/${PACKAGE}"/*.deb "${D}/ppas/${ARCHITECTURE}/${OS}/debs/."
