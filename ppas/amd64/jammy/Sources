@@ -1,4 +1,64 @@
 Format: 3.0 (quilt)
+Package: cowsql
+Binary: libcowsql0, libcowsql-dev
+Architecture: any
+Version: 1.15.4-1ubuntu3
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Uploaders: Mathias Gibbens <gibmat@debian.org>
+Homepage: https://github.com/cowsql/cowsql
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/cowsql-team/cowsql
+Vcs-Git: https://salsa.debian.org/cowsql-team/cowsql.git
+Build-Depends: debhelper-compat (= 11), pkg-config, libuv1-dev (>= 1.8.0~), libraft-dev (>= 0.20), libsqlite3-dev (>= 3.22.0~)
+Package-List:
+ libcowsql-dev deb libdevel optional arch=any
+ libcowsql0 deb libs optional arch=any
+Directory: jammy/src
+Checksums-Sha1:
+ 61a2db4dbcbc342351c33bbf89747441f5cb8e76 2162 cowsql_1.15.4-1ubuntu3.dsc
+ 2c7ab8797d0a7b97a01382376c5ce60a1e4c8cc5 364163 cowsql_1.15.4.orig.tar.gz
+ 512f69115912b1dd3fe14718304a395e231efddb 6068 cowsql_1.15.4-1ubuntu3.debian.tar.xz
+Checksums-Sha256:
+ 1ffb708dbbe4cbb516a26ff60add7b80f5d6b4070f8226eb58c593825dec9bd2 2162 cowsql_1.15.4-1ubuntu3.dsc
+ cc69aad2527964f8589f9b7db42d66c2d08bc4e7558a5645fd86d44cca08d435 364163 cowsql_1.15.4.orig.tar.gz
+ 6e6c5e124492f6b48e398744dac8b028051af8d683e3532d31bfcf30f2114ef1 6068 cowsql_1.15.4-1ubuntu3.debian.tar.xz
+Files:
+ 3a0fbfbe3d7eed3143cdf18b7448e541 2162 cowsql_1.15.4-1ubuntu3.dsc
+ 3aa2fc6ef64ae81777b0882501bc6323 364163 cowsql_1.15.4.orig.tar.gz
+ 5143518a9cc96eb34baa46daf6b1914c 6068 cowsql_1.15.4-1ubuntu3.debian.tar.xz
+Original-Maintainer: Free Ekanayaka <freee@debian.org>
+
+Format: 3.0 (quilt)
+Package: cowsql
+Binary: libcowsql0, libcowsql-dev
+Architecture: any
+Version: 1.15.4-1ubuntu3~uh~jammy1
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Uploaders: Mathias Gibbens <gibmat@debian.org>
+Homepage: https://github.com/cowsql/cowsql
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/cowsql-team/cowsql
+Vcs-Git: https://salsa.debian.org/cowsql-team/cowsql.git
+Build-Depends: debhelper-compat (= 13), pkg-config, libuv1-dev (>= 1.8.0~), libraft-dev (>= 0.20), libsqlite3-dev (>= 3.22.0~)
+Package-List:
+ libcowsql-dev deb libdevel optional arch=any
+ libcowsql0 deb libs optional arch=any
+Directory: jammy/src
+Checksums-Sha1:
+ 0d2551585682ed3599fb63d497676773c92c1d31 1282 cowsql_1.15.4-1ubuntu3~uh~jammy1.dsc
+ 2c7ab8797d0a7b97a01382376c5ce60a1e4c8cc5 364163 cowsql_1.15.4.orig.tar.gz
+ c19b6ebcbab2d78c1d394e5545a9320fb5ca11cf 6124 cowsql_1.15.4-1ubuntu3~uh~jammy1.debian.tar.xz
+Checksums-Sha256:
+ 877b478d93161972cd0ef9ec2b7e8eacbc5cdf7d1265fce8e5f7f1fceb123132 1282 cowsql_1.15.4-1ubuntu3~uh~jammy1.dsc
+ cc69aad2527964f8589f9b7db42d66c2d08bc4e7558a5645fd86d44cca08d435 364163 cowsql_1.15.4.orig.tar.gz
+ 0240873a203c0ee8db4573dae066cd6d2c9bfe9a6f41c779ea3e67ae02131ecd 6124 cowsql_1.15.4-1ubuntu3~uh~jammy1.debian.tar.xz
+Files:
+ 0ca15a62dcc4182483b349391ed4da5a 1282 cowsql_1.15.4-1ubuntu3~uh~jammy1.dsc
+ 3aa2fc6ef64ae81777b0882501bc6323 364163 cowsql_1.15.4.orig.tar.gz
+ c054ffbd025f163db6419ea3f3ef17d4 6124 cowsql_1.15.4-1ubuntu3~uh~jammy1.debian.tar.xz
+Original-Maintainer: Free Ekanayaka <freee@debian.org>
+
+Format: 3.0 (quilt)
 Package: gocryptfs
 Binary: gocryptfs
 Architecture: any
@@ -93,6 +153,257 @@ Files:
 Go-Import-Path: github.com/aperturerobotics/jacobsa-crypto
 
 Format: 3.0 (quilt)
+Package: golang-github-checkpoint-restore-go-criu
+Binary: golang-github-checkpoint-restore-go-criu-dev
+Architecture: all
+Version: 6.3.0+ds1-2
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Dmitry Smirnov <onlyjob@debian.org>, Reinhard Tartler <siretart@tauware.de>
+Homepage: https://github.com/checkpoint-restore/go-criu
+Standards-Version: 4.6.1
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-checkpoint-restore-go-criu
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-checkpoint-restore-go-criu.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 13), dh-golang, golang-github-spf13-cobra-dev, golang-google-protobuf-dev, protoc-gen-go
+Build-Depends-Indep: golang-any
+Package-List:
+ golang-github-checkpoint-restore-go-criu-dev deb golang optional arch=all
+Directory: jammy/src
+Checksums-Sha1:
+ 83ba556d03201e436d0576894c2f3ef230117bb1 2733 golang-github-checkpoint-restore-go-criu_6.3.0+ds1-2.dsc
+ 144b88e9a7e60f87cef488cddc3338ce8e882ecd 121684 golang-github-checkpoint-restore-go-criu_6.3.0+ds1.orig.tar.xz
+ ddb15b30da96d6d8609691de26efe250ac266870 4136 golang-github-checkpoint-restore-go-criu_6.3.0+ds1-2.debian.tar.xz
+Checksums-Sha256:
+ 3ee2ba99c1d24f85e04223ae3b7d186731a773d44148418df423a990472e8de0 2733 golang-github-checkpoint-restore-go-criu_6.3.0+ds1-2.dsc
+ b8903e968876cf8a390c46bc71e4827bc821ce35b7df81d36b30d0017d188891 121684 golang-github-checkpoint-restore-go-criu_6.3.0+ds1.orig.tar.xz
+ 7ce9eab50890e73902adb37bc25a40bd0b82d3c8b49225652d261a615d82a9c8 4136 golang-github-checkpoint-restore-go-criu_6.3.0+ds1-2.debian.tar.xz
+Files:
+ 07cddb28a07b0967b4a252477d6417cd 2733 golang-github-checkpoint-restore-go-criu_6.3.0+ds1-2.dsc
+ 9c94a0512caad7f3d10f36b54d454542 121684 golang-github-checkpoint-restore-go-criu_6.3.0+ds1.orig.tar.xz
+ 5ea967cb39f3eea991c441b760e4a94a 4136 golang-github-checkpoint-restore-go-criu_6.3.0+ds1-2.debian.tar.xz
+Dgit: 7165b88cfaaa39d28cc62bb098be30579a5fd8bb debian archive/debian/6.3.0+ds1-2 https://git.dgit.debian.org/golang-github-checkpoint-restore-go-criu
+Go-Import-Path: github.com/checkpoint-restore/go-criu
+
+Format: 3.0 (quilt)
+Package: golang-github-checkpoint-restore-go-criu
+Binary: golang-github-checkpoint-restore-go-criu-dev
+Architecture: all
+Version: 6.3.0+ds1-2~uh~jammy1
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Dmitry Smirnov <onlyjob@debian.org>, Reinhard Tartler <siretart@tauware.de>
+Homepage: https://github.com/checkpoint-restore/go-criu
+Standards-Version: 4.6.1
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-checkpoint-restore-go-criu
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-checkpoint-restore-go-criu.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 13), dh-golang, golang-github-spf13-cobra-dev, golang-google-protobuf-dev, protoc-gen-go
+Build-Depends-Indep: golang-any
+Package-List:
+ golang-github-checkpoint-restore-go-criu-dev deb golang optional arch=all
+Directory: jammy/src
+Checksums-Sha1:
+ e092beaf1d17117649bc080d4d277cd4d36e2ace 1712 golang-github-checkpoint-restore-go-criu_6.3.0+ds1-2~uh~jammy1.dsc
+ 144b88e9a7e60f87cef488cddc3338ce8e882ecd 121684 golang-github-checkpoint-restore-go-criu_6.3.0+ds1.orig.tar.xz
+ c036368587bd0424788be1277c082eca72e92ac7 4196 golang-github-checkpoint-restore-go-criu_6.3.0+ds1-2~uh~jammy1.debian.tar.xz
+Checksums-Sha256:
+ 056ee8e3f2ce730d9df1ac8f352ef1d4f7d1d54249d2eceb8fd9e7d81dacc406 1712 golang-github-checkpoint-restore-go-criu_6.3.0+ds1-2~uh~jammy1.dsc
+ b8903e968876cf8a390c46bc71e4827bc821ce35b7df81d36b30d0017d188891 121684 golang-github-checkpoint-restore-go-criu_6.3.0+ds1.orig.tar.xz
+ 0ff91f099821eff531ed3a27c32dbb4481d3e9acc04761eda785beaeb6b42478 4196 golang-github-checkpoint-restore-go-criu_6.3.0+ds1-2~uh~jammy1.debian.tar.xz
+Files:
+ 09bf91614582db1eec88e0005c6ded37 1712 golang-github-checkpoint-restore-go-criu_6.3.0+ds1-2~uh~jammy1.dsc
+ 9c94a0512caad7f3d10f36b54d454542 121684 golang-github-checkpoint-restore-go-criu_6.3.0+ds1.orig.tar.xz
+ 975cf3f922b2f4d8626f890ee4e83558 4196 golang-github-checkpoint-restore-go-criu_6.3.0+ds1-2~uh~jammy1.debian.tar.xz
+Go-Import-Path: github.com/checkpoint-restore/go-criu
+
+Format: 3.0 (quilt)
+Package: golang-github-cowsql-go-cowsql
+Binary: golang-github-cowsql-go-cowsql-dev, go-cowsql
+Architecture: any all
+Version: 1.22.0-2ubuntu0.24.04.2
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Uploaders: Free Ekanayaka <freee@debian.org>, Mathias Gibbens <gibmat@debian.org>
+Homepage: https://github.com/cowsql/go-cowsql
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-cowsql-go-cowsql
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-cowsql-go-cowsql.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 13), libcowsql-dev, libraft-dev, dh-golang, golang-any, golang-github-ghodss-yaml-dev, golang-github-google-renameio-dev, golang-github-mattn-go-sqlite3-dev, golang-github-peterh-liner-dev, golang-github-pkg-errors-dev, golang-github-rican7-retry-dev, golang-github-spf13-cobra-dev, golang-github-stretchr-testify-dev, golang-golang-x-sys-dev, golang-golang-x-sync-dev
+Package-List:
+ go-cowsql deb golang optional arch=any
+ golang-github-cowsql-go-cowsql-dev deb golang optional arch=all
+Directory: jammy/src
+Checksums-Sha1:
+ c8e93451aa4f6a0b065f57f9451ab334a099b6c1 2840 golang-github-cowsql-go-cowsql_1.22.0-2ubuntu0.24.04.2.dsc
+ 16f7e7a4a729ec4cb78d41ad45a59b0025e47e2c 106545 golang-github-cowsql-go-cowsql_1.22.0.orig.tar.gz
+ 0e015282ac5774b1b58a595869d246ed7042ff0f 3988 golang-github-cowsql-go-cowsql_1.22.0-2ubuntu0.24.04.2.debian.tar.xz
+Checksums-Sha256:
+ 35f0a2fa3309409ac2176687885e8ffecc8d4ecbcfc2b8257bd63170b5fd875f 2840 golang-github-cowsql-go-cowsql_1.22.0-2ubuntu0.24.04.2.dsc
+ 38424d38a3fd53a76b704f6ce994c74835cfb35e30a5a90e1bfd32dba901ca0d 106545 golang-github-cowsql-go-cowsql_1.22.0.orig.tar.gz
+ 4cabd980d64a62142cdd700c14e96d235c345b58c7f10f6accd4ef9591b9b899 3988 golang-github-cowsql-go-cowsql_1.22.0-2ubuntu0.24.04.2.debian.tar.xz
+Files:
+ c6b6cae3691b1ca4136911a5e61314b8 2840 golang-github-cowsql-go-cowsql_1.22.0-2ubuntu0.24.04.2.dsc
+ f54ac63be0494d8d7c926dcd924f9ee7 106545 golang-github-cowsql-go-cowsql_1.22.0.orig.tar.gz
+ 9ee42e67e3696b20a1312d85569b1004 3988 golang-github-cowsql-go-cowsql_1.22.0-2ubuntu0.24.04.2.debian.tar.xz
+Go-Import-Path: github.com/cowsql/go-cowsql
+Original-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+
+Format: 3.0 (quilt)
+Package: golang-github-cowsql-go-cowsql
+Binary: golang-github-cowsql-go-cowsql-dev, go-cowsql
+Architecture: any all
+Version: 1.22.0-2ubuntu0.24.04.2~uh~jammy1
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Uploaders: Free Ekanayaka <freee@debian.org>, Mathias Gibbens <gibmat@debian.org>
+Homepage: https://github.com/cowsql/go-cowsql
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-cowsql-go-cowsql
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-cowsql-go-cowsql.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 13), libcowsql-dev, libraft-dev, dh-golang, golang-any, golang-github-ghodss-yaml-dev, golang-github-google-renameio-dev, golang-github-mattn-go-sqlite3-dev, golang-github-peterh-liner-dev, golang-github-pkg-errors-dev, golang-github-rican7-retry-dev, golang-github-spf13-cobra-dev, golang-github-stretchr-testify-dev, golang-golang-x-sys-dev, golang-golang-x-sync-dev
+Package-List:
+ go-cowsql deb golang optional arch=any
+ golang-github-cowsql-go-cowsql-dev deb golang optional arch=all
+Directory: jammy/src
+Checksums-Sha1:
+ b651bdb8bd8549c83b8cc5ac7a200dddd4f076f9 1997 golang-github-cowsql-go-cowsql_1.22.0-2ubuntu0.24.04.2~uh~jammy1.dsc
+ 16f7e7a4a729ec4cb78d41ad45a59b0025e47e2c 106545 golang-github-cowsql-go-cowsql_1.22.0.orig.tar.gz
+ 943675215e50c3887abb487948b4bd5fedae2e36 4028 golang-github-cowsql-go-cowsql_1.22.0-2ubuntu0.24.04.2~uh~jammy1.debian.tar.xz
+Checksums-Sha256:
+ f725952f4ca1671e686b2822648285fc6779cc96ad0ea2a59d84544431180f97 1997 golang-github-cowsql-go-cowsql_1.22.0-2ubuntu0.24.04.2~uh~jammy1.dsc
+ 38424d38a3fd53a76b704f6ce994c74835cfb35e30a5a90e1bfd32dba901ca0d 106545 golang-github-cowsql-go-cowsql_1.22.0.orig.tar.gz
+ ddb4212407addee011c01c18247266cf112e4d474145a0a320671159f81db085 4028 golang-github-cowsql-go-cowsql_1.22.0-2ubuntu0.24.04.2~uh~jammy1.debian.tar.xz
+Files:
+ 05a70346209f28eed87ca9b034942c8b 1997 golang-github-cowsql-go-cowsql_1.22.0-2ubuntu0.24.04.2~uh~jammy1.dsc
+ f54ac63be0494d8d7c926dcd924f9ee7 106545 golang-github-cowsql-go-cowsql_1.22.0.orig.tar.gz
+ 9e9579d7bc4310139e8266496e8a097a 4028 golang-github-cowsql-go-cowsql_1.22.0-2ubuntu0.24.04.2~uh~jammy1.debian.tar.xz
+Go-Import-Path: github.com/cowsql/go-cowsql
+Original-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+
+Format: 3.0 (quilt)
+Package: golang-github-golang-jwt-jwt-v5
+Binary: golang-github-golang-jwt-jwt-v5-dev
+Architecture: all
+Version: 5.2.0-2
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Simon Josefsson <simon@josefsson.org>,
+Homepage: https://github.com/golang-jwt/jwt
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-golang-jwt-jwt-v5
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-golang-jwt-jwt-v5.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 13), dh-golang, golang-any
+Package-List:
+ golang-github-golang-jwt-jwt-v5-dev deb golang optional arch=all
+Directory: jammy/src
+Checksums-Sha1:
+ f6e4474ec76f1e02d841cd08b23e3cc9a9bb170d 1696 golang-github-golang-jwt-jwt-v5_5.2.0-2.dsc
+ 49fa517f9c9fa02889acc52b564528d9c90e7d9d 61373 golang-github-golang-jwt-jwt-v5_5.2.0.orig.tar.gz
+ 1e3aeea3f931e711588fe4a19e3576037f5e0d86 2460 golang-github-golang-jwt-jwt-v5_5.2.0-2.debian.tar.xz
+Checksums-Sha256:
+ 5a8ca0fc3f2ff9a58251450892799cbbbdefba8f6687b84f600f7f1694c87fb9 1696 golang-github-golang-jwt-jwt-v5_5.2.0-2.dsc
+ 7b15cf5593211e10846aef00f806bd60b3783f644d403eea82be8c1ca141973a 61373 golang-github-golang-jwt-jwt-v5_5.2.0.orig.tar.gz
+ 4a38594bf3dc42a77b5af94ba6ac8cc97f6c5022756a36e473b8d3190dbe5b4a 2460 golang-github-golang-jwt-jwt-v5_5.2.0-2.debian.tar.xz
+Files:
+ 8e85510dbafbb323b2128f5833ab666e 1696 golang-github-golang-jwt-jwt-v5_5.2.0-2.dsc
+ 86107829e266ea5e0100856104ce487f 61373 golang-github-golang-jwt-jwt-v5_5.2.0.orig.tar.gz
+ 17fc381cdf1aaa43f3e138af8c934003 2460 golang-github-golang-jwt-jwt-v5_5.2.0-2.debian.tar.xz
+Go-Import-Path: github.com/golang-jwt/jwt/v5
+
+Format: 3.0 (quilt)
+Package: golang-github-golang-jwt-jwt-v5
+Binary: golang-github-golang-jwt-jwt-v5-dev
+Architecture: all
+Version: 5.2.0-2~uh~jammy1
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Simon Josefsson <simon@josefsson.org>,
+Homepage: https://github.com/golang-jwt/jwt
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-golang-jwt-jwt-v5
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-golang-jwt-jwt-v5.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 13), dh-golang, golang-any
+Package-List:
+ golang-github-golang-jwt-jwt-v5-dev deb golang optional arch=all
+Directory: jammy/src
+Checksums-Sha1:
+ b5bb7c30e8cacc6aec99a262109a3524e9166465 1430 golang-github-golang-jwt-jwt-v5_5.2.0-2~uh~jammy1.dsc
+ 49fa517f9c9fa02889acc52b564528d9c90e7d9d 61373 golang-github-golang-jwt-jwt-v5_5.2.0.orig.tar.gz
+ de27f7a14799226c7979e33a6e38f7f4253d6246 2512 golang-github-golang-jwt-jwt-v5_5.2.0-2~uh~jammy1.debian.tar.xz
+Checksums-Sha256:
+ d393a80aa9fb568cfeb50e1e4fb95666ce8eaa233430def96a8c53f081255dcf 1430 golang-github-golang-jwt-jwt-v5_5.2.0-2~uh~jammy1.dsc
+ 7b15cf5593211e10846aef00f806bd60b3783f644d403eea82be8c1ca141973a 61373 golang-github-golang-jwt-jwt-v5_5.2.0.orig.tar.gz
+ 564ab02e6aaf31f3ee6345693a78c86f9d2f556f4262bc55e34e55e0f191d8c2 2512 golang-github-golang-jwt-jwt-v5_5.2.0-2~uh~jammy1.debian.tar.xz
+Files:
+ 5f8e11e7863d40b6c20e43b9e1afbca5 1430 golang-github-golang-jwt-jwt-v5_5.2.0-2~uh~jammy1.dsc
+ 86107829e266ea5e0100856104ce487f 61373 golang-github-golang-jwt-jwt-v5_5.2.0.orig.tar.gz
+ 7970f55f883142bf3ecbafc59542b8aa 2512 golang-github-golang-jwt-jwt-v5_5.2.0-2~uh~jammy1.debian.tar.xz
+Go-Import-Path: github.com/golang-jwt/jwt/v5
+
+Format: 3.0 (quilt)
+Package: golang-github-golang-protobuf-1-5
+Binary: golang-github-golang-protobuf-1-5-dev, protoc-gen-go-1-5
+Architecture: any all
+Version: 1.5.3-1ubuntu0.2
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Uploaders: Shengjing Zhu <zhsj@debian.org>,
+Homepage: https://github.com/golang/protobuf
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-golang-protobuf-1-5
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-golang-protobuf-1-5.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 13), dh-sequence-golang, golang-any, golang-github-google-go-cmp-dev, golang-google-protobuf-dev
+Package-List:
+ golang-github-golang-protobuf-1-5-dev deb golang optional arch=all
+ protoc-gen-go-1-5 deb golang optional arch=any
+Directory: jammy/src
+Checksums-Sha1:
+ f67af65b8879bf2535028fe46ba5eff561ce213c 2546 golang-github-golang-protobuf-1-5_1.5.3-1ubuntu0.2.dsc
+ f22470ed8593a23d4851c4de8218096b2c1dcab2 171822 golang-github-golang-protobuf-1-5_1.5.3.orig.tar.gz
+ 04bf2999cbc87689bb4e6f2dab5091093985ed85 3008 golang-github-golang-protobuf-1-5_1.5.3-1ubuntu0.2.debian.tar.xz
+Checksums-Sha256:
+ 23910ec5c47f0d2d224a70ae93148fbf0f57f3938456c56f75201c73e481d0c0 2546 golang-github-golang-protobuf-1-5_1.5.3-1ubuntu0.2.dsc
+ 48457a6a9e8c78a7556ff5ff4a4c77d7df9bf70e882491ee0f3f1ff06db2bfaa 171822 golang-github-golang-protobuf-1-5_1.5.3.orig.tar.gz
+ 17c75506b1bc6d93918d68816c7a47e9e965b68127bbfd38482f5e8514ed498c 3008 golang-github-golang-protobuf-1-5_1.5.3-1ubuntu0.2.debian.tar.xz
+Files:
+ a1cbef5cb3fbe7dead434fd88e54b594 2546 golang-github-golang-protobuf-1-5_1.5.3-1ubuntu0.2.dsc
+ e8732a141341e018e7d11f7be0039cd9 171822 golang-github-golang-protobuf-1-5_1.5.3.orig.tar.gz
+ 98f8469e9789284f3d6f26592d8ff671 3008 golang-github-golang-protobuf-1-5_1.5.3-1ubuntu0.2.debian.tar.xz
+Go-Import-Path: github.com/golang/protobuf
+Original-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+
+Format: 3.0 (quilt)
+Package: golang-github-golang-protobuf-1-5
+Binary: golang-github-golang-protobuf-1-5-dev, protoc-gen-go-1-5
+Architecture: any all
+Version: 1.5.3-1ubuntu0.2~uh~jammy1
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Uploaders: Shengjing Zhu <zhsj@debian.org>,
+Homepage: https://github.com/golang/protobuf
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-golang-protobuf-1-5
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-golang-protobuf-1-5.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 13), dh-sequence-golang, golang-any, golang-github-google-go-cmp-dev, golang-google-protobuf-dev
+Package-List:
+ golang-github-golang-protobuf-1-5-dev deb golang optional arch=all
+ protoc-gen-go-1-5 deb golang optional arch=any
+Directory: jammy/src
+Checksums-Sha1:
+ 1c149dfe9e4e2aa92a6a2359ebb0edfb01bfa0bd 1703 golang-github-golang-protobuf-1-5_1.5.3-1ubuntu0.2~uh~jammy1.dsc
+ f22470ed8593a23d4851c4de8218096b2c1dcab2 171822 golang-github-golang-protobuf-1-5_1.5.3.orig.tar.gz
+ de6ab79a3df234c8d4a6c0812604550b26ca6842 3056 golang-github-golang-protobuf-1-5_1.5.3-1ubuntu0.2~uh~jammy1.debian.tar.xz
+Checksums-Sha256:
+ 2887a28a85bc3a85b152f8e3e92f1c213a38186148b6b41f68d376bac8486a3e 1703 golang-github-golang-protobuf-1-5_1.5.3-1ubuntu0.2~uh~jammy1.dsc
+ 48457a6a9e8c78a7556ff5ff4a4c77d7df9bf70e882491ee0f3f1ff06db2bfaa 171822 golang-github-golang-protobuf-1-5_1.5.3.orig.tar.gz
+ d6101699cb63a2697b12bce321b5d637ad226ff79c242555ce663e578d8f2745 3056 golang-github-golang-protobuf-1-5_1.5.3-1ubuntu0.2~uh~jammy1.debian.tar.xz
+Files:
+ 23fe4341c44e320d4345497bd7774e4a 1703 golang-github-golang-protobuf-1-5_1.5.3-1ubuntu0.2~uh~jammy1.dsc
+ e8732a141341e018e7d11f7be0039cd9 171822 golang-github-golang-protobuf-1-5_1.5.3.orig.tar.gz
+ a055eb98495fd9d9739b8e611ae9687c 3056 golang-github-golang-protobuf-1-5_1.5.3-1ubuntu0.2~uh~jammy1.debian.tar.xz
+Go-Import-Path: github.com/golang/protobuf
+Original-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+
+Format: 3.0 (quilt)
 Package: golang-github-hanwen-go-fuse
 Binary: golang-github-hanwen-go-fuse-dev
 Architecture: all
@@ -153,6 +464,306 @@ Files:
 Go-Import-Path: github.com/jacobsa/crypto
 
 Format: 3.0 (quilt)
+Package: golang-github-mdlayher-ndp
+Binary: golang-github-mdlayher-ndp-dev
+Architecture: all
+Version: 1.0.1-1
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Mathias Gibbens <gibmat@debian.org>
+Homepage: https://github.com/mdlayher/ndp
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-mdlayher-ndp
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-mdlayher-ndp.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 13), dh-golang, golang-any, golang-github-google-go-cmp-dev, golang-gitlab-golang-commonmark-puny-dev, golang-golang-x-net-dev, golang-golang-x-sync-dev
+Package-List:
+ golang-github-mdlayher-ndp-dev deb golang optional arch=all
+Directory: jammy/src
+Checksums-Sha1:
+ 1d7e6bd22fdfd2d0a9006d70c9c033f140d1a171 2358 golang-github-mdlayher-ndp_1.0.1-1.dsc
+ 4f3e851a671f5a4cf79acac553749777b15667ca 27756 golang-github-mdlayher-ndp_1.0.1.orig.tar.gz
+ 4085631ee92483668f9f1d761b35c1fd3180ac93 2508 golang-github-mdlayher-ndp_1.0.1-1.debian.tar.xz
+Checksums-Sha256:
+ feb109078593ac43a4035e793386d313691b70367af6c0476f5cceef892d1a20 2358 golang-github-mdlayher-ndp_1.0.1-1.dsc
+ b13d85a4ae08c8e8e15d478d3a3f63cbb27ff41b40d87d991908787249ba144d 27756 golang-github-mdlayher-ndp_1.0.1.orig.tar.gz
+ 60efa600d4dfa4c30165d59265eccf800042e68716be449be789be53921a96c9 2508 golang-github-mdlayher-ndp_1.0.1-1.debian.tar.xz
+Files:
+ 961f95e229016ce513407084eeffa31f 2358 golang-github-mdlayher-ndp_1.0.1-1.dsc
+ 10d68a9dc33cc5a2a4fc17e8c77d90a6 27756 golang-github-mdlayher-ndp_1.0.1.orig.tar.gz
+ b87cf3752f148d34d9e36e32f404ea9c 2508 golang-github-mdlayher-ndp_1.0.1-1.debian.tar.xz
+Go-Import-Path: github.com/mdlayher/ndp
+
+Format: 3.0 (quilt)
+Package: golang-github-mdlayher-ndp
+Binary: golang-github-mdlayher-ndp-dev
+Architecture: all
+Version: 1.0.1-1~uh~jammy1
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Mathias Gibbens <gibmat@debian.org>
+Homepage: https://github.com/mdlayher/ndp
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-mdlayher-ndp
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-mdlayher-ndp.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 13), dh-golang, golang-any, golang-github-google-go-cmp-dev, golang-gitlab-golang-commonmark-puny-dev, golang-golang-x-net-dev, golang-golang-x-sync-dev
+Package-List:
+ golang-github-mdlayher-ndp-dev deb golang optional arch=all
+Directory: jammy/src
+Checksums-Sha1:
+ f351e32219972130e695df7372c884ffcb5d0b4c 1490 golang-github-mdlayher-ndp_1.0.1-1~uh~jammy1.dsc
+ 4f3e851a671f5a4cf79acac553749777b15667ca 27756 golang-github-mdlayher-ndp_1.0.1.orig.tar.gz
+ 03a95b7a8d76b96aa27c607b4ce104af01401bda 2560 golang-github-mdlayher-ndp_1.0.1-1~uh~jammy1.debian.tar.xz
+Checksums-Sha256:
+ 01ef1ffef5a7da876124578c027e754f65d868c58dac0b3962a65163c134869b 1490 golang-github-mdlayher-ndp_1.0.1-1~uh~jammy1.dsc
+ b13d85a4ae08c8e8e15d478d3a3f63cbb27ff41b40d87d991908787249ba144d 27756 golang-github-mdlayher-ndp_1.0.1.orig.tar.gz
+ 0842c75d0a2fcc796063593c3ff385df0e7c4feee058644a030079b671054a8e 2560 golang-github-mdlayher-ndp_1.0.1-1~uh~jammy1.debian.tar.xz
+Files:
+ 4064c798ef27f1fb938aa5d20c1258cf 1490 golang-github-mdlayher-ndp_1.0.1-1~uh~jammy1.dsc
+ 10d68a9dc33cc5a2a4fc17e8c77d90a6 27756 golang-github-mdlayher-ndp_1.0.1.orig.tar.gz
+ 751ce45d44aae2751b4fa624b192f60d 2560 golang-github-mdlayher-ndp_1.0.1-1~uh~jammy1.debian.tar.xz
+Go-Import-Path: github.com/mdlayher/ndp
+
+Format: 3.0 (quilt)
+Package: golang-github-minio-madmin-go
+Binary: golang-github-minio-madmin-go-dev
+Architecture: all
+Version: 3.0.48-1
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Mathias Gibbens <gibmat@debian.org>
+Homepage: https://github.com/minio/madmin-go
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-minio-madmin-go
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-minio-madmin-go.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 13), dh-golang, golang-any, golang-github-cespare-xxhash-dev, golang-github-dustin-go-humanize-dev, golang-github-golang-jwt-jwt-dev, golang-github-minio-minio-go-v7-dev (>= 7.0.66), golang-github-prometheus-common-dev, golang-github-prometheus-prom2json-dev, golang-github-safchain-ethtool-dev, golang-github-secure-io-sio-go-dev, golang-github-shirou-gopsutil-dev (>= 3.23.12-3~), golang-github-tinylib-msgp-dev (>= 1.1.8), golang-golang-x-crypto-dev, golang-golang-x-net-dev, golang-procfs-dev, golang-golang-x-tools, msgp (>= 1.1.8)
+Package-List:
+ golang-github-minio-madmin-go-dev deb golang optional arch=all
+Directory: jammy/src
+Checksums-Sha1:
+ 65c57ebcd8842ae20f521c56763dcd13cd0b8ad7 2794 golang-github-minio-madmin-go_3.0.48-1.dsc
+ d61cde7e52832985e30fbbd86cc8b37eff3396c9 179879 golang-github-minio-madmin-go_3.0.48.orig.tar.gz
+ 1d32201b6c25bb053b70292702c5a54766c61f9e 13420 golang-github-minio-madmin-go_3.0.48-1.debian.tar.xz
+Checksums-Sha256:
+ a480590edcd4ba4751e7968d82e3b15f2e035730f4e33288343d0d6037620206 2794 golang-github-minio-madmin-go_3.0.48-1.dsc
+ 72a1eebf0a31e770a44066240ba3c5c3ee4f5b9c8f02218fc1724d3fa8d05ea1 179879 golang-github-minio-madmin-go_3.0.48.orig.tar.gz
+ acbe9c22f33ca1567d45f030f609bfb2ef172587a4cb0135315f09840446573f 13420 golang-github-minio-madmin-go_3.0.48-1.debian.tar.xz
+Files:
+ 5a8cd99233ac053b6e9e76e8acf82f34 2794 golang-github-minio-madmin-go_3.0.48-1.dsc
+ 877cb3c5e16226b04b27bce3f72bb1b9 179879 golang-github-minio-madmin-go_3.0.48.orig.tar.gz
+ 48569f31b0a60084eab74b48716a0dda 13420 golang-github-minio-madmin-go_3.0.48-1.debian.tar.xz
+Go-Import-Path: github.com/minio/madmin-go
+
+Format: 3.0 (quilt)
+Package: golang-github-minio-madmin-go
+Binary: golang-github-minio-madmin-go-dev
+Architecture: all
+Version: 3.0.48-1~uh~jammy1
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Mathias Gibbens <gibmat@debian.org>
+Homepage: https://github.com/minio/madmin-go
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-minio-madmin-go
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-minio-madmin-go.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 13), dh-golang, golang-any, golang-github-cespare-xxhash-dev, golang-github-dustin-go-humanize-dev, golang-github-golang-jwt-jwt-dev, golang-github-minio-minio-go-v7-dev (>= 7.0.66), golang-github-prometheus-common-dev, golang-github-prometheus-prom2json-dev, golang-github-safchain-ethtool-dev, golang-github-secure-io-sio-go-dev, golang-github-shirou-gopsutil-dev (>= 3.23.12-3~), golang-github-tinylib-msgp-dev (>= 1.1.8), golang-golang-x-crypto-dev, golang-golang-x-net-dev, golang-procfs-dev, golang-golang-x-tools, msgp (>= 1.1.8)
+Package-List:
+ golang-github-minio-madmin-go-dev deb golang optional arch=all
+Directory: jammy/src
+Checksums-Sha1:
+ a00b3f08579d02f420e07e75cae67bf9b5b04052 1926 golang-github-minio-madmin-go_3.0.48-1~uh~jammy1.dsc
+ d61cde7e52832985e30fbbd86cc8b37eff3396c9 179879 golang-github-minio-madmin-go_3.0.48.orig.tar.gz
+ fbc628cf06b47c104e61a0354f5d0dc2a8420d0b 13480 golang-github-minio-madmin-go_3.0.48-1~uh~jammy1.debian.tar.xz
+Checksums-Sha256:
+ 326a14750640da3d14bfe6fd966b3bafc49cd0f1f81eb61b72208321839b3ea9 1926 golang-github-minio-madmin-go_3.0.48-1~uh~jammy1.dsc
+ 72a1eebf0a31e770a44066240ba3c5c3ee4f5b9c8f02218fc1724d3fa8d05ea1 179879 golang-github-minio-madmin-go_3.0.48.orig.tar.gz
+ ddae26061c0ea4afec411a9a7e20e62dddd98b06404973a361ac3d06d1111088 13480 golang-github-minio-madmin-go_3.0.48-1~uh~jammy1.debian.tar.xz
+Files:
+ 964e3109505821049dbf1934df0f3540 1926 golang-github-minio-madmin-go_3.0.48-1~uh~jammy1.dsc
+ 877cb3c5e16226b04b27bce3f72bb1b9 179879 golang-github-minio-madmin-go_3.0.48.orig.tar.gz
+ 4ad71c4621581f35a1cdae4c27565395 13480 golang-github-minio-madmin-go_3.0.48-1~uh~jammy1.debian.tar.xz
+Go-Import-Path: github.com/minio/madmin-go
+
+Format: 3.0 (quilt)
+Package: golang-github-minio-minio-go-v7
+Binary: golang-github-minio-minio-go-v7-dev
+Architecture: all
+Version: 7.0.67-1
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Dmitry Smirnov <onlyjob@debian.org>, Félix Sipma <felix+debian@gueux.org>, Mathias Gibbens <gibmat@debian.org>
+Homepage: https://github.com/minio/minio-go
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-minio-minio-go-v7
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-minio-minio-go-v7.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 13), dh-golang, golang-any, golang-github-dustin-go-humanize-dev, golang-github-google-uuid-dev, golang-github-json-iterator-go-dev, golang-github-klauspost-compress-dev, golang-github-minio-md5-simd-dev (>= 1.1.2), golang-github-minio-sha256-simd-dev (>= 1.0.0), golang-github-rs-xid-dev (>= 1.4.0), golang-github-sirupsen-logrus-dev, golang-golang-x-crypto-dev, golang-golang-x-net-dev, golang-gopkg-ini.v1-dev
+Package-List:
+ golang-github-minio-minio-go-v7-dev deb golang optional arch=all
+Directory: jammy/src
+Checksums-Sha1:
+ 234203a20e7e0998a5142c63e147ed6aa4ece775 2766 golang-github-minio-minio-go-v7_7.0.67-1.dsc
+ 6e25fff98f04585a5819b7b7b94e2cd0c6825214 287587 golang-github-minio-minio-go-v7_7.0.67.orig.tar.gz
+ 39d6c2330aaab54ab8fe98996e2077c5f8a7747d 2880 golang-github-minio-minio-go-v7_7.0.67-1.debian.tar.xz
+Checksums-Sha256:
+ 7097170611884abd1bbc0aa8ae241031ca90864849d8277d326a3b332bc5a470 2766 golang-github-minio-minio-go-v7_7.0.67-1.dsc
+ 68c07e754c26a8d30a566a99cb2d45143838ba56d35b8327453e998eba508eed 287587 golang-github-minio-minio-go-v7_7.0.67.orig.tar.gz
+ 2fa0010a2ac8a10c89a0d0f77bdb0a3626a281cf67569d2ce286dfa651c41a0f 2880 golang-github-minio-minio-go-v7_7.0.67-1.debian.tar.xz
+Files:
+ 8abf182d66db2251d5916b3b6e20953d 2766 golang-github-minio-minio-go-v7_7.0.67-1.dsc
+ 74408208da8bc2283c728b299bb91d2c 287587 golang-github-minio-minio-go-v7_7.0.67.orig.tar.gz
+ 2e1e1871665124e19011a3649b104e3c 2880 golang-github-minio-minio-go-v7_7.0.67-1.debian.tar.xz
+Go-Import-Path: github.com/minio/minio-go/v7
+
+Format: 3.0 (quilt)
+Package: golang-github-minio-minio-go-v7
+Binary: golang-github-minio-minio-go-v7-dev
+Architecture: all
+Version: 7.0.67-1~uh~jammy1
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Dmitry Smirnov <onlyjob@debian.org>, Félix Sipma <felix+debian@gueux.org>, Mathias Gibbens <gibmat@debian.org>
+Homepage: https://github.com/minio/minio-go
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-minio-minio-go-v7
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-minio-minio-go-v7.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 13), dh-golang, golang-any, golang-github-dustin-go-humanize-dev, golang-github-google-uuid-dev, golang-github-json-iterator-go-dev, golang-github-klauspost-compress-dev, golang-github-minio-md5-simd-dev (>= 1.1.2), golang-github-minio-sha256-simd-dev (>= 1.0.0), golang-github-rs-xid-dev (>= 1.4.0), golang-github-sirupsen-logrus-dev, golang-golang-x-crypto-dev, golang-golang-x-net-dev, golang-gopkg-ini.v1-dev
+Package-List:
+ golang-github-minio-minio-go-v7-dev deb golang optional arch=all
+Directory: jammy/src
+Checksums-Sha1:
+ c5dacb177775df8f4fafdc9dfb44ae3061834ec4 1898 golang-github-minio-minio-go-v7_7.0.67-1~uh~jammy1.dsc
+ 6e25fff98f04585a5819b7b7b94e2cd0c6825214 287587 golang-github-minio-minio-go-v7_7.0.67.orig.tar.gz
+ 626673c270215180c7852202aef80806e7f9ee09 2924 golang-github-minio-minio-go-v7_7.0.67-1~uh~jammy1.debian.tar.xz
+Checksums-Sha256:
+ 6abece9048ef6756fda550e892833f9d99dad2def6cb89e7dddebdd990f7fe49 1898 golang-github-minio-minio-go-v7_7.0.67-1~uh~jammy1.dsc
+ 68c07e754c26a8d30a566a99cb2d45143838ba56d35b8327453e998eba508eed 287587 golang-github-minio-minio-go-v7_7.0.67.orig.tar.gz
+ 34317905c84d87671f14549fc9a7e6a5832bb41ebb902a0a3b696d1bbc8abc78 2924 golang-github-minio-minio-go-v7_7.0.67-1~uh~jammy1.debian.tar.xz
+Files:
+ 9a408f2c2e601473e1bb786d3b6bbbc7 1898 golang-github-minio-minio-go-v7_7.0.67-1~uh~jammy1.dsc
+ 74408208da8bc2283c728b299bb91d2c 287587 golang-github-minio-minio-go-v7_7.0.67.orig.tar.gz
+ c7cbdc1bdf35ce266ea58ec597ef33d1 2924 golang-github-minio-minio-go-v7_7.0.67-1~uh~jammy1.debian.tar.xz
+Go-Import-Path: github.com/minio/minio-go/v7
+
+Format: 3.0 (quilt)
+Package: golang-github-minio-minio-go
+Binary: golang-github-minio-minio-go-dev
+Architecture: all
+Version: 6.0.53-1
+Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
+Uploaders: Dmitry Smirnov <onlyjob@debian.org>, Félix Sipma <felix+debian@gueux.org>
+Homepage: https://github.com/minio/minio-go
+Standards-Version: 4.5.0
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-minio-minio-go
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-minio-minio-go.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 12), dh-golang, golang-any, golang-github-go-ini-ini-dev, golang-github-minio-sha256-simd-dev, golang-github-mitchellh-go-homedir-dev, golang-golang-x-crypto-dev, golang-golang-x-net-dev, golang-gopkg-ini.v1-dev
+Package-List:
+ golang-github-minio-minio-go-dev deb devel optional arch=all
+Directory: jammy/src
+Checksums-Sha1:
+ 28817da5bef103d8d679807eacabe3ea0d2a1915 2478 golang-github-minio-minio-go_6.0.53-1.dsc
+ 45bd03ab72f14ba83b8e0c78a5d92d3d6741659f 159228 golang-github-minio-minio-go_6.0.53.orig.tar.xz
+ e91563e56f80b6c078eca370ab1e02143d5b9a2d 3468 golang-github-minio-minio-go_6.0.53-1.debian.tar.xz
+Checksums-Sha256:
+ 93b1b811c83592068203bb3bb61e592fa567bff607f75a564c1907fe1a7f734e 2478 golang-github-minio-minio-go_6.0.53-1.dsc
+ 9a4d3d49fc4889d34b450ff290f015340ddeae202e6f136c3cf04f7903fca4ef 159228 golang-github-minio-minio-go_6.0.53.orig.tar.xz
+ dbce9922f7daf322a42d21ad4f81ce92f4f3a36c8bde16d27132c2c6dc2ac39e 3468 golang-github-minio-minio-go_6.0.53-1.debian.tar.xz
+Files:
+ 28fa7e045719cb390e7e2a31700819cb 2478 golang-github-minio-minio-go_6.0.53-1.dsc
+ f2ec64f7b2070b75d48c7ad9b550b503 159228 golang-github-minio-minio-go_6.0.53.orig.tar.xz
+ 4eae9b0d17f3d9f8323109a040860da2 3468 golang-github-minio-minio-go_6.0.53-1.debian.tar.xz
+Go-Import-Path: github.com/minio/minio-go
+
+Format: 3.0 (quilt)
+Package: golang-github-minio-minio-go
+Binary: golang-github-minio-minio-go-dev
+Architecture: all
+Version: 6.0.53-1~uh~jammy1
+Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
+Uploaders: Dmitry Smirnov <onlyjob@debian.org>, Félix Sipma <felix+debian@gueux.org>
+Homepage: https://github.com/minio/minio-go
+Standards-Version: 4.5.0
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-minio-minio-go
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-minio-minio-go.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 13), dh-golang, golang-any, golang-github-go-ini-ini-dev, golang-github-minio-sha256-simd-dev, golang-github-mitchellh-go-homedir-dev, golang-golang-x-crypto-dev, golang-golang-x-net-dev, golang-gopkg-ini.v1-dev
+Package-List:
+ golang-github-minio-minio-go-dev deb devel optional arch=all
+Directory: jammy/src
+Checksums-Sha1:
+ ace27d1d973f05029ee963075e0ad9522272e568 1635 golang-github-minio-minio-go_6.0.53-1~uh~jammy1.dsc
+ 45bd03ab72f14ba83b8e0c78a5d92d3d6741659f 159228 golang-github-minio-minio-go_6.0.53.orig.tar.xz
+ 989d5d57fe0cce85c2053d0ad9a0f09a973e40d2 3532 golang-github-minio-minio-go_6.0.53-1~uh~jammy1.debian.tar.xz
+Checksums-Sha256:
+ 285f7e47f56d5af1c4b0651bb966e65c98592cbe0712d59a4eeb40dd9e0e0f7e 1635 golang-github-minio-minio-go_6.0.53-1~uh~jammy1.dsc
+ 9a4d3d49fc4889d34b450ff290f015340ddeae202e6f136c3cf04f7903fca4ef 159228 golang-github-minio-minio-go_6.0.53.orig.tar.xz
+ 8315ad5dbedf28f663d60be7ae2a7823f8baf83da3740aacf491d4f78291fe58 3532 golang-github-minio-minio-go_6.0.53-1~uh~jammy1.debian.tar.xz
+Files:
+ 24e62fd588a01e86d0f53f6cee941eea 1635 golang-github-minio-minio-go_6.0.53-1~uh~jammy1.dsc
+ f2ec64f7b2070b75d48c7ad9b550b503 159228 golang-github-minio-minio-go_6.0.53.orig.tar.xz
+ 5f7e16c49113c9f9d8d7021c3a7bd9dd 3532 golang-github-minio-minio-go_6.0.53-1~uh~jammy1.debian.tar.xz
+Go-Import-Path: github.com/minio/minio-go
+
+Format: 3.0 (quilt)
+Package: golang-github-minio-sha256-simd
+Binary: golang-github-minio-sha256-simd-dev
+Architecture: all
+Version: 1.0.1-1
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Alexandre Viau <aviau@debian.org>, Dmitry Smirnov <onlyjob@debian.org>
+Homepage: https://github.com/minio/sha256-simd
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-minio-sha256-simd
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-minio-sha256-simd.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 13), dh-golang, golang-any, golang-github-klauspost-cpuid-dev (>= 2.0.4)
+Package-List:
+ golang-github-minio-sha256-simd-dev deb golang optional arch=all
+Directory: jammy/src
+Checksums-Sha1:
+ b5e7d8de42e913f60a4f2b9dd2d0c7b02c40891b 2378 golang-github-minio-sha256-simd_1.0.1-1.dsc
+ 239d9b7371a5dc2e9d0ebbf4bd5bb914761a386d 38676 golang-github-minio-sha256-simd_1.0.1.orig.tar.xz
+ 189954ecc51d38542ad688fae4fb89722ff48015 3668 golang-github-minio-sha256-simd_1.0.1-1.debian.tar.xz
+Checksums-Sha256:
+ 070ac19800b699431df0ab18acb9d4b9b5cacf427f4ed3c1a2047aa2d4d4f938 2378 golang-github-minio-sha256-simd_1.0.1-1.dsc
+ d8980377382a9fbc80d098162cb5a364f9732700d9270b28442d764d7e99e75f 38676 golang-github-minio-sha256-simd_1.0.1.orig.tar.xz
+ 3de707b6c33a179a86e21a8c6426fab96306dafdba5150bb53ecb8f4bbc37c8a 3668 golang-github-minio-sha256-simd_1.0.1-1.debian.tar.xz
+Files:
+ 559852cb566545a46ce3b06c3bb81958 2378 golang-github-minio-sha256-simd_1.0.1-1.dsc
+ fe12320d6dfc5f138db4558b4204da10 38676 golang-github-minio-sha256-simd_1.0.1.orig.tar.xz
+ 0611d331a826703d912941ab54b24786 3668 golang-github-minio-sha256-simd_1.0.1-1.debian.tar.xz
+Go-Import-Path: github.com/minio/sha256-simd
+
+Format: 3.0 (quilt)
+Package: golang-github-minio-sha256-simd
+Binary: golang-github-minio-sha256-simd-dev
+Architecture: all
+Version: 1.0.1-1~uh~jammy1
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Alexandre Viau <aviau@debian.org>, Dmitry Smirnov <onlyjob@debian.org>
+Homepage: https://github.com/minio/sha256-simd
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-minio-sha256-simd
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-minio-sha256-simd.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 13), dh-golang, golang-any, golang-github-klauspost-cpuid-dev (>= 2.0.4)
+Package-List:
+ golang-github-minio-sha256-simd-dev deb golang optional arch=all
+Directory: jammy/src
+Checksums-Sha1:
+ 1ebfe8c9605179a4362b3e34a477f999cd1299d3 1510 golang-github-minio-sha256-simd_1.0.1-1~uh~jammy1.dsc
+ 239d9b7371a5dc2e9d0ebbf4bd5bb914761a386d 38676 golang-github-minio-sha256-simd_1.0.1.orig.tar.xz
+ 86249a2c9f1c4923e2d8c2d89a9697ab2adad2e7 3720 golang-github-minio-sha256-simd_1.0.1-1~uh~jammy1.debian.tar.xz
+Checksums-Sha256:
+ d13ec2488137e3391b52c6b2913ea000d0370927bc29fd350641e24b76597b86 1510 golang-github-minio-sha256-simd_1.0.1-1~uh~jammy1.dsc
+ d8980377382a9fbc80d098162cb5a364f9732700d9270b28442d764d7e99e75f 38676 golang-github-minio-sha256-simd_1.0.1.orig.tar.xz
+ bd0d035d43bf44441791029ff896b95dabe5930f58053dd732137436d0273705 3720 golang-github-minio-sha256-simd_1.0.1-1~uh~jammy1.debian.tar.xz
+Files:
+ 365b31c906d37c281a3c7878282e86e1 1510 golang-github-minio-sha256-simd_1.0.1-1~uh~jammy1.dsc
+ fe12320d6dfc5f138db4558b4204da10 38676 golang-github-minio-sha256-simd_1.0.1.orig.tar.xz
+ 891f8daf988fc7bbcd5ae4fba0ee0303 3720 golang-github-minio-sha256-simd_1.0.1-1~uh~jammy1.debian.tar.xz
+Go-Import-Path: github.com/minio/sha256-simd
+
+Format: 3.0 (quilt)
 Package: golang-github-moby-sys
 Binary: golang-github-moby-sys-dev
 Architecture: all
@@ -183,6 +794,66 @@ Files:
 Go-Import-Path: github.com/moby/sys
 
 Format: 3.0 (quilt)
+Package: golang-github-rs-xid
+Binary: golang-github-rs-xid-dev
+Architecture: all
+Version: 1.5.0-1
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Thorsten Alteholz <debian@alteholz.de>
+Homepage: https://github.com/rs/xid
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-rs-xid
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-rs-xid.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 13), dh-golang, golang-any
+Package-List:
+ golang-github-rs-xid-dev deb golang optional arch=all
+Directory: jammy/src
+Checksums-Sha1:
+ e0a9989c84517cb0b55eecf0a3a182b073fb8f7c 2157 golang-github-rs-xid_1.5.0-1.dsc
+ 737b57633dbbf9b62a5d0260a52ae126ca25aeb6 11534 golang-github-rs-xid_1.5.0.orig.tar.gz
+ 2d40b73b8f4d02e928bd104baf4ecb8fe07e4e99 2812 golang-github-rs-xid_1.5.0-1.debian.tar.xz
+Checksums-Sha256:
+ 9d3e57a0dda2a0705df9641c19c6b2b0240dacfa60e5a4d0593897b5db096713 2157 golang-github-rs-xid_1.5.0-1.dsc
+ 105fc29a13c39f558a5ccf70bd27eded738628328bad682e24e04c3a798d3196 11534 golang-github-rs-xid_1.5.0.orig.tar.gz
+ 6fd7fc967e82f5506b3c52849f30574ac7dcdae591b601ca5ce30bdc0b596b10 2812 golang-github-rs-xid_1.5.0-1.debian.tar.xz
+Files:
+ 3db4e734538dee2eb138488edec80fe4 2157 golang-github-rs-xid_1.5.0-1.dsc
+ 87063f1c18f8611213c1794bb956d7b9 11534 golang-github-rs-xid_1.5.0.orig.tar.gz
+ 991e4e346a1ec55ee062788269e5e33b 2812 golang-github-rs-xid_1.5.0-1.debian.tar.xz
+Go-Import-Path: github.com/rs/xid
+
+Format: 3.0 (quilt)
+Package: golang-github-rs-xid
+Binary: golang-github-rs-xid-dev
+Architecture: all
+Version: 1.5.0-1~uh~jammy1
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Thorsten Alteholz <debian@alteholz.de>
+Homepage: https://github.com/rs/xid
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-rs-xid
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-rs-xid.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 13), dh-golang, golang-any
+Package-List:
+ golang-github-rs-xid-dev deb golang optional arch=all
+Directory: jammy/src
+Checksums-Sha1:
+ b55ac44cd8aeb5e226a80bfd91e138773b85e56a 1289 golang-github-rs-xid_1.5.0-1~uh~jammy1.dsc
+ 737b57633dbbf9b62a5d0260a52ae126ca25aeb6 11534 golang-github-rs-xid_1.5.0.orig.tar.gz
+ c632e2d8faad1e137e32ba9e74df00c02a826217 2860 golang-github-rs-xid_1.5.0-1~uh~jammy1.debian.tar.xz
+Checksums-Sha256:
+ 472f93cf999f5f93126ccdc4e18094c4e958e0759e97c567649588ab28326a50 1289 golang-github-rs-xid_1.5.0-1~uh~jammy1.dsc
+ 105fc29a13c39f558a5ccf70bd27eded738628328bad682e24e04c3a798d3196 11534 golang-github-rs-xid_1.5.0.orig.tar.gz
+ 2bc98cec95e5bad91808f0d5b08840691275cc5cd85772c0ff547f1591bdd6d9 2860 golang-github-rs-xid_1.5.0-1~uh~jammy1.debian.tar.xz
+Files:
+ 9096ded4808f9b4c26698692f7796ece 1289 golang-github-rs-xid_1.5.0-1~uh~jammy1.dsc
+ 87063f1c18f8611213c1794bb956d7b9 11534 golang-github-rs-xid_1.5.0.orig.tar.gz
+ 5472e0fd66a973d80f7010f5d04b52b6 2860 golang-github-rs-xid_1.5.0-1~uh~jammy1.debian.tar.xz
+Go-Import-Path: github.com/rs/xid
+
+Format: 3.0 (quilt)
 Package: golang-github-sabhiram-go-gitignore
 Binary: golang-github-sabhiram-go-gitignore-dev
 Architecture: all
@@ -211,6 +882,190 @@ Files:
  4ef876ff267905561318b8c833e1a42c 8444 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1.orig.tar.xz
  5893c217424e0045d394b6f88411527d 2644 golang-github-sabhiram-go-gitignore_1.0.2+git20210923.525f6e1-1~uh~jammy1.debian.tar.xz
 Go-Import-Path: github.com/sabhiram/go-gitignore
+
+Format: 3.0 (quilt)
+Package: golang-github-secure-io-sio-go
+Binary: golang-github-secure-io-sio-go-dev
+Architecture: all
+Version: 0.3.1-2
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Mathias Gibbens <gibmat@debian.org>
+Homepage: https://github.com/secure-io/sio-go
+Standards-Version: 4.6.1
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-secure-io-sio-go
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-secure-io-sio-go.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 13), dh-golang, golang-any, golang-golang-x-crypto-dev, golang-golang-x-sys-dev
+Package-List:
+ golang-github-secure-io-sio-go-dev deb golang optional arch=all
+Directory: jammy/src
+Checksums-Sha1:
+ b39cd655c6cbb6ead915622f50f8cda8c7847ea1 2337 golang-github-secure-io-sio-go_0.3.1-2.dsc
+ daceb8fd75cb8685e772f33eac9a596e00867ad5 21382 golang-github-secure-io-sio-go_0.3.1.orig.tar.gz
+ 4e85af127b587c6aacd01e9cef7a235f3082f95a 2380 golang-github-secure-io-sio-go_0.3.1-2.debian.tar.xz
+Checksums-Sha256:
+ d20d6d6f91b8087b9eba8d70a708c2748458257e24918b90773b27a03eb4a91f 2337 golang-github-secure-io-sio-go_0.3.1-2.dsc
+ 3570fae11144684bc1e26116e5cf3c39989818619e58c0d1f3ca3bcf2b6e4277 21382 golang-github-secure-io-sio-go_0.3.1.orig.tar.gz
+ 8c51b0089092874047599b1396890b5b9eddbdac55d8fe551208c328850de3ac 2380 golang-github-secure-io-sio-go_0.3.1-2.debian.tar.xz
+Files:
+ 23274d177e538008e7f7dfeee16a3c78 2337 golang-github-secure-io-sio-go_0.3.1-2.dsc
+ b3bd107b04bccf65831fab3062f0ea3a 21382 golang-github-secure-io-sio-go_0.3.1.orig.tar.gz
+ 709598830543dc4f3b59be6e44bb273b 2380 golang-github-secure-io-sio-go_0.3.1-2.debian.tar.xz
+Go-Import-Path: github.com/secure-io/sio-go
+
+Format: 3.0 (quilt)
+Package: golang-github-secure-io-sio-go
+Binary: golang-github-secure-io-sio-go-dev
+Architecture: all
+Version: 0.3.1-2~uh~jammy1
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Mathias Gibbens <gibmat@debian.org>
+Homepage: https://github.com/secure-io/sio-go
+Standards-Version: 4.6.1
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-secure-io-sio-go
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-secure-io-sio-go.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 13), dh-golang, golang-any, golang-golang-x-crypto-dev, golang-golang-x-sys-dev
+Package-List:
+ golang-github-secure-io-sio-go-dev deb golang optional arch=all
+Directory: jammy/src
+Checksums-Sha1:
+ f402a75a70418b98fc427a12e66d83187871d033 1469 golang-github-secure-io-sio-go_0.3.1-2~uh~jammy1.dsc
+ daceb8fd75cb8685e772f33eac9a596e00867ad5 21382 golang-github-secure-io-sio-go_0.3.1.orig.tar.gz
+ 6737d722e51253cc0bc74f2553f515da01e39c29 2448 golang-github-secure-io-sio-go_0.3.1-2~uh~jammy1.debian.tar.xz
+Checksums-Sha256:
+ 4a55869c2d4bb8f1e0148b08ec7dda9fba6aa7b4e9e580999ae38dec98f1010f 1469 golang-github-secure-io-sio-go_0.3.1-2~uh~jammy1.dsc
+ 3570fae11144684bc1e26116e5cf3c39989818619e58c0d1f3ca3bcf2b6e4277 21382 golang-github-secure-io-sio-go_0.3.1.orig.tar.gz
+ e49b2838f71af1e947287ae8acf80da757a8696c121cc4cf4212664ac8bf789b 2448 golang-github-secure-io-sio-go_0.3.1-2~uh~jammy1.debian.tar.xz
+Files:
+ 70fcf16912da47975f81e19e12e79011 1469 golang-github-secure-io-sio-go_0.3.1-2~uh~jammy1.dsc
+ b3bd107b04bccf65831fab3062f0ea3a 21382 golang-github-secure-io-sio-go_0.3.1.orig.tar.gz
+ c53636e1f59796da21cc8f241ddcc7eb 2448 golang-github-secure-io-sio-go_0.3.1-2~uh~jammy1.debian.tar.xz
+Go-Import-Path: github.com/secure-io/sio-go
+
+Format: 3.0 (quilt)
+Package: golang-github-shirou-gopsutil
+Binary: golang-github-shirou-gopsutil-dev
+Architecture: all
+Version: 3.24.1-1ubuntu1
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Uploaders: Martín Ferrari <tincho@debian.org>, Nobuhiro Iwamatsu <iwamatsu@debian.org>, Tim Potter <tpot@hpe.com>, Dmitry Smirnov <onlyjob@debian.org>, Aloïs Micard <creekorful@debian.org>
+Homepage: https://github.com/shirou/gopsutil
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-shirou-gopsutil
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-shirou-gopsutil.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 13), dh-golang, golang-any (>= 2:1.16~1~), golang-github-stretchr-testify-dev, golang-github-tklauser-go-sysconf-dev, golang-golang-x-sys-dev (>= 0.0~git20180510~), lsof, procps
+Package-List:
+ golang-github-shirou-gopsutil-dev deb golang optional arch=all
+Directory: jammy/src
+Checksums-Sha1:
+ b86f47bb01f00170460172e93539362cd32f3229 2658 golang-github-shirou-gopsutil_3.24.1-1ubuntu1.dsc
+ fa643ab2d3d5183f40220e62e82a7831a6c361c8 181113 golang-github-shirou-gopsutil_3.24.1.orig.tar.gz
+ 4673f7015e8eb63d51c5adf3c9cd4d0eb286ef00 6020 golang-github-shirou-gopsutil_3.24.1-1ubuntu1.debian.tar.xz
+Checksums-Sha256:
+ d4a0dc45ab711e5917a585cd08cd2bb234f709fa75d609431a90fc1988f13e5e 2658 golang-github-shirou-gopsutil_3.24.1-1ubuntu1.dsc
+ 3bc9d9a0bc298ff58022c1c61fa668e76b22db23ffffe357e755905ae274df7c 181113 golang-github-shirou-gopsutil_3.24.1.orig.tar.gz
+ 2ad16a1246308ab9c588f7d332e050bf4d5d05eddc5fc98e306fa3145be98c80 6020 golang-github-shirou-gopsutil_3.24.1-1ubuntu1.debian.tar.xz
+Files:
+ 11e58bfc1ba9070ceb3a77a900cb5583 2658 golang-github-shirou-gopsutil_3.24.1-1ubuntu1.dsc
+ 8f917677686a7ca85b09b07618aa1a80 181113 golang-github-shirou-gopsutil_3.24.1.orig.tar.gz
+ c391872c1bae7efec5c04c9f97c7899a 6020 golang-github-shirou-gopsutil_3.24.1-1ubuntu1.debian.tar.xz
+Go-Import-Path: github.com/shirou/gopsutil
+Original-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+
+Format: 3.0 (quilt)
+Package: golang-github-shirou-gopsutil
+Binary: golang-github-shirou-gopsutil-dev
+Architecture: all
+Version: 3.24.1-1ubuntu1~uh~jammy1
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Uploaders: Martín Ferrari <tincho@debian.org>, Nobuhiro Iwamatsu <iwamatsu@debian.org>, Tim Potter <tpot@hpe.com>, Dmitry Smirnov <onlyjob@debian.org>, Aloïs Micard <creekorful@debian.org>
+Homepage: https://github.com/shirou/gopsutil
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-shirou-gopsutil
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-shirou-gopsutil.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 13), dh-golang, golang-any (>= 2:1.16~1~), golang-github-stretchr-testify-dev, golang-github-tklauser-go-sysconf-dev, golang-golang-x-sys-dev (>= 0.0~git20180510~), lsof, procps
+Package-List:
+ golang-github-shirou-gopsutil-dev deb golang optional arch=all
+Directory: jammy/src
+Checksums-Sha1:
+ bcb3bc3d666f57b7212c44fda2630e71c9452838 1815 golang-github-shirou-gopsutil_3.24.1-1ubuntu1~uh~jammy1.dsc
+ fa643ab2d3d5183f40220e62e82a7831a6c361c8 181113 golang-github-shirou-gopsutil_3.24.1.orig.tar.gz
+ fadadc277502274779ecaccfed80245aef4b2e59 6068 golang-github-shirou-gopsutil_3.24.1-1ubuntu1~uh~jammy1.debian.tar.xz
+Checksums-Sha256:
+ e73752d1f76ce127bd681d5fe7f6d293028c2d008863207ab95c7e2b1f68474b 1815 golang-github-shirou-gopsutil_3.24.1-1ubuntu1~uh~jammy1.dsc
+ 3bc9d9a0bc298ff58022c1c61fa668e76b22db23ffffe357e755905ae274df7c 181113 golang-github-shirou-gopsutil_3.24.1.orig.tar.gz
+ 783865943b92ca07a99900e5a9dc7785c154ad98e70cee478cfd2cdffe4af41c 6068 golang-github-shirou-gopsutil_3.24.1-1ubuntu1~uh~jammy1.debian.tar.xz
+Files:
+ b98b6bf74eca9c2a7f07c0cf8431f98f 1815 golang-github-shirou-gopsutil_3.24.1-1ubuntu1~uh~jammy1.dsc
+ 8f917677686a7ca85b09b07618aa1a80 181113 golang-github-shirou-gopsutil_3.24.1.orig.tar.gz
+ 5ac3bc5fe5c1169f243907cb28065732 6068 golang-github-shirou-gopsutil_3.24.1-1ubuntu1~uh~jammy1.debian.tar.xz
+Go-Import-Path: github.com/shirou/gopsutil
+Original-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+
+Format: 3.0 (quilt)
+Package: golang-github-tinylib-msgp
+Binary: msgp, golang-github-tinylib-msgp-dev
+Architecture: any all
+Version: 1.1.9-1
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Tim Potter <tpot@hpe.com>
+Homepage: https://github.com/tinylib/msgp
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-tinylib-msgp
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-tinylib-msgp.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 13), dh-golang, golang-any, golang-github-philhofer-fwd-dev, golang-golang-x-tools-dev
+Package-List:
+ golang-github-tinylib-msgp-dev deb golang optional arch=all
+ msgp deb golang optional arch=any
+Directory: jammy/src
+Checksums-Sha1:
+ af3fb4a2ca423534898c008c9661e22a998fd9fe 2327 golang-github-tinylib-msgp_1.1.9-1.dsc
+ 6294b382a69dbd1ce152f7df214dbbe399de6c97 93398 golang-github-tinylib-msgp_1.1.9.orig.tar.gz
+ 1c9afd3ac4f0dd9ce61996bf3505274ad407e782 3796 golang-github-tinylib-msgp_1.1.9-1.debian.tar.xz
+Checksums-Sha256:
+ e1775a91897ed2d438d292195742f5fde5a96533537a6e92f31699440fe3e364 2327 golang-github-tinylib-msgp_1.1.9-1.dsc
+ 91afd0cd228d3c632ff8b2ed8adf77fb4afd52305a7043319ba5c917b2083e8b 93398 golang-github-tinylib-msgp_1.1.9.orig.tar.gz
+ 1f2bcf42d36dda9eb1752dc142ecca401f3a44c7a4e62528faba023a255c1d8c 3796 golang-github-tinylib-msgp_1.1.9-1.debian.tar.xz
+Files:
+ 4a7c7fc8a69553830b47c4144ddf52c8 2327 golang-github-tinylib-msgp_1.1.9-1.dsc
+ 33e6d75b1a29809281414b497c53d5c9 93398 golang-github-tinylib-msgp_1.1.9.orig.tar.gz
+ 6916922ee7204c4d4854c8b00f828b35 3796 golang-github-tinylib-msgp_1.1.9-1.debian.tar.xz
+Go-Import-Path: github.com/tinylib/msgp
+
+Format: 3.0 (quilt)
+Package: golang-github-tinylib-msgp
+Binary: msgp, golang-github-tinylib-msgp-dev
+Architecture: any all
+Version: 1.1.9-1~uh~jammy1
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Tim Potter <tpot@hpe.com>
+Homepage: https://github.com/tinylib/msgp
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-tinylib-msgp
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-tinylib-msgp.git
+Testsuite: autopkgtest-pkg-go
+Build-Depends: debhelper-compat (= 13), dh-golang, golang-any, golang-github-philhofer-fwd-dev, golang-golang-x-tools-dev
+Package-List:
+ golang-github-tinylib-msgp-dev deb golang optional arch=all
+ msgp deb golang optional arch=any
+Directory: jammy/src
+Checksums-Sha1:
+ 44cfc2b22cdff836447a0d0188fb1be2622412ea 1459 golang-github-tinylib-msgp_1.1.9-1~uh~jammy1.dsc
+ 6294b382a69dbd1ce152f7df214dbbe399de6c97 93398 golang-github-tinylib-msgp_1.1.9.orig.tar.gz
+ e62ac25a41d9f1decbd0eef6c150e5c52d209d18 3844 golang-github-tinylib-msgp_1.1.9-1~uh~jammy1.debian.tar.xz
+Checksums-Sha256:
+ f55d5e305c6c4f9934dea9740b09c0b6a4a8a30418cd28360d72775bfb14a480 1459 golang-github-tinylib-msgp_1.1.9-1~uh~jammy1.dsc
+ 91afd0cd228d3c632ff8b2ed8adf77fb4afd52305a7043319ba5c917b2083e8b 93398 golang-github-tinylib-msgp_1.1.9.orig.tar.gz
+ 8a62fda7f39b24156729d5921b93b2c7df8cd61b1e210e39de5bb5abda3fefd5 3844 golang-github-tinylib-msgp_1.1.9-1~uh~jammy1.debian.tar.xz
+Files:
+ 63096a2611d1a6babfc509a28ae5422f 1459 golang-github-tinylib-msgp_1.1.9-1~uh~jammy1.dsc
+ 33e6d75b1a29809281414b497c53d5c9 93398 golang-github-tinylib-msgp_1.1.9.orig.tar.gz
+ bd2a9313b4cbe647149dd71bbf50ccad 3844 golang-github-tinylib-msgp_1.1.9-1~uh~jammy1.debian.tar.xz
+Go-Import-Path: github.com/tinylib/msgp
 
 Format: 3.0 (quilt)
 Package: golang-golang-x-sys
@@ -359,6 +1214,68 @@ Files:
  13118cf3c41402f78d8afc41ec710391 2748 qrterminal_3.2.0.3-2ubuntu0.24.04.2~uh~jammy2.debian.tar.xz
 Go-Import-Path: github.com/mdp/qrterminal
 Original-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+
+Format: 3.0 (quilt)
+Package: raft
+Binary: libraft0, libraft-dev, libraft-tools
+Architecture: any
+Version: 0.22.0-1build2
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Uploaders: Laszlo Boszormenyi (GCS) <gcs@debian.org>, Mathias Gibbens <gibmat@debian.org>
+Homepage: https://raft.readthedocs.io
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/cowsql-team/raft
+Vcs-Git: https://salsa.debian.org/cowsql-team/raft.git
+Build-Depends: debhelper-compat (= 11), pkg-config, libuv1-dev, liblz4-dev, python3-sphinx
+Package-List:
+ libraft-dev deb libdevel optional arch=any
+ libraft-tools deb misc optional arch=any
+ libraft0 deb libs optional arch=any
+Directory: jammy/src
+Checksums-Sha1:
+ f65baa708d6ce265477686667d6a733ec97f5049 2154 raft_0.22.0-1build2.dsc
+ 4287f165968019af3e6113c6fe51407e1d9f68e4 365711 raft_0.22.0.orig.tar.gz
+ e4c9752cca34dda2f6bedc3074f67ef991e0a61a 6184 raft_0.22.0-1build2.debian.tar.xz
+Checksums-Sha256:
+ 29ee873855cbe19576fa311eca64749ee7bf1d4a138ee8386667f53745c627ac 2154 raft_0.22.0-1build2.dsc
+ 9f69e60101f44b11ab1a44720f5e7b5a811bd1705f6404b9074c4f7c871cd12d 365711 raft_0.22.0.orig.tar.gz
+ f8c192ed5db7d3c03c59a240f358b087c4c93e70900637bb0a5af4a6e982a764 6184 raft_0.22.0-1build2.debian.tar.xz
+Files:
+ d13208d9afa4d2fdb101c5717b68defc 2154 raft_0.22.0-1build2.dsc
+ 3d8d8a628fd8aa741945a4b1df0cb273 365711 raft_0.22.0.orig.tar.gz
+ 1b292989174b415303e4ec6f1c92b4cd 6184 raft_0.22.0-1build2.debian.tar.xz
+Original-Maintainer: Free Ekanayaka <freee@debian.org>
+
+Format: 3.0 (quilt)
+Package: raft
+Binary: libraft0, libraft-dev, libraft-tools
+Architecture: any
+Version: 0.22.0-1build2~uh~jammy1
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Uploaders: Laszlo Boszormenyi (GCS) <gcs@debian.org>, Mathias Gibbens <gibmat@debian.org>
+Homepage: https://raft.readthedocs.io
+Standards-Version: 4.6.2
+Vcs-Browser: https://salsa.debian.org/cowsql-team/raft
+Vcs-Git: https://salsa.debian.org/cowsql-team/raft.git
+Build-Depends: debhelper-compat (= 13), pkg-config, libuv1-dev, liblz4-dev, python3-sphinx
+Package-List:
+ libraft-dev deb libdevel optional arch=any
+ libraft-tools deb misc optional arch=any
+ libraft0 deb libs optional arch=any
+Directory: jammy/src
+Checksums-Sha1:
+ a159ff53443af4e8b35237a432d1ec258c582110 1311 raft_0.22.0-1build2~uh~jammy1.dsc
+ 4287f165968019af3e6113c6fe51407e1d9f68e4 365711 raft_0.22.0.orig.tar.gz
+ 6ec8ca148cb3be149e2c93f9c34b756e256307b2 6852 raft_0.22.0-1build2~uh~jammy1.debian.tar.xz
+Checksums-Sha256:
+ 44f01dba33901a1f966a2aae96b4bdd3656cf2cbf874461b9af6dc6e5c48b967 1311 raft_0.22.0-1build2~uh~jammy1.dsc
+ 9f69e60101f44b11ab1a44720f5e7b5a811bd1705f6404b9074c4f7c871cd12d 365711 raft_0.22.0.orig.tar.gz
+ d881dbaf2f48aa1d2d25e88b23786162ea406fa16acd26f826f8327866473e60 6852 raft_0.22.0-1build2~uh~jammy1.debian.tar.xz
+Files:
+ cc37e41f3cb3f0526c01a9d68a9efc25 1311 raft_0.22.0-1build2~uh~jammy1.dsc
+ 3d8d8a628fd8aa741945a4b1df0cb273 365711 raft_0.22.0.orig.tar.gz
+ e287ebe5cd41a9b390aa148e8b87f88c 6852 raft_0.22.0-1build2~uh~jammy1.debian.tar.xz
+Original-Maintainer: Free Ekanayaka <freee@debian.org>
 
 Format: 3.0 (quilt)
 Package: virtualbox

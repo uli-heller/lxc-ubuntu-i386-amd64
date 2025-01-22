@@ -29,6 +29,32 @@ Description: Go programming language -- gccgo
  It conflicts with golang-go.
 Original-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>
 
+Package: go-cowsql
+Source: golang-github-cowsql-go-cowsql
+Version: 1.22.0-2ubuntu0.24.04.2~uh~jammy1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 31299
+Depends: libc6 (>= 2.34), libcowsql0 (>= 1.15.4), libsqlite3-0 (>= 3.12.0)
+Built-Using: golang-1.22 (= 1.22.2-2~22.04.2), golang-github-google-renameio (= 2.0.0-1), golang-github-mattn-go-runewidth (= 0.0.13-2), golang-github-mattn-go-sqlite3 (= 1.14.11~ds1-2), golang-github-peterh-liner (= 1.2.1-1), golang-github-pkg-errors (= 0.9.1-2), golang-github-rican7-retry (= 0.1.0-2), golang-github-rivo-uniseg (= 0.2.0-1), golang-github-spf13-cobra (= 1.3.0-1ubuntu0.3), golang-github-spf13-pflag (= 1.0.5-2), golang-golang-x-sync (= 0.0~git20210220.036812b-1), golang-golang-x-sys (= 0.17.0-1~uh~jammy1), golang-yaml.v2 (= 2.4.0-2)
+Filename: jammy/debs/go-cowsql_1.22.0-2ubuntu0.24.04.2~uh~jammy1_amd64.deb
+Size: 15602640
+MD5sum: 792ee7dc1af237cba9eba79e2cc65f9a
+SHA1: 8588912dfad910be26d41f0b3e7ffc4317427744
+SHA256: d567e7332a725c1909bf1929a429ff8025557fae119baf0ab74329b44ffe6af3
+Section: golang
+Priority: optional
+Homepage: https://github.com/cowsql/go-cowsql
+Description: Pure-Go cowsql client
+ Go-cowsql is a pure-Go cowsql client implementation. 2 binaries are
+ provided:
+   - cowsql-demo, a demo cowsql application, which exposes a simple
+     key/value store over an HTTP API,
+   - cowsql, a basic SQLite-like cowsql shell which supports
+     normal SQL queries plus the special .cluster and .leader
+     commands to inspect the cluster members and the current leader.
+Original-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+
 Package: gocryptfs
 Version: 2.4.0.54-1ubuntu0.24.04.2~uh~jammy2
 Architecture: amd64
@@ -180,6 +206,107 @@ Description: Some Go cryptography routines that are not included in the Go stand
  • CMAC (http://go.pkgdoc.org/github.com/jacobsa/crypto/cmac),
   a message authentication system used by SIV mode.
 
+Package: golang-github-checkpoint-restore-go-criu-dev
+Source: golang-github-checkpoint-restore-go-criu
+Version: 6.3.0+ds1-2~uh~jammy1
+Architecture: all
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Installed-Size: 1115
+Depends: golang-google-protobuf-dev
+Breaks: golang-github-opencontainers-runc-dev (<< 1.0.2+ds1-1~)
+Filename: jammy/debs/golang-github-checkpoint-restore-go-criu-dev_6.3.0+ds1-2~uh~jammy1_all.deb
+Size: 118122
+MD5sum: 7cefd7ab8436e70f231c8c677f478922
+SHA1: a9cfbd90b5c6b3102b61601f2541244f9c010689
+SHA256: ad3e26d24f1315f2b066dc2da0dfab8439b8fa2adf618ea577de858277e8f05f
+Section: golang
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://github.com/checkpoint-restore/go-criu
+Description: CRIU bindings for Golang
+ Golang bindings for CRIU. The code is based on the Golang-based PHaul
+ implementation from the CRIU repository.
+ .
+ Golang bindings provide an easy way to use the CRIU RPC calls from Golang
+ without the need to set up all the infrastructure to make the actual RPC
+ connection to CRIU.
+
+Package: golang-github-cowsql-go-cowsql-dev
+Source: golang-github-cowsql-go-cowsql
+Version: 1.22.0-2ubuntu0.24.04.2~uh~jammy1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 418
+Depends: libcowsql-dev, libraft-dev, golang-github-ghodss-yaml-dev, golang-github-google-renameio-dev, golang-github-mattn-go-sqlite3-dev, golang-github-peterh-liner-dev, golang-github-pkg-errors-dev, golang-github-rican7-retry-dev, golang-github-spf13-cobra-dev, golang-github-stretchr-testify-dev, golang-golang-x-sys-dev, golang-golang-x-sync-dev
+Filename: jammy/debs/golang-github-cowsql-go-cowsql-dev_1.22.0-2ubuntu0.24.04.2~uh~jammy1_all.deb
+Size: 84008
+MD5sum: ebd76fd795f44748142a4345739e9b92
+SHA1: 243c6a7d2d3ab5de81b8b58113b8e734c98e8a13
+SHA256: a63dd69504dfbecf1b9bfd087d74a08db05092185350c9e460f76f04670cab24
+Section: golang
+Priority: optional
+Homepage: https://github.com/cowsql/go-cowsql
+Description: Go bindings for libcowsql
+ Go-cowsql provides bindings for the cowsql (https://cowsql.dev)
+ C library and a pure-Go client for the cowsql wire protocol.
+ .
+ Documentation is available at
+ http://godoc.org/github.com/cowsql/go-cowsql.
+Original-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+
+Package: golang-github-golang-jwt-jwt-v5-dev
+Source: golang-github-golang-jwt-jwt-v5
+Version: 5.2.0-2~uh~jammy1
+Architecture: all
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Installed-Size: 238
+Filename: jammy/debs/golang-github-golang-jwt-jwt-v5-dev_5.2.0-2~uh~jammy1_all.deb
+Size: 45172
+MD5sum: 192fc501e21a4073a1527da875ac106c
+SHA1: b2b6b5cb58ed192bbb50b6df027b820d292a3f66
+SHA256: 6d78f61ecb9d2d38aef9553ff7ac3daca55783642e4dd9db7f4b11c486e9040e
+Section: golang
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://github.com/golang-jwt/jwt
+Description: golang implementation of JSON Web Tokens (library)
+ Community maintained clone of github.com/dgrijalva/jwt-go.
+ .
+ After the original author of the library suggested migrating the
+ maintenance of jwt-go, a dedicated team of open source maintainers
+ decided to clone the existing library into this module.
+ .
+ The ships v5 of the library, see golang-github-golang-jwt-jwt-dev
+ for the older version and the awt command-line tool.
+ .
+ This package provides golang module.
+
+Package: golang-github-golang-protobuf-1-5-dev
+Source: golang-github-golang-protobuf-1-5
+Version: 1.5.3-1ubuntu0.2~uh~jammy1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 838
+Depends: golang-github-google-go-cmp-dev, golang-google-protobuf-dev
+Conflicts: golang-github-golang-protobuf-1-3-dev, golang-goprotobuf-dev
+Filename: jammy/debs/golang-github-golang-protobuf-1-5-dev_1.5.3-1ubuntu0.2~uh~jammy1_all.deb
+Size: 140040
+MD5sum: 2d7f99f559b76e2f7d22e98c14259461
+SHA1: 94db1c078099542dd5e44e94ac37c3166d2dd29c
+SHA256: 3b1afed7789e764384c5b16126ebfc20d004bddd8ca73a1b956b2b0396dd51c0
+Section: golang
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://github.com/golang/protobuf
+Description: Go support for protocol buffers (version v1.5.x)
+ This module (github.com/golang/protobuf) contains Go bindings for protocol
+ buffers.
+ .
+ v1.5.x implements Go APIv2 for protocol buffers.
+ .
+ For APIv2, see  https://go.dev/blog/protobuf-apiv2.
+Original-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+
 Package: golang-github-hanwen-go-fuse-dev
 Source: golang-github-hanwen-go-fuse
 Version: 2.4.2-2~uh~jammy1
@@ -216,6 +343,29 @@ Description: Native Go bindings for the FUSE kernel module
  .
  The package also includes two fleshed out examples, zipfs and unionfs.
 
+Package: golang-github-mdlayher-ndp-dev
+Source: golang-github-mdlayher-ndp
+Version: 1.0.1-1~uh~jammy1
+Architecture: all
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Installed-Size: 122
+Depends: golang-github-google-go-cmp-dev, golang-gitlab-golang-commonmark-puny-dev, golang-golang-x-net-dev, golang-golang-x-sync-dev
+Filename: jammy/debs/golang-github-mdlayher-ndp-dev_1.0.1-1~uh~jammy1_all.deb
+Size: 24506
+MD5sum: bea4bfcb61f0692b87b50ad72a0bc26f
+SHA1: 9ef73db22db306eca47ffda796075a4ecd7c5380
+SHA256: 23ca9a13b51cd36486a49c572d1d313311dcff3dd64c5acf3917c5db82003e42
+Section: golang
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://github.com/mdlayher/ndp
+Description: Golang implementation of the Neighbor Discovery Protocol (library)
+ Package ndp implements the Neighbor Discovery Protocol, as described
+ in RFC 4861 (https://tools.ietf.org/html/rfc4861).
+ .
+ To learn more about NDP, and how to use this package, please visit
+ https://mdlayher.com/blog/network-protocol-breakdown-ndp-and-go/.
+
 Package: golang-github-mdp-qrterminal-dev
 Source: qrterminal
 Version: 3.2.0.3-2ubuntu0.24.04.2~uh~jammy2
@@ -240,6 +390,97 @@ Description: Display QR Codes in terminal (library)
  .
  This package contains the golang library for github.com/mdp/qrterminal
 Original-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+
+Package: golang-github-minio-madmin-go-dev
+Source: golang-github-minio-madmin-go
+Version: 3.0.48-1~uh~jammy1
+Architecture: all
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Installed-Size: 761
+Depends: golang-github-cespare-xxhash-dev, golang-github-dustin-go-humanize-dev, golang-github-golang-jwt-jwt-dev, golang-github-minio-minio-go-v7-dev (>= 7.0.66), golang-github-prometheus-common-dev, golang-github-prometheus-prom2json-dev, golang-github-safchain-ethtool-dev, golang-github-secure-io-sio-go-dev, golang-github-shirou-gopsutil-dev (>= 3.23.12-3~), golang-github-tinylib-msgp-dev (>= 1.1.8), golang-golang-x-crypto-dev, golang-golang-x-net-dev, golang-procfs-dev
+Filename: jammy/debs/golang-github-minio-madmin-go-dev_3.0.48-1~uh~jammy1_all.deb
+Size: 132554
+MD5sum: 9b3b3bad5b377f8d166d804593dc6ad8
+SHA1: 97e2a386b5288234cd1a63c97026265a0f375d38
+SHA256: d3a02b74b4d08f6e6113877abc319aa40a0a99379b36cbf061daf2512df339ee
+Section: golang
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://github.com/minio/madmin-go
+Description: Client SDK providing APIs to manage MinIO services (library)
+ The MinIO Admin Golang Client SDK provides APIs to manage MinIO services.
+ MinIO offers high-performance, S3 compatible object storage.
+
+Package: golang-github-minio-minio-go-dev
+Source: golang-github-minio-minio-go
+Version: 6.0.53-1~uh~jammy1
+Architecture: all
+Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
+Installed-Size: 1124
+Depends: golang-github-go-ini-ini-dev, golang-github-minio-sha256-simd-dev, golang-github-mitchellh-go-homedir-dev, golang-golang-x-crypto-dev, golang-golang-x-net-dev, golang-gopkg-ini.v1-dev
+Filename: jammy/debs/golang-github-minio-minio-go-dev_6.0.53-1~uh~jammy1_all.deb
+Size: 134456
+MD5sum: bc638e031350da03e1e4a7859fc46a98
+SHA1: ed54d6db6aa1b7111364f2acdead493a5d01f19b
+SHA256: 6503884ac1ee5b1665c9ac48e2cd36bfc327493a3729ab3475d53f837e50f3e8
+Section: devel
+Priority: optional
+Homepage: https://github.com/minio/minio-go
+Description: Go library for Amazon S3 compatible cloud storage
+ The Minio Golang Client SDK provides simple APIs to access any Amazon S3
+ compatible object storage server.
+
+Package: golang-github-minio-minio-go-v7-dev
+Source: golang-github-minio-minio-go-v7
+Version: 7.0.67-1~uh~jammy1
+Architecture: all
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Installed-Size: 1500
+Depends: golang-github-dustin-go-humanize-dev, golang-github-google-uuid-dev, golang-github-json-iterator-go-dev, golang-github-klauspost-compress-dev, golang-github-minio-md5-simd-dev (>= 1.1.2), golang-github-minio-sha256-simd-dev (>= 1.0.0), golang-github-rs-xid-dev (>= 1.4.0), golang-github-sirupsen-logrus-dev, golang-golang-x-crypto-dev, golang-golang-x-net-dev, golang-gopkg-ini.v1-dev
+Filename: jammy/debs/golang-github-minio-minio-go-v7-dev_7.0.67-1~uh~jammy1_all.deb
+Size: 180748
+MD5sum: 1086f7e678ac31c4cb87497c2491482a
+SHA1: 084d13c746b12b533e1a941d771c0a72a5fefb62
+SHA256: 13d6bcfa97d34b6cbd33882290bcbf91e23631ebd268267c84aaa833eaf0036f
+Section: golang
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://github.com/minio/minio-go
+Description: Go library for Amazon S3 compatible cloud storage
+ The Minio Golang Client SDK provides simple APIs to access any Amazon S3
+ compatible object storage server.
+
+Package: golang-github-minio-sha256-simd-dev
+Source: golang-github-minio-sha256-simd
+Version: 1.0.1-1~uh~jammy1
+Architecture: all
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Installed-Size: 340
+Depends: golang-github-klauspost-cpuid-dev (>= 2.0.4)
+Filename: jammy/debs/golang-github-minio-sha256-simd-dev_1.0.1-1~uh~jammy1_all.deb
+Size: 32560
+MD5sum: 3b8d5d2b5ec308f246fe6fe4fe22ac8f
+SHA1: ee87cca2b4bf663f8e4ca055322b43c1df73b205
+SHA256: b4abfe334edf54f68308470f40625582097f0fd42bd285e77634e6b48bfef770
+Section: golang
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://github.com/minio/sha256-simd
+Description: implementation of SHA256 using SIMD instructions for Intel and ARM
+ sha256-simd accelerate SHA256 computations in pure Go for both Intel
+ (AVX2, AVX, SSE) as well as ARM (arm64) platforms.  Introduction This
+ package is designed as a drop-in replacement for crypto/sha256. For Intel
+ CPUs it has three flavors for AVX2, AVX and SSE whereby the fastest
+ method is automatically chosen depending on CPU capabilities. For ARM
+ CPUs with the Cryptography Extensions advantage is taken of the SHA2
+ instructions resulting in a massive performance improvement.
+ .
+ This package uses Golang assembly and as such does not depend on cgo. The
+ Intel versions are based on the implementations as described in "Fast
+ SHA-256 Implementations on Intel Architecture Processors" by J. Guilford
+ et al.  Performance Below is the speed in MB/s for a single core (ranked
+ fast to slow) as well as the factor of improvement over crypto/sha256
+ (when applicable).
 
 Package: golang-github-moby-sys-dev
 Source: golang-github-moby-sys
@@ -266,6 +507,108 @@ Description: Go Library for system information and operation
   * github.com/moby/sys/signal
   * github.com/moby/sys/symlink
   * github.com/moby/sys/user
+
+Package: golang-github-rs-xid-dev
+Source: golang-github-rs-xid
+Version: 1.5.0-1~uh~jammy1
+Architecture: all
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Installed-Size: 50
+Filename: jammy/debs/golang-github-rs-xid-dev_1.5.0-1~uh~jammy1_all.deb
+Size: 11430
+MD5sum: 556ea2e31a370dee3a6f4d0fccb986f2
+SHA1: 9064199d6e996cbefe4b107408d4f27778ef8aaf
+SHA256: bf99ba6bb60160f792608110fa8d3b8bc420e9b736c44b5a85569957f316cece
+Section: golang
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://github.com/rs/xid
+Description: globally unique id generator thought for the web
+ package xid is a globally unique id generator library, ready
+ to be used safely directly in your server code.
+ .
+ Xid is using Mongo Object ID algorithm to generate globally
+ unique ids with a different serialization (bast64) to make
+ it shorter when transported as a string.
+
+Package: golang-github-secure-io-sio-go-dev
+Source: golang-github-secure-io-sio-go
+Version: 0.3.1-2~uh~jammy1
+Architecture: all
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Installed-Size: 127
+Depends: golang-golang-x-crypto-dev, golang-golang-x-sys-dev
+Filename: jammy/debs/golang-github-secure-io-sio-go-dev_0.3.1-2~uh~jammy1_all.deb
+Size: 18294
+MD5sum: 7cf790a73c03bdddbc602cfd766964bd
+SHA1: 04c12a379eb3e69d2cd527a399c7bac316713902
+SHA256: a66ac41371ab2374a1570eff00066c99237d235d691d2ebe506ac344cd5b6fb3
+Section: golang
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://github.com/secure-io/sio-go
+Description: Authenticated encryption for streams in Go (library)
+ The sio package implements provable secure authenticated encryption
+ for continuous byte streams. It splits a data stream into L bytes
+ long fragments and en/decrypts each fragment with an unique key-nonce
+ combination using an AEAD. For the last fragment the construction
+ prefixes the associated data with the 0x80 byte (instead of 0x00)
+ to prevent truncation attacks.
+
+Package: golang-github-shirou-gopsutil-dev
+Source: golang-github-shirou-gopsutil
+Version: 3.24.1-1ubuntu1~uh~jammy1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 964
+Depends: golang-github-stretchr-testify-dev, golang-github-tklauser-go-sysconf-dev, golang-golang-x-sys-dev (>= 0.0~git20180510~)
+Filename: jammy/debs/golang-github-shirou-gopsutil-dev_3.24.1-1ubuntu1~uh~jammy1_all.deb
+Size: 145088
+MD5sum: 81ab87d967e3c71dc72ebb048627c2a4
+SHA1: ecde4cc0e36938d799286baec67bd8c34a904e69
+SHA256: 9ebe7d7bf41c08ba365561fa78f6149b0f48fd60e4b852e03f65ae453a359231
+Section: golang
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://github.com/shirou/gopsutil
+Description: Go package implementing psutils
+ The gopsutil package provides a library which psutil
+ (http://pythonhosted.org/psutil/) functions. Most of the features are
+ implemented. Please refer to web site of the project about implementation
+ list.
+Original-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+
+Package: golang-github-tinylib-msgp-dev
+Source: golang-github-tinylib-msgp
+Version: 1.1.9-1~uh~jammy1
+Architecture: all
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Installed-Size: 1352
+Depends: golang-github-philhofer-fwd-dev, golang-golang-x-tools-dev
+Filename: jammy/debs/golang-github-tinylib-msgp-dev_1.1.9-1~uh~jammy1_all.deb
+Size: 121918
+MD5sum: 6016bd388c89c69c29a1a7325b89c7d8
+SHA1: 8606559e5218d8fc645707b790a9bcf4085b5505
+SHA256: 67b09e98510796bd7c1aa9ac40f842724f39565ea98986973cc5e41b375a1adf
+Section: golang
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://github.com/tinylib/msgp
+Description: Go code generator for MessagePack (source)
+ This is a code generation tool and serialization library for MessagePack. It is
+ targeted at the go generate tool. You can read more about MessagePack in the
+ wiki, or at msgpack.org.
+ .
+ Why?
+ .
+   * Use Go as your schema language
+   * Speeeeeed (400MB/s on modern hardware)
+   * JSON interop
+   * User-defined extensions
+   * Type safety
+   * Encoding flexibility
+ .
+ This package contains the source.
 
 Package: golang-go
 Source: golang-defaults
@@ -408,6 +751,212 @@ Description: framework for writing simple makefiles for complex tasks
  project, check out the autoconf tool in the GNU build system. It is possible
  to use kBuild together with autoconf if you like, but you might just as well
  use the full GNU package.
+
+Package: libcowsql-dev
+Source: cowsql
+Version: 1.15.4-1ubuntu3~uh~jammy1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 470
+Depends: libcowsql0 (= 1.15.4-1ubuntu3~uh~jammy1), libsqlite3-dev (>= 3.22.0~)
+Filename: jammy/debs/libcowsql-dev_1.15.4-1ubuntu3~uh~jammy1_amd64.deb
+Size: 105504
+MD5sum: 4585f0154f1ab074e5ab4c1275e693d7
+SHA1: 49c2435337e839328ad727d884fb7371364b334f
+SHA256: 8c61b44b7d2dc8f8f55d82aefa192086619f76e66c91ee6b0bc4f9d12c2d479a
+Section: libdevel
+Priority: optional
+Multi-Arch: same
+Homepage: https://github.com/cowsql/cowsql
+Description: Embeddable, replicated and fault tolerant SQL engine - development files
+ Embeddable SQL database engine with high availability and automatic failover.
+ .
+ The cowsql library extends SQLite with a network protocol that can connect
+ together various instances of your application and have them act as a
+ highly-available cluster, with no dependency on external databases. The
+ name "cowsql" loosely refers to the "pets vs. cattle" concept, since it's
+ generally fine to delete or rebuild a particular node of an application that
+ uses cowsql for data storage.
+ .
+ This package contains the development headers and library files needed to
+ compile programs using cowsql.
+Original-Maintainer: Free Ekanayaka <freee@debian.org>
+
+Package: libcowsql0
+Source: cowsql
+Version: 1.15.4-1ubuntu3~uh~jammy1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 203
+Depends: libc6 (>= 2.34), libraft0 (>= 0.20), libsqlite3-0 (>= 3.8.7), libuv1 (>= 1.8.0~)
+Filename: jammy/debs/libcowsql0_1.15.4-1ubuntu3~uh~jammy1_amd64.deb
+Size: 76470
+MD5sum: d9883896b91a0044209e9725b209f7c9
+SHA1: 951deea656728b4be2f8c928217a050a4b2e63aa
+SHA256: 14dfff81455f3724241641f0a382fec232395e877d028512d76f04ee781a6003
+Section: libs
+Priority: optional
+Multi-Arch: same
+Homepage: https://github.com/cowsql/cowsql
+Description: Embeddable, replicated and fault tolerant SQL engine - shared library
+ Embeddable SQL database engine with high availability and automatic failover.
+ .
+ The cowsql library extends SQLite with a network protocol that can connect
+ together various instances of your application and have them act as a
+ highly-available cluster, with no dependency on external databases. The
+ name "cowsql" loosely refers to the "pets vs. cattle" concept, since it's
+ generally fine to delete or rebuild a particular node of an application that
+ uses cowsql for data storage.
+ .
+ This package contains the C library needed to run executables that use cowsql.
+Original-Maintainer: Free Ekanayaka <freee@debian.org>
+
+Package: libraft-dev
+Source: raft
+Version: 0.22.0-1build2~uh~jammy1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 693
+Depends: libraft0 (= 0.22.0-1build2~uh~jammy1)
+Filename: jammy/debs/libraft-dev_0.22.0-1build2~uh~jammy1_amd64.deb
+Size: 151540
+MD5sum: eaf5f17dc053b7c38942bcbef7fe2eb3
+SHA1: 1cef0a9469ee518df6a2c98ecc5cb193821dcab0
+SHA256: 848784dab09680325f570221abab6b19505013a49bd312e18c25d5510df6c88c
+Section: libdevel
+Priority: optional
+Multi-Arch: same
+Homepage: https://raft.readthedocs.io
+Description: Raft Consensus protocol implementation - development files
+ Fully asynchronous C implementation of the Raft consensus protocol.
+ .
+ The library has modular design: its core part implements only the core Raft
+ algorithm logic, in a fully platform independent way. On top of that, a
+ pluggable interface defines the I/O implementation for networking
+ (send/receive RPC messages) and disk persistence (store log entries and
+ snapshots).
+ .
+ This package contains the development headers and library files needed to
+ compile programs using Raft Consensus protocol.
+Original-Maintainer: Free Ekanayaka <freee@debian.org>
+
+Package: libraft-tools
+Source: raft
+Version: 0.22.0-1build2~uh~jammy1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 52
+Depends: libc6 (>= 2.34), libraft0 (>= 0.17.7), libuv1 (>= 1.4.2)
+Filename: jammy/debs/libraft-tools_0.22.0-1build2~uh~jammy1_amd64.deb
+Size: 17682
+MD5sum: d32d65c6aaf734e9eca8e6998b29ae43
+SHA1: c6676e34e4eafebf6a397833364b6c1bde3ab570
+SHA256: 44599908f50cf26dc28e7fb46dfa0867e04679587801b0b47506ead4292d1fb3
+Section: misc
+Priority: optional
+Homepage: https://raft.readthedocs.io
+Description: Raft Consensus protocol implementation - benchmarking programs
+ Fully asynchronous C implementation of the Raft consensus protocol.
+ .
+ The library has modular design: its core part implements only the core Raft
+ algorithm logic, in a fully platform independent way. On top of that, a
+ pluggable interface defines the I/O implementation for networking
+ (send/receive RPC messages) and disk persistence (store log entries and
+ snapshots).
+ .
+ This package contains tools for benchmarking the libraft library.
+Original-Maintainer: Free Ekanayaka <freee@debian.org>
+
+Package: libraft0
+Source: raft
+Version: 0.22.0-1build2~uh~jammy1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 232
+Depends: libc6 (>= 2.17), liblz4-1 (>= 0.0~r127), libuv1 (>= 1.4.2)
+Filename: jammy/debs/libraft0_0.22.0-1build2~uh~jammy1_amd64.deb
+Size: 95982
+MD5sum: 910fef4da0a464a355b4c254d5b238cb
+SHA1: f5984fb5f2e400c7685fc182ad7726cdf9e739cf
+SHA256: 395fb537ec58e0fb1cc952d019e5390391dc4dcc2eaca0dcaf8aec3985ad1396
+Section: libs
+Priority: optional
+Multi-Arch: same
+Homepage: https://raft.readthedocs.io
+Description: Raft Consensus protocol implementation - shared library
+ Fully asynchronous C implementation of the Raft consensus protocol.
+ .
+ The library has modular design: its core part implements only the core Raft
+ algorithm logic, in a fully platform independent way. On top of that, a
+ pluggable interface defines the I/O implementation for networking
+ (send/receive RPC messages) and disk persistence (store log entries and
+ snapshots).
+ .
+ This package contains the C library needed to run executables that use Raft
+ Consensus protocol.
+Original-Maintainer: Free Ekanayaka <freee@debian.org>
+
+Package: msgp
+Source: golang-github-tinylib-msgp
+Version: 1.1.9-1~uh~jammy1
+Architecture: amd64
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Installed-Size: 8707
+Built-Using: golang-1.22 (= 1.22.2-2~22.04.2), golang-github-philhofer-fwd (= 1.1.1-1), golang-golang-x-mod (= 0.5.1-1), golang-golang-x-sys (= 0.17.0-1~uh~jammy1), golang-golang-x-tools (= 1:0.1.9+ds-2ubuntu2.2), golang-golang-x-xerrors (= 0.0~git20200804.5ec99f8-1)
+Filename: jammy/debs/msgp_1.1.9-1~uh~jammy1_amd64.deb
+Size: 4526968
+MD5sum: 9e8dfcccf00dfb0fb61eb7213919261c
+SHA1: 5bf535683640db87c2b8be08ceaf931602691073
+SHA256: fc7479980036315d2a92ad3ade9477f18c725d41cd4227eacf3386acd56100f1
+Section: golang
+Priority: optional
+Homepage: https://github.com/tinylib/msgp
+Description: Go code generator for MessagePack
+ This is a code generation tool and serialization library for MessagePack. It is
+ targeted at the go generate tool. You can read more about MessagePack in the
+ wiki, or at msgpack.org.
+ .
+ Why?
+ .
+   * Use Go as your schema language
+   * Speeeeeed (400MB/s on modern hardware)
+   * JSON interop
+   * User-defined extensions
+   * Type safety
+   * Encoding flexibility
+ .
+ This package contains the tools/binaries.
+
+Package: protoc-gen-go-1-5
+Source: golang-github-golang-protobuf-1-5
+Version: 1.5.3-1ubuntu0.2~uh~jammy1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 9303
+Depends: libprotobuf-dev, protobuf-compiler
+Conflicts: golang-goprotobuf-dev, protoc-gen-go, protoc-gen-go-1-3
+Filename: jammy/debs/protoc-gen-go-1-5_1.5.3-1ubuntu0.2~uh~jammy1_amd64.deb
+Size: 4630842
+MD5sum: 4880e4e6af00799fae1b0757bb20ecec
+SHA1: 0b55a84a5473900610fbf95092bfce2129ffdd61
+SHA256: 19e482545c2d6fb0a80af7b62c5ba26c7936bfe216ebb056d0aee1f26ce67b94
+Section: golang
+Priority: optional
+Homepage: https://github.com/golang/protobuf
+Description: Go plugin for protobuf compiler (version v1.5.x)
+ This protobuf compiler plugin is from github.com/golang/protobuf module,
+ which is deprecated.
+ .
+ v1.5.x implements Go APIv2 for protocol buffers.
+ .
+ For APIv2, see https://go.dev/blog/protobuf-apiv2.
+ .
+ People should migrate to protoc-gen-go package which is provided
+ by google.golang.org/protobuf module.
+ .
+ Go files generated by this version will cause runtime panic with
+ golang-github-gogo-protobuf-dev.
+Original-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
 
 Package: qrterminal
 Version: 3.2.0.3-2ubuntu0.24.04.2~uh~jammy2
