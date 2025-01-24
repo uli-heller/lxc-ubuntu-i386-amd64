@@ -112,7 +112,14 @@ PROOT="$(which proot)" || {
 }
 
 myProot () {
-    "${PROOT}" -0 -w / -b /dev -b /dev/pts -b /proc -b /sys -r "$@"
+    (
+	ROOTFS="$(realpath $1)"
+	FOLDER="$(echo "${ROOTFS}"|sed -e 's,/rootfs.*$,,')"
+	OS_ARCH="$(echo "${FOLDER}"|grep -o -- '-[^-]*-[^-]*$')"
+	OS="$(echo "${OS_ARCH}"|cut -d "-" -f 2)"
+	ARCH="$(echo "${OS_ARCH}"|cut -d "-" -f 3)"
+	exec "${PROOT}" -0 -w / -b /dev -b /dev/pts -b /proc -b /sys -b "$(realpath "${D}/ppas/${ARCH}/${OS}"):/var/cache/${OS}" -r "$@"
+    )
 }
 
 myProotUser () {
@@ -229,9 +236,10 @@ myProot "${ROOTFS}" tee /etc/apt/sources.list.d/deb-src.list <"${TMPDIR}/debsrc"
 mkdir -p "${ROOTFS}/var/cache/${OS}"
 rm -rf "${ROOTFS}/var/cache/lxc-ppa"
 rm -f "${ROOTFS}/var/cache/${OS}/*.deb" 2>/dev/null
-cp -r "${D}/ppas/${ARCHITECTURE}/${OS}"/*  "${ROOTFS}/var/cache/${OS}"
+#cp -r "${D}/ppas/${ARCHITECTURE}/${OS}"/*  "${ROOTFS}/var/cache/${OS}"
 cp "${D}/ppas/${ARCHITECTURE}/${OS}"/lxc.public.gpg "${ROOTFS}/etc/apt/trusted.gpg.d/."
 echo "deb file:/var/cache ${OS}/"|tee "${ROOTFS}/etc/apt/sources.list.d/lxc-ppa.list"
+echo "deb-src file:/var/cache ${OS}/"|tee -a "${ROOTFS}/etc/apt/sources.list.d/lxc-ppa.list"
 
 myProot "${ROOTFS}" apt update
 myProot "${ROOTFS}" apt upgrade -y
@@ -349,7 +357,7 @@ while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
                 chown "$(id -un):$(id -gn)" "${D}/ppas/${ARCHITECTURE}/${OS}/src"/*
             }
             "${D}/rebuild-ppas.sh"
-            cp -r "${D}/ppas/${ARCHITECTURE}/${OS}"/*  "${ROOTFS}/var/cache/${OS}/."
+            #cp -r "${D}/ppas/${ARCHITECTURE}/${OS}"/*  "${ROOTFS}/var/cache/${OS}/."
             myProot "${ROOTFS}" apt update
         ) || {
             #find "${ROOTFS}/src/${PACKAGE}" -mindepth 1 -maxdepth 1 -newer "${TMPDIR}/before"|xargs -t rm -rf
@@ -394,8 +402,8 @@ test "${RC}" -eq 0 && {
     gpg --homedir "${D}/gpg" -abs --digest-algo SHA256 -u "$(cat "${D}/gpg/keyid")" -o "${OS}/Release.gpg" "${OS}/Release"
     rm -f "${OS}/InRelease"
     gpg --homedir "${D}/gpg" -abs --digest-algo SHA256 -u "$(cat "${D}/gpg/keyid")" --clearsign -o "${OS}/InRelease" "${OS}/Release"
-    cp "${D}/gpg/lxc.public.asc" .
-    cp "${D}/gpg/lxc.public.gpg" .
+    #cp "${D}/gpg/lxc.public.asc" .
+    #cp "${D}/gpg/lxc.public.gpg" .
   )
 }
 cleanUp

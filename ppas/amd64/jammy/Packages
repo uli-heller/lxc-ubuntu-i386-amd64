@@ -531,6 +531,29 @@ Description: globally unique id generator thought for the web
  unique ids with a different serialization (bast64) to make
  it shorter when transported as a string.
 
+Package: golang-github-sabhiram-go-gitignore-dev
+Source: golang-github-sabhiram-go-gitignore
+Version: 1.0.2+git20210923.525f6e1-1~uh~jammy1
+Architecture: all
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Installed-Size: 50
+Depends: golang-github-stretchr-testify-dev
+Filename: jammy/debs/golang-github-sabhiram-go-gitignore-dev_1.0.2+git20210923.525f6e1-1~uh~jammy1_all.deb
+Size: 9536
+MD5sum: 346d0bd4c2617606e982061451b266cf
+SHA1: 04856bcced2c3ee319be6b2473d2da422be1c990
+SHA256: 6e75d142aa21511dba21abaab0d212840cddf2038eeb6949132df49bc17e633c
+Section: devel
+Priority: optional
+Homepage: https://github.com/sabhiram/go-gitignore
+Description: gitignore parser for go
+ This implements a library to check a pattern includes or excludes
+ certain filesystem paths. It can be useful to parse a .gitignore file,
+ as the author does, or for other path specifications.
+ .
+ At the time of writing, this module is a prequisite for Gocryptfs
+ versions 1.7.1 and up.
+
 Package: golang-github-secure-io-sio-go-dev
 Source: golang-github-secure-io-sio-go
 Version: 0.3.1-2~uh~jammy1
