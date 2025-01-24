@@ -235,7 +235,7 @@ echo "deb file:/var/cache ${OS}/"|tee "${ROOTFS}/etc/apt/sources.list.d/lxc-ppa.
 
 myProot "${ROOTFS}" apt update
 myProot "${ROOTFS}" apt upgrade -y
-myProot "${ROOTFS}" apt autoremove -y
+#myProot "${ROOTFS}" apt autoremove -y
 myProot "${ROOTFS}" apt install -y dpkg-dev devscripts equivs
 myProot "${ROOTFS}" bash -c "mkdir -p /src"
 while [ $# -gt 0 -a "${RC}" -eq 0 ]; do
