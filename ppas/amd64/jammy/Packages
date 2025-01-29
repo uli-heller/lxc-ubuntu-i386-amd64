@@ -783,10 +783,10 @@ Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 470
 Depends: libcowsql0 (= 1.15.4-1ubuntu3~uh~jammy1), libsqlite3-dev (>= 3.22.0~)
 Filename: jammy/debs/libcowsql-dev_1.15.4-1ubuntu3~uh~jammy1_amd64.deb
-Size: 105504
-MD5sum: 4585f0154f1ab074e5ab4c1275e693d7
-SHA1: 49c2435337e839328ad727d884fb7371364b334f
-SHA256: 8c61b44b7d2dc8f8f55d82aefa192086619f76e66c91ee6b0bc4f9d12c2d479a
+Size: 105510
+MD5sum: 498c447b7e6f85ba4e7c8e78354683d3
+SHA1: f87ac892c5404cb69e573286b47a1462989000ff
+SHA256: 93adc04ea0a541644f68081f0d0525bbc5f85c5600c346c3a73012893cbaaf54
 Section: libdevel
 Priority: optional
 Multi-Arch: same
@@ -813,10 +813,10 @@ Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 203
 Depends: libc6 (>= 2.34), libraft0 (>= 0.20), libsqlite3-0 (>= 3.8.7), libuv1 (>= 1.8.0~)
 Filename: jammy/debs/libcowsql0_1.15.4-1ubuntu3~uh~jammy1_amd64.deb
-Size: 76470
-MD5sum: d9883896b91a0044209e9725b209f7c9
-SHA1: 951deea656728b4be2f8c928217a050a4b2e63aa
-SHA256: 14dfff81455f3724241641f0a382fec232395e877d028512d76f04ee781a6003
+Size: 76486
+MD5sum: 8d03438493db2496028d30b537102547
+SHA1: 30e6ee43f9cd9a99039162a01eeee40b6f570c21
+SHA256: 0f542053d80a2abfd75bfa59451586f4e397938e3081e35a774aa8d3a3e449e1
 Section: libs
 Priority: optional
 Multi-Arch: same
