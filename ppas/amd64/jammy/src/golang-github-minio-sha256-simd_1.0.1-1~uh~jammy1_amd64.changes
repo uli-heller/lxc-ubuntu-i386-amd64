@@ -1,0 +1,32 @@
+Format: 1.8
+Date: Tue, 21 Jan 2025 10:51:07 +0000
+Source: golang-github-minio-sha256-simd
+Binary: golang-github-minio-sha256-simd-dev
+Built-For-Profiles: noudeb
+Architecture: source all
+Version: 1.0.1-1~uh~jammy1
+Distribution: jammy
+Urgency: medium
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-github-minio-sha256-simd-dev - implementation of SHA256 using SIMD instructions for Intel and AR
+Changes:
+ golang-github-minio-sha256-simd (1.0.1-1~uh~jammy1) jammy; urgency=medium
+ .
+   * Repackaged for jammy
+Checksums-Sha1:
+ 1ebfe8c9605179a4362b3e34a477f999cd1299d3 1510 golang-github-minio-sha256-simd_1.0.1-1~uh~jammy1.dsc
+ 86249a2c9f1c4923e2d8c2d89a9697ab2adad2e7 3720 golang-github-minio-sha256-simd_1.0.1-1~uh~jammy1.debian.tar.xz
+ ee87cca2b4bf663f8e4ca055322b43c1df73b205 32560 golang-github-minio-sha256-simd-dev_1.0.1-1~uh~jammy1_all.deb
+ 229607cc0fb5d7657441559363dcc25d5b4dae7d 6671 golang-github-minio-sha256-simd_1.0.1-1~uh~jammy1_amd64.buildinfo
+Checksums-Sha256:
+ d13ec2488137e3391b52c6b2913ea000d0370927bc29fd350641e24b76597b86 1510 golang-github-minio-sha256-simd_1.0.1-1~uh~jammy1.dsc
+ bd0d035d43bf44441791029ff896b95dabe5930f58053dd732137436d0273705 3720 golang-github-minio-sha256-simd_1.0.1-1~uh~jammy1.debian.tar.xz
+ b4abfe334edf54f68308470f40625582097f0fd42bd285e77634e6b48bfef770 32560 golang-github-minio-sha256-simd-dev_1.0.1-1~uh~jammy1_all.deb
+ 9f7e362acb9e2fe1e492e77f273c48fc56f95626b4333b5450eba0d8269f3c28 6671 golang-github-minio-sha256-simd_1.0.1-1~uh~jammy1_amd64.buildinfo
+Files:
+ 365b31c906d37c281a3c7878282e86e1 1510 golang optional golang-github-minio-sha256-simd_1.0.1-1~uh~jammy1.dsc
+ 891f8daf988fc7bbcd5ae4fba0ee0303 3720 golang optional golang-github-minio-sha256-simd_1.0.1-1~uh~jammy1.debian.tar.xz
+ 3b8d5d2b5ec308f246fe6fe4fe22ac8f 32560 golang optional golang-github-minio-sha256-simd-dev_1.0.1-1~uh~jammy1_all.deb
+ 42f00606d38b58dd43179f9dd38a0245 6671 golang optional golang-github-minio-sha256-simd_1.0.1-1~uh~jammy1_amd64.buildinfo

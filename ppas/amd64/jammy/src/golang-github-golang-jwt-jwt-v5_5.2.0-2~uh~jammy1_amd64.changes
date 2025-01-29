@@ -1,0 +1,32 @@
+Format: 1.8
+Date: Tue, 21 Jan 2025 10:38:19 +0000
+Source: golang-github-golang-jwt-jwt-v5
+Binary: golang-github-golang-jwt-jwt-v5-dev
+Built-For-Profiles: noudeb
+Architecture: source all
+Version: 5.2.0-2~uh~jammy1
+Distribution: jammy
+Urgency: medium
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-github-golang-jwt-jwt-v5-dev - golang implementation of JSON Web Tokens (library)
+Changes:
+ golang-github-golang-jwt-jwt-v5 (5.2.0-2~uh~jammy1) jammy; urgency=medium
+ .
+   * Repackaged for jammy
+Checksums-Sha1:
+ b5bb7c30e8cacc6aec99a262109a3524e9166465 1430 golang-github-golang-jwt-jwt-v5_5.2.0-2~uh~jammy1.dsc
+ de27f7a14799226c7979e33a6e38f7f4253d6246 2512 golang-github-golang-jwt-jwt-v5_5.2.0-2~uh~jammy1.debian.tar.xz
+ b2b6b5cb58ed192bbb50b6df027b820d292a3f66 45172 golang-github-golang-jwt-jwt-v5-dev_5.2.0-2~uh~jammy1_all.deb
+ 830c5345498b5f1d38a2a656b6d044533ce8c517 6623 golang-github-golang-jwt-jwt-v5_5.2.0-2~uh~jammy1_amd64.buildinfo
+Checksums-Sha256:
+ d393a80aa9fb568cfeb50e1e4fb95666ce8eaa233430def96a8c53f081255dcf 1430 golang-github-golang-jwt-jwt-v5_5.2.0-2~uh~jammy1.dsc
+ 564ab02e6aaf31f3ee6345693a78c86f9d2f556f4262bc55e34e55e0f191d8c2 2512 golang-github-golang-jwt-jwt-v5_5.2.0-2~uh~jammy1.debian.tar.xz
+ 6d78f61ecb9d2d38aef9553ff7ac3daca55783642e4dd9db7f4b11c486e9040e 45172 golang-github-golang-jwt-jwt-v5-dev_5.2.0-2~uh~jammy1_all.deb
+ 044dabcec5ac38f31d0bb8439924fc915c1929f4207f3cafe0531dec87590ab8 6623 golang-github-golang-jwt-jwt-v5_5.2.0-2~uh~jammy1_amd64.buildinfo
+Files:
+ 5f8e11e7863d40b6c20e43b9e1afbca5 1430 golang optional golang-github-golang-jwt-jwt-v5_5.2.0-2~uh~jammy1.dsc
+ 7970f55f883142bf3ecbafc59542b8aa 2512 golang optional golang-github-golang-jwt-jwt-v5_5.2.0-2~uh~jammy1.debian.tar.xz
+ 192fc501e21a4073a1527da875ac106c 45172 golang optional golang-github-golang-jwt-jwt-v5-dev_5.2.0-2~uh~jammy1_all.deb
+ 2a1258ec61f4add142660de3488f298d 6623 golang optional golang-github-golang-jwt-jwt-v5_5.2.0-2~uh~jammy1_amd64.buildinfo

@@ -1,0 +1,32 @@
+Format: 1.8
+Date: Tue, 21 Jan 2025 10:46:45 +0000
+Source: golang-github-mdlayher-ndp
+Binary: golang-github-mdlayher-ndp-dev
+Built-For-Profiles: noudeb
+Architecture: source all
+Version: 1.0.1-1~uh~jammy1
+Distribution: jammy
+Urgency: medium
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-github-mdlayher-ndp-dev - Golang implementation of the Neighbor Discovery Protocol (library
+Changes:
+ golang-github-mdlayher-ndp (1.0.1-1~uh~jammy1) jammy; urgency=medium
+ .
+   * Repackaged for jammy
+Checksums-Sha1:
+ f351e32219972130e695df7372c884ffcb5d0b4c 1490 golang-github-mdlayher-ndp_1.0.1-1~uh~jammy1.dsc
+ 03a95b7a8d76b96aa27c607b4ce104af01401bda 2560 golang-github-mdlayher-ndp_1.0.1-1~uh~jammy1.debian.tar.xz
+ 9ef73db22db306eca47ffda796075a4ecd7c5380 24506 golang-github-mdlayher-ndp-dev_1.0.1-1~uh~jammy1_all.deb
+ 7d3d54938f06cd605c3e313e395148a3504bd636 6985 golang-github-mdlayher-ndp_1.0.1-1~uh~jammy1_amd64.buildinfo
+Checksums-Sha256:
+ 01ef1ffef5a7da876124578c027e754f65d868c58dac0b3962a65163c134869b 1490 golang-github-mdlayher-ndp_1.0.1-1~uh~jammy1.dsc
+ 0842c75d0a2fcc796063593c3ff385df0e7c4feee058644a030079b671054a8e 2560 golang-github-mdlayher-ndp_1.0.1-1~uh~jammy1.debian.tar.xz
+ 23ca9a13b51cd36486a49c572d1d313311dcff3dd64c5acf3917c5db82003e42 24506 golang-github-mdlayher-ndp-dev_1.0.1-1~uh~jammy1_all.deb
+ 32e0dc93020b8b144546fe2b8723d04f29219e7985682cd998db0ddf6f50c7f2 6985 golang-github-mdlayher-ndp_1.0.1-1~uh~jammy1_amd64.buildinfo
+Files:
+ 4064c798ef27f1fb938aa5d20c1258cf 1490 golang optional golang-github-mdlayher-ndp_1.0.1-1~uh~jammy1.dsc
+ 751ce45d44aae2751b4fa624b192f60d 2560 golang optional golang-github-mdlayher-ndp_1.0.1-1~uh~jammy1.debian.tar.xz
+ bea4bfcb61f0692b87b50ad72a0bc26f 24506 golang optional golang-github-mdlayher-ndp-dev_1.0.1-1~uh~jammy1_all.deb
+ 218b9ea48de4893c7603770abf4a1573 6985 golang optional golang-github-mdlayher-ndp_1.0.1-1~uh~jammy1_amd64.buildinfo

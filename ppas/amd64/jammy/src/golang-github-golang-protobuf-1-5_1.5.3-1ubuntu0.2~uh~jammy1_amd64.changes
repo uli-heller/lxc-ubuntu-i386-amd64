@@ -1,0 +1,37 @@
+Format: 1.8
+Date: Tue, 21 Jan 2025 10:44:07 +0000
+Source: golang-github-golang-protobuf-1-5
+Binary: golang-github-golang-protobuf-1-5-dev protoc-gen-go-1-5
+Built-For-Profiles: noudeb
+Architecture: source all amd64
+Version: 1.5.3-1ubuntu0.2~uh~jammy1
+Distribution: jammy
+Urgency: medium
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-github-golang-protobuf-1-5-dev - Go support for protocol buffers (version v1.5.x)
+ protoc-gen-go-1-5 - Go plugin for protobuf compiler (version v1.5.x)
+Changes:
+ golang-github-golang-protobuf-1-5 (1.5.3-1ubuntu0.2~uh~jammy1) jammy; urgency=medium
+ .
+   * Repackaged for jammy
+Checksums-Sha1:
+ 1c149dfe9e4e2aa92a6a2359ebb0edfb01bfa0bd 1703 golang-github-golang-protobuf-1-5_1.5.3-1ubuntu0.2~uh~jammy1.dsc
+ de6ab79a3df234c8d4a6c0812604550b26ca6842 3056 golang-github-golang-protobuf-1-5_1.5.3-1ubuntu0.2~uh~jammy1.debian.tar.xz
+ 94db1c078099542dd5e44e94ac37c3166d2dd29c 140040 golang-github-golang-protobuf-1-5-dev_1.5.3-1ubuntu0.2~uh~jammy1_all.deb
+ 8cc82e88f4dfe1ee41a71e41b385ef1ba029001a 7225 golang-github-golang-protobuf-1-5_1.5.3-1ubuntu0.2~uh~jammy1_amd64.buildinfo
+ 0b55a84a5473900610fbf95092bfce2129ffdd61 4630842 protoc-gen-go-1-5_1.5.3-1ubuntu0.2~uh~jammy1_amd64.deb
+Checksums-Sha256:
+ 2887a28a85bc3a85b152f8e3e92f1c213a38186148b6b41f68d376bac8486a3e 1703 golang-github-golang-protobuf-1-5_1.5.3-1ubuntu0.2~uh~jammy1.dsc
+ d6101699cb63a2697b12bce321b5d637ad226ff79c242555ce663e578d8f2745 3056 golang-github-golang-protobuf-1-5_1.5.3-1ubuntu0.2~uh~jammy1.debian.tar.xz
+ 3b1afed7789e764384c5b16126ebfc20d004bddd8ca73a1b956b2b0396dd51c0 140040 golang-github-golang-protobuf-1-5-dev_1.5.3-1ubuntu0.2~uh~jammy1_all.deb
+ 2dab6b313898901a18acf207025cb4a4d55edc70fe53d4bb8e68903cef4cc365 7225 golang-github-golang-protobuf-1-5_1.5.3-1ubuntu0.2~uh~jammy1_amd64.buildinfo
+ 19e482545c2d6fb0a80af7b62c5ba26c7936bfe216ebb056d0aee1f26ce67b94 4630842 protoc-gen-go-1-5_1.5.3-1ubuntu0.2~uh~jammy1_amd64.deb
+Files:
+ 23fe4341c44e320d4345497bd7774e4a 1703 golang optional golang-github-golang-protobuf-1-5_1.5.3-1ubuntu0.2~uh~jammy1.dsc
+ a055eb98495fd9d9739b8e611ae9687c 3056 golang optional golang-github-golang-protobuf-1-5_1.5.3-1ubuntu0.2~uh~jammy1.debian.tar.xz
+ 2d7f99f559b76e2f7d22e98c14259461 140040 golang optional golang-github-golang-protobuf-1-5-dev_1.5.3-1ubuntu0.2~uh~jammy1_all.deb
+ c809787eb5b79a1eb316d96f32217378 7225 golang optional golang-github-golang-protobuf-1-5_1.5.3-1ubuntu0.2~uh~jammy1_amd64.buildinfo
+ 4880e4e6af00799fae1b0757bb20ecec 4630842 golang optional protoc-gen-go-1-5_1.5.3-1ubuntu0.2~uh~jammy1_amd64.deb
+Original-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>

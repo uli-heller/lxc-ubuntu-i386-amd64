@@ -1,0 +1,36 @@
+Format: 1.8
+Date: Tue, 21 Jan 2025 11:35:25 +0000
+Source: golang-github-tinylib-msgp
+Binary: golang-github-tinylib-msgp-dev msgp
+Built-For-Profiles: noudeb
+Architecture: source all amd64
+Version: 1.1.9-1~uh~jammy1
+Distribution: jammy
+Urgency: medium
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-github-tinylib-msgp-dev - Go code generator for MessagePack (source)
+ msgp       - Go code generator for MessagePack
+Changes:
+ golang-github-tinylib-msgp (1.1.9-1~uh~jammy1) jammy; urgency=medium
+ .
+   * Repackaged for jammy
+Checksums-Sha1:
+ 44cfc2b22cdff836447a0d0188fb1be2622412ea 1459 golang-github-tinylib-msgp_1.1.9-1~uh~jammy1.dsc
+ e62ac25a41d9f1decbd0eef6c150e5c52d209d18 3844 golang-github-tinylib-msgp_1.1.9-1~uh~jammy1.debian.tar.xz
+ 8606559e5218d8fc645707b790a9bcf4085b5505 121918 golang-github-tinylib-msgp-dev_1.1.9-1~uh~jammy1_all.deb
+ d7cee37a8618d136f731ce04151c436d49bddaa1 7448 golang-github-tinylib-msgp_1.1.9-1~uh~jammy1_amd64.buildinfo
+ 5bf535683640db87c2b8be08ceaf931602691073 4526968 msgp_1.1.9-1~uh~jammy1_amd64.deb
+Checksums-Sha256:
+ f55d5e305c6c4f9934dea9740b09c0b6a4a8a30418cd28360d72775bfb14a480 1459 golang-github-tinylib-msgp_1.1.9-1~uh~jammy1.dsc
+ 8a62fda7f39b24156729d5921b93b2c7df8cd61b1e210e39de5bb5abda3fefd5 3844 golang-github-tinylib-msgp_1.1.9-1~uh~jammy1.debian.tar.xz
+ 67b09e98510796bd7c1aa9ac40f842724f39565ea98986973cc5e41b375a1adf 121918 golang-github-tinylib-msgp-dev_1.1.9-1~uh~jammy1_all.deb
+ 539505a6913d3855517e0163bd2576e84200a43789bbb0fcf90ee2378e7521c9 7448 golang-github-tinylib-msgp_1.1.9-1~uh~jammy1_amd64.buildinfo
+ fc7479980036315d2a92ad3ade9477f18c725d41cd4227eacf3386acd56100f1 4526968 msgp_1.1.9-1~uh~jammy1_amd64.deb
+Files:
+ 63096a2611d1a6babfc509a28ae5422f 1459 golang optional golang-github-tinylib-msgp_1.1.9-1~uh~jammy1.dsc
+ bd2a9313b4cbe647149dd71bbf50ccad 3844 golang optional golang-github-tinylib-msgp_1.1.9-1~uh~jammy1.debian.tar.xz
+ 6016bd388c89c69c29a1a7325b89c7d8 121918 golang optional golang-github-tinylib-msgp-dev_1.1.9-1~uh~jammy1_all.deb
+ fc9c5dd9145d2666dfcf2be130b9fd2a 7448 golang optional golang-github-tinylib-msgp_1.1.9-1~uh~jammy1_amd64.buildinfo
+ 9e8dfcccf00dfb0fb61eb7213919261c 4526968 golang optional msgp_1.1.9-1~uh~jammy1_amd64.deb

@@ -1,0 +1,32 @@
+Format: 1.8
+Date: Tue, 21 Jan 2025 10:53:19 +0000
+Source: golang-github-rs-xid
+Binary: golang-github-rs-xid-dev
+Built-For-Profiles: noudeb
+Architecture: source all
+Version: 1.5.0-1~uh~jammy1
+Distribution: jammy
+Urgency: medium
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-github-rs-xid-dev - globally unique id generator thought for the web
+Changes:
+ golang-github-rs-xid (1.5.0-1~uh~jammy1) jammy; urgency=medium
+ .
+   * Repackaged for jammy
+Checksums-Sha1:
+ b55ac44cd8aeb5e226a80bfd91e138773b85e56a 1289 golang-github-rs-xid_1.5.0-1~uh~jammy1.dsc
+ c632e2d8faad1e137e32ba9e74df00c02a826217 2860 golang-github-rs-xid_1.5.0-1~uh~jammy1.debian.tar.xz
+ 9064199d6e996cbefe4b107408d4f27778ef8aaf 11430 golang-github-rs-xid-dev_1.5.0-1~uh~jammy1_all.deb
+ f64e68e62321427fd3133b832448d8c94db0416c 6535 golang-github-rs-xid_1.5.0-1~uh~jammy1_amd64.buildinfo
+Checksums-Sha256:
+ 472f93cf999f5f93126ccdc4e18094c4e958e0759e97c567649588ab28326a50 1289 golang-github-rs-xid_1.5.0-1~uh~jammy1.dsc
+ 2bc98cec95e5bad91808f0d5b08840691275cc5cd85772c0ff547f1591bdd6d9 2860 golang-github-rs-xid_1.5.0-1~uh~jammy1.debian.tar.xz
+ bf99ba6bb60160f792608110fa8d3b8bc420e9b736c44b5a85569957f316cece 11430 golang-github-rs-xid-dev_1.5.0-1~uh~jammy1_all.deb
+ 2daa54ef61dd21de946138d925fae19946327bf9ec06caa0699d8ca78ceced9b 6535 golang-github-rs-xid_1.5.0-1~uh~jammy1_amd64.buildinfo
+Files:
+ 9096ded4808f9b4c26698692f7796ece 1289 golang optional golang-github-rs-xid_1.5.0-1~uh~jammy1.dsc
+ 5472e0fd66a973d80f7010f5d04b52b6 2860 golang optional golang-github-rs-xid_1.5.0-1~uh~jammy1.debian.tar.xz
+ 556ea2e31a370dee3a6f4d0fccb986f2 11430 golang optional golang-github-rs-xid-dev_1.5.0-1~uh~jammy1_all.deb
+ 1dcb8263bb598d3b9f7ad56c966a5f92 6535 golang optional golang-github-rs-xid_1.5.0-1~uh~jammy1_amd64.buildinfo

@@ -29,7 +29,7 @@ Checksums-Sha256:
  9262d0d5c84b98a8cd1fbef1fd78d733aaefc5c136eddb0da48917426e18cda0 6228 golang_1.22~2build1~uh~focal1_amd64.deb
 Build-Origin: Ubuntu
 Build-Architecture: amd64
-Build-Date: Fri, 03 Jan 2025 15:04:37 +0000
+Build-Date: Wed, 29 Jan 2025 22:20:23 +0100
 Build-Tainted-By:
  merged-usr-via-symlinks
  usr-local-has-programs
@@ -50,6 +50,7 @@ Installed-Build-Depends:
  bzip2 (= 1.0.8-2),
  coreutils (= 8.30-3ubuntu2),
  cpp (= 4:9.3.0-1ubuntu2),
+ cpp-10 (= 10.5.0-1ubuntu1~20.04),
  cpp-9 (= 9.4.0-1ubuntu1~20.04.2),
  dash (= 0.5.10.2-6),
  debconf (= 1.5.73),
@@ -66,7 +67,9 @@ Installed-Build-Depends:
  findutils (= 4.7.0-1ubuntu1),
  g++ (= 4:9.3.0-1ubuntu2),
  g++-9 (= 9.4.0-1ubuntu1~20.04.2),
+ gawk (= 1:5.0.1+dfsg-1ubuntu0.1),
  gcc (= 4:9.3.0-1ubuntu2),
+ gcc-10 (= 10.5.0-1ubuntu1~20.04),
  gcc-10-base (= 10.5.0-1ubuntu1~20.04),
  gcc-9 (= 9.4.0-1ubuntu1~20.04.2),
  gcc-9-base (= 9.4.0-1ubuntu1~20.04.2),
@@ -81,6 +84,7 @@ Installed-Build-Depends:
  libacl1 (= 2.2.53-6),
  libarchive-zip-perl (= 1.67-2),
  libasan5 (= 9.4.0-1ubuntu1~20.04.2),
+ libasan6 (= 10.5.0-1ubuntu1~20.04),
  libatomic1 (= 10.5.0-1ubuntu1~20.04),
  libattr1 (= 1:2.4.48-5),
  libaudit-common (= 1:2.8.5-2ubuntu6),
@@ -107,6 +111,7 @@ Installed-Build-Depends:
  libelf1 (= 0.176-1.1ubuntu0.1),
  libffi7 (= 3.3-4),
  libfile-stripnondeterminism-perl (= 1.7.0-1),
+ libgcc-10-dev (= 10.5.0-1ubuntu1~20.04),
  libgcc-9-dev (= 9.4.0-1ubuntu1~20.04.2),
  libgcc-s1 (= 10.5.0-1ubuntu1~20.04),
  libgcrypt20 (= 1.8.5-5ubuntu1.1),
@@ -136,6 +141,7 @@ Installed-Build-Depends:
  libperl5.30 (= 5.30.0-9ubuntu0.5),
  libpipeline1 (= 1.5.2-2build1),
  libquadmath0 (= 10.5.0-1ubuntu1~20.04),
+ libreadline8 (= 8.0-4),
  libseccomp2 (= 2.5.1-1ubuntu1~20.04.2),
  libselinux1 (= 3.0-1build2),
  libsigsegv2 (= 2.12-2),
@@ -152,9 +158,9 @@ Installed-Build-Depends:
  libudev1 (= 245.4-4ubuntu3.24),
  libunistring2 (= 0.9.10-2),
  libuuid1 (= 2.34-0.1ubuntu9.6),
- libxml2 (= 2.9.10+dfsg-5ubuntu0.20.04.7),
+ libxml2 (= 2.9.10+dfsg-5ubuntu0.20.04.8),
  libzstd1 (= 1.4.4+dfsg-3ubuntu0.1),
- linux-libc-dev (= 5.4.0-204.224),
+ linux-libc-dev (= 5.4.0-205.225),
  login (= 1:4.8.1-1ubuntu5.20.04.5),
  lsb-base (= 11.1.0ubuntu2),
  m4 (= 1.4.18-4),
@@ -168,6 +174,7 @@ Installed-Build-Depends:
  perl-base (= 5.30.0-9ubuntu0.5),
  perl-modules-5.30 (= 5.30.0-9ubuntu0.5),
  po-debconf (= 1.0.21),
+ readline-common (= 8.0-4),
  sed (= 4.7-1),
  sensible-utils (= 0.0.12+nmu1),
  sysvinit-utils (= 2.96-2.1ubuntu1),
@@ -177,7 +184,7 @@ Installed-Build-Depends:
  xz-utils (= 5.2.4-1ubuntu1.1),
  zlib1g (= 1:1.2.11.dfsg-2ubuntu1.5)
 Environment:
- DEB_BUILD_OPTIONS="parallel=16"
+ DEB_BUILD_OPTIONS="parallel=12"
  LANG="de_DE.UTF-8"
  LC_ALL="C"
  SOURCE_DATE_EPOCH="1735916669"

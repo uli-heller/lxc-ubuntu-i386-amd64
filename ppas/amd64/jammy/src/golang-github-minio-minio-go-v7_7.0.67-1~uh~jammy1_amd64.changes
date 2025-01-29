@@ -1,0 +1,32 @@
+Format: 1.8
+Date: Tue, 21 Jan 2025 10:54:54 +0000
+Source: golang-github-minio-minio-go-v7
+Binary: golang-github-minio-minio-go-v7-dev
+Built-For-Profiles: noudeb
+Architecture: source all
+Version: 7.0.67-1~uh~jammy1
+Distribution: jammy
+Urgency: medium
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-github-minio-minio-go-v7-dev - Go library for Amazon S3 compatible cloud storage
+Changes:
+ golang-github-minio-minio-go-v7 (7.0.67-1~uh~jammy1) jammy; urgency=medium
+ .
+   * Repackaged for jammy
+Checksums-Sha1:
+ c5dacb177775df8f4fafdc9dfb44ae3061834ec4 1898 golang-github-minio-minio-go-v7_7.0.67-1~uh~jammy1.dsc
+ 626673c270215180c7852202aef80806e7f9ee09 2924 golang-github-minio-minio-go-v7_7.0.67-1~uh~jammy1.debian.tar.xz
+ 084d13c746b12b533e1a941d771c0a72a5fefb62 180748 golang-github-minio-minio-go-v7-dev_7.0.67-1~uh~jammy1_all.deb
+ d1876d8f4dc985943205def013ddd40e8358f368 7551 golang-github-minio-minio-go-v7_7.0.67-1~uh~jammy1_amd64.buildinfo
+Checksums-Sha256:
+ 6abece9048ef6756fda550e892833f9d99dad2def6cb89e7dddebdd990f7fe49 1898 golang-github-minio-minio-go-v7_7.0.67-1~uh~jammy1.dsc
+ 34317905c84d87671f14549fc9a7e6a5832bb41ebb902a0a3b696d1bbc8abc78 2924 golang-github-minio-minio-go-v7_7.0.67-1~uh~jammy1.debian.tar.xz
+ 13d6bcfa97d34b6cbd33882290bcbf91e23631ebd268267c84aaa833eaf0036f 180748 golang-github-minio-minio-go-v7-dev_7.0.67-1~uh~jammy1_all.deb
+ 6cd298033aee332480f13247f52f61706f45321d5261a339050ab7d5fbd7f3b1 7551 golang-github-minio-minio-go-v7_7.0.67-1~uh~jammy1_amd64.buildinfo
+Files:
+ 9a408f2c2e601473e1bb786d3b6bbbc7 1898 golang optional golang-github-minio-minio-go-v7_7.0.67-1~uh~jammy1.dsc
+ c7cbdc1bdf35ce266ea58ec597ef33d1 2924 golang optional golang-github-minio-minio-go-v7_7.0.67-1~uh~jammy1.debian.tar.xz
+ 1086f7e678ac31c4cb87497c2491482a 180748 golang optional golang-github-minio-minio-go-v7-dev_7.0.67-1~uh~jammy1_all.deb
+ 57a4a951584ce6e42e6051412547a926 7551 golang optional golang-github-minio-minio-go-v7_7.0.67-1~uh~jammy1_amd64.buildinfo

@@ -1,0 +1,37 @@
+Format: 1.8
+Date: Tue, 21 Jan 2025 10:30:55 +0000
+Source: golang-github-cowsql-go-cowsql
+Binary: go-cowsql golang-github-cowsql-go-cowsql-dev
+Built-For-Profiles: noudeb
+Architecture: source amd64 all
+Version: 1.22.0-2ubuntu0.24.04.2~uh~jammy1
+Distribution: jammy
+Urgency: medium
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ go-cowsql  - Pure-Go cowsql client
+ golang-github-cowsql-go-cowsql-dev - Go bindings for libcowsql
+Changes:
+ golang-github-cowsql-go-cowsql (1.22.0-2ubuntu0.24.04.2~uh~jammy1) jammy; urgency=medium
+ .
+   * Repackaged for jammy
+Checksums-Sha1:
+ b651bdb8bd8549c83b8cc5ac7a200dddd4f076f9 1997 golang-github-cowsql-go-cowsql_1.22.0-2ubuntu0.24.04.2~uh~jammy1.dsc
+ 943675215e50c3887abb487948b4bd5fedae2e36 4028 golang-github-cowsql-go-cowsql_1.22.0-2ubuntu0.24.04.2~uh~jammy1.debian.tar.xz
+ 8588912dfad910be26d41f0b3e7ffc4317427744 15602640 go-cowsql_1.22.0-2ubuntu0.24.04.2~uh~jammy1_amd64.deb
+ 243c6a7d2d3ab5de81b8b58113b8e734c98e8a13 84008 golang-github-cowsql-go-cowsql-dev_1.22.0-2ubuntu0.24.04.2~uh~jammy1_all.deb
+ 118e058f4a73d7f78186833e760c93a63bf07348 9360 golang-github-cowsql-go-cowsql_1.22.0-2ubuntu0.24.04.2~uh~jammy1_amd64.buildinfo
+Checksums-Sha256:
+ f725952f4ca1671e686b2822648285fc6779cc96ad0ea2a59d84544431180f97 1997 golang-github-cowsql-go-cowsql_1.22.0-2ubuntu0.24.04.2~uh~jammy1.dsc
+ ddb4212407addee011c01c18247266cf112e4d474145a0a320671159f81db085 4028 golang-github-cowsql-go-cowsql_1.22.0-2ubuntu0.24.04.2~uh~jammy1.debian.tar.xz
+ d567e7332a725c1909bf1929a429ff8025557fae119baf0ab74329b44ffe6af3 15602640 go-cowsql_1.22.0-2ubuntu0.24.04.2~uh~jammy1_amd64.deb
+ a63dd69504dfbecf1b9bfd087d74a08db05092185350c9e460f76f04670cab24 84008 golang-github-cowsql-go-cowsql-dev_1.22.0-2ubuntu0.24.04.2~uh~jammy1_all.deb
+ ccd7a37cc087d37fdbb0b6d580ce5e0a01562edc8c7c6d5bce8479aa423d5788 9360 golang-github-cowsql-go-cowsql_1.22.0-2ubuntu0.24.04.2~uh~jammy1_amd64.buildinfo
+Files:
+ 05a70346209f28eed87ca9b034942c8b 1997 golang optional golang-github-cowsql-go-cowsql_1.22.0-2ubuntu0.24.04.2~uh~jammy1.dsc
+ 9e9579d7bc4310139e8266496e8a097a 4028 golang optional golang-github-cowsql-go-cowsql_1.22.0-2ubuntu0.24.04.2~uh~jammy1.debian.tar.xz
+ 792ee7dc1af237cba9eba79e2cc65f9a 15602640 golang optional go-cowsql_1.22.0-2ubuntu0.24.04.2~uh~jammy1_amd64.deb
+ ebd76fd795f44748142a4345739e9b92 84008 golang optional golang-github-cowsql-go-cowsql-dev_1.22.0-2ubuntu0.24.04.2~uh~jammy1_all.deb
+ 061d1073bd98e84dec639cbc6c7a5e23 9360 golang optional golang-github-cowsql-go-cowsql_1.22.0-2ubuntu0.24.04.2~uh~jammy1_amd64.buildinfo
+Original-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>

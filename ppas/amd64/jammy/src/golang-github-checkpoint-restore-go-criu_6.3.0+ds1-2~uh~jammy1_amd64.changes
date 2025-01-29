@@ -1,0 +1,32 @@
+Format: 1.8
+Date: Tue, 21 Jan 2025 09:13:26 +0000
+Source: golang-github-checkpoint-restore-go-criu
+Binary: golang-github-checkpoint-restore-go-criu-dev
+Built-For-Profiles: noudeb
+Architecture: source all
+Version: 6.3.0+ds1-2~uh~jammy1
+Distribution: jammy
+Urgency: medium
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-github-checkpoint-restore-go-criu-dev - CRIU bindings for Golang
+Changes:
+ golang-github-checkpoint-restore-go-criu (6.3.0+ds1-2~uh~jammy1) jammy; urgency=medium
+ .
+   * Repackaged for jammy
+Checksums-Sha1:
+ e092beaf1d17117649bc080d4d277cd4d36e2ace 1712 golang-github-checkpoint-restore-go-criu_6.3.0+ds1-2~uh~jammy1.dsc
+ c036368587bd0424788be1277c082eca72e92ac7 4196 golang-github-checkpoint-restore-go-criu_6.3.0+ds1-2~uh~jammy1.debian.tar.xz
+ a9cfbd90b5c6b3102b61601f2541244f9c010689 118122 golang-github-checkpoint-restore-go-criu-dev_6.3.0+ds1-2~uh~jammy1_all.deb
+ 3294556861c811f0dea414deb0727834fc4fe3d3 8693 golang-github-checkpoint-restore-go-criu_6.3.0+ds1-2~uh~jammy1_amd64.buildinfo
+Checksums-Sha256:
+ 056ee8e3f2ce730d9df1ac8f352ef1d4f7d1d54249d2eceb8fd9e7d81dacc406 1712 golang-github-checkpoint-restore-go-criu_6.3.0+ds1-2~uh~jammy1.dsc
+ 0ff91f099821eff531ed3a27c32dbb4481d3e9acc04761eda785beaeb6b42478 4196 golang-github-checkpoint-restore-go-criu_6.3.0+ds1-2~uh~jammy1.debian.tar.xz
+ ad3e26d24f1315f2b066dc2da0dfab8439b8fa2adf618ea577de858277e8f05f 118122 golang-github-checkpoint-restore-go-criu-dev_6.3.0+ds1-2~uh~jammy1_all.deb
+ e7d540f7a2c946441ac67b11b9ff4cd3992cbb1f3add22891df3c7d7859df885 8693 golang-github-checkpoint-restore-go-criu_6.3.0+ds1-2~uh~jammy1_amd64.buildinfo
+Files:
+ 09bf91614582db1eec88e0005c6ded37 1712 golang optional golang-github-checkpoint-restore-go-criu_6.3.0+ds1-2~uh~jammy1.dsc
+ 975cf3f922b2f4d8626f890ee4e83558 4196 golang optional golang-github-checkpoint-restore-go-criu_6.3.0+ds1-2~uh~jammy1.debian.tar.xz
+ 7cefd7ab8436e70f231c8c677f478922 118122 golang optional golang-github-checkpoint-restore-go-criu-dev_6.3.0+ds1-2~uh~jammy1_all.deb
+ 371b6deb43fd010cde7642b5184b69a0 8693 golang optional golang-github-checkpoint-restore-go-criu_6.3.0+ds1-2~uh~jammy1_amd64.buildinfo

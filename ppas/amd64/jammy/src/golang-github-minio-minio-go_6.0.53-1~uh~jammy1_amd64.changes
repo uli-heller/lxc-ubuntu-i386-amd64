@@ -1,0 +1,32 @@
+Format: 1.8
+Date: Tue, 21 Jan 2025 10:57:05 +0000
+Source: golang-github-minio-minio-go
+Binary: golang-github-minio-minio-go-dev
+Built-For-Profiles: noudeb
+Architecture: source all
+Version: 6.0.53-1~uh~jammy1
+Distribution: jammy
+Urgency: medium
+Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-github-minio-minio-go-dev - Go library for Amazon S3 compatible cloud storage
+Changes:
+ golang-github-minio-minio-go (6.0.53-1~uh~jammy1) jammy; urgency=medium
+ .
+   * Repackaged for jammy
+Checksums-Sha1:
+ ace27d1d973f05029ee963075e0ad9522272e568 1635 golang-github-minio-minio-go_6.0.53-1~uh~jammy1.dsc
+ 989d5d57fe0cce85c2053d0ad9a0f09a973e40d2 3532 golang-github-minio-minio-go_6.0.53-1~uh~jammy1.debian.tar.xz
+ ed54d6db6aa1b7111364f2acdead493a5d01f19b 134456 golang-github-minio-minio-go-dev_6.0.53-1~uh~jammy1_all.deb
+ b360582701e8100701d83aeedb629700e15901c3 7130 golang-github-minio-minio-go_6.0.53-1~uh~jammy1_amd64.buildinfo
+Checksums-Sha256:
+ 285f7e47f56d5af1c4b0651bb966e65c98592cbe0712d59a4eeb40dd9e0e0f7e 1635 golang-github-minio-minio-go_6.0.53-1~uh~jammy1.dsc
+ 8315ad5dbedf28f663d60be7ae2a7823f8baf83da3740aacf491d4f78291fe58 3532 golang-github-minio-minio-go_6.0.53-1~uh~jammy1.debian.tar.xz
+ 6503884ac1ee5b1665c9ac48e2cd36bfc327493a3729ab3475d53f837e50f3e8 134456 golang-github-minio-minio-go-dev_6.0.53-1~uh~jammy1_all.deb
+ 0949c5ae9adb9fe1d8a22806c368dd79889357cb436f22df18b01c9a8a94d071 7130 golang-github-minio-minio-go_6.0.53-1~uh~jammy1_amd64.buildinfo
+Files:
+ 24e62fd588a01e86d0f53f6cee941eea 1635 devel optional golang-github-minio-minio-go_6.0.53-1~uh~jammy1.dsc
+ 5f7e16c49113c9f9d8d7021c3a7bd9dd 3532 devel optional golang-github-minio-minio-go_6.0.53-1~uh~jammy1.debian.tar.xz
+ bc638e031350da03e1e4a7859fc46a98 134456 devel optional golang-github-minio-minio-go-dev_6.0.53-1~uh~jammy1_all.deb
+ 53b0cb132501365768256730293daec7 7130 devel optional golang-github-minio-minio-go_6.0.53-1~uh~jammy1_amd64.buildinfo

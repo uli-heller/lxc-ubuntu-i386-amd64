@@ -1,0 +1,32 @@
+Format: 1.8
+Date: Tue, 21 Jan 2025 11:00:49 +0000
+Source: golang-github-secure-io-sio-go
+Binary: golang-github-secure-io-sio-go-dev
+Built-For-Profiles: noudeb
+Architecture: source all
+Version: 0.3.1-2~uh~jammy1
+Distribution: jammy
+Urgency: medium
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-github-secure-io-sio-go-dev - Authenticated encryption for streams in Go (library)
+Changes:
+ golang-github-secure-io-sio-go (0.3.1-2~uh~jammy1) jammy; urgency=medium
+ .
+   * Repackaged for jammy
+Checksums-Sha1:
+ f402a75a70418b98fc427a12e66d83187871d033 1469 golang-github-secure-io-sio-go_0.3.1-2~uh~jammy1.dsc
+ 6737d722e51253cc0bc74f2553f515da01e39c29 2448 golang-github-secure-io-sio-go_0.3.1-2~uh~jammy1.debian.tar.xz
+ 04c12a379eb3e69d2cd527a399c7bac316713902 18294 golang-github-secure-io-sio-go-dev_0.3.1-2~uh~jammy1_all.deb
+ ee3c9b7ff401dd44005202be88ea4ada568552b4 6892 golang-github-secure-io-sio-go_0.3.1-2~uh~jammy1_amd64.buildinfo
+Checksums-Sha256:
+ 4a55869c2d4bb8f1e0148b08ec7dda9fba6aa7b4e9e580999ae38dec98f1010f 1469 golang-github-secure-io-sio-go_0.3.1-2~uh~jammy1.dsc
+ e49b2838f71af1e947287ae8acf80da757a8696c121cc4cf4212664ac8bf789b 2448 golang-github-secure-io-sio-go_0.3.1-2~uh~jammy1.debian.tar.xz
+ a66ac41371ab2374a1570eff00066c99237d235d691d2ebe506ac344cd5b6fb3 18294 golang-github-secure-io-sio-go-dev_0.3.1-2~uh~jammy1_all.deb
+ 547d49a7aa6aebd496b0ebe9ba7b5ff3563ea5f9b647f83398aadf868c63a2a8 6892 golang-github-secure-io-sio-go_0.3.1-2~uh~jammy1_amd64.buildinfo
+Files:
+ 70fcf16912da47975f81e19e12e79011 1469 golang optional golang-github-secure-io-sio-go_0.3.1-2~uh~jammy1.dsc
+ c53636e1f59796da21cc8f241ddcc7eb 2448 golang optional golang-github-secure-io-sio-go_0.3.1-2~uh~jammy1.debian.tar.xz
+ 7cf790a73c03bdddbc602cfd766964bd 18294 golang optional golang-github-secure-io-sio-go-dev_0.3.1-2~uh~jammy1_all.deb
+ 6734597a533ff2ea73d6594a740ce6b0 6892 golang optional golang-github-secure-io-sio-go_0.3.1-2~uh~jammy1_amd64.buildinfo

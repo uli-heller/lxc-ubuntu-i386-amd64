@@ -1,0 +1,32 @@
+Format: 1.8
+Date: Tue, 21 Jan 2025 19:48:35 +0000
+Source: golang-github-minio-madmin-go
+Binary: golang-github-minio-madmin-go-dev
+Built-For-Profiles: noudeb
+Architecture: source all
+Version: 3.0.48-1~uh~jammy1
+Distribution: jammy
+Urgency: medium
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-github-minio-madmin-go-dev - Client SDK providing APIs to manage MinIO services (library)
+Changes:
+ golang-github-minio-madmin-go (3.0.48-1~uh~jammy1) jammy; urgency=medium
+ .
+   * Repackaged for jammy
+Checksums-Sha1:
+ a00b3f08579d02f420e07e75cae67bf9b5b04052 1926 golang-github-minio-madmin-go_3.0.48-1~uh~jammy1.dsc
+ fbc628cf06b47c104e61a0354f5d0dc2a8420d0b 13480 golang-github-minio-madmin-go_3.0.48-1~uh~jammy1.debian.tar.xz
+ 97e2a386b5288234cd1a63c97026265a0f375d38 132554 golang-github-minio-madmin-go-dev_3.0.48-1~uh~jammy1_all.deb
+ 44f658c5203bf28fd0f105583980c143ba02e0e5 10016 golang-github-minio-madmin-go_3.0.48-1~uh~jammy1_amd64.buildinfo
+Checksums-Sha256:
+ 326a14750640da3d14bfe6fd966b3bafc49cd0f1f81eb61b72208321839b3ea9 1926 golang-github-minio-madmin-go_3.0.48-1~uh~jammy1.dsc
+ ddae26061c0ea4afec411a9a7e20e62dddd98b06404973a361ac3d06d1111088 13480 golang-github-minio-madmin-go_3.0.48-1~uh~jammy1.debian.tar.xz
+ d3a02b74b4d08f6e6113877abc319aa40a0a99379b36cbf061daf2512df339ee 132554 golang-github-minio-madmin-go-dev_3.0.48-1~uh~jammy1_all.deb
+ d75d49f8fd2575433b9a57221a081ed1cbe82752613857b2ac7a8d2df51da43d 10016 golang-github-minio-madmin-go_3.0.48-1~uh~jammy1_amd64.buildinfo
+Files:
+ 964e3109505821049dbf1934df0f3540 1926 golang optional golang-github-minio-madmin-go_3.0.48-1~uh~jammy1.dsc
+ 4ad71c4621581f35a1cdae4c27565395 13480 golang optional golang-github-minio-madmin-go_3.0.48-1~uh~jammy1.debian.tar.xz
+ 9b3b3bad5b377f8d166d804593dc6ad8 132554 golang optional golang-github-minio-madmin-go-dev_3.0.48-1~uh~jammy1_all.deb
+ afe4ae8ee0b551b21a7f3eacb2b6c0b3 10016 golang optional golang-github-minio-madmin-go_3.0.48-1~uh~jammy1_amd64.buildinfo

@@ -1,0 +1,33 @@
+Format: 1.8
+Date: Tue, 21 Jan 2025 11:13:39 +0000
+Source: golang-github-shirou-gopsutil
+Binary: golang-github-shirou-gopsutil-dev
+Built-For-Profiles: noudeb
+Architecture: source all
+Version: 3.24.1-1ubuntu1~uh~jammy1
+Distribution: jammy
+Urgency: medium
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ golang-github-shirou-gopsutil-dev - Go package implementing psutils
+Changes:
+ golang-github-shirou-gopsutil (3.24.1-1ubuntu1~uh~jammy1) jammy; urgency=medium
+ .
+   * Repackaged for jammy
+Checksums-Sha1:
+ bcb3bc3d666f57b7212c44fda2630e71c9452838 1815 golang-github-shirou-gopsutil_3.24.1-1ubuntu1~uh~jammy1.dsc
+ fadadc277502274779ecaccfed80245aef4b2e59 6068 golang-github-shirou-gopsutil_3.24.1-1ubuntu1~uh~jammy1.debian.tar.xz
+ ecde4cc0e36938d799286baec67bd8c34a904e69 145088 golang-github-shirou-gopsutil-dev_3.24.1-1ubuntu1~uh~jammy1_all.deb
+ 5de857023029ea1ff946603e788d85e981853e9d 7247 golang-github-shirou-gopsutil_3.24.1-1ubuntu1~uh~jammy1_amd64.buildinfo
+Checksums-Sha256:
+ e73752d1f76ce127bd681d5fe7f6d293028c2d008863207ab95c7e2b1f68474b 1815 golang-github-shirou-gopsutil_3.24.1-1ubuntu1~uh~jammy1.dsc
+ 783865943b92ca07a99900e5a9dc7785c154ad98e70cee478cfd2cdffe4af41c 6068 golang-github-shirou-gopsutil_3.24.1-1ubuntu1~uh~jammy1.debian.tar.xz
+ 9ebe7d7bf41c08ba365561fa78f6149b0f48fd60e4b852e03f65ae453a359231 145088 golang-github-shirou-gopsutil-dev_3.24.1-1ubuntu1~uh~jammy1_all.deb
+ dce23e4eb900cf9b9a74e1e3c2a926fea6674117ef35b7926bb3849b25d1c0c7 7247 golang-github-shirou-gopsutil_3.24.1-1ubuntu1~uh~jammy1_amd64.buildinfo
+Files:
+ b98b6bf74eca9c2a7f07c0cf8431f98f 1815 golang optional golang-github-shirou-gopsutil_3.24.1-1ubuntu1~uh~jammy1.dsc
+ 5ac3bc5fe5c1169f243907cb28065732 6068 golang optional golang-github-shirou-gopsutil_3.24.1-1ubuntu1~uh~jammy1.debian.tar.xz
+ 81ab87d967e3c71dc72ebb048627c2a4 145088 golang optional golang-github-shirou-gopsutil-dev_3.24.1-1ubuntu1~uh~jammy1_all.deb
+ 98f08393b94a8826391e14646847f9a6 7247 golang optional golang-github-shirou-gopsutil_3.24.1-1ubuntu1~uh~jammy1_amd64.buildinfo
+Original-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
