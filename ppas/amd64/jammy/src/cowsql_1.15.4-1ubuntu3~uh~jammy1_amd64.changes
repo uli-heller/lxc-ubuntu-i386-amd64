@@ -1,5 +1,5 @@
 Format: 1.8
-Date: Tue, 21 Jan 2025 10:06:56 +0000
+Date: Wed, 29 Jan 2025 22:29:58 +0000
 Source: cowsql
 Binary: libcowsql-dev libcowsql0
 Built-For-Profiles: noudeb
@@ -17,24 +17,24 @@ Changes:
  .
    * Repackaged for jammy
 Checksums-Sha1:
- 0d2551585682ed3599fb63d497676773c92c1d31 1282 cowsql_1.15.4-1ubuntu3~uh~jammy1.dsc
- c19b6ebcbab2d78c1d394e5545a9320fb5ca11cf 6124 cowsql_1.15.4-1ubuntu3~uh~jammy1.debian.tar.xz
- 04c9ae750cdb17d80cf285b060c5a5de8deb6b9f 7254 cowsql_1.15.4-1ubuntu3~uh~jammy1_amd64.buildinfo
- 49c2435337e839328ad727d884fb7371364b334f 105504 libcowsql-dev_1.15.4-1ubuntu3~uh~jammy1_amd64.deb
- c67d9500fb414d832f73b9fd3f1849a0a85ce7be 291796 libcowsql0-dbgsym_1.15.4-1ubuntu3~uh~jammy1_amd64.ddeb
- 951deea656728b4be2f8c928217a050a4b2e63aa 76470 libcowsql0_1.15.4-1ubuntu3~uh~jammy1_amd64.deb
+ 4e7ac87a282d312f07508e2332a4f59c5823c687 1282 cowsql_1.15.4-1ubuntu3~uh~jammy1.dsc
+ 7b27c21b34bf638bae50c3db9902766f9dbe90c7 6120 cowsql_1.15.4-1ubuntu3~uh~jammy1.debian.tar.xz
+ 5df641cdd1b7c308d89e6555efb77cb9179f0ba6 7254 cowsql_1.15.4-1ubuntu3~uh~jammy1_amd64.buildinfo
+ f87ac892c5404cb69e573286b47a1462989000ff 105510 libcowsql-dev_1.15.4-1ubuntu3~uh~jammy1_amd64.deb
+ 37bfbf8d64d8e9eff661abbf81bc67bfc982dbeb 339502 libcowsql0-dbgsym_1.15.4-1ubuntu3~uh~jammy1_amd64.ddeb
+ 30e6ee43f9cd9a99039162a01eeee40b6f570c21 76486 libcowsql0_1.15.4-1ubuntu3~uh~jammy1_amd64.deb
 Checksums-Sha256:
- 877b478d93161972cd0ef9ec2b7e8eacbc5cdf7d1265fce8e5f7f1fceb123132 1282 cowsql_1.15.4-1ubuntu3~uh~jammy1.dsc
- 0240873a203c0ee8db4573dae066cd6d2c9bfe9a6f41c779ea3e67ae02131ecd 6124 cowsql_1.15.4-1ubuntu3~uh~jammy1.debian.tar.xz
- 42217ff43098e6b4f9008acdabfc1c441eeae7d1c4c695188c8de4a83a74ffd4 7254 cowsql_1.15.4-1ubuntu3~uh~jammy1_amd64.buildinfo
- 8c61b44b7d2dc8f8f55d82aefa192086619f76e66c91ee6b0bc4f9d12c2d479a 105504 libcowsql-dev_1.15.4-1ubuntu3~uh~jammy1_amd64.deb
- cdc24878288b25bae0e68633c6ef2978249509d4472818a42df64a64ba316dfa 291796 libcowsql0-dbgsym_1.15.4-1ubuntu3~uh~jammy1_amd64.ddeb
- 14dfff81455f3724241641f0a382fec232395e877d028512d76f04ee781a6003 76470 libcowsql0_1.15.4-1ubuntu3~uh~jammy1_amd64.deb
+ cf5e3d27ab533225341a6018181905df7abcef9866ceda95246eaa670c44cb81 1282 cowsql_1.15.4-1ubuntu3~uh~jammy1.dsc
+ 49e6408336637678dc8585214586ab786ff5fa006370c28958c2ee9f5dd8d207 6120 cowsql_1.15.4-1ubuntu3~uh~jammy1.debian.tar.xz
+ c0c3eb23ef84233e00b206bde677fff1718b50d973fbdc8e1b46b6d61c5d88f1 7254 cowsql_1.15.4-1ubuntu3~uh~jammy1_amd64.buildinfo
+ 93adc04ea0a541644f68081f0d0525bbc5f85c5600c346c3a73012893cbaaf54 105510 libcowsql-dev_1.15.4-1ubuntu3~uh~jammy1_amd64.deb
+ d0fe928abbe50cd7d995c5f56447d3e21ea7f326de14482f1931b25266ab55a3 339502 libcowsql0-dbgsym_1.15.4-1ubuntu3~uh~jammy1_amd64.ddeb
+ 0f542053d80a2abfd75bfa59451586f4e397938e3081e35a774aa8d3a3e449e1 76486 libcowsql0_1.15.4-1ubuntu3~uh~jammy1_amd64.deb
 Files:
- 0ca15a62dcc4182483b349391ed4da5a 1282 devel optional cowsql_1.15.4-1ubuntu3~uh~jammy1.dsc
- c054ffbd025f163db6419ea3f3ef17d4 6124 devel optional cowsql_1.15.4-1ubuntu3~uh~jammy1.debian.tar.xz
- c56f60a467dc7a409634a13edc38f27a 7254 devel optional cowsql_1.15.4-1ubuntu3~uh~jammy1_amd64.buildinfo
- 4585f0154f1ab074e5ab4c1275e693d7 105504 libdevel optional libcowsql-dev_1.15.4-1ubuntu3~uh~jammy1_amd64.deb
- b107961e8b300bdcd4d167074ce76303 291796 debug optional libcowsql0-dbgsym_1.15.4-1ubuntu3~uh~jammy1_amd64.ddeb
- d9883896b91a0044209e9725b209f7c9 76470 libs optional libcowsql0_1.15.4-1ubuntu3~uh~jammy1_amd64.deb
+ 426dd9c70f9e1f53fe5dbfc3bfe3df8f 1282 devel optional cowsql_1.15.4-1ubuntu3~uh~jammy1.dsc
+ 6b5762bc99f6934afad676305bc9c4eb 6120 devel optional cowsql_1.15.4-1ubuntu3~uh~jammy1.debian.tar.xz
+ 01693c4a48167355ea72aea60229c328 7254 devel optional cowsql_1.15.4-1ubuntu3~uh~jammy1_amd64.buildinfo
+ 498c447b7e6f85ba4e7c8e78354683d3 105510 libdevel optional libcowsql-dev_1.15.4-1ubuntu3~uh~jammy1_amd64.deb
+ 4036da31bd8fdc94d75030c73021a8b7 339502 debug optional libcowsql0-dbgsym_1.15.4-1ubuntu3~uh~jammy1_amd64.ddeb
+ 8d03438493db2496028d30b537102547 76486 libs optional libcowsql0_1.15.4-1ubuntu3~uh~jammy1_amd64.deb
 Original-Maintainer: Free Ekanayaka <freee@debian.org>

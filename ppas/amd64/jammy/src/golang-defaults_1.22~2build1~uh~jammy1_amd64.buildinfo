@@ -4,7 +4,7 @@ Binary: gccgo-go golang golang-any golang-doc golang-go golang-src
 Architecture: all amd64 source
 Version: 2:1.22~2build1~uh~jammy1
 Checksums-Md5:
- 4f9bfe1e42cc23497123623c8e554f2c 1579 golang-defaults_1.22~2build1~uh~jammy1.dsc
+ ebd30cd42b4821145d1272f7e2118d7f 1579 golang-defaults_1.22~2build1~uh~jammy1.dsc
  79cc780e4ef99f6b9362293ac528f922 44622 gccgo-go_1.22~2build1~uh~jammy1_amd64.deb
  71e2d527d4dcf1f28d8492d0d2890a51 6334 golang-any_1.22~2build1~uh~jammy1_amd64.deb
  35cd03dec83e4b10fca71e44099b684b 6264 golang-doc_1.22~2build1~uh~jammy1_all.deb
@@ -12,7 +12,7 @@ Checksums-Md5:
  92078c402728617d6adfa2a20479eb3c 6232 golang-src_1.22~2build1~uh~jammy1_all.deb
  5b87fb0522444871d4ff2e0539bb79fc 6216 golang_1.22~2build1~uh~jammy1_amd64.deb
 Checksums-Sha1:
- d2d08b67412ae8e04f76e72512a45c1473776d17 1579 golang-defaults_1.22~2build1~uh~jammy1.dsc
+ 4c2da2f8ce63ccfe6d700817d20ea965b5c54d4f 1579 golang-defaults_1.22~2build1~uh~jammy1.dsc
  4840f948715d171a5727b96ebe3349bd0ea42b69 44622 gccgo-go_1.22~2build1~uh~jammy1_amd64.deb
  ba8d1d1afeee6622c56b510cfd36a3648e995055 6334 golang-any_1.22~2build1~uh~jammy1_amd64.deb
  2c2e547e1bc383b5307332d7717bda4bda89b29a 6264 golang-doc_1.22~2build1~uh~jammy1_all.deb
@@ -20,7 +20,7 @@ Checksums-Sha1:
  ca1f3bbb750d9bc01a01827c172a1ba41ef31b4e 6232 golang-src_1.22~2build1~uh~jammy1_all.deb
  ba16272f1de2caea5bda38a08500e49ffa6144e1 6216 golang_1.22~2build1~uh~jammy1_amd64.deb
 Checksums-Sha256:
- 517d90ab2262c32ddb1a35190a5ad61cbc7ed1e9932b572513020f8ca1bcead9 1579 golang-defaults_1.22~2build1~uh~jammy1.dsc
+ cbe1be89cd64e831132ec1c908f6a67f4174a304c893292d50ab16379758306d 1579 golang-defaults_1.22~2build1~uh~jammy1.dsc
  9b0dcc6cb6b6c0236c60d48db3ab49965f320af57df41582159a2404e26b8546 44622 gccgo-go_1.22~2build1~uh~jammy1_amd64.deb
  311e495659b25f5c623253d4c24f8ffd36358f4e3f2fd451b4f00c66724641f1 6334 golang-any_1.22~2build1~uh~jammy1_amd64.deb
  bc1ec854a08144d31e436927cf0cddae476301e47b9c906d9e1dba5a96621f64 6264 golang-doc_1.22~2build1~uh~jammy1_all.deb
@@ -29,7 +29,7 @@ Checksums-Sha256:
  ecf22814a6836f9f93f2ed77fa418e7afa233e3b7e2220ddad6665e821054c0b 6216 golang_1.22~2build1~uh~jammy1_amd64.deb
 Build-Origin: Ubuntu
 Build-Architecture: amd64
-Build-Date: Thu, 02 Jan 2025 19:34:52 +0000
+Build-Date: Wed, 29 Jan 2025 23:22:31 +0100
 Build-Tainted-By:
  merged-usr-via-aliased-dirs
  usr-local-has-programs
@@ -51,6 +51,7 @@ Installed-Build-Depends:
  coreutils (= 8.32-4.1ubuntu1.2),
  cpp (= 4:11.2.0-1ubuntu1),
  cpp-11 (= 11.4.0-1ubuntu1~22.04),
+ cpp-12 (= 12.3.0-1ubuntu1~22.04),
  dash (= 0.5.11+git20210903+057cd650a4ed-3build1),
  debconf (= 1.5.79ubuntu1),
  debhelper (= 13.6ubuntu1),
@@ -70,6 +71,7 @@ Installed-Build-Depends:
  gcc (= 4:11.2.0-1ubuntu1),
  gcc-11 (= 11.4.0-1ubuntu1~22.04),
  gcc-11-base (= 11.4.0-1ubuntu1~22.04),
+ gcc-12 (= 12.3.0-1ubuntu1~22.04),
  gcc-12-base (= 12.3.0-1ubuntu1~22.04),
  gettext (= 0.21-4ubuntu4),
  gettext-base (= 0.21-4ubuntu4),
@@ -82,6 +84,7 @@ Installed-Build-Depends:
  libacl1 (= 2.3.1-1),
  libarchive-zip-perl (= 1.68-1),
  libasan6 (= 11.4.0-1ubuntu1~22.04),
+ libasan8 (= 12.3.0-1ubuntu1~22.04),
  libatomic1 (= 12.3.0-1ubuntu1~22.04),
  libattr1 (= 1:2.5.1-1build1),
  libaudit-common (= 1:3.0.7-1build1),
@@ -109,6 +112,7 @@ Installed-Build-Depends:
  libelf1 (= 0.186-1build1),
  libfile-stripnondeterminism-perl (= 1.13.0-1),
  libgcc-11-dev (= 11.4.0-1ubuntu1~22.04),
+ libgcc-12-dev (= 12.3.0-1ubuntu1~22.04),
  libgcc-s1 (= 12.3.0-1ubuntu1~22.04),
  libgcrypt20 (= 1.9.4-3ubuntu3),
  libgdbm-compat4 (= 1.23-1),
@@ -134,10 +138,10 @@ Installed-Build-Depends:
  libmpfr6 (= 4.1.0-3build3),
  libnsl-dev (= 1.3.0-2build2),
  libnsl2 (= 1.3.0-2build2),
- libpam-modules (= 1.4.0-11ubuntu2.4),
- libpam-modules-bin (= 1.4.0-11ubuntu2.4),
- libpam-runtime (= 1.4.0-11ubuntu2.4),
- libpam0g (= 1.4.0-11ubuntu2.4),
+ libpam-modules (= 1.4.0-11ubuntu2.5),
+ libpam-modules-bin (= 1.4.0-11ubuntu2.5),
+ libpam-runtime (= 1.4.0-11ubuntu2.5),
+ libpam0g (= 1.4.0-11ubuntu2.5),
  libpcre2-8-0 (= 10.39-3ubuntu0.1),
  libpcre3 (= 2:8.39-13ubuntu0.22.04.1),
  libperl5.34 (= 5.34.0-3ubuntu1.3),
@@ -158,14 +162,15 @@ Installed-Build-Depends:
  libtirpc3 (= 1.3.2-2ubuntu0.1),
  libtool (= 2.4.6-15build2),
  libtsan0 (= 11.4.0-1ubuntu1~22.04),
+ libtsan2 (= 12.3.0-1ubuntu1~22.04),
  libubsan1 (= 12.3.0-1ubuntu1~22.04),
  libuchardet0 (= 0.0.7-1build2),
  libudev1 (= 249.11-0ubuntu3.12),
  libunistring2 (= 1.0-1),
  libuuid1 (= 2.37.2-4ubuntu3.4),
- libxml2 (= 2.9.13+dfsg-1ubuntu0.4),
+ libxml2 (= 2.9.13+dfsg-1ubuntu0.5),
  libzstd1 (= 1.4.8+dfsg-3build1),
- linux-libc-dev (= 5.15.0-130.140),
+ linux-libc-dev (= 5.15.0-131.141),
  login (= 1:4.8.1-2ubuntu2.2),
  lsb-base (= 11.1.0ubuntu4),
  lto-disabled-list (= 24),
@@ -189,7 +194,7 @@ Installed-Build-Depends:
  xz-utils (= 5.2.5-2ubuntu1),
  zlib1g (= 1:1.2.11.dfsg-2ubuntu9.2)
 Environment:
- DEB_BUILD_OPTIONS="parallel=16"
+ DEB_BUILD_OPTIONS="parallel=12"
  DEB_BUILD_PROFILES="noudeb"
  LANG="de_DE.UTF-8"
  LC_ALL="C"

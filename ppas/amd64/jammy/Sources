@@ -111,14 +111,14 @@ Package-List:
  golang-src deb golang optional arch=all
 Directory: jammy/src
 Checksums-Sha1:
- d2d08b67412ae8e04f76e72512a45c1473776d17 1579 golang-defaults_1.22~2build1~uh~jammy1.dsc
- a341ebe9a374cd508e9d71163df893e8c2939561 31192 golang-defaults_1.22~2build1~uh~jammy1.tar.xz
+ 4c2da2f8ce63ccfe6d700817d20ea965b5c54d4f 1579 golang-defaults_1.22~2build1~uh~jammy1.dsc
+ a331118e50e5da353e0e0e2919f78782078d8294 31200 golang-defaults_1.22~2build1~uh~jammy1.tar.xz
 Checksums-Sha256:
- 517d90ab2262c32ddb1a35190a5ad61cbc7ed1e9932b572513020f8ca1bcead9 1579 golang-defaults_1.22~2build1~uh~jammy1.dsc
- 9f41e9cbc97f161a7151f5faeaf816ffed47ce2066dfb5f465cb771ac3e53c8a 31192 golang-defaults_1.22~2build1~uh~jammy1.tar.xz
+ cbe1be89cd64e831132ec1c908f6a67f4174a304c893292d50ab16379758306d 1579 golang-defaults_1.22~2build1~uh~jammy1.dsc
+ 8c586c4fd662d78c56eda2c2d1353cb0f0348f1505ba073a0ebdd522deef7d19 31200 golang-defaults_1.22~2build1~uh~jammy1.tar.xz
 Files:
- 4f9bfe1e42cc23497123623c8e554f2c 1579 golang-defaults_1.22~2build1~uh~jammy1.dsc
- 04e34fcb7e903834c389295c8c4ed613 31192 golang-defaults_1.22~2build1~uh~jammy1.tar.xz
+ ebd30cd42b4821145d1272f7e2118d7f 1579 golang-defaults_1.22~2build1~uh~jammy1.dsc
+ 03525809eeb460c2d7fa17db8d1b2b47 31200 golang-defaults_1.22~2build1~uh~jammy1.tar.xz
 Original-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>
 
 Format: 3.0 (quilt)
@@ -1214,68 +1214,6 @@ Files:
  13118cf3c41402f78d8afc41ec710391 2748 qrterminal_3.2.0.3-2ubuntu0.24.04.2~uh~jammy2.debian.tar.xz
 Go-Import-Path: github.com/mdp/qrterminal
 Original-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
-
-Format: 3.0 (quilt)
-Package: raft
-Binary: libraft0, libraft-dev, libraft-tools
-Architecture: any
-Version: 0.22.0-1build2
-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Uploaders: Laszlo Boszormenyi (GCS) <gcs@debian.org>, Mathias Gibbens <gibmat@debian.org>
-Homepage: https://raft.readthedocs.io
-Standards-Version: 4.6.2
-Vcs-Browser: https://salsa.debian.org/cowsql-team/raft
-Vcs-Git: https://salsa.debian.org/cowsql-team/raft.git
-Build-Depends: debhelper-compat (= 11), pkg-config, libuv1-dev, liblz4-dev, python3-sphinx
-Package-List:
- libraft-dev deb libdevel optional arch=any
- libraft-tools deb misc optional arch=any
- libraft0 deb libs optional arch=any
-Directory: jammy/src
-Checksums-Sha1:
- f65baa708d6ce265477686667d6a733ec97f5049 2154 raft_0.22.0-1build2.dsc
- 4287f165968019af3e6113c6fe51407e1d9f68e4 365711 raft_0.22.0.orig.tar.gz
- e4c9752cca34dda2f6bedc3074f67ef991e0a61a 6184 raft_0.22.0-1build2.debian.tar.xz
-Checksums-Sha256:
- 29ee873855cbe19576fa311eca64749ee7bf1d4a138ee8386667f53745c627ac 2154 raft_0.22.0-1build2.dsc
- 9f69e60101f44b11ab1a44720f5e7b5a811bd1705f6404b9074c4f7c871cd12d 365711 raft_0.22.0.orig.tar.gz
- f8c192ed5db7d3c03c59a240f358b087c4c93e70900637bb0a5af4a6e982a764 6184 raft_0.22.0-1build2.debian.tar.xz
-Files:
- d13208d9afa4d2fdb101c5717b68defc 2154 raft_0.22.0-1build2.dsc
- 3d8d8a628fd8aa741945a4b1df0cb273 365711 raft_0.22.0.orig.tar.gz
- 1b292989174b415303e4ec6f1c92b4cd 6184 raft_0.22.0-1build2.debian.tar.xz
-Original-Maintainer: Free Ekanayaka <freee@debian.org>
-
-Format: 3.0 (quilt)
-Package: raft
-Binary: libraft0, libraft-dev, libraft-tools
-Architecture: any
-Version: 0.22.0-1build2~uh~jammy1
-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Uploaders: Laszlo Boszormenyi (GCS) <gcs@debian.org>, Mathias Gibbens <gibmat@debian.org>
-Homepage: https://raft.readthedocs.io
-Standards-Version: 4.6.2
-Vcs-Browser: https://salsa.debian.org/cowsql-team/raft
-Vcs-Git: https://salsa.debian.org/cowsql-team/raft.git
-Build-Depends: debhelper-compat (= 13), pkg-config, libuv1-dev, liblz4-dev, python3-sphinx
-Package-List:
- libraft-dev deb libdevel optional arch=any
- libraft-tools deb misc optional arch=any
- libraft0 deb libs optional arch=any
-Directory: jammy/src
-Checksums-Sha1:
- a159ff53443af4e8b35237a432d1ec258c582110 1311 raft_0.22.0-1build2~uh~jammy1.dsc
- 4287f165968019af3e6113c6fe51407e1d9f68e4 365711 raft_0.22.0.orig.tar.gz
- 6ec8ca148cb3be149e2c93f9c34b756e256307b2 6852 raft_0.22.0-1build2~uh~jammy1.debian.tar.xz
-Checksums-Sha256:
- 44f01dba33901a1f966a2aae96b4bdd3656cf2cbf874461b9af6dc6e5c48b967 1311 raft_0.22.0-1build2~uh~jammy1.dsc
- 9f69e60101f44b11ab1a44720f5e7b5a811bd1705f6404b9074c4f7c871cd12d 365711 raft_0.22.0.orig.tar.gz
- d881dbaf2f48aa1d2d25e88b23786162ea406fa16acd26f826f8327866473e60 6852 raft_0.22.0-1build2~uh~jammy1.debian.tar.xz
-Files:
- cc37e41f3cb3f0526c01a9d68a9efc25 1311 raft_0.22.0-1build2~uh~jammy1.dsc
- 3d8d8a628fd8aa741945a4b1df0cb273 365711 raft_0.22.0.orig.tar.gz
- e287ebe5cd41a9b390aa148e8b87f88c 6852 raft_0.22.0-1build2~uh~jammy1.debian.tar.xz
-Original-Maintainer: Free Ekanayaka <freee@debian.org>
 
 Format: 3.0 (quilt)
 Package: virtualbox
