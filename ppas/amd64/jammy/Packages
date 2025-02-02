@@ -950,6 +950,26 @@ Description: Go code generator for MessagePack
  .
  This package contains the tools/binaries.
 
+Package: podman-compose
+Version: 1.2.0-1~uh~jammy1
+Architecture: all
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Installed-Size: 239
+Depends: python3-dotenv, python3-yaml, python3:any
+Recommends: podman
+Filename: jammy/debs/podman-compose_1.2.0-1~uh~jammy1_all.deb
+Size: 46022
+MD5sum: 7bdb987bff609a3e3c8957bc72935697
+SHA1: 14b23c4ea95f43743c2ae8a8370f5122238b9ebd
+SHA256: caafe5810dc4466f7b23afa6f39d095cbb4550ad7c580965f36efcf2112c7879
+Section: admin
+Priority: optional
+Homepage: https://github.com/containers/podman-compose
+Description: Run docker-compose.yml using podman
+ An implementation of docker-compose with podman backend.
+ The main objective of this project is to be able to run docker-compose.yml
+ unmodified and rootless.
+
 Package: protoc-gen-go-1-5
 Source: golang-github-golang-protobuf-1-5
 Version: 1.5.3-1ubuntu0.2~uh~jammy1
