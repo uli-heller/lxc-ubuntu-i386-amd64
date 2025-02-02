@@ -1,0 +1,31 @@
+Format: 1.8
+Date: Sun, 02 Feb 2025 23:10:26 +0000
+Source: bash-completion
+Binary: bash-completion
+Architecture: source all
+Version: 1:2.14.0-1~uh~focal1
+Distribution: focal
+Urgency: medium
+Maintainer: Gabriel F. T. Gomes <gabriel@debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ bash-completion - programmable completion for the bash shell
+Changes:
+ bash-completion (1:2.14.0-1~uh~focal1) focal; urgency=medium
+ .
+   * Repackaged for focal
+Checksums-Sha1:
+ 803faef428df4f73a360e73978bf0c5e720fb776 1107 bash-completion_2.14.0-1~uh~focal1.dsc
+ 6911365b11bd59b9e6c2cf1983afee502f77a4c3 17940 bash-completion_2.14.0-1~uh~focal1.debian.tar.xz
+ 0816a15a58a00b0c9d8a9be131f9f0421c9e8054 315760 bash-completion_2.14.0-1~uh~focal1_all.deb
+ 537ecff4c93c6dc64525ddfc07ed731fcff5001b 5777 bash-completion_2.14.0-1~uh~focal1_amd64.buildinfo
+Checksums-Sha256:
+ c3eef4e6025d5bafbb304c182b269fd5c30abd1b951e37d2c2d71dedaab63c45 1107 bash-completion_2.14.0-1~uh~focal1.dsc
+ f67ae2b436769249c9cd6e4d41573642eb732992ba3131484b79d7ee4dc4fedf 17940 bash-completion_2.14.0-1~uh~focal1.debian.tar.xz
+ efd5829881fcb7378dec87c8d3574c8e73b9ed69536708acbe84c2a22fd81174 315760 bash-completion_2.14.0-1~uh~focal1_all.deb
+ 4002934dd12bef4a0333d0762744646b0184aceb9aa9fe22db911a1941a2753b 5777 bash-completion_2.14.0-1~uh~focal1_amd64.buildinfo
+Files:
+ 1ea1168ff0c097134e0dc662c2d9aae1 1107 shells standard bash-completion_2.14.0-1~uh~focal1.dsc
+ bd263cd31d142f815add0b10bd8a48fa 17940 shells standard bash-completion_2.14.0-1~uh~focal1.debian.tar.xz
+ ba5e5b3f1d822e98aa377ccbbdcb901f 315760 shells standard bash-completion_2.14.0-1~uh~focal1_all.deb
+ aea2da33c91b1895f30c99257bf75b04 5777 shells standard bash-completion_2.14.0-1~uh~focal1_amd64.buildinfo

@@ -1,0 +1,31 @@
+Format: 1.8
+Date: Sun, 02 Feb 2025 23:14:06 +0000
+Source: podman-compose
+Binary: podman-compose
+Architecture: source all
+Version: 1.2.0-1~uh~focal1
+Distribution: focal
+Urgency: medium
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Changed-By: Uli Heller <uli@heller.cool>
+Description:
+ podman-compose - Run docker-compose.yml using podman
+Changes:
+ podman-compose (1.2.0-1~uh~focal1) focal; urgency=medium
+ .
+   * Repackaged for focal
+Checksums-Sha1:
+ 1ebde3aee1afc63de1eb445a752f450e3446ebba 1346 podman-compose_1.2.0-1~uh~focal1.dsc
+ 7abfe5c73b6658ac2c028fa589a0998697a4b75a 3888 podman-compose_1.2.0-1~uh~focal1.debian.tar.xz
+ 4124385f723cf74057d355dc3263b5fdca070808 45056 podman-compose_1.2.0-1~uh~focal1_all.deb
+ 3b30755d26dccba2da6deaf4931adf7e7e77caf2 6629 podman-compose_1.2.0-1~uh~focal1_amd64.buildinfo
+Checksums-Sha256:
+ 26168e738544bbd4af21115befb6c76576653bdbcc7afe8875983c92b246a9e9 1346 podman-compose_1.2.0-1~uh~focal1.dsc
+ 3ea998299b638cf523940349810c82582c9033b9725c602b7bbdb912bd6f1779 3888 podman-compose_1.2.0-1~uh~focal1.debian.tar.xz
+ e42ede72a67f5e4798f6cad3cc607e5030710b357e0d1df8c9f79a8a0abe5459 45056 podman-compose_1.2.0-1~uh~focal1_all.deb
+ 319bd3cddfd6e66ba971c94837c852f962a131bfdb087de081185cac165ac6a6 6629 podman-compose_1.2.0-1~uh~focal1_amd64.buildinfo
+Files:
+ c8f335b98a3a46248c5e60fb99bc754b 1346 admin optional podman-compose_1.2.0-1~uh~focal1.dsc
+ 72fb7a2cd9953990ed448713c9666dd7 3888 admin optional podman-compose_1.2.0-1~uh~focal1.debian.tar.xz
+ 13b98c1bec97bf265bb591247e89bd09 45056 admin optional podman-compose_1.2.0-1~uh~focal1_all.deb
+ f8ac2bf00c36a8a7eed7585dac47f87f 6629 admin optional podman-compose_1.2.0-1~uh~focal1_amd64.buildinfo

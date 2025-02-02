@@ -1,3 +1,25 @@
+Package: bash-completion
+Version: 1:2.14.0-1~uh~focal1
+Architecture: all
+Maintainer: Gabriel F. T. Gomes <gabriel@debian.org>
+Installed-Size: 1819
+Provides: dh-sequence-bash-completion
+Filename: focal/debs/bash-completion_2.14.0-1~uh~focal1_all.deb
+Size: 315760
+MD5sum: ba5e5b3f1d822e98aa377ccbbdcb901f
+SHA1: 0816a15a58a00b0c9d8a9be131f9f0421c9e8054
+SHA256: efd5829881fcb7378dec87c8d3574c8e73b9ed69536708acbe84c2a22fd81174
+Section: shells
+Priority: standard
+Multi-Arch: foreign
+Homepage: https://github.com/scop/bash-completion
+Description: programmable completion for the bash shell
+ bash completion extends bash's standard completion behavior to achieve
+ complex command lines with just a few keystrokes.  This project was
+ conceived to produce programmable completion routines for the most
+ common Linux/UNIX commands, reducing the amount of typing sysadmins
+ and programmers need to do on a daily basis.
+
 Package: dh-dkms
 Source: dkms
 Version: 3.0.11-1ubuntu13~uh~focal1
@@ -743,6 +765,26 @@ Description: TPM emulation library
  Libtpms is a library that provides TPM functionality. Libtpm is used
  by swtpm package.
 Original-Maintainer: Seunghun Han <kkamagui@gmail.com>
+
+Package: podman-compose
+Version: 1.2.0-1~uh~focal1
+Architecture: all
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Installed-Size: 240
+Depends: python3-dotenv, python3-yaml, python3:any
+Recommends: podman
+Filename: focal/debs/podman-compose_1.2.0-1~uh~focal1_all.deb
+Size: 45056
+MD5sum: 13b98c1bec97bf265bb591247e89bd09
+SHA1: 4124385f723cf74057d355dc3263b5fdca070808
+SHA256: e42ede72a67f5e4798f6cad3cc607e5030710b357e0d1df8c9f79a8a0abe5459
+Section: admin
+Priority: optional
+Homepage: https://github.com/containers/podman-compose
+Description: Run docker-compose.yml using podman
+ An implementation of docker-compose with podman backend.
+ The main objective of this project is to be able to run docker-compose.yml
+ unmodified and rootless.
 
 Package: qrterminal
 Version: 3.2.0.3-2ubuntu0.24.04.2~uh~focal2
