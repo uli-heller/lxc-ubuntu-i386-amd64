@@ -767,17 +767,17 @@ Description: TPM emulation library
 Original-Maintainer: Seunghun Han <kkamagui@gmail.com>
 
 Package: podman-compose
-Version: 1.2.0-1~uh~focal1
+Version: 1.3.0-1~uh~focal1
 Architecture: all
 Maintainer: Debian Python Team <team+python@tracker.debian.org>
-Installed-Size: 240
+Installed-Size: 246
 Depends: python3-dotenv, python3-yaml, python3:any
 Recommends: podman
-Filename: focal/debs/podman-compose_1.2.0-1~uh~focal1_all.deb
-Size: 45056
-MD5sum: 13b98c1bec97bf265bb591247e89bd09
-SHA1: 4124385f723cf74057d355dc3263b5fdca070808
-SHA256: e42ede72a67f5e4798f6cad3cc607e5030710b357e0d1df8c9f79a8a0abe5459
+Filename: focal/debs/podman-compose_1.3.0-1~uh~focal1_all.deb
+Size: 48356
+MD5sum: 97eea228950faed0761426703da55576
+SHA1: f67a70504f8b45786fae63c148b45d0c69165900
+SHA256: 3ae4fb3e6d7163c65c402f000c28a64ac0d53ae25a88267cfa5be6fe4276eb8c
 Section: admin
 Priority: optional
 Homepage: https://github.com/containers/podman-compose

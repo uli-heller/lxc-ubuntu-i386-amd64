@@ -951,17 +951,17 @@ Description: Go code generator for MessagePack
  This package contains the tools/binaries.
 
 Package: podman-compose
-Version: 1.2.0-1~uh~jammy1
+Version: 1.3.0-1~uh~jammy1
 Architecture: all
 Maintainer: Debian Python Team <team+python@tracker.debian.org>
-Installed-Size: 239
+Installed-Size: 245
 Depends: python3-dotenv, python3-yaml, python3:any
 Recommends: podman
-Filename: jammy/debs/podman-compose_1.2.0-1~uh~jammy1_all.deb
-Size: 46022
-MD5sum: 7bdb987bff609a3e3c8957bc72935697
-SHA1: 14b23c4ea95f43743c2ae8a8370f5122238b9ebd
-SHA256: caafe5810dc4466f7b23afa6f39d095cbb4550ad7c580965f36efcf2112c7879
+Filename: jammy/debs/podman-compose_1.3.0-1~uh~jammy1_all.deb
+Size: 49346
+MD5sum: f0bda9fecd78983b3362fbaef5fafa87
+SHA1: 60ed410f0760cf92b684a4a56c48f0848e789543
+SHA256: 119380e829650a7218b0b8eb90cd268d8bd31f4f36a8b44ce666fb2482188a4f
 Section: admin
 Priority: optional
 Homepage: https://github.com/containers/podman-compose
