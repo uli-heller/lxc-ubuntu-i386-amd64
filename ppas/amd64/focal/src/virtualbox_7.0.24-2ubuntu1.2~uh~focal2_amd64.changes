@@ -1,0 +1,67 @@
+Format: 1.8
+Date: Tue, 11 Mar 2025 10:45:15 +0000
+Source: virtualbox
+Binary: virtualbox virtualbox-dkms virtualbox-guest-utils virtualbox-guest-x11 virtualbox-qt virtualbox-source
+Architecture: source amd64
+Version: 7.0.24-2ubuntu1.2~uh~focal2
+Distribution: focal
+Urgency: medium
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Changed-By: root <root@ulicsl>
+Description:
+ virtualbox - x86 virtualization solution - base binaries
+ virtualbox-dkms - x86 virtualization solution - kernel module sources for dkms
+ virtualbox-guest-utils - x86 virtualization solution - non-X11 guest utilities
+ virtualbox-guest-x11 - x86 virtualization solution - X11 guest utilities
+ virtualbox-qt - x86 virtualization solution - Qt based user interface
+ virtualbox-source - x86 virtualization solution - kernel module source
+Changes:
+ virtualbox (7.0.24-2ubuntu1.2~uh~focal2) focal; urgency=medium
+ .
+   * New upstream release
+Checksums-Sha1:
+ 65acced1fae5fd1df1f0ba8d7200d3e792b2edc2 2787 virtualbox_7.0.24-2ubuntu1.2~uh~focal2.dsc
+ 99ce98561363e74b0d31ed142fa1da805c64a88b 174663788 virtualbox_7.0.24.orig.tar.bz2
+ b4f020c1b1bb27c8c878dcea4f2af6ed39276ff8 88116 virtualbox_7.0.24-2ubuntu1.2~uh~focal2.debian.tar.xz
+ 6fa91ee25ddc23283ad4cf286536a05474c800f0 89832360 virtualbox-dbgsym_7.0.24-2ubuntu1.2~uh~focal2_amd64.ddeb
+ e19a5d77f5f94508538f0c9e3cdf6e96cbc81110 770904 virtualbox-dkms_7.0.24-2ubuntu1.2~uh~focal2_amd64.deb
+ 4407c398ed3e3c84c1d78513e10896a7d14e7591 2012092 virtualbox-guest-utils-dbgsym_7.0.24-2ubuntu1.2~uh~focal2_amd64.ddeb
+ 09b30465eabfab768c11efecc08867d1a0a5fecd 430420 virtualbox-guest-utils_7.0.24-2ubuntu1.2~uh~focal2_amd64.deb
+ caa3c3589152ada846188a16b40e605c2b08b438 1046444 virtualbox-guest-x11-dbgsym_7.0.24-2ubuntu1.2~uh~focal2_amd64.ddeb
+ 8c43ce09e19f2940ab01c2a8f1480e012980b62f 307804 virtualbox-guest-x11_7.0.24-2ubuntu1.2~uh~focal2_amd64.deb
+ b2968f29c640177f4eddaa093db3667ab5238534 58138964 virtualbox-qt-dbgsym_7.0.24-2ubuntu1.2~uh~focal2_amd64.ddeb
+ 0d3732da1e5f625912a9c70a0d6ebae5e5304d4d 24927452 virtualbox-qt_7.0.24-2ubuntu1.2~uh~focal2_amd64.deb
+ 45981c265c33b301b199e9947b8741aa9fe8bdb0 912580 virtualbox-source_7.0.24-2ubuntu1.2~uh~focal2_amd64.deb
+ 4d77916a67b6a2efdab5c069b0a289a095f90f74 28658 virtualbox_7.0.24-2ubuntu1.2~uh~focal2_amd64.buildinfo
+ 30f13bff6f109ea2e774e3304d866e6b3ad0cea4 29812692 virtualbox_7.0.24-2ubuntu1.2~uh~focal2_amd64.deb
+Checksums-Sha256:
+ 94959768a80abbf1c59a874c2f08e2814e2404fb91b793e9190d848f6437b0a7 2787 virtualbox_7.0.24-2ubuntu1.2~uh~focal2.dsc
+ 340d66f52251e23d9bc1eb4fdf70e44cb9d1db69bc5064e3f7bdfb8bc0e3a458 174663788 virtualbox_7.0.24.orig.tar.bz2
+ c4ba376db4079016982e6191d7d96e7e1241282086796258df551f35021d8490 88116 virtualbox_7.0.24-2ubuntu1.2~uh~focal2.debian.tar.xz
+ d9746fa4ea53b21933c9302a469b4b24b134414f26370f128c2e98680877d2cf 89832360 virtualbox-dbgsym_7.0.24-2ubuntu1.2~uh~focal2_amd64.ddeb
+ 837bdea742f0de15d9e0e8585b95f9d183724518245deb62e44e0dc712625ccb 770904 virtualbox-dkms_7.0.24-2ubuntu1.2~uh~focal2_amd64.deb
+ a863c73c19d1375e6585f49676a37f21c62075050675d04caa5152578a1fbe30 2012092 virtualbox-guest-utils-dbgsym_7.0.24-2ubuntu1.2~uh~focal2_amd64.ddeb
+ f18b54c98a9745907c622e110c84bdefee1a15d1969c086c2cfdab26896afb20 430420 virtualbox-guest-utils_7.0.24-2ubuntu1.2~uh~focal2_amd64.deb
+ d5c349396c4e3e3d2bbb867c7b5e61a781788f56d691a4b48735f55e7177789e 1046444 virtualbox-guest-x11-dbgsym_7.0.24-2ubuntu1.2~uh~focal2_amd64.ddeb
+ 9ac66761f6700ea2c82ecc286f92c4dd990bd728f53191ebf0b279cc3c7e8267 307804 virtualbox-guest-x11_7.0.24-2ubuntu1.2~uh~focal2_amd64.deb
+ be4c5e7ede16690da9c81cf2f9ccc13a54e1e30cb090c5584001fe614701b773 58138964 virtualbox-qt-dbgsym_7.0.24-2ubuntu1.2~uh~focal2_amd64.ddeb
+ c5a0d4200c2c4809bb41c4fc241b0ca5925f10b0027d93512fae05271ba90b75 24927452 virtualbox-qt_7.0.24-2ubuntu1.2~uh~focal2_amd64.deb
+ a2c5429f69c8ba75073a18dce321b2945bc02d44140b89fe5dd1d62ded9756ba 912580 virtualbox-source_7.0.24-2ubuntu1.2~uh~focal2_amd64.deb
+ 8180547dd63e6564c43f29fb856a1e0459c5db22eb6c1c861e7b97996de9e0b6 28658 virtualbox_7.0.24-2ubuntu1.2~uh~focal2_amd64.buildinfo
+ e02664efbb0247e9d6fe58687add644b0d731b3736f1f69c764bdcb53d18eff8 29812692 virtualbox_7.0.24-2ubuntu1.2~uh~focal2_amd64.deb
+Files:
+ 6f7203605df9811ea7b98c68613ba7f9 2787 contrib/misc optional virtualbox_7.0.24-2ubuntu1.2~uh~focal2.dsc
+ b589c3d999f0ff1ddb1cd03c59f766aa 174663788 contrib/misc optional virtualbox_7.0.24.orig.tar.bz2
+ ee3ea811f6c0ee4929be77b0c2afe1a8 88116 contrib/misc optional virtualbox_7.0.24-2ubuntu1.2~uh~focal2.debian.tar.xz
+ 24db7ecf380446cb21bfdf450e3e66b7 89832360 contrib/debug optional virtualbox-dbgsym_7.0.24-2ubuntu1.2~uh~focal2_amd64.ddeb
+ dce956e6c27349617b3b20e72ad23192 770904 contrib/kernel optional virtualbox-dkms_7.0.24-2ubuntu1.2~uh~focal2_amd64.deb
+ 48366c7bb5f063dbf1ba353e1243633b 2012092 contrib/debug optional virtualbox-guest-utils-dbgsym_7.0.24-2ubuntu1.2~uh~focal2_amd64.ddeb
+ 29c42f193872fbfd75450d6b32973294 430420 contrib/misc optional virtualbox-guest-utils_7.0.24-2ubuntu1.2~uh~focal2_amd64.deb
+ b16d5f713e605b2d210dcd5c2da6becc 1046444 contrib/debug optional virtualbox-guest-x11-dbgsym_7.0.24-2ubuntu1.2~uh~focal2_amd64.ddeb
+ 47192fa883bb9a4c631375f7505cf59f 307804 contrib/x11 optional virtualbox-guest-x11_7.0.24-2ubuntu1.2~uh~focal2_amd64.deb
+ 92f29b87a90e0b0f11f503ddd84ca1c3 58138964 contrib/debug optional virtualbox-qt-dbgsym_7.0.24-2ubuntu1.2~uh~focal2_amd64.ddeb
+ 678c0fd3dca8adacf391808300f292ff 24927452 contrib/misc optional virtualbox-qt_7.0.24-2ubuntu1.2~uh~focal2_amd64.deb
+ 642bfe8bd12dfeb144030ead47dedee8 912580 contrib/kernel optional virtualbox-source_7.0.24-2ubuntu1.2~uh~focal2_amd64.deb
+ fa2d60d664e6a23a32a465ef124c82e4 28658 contrib/misc optional virtualbox_7.0.24-2ubuntu1.2~uh~focal2_amd64.buildinfo
+ 45d87f5b61519b8991034c897f066207 29812692 contrib/misc optional virtualbox_7.0.24-2ubuntu1.2~uh~focal2_amd64.deb
+Original-Maintainer: Debian Virtualbox Team <team+debian-virtualbox@tracker.debian.org>
