@@ -1,7 +1,7 @@
 #!/bin/sh
-
+#set -x
 D="$(dirname "$0")"
-ROOTFS="$(realpath $1)"
+ROOTFS="$(realpath "$1")"
 FOLDER="$(echo "${ROOTFS}"|sed -e 's,/rootfs.*$,,')"
 OS_ARCH="$(echo "${FOLDER}"|grep -o -- '-[^-]*-[^-]*$')"
 OS="$(echo "${OS_ARCH}"|cut -d "-" -f 2)"
