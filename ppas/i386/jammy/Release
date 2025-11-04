@@ -1,31 +1,31 @@
 Architectures: i386
 Codename: jammy
-Date: Tue, 11 Mar 2025 14:22:20 +0000
+Date: Mon, 07 Jul 2025 04:47:16 +0000
 Description: Precompiled packages for our LXC containers
 Label: lxc-ubuntu
 Origin: lxc-ubuntu
 Suite: jammy
 MD5Sum:
  4031d8feb419f82c6355ff4600a119f9           296181 Packages
- a44880deeb776195b0cffe62b21641de              833 Packages.gpg
- c0ed7e5a6faecaf8a44287bea4655c90              181 Release
+ 022bceb314bc72951f561c1b93f8d2f3              833 Packages.gpg
+ fd1090bd82e6e14a41bad8e47088dde5              181 Release
  d41d8cd98f00b204e9800998ecf8427e                0 Sources
- 08cf2c6e741980831edd88e7e8ed17f4              833 Sources.gpg
+ 86abb843c4fb3e2178c6e25213c6e9e3              833 Sources.gpg
 SHA1:
  e34ee3ced55f3e4023f74d87fe4dd21ad932a7cd           296181 Packages
- 4f9591a202f604fdfc30b5cb10744e892a2099de              833 Packages.gpg
- dca121ed09d32e5631d397fa4130319ff94f74d6              181 Release
+ 2ee675882d2a590678cf28a955288eb52d95aeea              833 Packages.gpg
+ 19cb2e8ce150b89a08f0591d6d0e142c864a18e1              181 Release
  da39a3ee5e6b4b0d3255bfef95601890afd80709                0 Sources
- 02f4c06bb8892a12c8a3d8247303cbdc9c41546f              833 Sources.gpg
+ d98250ade3860f40994356ee290b27b9c3351333              833 Sources.gpg
 SHA256:
  18cc9aaa9a58fe84266cc55d79fe852874804ca580c36cfd990b89dee2af17c5           296181 Packages
- 3f9443a2693654472bc79058aedfec14e1d1adf2827d55c56afc3b255c084b7d              833 Packages.gpg
- 6f4524d092beef0a27d07b61e8b141eb6409b250ee95b0ad06366fe970742921              181 Release
+ 4cc2979458c6933fc426d5e7237224db4af72b671a19c35033d3e8e3b019219d              833 Packages.gpg
+ 779f73ae820e69031e8ebab1c52385fc8d1a9dd0eeb3411c416274c7b1b74581              181 Release
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855                0 Sources
- 58fa986941e389429a40f9984e4f1cf9f043d41b31b1d15ab505817820667d72              833 Sources.gpg
+ 0120a275fb95c12e8963c8cfe0d242b0fa8180e2d121163c93e19a2bf889b212              833 Sources.gpg
 SHA512:
  e70e92ca62532619b4f16c41efd0a115a3440ce5be091a80a5be15bc989dfdce941507cf952ce3613c7d7d3a4276bde6adbca17a090b0ab59dd18f8a62c1c9d3           296181 Packages
- 5ed81a173d125ca2c6a1a8866dff7c9acb80cc31f823c08fe707788f046d31f9628095e0b10ce15860dbdf25cd49281581c91888dcf4c345a37e2b87d36237cf              833 Packages.gpg
- b07e65536dbe81b4ef63fba01c4895236311d83dbac4737f3264969bb514a5d02f3137f407cf10394aae5a0478beb567d6b8099a0630ddf8b7defa94e6e99837              181 Release
+ b58e2ff90d8804f2a170f8b1c96e2f95263c8763d176d72fd487e60ea07edc0fc25517b3dfa996a70340a92c2935630d38b2595ecdc92c8329c2a6c8e90f91ba              833 Packages.gpg
+ a44d76ebc739a5c5b67dc3fdb01573d01224eb7db032fd15cfff8c495567aebe9f62b2b6df22a50393a313378d040628712e85ab2f3e98ba9f00bcded9fafd16              181 Release
  cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e                0 Sources
- 77a6b2bcf9e5e46e082eded4d585f36b636a9c72bca43289d88c8f4715e4b34cf73d4c8788639c1fa0db9b39b8e3425102031a1ab5bf4965d23fa2ca512cf1c2              833 Sources.gpg
+ 4b11b28852645b5f618c824db117fb65e4495d79110b0b229a11b75ff07550e6e77274852b66779687eea0f9ddb6e939cd995802a406b59d76df8ffbe90647b4              833 Sources.gpg

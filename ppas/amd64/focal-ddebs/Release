@@ -1,31 +1,31 @@
 Architectures: amd64
 Codename: focal-ddebs
-Date: Tue, 11 Mar 2025 14:22:12 +0000
+Date: Mon, 07 Jul 2025 04:47:11 +0000
 Description: Precompiled packages for our LXC containers
 Label: lxc-ubuntu
 Origin: lxc-ubuntu
 Suite: focal-ddebs
 MD5Sum:
  d41d8cd98f00b204e9800998ecf8427e                0 Packages
- 5d89628d9cd672b2abbb299dddcf71b7              833 Packages.gpg
- dc75ec846d2d54e4d807ad33300a0efb              194 Release
+ 0e6c226a385f0d8b9093b0354e63b891              833 Packages.gpg
+ dcfe79db51bb8b21c0a0bc03e40de1d6              194 Release
  d41d8cd98f00b204e9800998ecf8427e                0 Sources
- 5d89628d9cd672b2abbb299dddcf71b7              833 Sources.gpg
+ 0e6c226a385f0d8b9093b0354e63b891              833 Sources.gpg
 SHA1:
  da39a3ee5e6b4b0d3255bfef95601890afd80709                0 Packages
- 5e4b0d9f73fc607b7a5f62792b1623d80d443b31              833 Packages.gpg
- a57c183c630de217d361f6f3f4ac01d1e95f53af              194 Release
+ ca5b843257a6e7d4d65932c5b2dde447f687a7d5              833 Packages.gpg
+ 59f723a6a75ebc75b3580f0e331b6560abd62484              194 Release
  da39a3ee5e6b4b0d3255bfef95601890afd80709                0 Sources
- 5e4b0d9f73fc607b7a5f62792b1623d80d443b31              833 Sources.gpg
+ ca5b843257a6e7d4d65932c5b2dde447f687a7d5              833 Sources.gpg
 SHA256:
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855                0 Packages
- 6465ddc1a58fec66a219ab345079a9440eff57e0edd3d8e143c085991c7093c4              833 Packages.gpg
- 08c0b0a749df7def5bf3956a6c2339a257ce7ccde51883a2f1fb623e15c8fd91              194 Release
+ 0fda1c7a469b7f6680d7bfedcd0842f76e1a5ccf742779a4bab344851a6006d4              833 Packages.gpg
+ f3d812ada4e158d9f45b1259de1ab74a592e790e535eabc48c6fa8b732d39371              194 Release
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855                0 Sources
- 6465ddc1a58fec66a219ab345079a9440eff57e0edd3d8e143c085991c7093c4              833 Sources.gpg
+ 0fda1c7a469b7f6680d7bfedcd0842f76e1a5ccf742779a4bab344851a6006d4              833 Sources.gpg
 SHA512:
  cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e                0 Packages
- a7b7d49b5009eb8bf2063789c8dec87e822d7bfa79f2095617b3b0bb917b2c1c01892b754095ec2166d834e55d4645ebb17950c9b045dbefcd70a2e0690d0399              833 Packages.gpg
- 8c5ebb350a705f79472486d77ee2789f177ad0de80f06f7cbc779ad3ef02a9f8ac619a3d625d30e21d291ced68155b1e33f37622afa2b42a238b3cff1ec9745e              194 Release
+ 3f1bf1094e03dd222c20a82375ce0f733c52724770ef4e6e931971c812cf37950b4053cf6f570c62781e93b2c15626df52abd29a301c5e0e254ac4dd759f7cb8              833 Packages.gpg
+ 733e19a3d119de8686d67b18c254f0d180e59daa5e5b35c88587044fcd6903ba2c8477aff47b5c2e66a281b53d57b96b274c897e979b44b946e2a60d80e80e83              194 Release
  cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e                0 Sources
- a7b7d49b5009eb8bf2063789c8dec87e822d7bfa79f2095617b3b0bb917b2c1c01892b754095ec2166d834e55d4645ebb17950c9b045dbefcd70a2e0690d0399              833 Sources.gpg
+ 3f1bf1094e03dd222c20a82375ce0f733c52724770ef4e6e931971c812cf37950b4053cf6f570c62781e93b2c15626df52abd29a301c5e0e254ac4dd759f7cb8              833 Sources.gpg

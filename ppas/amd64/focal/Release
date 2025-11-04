@@ -1,31 +1,31 @@
 Architectures: amd64
 Codename: focal
-Date: Tue, 11 Mar 2025 14:22:12 +0000
+Date: Mon, 07 Jul 2025 04:47:10 +0000
 Description: Precompiled packages for our LXC containers
 Label: lxc-ubuntu
 Origin: lxc-ubuntu
 Suite: focal
 MD5Sum:
  c1d9591c157f51018b17ba43354b2578            44459 Packages
- cfea9fa57b71763eb6464e6830c6ab63              833 Packages.gpg
- 0e857421b29843805344d2d62433a5e7              182 Release
+ 9c98cf9c3f2256bbe7d848521474d331              833 Packages.gpg
+ efd86668a113e6ccb060369bfb824014              182 Release
  cc5720cd76b05e6df16b5204023341d1            38163 Sources
- e3990a07ebea8740aac1e6c451fde59c              833 Sources.gpg
+ 34a33e5a072a11bd55f9a6c7c035ce99              833 Sources.gpg
 SHA1:
  415f52749b4326c931702f1e49ba34b1327f3971            44459 Packages
- d5c096ee8287174c51fdc9dbb7dc6f53e1cdc576              833 Packages.gpg
- 357f30143bf625f3409b6028f6e0d35e04331d6f              182 Release
+ 729a4230a47575681d4bcf352693333fb384a178              833 Packages.gpg
+ fbdc09ba7bb18e1bd0408a598bde2ed4a511eb52              182 Release
  063c37a4c5ae34883914ef8f4012bfb159c754dd            38163 Sources
- 50447a7ffb9944529ece4ac3a40aa701c92b00d4              833 Sources.gpg
+ 20f7e29cba2e739f132e928b24d8f82443dfcf07              833 Sources.gpg
 SHA256:
  71fad886cfc6b303147dbe9dd287bfc714d3e656018f7741e6e991ab28298eef            44459 Packages
- 32d0801f38d9e8fc8fb26e740fc887054207c19fa7bad37959df052a833029d4              833 Packages.gpg
- 893ea1dd60347a98e81cdf31d813cb9e383c94fbf8bc3a8093401607086c5a81              182 Release
+ 8e0c8fb650a641b49163057269874400cc778af2ecec8ed5b6b11dff690c1907              833 Packages.gpg
+ a3ad855be95a4474ac1295a9e410f9f195c2c26afbbbf4a06285b56e38290212              182 Release
  e421e819e08c4a9afb1e7474ace4f1d6b188ebf0992663f4ea75f798ff23ad33            38163 Sources
- e298c07e65cb3bcc0ef95152b1851a36e6f3d40186a5434e662f66de4d6a701f              833 Sources.gpg
+ c0da681f2ce947466b6cba2292db1a6d8a52857eeb21a9fc3e1198d6d6cca839              833 Sources.gpg
 SHA512:
  1c21ffbff45491ccb20e941a9801101e197d443941fd24d276684e6cc9c18985c555801460ecdca1e7d9eff6cc8829858aea5e832e0acef05423d31d4b4a9581            44459 Packages
- 872b789904e1dfc05cae527e1db7316c71ce0b9563c0fcc3eebab9cc49a41efc276fa3ca967d237edff1b447a0e4f24b287d9a591bfd33cbb18b5d558bc37529              833 Packages.gpg
- 8623520bb4fe3b0db3575ca96105f176fd9c0b44728aae0e497f5f5d16ec28499889834abad30e4970c43e731d2fc6d18190ec1a665e67bfe67bf869df3629b3              182 Release
+ 10b4367c000d4ccf431638c81db75bc834acdac7bfc42769ce4dd83a3483db25007c1ba053ec72d6ed5f4b4927723b882d92bf226a9a9bd20b73620f62614062              833 Packages.gpg
+ 8c1f3255747b29e0bf8889523f6a6520ce27cc0fe6b68f0b01c3f3f891de1d888d36e0e6e04e298544b11a2658894b9cb61c3f05a365d31fde70aebdae521ca4              182 Release
  892218b8dad3e9af40d38cfb0fb9ccf0e285a3726e03845f11c0ece10c4c03345e39edf3270d2d08dab21ba6b9792220f160cdf29022e0cd1fc1ea932ea02415            38163 Sources
- 88f944cae07cfe882b372b7f2491c056187e3e1cdcc4060ba81988b34b79e6559844f0972f877069c9175a1c8ee0232d4c4601272c10955005b347a849312625              833 Sources.gpg
+ 836b0a71f7a4dd3ad8afc29aeba3e6d1056997a635faeac2220c3c4f035fd8c45fece34df5f0993e91954289cf6c466ee454f71fa2f87983880e793a2c4bb49b              833 Sources.gpg
