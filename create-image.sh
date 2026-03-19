@@ -80,6 +80,13 @@ test -n "${USAGE}" && {
     exit 1
 }
 
+LZ4="$(which lz4 2>/dev/null)"
+
+test -z "${LZ4}" && {
+    echo >&2 "${BN}: 'lz4' nicht gefunden -> korrigieren mit 'sudo apt install lz4'"
+    exit 1
+}
+
 OS="$1"
 OSDIR="$2"
 # OS=focal
@@ -122,18 +129,19 @@ case "${ARCHITECTURE}" in
 	;;
 esac
 
+set -x
 test -z "${OSDIR}" && OSDIR="${OS}-${DEBOOTSTRAP_ARCHITECTURE}"
 
 test -e "${OS}-${DEBOOTSTRAP_ARCHITECTURE}-01-debootstrap-debs.tar.lz4" || {
   mkdir -p "./${OSDIR}"
   sudo mkdir -p "./${OSDIR}/rootfs"
   sudo debootstrap --download-only "--arch=${DEBOOTSTRAP_ARCHITECTURE}" --variant=minbase "${OS}" "./${OSDIR}/rootfs"
-  test -n "${KEEP}" && tar cf - "./${OSDIR}/rootfs" |lz4 -c >"${OS}-${DEBOOTSTRAP_ARCHITECTURE}-01-debootstrap-debs.tar.lz4"
+  test -n "${KEEP}" && tar cf - "./${OSDIR}/rootfs" |"${LZ4}" -c >"${OS}-${DEBOOTSTRAP_ARCHITECTURE}-01-debootstrap-debs.tar.lz4"
 }
 
 test -e "${OS}-${DEBOOTSTRAP_ARCHITECTURE}-02-debootstrap-debootstrap.tar.lz4" || {
   sudo debootstrap "--arch=${DEBOOTSTRAP_ARCHITECTURE}" --variant=minbase "${OS}" "./${OSDIR}/rootfs"
-  test -n "${KEEP}" && sudo tar cf - "./${OSDIR}/rootfs" |lz4 -c >"${OS}-${DEBOOTSTRAP_ARCHITECTURE}-02-debootstrap-debootstrap.tar.lz4"
+  test -n "${KEEP}" && sudo tar cf - "./${OSDIR}/rootfs" |"${LZ4}" -c >"${OS}-${DEBOOTSTRAP_ARCHITECTURE}-02-debootstrap-debootstrap.tar.lz4"
 }
 
 ROOTFS="./${OSDIR}/rootfs"
@@ -204,12 +212,12 @@ EOF
   #sudo DEBIAN_FRONTEND="noninteractive" chroot "./${OSDIR}/rootfs" apt-get clean
   sudo ./umount.sh "./${OSDIR}/rootfs"
 
-  test -n "${KEEP}" && sudo tar --one-file-system -cf - "./${OSDIR}/rootfs" |lz4 -c >"${OS}-${DEBOOTSTRAP_ARCHITECTURE}-03-addons.tar.lz4"
+  test -n "${KEEP}" && sudo tar --one-file-system -cf - "./${OSDIR}/rootfs" |"${LZ4}" -c >"${OS}-${DEBOOTSTRAP_ARCHITECTURE}-03-addons.tar.lz4"
 }
 
 test -d "./${OSDIR}/rootfs" || {
     mkdir "./${OSDIR}"
-    lz4 -cd "${OS}-${DEBOOTSTRAP_ARCHITECTURE}-03-addons.tar.lz4"|sudo tar -xf -
+    "${LZ4}" -cd "${OS}-${DEBOOTSTRAP_ARCHITECTURE}-03-addons.tar.lz4"|sudo tar -xf -
 }
 
 sudo ./mount.sh "./${OSDIR}/rootfs"
@@ -260,6 +268,7 @@ true
 EOF
     
     test -s "${MODIFICATIONS_FOLDER}/additional-packages" && {
+        sudo DEBIAN_FRONTEND="noninteractive" chroot "./${OSDIR}/rootfs" apt-get -y update
         sudo DEBIAN_FRONTEND="noninteractive" chroot "./${OSDIR}/rootfs" xargs apt-get -y install <"${MODIFICATIONS_FOLDER}/additional-packages"
     }
     sudo DEBIAN_FRONTEND="noninteractive" chroot "./${OSDIR}/rootfs" apt-get -y clean
