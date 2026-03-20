@@ -300,6 +300,7 @@ EOF
 	for p in "${MODIFICATIONS_FOLDER}/"*.pub; do
 	    sudo chroot "./${OSDIR}/rootfs" sudo -u "${u}" -i /bin/sh -c "cat >>.ssh/authorized_keys" <"${p}"
 	done
+	sudo chroot "./${OSDIR}/rootfs" sudo -u "${u}" -i /bin/sh -c "chmod 600 .ssh/authorized_keys"
     done
 }
 sudo ./umount.sh "./${OSDIR}/rootfs"
