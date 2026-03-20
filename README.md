@@ -16,6 +16,8 @@ TLDR
 
 ### Create And Run A Single Container
 
+#### LXC/LXD
+
 For example:
 
 - 32 bit
@@ -29,6 +31,23 @@ Execute:
   # Creates "focal-(version)-(architecture)-lxcimage.tar.gz"
 lxc image import focal-v1.6-i386-lxcimage.tar.gz --alias focal-v1.6-i386
 lxc launch focal-v16-i386 my-running-image
+```
+
+#### INCUS
+
+For example:
+
+- 64 bit
+- Ubuntu-24.04 - noble
+
+Execute:
+
+```
+./create-image.sh -U -k -a amd64 noble
+  # Asks for sudo password
+  # Creates "focal-(version)-(architecture)-lxcimage.tar.gz"
+incus image import noble-v1.12.3-amd64-lxcimage.tar.xz --alias noble-v1.12.3
+incus launch noble-v1.12.3 my-noble
 ```
 
 ### Create All Container Images
