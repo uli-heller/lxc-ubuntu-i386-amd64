@@ -26,6 +26,8 @@ For example:
 Execute:
 
 ```
+  # Be sure to unlock the git repo using "git-crypt"
+  # before trying to create an image!
 ./create-32bit-image.sh focal
   # Asks for sudo password
   # Creates "focal-(version)-(architecture)-lxcimage.tar.gz"
@@ -43,6 +45,8 @@ For example:
 Execute:
 
 ```
+  # Be sure to unlock the git repo using "git-crypt"
+  # before trying to create an image!
 ./create-image.sh -k -a amd64 noble
   # Asks for sudo password
   # Creates "focal-(version)-(architecture)-lxcimage.tar.gz"
