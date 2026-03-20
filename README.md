@@ -54,6 +54,14 @@ incus image import noble-v1.12.3-amd64-lxcimage.tar.xz --alias noble-v1.12.3
 incus launch noble-v1.12.3 my-noble
 ```
 
+Cleanup:
+
+```
+incus stop my-noble
+incus delete my-noble
+incus image delete noble-v1.12.3
+```
+
 ### Create All Container Images
 
 As of 2022-12-29, these are the container images:
