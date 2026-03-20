@@ -43,7 +43,7 @@ For example:
 Execute:
 
 ```
-./create-image.sh -U -k -a amd64 noble
+./create-image.sh -k -a amd64 noble
   # Asks for sudo password
   # Creates "focal-(version)-(architecture)-lxcimage.tar.gz"
 incus image import noble-v1.12.3-amd64-lxcimage.tar.xz --alias noble-v1.12.3
