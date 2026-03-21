@@ -11,7 +11,7 @@
 ###   -U .......................... add my (Uli's) preferences (synonym for '-m uli-modifications -p 'uli')
 ###   -m moddir ................... add modifications of moddir
 ###   -p prefix ................... prefix for the name of the final container
-###   osname ...................... focal or jammy or noble
+###   osname ...................... focal or jammy or noble or resolute
 ###
 ### Examples:
 ###   BN -a amd64 jammy ......... creates 'jammy-HEAD-amd64-lxcimage.tar.xz'
@@ -210,6 +210,12 @@ EOF
   sudo DEBIAN_FRONTEND="noninteractive" chroot "./${OSDIR}/rootfs" apt-get update
   sudo DEBIAN_FRONTEND="noninteractive" chroot "./${OSDIR}/rootfs" apt-get upgrade -y
   #sudo DEBIAN_FRONTEND="noninteractive" chroot "./${OSDIR}/rootfs" apt-get clean
+  
+  #
+  # Fix network issues for resolute/26.04
+  #
+  sudo chroot "./${OSDIR}/rootfs" sed -i -e "/^ImportCredential/#ImportCredential/" /usr/lib/systemd/system/systemd-networkd.service
+  
   sudo ./umount.sh "./${OSDIR}/rootfs"
 
   test -n "${KEEP}" && sudo tar --one-file-system -cf - "./${OSDIR}/rootfs" |"${LZ4}" -c >"${OS}-${DEBOOTSTRAP_ARCHITECTURE}-03-addons.tar.lz4"
