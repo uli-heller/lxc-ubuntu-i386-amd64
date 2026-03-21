@@ -211,11 +211,6 @@ EOF
   sudo DEBIAN_FRONTEND="noninteractive" chroot "./${OSDIR}/rootfs" apt-get upgrade -y
   #sudo DEBIAN_FRONTEND="noninteractive" chroot "./${OSDIR}/rootfs" apt-get clean
   
-  #
-  # Fix network issues for resolute/26.04
-  #
-  sudo chroot "./${OSDIR}/rootfs" sed -i -e "s/^ImportCredential/#ImportCredential/" /usr/lib/systemd/system/systemd-networkd.service
-  
   sudo ./umount.sh "./${OSDIR}/rootfs"
 
   test -n "${KEEP}" && sudo tar --one-file-system -cf - "./${OSDIR}/rootfs" |"${LZ4}" -c >"${OS}-${DEBOOTSTRAP_ARCHITECTURE}-03-addons.tar.lz4"
@@ -227,6 +222,12 @@ test -d "./${OSDIR}/rootfs" || {
 }
 
 sudo ./mount.sh "./${OSDIR}/rootfs"
+
+#
+# Fix network issues for resolute/26.04
+#
+sudo sed -i -e "s/^ImportCredential/#ImportCredential/" "./${OSDIR}/rootfs/usr/lib/systemd/system/systemd-networkd.service"
+
 sudo tee "./${OSDIR}/rootfs/usr/local/bin/first-start.sh" >/dev/null <<'EOF'
 #!/bin/sh
 INIT=
