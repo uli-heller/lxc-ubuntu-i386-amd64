@@ -227,6 +227,7 @@ sudo ./mount.sh "./${OSDIR}/rootfs"
 # Fix network issues for resolute/26.04
 #
 sudo sed -i -e "s/^ImportCredential/#ImportCredential/" "./${OSDIR}/rootfs/usr/lib/systemd/system/systemd-networkd.service"
+sudo sed -i -e "s/^ImportCredential/#ImportCredential/" "./${OSDIR}/rootfs/usr/lib/systemd/system/systemd-resolved.service"
 
 sudo tee "./${OSDIR}/rootfs/usr/local/bin/first-start.sh" >/dev/null <<'EOF'
 #!/bin/sh
