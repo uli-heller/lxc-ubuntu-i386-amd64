@@ -214,7 +214,7 @@ EOF
   #
   # Fix network issues for resolute/26.04
   #
-  sudo chroot "./${OSDIR}/rootfs" sed -i -e "/^ImportCredential/#ImportCredential/" /usr/lib/systemd/system/systemd-networkd.service
+  sudo chroot "./${OSDIR}/rootfs" sed -i -e "s/^ImportCredential/#ImportCredential/" /usr/lib/systemd/system/systemd-networkd.service
   
   sudo ./umount.sh "./${OSDIR}/rootfs"
 
