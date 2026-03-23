@@ -53,6 +53,23 @@ Review the existing patch
 Create a fresh patch
 --------------------
 
+### Resolute
+
+- Create a folder for the original files
+  - patches/resolute/prepare-netplan-patch/orig/debian
+- Copy the original files into patches/resolute/prepare-netplan-patch/orig
+  - `./build.sh -a i386 -o resolute netplan.io`
+  - `cp build-resolute-i386/rootfs/src/netplan.io/netplan.io-1.2/debian/control patches/jammy/prepare-netplan-patch/orig/debian/.`
+  - `cp build-resolute-i386/rootfs/src/netplan.io/netplan.io-1.2/debian/netplan.io.manpages patches/jammy/prepare-netplan-patch/orig/debian/.`
+  - `cp build-resolute-i386/rootfs/src/netplan.io/netplan.io-1.2/debian/netplan-generator.manpages patches/jammy/prepare-netplan-patch/orig/debian/.`
+- Create a folder for the modified files
+  - `cp -a patches/resolute/prepare-netplan-patch/orig  patches/resolute/prepare-netplan-patch/no-pandoc`
+- debian/control - remove "pandoc"
+- debian/*manpages - remove "usr/man*"
+- Create new patch: `( cd patches/resolute/prepare-netplan-patch; diff -ur orig no-pandoc ) >patches/resolute/netplan.io/netplan.io-1.2_no-pandoc.diff`
+
+### Jammy
+
 - Create a folder for the original files
   - patches/jammy/prepare-netplan-patch/orig/debian
 - Copy the original files into patches/jammy/prepare-netplan-patch/orig
