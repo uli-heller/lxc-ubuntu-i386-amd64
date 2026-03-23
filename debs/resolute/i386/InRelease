@@ -1,0 +1,38 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Architectures: i386
+Codename: resolute
+Date: Mon, 23 Mar 2026 22:40:36 +0000
+Description: Precompiled packages for our LXC containers
+Label: lxc-ubuntu
+Origin: lxc-ubuntu
+Suite: resolute
+MD5Sum:
+ 2ca937591cd8c415d8b5224c9b323280            19599 Packages
+ 66e1caebb50073fbada7e2ac7ad8e293              187 Release
+SHA1:
+ 49f265b86b351a00b1da0fdd670e832f7ff06035            19599 Packages
+ e4756af52528c6ef48a12e678aaa1e2a66c182c3              187 Release
+SHA256:
+ a35931892aecb98c971e2a0f779df48e5130f6f2f08ed8dbbfd02dfb48315cba            19599 Packages
+ bce882625fc9eafa86332000637182b13f802bdc30365ec2439ba94df1bc334e              187 Release
+SHA512:
+ 4b15aeaf556cf3732cb72fdfae063ceda4c87da73b72a20015fc9e39d5b076cdf1d10e544b8356322942c8491da733de32afd41237831812f57cd7987b85a9d4            19599 Packages
+ 80537006e28830343adf8a78fe235575d7dad0f2cabab8b32251ce57012ed396f4688486577ba613aff8d5f7917a402774ec22d81ff6cb45ee490678d48d436a              187 Release
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEE82hycVroFa5OYg3TOC3lxFUcsDQFAmnBwWQACgkQOC3lxFUc
+sDQ0Vg/+MMhdweWenVxHeyLojfQNzYkXW7H/DybRbNBmEMZeIe2yfI6vcd2xjpHV
+UZ5FKsWwpLichdg2fn3WdTUKBdtuHq6rsseXzrI7FmQakr++tbibXjLyhMBRpawl
+DrNSP+OpHZEPs8wDFa3E0fIaUAo29fzxFrwo3zc9rCv+RhP2r0C2uHt7g19ZS46o
+EmTtZYEDW2ou3Q+Yc47ChzohGB41rS0/9YGBLFVf+OC96M3yj4eKR+0f3Aqz34Tn
+LvncmJ82KHQFX50PZHF86VTvPRKHEzsAIPI7axfX0OOMQzM/JSVh8EcYmqIr58Z5
+G6r+Wo7OuIk5rPKfeSqkBKbOe+LwznBElonmnM+qUK+jibzys0BiU1F0ulnuGAzQ
+G4aUsSlMaKKoKzy06nN1VDVOvU/gVIquIZNEHNO+21eJGbspKVRNwxU6F8rTOGQz
+xN8ILgat7FRSZbXoJkYVvAxyPUF/XneRD5FUu121PUKhzJpa4PBPDm/MNVfmv/5T
+T7moJwsY6QyAwBdwaDNnlOEnj4NaVnoxqlmmDG68d7CuvzNHLbiQZ30J3ncZ27JC
+XWpsf97lygtV/aFEGSs4sokD5s2g5H2mrka5KOf0edAKbxW5kUGoYTfduujhGfPz
+Kk6NDgqy+HUjttKXmyOeUh6b/oxPZLsSYPkhNAPT/pvbgoypSz4=
+=EapS
+-----END PGP SIGNATURE-----
