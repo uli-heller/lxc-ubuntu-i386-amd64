@@ -441,12 +441,11 @@ Depends: adduser, iproute2, procps, virtualbox-dkms (>= 7.0.16-dfsg-2ubuntu1.1~u
 Recommends: virtualbox-qt (= 7.0.16-dfsg-2ubuntu1.1~uh~jammy1), libqt5core5a (>= 5.15.1), libqt5gui5 (>= 5.0.2) | libqt5gui5-gles (>= 5.0.2), libqt5opengl5 (>= 5.0.2), libqt5widgets5 (>= 5.0.2), libxcb1, libxcursor1 (>> 1.1.2), libxext6
 Suggests: vde2, virtualbox-guest-additions-iso
 Conflicts: virtualbox-2.0, virtualbox-2.1, virtualbox-2.2, virtualbox-3.0, virtualbox-3.1, virtualbox-3.2, virtualbox-4.0, virtualbox-4.1, virtualbox-4.2, virtualbox-4.3, virtualbox-5.0, virtualbox-5.1, virtualbox-5.2, virtualbox-6.0, virtualbox-6.1, virtualbox-7.0
-Breaks: python3-minimal (<< 3.12.3-0ubuntu2~)
 Filename: ./virtualbox_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.deb
-Size: 31832552
-MD5sum: 41d3a3749f57121cab52c760862957f3
-SHA1: fb936d9f1173a24437fcffc96d77cc25b6e236f6
-SHA256: 2fb368f197fe87a576aa988f2b5a280266cb6334e3bd5ab0f20cf1295e6e0b68
+Size: 31832436
+MD5sum: cd805f0e993bc48e45dfd88fa41579ad
+SHA1: c3e77c4a3f888e3481fa436988928277d21fd1e2
+SHA256: 7d246ac237f55fbd6c406406251b87e06dbe193a4e19c696cf2aa8e792eb9614
 Section: contrib/misc
 Priority: optional
 Homepage: https://www.virtualbox.org
@@ -576,10 +575,10 @@ Installed-Size: 922
 Depends: build-essential, bzip2, debhelper-compat (= 13), kbuild, module-assistant
 Recommends: virtualbox (>= 7.0.16-dfsg-2ubuntu1.1~uh~jammy1)
 Filename: ./virtualbox-source_7.0.16-dfsg-2ubuntu1.1~uh~jammy1_amd64.deb
-Size: 909292
-MD5sum: 52ede1bd83ed3ef3aad435cf15a8a763
-SHA1: ce719a06a3828372f7fce365bdaba3cf3a1920f0
-SHA256: 1865efbdcefc9cd2eb99b47b434c49bde7cd4fb155cf8b23a28d5fa16df1daaa
+Size: 909098
+MD5sum: 7359950d5e2ddbc79330f217a8f71d30
+SHA1: a5e469653388977a03cc2f6c66025d20d50a6228
+SHA256: db5660d258f0f009f5e2df437be9bcbaea091d9b50a21bac8cb2fe0f61a6d37c
 Section: contrib/kernel
 Priority: optional
 Homepage: https://www.virtualbox.org

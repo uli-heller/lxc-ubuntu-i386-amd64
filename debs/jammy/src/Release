@@ -1,23 +1,22 @@
-Architectures: src
 Codename: jammy
-Date: Fri, 17 Jan 2025 23:34:52 +0000
+Date: Sun, 22 Mar 2026 18:48:18 +0000
 Description: Precompiled packages for our LXC containers
 Label: lxc-ubuntu
 Origin: lxc-ubuntu
 Suite: jammy
 MD5Sum:
  d41d8cd98f00b204e9800998ecf8427e                0 Packages
- 15d6b07a2db4e00e3e5921d051902d21              833 Packages.gpg
- d6385e945b557fea6f1072c34395734c              180 Release
+ af885cfaa277bbd4365bfd44205c1e5e              833 Packages.gpg
+ 0374fafc015d007430f38550dbb3c56d              161 Release
 SHA1:
  da39a3ee5e6b4b0d3255bfef95601890afd80709                0 Packages
- 0361aa8c57139aa09220b51aa6d2713263c2da42              833 Packages.gpg
- e215ea54c6afd756d9c3addd62e752a4813af071              180 Release
+ b8154c265cb29ffc404a4b1f0f06fb767a25257b              833 Packages.gpg
+ 3a7a49184e34476ce974ff8f084ffb9db6eab0e9              161 Release
 SHA256:
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855                0 Packages
- 6f282c2607e44a92e0ded9fc014301cfe2dcf0c852dcc31a6b2580fbed112adc              833 Packages.gpg
- c8c1ce46ae4d929861d7090765a76715b1827f9b23365ee49df75bd9c26cd910              180 Release
+ c0543a4d8909bbe15999a8c1d1b5583cbc5d2efba1365d1ef1289b37075bc2a6              833 Packages.gpg
+ 09a61d302c4ff751a366ed52cb39e8c8f6c917f330c26ecfdc9c87f95cc329d9              161 Release
 SHA512:
  cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e                0 Packages
- 6d1b85a4331a4280d6661e50a03e210cf945e693ff329049b2429ad8ec7d21b621eadc785b70df767aa188ead0a2789512d458d0d5c518f4b5246a1f3a031a3c              833 Packages.gpg
- afe6560778d5bec1545a10dda8847d7e089178c0d1e843fcfc205cacd5c58ffa2b876b9503d5c126078c51258f5fdd18d00e389caab37bf969b9b4aaf17b6a9b              180 Release
+ 36058a2b60be8e42676a6caa32a30811ea0fd46db5a9e123560c3f9682764e9bafa0def82dfa03e92891a8f911a0294b7b93a6d68804eae9a3807ce74cac4a06              833 Packages.gpg
+ 20d0e2ab00611d8dafb6332f631684e49609ceff819f0486837d63a0acf6fbee1d5795d919ca07ce74dade7375c7c300036e75696f04c4fb15de4c8a0776b5f0              161 Release

@@ -1,23 +1,22 @@
-Architectures: i386
 Codename: noble
-Date: Fri, 17 Jan 2025 21:42:44 +0000
+Date: Sun, 22 Mar 2026 18:48:18 +0000
 Description: Precompiled packages for our LXC containers
 Label: lxc-ubuntu
 Origin: lxc-ubuntu
 Suite: noble
 MD5Sum:
  3b6fac1b7e22d61a9df89521b08f8e16            17424 Packages
- f628ab73f79b2e26cc6ac2528104bbbf              833 Packages.gpg
- 45a8b3698f98c901cc783c0c97f153b8              181 Release
+ 0dbefba658e420c9475f3a21acca686c              833 Packages.gpg
+ cb14862bc0a563e269e5ab177a8b8c5c              161 Release
 SHA1:
  4c0ceb8b55a8a0d7451aa36368894821e976ae78            17424 Packages
- 88afb781446b709b50abd7766858a13fe5d91222              833 Packages.gpg
- e38bb703f5822861fbff5b82766622177d96613c              181 Release
+ 0f8dd9d7b33bae2c23e188a2bd57b11249b49ac8              833 Packages.gpg
+ 351dec553f0e0b57bb0f0e5f98af2f8a1dbbf84a              161 Release
 SHA256:
  b49186fc8e62b3fd1e993d8d73ed8ebd8b881e890b52a1e37964b8d84a7aeecf            17424 Packages
- d2875e67bcce552ecaff989ee8dd69512df0caa569de3c2eadbc60f255108ba9              833 Packages.gpg
- 50681aefb6a4f5648a8c936ede32b7ad352e162417eca83fad5babebeace427e              181 Release
+ dac2eb6737880acc7b30a7bd9d3f600adf5564861d3ca3b574873a1939b6c650              833 Packages.gpg
+ 7f1ad84c34e0e4b8e19c87647e894cc9c62fecf924bf7f099e9cafd86bb0116d              161 Release
 SHA512:
  c512e441f0db374b20b0009f63f818c7ccd591a0ff861f15408e0d89467e0bd1215e7e8bcb5fae3584fe3dbd3a3f1abf03e924a10b814841bba1253ae8a5802b            17424 Packages
- c1e1f22faef3d935e6c89e03ad823b9512d922b801a6ddfbd7a1f4014768242ca1a5f4fea1ff19d41f59642caf021f7aed364993d2310b0ae3434ff53a639bcf              833 Packages.gpg
- e0d1a1843ca58386bd29d3afadcf673a9f7d04cb00db174e959c692ff1cc75bd31a73a661e327c19e13e43486c85196e7556895c9b175d441ec7a7a4792df7fe              181 Release
+ 20fd31000d9102c2efd0a5bd99fa75b32601367cf775e63c896ea4a43a7ec5b45959ce92384e4d1c2de6af42db0604838c1ef58386aa8fb1a1c2e97db2f55e92              833 Packages.gpg
+ 89a73e9ba640c525ff93a61e44c8aff5dd18ff8b08eed3512b1505122afbf8b4d1823a83fdedb14c3290b0f13893c5659922675a2baf9d480540fbf851f9ae93              161 Release

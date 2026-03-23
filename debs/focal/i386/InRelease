@@ -1,42 +1,41 @@
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA256
 
-Architectures: i386
 Codename: focal
-Date: Fri, 17 Jan 2025 21:42:41 +0000
+Date: Sun, 22 Mar 2026 18:48:15 +0000
 Description: Precompiled packages for our LXC containers
 Label: lxc-ubuntu
 Origin: lxc-ubuntu
 Suite: focal
 MD5Sum:
  372f417ccd5ce836643fff5f5b9dbb60           230654 Packages
- be595c799b09694b3c397a4b9cbc324d              833 Packages.gpg
- a18b56e6ee5b8ca86e64ce4dd4934693              181 Release
+ 426082f945712109585e9562ac1efc2b              833 Packages.gpg
+ a6e4bc2d2ac6e5d054cc06a0cc270458              161 Release
 SHA1:
  b2ea79165fa5686fded4fd3757be67e88541ccce           230654 Packages
- 285a4af5b26cdfa4139c170c263c96da2de8f8ba              833 Packages.gpg
- 7b8ba9c9b4eab611fdc98530e58c8642da9c7538              181 Release
+ 78ab3ccf1a6e260997b152543f7eea436a00080c              833 Packages.gpg
+ c1d588fe7a86fecdf0fbcfc48d737bd01b50f05a              161 Release
 SHA256:
  78806a88b6adc81ad372efeadecac07ade74718727b6dd6721db9828f18bff44           230654 Packages
- fadfd8b612e16de8a4ef0e4c2dd3a83568eeec04a7285fb6aea5152019a46d0b              833 Packages.gpg
- 374498f33c8295a8d837b14e674db9494a5070eb6e9e504c745623843b91e6fd              181 Release
+ 315a029f59ab0558e311e5451a1c89a87926ae412314053eca07217e3bc4345d              833 Packages.gpg
+ 90ac8be4c48946d293b9dc9ce06f9a045b1d7d974073a63835dfc83d7484e69d              161 Release
 SHA512:
  8dbbb4fab01cef740649377a14bd925c564e9c86d8b3cc0540ce1d3c5a57541cf7bd26281a1a77caa6acf93bbf8dc1dbc41d3802980a4d9c2244af571f1c1c09           230654 Packages
- 084067b0ef6c3895b945c46c95f853c203fe60c240360b1f8df6b07dbfb24bd18f0530d94d20e2c800d13878ad4b9e318ad1c498289da40fa4dbe4ae72a0a0aa              833 Packages.gpg
- 5e63a9c0bbbf4e22950175b96946d64c54a84acca491227a9f993f0cae7d81dd2ded18a344f9cf3b0a2f8aa342a62e191c0f1fc4175682a857ba6065184918db              181 Release
+ 1a67d371323dc59ec65c7f86ee54ecb06af3ab2f780b5c6da7e5e74282ace14bc35771ba2b1837b896b6f6fb167c2d7f086670217f6da8a210092b377ee8dda9              833 Packages.gpg
+ 4c866d6893e516a4b594d999146e5f655edb220aa1b72dd9dae4a240b94cb8cac5a3b2b91b7c614e6339a2d09b7dc278b4ccf438c799a8bba9990ce8868513c7              161 Release
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEE82hycVroFa5OYg3TOC3lxFUcsDQFAmeKztEACgkQOC3lxFUc
-sDQF3RAA0QkojQ1FyS4U4XrGBvjQcIzyMdBH9xjLIiDstrOMmrYLZxix4zI2TOsg
-AuVVmvrOwQZnBdyvDoOknVK3+K8LSntMnJKWiT/Psy4SSru39WDdN4pfnGULtGa7
-tVfFc+09RxmT4+On8dYFX3brox9fRcv/IvCCzxPYU6o/ROsmfXJXocJhOMeaoHhk
-vSK0IxO5j1WVMVvJmdc/hxsSokRER7cRHPhSCSpXNT4+/Kna5ZqKO+c6/M/rfina
-DAvXP8RF+auDJEDyc6LBf0NFqdaomV8fDkj5qDcnC+/Lz3LNf7BcDGZhU7dmMFXP
-1gUsMsL5wKnphjJ4YST+iUx5cI/MsNb3CSStCS7bXXExYihwGZFbIWdMTU1Y1JqN
-9U9WjB9M+2GN2G72qOvywV+PPyr2ie0ivpHVwut/p5C2m7AJDa7zQVDDRiH3oubS
-jqPivfy4TcHQZNOHTJ/FeiiGovUqD2R6iRQfEpgFy/vO+mxH/sgHhnrpa3McIJEp
-ZBxEKAav5vJEezG4Bo2b/8RlVPvfRjvQhb8F96REvtBzw1SLD4gsax6Dmu3C5/Vg
-np3i8K3gtswwnDW3zgI7DBU8WKsmn7VgR3VgzZjhyl8WprkCw9u0fmEiOTD+fnzt
-upmy8HgeRozvXdn+AOPYxLoAFrmxhi1kzsJ0PqrtnsEE1CM8p/k=
-=HBhy
+iQIzBAEBCAAdFiEE82hycVroFa5OYg3TOC3lxFUcsDQFAmnAOXAACgkQOC3lxFUc
+sDSDQBAAob4xWBz+KXMZ2wPBn8Z09wtklrhqZHKcZgg1NPxrhNpmwTrMyEvbTW3P
+srFm3g/xr7/v4Z4QBOuwHgR6HeBrHbX9uDC5S7wgxwZEOkq8BQ87dlI3S7nSkgIb
+eDg5+sseMTXsPPQk1ZL2QRPEcTgDAzHNqPcTrI+5Rq6buxJt2LQQ4HnsDTotMSHH
+g8Yg4J4xT1UuhmRUQQEGzkDXkTNtOg4vONkNzquXUaYJGQXfceeR6N1RZtLxTEJy
+KEGihmZ07GEMbaIahi6d8hGdcXaSud71p7xWxUah3UkqAa2V2GWIyxhWR7IfUUZE
+rhxIIEaq2tOT8eJeBq9aDehH5jHi7SunAFTnxqlgJIAzoXb6CtIzR0IVKPoyduMh
+vh2s0MtB5NYuvAyU0qpUZaSmO30RMi2ylppRBMyS8Cs05bZMWuL8xgK/o9HOo+mF
+5JEcDvXPQZkhCOtDrx3KOdZTZPWuGlyw601ExXj6v2npbBgseaqX6c2dxApfzExh
+7kg2v0laocd7loM1ND4ZCm/DRyUk7Z8f5xGITcsTxFA84D5rIn1j4E5e9jV5jmK5
+LQZbGRLAXI7gKt9BiDxFh7sSOQPT954K/om2GVs4an5sjyseZv0IlxIzkxv2VyTq
+WNPBELJbZtt9Le0OTyu4EkD3E0zHhDZTP3sImZF3Fa4w4nqNY9w=
+=1mHq
 -----END PGP SIGNATURE-----

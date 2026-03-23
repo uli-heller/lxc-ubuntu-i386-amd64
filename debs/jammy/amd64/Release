@@ -1,23 +1,22 @@
-Architectures: amd64
 Codename: jammy
-Date: Fri, 17 Jan 2025 23:34:51 +0000
+Date: Sun, 22 Mar 2026 18:48:16 +0000
 Description: Precompiled packages for our LXC containers
 Label: lxc-ubuntu
 Origin: lxc-ubuntu
 Suite: jammy
 MD5Sum:
- a9eb8a3e879c4e7c0964dc26302461ff            28980 Packages
- 311949845eb2feca63ad3e762964735f              833 Packages.gpg
- 76d185d96a619bde0f8565cf554f1bb9              182 Release
+ 2272f2cc9d334850aabcfd8f38577081            28934 Packages
+ 018d19177012fad69cf88983ded9b119              833 Packages.gpg
+ bfde2dac1a99eade86fc65c8107a4a1d              161 Release
 SHA1:
- 4d20344b60e355bdc69e1106c0e00962cf56e052            28980 Packages
- cc7d478f0843309e5dd6934f8f1d487cb622d486              833 Packages.gpg
- 1957e043ce601a45ec3b3d733782116634bf15ae              182 Release
+ 0ef08f912ab87a20c790f0df32b1be603a013438            28934 Packages
+ e9d3ea1e19a844956e7f7f9fa3d90a3c287d320b              833 Packages.gpg
+ ad6f462919a98f3d4ee73893f175262ceaba5a08              161 Release
 SHA256:
- 2bce5618295b4eee357ac51d74053bed55c75d619f4cd9339d1d34874f783443            28980 Packages
- d3c837401630d3ec59484c5add076ac40121310fc4b4741d54fb3f490786f1ac              833 Packages.gpg
- 29d63fb7294f3919bd3e9d72328172b0652f1f81dcdd580c3fbb743c367435c9              182 Release
+ 898e28a4a3928d2044f171923874e3c438d239fd5abb7d823404b61c376d751a            28934 Packages
+ 4e9951b38b29de0262cca19a8b1f685dffb90b0e2f7ee0ddcc2c5165327dba3f              833 Packages.gpg
+ fa2b458c1872805ff47d42cd975eeb8e6208673de0610b02f39d943e22ab6459              161 Release
 SHA512:
- 70ea3c0bf0f17bae3ebcc0e39654afe6a7e9001f491e287740de0515e9747a37826832a4f134c7512f5b8c19e7a9e7878d0b4cd1751275afa0810f5b2fae41ab            28980 Packages
- 04b24e0bca59712a112ce416c42f0b3ca8e0174c88afc260b4a60eedc6673ee2b223fa61a95f17c5b830e82d1be1b4989b82127498503cc97688c9fcfc741e27              833 Packages.gpg
- 4f61f3dc663f2d515f7b9fd510b2fbfb5f567def07a9a1e7dd3c95a2dabde33a054bf0223f44d122b50b5522e7b8be0602d175a34fc7f95ce08099b2a95c645a              182 Release
+ 07b5b62cb3f74d9f492518eb07f70af19174310b281342be1242677ef16264bc97af9d84208ae82d4adac7032175a6a7c21b8550635c4d52bba736280f9b5929            28934 Packages
+ 10c145fb33792acc2cd4e6c40c88052e3cf418bae0085be3b3f38c327d5d83c43cd94c136f745a8d700905900fceb91c1711666cdbad2b1f502e7a44f58c4ab4              833 Packages.gpg
+ f56dabe04a322a9c825a3ea6d6d9f74abcc609359d6b0de9869a0c3f8f3909dba1908b43db7d5db8f0b320814c1c2697699f9d43d31a6e05f30f5eaace67caf7              161 Release
