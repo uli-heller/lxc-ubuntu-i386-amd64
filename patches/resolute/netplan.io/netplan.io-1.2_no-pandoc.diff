@@ -1,0 +1,33 @@
+diff -ur orig/debian/control no-pandoc/debian/control
+--- orig/debian/control	2026-03-23 22:47:50.294742002 +0100
++++ no-pandoc/debian/control	2026-03-23 22:52:32.765794141 +0100
+@@ -32,7 +32,6 @@
+  dbus-daemon <!nocheck>,
+  pyflakes3 <!nocheck>,
+  pycodestyle <!nocheck>,
+- pandoc,
+  openvswitch-switch [ !armel !armhf !i386 !hppa !m68k !powerpc !sh4 !x32 ] <!nocheck>,
+  meson (>= 1.3.0),
+  iproute2 <!nocheck>,
+Nur in no-pandoc/debian: control~.
+Nur in no-pandoc/debian: libnetplan1.install.
+Nur in no-pandoc/debian: libnetplan-dev.install.
+Nur in no-pandoc/debian: netplan-generator.install.
+diff -ur orig/debian/netplan-generator.manpages no-pandoc/debian/netplan-generator.manpages
+--- orig/debian/netplan-generator.manpages	2026-03-23 23:10:11.936776999 +0100
++++ no-pandoc/debian/netplan-generator.manpages	2026-03-23 23:10:45.251902658 +0100
+@@ -1 +1 @@
+-usr/share/man/man5/*
++#usr/share/man/man5/*
+Nur in no-pandoc/debian: netplan-generator.manpages~.
+Nur in no-pandoc/debian: netplan.io.install.
+diff -ur orig/debian/netplan.io.manpages no-pandoc/debian/netplan.io.manpages
+--- orig/debian/netplan.io.manpages	2026-03-23 23:11:14.280012154 +0100
++++ no-pandoc/debian/netplan.io.manpages	2026-03-23 23:11:39.957109017 +0100
+@@ -1,2 +1,2 @@
+ debian/netplan.8
+-usr/share/man/man8/*
++#usr/share/man/man8/*
+Nur in no-pandoc/debian: netplan.io.manpages~.
+Nur in no-pandoc/debian: python3-netplan.install.
+Nur in no-pandoc: Makefile.
