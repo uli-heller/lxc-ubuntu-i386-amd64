@@ -1,19 +1,18 @@
-Architectures: i386
 Codename: resolute
-Date: Mon, 23 Mar 2026 22:40:36 +0000
+Date: Mon, 23 Mar 2026 23:35:49 +0000
 Description: Precompiled packages for our LXC containers
 Label: lxc-ubuntu
 Origin: lxc-ubuntu
 Suite: resolute
 MD5Sum:
  2ca937591cd8c415d8b5224c9b323280            19599 Packages
- 66e1caebb50073fbada7e2ac7ad8e293              187 Release
+ ddcc7398e9b50a87bdb20843abc692c4              167 Release
 SHA1:
  49f265b86b351a00b1da0fdd670e832f7ff06035            19599 Packages
- e4756af52528c6ef48a12e678aaa1e2a66c182c3              187 Release
+ 7158888f8c71c2a3b8dec079d011556e39a792f0              167 Release
 SHA256:
  a35931892aecb98c971e2a0f779df48e5130f6f2f08ed8dbbfd02dfb48315cba            19599 Packages
- bce882625fc9eafa86332000637182b13f802bdc30365ec2439ba94df1bc334e              187 Release
+ a56d1b64976004988175459db548b05c329bbf1387334eaa15b4f1d0d9209c56              167 Release
 SHA512:
  4b15aeaf556cf3732cb72fdfae063ceda4c87da73b72a20015fc9e39d5b076cdf1d10e544b8356322942c8491da733de32afd41237831812f57cd7987b85a9d4            19599 Packages
- 80537006e28830343adf8a78fe235575d7dad0f2cabab8b32251ce57012ed396f4688486577ba613aff8d5f7917a402774ec22d81ff6cb45ee490678d48d436a              187 Release
+ 79378049f7307596f2e5e059ec10e88a98349cbc346e110124bd9ee301d78fc7d90f85cd165b7b443323371c294bf8564ead5c1a65f894233e4921d9b2ebdcd6              167 Release

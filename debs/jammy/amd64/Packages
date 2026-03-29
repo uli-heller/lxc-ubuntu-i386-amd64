@@ -409,6 +409,150 @@ Description: framework for writing simple makefiles for complex tasks
  to use kBuild together with autoconf if you like, but you might just as well
  use the full GNU package.
 
+Package: libcowsql-dev
+Source: cowsql
+Version: 1.15.4-1ubuntu3~uh~jammy1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 470
+Depends: libcowsql0 (= 1.15.4-1ubuntu3~uh~jammy1), libsqlite3-dev (>= 3.22.0~)
+Filename: ./libcowsql-dev_1.15.4-1ubuntu3~uh~jammy1_amd64.deb
+Size: 105510
+MD5sum: a39a1d319f07b34b1527266b62940620
+SHA1: 69f2ca3c2b3d43db85d75c8e6b168f0111abf1cb
+SHA256: 0b0b84ded81604d27165f7d907fc1e7ac44c2b7d403ba3cde3bc17e4803496a5
+Section: libdevel
+Priority: optional
+Multi-Arch: same
+Homepage: https://github.com/cowsql/cowsql
+Description: Embeddable, replicated and fault tolerant SQL engine - development files
+ Embeddable SQL database engine with high availability and automatic failover.
+ .
+ The cowsql library extends SQLite with a network protocol that can connect
+ together various instances of your application and have them act as a
+ highly-available cluster, with no dependency on external databases. The
+ name "cowsql" loosely refers to the "pets vs. cattle" concept, since it's
+ generally fine to delete or rebuild a particular node of an application that
+ uses cowsql for data storage.
+ .
+ This package contains the development headers and library files needed to
+ compile programs using cowsql.
+Original-Maintainer: Free Ekanayaka <freee@debian.org>
+
+Package: libcowsql0
+Source: cowsql
+Version: 1.15.4-1ubuntu3~uh~jammy1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 203
+Depends: libc6 (>= 2.34), libraft0 (>= 0.20), libsqlite3-0 (>= 3.8.7), libuv1 (>= 1.8.0~)
+Filename: ./libcowsql0_1.15.4-1ubuntu3~uh~jammy1_amd64.deb
+Size: 76486
+MD5sum: 029b2129c2016b0b75b049bade54a17b
+SHA1: 5eabd5a17ba4b1824ff86802b346eda3c8a43e87
+SHA256: 1c29240f48adfe8706c7e033e04d6398634c8e93fbdbed0ff0308919fa17f300
+Section: libs
+Priority: optional
+Multi-Arch: same
+Homepage: https://github.com/cowsql/cowsql
+Description: Embeddable, replicated and fault tolerant SQL engine - shared library
+ Embeddable SQL database engine with high availability and automatic failover.
+ .
+ The cowsql library extends SQLite with a network protocol that can connect
+ together various instances of your application and have them act as a
+ highly-available cluster, with no dependency on external databases. The
+ name "cowsql" loosely refers to the "pets vs. cattle" concept, since it's
+ generally fine to delete or rebuild a particular node of an application that
+ uses cowsql for data storage.
+ .
+ This package contains the C library needed to run executables that use cowsql.
+Original-Maintainer: Free Ekanayaka <freee@debian.org>
+
+Package: libraft-dev
+Source: raft
+Version: 0.22.0-1build2~uh~jammy1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 693
+Depends: libraft0 (= 0.22.0-1build2~uh~jammy1)
+Filename: ./libraft-dev_0.22.0-1build2~uh~jammy1_amd64.deb
+Size: 151512
+MD5sum: 4c5f75cba6d80eaa5f4c90ba8e10e655
+SHA1: 2b0318799a65f58d1cf19f010b8248d487f9b114
+SHA256: e74bbc097548ec909f21a6c3b1e049a038cb9cafcbe3eb47f945b8f49a328827
+Section: libdevel
+Priority: optional
+Multi-Arch: same
+Homepage: https://raft.readthedocs.io
+Description: Raft Consensus protocol implementation - development files
+ Fully asynchronous C implementation of the Raft consensus protocol.
+ .
+ The library has modular design: its core part implements only the core Raft
+ algorithm logic, in a fully platform independent way. On top of that, a
+ pluggable interface defines the I/O implementation for networking
+ (send/receive RPC messages) and disk persistence (store log entries and
+ snapshots).
+ .
+ This package contains the development headers and library files needed to
+ compile programs using Raft Consensus protocol.
+Original-Maintainer: Free Ekanayaka <freee@debian.org>
+
+Package: libraft-tools
+Source: raft
+Version: 0.22.0-1build2~uh~jammy1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 52
+Depends: libc6 (>= 2.34), libraft0 (>= 0.17.7), libuv1 (>= 1.4.2)
+Filename: ./libraft-tools_0.22.0-1build2~uh~jammy1_amd64.deb
+Size: 17624
+MD5sum: 35f106ebe75d7a5a9bd0c7b34c4f2c4e
+SHA1: 513916256c14ebf844ea64526b1ecc4d1b163f4c
+SHA256: 2338ddd8c4c93fa4e70ce63123f4dc4df8f01297cf640896b1b02cf1b4a6c01e
+Section: misc
+Priority: optional
+Homepage: https://raft.readthedocs.io
+Description: Raft Consensus protocol implementation - benchmarking programs
+ Fully asynchronous C implementation of the Raft consensus protocol.
+ .
+ The library has modular design: its core part implements only the core Raft
+ algorithm logic, in a fully platform independent way. On top of that, a
+ pluggable interface defines the I/O implementation for networking
+ (send/receive RPC messages) and disk persistence (store log entries and
+ snapshots).
+ .
+ This package contains tools for benchmarking the libraft library.
+Original-Maintainer: Free Ekanayaka <freee@debian.org>
+
+Package: libraft0
+Source: raft
+Version: 0.22.0-1build2~uh~jammy1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 232
+Depends: libc6 (>= 2.17), liblz4-1 (>= 0.0~r127), libuv1 (>= 1.4.2)
+Filename: ./libraft0_0.22.0-1build2~uh~jammy1_amd64.deb
+Size: 95968
+MD5sum: 3bf29950094ce432d6a7c4d9711f34ce
+SHA1: 74ad4c9fa33fbf94d42f87d14a5d454b5104fb28
+SHA256: 73f3108f8cb567401bd156d89a49a40cf661404eb0a228a9cbf133c8b4404349
+Section: libs
+Priority: optional
+Multi-Arch: same
+Homepage: https://raft.readthedocs.io
+Description: Raft Consensus protocol implementation - shared library
+ Fully asynchronous C implementation of the Raft consensus protocol.
+ .
+ The library has modular design: its core part implements only the core Raft
+ algorithm logic, in a fully platform independent way. On top of that, a
+ pluggable interface defines the I/O implementation for networking
+ (send/receive RPC messages) and disk persistence (store log entries and
+ snapshots).
+ .
+ This package contains the C library needed to run executables that use Raft
+ Consensus protocol.
+Original-Maintainer: Free Ekanayaka <freee@debian.org>
+
 Package: qrterminal
 Version: 3.2.0.3-2ubuntu0.24.04.2~uh~jammy2
 Architecture: amd64
