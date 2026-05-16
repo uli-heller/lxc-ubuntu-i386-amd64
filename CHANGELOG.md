@@ -1,6 +1,33 @@
 CHANGELOG
 =========
 
+v1.14.0
+-------
+
+- Added support packages for incus
+
+v1.13.0
+-------
+
+- Initial support for resolute (ubuntu-26.04)
+
+v1.12.4
+-------
+
+- Added support for incus
+
+v1.12.3
+-------
+
+- Added support for LZ4 compression
+
+v1.12.2
+-------
+
+- gocryptfs
+- qrterminal
+- Deprecation of 'proot'
+
 v1.12.1
 -------
 
