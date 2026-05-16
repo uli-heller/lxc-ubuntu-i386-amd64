@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+v1.14.1
+-------
+
+- Non-beta debs for resolute (ubuntu-26.04)
+
 v1.14.0
 -------
 
